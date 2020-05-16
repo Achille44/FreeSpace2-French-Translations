@@ -1,8 +1,8 @@
-#Sticky notes
+# Sticky notes
 
 This file is here to gather all my choices regarding the different translations, so that all my translations have the same rules.
 
-##Translation choices
+## Translation choices
 
 I choose not to translate the name of the ships and class of ships.
 I choose not to translate the name of the medals.
@@ -27,6 +27,7 @@ Subspace drive = propulsion subspatiale
 Subspace portal = portail de saut
 Subspace = sous-espace
 Tech Room = Salle Technique
+Wing = Escadrille
 
 ## Rank translation
 

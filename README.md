@@ -48,8 +48,8 @@ XSTR("Return to base", 2275)
 The unique integer can be used to be translated in a separate translation file.
 
 There are initially 2 translation files:
-- string.tbl
-- tstring.tbl
+- string.tbl (https://wiki.hard-light.net/index.php/Strings.tbl)
+- tstring.tbl (https://wiki.hard-light.net/index.php/Tstrings.tbl)
 
 If these files are not present or don't contain all strings present in the mod, then it means the mod is not ready for translation, and you should contact the authors of the mod before going further.
 
@@ -69,7 +69,7 @@ END
 
 default is the English language. If the other languages are not present in the file, you can add it yourself, and the SCP engine will recognize it. It means that all strings located in that section will be used depending on the language set in Knossos launcher.
 
-string.tbl and tstring.tbl can be extended with other files using the following pattern:
+string.tbl and tstring.tbl can be extended (https://wiki.hard-light.net/index.php/Modular_Tables) with other files using the following pattern:
 - for string.tbl => xxxxx-lcl.tbm
 - for tstring.tbl => xxxxx-tlc.tbm
 
