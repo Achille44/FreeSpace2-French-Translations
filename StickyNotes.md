@@ -12,6 +12,7 @@ I choose to translate the name of the factions and governments, but not their ac
 I will put some translations choices here for the cases where no exact translations can be made.
 This can help in case I find these words elsewhere later.
 
+Average = médiocre
 Barracks = Quartiers
 Beam cannons = Canons à photons
 Fighterbay = baie de chasseurs
