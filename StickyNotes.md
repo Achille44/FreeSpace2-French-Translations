@@ -21,6 +21,7 @@ Loadout = chargement
 Override = contournement
 Patrol path = itinéraire de patrouille
 Post-Sol = l'Isolement
+PVN (Parliamentary Vasudan Navy)
 Ready Room = Salle de Préparation
 Sentry gun = tourelle statique
 Stand by = rester en attente
