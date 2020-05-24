@@ -16,10 +16,12 @@ Average = médiocre
 Barracks = Quartiers
 Beam cannons = Canons à photons
 Fighterbay = baie de chasseurs
+Gunship = Canonnière / vaisseau de guerre ?
 Jump node = portail de saut
 Loadout = chargement
 Override = contournement
 Patrol path = itinéraire de patrouille
+Please advise = j'attends vos instructions
 Post-Sol = l'Isolement
 PVN (Parliamentary Vasudan Navy)
 Ready Room = Salle de Préparation
