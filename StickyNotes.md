@@ -15,6 +15,7 @@ This can help in case I find these words elsewhere later.
 Average = médiocre
 Barracks = Quartiers
 Beam cannons = Canons à photons
+Drive = propulsion
 Fighterbay = baie de chasseurs
 Gunship = Canonnière / vaisseau de guerre ?
 Jump node = portail de saut
@@ -26,6 +27,7 @@ Post-Sol = l'Isolement
 PVN (Parliamentary Vasudan Navy)
 Ready Room = Salle de Préparation
 Sentry gun = tourelle statique
+spaceframe = structure
 Stand by = rester en attente
 Subspace drive = propulsion subspatiale
 Subspace portal = portail de saut
