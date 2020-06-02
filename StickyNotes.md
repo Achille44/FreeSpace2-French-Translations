@@ -33,6 +33,7 @@ Subspace drive = propulsion subspatiale
 Subspace portal = portail de saut
 Subspace = sous-espace
 Tech Room = Salle Technique
+Warp out = entrer en distortion
 Wing = Escadrille
 
 ## Rank translation
