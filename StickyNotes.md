@@ -15,6 +15,7 @@ This can help in case I find these words elsewhere later.
 Average = médiocre
 Barracks = Quartiers
 Beam cannons = Canons à photons
+Boarding = abordage
 Drive = propulsion
 Fighterbay = baie de chasseurs
 Gunship = Canonnière / vaisseau de guerre ?
