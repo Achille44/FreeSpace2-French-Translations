@@ -16,6 +16,7 @@ Average = médiocre
 Barracks = Quartiers
 Beam cannons = Canons à photons
 Boarding = abordage
+Breaking to engage = on se déploie et on attaque
 Drive = propulsion
 Fighterbay = baie de chasseurs
 Gunship = Canonnière / vaisseau de guerre ?
