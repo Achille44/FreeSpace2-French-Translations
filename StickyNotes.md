@@ -13,6 +13,7 @@ I will put some translations choices here for the cases where no exact translati
 This can help in case I find these words elsewhere later.
 
 Average = médiocre
+Battlegroup = groupement tactique
 Barracks = Quartiers
 Beam cannons = Canons à photons
 Boarding = abordage
