@@ -21,6 +21,7 @@ Breaking to engage = on se déploie et on attaque
 Drive = propulsion
 Fighterbay = baie de chasseurs
 Gunship = Canonnière / vaisseau de guerre ?
+Holly = Hol
 Jump node = portail de saut
 Loadout = chargement
 Override = contournement
