@@ -12,12 +12,14 @@ I choose to translate the name of the factions and governments, but not their ac
 I will put some translations choices here for the cases where no exact translations can be made.
 This can help in case I find these words elsewhere later.
 
+Acknowledged = Entendu
 Average = médiocre
 Battlegroup = groupement tactique
 Barracks = Quartiers
 Beam cannons = Canons à photons
 Boarding = abordage
-Breaking to engage = on se déploie et on attaque
+Breaking to engage = on se déploie pour attaquer
+Copy that = bien compris
 Drive = propulsion
 ECM = CME (Contre-mesure électronique)
 EP (Escape pod) = capsule de sauvetage
@@ -31,6 +33,7 @@ Patrol path = itinéraire de patrouille
 Please advise = j'attends vos instructions
 Post-Sol = l'Isolement
 PVN (Parliamentary Vasudan Navy)
+Roger that = bien reçu
 Ready Room = Salle de Préparation
 Sentry gun = tourelle statique
 spaceframe = structure
