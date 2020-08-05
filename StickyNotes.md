@@ -22,6 +22,7 @@ Breaking to engage = on se déploie pour attaquer
 Copy that = bien compris
 Drive = propulsion
 ECM = CME (Contre-mesure électronique)
+EMP = IEM
 EP (Escape pod) = capsule de sauvetage
 Fighterbay = baie de chasseurs
 Fire-and-forget = Tire-et-oublie
