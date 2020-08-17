@@ -28,6 +28,7 @@ Fighterbay = baie de chasseurs
 Fire-and-forget = Tire-et-oublie
 Gunship = Canonnière / vaisseau de guerre ?
 Holly = Hol
+IFF = IFF
 Jump node = portail de saut
 Loadout = chargement
 Override = contournement
