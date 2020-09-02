@@ -31,6 +31,7 @@ Holly = Hol
 IFF = IFF
 Jump node = portail de saut
 Loadout = chargement
+Orbitals = stations orbitales
 Override = contournement
 Patrol path = itinéraire de patrouille
 Please advise = j'attends vos instructions
