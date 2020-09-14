@@ -1,0 +1,4780 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Corrida de Toros", 2114)
+$Author: Slasher
+$Created: 06/28/11 at 15:10:40
+$Modified: 07/08/20 at 22:09:54
+$Notes:
+This is a FRED2_OPEN created mission. Indeed.
+$End Notes:
+
+$Mission Desc:
+ XSTR("The Hammer of Light engages the GTA in open warfare in a mission to divert the Intrepid from Sirius.  Commander Ozymandias makes his debut, challenging Admiral Po directly.", 2115)
+$end_multi_text
++Game Type Flags: 1
++Flags: 393216
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 0
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: -14668.884766, 555.375916, -247.649338
++Viewer orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
++SquadReassignName: 47th Cutthroats
++SquadReassignLogo: cutthroats.pcx
+
+$Starting wing names: ( "Alpha" "Gamma" "Epsilon" )
+$Squadron wing names: ( "Alpha" "Beta" "Iota" "Delta" "Theta" )
+$Team-versus-team wing names: ( "Alpha" "Beta" )
+
+$Load Screen 640: LoadingBG.pcx
+$Load Screen 1024: 2_m1_03_load.png
+
+$Skybox Model: deneb-box.pof
+
+$AI Profile: BTA
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"CampaignMode"		"0"		"number"		"save-on-mission-close"
+		1		"CampMode"		"false"		"string"
+		2		"camxpos"		"1160"		"number"
+		3		"camypos"		"100"		"number"
+		4		"camzpos"		"1281"		"number"
+		5		"CheckpointReached"		"0"		"number"		"save-on-mission-close"
+		6		"DebriefPersona"		"100"		"number"		"save-on-mission-close"
+		7		"filename"		"bta1_m1_03.sscp"		"string"
+		8		"SnailCheck"		"snail"		"string"
+		9		"SnailFound"		"0"		"number"		"save-on-mission-progress"
+		10		"SnailPlural"		"snails"		"string"
+		11		"SnailSave"		"false"		"string"		"save-on-mission-close"
+		12		"SnailTemp"		"0"		"number"
+		13		"Traitor1"		"Ship Status:"		"string"
+		14		"Traitor2"		"Disabled By Remote"		"string"
+		15		"turretCount"		"6"		"number"
+)
+
+#Cutscenes
+$Fiction Viewer Cutscene: offer.ogg
++formula: ( when 
+   ( is-previous-event-true 
+      "bta1_m1_02" 
+      "Camp Mode" 
+      ( false ) 
+   )
+   ( do-nothing ) 
+)
+#end
+
+#Fiction Viewer
+
+$File: m03.txt
+
+#Command Briefing
+
+$Stage Text:
+ XSTR("$b * $b GTD $b Intrepid
+$b * $b Deneb $b System
+$b * $b 8/3/36
+
+$b New $b Orders
+
+I'm $b Vice $b Admiral $b Tighe$| . $b Admiral $b Po has instructed me to very briefly clear up some of the confusion regarding our recent change in course. As some of you may have heard, we received orders to proceed to $y Beta $y Aquilae to reinforce Commodore Jian's group against 'local threats.' However, $b Admiral $b Po feels this is, at best, a poor use of the $b GTA's limited resources, and at worst, deliberate misdirection. $b Admiral $b Po fears certain authority figures in the $b GTA may be getting desperate now that we're on to the $y Antares-Regulus smuggling rings.
+
+The $b Admiral has no intention of stopping our operations against the organized crime rings that pervade these systems. We are preparing for a mission in $y Regulus that we hope will strike at the very heart of these mysterious syndicates. To dodge charges of outright insubordination, $b Admiral $b Po has informed Command we will be proceeding to $y Beta $y Aquilae only after a much-needed refit in $y Sirius$| .", 2116)
+$end_multi_text
+$Ani Filename: cb_sirius-regulus
++Wave Filename: bta1_m1_03_cb01.ogg
+
+#Briefing
+$start_briefing
+$briefing_background_640: brief.pcx
+$briefing_background_1024: 2_Brief_Deneb.png
+$num_stages: 2
+$start_stage
+$multi_text
+ XSTR("At 0341, sensor stations picked up a wing of four Thoth fighters just outside the $y Sirius jump node. They have failed to respond to our hails, and $b Command has no knowledge of friendly $b PVN forces in this area. The $r Hammer $r of $r Light has been thoroughly beaten back in $y Deneb over the past several years. However, a true fanatic never knows when to give up. If these fighters are an advance unit of an assault, today could see the $g Intrepid's first serious action against the $r Hammer $r of $r Light since the $b Great $b War$| .", 2117)
+$end_multi_text
+$voice: bta1_m1_03_br01.ogg
+$camera_pos: -14668.884766, 555.375916, -247.649338
+$camera_orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 4
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 6
+$team: Friendly
+$class: GTD Orion
+$pos: -14400.442383, 0.000000, -250.883606
+$label:  XSTR("Intrepid", 1888)
++id: 1
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 33
+$team: Friendly
+$class: Waypoint#Marker
+$pos: -14971.286133, 0.000000, -254.117859
+$label:  XSTR("Sirius Jump Node", 1689)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: GTF Ulysses
+$pos: -14400.442383, 0.000000, -129.599396
+$label:  XSTR("Iota", 2118)
++id: 3
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Neutral
+$class: PVF Thoth
+$pos: -14799.871094, 0.000000, -252.500702
+$label:  XSTR("Aquarius", 2119)
++id: 4
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("You will lead $b Alpha $b Wing to reinforce our escort. $b Iota was on watch when the report came in and will engage $r Aquarius as soon as you are on station. Flight crews are readying other wings as we speak.
+
+It has been a long time since many of us have faced this enemy. For some of you, this will be a first. Regardless of your experience, we all know what the $r Hammer $r of $r Light is capable of, and we know how far they'll go for their cause. Report to your fighters immediately.", 2120)
+$end_multi_text
+$voice: bta1_m1_03_br02.ogg
+$camera_pos: -14668.884766, 555.375916, -247.649338
+$camera_orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 5
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 6
+$team: Friendly
+$class: GTD Orion
+$pos: -14400.442383, 0.000000, -250.883606
+$label:  XSTR("Intrepid", 1888)
++id: 1
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 33
+$team: Friendly
+$class: Waypoint#Marker
+$pos: -14971.286133, 0.000000, -254.117859
+$label:  XSTR("Sirius Jump Node", 1689)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: GTF Ulysses
+$pos: -14676.969727, -0.000024, -252.500702
+$label:  XSTR("Iota", 2118)
++id: 3
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Neutral
+$class: PVF Thoth
+$pos: -14799.871094, 0.000000, -252.500702
+$label:  XSTR("Aquarius", 2119)
++id: 4
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: GTF Valkyrie
+$pos: -14529.812500, 0.000000, -173.261719
+$label:  XSTR("Alpha", 1557)
++id: 5
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 6
+
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Card gone, Int intact" 
+      0 
+   )
+   ( not 
+      ( is-destroyed-delay 0 "Intrepid" ) 
+   )
+   ( not 
+      ( has-departed-delay 0 "Alpha 1" ) 
+   )
+)
+$Multi text
+    XSTR("The $g Intrepid arrived in $y Sirius at 0430 Standard in one piece thanks to your efforts. The $r Hammer $r of $r Light's presence today was their strongest showing in years, but we've repelled it.
+
+Prior to this encounter, $r Commander $r Ozymandias and his destroyer the $r Cardinal were previously unheard of by the fleet. $b Admiral $b Po has requested a full briefing on $r Ozymandias and his forces from $b Command$| .", 2121)
+$end_multi_text
+$Voice: bta1_m1_03_db01.ogg
+$Recommendation text:
+    XSTR("", 591)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Full retreat - FAIL" 
+      0 
+   )
+   ( not 
+      ( is-destroyed-delay 0 "Intrepid" ) 
+   )
+)
+$Multi text
+    XSTR("The $r Hammer $r of $r Light forces under $r Commander $r Ozymandias were able to divert us from our goal. Their victory here, won by an arrogant but charismatic religious fanatic, could be a harbinger of things to come. Emboldened by their victory against the $g Intrepid and $b Admiral $b Po today, the $r HoL will likely strike out viscerally at their enemies in $y Deneb and surrounding systems. Our failure may just be the beginning.", 2122)
+$end_multi_text
+$Voice: bta1_m1_03_db02.ogg
+$Recommendation text:
+    XSTR("The bombers launched by the Cardinal are relatively easy pickings.
+
+Focus most of your effort on defending your bombers. Allow them to do their work by clearing the way for them. Your ultimate goal is to drive off the Hammer of Light before they drive off or destroy the Intrepid. It is a race to do damage.", 2123)
+$end_multi_text
+
+$Formula: ( is-destroyed-delay 0 "Intrepid" ) 
+$Multi text
+    XSTR("The $g Intrepid was destroyed at 0411 earlier today. She went down with all hands.", 2124)
+$end_multi_text
+$Voice: bta1_m1_03_db03.ogg
+$Recommendation text:
+    XSTR("The bombers launched by the Cardinal are relatively easy pickings.
+
+Focus most of your effort on defending your bombers. Allow them to do their work by clearing the way for them. Your ultimate goal is to drive off the Hammer of Light before they drive off or destroy the Intrepid. It is a race to do damage.", 2123)
+$end_multi_text
+
+$Formula: ( and 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( not 
+      ( is-event-true-delay 
+         "Begin Retreat" 
+         0 
+      )
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Card gone, Int intact" 
+         0 
+      )
+   )
+)
+$Multi text
+    XSTR("$b Alpha $b 1$| , you departed without orders. You can explain your actions at your court martial, pilot. Dismissed!", 2125)
+$end_multi_text
+$Voice: bta1_m1_03_db04.ogg
+$Recommendation text:
+    XSTR("", 591)
+$end_multi_text
+
+$Formula: ( and 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( is-event-true-delay 
+      "Card gone, Int intact" 
+      0 
+   )
+)
+$Multi text
+    XSTR("$b Alpha $b 1$| , you departed the area without clearance. You were explicitly ordered to land in the $g Intrepid's fighterbay. Your actions have made you suspect of treason and are hereby grounded until further notice.", 2126)
+$end_multi_text
+$Voice: bta1_m1_03_db05.ogg
+$Recommendation text:
+    XSTR("", 591)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Intrepid at ~40% - MEDAL" 
+      0 
+   )
+   ( is-event-true-delay "Camp Mode" 0 ) 
+)
+$Multi text
+    XSTR("For your exceptional effort in protecting the $g GTD $g Intrepid$| , we are awarding you the $W Distinguished $W Flying $W Cross$| . The Admiral is proud to have such an outstanding pilot serving at the Intrepid's defense. Good work, pilot.", 2127)
+$end_multi_text
+$Voice: bta1_m1_03_db06.ogg
+$Recommendation text:
+    XSTR("", 591)
+$end_multi_text
+
+#Alternate Types:
+$Alt: HLF Horus
+$Alt: HLF Thoth
+$Alt: HLF Seth
+$Alt: HLB Amun
+$Alt: HLC Aten
+$Alt: HLD Typhon
+$Alt: HLB Osiris
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+	"GTF Apollo"	5
+	"GTF Valkyrie"	5
+	"GTF Hercules"	5
+	"GTF Ulysses"	5
+	"GTF Loki"	5
+)
+
++Weaponry Pool: (
+	"Avenger"	104
+	"Disruptor"	16
+	"Flail"	16
+	"Banshee"	20
+	"S-Breaker"	16
+	"Leech Cannon"	16
+	"Fury"	500
+	"Interceptor"	500
+	"Phoenix V"	532
+	"Hornet"	500
+)
+
+#Objects		;! 55 total
+
+$Name: Alpha 1		;! Object #0
+$Class: GTF Valkyrie
+$Team: Friendly
+$Team Color Setting: None
+$Location: 1611.213013, -104.264626, 1307.405762
+$Orientation:
+	-0.478727, 0.000000, 0.877965,
+	0.000000, 1.000000, 0.000000,
+	-0.877965, 0.000000, -0.478727
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 45
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Alpha 2		;! Object #1
+$Class: GTF Valkyrie
+$Team: Friendly
+$Team Color Setting: None
+$Location: 1654.761353, -92.633919, 1307.128052
+$Orientation:
+	-0.478727, 0.000000, 0.877964,
+	0.000000, 1.000000, 0.000000,
+	-0.877964, 0.000000, -0.478727
+$AI Behavior: None
++AI Class: BtA-General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 45
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 0
+
+$Name: Alpha 3		;! Object #2
+$Class: GTF Valkyrie
+$Team: Friendly
+$Team Color Setting: None
+$Location: 1645.938110, -94.896004, 1347.996704
+$Orientation:
+	-0.478727, 0.000000, 0.877964,
+	0.000000, 1.000000, 0.000000,
+	-0.877964, 0.000000, -0.478727
+$AI Behavior: None
++AI Class: BtA-General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 45
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 7
+
+$Name: Alpha 4		;! Object #3
+$Class: GTF Valkyrie
+$Team: Friendly
+$Team Color Setting: None
+$Location: 1680.577271, -93.913506, 1355.426880
+$Orientation:
+	-0.478727, 0.000000, 0.877964,
+	0.000000, 1.000000, 0.000000,
+	-0.877964, 0.000000, -0.478727
+$AI Behavior: None
++AI Class: BtA-General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 45
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 3
+
+$Name: Iota 1		;! Object #4
+$Class: GTF Ulysses
+$Team: Friendly
+$Team Color Setting: None
+$Location: 371.339203, -159.954056, 377.448456
+$Orientation:
+	-0.563985, 0.000000, 0.825785,
+	0.000000, 1.000000, 0.000000,
+	-0.825785, 0.000000, -0.563985
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 740
++Special Shield Points: 580
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
++Persona Index: 2
+
+$Name: Iota 2		;! Object #5
+$Class: GTF Ulysses
+$Team: Friendly
+$Team Color Setting: None
+$Location: 372.012543, -148.825165, 464.471436
+$Orientation:
+	-0.563985, 0.000000, 0.825785,
+	0.000000, 1.000000, 0.000000,
+	-0.825785, 0.000000, -0.563985
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 740
++Special Shield Points: 580
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
++Persona Index: 7
+
+$Name: Iota 3		;! Object #6
+$Class: GTF Ulysses
+$Team: Friendly
+$Team Color Setting: None
+$Location: 443.280396, -172.208359, 344.556122
+$Orientation:
+	-0.563985, 0.000000, 0.825785,
+	0.000000, 1.000000, 0.000000,
+	-0.825785, 0.000000, -0.563985
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 740
++Special Shield Points: 580
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
++Persona Index: 8
+
+$Name: Iota 4		;! Object #7
+$Class: GTF Ulysses
+$Team: Friendly
+$Team Color Setting: None
+$Location: 388.330414, -186.211945, 562.112793
+$Orientation:
+	-0.563985, 0.000000, 0.825785,
+	0.000000, 1.000000, 0.000000,
+	-0.825785, 0.000000, -0.563985
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 740
++Special Shield Points: 580
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
++Persona Index: 1
+
+$Name: Intrepid		;! Object #8
+$Class: GTD Orion
+$Team: Friendly
+$Location: 1751.000000, 0.000000, 1130.199707
+$Orientation:
+	-0.474844, 0.000000, 0.880070,
+	0.000000, 1.000000, 0.000000,
+	-0.880070, 0.000000, -0.474844
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Jump Node waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01a
++Subsystem: turret02a
++Subsystem: turret03a
++Subsystem: turret04a
++Subsystem: turret05a
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 33
++Special Hitpoints: 145000
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 1750
+$Texture Replace:
++old: nameplate
++new: GTD_Intrepid
+
+$Name: Aquarius 1		;! Object #9
+$Class: PVF Thoth
+$Alt: HLF Thoth
+
+$Team: Neutral
+$Location: -7892.083008, 0.000000, -4192.223145
+$Orientation:
+	0.667463, -0.744643, 0.000000,
+	0.744643, 0.667463, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Aquarius 2		;! Object #10
+$Class: PVF Thoth
+$Alt: HLF Thoth
+
+$Team: Neutral
+$Location: -7845.510254, -51.957478, -4137.013672
+$Orientation:
+	0.667463, -0.744643, 0.000000,
+	0.744643, 0.667463, -0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Aquarius 3		;! Object #11
+$Class: PVF Thoth
+$Alt: HLF Thoth
+
+$Team: Neutral
+$Location: -7940.069336, 53.535172, -4100.737305
+$Orientation:
+	0.667463, -0.744643, 0.000000,
+	0.744643, 0.667463, -0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Aquarius 4		;! Object #12
+$Class: PVF Thoth
+$Alt: HLF Thoth
+
+$Team: Neutral
+$Location: -7896.300293, 4.705698, -4016.250244
+$Orientation:
+	0.667463, -0.744643, 0.000000,
+	0.744643, 0.667463, -0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Sagittarius 1		;! Object #13
+$Class: PVF Seth
+$Alt: HLF Seth
+
+$Team: Neutral
+$Location: 2764.074219, -0.000000, 1035.572876
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Disruptor" )
++Secondary Banks: ( "Stiletto" "Stiletto" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 380
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Sagittarius 2		;! Object #14
+$Class: PVF Seth
+$Alt: HLF Seth
+
+$Team: Neutral
+$Location: 2734.496582, -0.000000, 1001.234619
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Disruptor" )
++Secondary Banks: ( "Stiletto" "Stiletto" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 380
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Sagittarius 3		;! Object #15
+$Class: PVF Seth
+$Alt: HLF Seth
+
+$Team: Neutral
+$Location: 2792.997803, -0.000000, 965.612793
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Disruptor" )
++Secondary Banks: ( "Stiletto" "Stiletto" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 380
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Sagittarius 4		;! Object #16
+$Class: PVF Seth
+$Alt: HLF Seth
+
+$Team: Neutral
+$Location: 2763.420166, -0.000000, 931.274414
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Disruptor" )
++Secondary Banks: ( "Stiletto" "Stiletto" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 380
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Capricorn 1		;! Object #17
+$Class: PVB Amun
+$Alt: HLB Amun
+
+$Team: Neutral
+$Location: 2315.310303, 73.001503, 1670.419678
+$Orientation:
+	-0.474862, 0.000000, 0.880060,
+	0.008575, 0.999952, 0.004627,
+	-0.880018, 0.009744, -0.474840
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Synaptic" "Barracuda" "Tsunami" )
++Subsystem: Turret02
++Subsystem: Turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 725
++Group: 0
++Score: 10
+
+$Name: Capricorn 2		;! Object #18
+$Class: PVB Amun
+$Alt: HLB Amun
+
+$Team: Neutral
+$Location: 2470.743164, 8.477158, 1634.825684
+$Orientation:
+	-0.474862, 0.000000, 0.880060,
+	0.008575, 0.999952, 0.004627,
+	-0.880018, 0.009744, -0.474840
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Synaptic" "Barracuda" "Tsunami" )
++Subsystem: Turret02
++Subsystem: Turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 725
++Group: 0
++Score: 14
+
+$Name: Capricorn 3		;! Object #19
+$Class: PVB Amun
+$Alt: HLB Amun
+
+$Team: Neutral
+$Location: 2329.831543, 10.265717, 1824.505371
+$Orientation:
+	-0.474862, 0.000000, 0.880060,
+	0.008575, 0.999952, 0.004627,
+	-0.880018, 0.009744, -0.474840
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Synaptic" "Barracuda" "Tsunami" )
++Subsystem: Turret02
++Subsystem: Turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 725
++Group: 0
++Score: 14
+
+$Name: Capricorn 4		;! Object #20
+$Class: PVB Amun
+$Alt: HLB Amun
+
+$Team: Neutral
+$Location: 2488.656250, -85.456841, 1780.850952
+$Orientation:
+	-0.474862, 0.000000, 0.880060,
+	0.008575, 0.999952, 0.004627,
+	-0.880018, 0.009744, -0.474840
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Synaptic" "Barracuda" "Tsunami" )
++Subsystem: Turret02
++Subsystem: Turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 725
++Group: 0
++Score: 14
+
+$Name: Khepri		;! Object #21
+$Class: PVC Aten
+$Alt: HLC Aten
+
+$Team: Neutral
+$Location: 2641.800049, -112.500000, 1611.099976
+$Orientation:
+	-0.474862, 0.000000, 0.880060,
+	0.008575, 0.999952, 0.004627,
+	-0.880018, 0.009744, -0.474840
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-waypoints-once "Jump Node waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01a
++Primary Banks: ( "Vasudan Huge Turret" )
++Subsystem: turret02a
++Primary Banks: ( "Vasudan Huge Turret" )
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 55 "Sagittarius" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 10
++Special Hitpoints: 29500
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 1750
+
+$Name: Theta 1		;! Object #22
+$Class: GTB Medusa
+$Team: Friendly
+$Location: 1235.611084, 0.000000, 1754.854004
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Synaptic" "Tsunami" "Tsunami" )
++Subsystem: turret01a
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 750
++Special Shield Points: 800
++Orders Accepted: 32775		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 17
++Persona Index: 7
+
+$Name: Theta 2		;! Object #23
+$Class: GTB Medusa
+$Team: Friendly
+$Location: 1297.980835, 0.000000, 1720.791260
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Synaptic" "Tsunami" "Tsunami" )
++Subsystem: turret01a
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 750
++Special Shield Points: 800
++Orders Accepted: 32775		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 17
++Persona Index: 4
+
+$Name: Sagittarius 5		;! Object #24
+$Class: PVF Seth
+$Alt: HLF Seth
+
+$Team: Neutral
+$Location: 2840.702393, 0.000000, 937.920532
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Disruptor" )
++Secondary Banks: ( "Stiletto" "Stiletto" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 380
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Sagittarius 6		;! Object #25
+$Class: PVF Seth
+$Alt: HLF Seth
+
+$Team: Neutral
+$Location: 2811.125000, 0.000000, 903.582153
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Disruptor" )
++Secondary Banks: ( "Stiletto" "Stiletto" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 380
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Cardinal		;! Object #26
+$Class: PVD Typhon
+$Alt: HLD Typhon
+
+$Team: Neutral
+$Location: -11170.841797, 0.000000, 774.239014
+$Orientation:
+	-0.656674, 0.237703, -0.715736,
+	0.160699, 0.971338, 0.175152,
+	0.736856, 0.000000, -0.676051
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "HoL strike force defeated" 
+      61 
+   )
+   ( has-time-elapsed 351 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "lock-all-turrets" )
++Respawn priority: 0
++Escort priority: 33
++Special Hitpoints: 137000
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 2000
+
+$Name: Aries 1		;! Object #27
+$Class: PVB Osiris
+$Alt: HLB Osiris
+
+$Team: Neutral
+$Location: -9913.765625, 0.000000, -253.761490
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-dynamic" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Aries 2		;! Object #28
+$Class: PVB Osiris
+$Alt: HLB Osiris
+
+$Team: Neutral
+$Location: -9933.541016, 0.000000, -284.733765
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-dynamic" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Aries 3		;! Object #29
+$Class: PVB Osiris
+$Alt: HLB Osiris
+
+$Team: Neutral
+$Location: -9872.799805, 0.000000, -302.286469
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-dynamic" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Aries 4		;! Object #30
+$Class: PVB Osiris
+$Alt: HLB Osiris
+
+$Team: Neutral
+$Location: -9892.576172, 0.000000, -333.258698
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Major
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-dynamic" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Leo 1		;! Object #31
+$Class: PVF Seth
+$Alt: HLF Seth
+
+$Team: Neutral
+$Location: -10011.164063, 0.000000, -204.398407
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
++Secondary Banks: ( "Stiletto" "Stiletto" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Leo 2		;! Object #32
+$Class: PVF Seth
+$Alt: HLF Seth
+
+$Team: Neutral
+$Location: -10069.661133, 0.000000, -227.687851
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
++Secondary Banks: ( "Stiletto" "Stiletto" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Virgo 1		;! Object #33
+$Class: PVB Osiris
+$Alt: HLB Osiris
+
+$Team: Neutral
+$Location: -10273.583008, 0.000000, -213.151932
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Barracuda" "Tsunami" "Tsunami" )
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Virgo 2		;! Object #34
+$Class: PVB Osiris
+$Alt: HLB Osiris
+
+$Team: Neutral
+$Location: -10337.886719, 0.000000, -258.549500
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Barracuda" "Tsunami" "Tsunami" )
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Virgo 3		;! Object #35
+$Class: PVB Osiris
+$Alt: HLB Osiris
+
+$Team: Neutral
+$Location: -10147.591797, 0.000000, -263.844086
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Barracuda" "Tsunami" "Tsunami" )
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Virgo 4		;! Object #36
+$Class: PVB Osiris
+$Alt: HLB Osiris
+
+$Team: Neutral
+$Location: -10221.134766, 0.000000, -280.028809
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Barracuda" "Tsunami" "Tsunami" )
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Delta 1		;! Object #37
+$Class: GTB Ursa
+$Team: Friendly
+$Location: -9305.143555, 0.000000, 1692.446167
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Banshee" "Avenger" )
++Secondary Banks: ( "Synaptic" "Tsunami" "Tsunami" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 1100
++Special Shield Points: 1000
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
++Persona Index: 3
+
+$Name: Delta 2		;! Object #38
+$Class: GTB Ursa
+$Team: Friendly
+$Location: -9217.574219, 0.000000, 1872.598999
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Banshee" "Avenger" )
++Secondary Banks: ( "Synaptic" "Tsunami" "Tsunami" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 1100
++Special Shield Points: 1000
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
++Persona Index: 4
+
+$Name: Delta 3		;! Object #39
+$Class: GTB Ursa
+$Team: Friendly
+$Location: -9508.433594, 0.000000, 1829.697510
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Banshee" "Avenger" )
++Secondary Banks: ( "Synaptic" "Tsunami" "Tsunami" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 1100
++Special Shield Points: 1000
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
++Persona Index: 7
+
+$Name: Delta 4		;! Object #40
+$Class: GTB Ursa
+$Team: Friendly
+$Location: -9375.746094, 0.000000, 2015.238892
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Banshee" "Avenger" )
++Secondary Banks: ( "Synaptic" "Tsunami" "Tsunami" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 1100
++Special Shield Points: 1000
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
++Persona Index: 8
+
+$Name: GTP-03447-Deneb		;! Object #41
+$Class: Terran Probe
+$Team: Hostile
+$Location: 38240.699219, -6749.199219, -3227.600098
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Card gone, Int intact" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-departure-warp" "hidden-from-sensors" "no-dynamic" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Beta 1		;! Object #42
+$Class: GTF Valkyrie
+$Team: Friendly
+$Team Color Setting: None
+$Location: -9714.951172, 0.000000, 1950.101929
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 0
+
+$Name: Beta 2		;! Object #43
+$Class: GTF Valkyrie
+$Team: Friendly
+$Team Color Setting: None
+$Location: -9793.913086, 0.000000, 1886.273560
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 1
+
+$Name: Beta 3		;! Object #44
+$Class: GTF Valkyrie
+$Team: Friendly
+$Team Color Setting: None
+$Location: -9675.156250, 0.000000, 1900.521729
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 2
+
+$Name: Beta 4		;! Object #45
+$Class: GTF Valkyrie
+$Team: Friendly
+$Team Color Setting: None
+$Location: -9727.025391, 0.000000, 1878.734375
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 3
+
+$Name: GTP-03448-Deneb		;! Object #46
+$Class: Terran Probe
+$Team: Hostile
+$Location: 38202.601563, -6749.199219, -3257.600098
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Delta" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-destroyed-delay 0 "Delta" ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-warp" "no-departure-warp" "invulnerable" "hidden-from-sensors" "no-dynamic" "guardian" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Gemini 1		;! Object #47
+$Class: PVF Horus
+$Alt: HLF Horus
+
+$Team: Neutral
+$Location: -10964.015625, 0.000000, -156.937027
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
++Secondary Banks: ( "Hornet" "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 17
+
+$Name: Gemini 2		;! Object #48
+$Class: PVF Horus
+$Alt: HLF Horus
+
+$Team: Neutral
+$Location: -10910.536133, 0.000000, -93.106537
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
++Secondary Banks: ( "Hornet" "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 17
+
+$Name: Gemini 3		;! Object #49
+$Class: PVF Horus
+$Alt: HLF Horus
+
+$Team: Neutral
+$Location: -11203.810547, 0.000000, -101.732300
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
++Secondary Banks: ( "Hornet" "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 17
+
+$Name: Gemini 4		;! Object #50
+$Class: PVF Horus
+$Alt: HLF Horus
+
+$Team: Neutral
+$Location: -11089.951172, 0.000000, -22.375406
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
++Secondary Banks: ( "Hornet" "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 17
+
+$Name: Battle Snail		;! Object #51
+$Class: Battle Snail
+$Team: Friendly
+$Location: -7794.089844, 0.000000, -3857.419678
+$Orientation:
+	-0.676342, 0.090062, 0.731062,
+	0.071549, 0.995837, -0.056488,
+	-0.733105, 0.014101, -0.679970
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( is-event-true-delay "New orders" 10 ) 
+   ( = @CampaignMode[0] 3 ) 
+   ( is-event-true-delay "Camp Mode" 0 ) 
+   ( < @SnailFound[0] @CampaignMode[0] ) 
+   ( not 
+      ( string-equals 
+         "@SnailSave[false]" 
+         "saved" 
+      )
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( and 
+   ( is-cargo-known-delay 
+      0 
+      "Battle Snail" 
+   )
+   ( is-event-true-delay 
+      "Battle Snail found" 
+      45 
+   )
+)
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "no-arrival-warp" "hidden-from-sensors" "scannable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "hide-ship-name" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 7
+
+$Name: Leo 3		;! Object #52
+$Class: PVF Seth
+$Alt: HLF Seth
+
+$Team: Neutral
+$Location: -10032.359375, 0.000000, -302.102051
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "Banshee" )
++Secondary Banks: ( "Stiletto" "Stiletto" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: DestroyFightersProbe		;! Object #53
+$Class: Terran Probe
+$Team: Friendly
+$Location: 38202.601563, -6749.199219, -3527.600098
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( has-arrived-delay 0 "Leo" ) 
+   ( has-arrived-delay 0 "Gemini" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( and 
+      ( destroyed-or-departed-delay 0 "Leo" ) 
+      ( destroyed-or-departed-delay 
+         0 
+         "Gemini" 
+      )
+   )
+   ( has-departed-delay 5 "Cardinal" ) 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: DestroyeBombersProbe		;! Object #54
+$Class: Terran Probe
+$Team: Friendly
+$Location: 38202.601563, -6749.199219, -3627.599854
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( has-arrived-delay 0 "Virgo" ) 
+   ( has-arrived-delay 0 "Aries" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( and 
+      ( destroyed-or-departed-delay 
+         0 
+         "Virgo" 
+      )
+      ( destroyed-or-departed-delay 
+         0 
+         "Aries" 
+      )
+   )
+   ( has-departed-delay 5 "Cardinal" ) 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+#Wings		;! 12 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( has-departed-delay 
+   ( rand-multiple 0 7 ) 
+   "Intrepid" 
+)
+$Ships: (		;! 4 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+	"Alpha 4"
+)
+$AI Goals: ( goals ( ai-waypoints-once "Alpha wing intitial waypt" 50 ) )
++Hotkey: 0
++Flags: ( )
+
+$Name: Iota
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Iota 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( has-departed-delay 
+   ( rand-multiple 0 7 ) 
+   "Intrepid" 
+)
+$Ships: (		;! 4 total
+	"Iota 1"
+	"Iota 2"
+	"Iota 3"
+	"Iota 4"
+)
+$AI Goals: ( goals ( ai-chase-wing "Aquarius" 89 ) ( ai-guard "Intrepid" 89 ) )
++Hotkey: 2
++Flags: ( )
+
+$Name: Aquarius
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Aquarius 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Aquarius 1"
+	"Aquarius 2"
+	"Aquarius 3"
+	"Aquarius 4"
+)
++Flags: ( )
+
+$Name: Sagittarius
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Sagittarius 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 2500
+$Arrival Anchor: Intrepid
+$Arrival Cue: ( has-time-elapsed 67 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 6 total
+	"Sagittarius 1"
+	"Sagittarius 2"
+	"Sagittarius 3"
+	"Sagittarius 4"
+	"Sagittarius 5"
+	"Sagittarius 6"
+)
+$AI Goals: ( goals ( ai-disarm-ship "Intrepid" 89 ) ( ai-ignore-new "Alpha 4" 50 ) ( ai-ignore-new "Alpha 3" 50 ) ( ai-ignore-new "Alpha 2" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Theta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Theta 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Intrepid
+$Arrival Cue: ( is-event-true-delay 
+   "HoL strike force arrives" 
+   20 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( has-departed-delay 
+   ( rand-multiple 0 7 ) 
+   "Intrepid" 
+)
+$Ships: (		;! 2 total
+	"Theta 1"
+	"Theta 2"
+)
+$AI Goals: ( goals ( ai-chase "Khepri" 55 ) ( ai-guard "Intrepid" 50 ) )
++Hotkey: 4
++Flags: ( "no-arrival-message" )
+
+$Name: Capricorn
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Capricorn 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 1 "Khepri" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Capricorn 1"
+	"Capricorn 2"
+	"Capricorn 3"
+	"Capricorn 4"
+)
+$AI Goals: ( goals ( ai-chase "Intrepid" 101 ) )
++Flags: ( "no-arrival-message" )
+
+$Name: Aries
+$Waves: 4
+$Wave Threshold: 1
+$Special Ship: 0		;! Aries 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Cardinal
+$Arrival Cue: ( has-arrived-delay 9 "Virgo" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Cardinal departure order" 
+   0 
+)
+$Ships: (		;! 4 total
+	"Aries 1"
+	"Aries 2"
+	"Aries 3"
+	"Aries 4"
+)
+$AI Goals: ( goals ( ai-destroy-subsystem "Intrepid" "weapons" 89 ) ( ai-destroy-subsystem "Intrepid" "engines" 50 ) ( ai-destroy-subsystem "Intrepid" "fighterbay" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Leo
+$Waves: 4
+$Wave Threshold: 1
+$Special Ship: 0		;! Leo 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Cardinal
+$Arrival Cue: ( has-arrived-delay 4 "Aries" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Cardinal departure order" 
+   0 
+)
+$Ships: (		;! 3 total
+	"Leo 1"
+	"Leo 2"
+	"Leo 3"
+)
+$AI Goals: ( goals ( ai-disarm-ship "Intrepid" 50 ) ( ai-destroy-subsystem "Intrepid" "turret06" 50 ) ( ai-destroy-subsystem "Intrepid" "turret09" 50 ) ( ai-destroy-subsystem "Intrepid" "turret14" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
++Wave Delay Min: 5
++Wave Delay Max: 10
+
+$Name: Virgo
+$Waves: 5
+$Wave Threshold: 1
+$Special Ship: 0		;! Virgo 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Cardinal
+$Arrival Cue: ( has-arrived-delay 37 "Cardinal" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Cardinal departure order" 
+   4 
+)
+$Ships: (		;! 4 total
+	"Virgo 1"
+	"Virgo 2"
+	"Virgo 3"
+	"Virgo 4"
+)
+$AI Goals: ( goals ( ai-destroy-subsystem "Intrepid" "weapons" 50 ) ( ai-destroy-subsystem "Intrepid" "turret06" 50 ) ( ai-destroy-subsystem "Intrepid" "turret09" 50 ) ( ai-destroy-subsystem "Intrepid" "turret04a" 50 ) ( ai-destroy-subsystem "Intrepid" "fighterbay" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
++Wave Delay Min: 5
++Wave Delay Max: 15
+
+$Name: Delta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Delta 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Intrepid
+$Arrival Cue: ( is-event-true-delay 
+   "Cardinal arrival" 
+   62 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( has-departed-delay 
+   ( rand-multiple 0 7 ) 
+   "Intrepid" 
+)
+$Ships: (		;! 4 total
+	"Delta 1"
+	"Delta 2"
+	"Delta 3"
+	"Delta 4"
+)
+$AI Goals: ( goals ( ai-chase "Cardinal" 55 ) )
++Hotkey: 3
++Flags: ( "no-arrival-message" )
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Intrepid
+$Arrival Cue: ( is-event-true-delay 
+   "Card gone, Int intact" 
+   12 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Beta 1"
+	"Beta 2"
+	"Beta 3"
+	"Beta 4"
+)
+$AI Goals: ( goals ( ai-guard "Intrepid" 50 ) )
++Hotkey: 1
++Flags: ( "no-arrival-music" )
+
+$Name: Gemini
+$Waves: 3
+$Wave Threshold: 1
+$Special Ship: 0		;! Gemini 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Cardinal
+$Arrival Cue: ( has-arrived-delay 8 "Virgo" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Cardinal departure order" 
+   4 
+)
+$Ships: (		;! 4 total
+	"Gemini 1"
+	"Gemini 2"
+	"Gemini 3"
+	"Gemini 4"
+)
+$AI Goals: ( goals ( ai-chase-any 89 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
++Wave Delay Min: 5
++Wave Delay Max: 10
+
+#Events		;! 99 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@SnailCheck[snail]" 
+      "Snail" 
+      2099 
+   )
+   ( modify-variable-xstr 
+      "@SnailPlural[snails]" 
+      "Snails" 
+      2100 
+   )
+   ( modify-variable-xstr 
+      "@Traitor1[Ship Status:]" 
+      "Ship Status:" 
+      2017 
+   )
+   ( modify-variable-xstr 
+      "@Traitor2[Disabled By Remote]" 
+      "Disabled By Remote" 
+      2018 
+   )
+)
++Name: Translation & Localization
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: -----CAMPAIGN EVENTS-----
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "Camp Mode" 0 ) 
+   ( modify-variable 
+      @SnailTemp[0] 
+      @SnailFound[0] 
+   )
+)
++Name: Campaign Variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-previous-event-false 
+      "bta1_m1_00" 
+      "Camp Mode" 
+      ( false ) 
+   )
+   ( modify-variable 
+      "@CampMode[false]" 
+      "true" 
+   )
+   ( when 
+      ( string-equals 
+         "@SnailSave[false]" 
+         "true" 
+      )
+      ( modify-variable 
+         "@SnailSave[false]" 
+         "false" 
+      )
+   )
+)
++Name: Camp Mode
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( player-is-cheating ) 
+   ( hud-gauge-set-active 
+      "CheaterCheater" 
+      ( true ) 
+   )
+)
++Name: Cheater Cheater ON
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( != @CampaignMode[0] 3 ) 
+      ( is-event-true-delay "Camp Mode" 0 ) 
+   )
+   ( modify-variable @CampaignMode[0] 3 ) 
+   ( modify-variable 
+      @CheckpointReached[0] 
+      0 
+   )
+   ( script-eval "deleteshipsavefile()" ) 
+)
++Name: Campaign Setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Card gone, Int intact" 
+         0 
+      )
+      ( true ) 
+   )
+   ( do-nothing ) 
+)
++Name: Continue Campaign
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Card gone, Int intact" 
+         8 
+      )
+      ( < 
+         ( distance-center-to-subsystem 
+            "Alpha 1" 
+            "Intrepid" 
+            "fighterbay" 
+         )
+         355 
+      )
+      ( is-event-true-delay "Camp Mode" 0 ) 
+      ( and 
+         ( is-event-true-delay 
+            "Card gone, Int intact" 
+            0 
+         )
+         ( true ) 
+      )
+   )
+   ( modify-variable 
+      @SnailFound[0] 
+      @SnailTemp[0] 
+   )
+   ( modify-variable 
+      "@SnailSave[false]" 
+      "false" 
+   )
+   ( when 
+      ( true ) 
+      ( tech-add-intel-xstr 
+         "Admiral Po" 
+         1141 
+      )
+      ( tech-add-intel-xstr 
+         "Kalev Ehin" 
+         1143 
+      )
+      ( tech-add-intel-xstr 
+         "Ozymandias" 
+         1139 
+      )
+      ( tech-add-weapons "DisruptorSDG" ) 
+      ( allow-weapon "DisruptorSDG" ) 
+      ( script-eval-block 
+         "jsv(1, '" 
+         "head02" 
+         "')" 
+      )
+      ( script-eval-block 
+         "jsv(1, '" 
+         "head03" 
+         "')" 
+      )
+      ( script-eval-block 
+         "jsv(2, '" 
+         "edit05" 
+         "')" 
+      )
+   )
+)
++Name: Campaign Mission Success
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "Camp Mode" 0 ) 
+   ( when 
+      ( and 
+         ( > @SnailFound[0] 10 ) 
+         ( = 
+            ( script-eval-num 
+               "fexist('bta1_a1_snails.fs2')" 
+            )
+            0 
+         )
+      )
+      ( script-eval-block 
+         "flcpy('maps','missions','" 
+         "bonus1.dds" 
+         "','" 
+         "bta1_a1_snails.fs2" 
+         "')" 
+      )
+      ( show-subtitle-text 
+         "Mission Unlocked!" 
+         0 
+         20 
+         ( true ) 
+         ( false ) 
+         2000 
+         2000 
+      )
+      ( play-sound-from-file "arcade.ogg" ) 
+   )
+   ( when 
+      ( and 
+         ( > 
+            ( script-eval-num "getCarrot()" ) 
+            0 
+         )
+         ( = 
+            ( script-eval-num 
+               "fexist('bta1_a2_carrots.fs2')" 
+            )
+            0 
+         )
+      )
+      ( script-eval-block 
+         "flcpy('maps','missions','" 
+         "bonus2.dds" 
+         "','" 
+         "bta1_a2_carrots.fs2" 
+         "')" 
+      )
+      ( show-subtitle-text 
+         "Mission Unlocked!" 
+         0 
+         20 
+         ( true ) 
+         ( false ) 
+         2000 
+         2000 
+      )
+      ( play-sound-from-file "arcade.ogg" ) 
+   )
+)
++Name: Bonus Missions
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: -----END CAMPAIGN EVENTS-----
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable 
+      @DebriefPersona[100] 
+      100 
+   )
+)
++Name: SetDebriefPersona
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-disable-except-messages 1 ) 
+   ( fade-out 0 ) 
+   ( player-use-ai ) 
+   ( set-camera-position 1160 100 1281 ) 
+   ( lock-perspective ( true ) ) 
+   ( add-goal 
+      "Alpha 4" 
+      ( ai-waypoints-once 
+         "Alpha wing intitial waypt" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Alpha 4" 
+      ( ai-waypoints-once 
+         "Alpha wing intitial waypt" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Alpha 3" 
+      ( ai-waypoints-once 
+         "Alpha wing intitial waypt" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-waypoints-once 
+         "Alpha wing intitial waypt" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Alpha 1" 
+      ( ai-waypoints-once 
+         "Alpha wing intitial waypt" 
+         89 
+      )
+   )
+   ( fade-in 3000 ) 
+   ( lock-primary-weapon "Alpha 1" ) 
+   ( lock-secondary-weapon "Alpha 1" ) 
+   ( lock-afterburner "Alpha 1" ) 
+   ( show-subtitle-text 
+      "CutsceneSkip" 
+      15 
+      25 
+      ( false ) 
+      ( false ) 
+      6000 
+      750 
+      400 
+   )
+   ( set-support-ship 
+      "Docking Bay" 
+      "Intrepid" 
+      "Docking Bay" 
+      "Intrepid" 
+      "GTS Centaur" 
+      1 
+   )
+   ( script-eval "scam_inact()" ) 
+   ( script-eval "CutsceneKeyLock()" ) 
+)
++Name: Cutscene settings
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Alpha 1" 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+   ( true ) 
+   ( cap-waypoint-speed "<argument>" 60 ) 
+)
++Name: Alpha waypoint speed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( not ( has-time-elapsed 11 ) ) 
+      ( not ( key-pressed "Spacebar" ) ) 
+   )
+   ( set-camera-facing-object "Alpha 1" ) 
+)
++Name: Camera trax Alpha 1 - EV
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( has-time-elapsed 5 ) 
+      ( not ( has-time-elapsed 8 ) ) 
+      ( not ( key-pressed "Spacebar" ) ) 
+   )
+   ( set-camera-position 
+      ( get-object-x "Alpha 1" ) 
+      ( get-object-y "Alpha 1" ) 
+      ( get-object-z "Alpha 1" ) 
+      2000 
+      1000 
+   )
+)
++Name: Camera move in 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( has-time-elapsed 9 ) 
+      ( not ( has-time-elapsed 10 ) ) 
+      ( not ( key-pressed "Spacebar" ) ) 
+   )
+   ( set-camera-position 
+      ( get-object-x "Alpha 1" ) 
+      ( get-object-y "Alpha 1" ) 
+      ( get-object-z "Alpha 1" ) 
+      1000 
+   )
+)
++Name: Camera move in 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-time-elapsed 7 ) 
+   ( clear-goals "Alpha 2" "Alpha 4" ) 
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-waypoints-once 
+         "Alpha anti-stupid waypt" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Alpha 4" 
+      ( ai-waypoints-once 
+         "Alpha anti-stupid waypt" 
+         89 
+      )
+   )
+)
++Name: Anti-collide orders for dumb AI
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( has-time-elapsed 11 ) 
+      ( key-pressed "Spacebar" ) 
+   )
+   ( lock-perspective ( false ) 0 ) 
+   ( player-not-use-ai ) 
+   ( reset-camera ) 
+   ( hud-disable-except-messages 0 ) 
+   ( unlock-primary-weapon "Alpha 1" ) 
+   ( unlock-afterburner "Alpha 1" ) 
+   ( show-jumpnode "Sirius" ) 
+   ( clear-subtitles ) 
+   ( script-eval "saveship('Alpha 1')" ) 
+   ( script-eval "CutsceneKeyUnLock()" ) 
+)
++Name: Reset camera
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-time-elapsed 18 ) 
+   ( clear-goals "Alpha" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Intrepid" 89 ) 
+   )
+)
++Name: Alpha orders
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Reset camera" 
+      2 
+   )
+   ( unlock-secondary-weapon "Alpha 1" ) 
+   ( script-eval "scam_act()" ) 
+)
++Name: Secondaries free
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ----------MISSION EVENTS-------
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-form-on-wing "Alpha 1" ) 
+   )
+   ( hide-jumpnode "Sirius" ) 
+   ( script-eval 
+      "pm('risetoarms.ogg',1,100)" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 90 20 ) 
+      "Intrepid" 
+      "turret06" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 90 20 ) 
+      "Intrepid" 
+      "turret07" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 90 20 ) 
+      "Intrepid" 
+      "turret11" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 90 20 ) 
+      "Intrepid" 
+      "turret14" 
+   )
+   ( set-armor-type 
+      "Alpha 1" 
+      ( true ) 
+      "Medium Armor 80" 
+      "Hull" 
+   )
+   ( set-armor-type 
+      "Alpha 2" 
+      ( true ) 
+      "Medium Armor 60" 
+      "Hull" 
+   )
+   ( set-armor-type 
+      "Alpha 3" 
+      ( true ) 
+      "Medium Armor 60" 
+      "Hull" 
+   )
+   ( set-armor-type 
+      "Alpha 4" 
+      ( true ) 
+      "Medium Armor 60" 
+      "Hull" 
+   )
+)
++Name: Initial Settings
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( hits-left "Delta 2" ) 
+         ( rand-multiple 35 65 ) 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Delta 1" ) 
+      )
+   )
+   ( ship-invulnerable "Delta 2" ) 
+)
++Name: Delta 2 invul event
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( <= 
+      ( hits-left "Iota 3" ) 
+      ( rand-multiple 35 65 ) 
+   )
+   ( ship-invulnerable "Iota 3" ) 
+)
++Name: Iota 3 invul event
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( <= 
+      ( hits-left "Iota 1" ) 
+      ( rand-multiple 35 65 ) 
+   )
+   ( ship-invulnerable "Iota 1" ) 
+)
++Name: Iota 1 invul event
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-time-elapsed 4 ) 
+   ( send-message-list 
+      "Intrepid" 
+      "High" 
+      "Int - gogogo" 
+      0 
+      "Intrepid" 
+      "High" 
+      "Int - red alert" 
+      19000 
+   )
+)
++Name: Intro
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "GTP-03447-Deneb" 
+   )
+   ( do-nothing ) 
+)
++Name: Protect the Intrepid
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Objective:  XSTR("Protect Intrepid", 2128)
+
+$Formula: ( when 
+   ( <= 
+      ( distance 
+         "<any friendly>" 
+         "Aquarius" 
+      )
+      3500 
+   )
+   ( add-goal 
+      "Aquarius" 
+      ( ai-chase-any 70 ) 
+   )
+)
++Name: Aquarius active
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Iota 1" 
+      "High" 
+      "I1 - almost there" 
+   )
+)
++Name: MSG - Iota near
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Aquarius 1" 
+      "Aquarius 2" 
+      "Aquarius 3" 
+      "Aquarius 4" 
+   )
+   ( <= ( hits-left "<argument>" ) 35 ) 
+   ( add-goal 
+      "<argument>" 
+      ( ai-warp-out 89 ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Aquarius departure cues - TRIG
++Repeat Count: -1
++Trigger Count: 4
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Iota 1" 
+      "Iota 2" 
+      "Iota 3" 
+      "Iota 4" 
+   )
+   ( or 
+      ( not 
+         ( is-event-true-delay 
+            "Aquarius active" 
+            0 
+         )
+      )
+      ( destroyed-or-departed-delay 
+         0 
+         "Aquarius" 
+      )
+   )
+   ( set-afterburner-energy 
+      100 
+      "<argument>" 
+   )
+)
++Name: Iota afterburner cheat - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 6
++Event Flags: ( )
+
+$Formula: ( when-argument 
+   ( random-of "<any data>" ) 
+   ( and 
+      ( destroyed-or-departed-delay 
+         6 
+         "Aquarius" 
+      )
+      ( not ( is-destroyed-delay 0 "Iota" ) ) 
+   )
+   ( send-message 
+      "Iota 1" 
+      "High" 
+      "I1 - Aquarius gone" 
+   )
+)
++Name: Aquarius gone - MSG
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Sagittarius" ) 
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 - sagittarius" 
+      0 
+      "Intrepid" 
+      "High" 
+      "Int - sag confirmed" 
+      6000 
+      "Sagittarius 1" 
+      "High" 
+      "Sag1 - dieeeee" 
+      9000 
+   )
+)
++Name: Sagittarius attack - MSGLST
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Sagittarius" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Sagittarius
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Sagittarius", 2129)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Capricorn" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Capricorn
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Capricorn", 2130)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Khepri" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Khepri
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Khepri", 2131)
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Capricorn" ) 
+   ( send-message-list 
+      "Intrepid" 
+      "High" 
+      "Int - HoL strike force" 
+      0 
+      "Khepri" 
+      "High" 
+      "Khep - u suxxors" 
+      15000 
+   )
+)
++Name: HoL strike force arrives
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "Intrepid" 
+      "High" 
+      "Int - bad spot" 
+      0 
+   )
+)
++Name: MSG - bad spot, Theta launch
++Repeat Count: 1
++Interval: 1
++Chained: 40
+
+$Formula: ( when 
+   ( has-arrived-delay 50 "Khepri" ) 
+   ( cap-waypoint-speed 
+      "Khepri" 
+      ( current-speed "Intrepid" ) 
+   )
+)
++Name: Update Khepri speed - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( < ( hits-left "Khepri" ) 5 ) 
+   ( send-message 
+      "Intrepid" 
+      "High" 
+      "Int - Kep gonna blo" 
+   )
+)
++Name: Khepri gonna blow - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Capricorn" ) 
+   ( script-eval 
+      "pm('nofearnomercy.ogg',1,100)" 
+   )
+)
++Name: Attack music switch
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( secondary-ammo-pct "Theta 2" 4 ) 
+         100 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Khepri" ) 
+      )
+      ( has-arrived-delay 10 "Theta 1" ) 
+   )
+   ( send-message 
+      "Theta 2" 
+      "High" 
+      "T2 - bangers away" 
+   )
+)
++Name: Theta 1 launches
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         8 
+         "Sagittarius" 
+         "Capricorn" 
+         "Khepri" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Cardinal arrival" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Intrepid" 
+      "High" 
+      "Int - HoL strike force gone" 
+      0 
+      "Iota 1" 
+      "High" 
+      "I1 - status?" 
+      6000 
+   )
+   ( clear-goals "Alpha" ) 
+   ( clear-goals "Iota" ) 
+   ( clear-goals "Theta" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Intrepid" 89 ) 
+   )
+   ( add-goal 
+      "Iota" 
+      ( ai-guard "Intrepid" 89 ) 
+   )
+   ( add-goal 
+      "Theta" 
+      ( ai-guard "Intrepid" 89 ) 
+   )
+)
++Name: HoL strike force defeated
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         5 
+         "Sagittarius" 
+         "Capricorn" 
+         "Khepri" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Cardinal arrival" 
+            0 
+         )
+      )
+   )
+   ( script-eval 
+      "pm('risetoarms.ogg',1,100)" 
+   )
+)
++Name: Change music again - BUG EVNT
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "HoL strike force defeated" 
+         11 
+      )
+      ( >= ( hits-left "Intrepid" ) 85 ) 
+   )
+   ( send-message 
+      "Intrepid" 
+      "High" 
+      "Int - reply good" 
+   )
+)
++Name: Reply Good - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "HoL strike force defeated" 
+         11 
+      )
+      ( >= ( hits-left "Intrepid" ) 70 ) 
+      ( < ( hits-left "Intrepid" ) 85 ) 
+      ( not 
+         ( is-event-true-delay 
+            "Move forward - MSG" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Intrepid" 
+      "High" 
+      "Int - reply OK" 
+   )
+)
++Name: Reply OK - MSG
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "HoL strike force defeated" 
+         11 
+      )
+      ( < ( hits-left "Intrepid" ) 70 ) 
+      ( not 
+         ( is-event-true-delay 
+            "Move forward - MSG" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Intrepid" 
+      "High" 
+      "Int - reply bad" 
+   )
+)
++Name: Reply SUX0RS - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "HoL strike force defeated" 
+      20 
+   )
+   ( send-message 
+      "Intrepid" 
+      "High" 
+      "Int - gameplan" 
+   )
+   ( good-rearm-time "Friendly" 30 ) 
+)
++Name: Move forward - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 4 "Cardinal" ) 
+   ( send-message-list 
+      "Intrepid" 
+      "High" 
+      "Int - cardinal" 
+      0 
+      "Cardinal" 
+      "High" 
+      "Card - hiyooooooo" 
+      9000 
+      "Cardinal" 
+      "High" 
+      "Card - hiyoooooo" 
+      9000 
+      "Cardinal" 
+      "High" 
+      "Card - hiyuuuuu" 
+      9000 
+      "Intrepid" 
+      "High" 
+      "Int - whatever" 
+      10000 
+      "Intrepid" 
+      "High" 
+      "Int - orders" 
+      7000 
+      "Intrepid" 
+      "High" 
+      "Int - screw this" 
+      8000 
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-ignore-new "Cardinal" 101 ) 
+   )
+   ( add-goal 
+      "Iota" 
+      ( ai-ignore-new "Cardinal" 101 ) 
+   )
+   ( add-goal 
+      "Theta" 
+      ( ai-ignore-new "Cardinal" 101 ) 
+   )
+   ( turret-lock-all "Intrepid" ) 
+)
++Name: Cardinal arrival
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Intrepid" ) 
+   ( add-goal 
+      "Intrepid" 
+      ( ai-waypoints-once 
+         "Intrepid broadside waypts" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase-any 89 ) 
+   )
+   ( add-goal "Iota" ( ai-chase-any 89 ) ) 
+   ( turret-free-all "Cardinal" ) 
+   ( turret-free-all "Intrepid" ) 
+)
++Name: New orders
++Repeat Count: 1
++Interval: 1
++Chained: 58
+
+$Formula: ( when 
+   ( has-arrived-delay 30 "Delta" ) 
+   ( clear-goals "Theta" ) 
+   ( add-goal 
+      "Theta" 
+      ( ai-chase "Cardinal" 89 ) 
+   )
+)
++Name: Theta presses the attk
++Repeat Count: 2
++Interval: 11
++Event Flags: ( )
+
+$Formula: ( when 
+   ( has-arrived-delay 55 "Cardinal" ) 
+   ( script-eval 
+      "pm('titanloop.ogg',1,100)" 
+   )
+)
++Name: Intrepid vs. Cardinal music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Aries" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Aries
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Leo" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Leo
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Virgo" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Virgo
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "GTP-03448-Deneb" 
+   )
+   ( do-nothing ) 
+)
++Name: Protect Delta
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Protect Delta", 2132)
++Objective key:  XSTR("Press F8", 1733)
++Event Flags: ( )
+
+$Formula: ( when 
+   ( and 
+      ( has-departed-delay 0 "Cardinal" ) 
+      ( not 
+         ( is-destroyed-delay 0 "Delta" ) 
+      )
+   )
+   ( destroy-instantly "GTP-03448-Deneb" ) 
+)
++Name: Delta Has Been Protected
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "DestroyFightersProbe" 
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Fighters
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy HoL Fighters", 2133)
++Event Flags: ( )
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "DestroyeBombersProbe" 
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Bombers
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy HoL Bombers", 2134)
++Event Flags: ( )
+
+$Formula: ( when 
+   ( is-destroyed-delay 6 "Iota 2" ) 
+   ( send-message 
+      "Iota 1" 
+      "High" 
+      "I1 - I2??? noo..." 
+   )
+)
++Name: I1 - I2 down - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 6 "Iota 4" ) 
+   ( send-message 
+      "Iota 3" 
+      "High" 
+      "I3 - I4 down" 
+   )
+)
++Name: I3 - I4 down - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( ship-vulnerable "Iota 3" ) 
++Name: I3 vulnerable
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( is-destroyed-delay 6 "Delta 1" ) 
+   ( send-message 
+      "Delta 2" 
+      "High" 
+      "D2 - D1 dwn" 
+   )
+)
++Name: D2 - D1 down - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( ship-vulnerable "Delta 2" ) 
++Name: D2 vulnerable
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( secondary-ammo-pct "Delta 1" 9 ) 
+         100 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Cardinal" ) 
+      )
+      ( has-arrived-delay 10 "Delta 1" ) 
+   )
+   ( send-message 
+      "Delta 1" 
+      "High" 
+      "D1 - bngrs awy" 
+   )
+)
++Name: D1 - bngrs awy - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( ship-vulnerable "Delta 1" ) 
++Name: D1 vulnerable
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Intrepid" 
+         )
+      )
+      ( < ( hits-left "Cardinal" ) 77 ) 
+   )
+   ( send-message-list 
+      "Cardinal" 
+      "High" 
+      "Card - taunt 1" 
+      0 
+      "Cardinal" 
+      "High" 
+      "Card - taunt 2" 
+      9000 
+      "Intrepid" 
+      "High" 
+      "Int - stfuuuu" 
+      9000 
+   )
+)
++Name: Ozymandias taunts - MSGLST
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( hits-left "Intrepid" ) 
+         ( rand-multiple 45 55 ) 
+      )
+      ( has-arrived-delay 0 "Cardinal" ) 
+      ( or 
+         ( not 
+            ( is-subsystem-destroyed-delay 
+               "Cardinal" 
+               "turret07" 
+               0 
+            )
+         )
+         ( not 
+            ( is-subsystem-destroyed-delay 
+               "Cardinal" 
+               "turret08" 
+               0 
+            )
+         )
+         ( not 
+            ( is-subsystem-destroyed-delay 
+               "Cardinal" 
+               "turret09" 
+               0 
+            )
+         )
+         ( not 
+            ( is-subsystem-destroyed-delay 
+               "Cardinal" 
+               "turret13" 
+               0 
+            )
+         )
+         ( not 
+            ( is-subsystem-destroyed-delay 
+               "Cardinal" 
+               "turret14" 
+               0 
+            )
+         )
+         ( not 
+            ( is-subsystem-destroyed-delay 
+               "Cardinal" 
+               "turret15" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message-list 
+      "Intrepid" 
+      "High" 
+      "Int - destroy turrets" 
+      0 
+   )
+   ( lua-turrethotkey-add 
+      "F11" 
+      "Cardinal" 
+      "turret07" 
+      "true" 
+   )
+   ( lua-turrethotkey-add 
+      "F11" 
+      "Cardinal" 
+      "turret08" 
+      "true" 
+   )
+   ( lua-turrethotkey-add 
+      "F11" 
+      "Cardinal" 
+      "turret09" 
+      "true" 
+   )
+   ( lua-turrethotkey-add 
+      "F11" 
+      "Cardinal" 
+      "turret13" 
+      "true" 
+   )
+   ( lua-turrethotkey-add 
+      "F11" 
+      "Cardinal" 
+      "turret14" 
+      "true" 
+   )
+   ( lua-turrethotkey-add 
+      "F11" 
+      "Cardinal" 
+      "turret15" 
+      "true" 
+   )
+)
++Name: Intrepid at ~50% -MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-subsystem-destroyed-delay 
+         "Cardinal" 
+         "turret07" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Cardinal" 
+         "turret08" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Cardinal" 
+         "turret09" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Cardinal" 
+         "turret13" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Cardinal" 
+         "turret14" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Cardinal" 
+         "turret15" 
+         0 
+      )
+      ( directive-value @turretCount[6] ) 
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Turrets
++Repeat Count: 2
++Interval: 11
++Chained: 2
++Objective:  XSTR("Destroy Turrets", 2135)
++Objective key:  XSTR("Press F11", 4622)
+
+$Formula: ( when-argument 
+   ( any-of 
+      "turret07" 
+      "turret08" 
+      "turret09" 
+      "turret13" 
+      "turret14" 
+      "turret15" 
+   )
+   ( is-subsystem-destroyed-delay 
+      "Cardinal" 
+      "<argument>" 
+      0 
+   )
+   ( modify-variable 
+      @turretCount[6] 
+      ( - @turretCount[6] 1 ) 
+   )
+)
++Name: Torpedo Turret Count
++Repeat Count: -1
++Trigger Count: 6
++Interval: 0
++Event Flags: ( )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Ozymandias taunts - MSGLST" 
+      8 
+   )
+   ( ship-rot-maneuver 
+      "Intrepid" 
+      11000 
+      0 
+      0 
+      100 
+      ( true ) 
+   )
+)
++Name: Intrepid roll??? - BUGGED
++Repeat Count: 2
++Interval: 11
+
+$Formula: ( when 
+   ( <= 
+      ( hits-left "Intrepid" ) 
+      ( rand-multiple 25 35 ) 
+   )
+   ( send-message-list 
+      "Intrepid" 
+      "High" 
+      "Int - hit bad" 
+      0 
+   )
+)
++Name: Intrepid at ~30% - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < ( hits-left "Intrepid" ) 14 ) 
+         ( percent-ships-destroyed 
+            90 
+            "Alpha" 
+            "Iota" 
+            "Theta" 
+            "Delta" 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Card - <27% - MSG" 
+            0 
+         )
+      )
+   )
+   ( clear-goals "Intrepid" ) 
+   ( add-goal 
+      "Intrepid" 
+      ( ai-waypoints-once 
+         "Intrepid retreat waypt" 
+         89 
+      )
+   )
+)
++Name: Full retreat - FAIL
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "Intrepid" 
+      "High" 
+      "Int - f this" 
+      0 
+   )
+   ( self-destruct "GTP-03447-Deneb" ) 
+)
++Name: Int - bye - MSG
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( not 
+      ( has-departed-delay 0 "Cardinal" ) 
+   )
+   ( add-goal 
+      "Intrepid" 
+      ( ai-warp-out 89 ) 
+   )
+   ( self-destruct 
+      "DestroyFightersProbe" 
+   )
+   ( self-destruct 
+      "DestroyeBombersProbe" 
+   )
+)
++Name: Intrepid leaves
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Intrepid" 
+      "High" 
+      "Int - clear to retreat" 
+   )
+)
++Name: Retreat Message
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal "Alpha" ( ai-warp-out 89 ) ) 
+   ( add-goal "Iota" ( ai-warp-out 89 ) ) 
+   ( add-goal "Theta" ( ai-warp-out 89 ) ) 
+   ( add-goal "Delta" ( ai-warp-out 89 ) ) 
+   ( protect-ship "Cardinal" ) 
+)
++Name: Friendlies Depart
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Friendlies Depart" 
+         1 
+      )
+      ( is-event-true-delay 
+         "Intrepid destroyed, oops" 
+         1 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Begin Retreat
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: Retreat - FAIL
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Retreat", 2137)
++Objective key:  XSTR("Press $Alt-J$", 1604)
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < ( hits-left "Cardinal" ) 27 ) 
+         ( percent-ships-destroyed 
+            90 
+            "Gemini" 
+            "Virgo" 
+            "Leo" 
+            "Aries" 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Full retreat - FAIL" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Cardinal" 
+      "High" 
+      "Card - well met!" 
+      0 
+      "Cardinal" 
+      "High" 
+      "Card - cul8r" 
+      6000 
+   )
+   ( ship-guardian "Intrepid" ) 
+)
++Name: Card - <27% - MSG
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Cardinal" 
+      ( ai-warp-out 89 ) 
+   )
+   ( ship-vanish "Battle Snail" ) 
+)
++Name: Cardinal departure order
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( and 
+      ( has-departed-delay 4 "Cardinal" ) 
+      ( not 
+         ( has-departed-delay 0 "Intrepid" ) 
+      )
+   )
+   ( send-message-list 
+      "Intrepid" 
+      "High" 
+      "Int - card gone" 
+      0 
+      "Intrepid" 
+      "High" 
+      "Int - reel it in" 
+      5000 
+   )
+   ( alter-ship-flag 
+      "no-subspace-drive" 
+      ( true ) 
+      ( true ) 
+   )
+)
++Name: Card gone, Int intact
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: RTB - SUCCESS
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Objective:  XSTR("Return to Base", 1603)
++Objective key:  XSTR("Enter Intrepid Fighterbay", 1924)
+
+$Formula: ( when 
+   ( is-destroyed-delay 2 "Intrepid" ) 
+   ( send-message 
+      "<any wingman>" 
+      "High" 
+      "any - oh god" 
+   )
+   ( self-destruct "GTP-03447-Deneb" ) 
+)
++Name: Intrepid destroyed, oops
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Card gone, Int intact" 
+         8 
+      )
+      ( < 
+         ( distance-center-to-subsystem 
+            "Alpha 1" 
+            "Intrepid" 
+            "fighterbay" 
+         )
+         350 
+      )
+   )
+   ( end-mission ) 
+)
++Name: End mission - SUCCESS
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 5 "Cardinal" ) 
+   ( ship-subsys-guardian-threshold 
+      60 
+      "Cardinal" 
+      "<all engines>" 
+   )
+)
++Name: Guardian Cardinal engines
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Card gone, Int intact" 
+      2 
+   )
+   ( script-eval 
+      "pm('holywartornland.ogg',1,100)" 
+   )
+)
++Name: Success music
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Cardinal" ) 
+   ( ship-guardian-threshold 
+      10 
+      "Cardinal" 
+   )
+)
++Name: Cardinal guardian
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Aries 1" 
+      "Aries 2" 
+      "Aries 3" 
+      "Aries 4" 
+      "Virgo 1" 
+      "Virgo 2" 
+      "Virgo 3" 
+      "Virgo 4" 
+      "Leo 1" 
+      "Leo 2" 
+      "Gemini 1" 
+      "Gemini 2" 
+      "Gemini 2" 
+      "Gemini 1" 
+      "Leo 3" 
+   )
+   ( or 
+      ( is-event-true-delay "New orders" 0 ) 
+      ( < 
+         ( distance 
+            "<any friendly>" 
+            "<any neutral>" 
+         )
+         1000 
+      )
+   )
+   ( unprotect-ship "<argument>" ) 
+)
++Name: Unprotect HoL ships
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( percent-ships-destroyed 
+      66 
+      "Alpha" 
+      "Iota" 
+      "Theta" 
+      "Delta" 
+   )
+   ( send-message 
+      "Intrepid" 
+      "High" 
+      "Int - kamikaze" 
+   )
+)
++Name: Kamikaze on fighter bay???
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( <= 
+      ( distance "Alpha 1" "Battle Snail" ) 
+      100 
+   )
+   ( add-goal 
+      "Battle Snail" 
+      ( ai-evade-ship "Alpha 1" 89 ) 
+   )
+   ( unprotect-ship "Battle Snail" ) 
+   ( ship-visible "Battle Snail" ) 
+   ( ship-unstealthy "Battle Snail" ) 
+   ( add-goal 
+      "Battle Snail" 
+      ( ai-chase-any 80 ) 
+   )
+)
++Name: Battle Snail found
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 
+      0 
+      "Battle Snail" 
+   )
+   ( modify-variable 
+      @SnailTemp[0] 
+      ( + @SnailFound[0] 1 ) 
+   )
+   ( training-msg 
+      "Battlesnails found" 
+      "Battlesnails found" 
+      0 
+      5 
+   )
+   ( play-sound-from-file 
+      "battlesnail.ogg" 
+   )
+   ( modify-variable 
+      "@SnailSave[false]" 
+      "true" 
+   )
+)
++Name: Battle Snail scanned
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( >= @SnailTemp[0] 1 ) 
+   ( modify-variable 
+      "@SnailCheck[snail]" 
+      "@SnailPlural[snails]" 
+   )
+)
++Name: Snail Syntax Variable
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Gemini" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Gemini
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-cargo-known-delay 
+            0 
+            "Battle Snail" 
+         )
+         ( is-destroyed-delay 0 "Battle Snail" ) 
+      )
+      ( = 
+         ( num_class_kills 
+            "Alpha 1" 
+            "Battle Snail" 
+         )
+         1 
+      )
+   )
+   ( training-msg "Battlesnail hit" ) 
+)
++Name: Battle Snail tragedy
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Begin Retreat" 
+      20 
+   )
+   ( send-message 
+      "Intrepid" 
+      "High" 
+      "cmd - carrots" 
+   )
+)
++Name: Carrots - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > ( hits-left "Intrepid" ) 39 ) 
+      ( is-event-true-delay 
+         "Card gone, Int intact" 
+         0 
+      )
+   )
+   ( grant-medal 
+      "Distinguished Flying Cross" 
+   )
+)
++Name: Intrepid at ~40% - MEDAL
++Repeat Count: 1
++Interval: 1
++Event Flags: ( )
+
+$Formula: ( when 
+   ( is-iff "Traitor" "Alpha 1" ) 
+   ( clear-goals "Alpha" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( script-eval "Lockdown('Alpha 1')" ) 
+   ( hud-set-custom-gauge-active 
+      ( true ) 
+      "CommTreeMain" 
+      "CommTree1" 
+   )
+   ( hud-set-text 
+      "CommTreeMain" 
+      "@Traitor1[Ship Status:]" 
+   )
+   ( hud-set-text 
+      "CommTree1" 
+      "@Traitor2[Disabled By Remote]" 
+   )
+   ( hud-set-color "CommTree1" 255 0 0 ) 
+   ( fade-out 10000 ) 
+)
++Name: Alpha Goes Traitor
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: Traitor End Mission
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+#Goals		;! 1 total
+
+$Type: Primary
++Name: Protect the Intrepid
+$MessageNew:  XSTR("Protect the Intrepid.", 2138)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "Card gone, Int intact" 
+   7 
+)
+
+#Waypoints		;! 6 lists total
+
+
+$Jump Node: -9890.022461, 0.000000, -5223.826172
+$Jump Node Name: Sirius
+$Name: Jump Node waypt
+$List: (		;! 1 points in list
+	( -7518.844727, 0.000000, -3871.373047 )
+)
+
+$Name: Alpha wing intitial waypt
+$List: (		;! 1 points in list
+	( -134.481949, -104.299988, 384.454712 )
+)
+
+$Name: Alpha anti-stupid waypt
+$List: (		;! 1 points in list
+	( 1218.899780, -75.000000, 1351.500000 )
+)
+
+$Name: Waypoint path 4
+$List: (		;! 1 points in list
+	( -127.137932, -104.299988, -33.235779 )
+)
+
+$Name: Intrepid broadside waypts
+$List: (		;! 4 points in list
+	( -4482.714844, -0.000000, -2018.101563 )
+	( -10303.761719, 0.000000, -476.973877 )
+	( -12367.829102, -0.000000, -2446.711182 )
+	( -11799.581055, -0.000000, -3184.642334 )
+)
+
+$Name: Intrepid retreat waypt
+$List: (		;! 1 points in list
+	( -3763.038086, -0.000000, 5635.447754 )
+)
+
+#Messages		;! 47 total
+
+
+$Name: Int - gogogo
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, go to active escort status and guard the Intrepid. Iota, eliminate Aquarius wing and get back here ASAP.", 2139)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms01.ogg
+
+$Name: Int - red alert
+$Team: -1
+$MessageNew:  XSTR("Intrepid reporting general quarters secured, condition 2 now set. Auto-repair systems initiating, point-defense batteries online, main batteries charging. Beta, Gamma, and Delta wings now on standby.", 2140)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms03.ogg
+
+$Name: I1 - Aquarius gone
+$Team: -1
+$MessageNew:  XSTR("Aquarius wing nullified. Iota returning to escort position. Save some for us, Alpha.", 2141)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bta1_m1_03_ms04.ogg
+
+$Name: A2 - sagittarius
+$Team: -1
+$MessageNew:  XSTR("Heads up! Sensors confirm multiple jump signatures in our defense zone. Zods closing fast!", 2142)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: bta1_m1_03_ms05.ogg
+
+$Name: Int - sag confirmed
+$Team: -1
+$MessageNew:  XSTR("Pilots, we're tracking six hostiles. No bombers on scope. Newcomers are likely setting up for disable or disarming runs on us.", 2143)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms06.ogg
+
+$Name: I1 - almost there
+$Team: -1
+$MessageNew:  XSTR("Iota lead to wing: Aquarius bandits are going defensive. Reinforce forward shields and get your firing solutions. Let's take 'em down.", 2144)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bta1_m1_03_ms07.ogg
+
+$Name: Sag1 - dieeeee
+$Team: -1
+$MessageNew:  XSTR("Arrogant Terrans. You cruise these stars like they are your own, but the Destroyers will return to claim them.", 2145)
+$end_multi_text
++AVI Name: Head-VP1
++Wave Name: bta1_m1_03_ms08.ogg
+
+$Name: Int - HoL strike force
+$Team: -1
+$MessageNew:  XSTR("Flank attack! We're tracking an Aten cruiser and four Amun-class bombers inbound!", 2146)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms11.ogg
+
+$Name: Int - bad spot
+$Team: -1
+$MessageNew:  XSTR("Gunnery control is reporting the Khepri is defilading from our engine superstructure, and our weapons cannot achieve lock.  We've sortied Theta wing against the cruiser.", 2147)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms12.ogg
+
+$Name: Int - Kep gonna blo
+$Team: -1
+$MessageNew:  XSTR("Get clear, pilots. The Khepri is going down!", 2148)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms13.ogg
+
+$Name: Int - HoL strike force gone
+$Team: -1
+$MessageNew:  XSTR("HoL strike force defeated. Good work, pilots. We've just dealt a stinging blow to the Hammer of Light.", 2149)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms14.ogg
+
+$Name: I1 - status?
+$Team: -1
+$MessageNew:  XSTR("Copy that, Intrepid. What's your status?", 2150)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bta1_m1_03_ms15.ogg
+
+$Name: T2 - bangers away
+$Team: -1
+$MessageNew:  XSTR("Theta 2 here. Cruiser Khepri locked, bangers away!", 2151)
+$end_multi_text
++AVI Name: Head-TP8
++Wave Name: bta1_m1_03_ms16.ogg
+
+$Name: Int - reply good
+$Team: -1
+$MessageNew:  XSTR("Diagnostics report damage is minimal. The admiral sends his thanks.", 2152)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms17.ogg
+
+$Name: Int - reply OK
+$Team: -1
+$MessageNew:  XSTR("Damage report indicates minor damage to subsystems, multiple breaches in the outer hull. Repair crews have been dispatched to the affected areas.", 2153)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms18.ogg
+
+$Name: Int - gameplan
+$Team: -1
+$MessageNew:  XSTR("All fighters are to remain on station until we reach the Sirius jump node. Rearm if necessary. Admiral Po doesn't think the HoL are going to be good sports about this.", 2154)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms19.ogg
+
+$Name: Khep - u suxxors
+$Team: -1
+$MessageNew:  XSTR("How proud you are with your massive warships, shields, and bombs. How humbled you will be when our messages are proven, and the mortality of your existence is realized.", 2155)
+$end_multi_text
++AVI Name: Head-VC2
++Wave Name: bta1_m1_03_ms20.ogg
+
+$Name: Int - cardinal
+$Team: -1
+$MessageNew:  XSTR("We've got a situation here. A Vasudan destroyer is entering the field at five clicks. Her positioning suggests hostile intent.", 2156)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms21.ogg
+
+$Name: Card - hiyooooooo
+$Team: -1
+$MessageNew:  XSTR("Salutations. I am Commander Ozymandias, and this is my ship, the Cardinal. I understand the word conveys some importance in your Terran language.", 2157)
+$end_multi_text
++AVI Name: Head-VC5
++Wave Name: bta1_m1_03_ms22.ogg
+
+$Name: Card - hiyoooooo
+$Team: -1
+$MessageNew:  XSTR("Normally, my followers and I would carry out the will of the Destroyers and erase you from the stars. However, I believe both our sides have seen enough bloodshed for one day.", 2158)
+$end_multi_text
++AVI Name: Head-VC5
++Wave Name: bta1_m1_03_ms23.ogg
+
+$Name: Card - hiyuuuuu
+$Team: -1
+$MessageNew:  XSTR("We will not permit you the Sirius jump node. But if you desire to abandon your course and depart, we will not give chase. Just this once.", 2159)
+$end_multi_text
++AVI Name: Head-VC5
++Wave Name: bta1_m1_03_ms24.ogg
+
+$Name: Int - whatever
+$Team: -1
+$MessageNew:  XSTR("Intrepid to all fighter wings, the admiral says we're not playing their game. We're launching Delta wing to attack the destroyer.", 2160)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms25.ogg
+
+$Name: Int - orders
+$Team: -1
+$MessageNew:  XSTR("Theta, form up with Delta. Iota and Alpha will take you in. Alpha wing, you're on bomber screen too. Nail those Osiris before they get within range.", 2161)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms26.ogg
+
+$Name: Int - screw this
+$Team: -1
+$MessageNew:  XSTR("Helm is plotting a course past the Cardinal, and we're bringing port side batteries to bear. Admiral Po wants to give this Ozymandias a bloody lip.", 2162)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms27.ogg
+
+$Name: I1 - I2??? noo...
+$Team: -1
+$MessageNew:  XSTR("Toxx? Iota 2? Did anyone see if he ejected?", 2163)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bta1_m1_03_ms28.ogg
+
+$Name: I3 - I4 down
+$Team: -1
+$MessageNew:  XSTR("I've lost my wingman, and the Zods are riding me hard! Could use some help!", 2164)
+$end_multi_text
++AVI Name: Head-TP4
++Wave Name: bta1_m1_03_ms29.ogg
+
+$Name: D2 - D1 dwn
+$Team: -1
+$MessageNew:  XSTR("Oh shit - Delta lead's down! Alpha, Iota, where the hell are you?", 2165)
+$end_multi_text
++AVI Name: Head-TP8
++Wave Name: bta1_m1_03_ms30.ogg
+
+$Name: D1 - bngrs awy
+$Team: -1
+$MessageNew:  XSTR("This is Delta 1. Solid tone, Tsunamis out!", 2166)
+$end_multi_text
++AVI Name: Head-TP7
++Wave Name: bta1_m1_03_ms31.ogg
+
+$Name: Card - taunt 1
+$Team: -1
+$MessageNew:  XSTR("A close-quarter engagement? Admiral Po, I expected better of you. Needlessly risking the lives of your pilots and crew when I have given you an avenue of escape...", 2167)
+$end_multi_text
++AVI Name: Head-VC5
++Wave Name: bta1_m1_03_ms32.ogg
+
+$Name: Card - taunt 2
+$Team: -1
+$MessageNew:  XSTR("I am pleased to see your ego is as big a weakness as rumored. I shall enjoy adding the broken hulk of another Terran destroyer to the beauty of Deneb.", 2168)
+$end_multi_text
++AVI Name: Head-VC5
++Wave Name: bta1_m1_03_ms33.ogg
+
+$Name: Int - stfuuuu
+$Team: -1
+$MessageNew:  XSTR("The admiral says you talk too much.", 2169)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms34.ogg
+
+$Name: Int - hit bad
+$Team: -1
+$MessageNew:  XSTR("Intrepid here. We've sustained heavy damage. Fluctuations from the power grid are reducing subsystem efficiency. If we can't salvage this battle, we'll have to retreat.", 2170)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms35.ogg
+
+$Name: Int - f this
+$Team: -1
+$MessageNew:  XSTR("Intrepid to all fighter wings: Admiral Po has ordered a full withdrawal. We're pulling back to Deneb VIII. The Hammer of Light won this one.", 2171)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms36.ogg
+
+$Name: Int - reply bad
+$Team: -1
+$MessageNew:  XSTR("Unfortunately, we sustained substantial damage in the attack. Several subsystems have been compromised and we have multiple hull breaches. Casualty reports are coming in from thirty-five decks.", 2172)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms37.ogg
+
+$Name: Card - well met!
+$Team: -1
+$MessageNew:  XSTR("Well met, Admiral Po. Years of warfare have served your people well.", 2173)
+$end_multi_text
++AVI Name: Head-VC5
++Wave Name: bta1_m1_03_ms38.ogg
+
+$Name: Card - cul8r
+$Team: -1
+$MessageNew:  XSTR("But you cannot outrun your destiny. No one can. You can simply delay the inevitable. In time, I will bring the inevitable to you.", 2174)
+$end_multi_text
++AVI Name: Head-VC5
++Wave Name: bta1_m1_03_ms39.ogg
+
+$Name: Int - card gone
+$Team: -1
+$MessageNew:  XSTR("The Hammer of Light has ceded the field. Good fighting, pilots.", 2175)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms40.ogg
+
+$Name: Int - reel it in
+$Team: -1
+$MessageNew:  XSTR("Fighter bay reports that they are green for send and receive. Beta is launching now. All fighters on station are authorized to return to base.", 2176)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms41.ogg
+
+$Name: any - oh god
+$Team: -1
+$MessageNew:  XSTR("The Intrepid has been destroyed! All fighters, set course for Deneb VIII and engage subspace drives!", 2177)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: bta1_m1_03_ms42.ogg
+
+$Name: Int - kamikaze
+$Team: -1
+$MessageNew:  XSTR("Reports from below deck say an HoL fighter skipped across the strip into the fighter bay. You're on your own until we can get that debris cleared.", 2178)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms43.ogg
+
+$Name: Battlesnails found
+$Team: -1
+$MessageNew:  XSTR("$SnailTemp $SnailCheck found!", 2096)
+$end_multi_text
++Wave Name: bta1_m1_03_ms44.ogg
+
+$Name: Battlesnail hit
+$Team: -1
+$MessageNew:  XSTR("NOOOOOOOOOOOOOOOOOOOoooooooooooooo!!!!", 2179)
+$end_multi_text
++Wave Name: bta1_m1_03_ms45.ogg
+
+$Name: Int - destroy turrets
+$Team: -1
+$MessageNew:  XSTR("The Cardinal's torpedos are pounding us. Take out those turrets if you get a chance, pilots.", 2180)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms46.ogg
+
+$Name: Int - clear to retreat
+$Team: -1
+$MessageNew:  XSTR("All fighters, break fire and retreat to the rendezvous.", 2181)
+$end_multi_text
++AVI Name: Head-CM06
++Wave Name: bta1_m1_03_ms47.ogg
+
+$Name: cmd - carrots
+$Team: -1
+$MessageNew:  XSTR("Pilots, you'll have to do more than throw carrots!", 2182)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: bta1_m1_03_ms48.ogg
+
+$Name: MissionUnlocker
+$Team: -1
+$MessageNew:  XSTR("Mission Unlocked!", 2012)
+$end_multi_text
+
+$Name: CutsceneSkip
+$Team: -1
+$MessageNew:  XSTR("Secondary fire to skip...", 2013)
+$end_multi_text
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 7 total
+
+$Num stars: 0
+$Ambient light level: 65793
+
+$Bitmap List:
+$Sun: SunViolet
++Angles: 0.000000 0.000000 5.235983
++Scale: 1.000000
+$Starbitmap: NebulB9-Whisp
++Angles: 0.000000 2.513272 2.513272
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulB10-Whisp
++Angles: 5.951568 3.682642 2.181660
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulB8-Whisp
++Angles: 0.436332 0.000000 2.705258
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulB7-Whisp
++Angles: 0.925024 5.829395 4.241147
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulB13-Whisp
++Angles: 5.916662 0.785398 5.462876
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulB5-Whisp
++Angles: 0.261799 0.000000 5.550143
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulB3-Main
++Angles: 5.235984 3.874628 6.003928
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: Brief1
+$Fiction Viewer Music: Failure
+
+#End
+

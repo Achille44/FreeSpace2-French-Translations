@@ -1,0 +1,105 @@
+$Name: XSTR("2359/03 - Operation: Templar", 4424)
+$Type: single
++Description:
+ XSTR("Operation Templar, a Galactic Terran-Vasudan Alliance endeavor, hunts down the last remnants of the Hammer of Light.  Shortly after the GTVA's plan to eradicate the HoL becomes known, The rebels stage a desperate last stand, hijacking a Vasudan destroyer and taking hostages.", 4425)
+$end_multi_text
+$Flags: 0
+
+
++Starting Ships: ( "GTF Valkyrie"  "GTF Hercules"  "GTF Ulysses"  "GTF Myrmidon"  "GTF Loki"  "GTB Zeus"  "GTB Medusa"  "GTB Ursa"  "PVF Anubis"  "PVF Seth"  "PVF Horus"  "PVF Thoth"  "PVB Osiris"  "PVB Amun"  "PVB Hesat"  "PVB Sekhmet" )
+
++Starting Weapons: ( "Avenger"  "DisruptorSDG"  "Flail"  "Banshee"  "S-Breaker"  "Prometheus"  "Leech Cannon"  "Subach HL-7"  "Mekhu HL-7"  "Akheton SDG"  "Prometheus R"  "Fury"  "Fang"  "Interceptor"  "Siren"  "Phoenix V"  "Ballista"  "Synaptic"  "Cluster Bomb"  "Stiletto"  "EM Pulse"  "Barracuda"  "Tsunami"  "Serkr"  "Harbinger"  "Rockeye"  "Hornet" )
+
+
+$Mission: bta-tem_m1_01.fs2
++Flags: 0
++Main Hall: Templar
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "bta-tem_m1_01.fs2" 
+         "Destroy HOL" 
+      )
+      ( next-mission "bta-tem_m1_02.fs2" )
+   )
+   ( ( true ) ( next-mission "bta-tem_m1_01.fs2" ) )
+)
+
++Level: 0
++Position: 0
+
+$Mission: bta-tem_m1_02.fs2
++Flags: 0
++Main Hall: Templar
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "bta-tem_m1_02.fs2" 
+         "Scan" 
+      )
+      ( next-mission "bta-tem_m1_03.fs2" )
+   )
+   ( ( true ) ( next-mission "bta-tem_m1_02.fs2" ) )
+)
+
++Level: 1
++Position: 0
+
+$Mission: bta-tem_m1_03.fs2
++Flags: 0
++Main Hall: Templar
++Formula: ( cond
+   (
+      ( or 
+         ( is-previous-event-true 
+            "bta-tem_m1_03.fs2" 
+            "Dead Hostages" 
+         )
+         ( is-previous-event-true 
+            "bta-tem_m1_03.fs2" 
+            "Taurus 1 and Hostages Destroyed" 
+         )
+         ( is-previous-event-true 
+            "bta-tem_m1_03.fs2" 
+            "Taurus 2 and Hostages Destroyed" 
+         )
+         ( is-previous-event-true 
+            "bta-tem_m1_03.fs2" 
+            "Destroyer and Hostages Dead" 
+         )
+         ( is-previous-event-true 
+            "bta-tem_m1_03.fs2" 
+            "Failure From Command" 
+         )
+         ( is-previous-event-true 
+            "bta-tem_m1_03.fs2" 
+            "Not Good" 
+         )
+      )
+      ( next-mission "bta-tem_m1_03.fs2" )
+   )
+   ( ( true ) ( next-mission "bta-tem_m1_04.fs2" ) )
+)
+
++Level: 2
++Position: 0
+
+$Mission: bta-tem_m1_04.fs2
++Flags: 0
++Main Hall: Templar
++Formula: ( cond
+   (
+      ( is-previous-goal-false 
+         "bta-tem_m1_04.fs2" 
+         "Save Important" 
+      )
+      ( next-mission "bta-tem_m1_04.fs2" )
+   )
+   ( ( true ) ( end-of-campaign ) )
+)
+
++Level: 3
++Position: 0
+
+#End
+

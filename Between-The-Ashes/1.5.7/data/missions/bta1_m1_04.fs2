@@ -1,0 +1,5279 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Playing Pirate", 2183)
+$Author: Slasher
+$Created: 06/08/11 at 22:18:48
+$Modified: 12/17/19 at 19:46:06
+$Notes:
+This is a FRED2_OPEN created mission. I suppose it is.$End Notes:
+
+$Mission Desc:
+ XSTR("Admiral Po orders his pilots to capture government officials from Regulus in breach of the GTA charter.", 2184)
+$end_multi_text
++Game Type Flags: 1
++Flags: 0
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: -1122.294312, 698.015625, 2315.025879
++Viewer orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
++SquadReassignName: 47th Cutthroats
++SquadReassignLogo: cutthroats.pcx
+
+
+$Load Screen 640: LoadingBG.pcx
+$Load Screen 1024: 2_m1_04_load.png
+
+$Skybox Model: regulus-box.pof
+
+$AI Profile: BTA
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"BetaDelay"		"36"		"number"
+		1		"CampaignMode"		"0"		"number"		"save-on-mission-close"
+		2		"CampMode"		"false"		"string"
+		3		"CC_x_coord"		"0"		"number"
+		4		"CC_y_coord"		"0"		"number"
+		5		"CC_z_coord"		"0"		"number"
+		6		"CheckpointReached"		"0"		"number"		"save-on-mission-close"
+		7		"CommandSender"		"#Command"		"string"
+		8		"filename"		"bta1_m1_04.sscp"		"string"
+		9		"SnailCheck"		"snail"		"string"
+		10		"SnailFound"		"0"		"number"		"save-on-mission-progress"
+		11		"SnailPlural"		"snails"		"string"
+		12		"SnailSave"		"false"		"string"		"save-on-mission-close"
+		13		"SnailTemp"		"0"		"number"
+		14		"Traitor1"		"Ship Status:"		"string"
+		15		"Traitor2"		"Disabled By Remote"		"string"
+)
+
+#Cutscenes
+$Pre-game Cutscene: subspace.ogg
++formula: ( true ) 
+#end
+
+#Command Briefing
+
+$Stage Text:
+ XSTR("$b * $b GTD $b Intrepid
+$b * $b Sirius $b System
+$b * $b 8/12/36
+
+$b Our $b Plan
+
+In response to the alleged involvement of government officials in regional crime rings, $b Admiral $b Po wishes to gather more intelligence on the extent of the corruption. To that end, we have been assigned the task of capturing $B Senators $B Hoshi $B and $B Jacobsen$| , $y Regulus' representatives in the General Assembly. Our information indicates they are currently inbound for the Naritz Colony and their arrival is imminent, so we must act fast.  
+
+We need the senators and their staff alive and kicking, and we won't have a better chance at capturing them than when they're in transit. We will intercept both transports before they reach the colony. As you are no doubt aware, this operation is neither known nor sanctioned by the judiciary or executive branches. Hence, this is an undercover and classified mission. You will not speak of this operation outside this room.", 2185)
+$end_multi_text
+$Ani Filename: cb_moneytrace
++Wave Filename: bta1_m1_04_cb01.ogg
+
+#Briefing
+$start_briefing
+$briefing_background_640: brief.pcx
+$briefing_background_1024: 2_Brief_Regulus.png
+$num_stages: 6
+$start_stage
+$multi_text
+ XSTR("Our sources indicate that the senators and their staff are on board Proton-class transports $r Cross $r Creek and $r Tranquility$| . They are travelling as part of a larger convoy group inbound for the Naritz settlement. Observers at the intrasystem jump node report $r Cross $r Creek and $r Tranquility are escorted by four vintage Shrike fighters, most likely fielded by their smuggler partners.", 2186)
+$end_multi_text
+$voice: bta1_m1_04_br01.ogg
+$camera_pos: -1528.504761, 305.028229, 2299.569336
+$camera_orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 4
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 34
+$team: Neutral
+$class: TT Proton
+$pos: -1482.319580, 0.000000, 2304.898926
+$label:  XSTR("Cross Creek", 2187)
++id: 3
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Neutral
+$class: TT Proton
+$pos: -1565.807495, 0.000000, 2304.898926
+$label:  XSTR("Tranquility", 2188)
++id: 4
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Neutral
+$class: TF Shrike
+$pos: -1531.169312, 0.000000, 2367.070801
+$label:  XSTR("Skadi", 2189)
++id: 5
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 14
+$team: Friendly
+$class: GTFr Chronos
+$pos: -1381.068604, 0.000000, 2299.569336
+$label:  XSTR("REG-08 Convoy", 2190)
++id: 7
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Projections of the convoy's flight path put it at about twenty minutes out from its destination by the time you arrive. If you must engage the Shrikes, do so on your first pass but do not stop for a dogfight. Those Proton transports are just as fast as your Mustang Alphas without afterburners, so shunt all power to engines and disable the targets quickly. Tactical analysis predicts that $B if $B both $B objectives $B are $B not $B sitting $B ducks $B within $B one-minute-thirty $B of $B mission $B start$| , our chances of success drop by as much as $B twenty-five $B percent$| , with an additional decrement of one-percent every five seconds the transports remain flight-capable afterwards.", 2191)
+$end_multi_text
+$voice: bta1_m1_04_br02.ogg
+$camera_pos: -1519.666260, 94.225197, 2309.442627
+$camera_orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 34
+$team: Neutral
+$class: TT Proton
+$pos: -1482.319580, 0.000000, 2304.898926
+$label:  XSTR("Cross Creek (Disable)", 2192)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Neutral
+$class: TT Proton
+$pos: -1565.807495, 0.000000, 2304.898926
+$label:  XSTR("Tranquility (Disable)", 2193)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: -1524.957520, 0.000000, 2321.690918
+$label:  XSTR("Alpha", 1557)
++id: 8
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("$b Omega $b wing will proceed to dock with the disabled Protons to round up the senators and their staff. Normally, $b Omega would secure the captured ships to themselves for a hot-jump back to base, but we can't risk the senators' vessels being traced to us. $b Alpha $b wing will have to buy time for $b Omega to round up passengers on $r Cross $r Creek and $r Tranquility$| .", 2194)
+$end_multi_text
+$voice: bta1_m1_04_br03.ogg
+$camera_pos: -1519.666260, 94.225197, 2309.442627
+$camera_orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 5
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 34
+$team: Neutral
+$class: TT Proton
+$pos: -1482.319580, 0.000000, 2304.898926
+$label:  XSTR("Cross Creek (Disable)", 2192)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Neutral
+$class: TT Proton
+$pos: -1565.807495, 0.000000, 2304.898926
+$label:  XSTR("Tranquility (Disable)", 2193)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: -1524.957520, 0.000000, 2321.690918
+$label:  XSTR("Alpha", 1557)
++id: 8
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: -1482.409424, 0.000000, 2315.204590
+$label:  XSTR("Omega 1", 2029)
++id: 9
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: -1565.484375, 0.000000, 2315.204590
+$label:  XSTR("Omega 2", 2195)
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("$b Alpha $b 1$| , your fighter will be carrying a $W Lighthouse-class $W Subspace $W Beacon in the secondary weapons bay. Once the transports' engine subsystems are destroyed, $B deploy $B the $B beacon $B at $B least $B three $B kilometers $B from $B the $B targets$| . It has been preprogrammed with general distress codes identical to what Proton-class transports use. We know the senators' smuggling friends are well-entrenched in $y Regulus$| , and we expect them to respond within minutes of your attack. Deploying the beacon far from the transports will give $b Omega time to complete their mission, and just as importantly, give you time to intercept hostile reinforcements.", 2196)
+$end_multi_text
+$voice: bta1_m1_04_br04.ogg
+$camera_pos: -1519.666260, 112.121445, 2288.034668
+$camera_orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 6
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 34
+$team: Neutral
+$class: TT Proton
+$pos: -1482.319580, 0.000000, 2304.898926
+$label:  XSTR("Cross Creek (Disable)", 2192)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Neutral
+$class: TT Proton
+$pos: -1565.807495, 0.000000, 2304.898926
+$label:  XSTR("Tranquility (Disable)", 2193)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: -1519.992676, 0.000000, 2264.855713
+$label:  XSTR("Alpha", 1557)
++id: 8
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: -1482.409424, 0.000000, 2315.204590
+$label:  XSTR("Omega 1", 2029)
++id: 9
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: -1565.484375, 0.000000, 2315.204590
+$label:  XSTR("Omega 2", 2195)
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 9
+$team: Friendly
+$class: Umbilical Single
+$pos: -1556.883667, 0.000000, 2264.529297
+$label:  XSTR("Decoy Beacon", 2197)
++id: 11
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Once $b Omega has rounded up the objectives, the transports will be scuttled to minimize evidence of this operation. $b Omega and $b Alpha $b wings will then return to base. With that being said, we do not expect this mission to exceed seven minutes from insertion to departure. Given the proximity of $g Kraken $g Station$| , we simply cannot afford for it to go over.", 2198)
+$end_multi_text
+$voice: bta1_m1_04_br05.ogg
+$camera_pos: -1519.666260, 112.121445, 2387.005127
+$camera_orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 1
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: -1522.277710, 0.000000, 2383.202637
+$label:  XSTR("Alpha", 1557)
++id: 8
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: -1499.425049, 0.000000, 2389.079102
+$label:  XSTR("Omega 1", 2029)
++id: 9
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: -1544.477661, 0.000000, 2390.384766
+$label:  XSTR("Omega 2", 2195)
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("$g Kraken $g Station will sortie its patrol squadron to engage you, in which you stand no chance against them in the outdated, blackmarket scrap you'll be flying. Analysis of battle drill reports from $g Kraken $g Station puts their reaction time at average, so we don't expect most their units to reach you before $f Omega is finished with their end of the op. Should a close-in engagement with the station's fighters prove necessary, you are authorized to return fire with your Disruptor SDGs only. $b Admiral $b Po made it clear that we are not to spill the blood of loyal $b GTA pilots on this mission. The corruption in $y Regulus may reach all the way down to squadron level. It may not, but either way, there are to be no blue-on-blue fatalities. Report to your fighters, pilots.", 2199)
+$end_multi_text
+$voice: bta1_m1_04_br06.ogg
+$camera_pos: -1122.294312, 698.015625, 2315.025879
+$camera_orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 7
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 7
+$team: Friendly
+$class: Waypoint#Marker
+$pos: -799.135376, 0.000000, 2326.761475
+$label:  XSTR("Regulus V", 2200)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: -1573.499512, 0.000000, 2317.058594
+$label:  XSTR("Alpha", 1557)
++id: 8
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: GTI Arcadia
+$pos: -1154.578125, 0.000000, 2304.263916
+$label:  XSTR("Kraken", 2201)
++id: 13
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Neutral
+$class: GTF Apollo
+$pos: -1323.507080, 0.000000, 2477.622559
++id: 14
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Neutral
+$class: GTF Apollo
+$pos: -1412.935547, 0.000000, 2371.934082
++id: 15
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Neutral
+$class: GTF Apollo
+$pos: -1331.637085, 0.000000, 2148.364502
++id: 16
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Neutral
+$class: GTF Apollo
+$pos: -1410.902710, 0.000000, 2256.084961
++id: 17
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 8
+
+$Formula: ( is-event-true-delay 
+   "GTA fighter 'sploded" 
+   0 
+)
+$Multi text
+    XSTR("Getting the senators was important, but we paid too high a price today. The bulk of the responsibility for this travesty of an operation rests on your shoulders.", 2202)
+$end_multi_text
+$Voice: bta1_m1_04_db01.ogg
+$Recommendation text:
+    XSTR("You are not allowed to destroy GTA fighters. These are the ones from Beta, Gamma, and Alpha wings of Kraken Station. Disable them using the Disruptor, or evade them until Omega finishes its part of the mission.", 2203)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "Prevent scanning failed" 
+   0 
+)
+$Multi text
+    XSTR("The smugglers were able to get a scan of our transport's jumpdrive resonance signature. With that information they can track our ships through subspace. Our role in this operation has been thoroughly compromised as a result.", 2204)
+$end_multi_text
+$Voice: bta1_m1_04_db02.ogg
+$Recommendation text:
+    XSTR("The only fighters that will attempt to scan the Omega transports are Roskva 1, Roskva 2, Bragi 2, and Bragi 3. Your wingmates can assist in shooting these hostiles down, but you should make them your priority.", 2205)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Omega 1 finished!" 
+      0 
+   )
+   ( not 
+      ( is-destroyed-delay 0 "Omega 1" ) 
+   )
+   ( has-departed-delay 
+      0 
+      "Omega 1" 
+      "Omega 2" 
+   )
+   ( is-event-true-delay 
+      "Omega 2 finished" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "GTA fighter 'sploded" 
+         0 
+      )
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Transports Destroyed" 
+         0 
+      )
+   )
+)
+$Multi text
+    XSTR("$b Omega $b group successfully returned to the Intrepid with their prisoners. The $b Admiral regrets that such extraordinary measures were called for but believes they are necessary in the given context. He assures me that you will receive a full report on what our security team is able to extract for the senators after their interview.", 2206)
+$end_multi_text
+$Voice: bta1_m1_04_db03.ogg
+$Recommendation text:
+    XSTR("", 591)
+$end_multi_text
+
+$Formula: ( is-destroyed-delay 0 "Omega 1" ) 
+$Multi text
+    XSTR("$b Omega $b 1 was lost during the final smuggler attack. Reports intercepted from $g Kraken $g Station reveal there were no survivors.", 2207)
+$end_multi_text
+$Voice: bta1_m1_04_db04.ogg
+$Recommendation text:
+    XSTR("Prioritize Hrid wing when they appear.", 2208)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "Player took too long" 
+   0 
+)
+$Multi text
+    XSTR("You were too slow to disable $r Cross $r Creek and $r Tranquility$| , pilot. $b Omega would not have had enough time to accomplish their objectives.", 2209)
+$end_multi_text
+$Voice: bta1_m1_04_db05.ogg
+$Recommendation text:
+    XSTR("Shunt all power to engines at the beginning of the mission and burn your way past the Skadi escort wing. It is recommended you disable Cross Creek first, then Tranquility. If it takes you longer than two minutes to do both, the mission will have to be aborted.", 2210)
+$end_multi_text
+
+$Formula: ( and 
+   ( not 
+      ( is-event-true-delay "All good" 0 ) 
+   )
+   ( is-event-true-delay 
+      "Transports Destroyed" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Alpha Leaves Cause Why" 
+         0 
+      )
+   )
+)
+$Multi text
+    XSTR("You allowed one of the transports to be destroyed. Capturing the senators was our priority, not their deaths. We needed the information they held, and without it we will be unable to continue our investigation.", 2211)
+$end_multi_text
+$Voice: bta1_m1_04_db06.ogg
+$Recommendation text:
+    XSTR("", 591)
+$end_multi_text
+
+$Formula: ( and 
+   ( not 
+      ( is-event-true-delay 
+         "Beacon Placed Correctly" 
+         0 
+      )
+   )
+   ( not 
+      ( is-event-true-delay "All good" 0 ) 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Transports Destroyed" 
+         0 
+      )
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Alpha Leaves Cause Why" 
+         0 
+      )
+   )
+)
+$Multi text
+    XSTR("You failed to place the $b Subspace $b Beacon at least three clicks from the transports. This decision highly increased the risk factor for this mission.", 2212)
+$end_multi_text
+$Voice: bta1_m1_04_db07.ogg
+$Recommendation text:
+    XSTR("", 591)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "Alpha Leaves Cause Why" 
+   0 
+)
+$Multi text
+    XSTR("$b Alpha $b 1$| , you departed without orders. You can explain your actions at your court martial, pilot. Dismissed!", 2125)
+$end_multi_text
+$Voice: bta1_m1_04_db08.ogg
+$Recommendation text:
+    XSTR("", 591)
+$end_multi_text
+
+#Alternate Types:
+$Alt: GTF Kestrel-E
+$Alt: GTSB Lighthouse
+$Alt: TFr Chronos
+$Alt: TT Elysium
+$Alt: SSFr Poseidon
+$Alt: TF Valkyrie
+$Alt: TF Apollo
+$Alt: TF Hercules
+$Alt: SSCa Canberra
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+	"TF Mustang Alpha"	5
+)
+
++Weaponry Pool: (
+	"Avenger"	94
+	"DisruptorSDG"	20
+	"Interceptor"	552
+)
+
++Required for mission: ( "DisruptorSDG" )
+
+#Objects		;! 61 total
+
+$Name: Alpha 1		;! Object #0
+$Class: TF Mustang Alpha
+$Team: Friendly
+$Team Color Setting: None
+$Location: -588.199829, 3452.322754, -233.000000
+$Orientation:
+	-0.951846, 0.000000, -0.306576,
+	0.291842, 0.306289, -0.906099,
+	0.093901, -0.951939, -0.291540
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "DisruptorSDG" "Avenger" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Flags2: ( "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Special Hitpoints: 500
++Special Shield Points: 400
++Group: 0
++Score: 10
+
+$Name: Alpha 2		;! Object #1
+$Class: TF Mustang Alpha
+$Team: Friendly
+$Team Color Setting: None
+$Location: -527.880798, 3201.383545, -264.138733
+$Orientation:
+	-0.852517, 0.035709, -0.521478,
+	0.520666, 0.145920, -0.841199,
+	0.046056, -0.988652, -0.142992
+$AI Behavior: None
++AI Class: BtA-General
+$AI Goals: ( goals ( ai-chase "Skadi 1" 89 ) ( ai-chase "Skadi 2" 70 ) ( ai-disable-ship "Cross Creek" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "DisruptorSDG" "Avenger" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Special Hitpoints: 500
++Special Shield Points: 400
++Group: 0
++Score: 12
++Persona Index: 0
+
+$Name: Alpha 3		;! Object #2
+$Class: TF Mustang Alpha
+$Team: Friendly
+$Team Color Setting: None
+$Location: -576.833801, 3219.531250, -261.187836
+$Orientation:
+	-0.931958, 0.009008, -0.362453,
+	0.359628, 0.149956, -0.920968,
+	0.046056, -0.988652, -0.142992
+$AI Behavior: None
++AI Class: BtA-General
+$AI Goals: ( goals ( ai-chase "Skadi 3" 89 ) ( ai-chase-wing "Skadi" 70 ) ( ai-disable-ship "Cross Creek" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "DisruptorSDG" "Avenger" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Special Hitpoints: 500
++Special Shield Points: 400
++Group: 0
++Score: 12
++Persona Index: 4
+
+$Name: Alpha 4		;! Object #3
+$Class: TF Mustang Alpha
+$Team: Friendly
+$Team Color Setting: None
+$Location: -602.722412, 3271.990967, -268.963379
+$Orientation:
+	-0.987977, -0.023934, -0.152735,
+	0.147579, 0.148307, -0.977868,
+	0.046056, -0.988652, -0.142992
+$AI Behavior: None
++AI Class: BtA-General
+$AI Goals: ( goals ( ai-chase "Skadi 4" 89 ) ( ai-chase-wing "Skadi" 70 ) ( ai-disable-ship "Cross Creek" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "DisruptorSDG" "Avenger" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Special Hitpoints: 500
++Special Shield Points: 400
++Group: 0
++Score: 12
++Persona Index: 1
+
+$Name: Megaphone 1		;! Object #4
+$Class: TF Ion
+$Alt: GTF Kestrel-E
+
+$Team: Friendly
+$Team Color Setting: None
+$Location: -673.022583, 0.000000, -98.958855
+$Orientation:
+	0.000797, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000797
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Cross Creek		;! Object #5
+$Class: TT Proton
+$Team: Neutral
+$Location: 195.268097, 0.000000, -820.642456
+$Orientation:
+	0.000797, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000797
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Creek finish waypt" 50 ) )
+$Cargo 1:  XSTR("Passengers", 2213)
++Initial Velocity: 46
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "escort" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 33
++Kamikaze Damage: 0
++Hotkey: 5
++Orders Accepted: 257		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Tranquility		;! Object #6
+$Class: TT Proton
+$Team: Neutral
+$Location: -54.819649, 0.000000, -720.838501
+$Orientation:
+	0.000797, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000797
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Tranquility finish waypt" 50 ) )
+$Cargo 1:  XSTR("Passengers", 2213)
++Initial Velocity: 46
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 33
++Hotkey: 5
++Orders Accepted: 257		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Majestic		;! Object #7
+$Class: TCa Canberra
+$Alt: SSCa Canberra
+
+$Team: Friendly
+$Location: 632.980469, 0.000000, -1320.310669
+$Orientation:
+	0.000797, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000797
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "liner finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Sbank Ammo: ( 0 )
++Subsystem: turret02
++Sbank Ammo: ( 0 )
++Subsystem: turret03
++Sbank Ammo: ( 0 )
++Subsystem: turret04
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
+
+$Name: Adele		;! Object #8
+$Class: TCa Canberra
+$Alt: SSCa Canberra
+
+$Team: Friendly
+$Location: -1003.872620, 0.000000, -1321.614258
+$Orientation:
+	0.000797, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000797
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "liner finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
+
+$Name: Laybenne-TLY-002		;! Object #9
+$Class: GTFr Chronos
+$Alt: TFr Chronos
+
+$Team: Friendly
+$Location: 246.667252, -0.002937, -1720.823120
+$Orientation:
+	0.000003, 0.000000, -1.000000,
+	0.000000, 1.000000, 0.000000,
+	1.000000, -0.000000, 0.000003
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "laybenne finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Laybenne-CCST-002		;! Object #10
+$Class: TC A17t
+$Team: Friendly
+$Location: 243.970139, 13.231350, -1721.361328
+$Orientation:
+	0.000034, 0.000001, 1.000000,
+	-0.008720, -0.999962, 0.000001,
+	0.999962, -0.008720, -0.000034
+$AI Behavior: None
+$Cargo 1:  XSTR("Iron Ore", 2214)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Laybenne-TLY-002
+$Docker Point: cargo dockpoint
+$Dockee Point: cargo dock
++Group: 0
++Use Table Score:
++Score: 7
+
+$Name: Laybenne-TLY-003		;! Object #11
+$Class: GTFr Chronos
+$Alt: TFr Chronos
+
+$Team: Friendly
+$Location: -254.030106, -0.000005, -1721.030518
+$Orientation:
+	0.001790, -0.000000, -0.999998,
+	0.000000, 1.000000, -0.000000,
+	0.999998, -0.000000, 0.001790
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "laybenne finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Laybenne-CCST-041		;! Object #12
+$Class: TGas-1
+$Team: Friendly
+$Location: -256.564453, 30.000097, -1721.035034
+$Orientation:
+	0.001737, 0.000001, -0.999998,
+	0.001548, 0.999999, 0.000003,
+	0.999997, -0.001548, 0.001737
+$AI Behavior: None
+$Cargo 1:  XSTR("Liquid Helium", 2215)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Laybenne-TLY-003
+$Docker Point: cargo dockpoint
+$Dockee Point: cargo dockpoint1
++Group: 0
++Score: 7
+
+$Name: Laybenne-TLY-004		;! Object #13
+$Class: GTFr Chronos
+$Alt: TFr Chronos
+
+$Team: Friendly
+$Location: -753.365051, -0.002940, -1721.619385
+$Orientation:
+	0.000353, 0.000000, -1.000000,
+	0.000000, 1.000000, 0.000000,
+	1.000000, -0.000000, 0.000353
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "laybenne finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Laybenne-CCST-048		;! Object #14
+$Class: TC A09
+$Team: Friendly
+$Location: -755.881348, 12.225016, -1721.832275
+$Orientation:
+	-0.000431, 0.000001, 1.000000,
+	-0.008720, -0.999962, -0.000003,
+	0.999962, -0.008720, 0.000431
+$AI Behavior: None
+$Cargo 1:  XSTR("Tungsten Ore", 2216)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Laybenne-TLY-004
+$Docker Point: cargo dockpoint
+$Dockee Point: cargo dock
++Group: 0
++Score: 7
+
+$Name: Pioneer 21		;! Object #15
+$Class: GTT Elysium
+$Alt: TT Elysium
+
+$Team: Friendly
+$Location: 495.485016, 0.000000, -1080.412598
+$Orientation:
+	0.000797, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000797
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Pioneer finish waypt" 50 ) )
+$Cargo 1:  XSTR("Colonists", 2217)
++Initial Velocity: 63
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Kraken		;! Object #16
+$Class: GTI Arcadia
+$Team: Friendly
+$Location: 35925.667969, 0.000000, -979.436768
+$Orientation:
+	0.030638, -0.168878, 0.985161,
+	-0.055569, 0.983811, 0.170375,
+	-0.997985, -0.059964, 0.020757
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 1000
+
+$Name: Stennis Shipping 1		;! Object #17
+$Class: GTFr Poseidon
+$Alt: SSFr Poseidon
+
+$Team: Friendly
+$Location: -1601.631836, -74.999985, -1022.080078
+$Orientation:
+	0.001093, -0.000005, -0.999999,
+	-0.000004, 1.000000, -0.000005,
+	0.999999, 0.000004, 0.001093
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "stennis 1 finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 50
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: SSTCTC208		;! Object #18
+$Class: TC 2
+$Team: Friendly
+$Location: -1606.553345, -92.381447, -1022.081238
+$Orientation:
+	0.001192, -0.000006, -0.999999,
+	-0.000002, 1.000000, -0.000006,
+	0.999999, 0.000002, 0.001192
+$AI Behavior: None
+$Cargo 1:  XSTR("Foodstuffs", 2218)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Stennis Shipping 1
+$Docker Point: cargo dock
+$Dockee Point: cargo dock
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Stennis Shipping 2		;! Object #19
+$Class: GTFr Poseidon
+$Alt: SSFr Poseidon
+
+$Team: Friendly
+$Location: -1882.116577, -75.000000, -897.966980
+$Orientation:
+	0.000435, 0.000002, -1.000000,
+	-0.000002, 1.000000, 0.000002,
+	1.000000, 0.000002, 0.000435
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "stennis 2 finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 50
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: SSTCTC209		;! Object #20
+$Class: TC 2
+$Team: Friendly
+$Location: -1887.038086, -92.381454, -897.965027
+$Orientation:
+	0.000531, 0.000001, -1.000000,
+	0.000000, 1.000000, 0.000001,
+	1.000000, 0.000000, 0.000531
+$AI Behavior: None
+$Cargo 1:  XSTR("Textiles", 2219)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Stennis Shipping 2
+$Docker Point: cargo dock
+$Dockee Point: cargo dock
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Skadi 1		;! Object #21
+$Class: TF Shrike
+$Team: Neutral
+$Team Color Setting: Smuggler 2
+$Location: -53.209061, 0.000000, -630.134277
+$Orientation:
+	0.000797, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000797
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Tranquility finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 15
+
+$Name: Skadi 2		;! Object #22
+$Class: TF Shrike
+$Team: Neutral
+$Team Color Setting: Smuggler 6
+$Location: -132.273407, 0.000000, -590.170532
+$Orientation:
+	0.000797, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000797
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Tranquility finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Skadi 3		;! Object #23
+$Class: TF Shrike
+$Team: Neutral
+$Team Color Setting: Smuggler 5
+$Location: -247.807526, 0.000000, -826.614258
+$Orientation:
+	0.000797, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000797
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Tranquility finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Skadi 4		;! Object #24
+$Class: TF Shrike
+$Team: Neutral
+$Team Color Setting: None
+$Location: -331.914185, 0.000000, -878.891052
+$Orientation:
+	0.000797, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000797
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Tranquility finish waypt" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Omega 1		;! Object #25
+$Class: GTT Elysium
+$Team: Friendly
+$Location: -520.458130, 3526.639893, -166.448685
+$Orientation:
+	-0.951846, -0.000000, -0.306576,
+	0.303097, 0.150226, -0.941045,
+	0.046056, -0.988652, -0.142992
+$AI Behavior: None
+$AI Goals: ( goals ( ai-dock "Cross Creek" "topside docking" "Docking Point" 89 ) )
+$Cargo 1:  XSTR("Marines", 2220)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 5500
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
+
+$Name: Omega 2		;! Object #26
+$Class: GTT Elysium
+$Team: Friendly
+$Location: -647.398132, 3526.639893, -146.757004
+$Orientation:
+	-0.951846, -0.000000, -0.306576,
+	0.303097, 0.150226, -0.941045,
+	0.046056, -0.988652, -0.142992
+$AI Behavior: None
+$AI Goals: ( goals ( ai-dock "Tranquility" "topside docking" "Docking Point" 89 ) )
+$Cargo 1:  XSTR("Marines", 2220)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 5500
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Gamma 1 (Kraken)		;! Object #27
+$Class: GTF Apollo
+$Team: Neutral
+$Team Color Setting: None
+$Location: 34988.718750, 0.000000, 1056.640381
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Major
+$AI Goals: ( goals ( ai-chase "Alpha 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Interceptor" "Interceptor" )
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kraken
+$Arrival Cue: ( has-time-elapsed 195 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Gamma 2 (Kraken)		;! Object #28
+$Class: GTF Apollo
+$Team: Neutral
+$Team Color Setting: None
+$Location: 35012.359375, 0.000000, 984.486572
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Major
+$AI Goals: ( goals ( ai-chase "Alpha 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Interceptor" "Interceptor" )
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kraken
+$Arrival Cue: ( has-time-elapsed 195 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Beta 1 (Kraken)		;! Object #29
+$Class: GTF Valkyrie
+$Team: Neutral
+$Team Color Setting: None
+$Location: 34972.062500, 0.000000, 874.365112
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$AI Goals: ( goals ( ai-chase "Alpha 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kraken
+$Arrival Cue: ( has-time-elapsed @BetaDelay[36] ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 6
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Beta 2 (Kraken)		;! Object #30
+$Class: GTF Valkyrie
+$Team: Neutral
+$Team Color Setting: None
+$Location: 34995.703125, 0.000000, 802.211670
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$AI Goals: ( goals ( ai-chase "Alpha 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kraken
+$Arrival Cue: ( has-time-elapsed 
+   ( + @BetaDelay[36] 3 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 6
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Alpha 1 (Kraken)		;! Object #31
+$Class: GTF Hercules
+$Team: Neutral
+$Team Color Setting: None
+$Location: 34922.765625, 0.000000, 705.171448
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Colonel
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kraken
+$Arrival Cue: ( has-time-elapsed 180 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Alpha 2 (Kraken)		;! Object #32
+$Class: GTF Hercules
+$Team: Neutral
+$Team Color Setting: None
+$Location: 34974.359375, 0.000000, 597.526550
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Colonel
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kraken
+$Arrival Cue: ( has-time-elapsed 180 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Alpha 3 (Kraken)		;! Object #33
+$Class: GTF Hercules
+$Team: Neutral
+$Team Color Setting: None
+$Location: 34828.640625, 0.000000, 613.289063
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Colonel
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kraken
+$Arrival Cue: ( has-time-elapsed 180 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Decoy Beacon		;! Object #34
+
+$Display name:  XSTR("Decoy Beacon", 2197)
+$Class: Umbilical Single
+$Alt: GTSB Lighthouse
+
+$Team: Friendly
+$Location: -210.957886, 0.000000, -2295.970459
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 22
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-event-true-delay 
+   "Deploy Beacon" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "escort" "no-arrival-music" "no-arrival-warp" "stealth" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 33
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: GTA Recon 415		;! Object #35
+$Class: Girder Cube
+$Team: Neutral
+$Location: 37091.656250, -0.000000, -561.421509
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Deploy Beacon" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "no-departure-warp" "invulnerable" "no-dynamic" "guardian" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "primitive-sensors" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Roskva 1		;! Object #36
+$Class: TF Shrike
+$Team: Neutral
+$Team Color Setting: Smuggler 4
+$Location: 3205.405762, -422.271210, -3133.881348
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578591,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
++AI Class: BtA-Major
+$AI Goals: ( goals ( ai-chase "Omega 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-dynamic" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Roskva 2		;! Object #37
+$Class: TF Mustang Alpha
+$Team: Neutral
+$Team Color Setting: Smuggler 1
+$Location: 3188.536133, -388.318024, -3104.895752
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578590,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
++AI Class: BtA-Major
+$AI Goals: ( goals ( ai-chase "Omega 2" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-dynamic" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Roskva 3		;! Object #38
+$Class: GTF Valkyrie
+$Alt: TF Valkyrie
+
+$Team: Neutral
+$Team Color Setting: Smuggler 6
+$Location: 3167.221680, -438.418396, -3180.957764
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578590,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
+$AI Goals: ( goals ( ai-guard "Roskva 1" 50 ) ( ai-guard "Roskva 2" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Thiazi 1		;! Object #39
+$Class: TF Mustang Alpha
+$Team: Neutral
+$Team Color Setting: None
+$Location: 3199.433594, -491.494019, -3222.057129
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578590,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Thiazi 2		;! Object #40
+$Class: GTF Apollo
+$Alt: TF Apollo
+
+$Team: Neutral
+$Team Color Setting: Smuggler 5
+$Location: 3251.824463, -532.928223, -3234.511963
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578590,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: PVN Recon 087		;! Object #41
+$Class: Terran Probe
+$Team: Neutral
+$Location: 37090.734375, 0.000000, -598.209900
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( or 
+      ( < 
+         ( distance "Roskva 1" "Omega 1" ) 
+         200 
+      )
+      ( < 
+         ( distance "Roskva 1" "Omega 2" ) 
+         200 
+      )
+   )
+   ( or 
+      ( < 
+         ( distance "Roskva 2" "Omega 1" ) 
+         200 
+      )
+      ( < 
+         ( distance "Roskva 2" "Omega 2" ) 
+         200 
+      )
+   )
+   ( or 
+      ( < 
+         ( distance "Bragi 2" "Omega 1" ) 
+         200 
+      )
+      ( < 
+         ( distance "Bragi 2" "Omega 2" ) 
+         200 
+      )
+   )
+   ( or 
+      ( < 
+         ( distance "Bragi 3" "Omega 1" ) 
+         200 
+      )
+      ( < 
+         ( distance "Bragi 3" "Omega 2" ) 
+         200 
+      )
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "kamikaze" "no-dynamic" "beam-protect-ship" "guardian" "stealth" )
++Flags2: ( )
++Respawn priority: 0
++Kamikaze Damage: 0
++Group: 0
++Score: 150
+
+$Name: GTA-REG-1227b		;! Object #42
+$Class: GTFr Chronos
+$Team: Friendly
+$Location: 35737.296875, 429.374268, -2231.223145
+$Orientation:
+	0.924909, 0.000000, 0.380188,
+	-0.075532, 0.980066, 0.183751,
+	-0.372610, -0.198669, 0.906472
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: GTA-REG-1048c		;! Object #43
+$Class: GTFr Chronos
+$Team: Friendly
+$Location: 35701.132813, 673.366272, -3019.462891
+$Orientation:
+	0.924909, 0.000000, 0.380188,
+	-0.075532, 0.980066, 0.183751,
+	-0.372610, -0.198669, 0.906472
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Support 1		;! Object #44
+
+$Display name:  XSTR("Support 1", 2221)
+$Class: GTS Centaur#NonSupport
+$Team: Neutral
+$Location: 2772.051270, -0.000000, -3387.784424
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-dock "Beta 1 (Kraken)" "lower ring" "fighter dock" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1500
+$Arrival Anchor: Beta 1 (Kraken)
+$Arrival Cue: ( is-event-true-delay 
+   "Disable Beta" 
+   55 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Bragi 1		;! Object #45
+$Class: GTF Apollo
+$Alt: TF Apollo
+
+$Team: Neutral
+$Team Color Setting: Smuggler 4
+$Location: 2997.404297, -422.271210, -3391.954590
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578591,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Bragi 2		;! Object #46
+$Class: GTF Hercules
+$Alt: TF Hercules
+
+$Team: Neutral
+$Team Color Setting: Smuggler 6
+$Location: 2980.534668, -388.318024, -3362.968750
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578590,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Omega 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Bragi 3		;! Object #47
+$Class: TF Shrike
+$Team: Neutral
+$Team Color Setting: None
+$Location: 2959.220459, -438.418396, -3439.031006
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578590,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
++AI Class: BtA-Major
+$AI Goals: ( goals ( ai-chase "Omega 2" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Galagapos		;! Object #48
+$Class: GTFr Triton
+$Team: Friendly
+$Location: 35445.835938, 485.654480, -2952.000000
+$Orientation:
+	0.924909, 0.000000, 0.380188,
+	-0.075532, 0.980066, 0.183751,
+	-0.372610, -0.198669, 0.906472
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: TCR-KRA-REG-08107		;! Object #49
+$Class: TC-TRI
+$Team: Friendly
+$Location: 35373.207031, 458.440277, -2777.152100
+$Orientation:
+	0.924804, 0.001329, 0.380441,
+	-0.076747, 0.980087, 0.183137,
+	-0.372622, -0.198563, 0.906490
+$AI Behavior: None
+$Cargo 1:  XSTR("Lady Gaga Albums", 2222)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Galagapos
+$Docker Point: Cargo Dock01
+$Dockee Point: Cargo Dockpoint
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Golf		;! Object #50
+$Class: GTFr Triton
+$Team: Friendly
+$Location: 35266.812500, 912.324524, 658.692444
+$Orientation:
+	0.924909, 0.000000, 0.380188,
+	-0.075532, 0.980066, 0.183751,
+	-0.372610, -0.198669, 0.906472
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: TCR-KRA-REG-08106		;! Object #51
+$Class: TC-TRI
+$Team: Friendly
+$Location: 35194.128906, 885.123901, 833.522278
+$Orientation:
+	0.924992, -0.001104, 0.379985,
+	-0.074450, 0.980087, 0.184080,
+	-0.372622, -0.198562, 0.906490
+$AI Behavior: None
+$Cargo 1:  XSTR("Disco Balls", 2223)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Golf
+$Docker Point: Cargo Dock01
+$Dockee Point: Cargo Dockpoint
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Alpha 4 (Kraken)		;! Object #52
+$Class: GTF Hercules
+$Team: Neutral
+$Team Color Setting: None
+$Location: 34709.667969, -0.000000, 608.273621
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kraken
+$Arrival Cue: ( has-time-elapsed 180 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Hrid 1		;! Object #53
+$Class: TB Mustang Beta
+$Team: Neutral
+$Team Color Setting: Smuggler 2
+$Location: 3188.298584, -491.494019, -3507.769043
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578590,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Interceptor" "Phoenix V" )
++Sbank Ammo: ( 60 36 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Hrid 2		;! Object #54
+$Class: TB Mustang Beta
+$Team: Neutral
+$Team Color Setting: None
+$Location: 3240.689209, -532.928223, -3520.223877
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578590,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Interceptor" "Phoenix V" )
++Sbank Ammo: ( 60 36 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Hrid 3		;! Object #55
+$Class: TB Mustang Beta
+$Team: Neutral
+$Team Color Setting: Smuggler 4
+$Location: 3091.473389, -491.494019, -3557.128418
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578590,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Interceptor" "Phoenix V" )
++Sbank Ammo: ( 60 36 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Hrid 4		;! Object #56
+$Class: TB Mustang Beta
+$Team: Neutral
+$Team Color Setting: None
+$Location: 3143.864502, -532.928223, -3569.583252
+$Orientation:
+	0.908966, -0.321510, 0.265354,
+	0.416871, 0.701036, -0.578590,
+	0.000000, 0.636537, 0.771246
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Interceptor" "Phoenix V" )
++Sbank Ammo: ( 60 36 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Gamma 3 (Kraken)		;! Object #57
+$Class: GTF Apollo
+$Team: Neutral
+$Team Color Setting: None
+$Location: 34943.859375, -0.000000, 1027.810913
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Major
+$AI Goals: ( goals ( ai-chase "Alpha 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Interceptor" "Interceptor" )
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kraken
+$Arrival Cue: ( has-time-elapsed 195 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Gamma 4 (Kraken)		;! Object #58
+$Class: GTF Apollo
+$Team: Neutral
+$Team Color Setting: None
+$Location: 34967.507813, -0.000000, 955.657654
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Major
+$AI Goals: ( goals ( ai-chase "Alpha 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Interceptor" "Interceptor" )
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kraken
+$Arrival Cue: ( has-time-elapsed 195 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Battle Snail		;! Object #59
+$Class: Battle Snail
+$Team: Friendly
+$Location: 2399.117920, 300.000000, -5196.031250
+$Orientation:
+	0.316088, 0.137579, 0.938704,
+	-0.416927, 0.908913, 0.007178,
+	-0.852212, -0.393639, 0.344658
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 500
+$Arrival Anchor: Decoy Beacon
++Arrival Delay: 25
+$Arrival Cue: ( and 
+   ( has-arrived-delay 0 "Roskva" ) 
+   ( = @CampaignMode[0] 4 ) 
+   ( is-event-true-delay "Camp Mode" 0 ) 
+   ( < @SnailFound[0] @CampaignMode[0] ) 
+   ( not 
+      ( string-equals 
+         "@SnailSave[false]" 
+         "saved" 
+      )
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( and 
+   ( is-event-true-delay 
+      "Snail scanned!" 
+      25 
+   )
+   ( is-event-true-delay 
+      "Snail discovered!" 
+      45 
+   )
+)
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "no-arrival-music" "no-arrival-warp" "hidden-from-sensors" "scannable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "hide-ship-name" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 7
+
+$Name: Beacon Marker		;! Object #60
+
+$Display name:  XSTR("Beacon Marker", 2224)
+$Class: Waypoint#Marker
+$Team: Friendly
+$Location: -738.445679, -0.000038, -639.736206
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no_collide" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+#Wings		;! 6 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   0 
+   "Omega 1" 
+   "Omega 2" 
+)
+$Ships: (		;! 4 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+	"Alpha 4"
+)
++Flags: ( )
+
+$Name: Skadi
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Skadi 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Skadi 1"
+	"Skadi 2"
+	"Skadi 3"
+	"Skadi 4"
+)
++Flags: ( )
+
+$Name: Roskva
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Roskva 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 300
+$Arrival Anchor: Beacon Marker
+$Arrival Cue: ( or 
+   ( has-arrived-delay 14 "Decoy Beacon" ) 
+   ( is-event-true-delay 
+      "Disable Transports" 
+      100 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-destroyed-delay 
+      0 
+      "Roskva 1" 
+      "Roskva 2" 
+   )
+   ( is-event-true-delay 
+      "Is 'Beta close' true?" 
+      7 
+   )
+)
+$Ships: (		;! 3 total
+	"Roskva 1"
+	"Roskva 2"
+	"Roskva 3"
+)
++Flags: ( )
+
+$Name: Thiazi
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Thiazi 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 300
+$Arrival Anchor: Beacon Marker
+$Arrival Cue: ( has-arrived-delay 0 "Roskva" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( percent-ships-destroyed 
+   70 
+   "Roskva" 
+   "Thiazi" 
+)
+$Ships: (		;! 2 total
+	"Thiazi 1"
+	"Thiazi 2"
+)
+$AI Goals: ( goals ( ai-chase-any 89 ) )
++Flags: ( )
+
+$Name: Bragi
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Bragi 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 300
+$Arrival Anchor: Beacon Marker
+$Arrival Cue: ( or 
+   ( and 
+      ( not 
+         ( is-event-true-delay "Beta close" 4 ) 
+      )
+      ( destroyed-or-departed-delay 
+         16 
+         "Roskva" 
+         "Thiazi" 
+      )
+   )
+   ( is-disabled-delay 
+      14 
+      "Beta 1 (Kraken)" 
+      "Beta 2 (Kraken)" 
+   )
+   ( has-arrived-delay 112 "Roskva" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-destroyed-delay 
+      0 
+      "Bragi 2" 
+      "Bragi 3" 
+   )
+   ( is-event-true-delay 
+      "Is 'Beta close' true?" 
+      9 
+   )
+)
+$Ships: (		;! 3 total
+	"Bragi 1"
+	"Bragi 2"
+	"Bragi 3"
+)
++Flags: ( )
+
+$Name: Hrid
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Hrid 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 300
+$Arrival Anchor: Beacon Marker
++Arrival delay: 15
+$Arrival Cue: ( and 
+   ( or 
+      ( is-destroyed-delay 14 "Bragi" ) 
+      ( has-arrived-delay 95 "Bragi" ) 
+   )
+   ( is-disabled-delay 
+      24 
+      "Beta 1 (Kraken)" 
+      "Beta 2 (Kraken)" 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( percent-ships-destroyed 75 "Hrid" ) 
+   ( destroyed-or-departed-delay 
+      0 
+      "Omega 1" 
+      "Omega 2" 
+   )
+)
+$Ships: (		;! 4 total
+	"Hrid 1"
+	"Hrid 2"
+	"Hrid 3"
+	"Hrid 4"
+)
+$AI Goals: ( goals ( ai-chase "Omega 1" 89 ) ( ai-ignore-new "Alpha 1" 89 ) ( ai-ignore-new "Alpha 2" 89 ) ( ai-ignore-new "Alpha 3" 89 ) ( ai-ignore-new "Alpha 4" 89 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+#Events		;! 107 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@SnailCheck[snail]" 
+      "Snail" 
+      2099 
+   )
+   ( modify-variable-xstr 
+      "@SnailPlural[snails]" 
+      "Snails" 
+      2100 
+   )
+   ( modify-variable-xstr 
+      "@CommandSender[#Command]" 
+      "#Command" 
+      2101 
+   )
+   ( modify-variable-xstr 
+      "@Traitor1[Ship Status:]" 
+      "Ship Status:" 
+      2017 
+   )
+   ( modify-variable-xstr 
+      "@Traitor2[Disabled By Remote]" 
+      "Disabled By Remote" 
+      2018 
+   )
+)
++Name: Translation & Localization
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: -----CAMPAIGN EVENTS-----
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "Camp Mode" 0 ) 
+   ( modify-variable 
+      @SnailTemp[0] 
+      @SnailFound[0] 
+   )
+)
++Name: Campaign Variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-previous-event-false 
+      "bta1_m1_00" 
+      "Camp Mode" 
+      ( false ) 
+   )
+   ( modify-variable 
+      "@CampMode[false]" 
+      "true" 
+   )
+   ( when 
+      ( string-equals 
+         "@SnailSave[false]" 
+         "true" 
+      )
+      ( modify-variable 
+         "@SnailSave[false]" 
+         "false" 
+      )
+   )
+)
++Name: Camp Mode
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( player-is-cheating ) 
+   ( hud-gauge-set-active 
+      "CheaterCheater" 
+      ( true ) 
+   )
+)
++Name: Cheater Cheater ON
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( != @CampaignMode[0] 4 ) 
+      ( is-event-true-delay "Camp Mode" 0 ) 
+   )
+   ( modify-variable @CampaignMode[0] 4 ) 
+   ( modify-variable 
+      @CheckpointReached[0] 
+      0 
+   )
+   ( script-eval "deleteshipsavefile()" ) 
+)
++Name: Campaign Setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "All good" 0 ) 
+      ( not 
+         ( is-event-true-delay 
+            "GTA fighter 'sploded" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Transports Destroyed" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Continue Campaign
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "All good" 0 ) 
+      ( key-pressed "Alt-J" ) 
+      ( is-event-true-delay "Camp Mode" 0 ) 
+      ( and 
+         ( is-event-true-delay "All good" 0 ) 
+         ( not 
+            ( is-event-true-delay 
+               "GTA fighter 'sploded" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Transports Destroyed" 
+               0 
+            )
+         )
+      )
+   )
+   ( modify-variable 
+      @SnailFound[0] 
+      @SnailTemp[0] 
+   )
+   ( modify-variable 
+      "@SnailSave[false]" 
+      "false" 
+   )
+   ( when 
+      ( true ) 
+      ( tech-add-intel-xstr 
+         "Admiral Po" 
+         1141 
+      )
+      ( tech-add-intel-xstr 
+         "Kalev Ehin" 
+         1143 
+      )
+      ( tech-add-intel-xstr 
+         "Ozymandias" 
+         1139 
+      )
+      ( tech-add-weapons "DisruptorSDG" ) 
+      ( allow-weapon "DisruptorSDG" ) 
+      ( allow-weapon "Fang" ) 
+      ( script-eval-block 
+         "jsv(1, '" 
+         "head02" 
+         "')" 
+      )
+      ( script-eval-block 
+         "jsv(1, '" 
+         "head03" 
+         "')" 
+      )
+      ( script-eval-block 
+         "jsv(2, '" 
+         "edit05" 
+         "')" 
+      )
+      ( script-eval-block 
+         "jsv(2, '" 
+         "edit06" 
+         "')" 
+      )
+   )
+)
++Name: Campaign Mission Success
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "Camp Mode" 0 ) 
+   ( when 
+      ( and 
+         ( > @SnailFound[0] 10 ) 
+         ( = 
+            ( script-eval-num 
+               "fexist('bta1_a1_snails.fs2')" 
+            )
+            0 
+         )
+      )
+      ( script-eval-block 
+         "flcpy('maps','missions','" 
+         "bonus1.dds" 
+         "','" 
+         "bta1_a1_snails.fs2" 
+         "')" 
+      )
+      ( show-subtitle-text 
+         "Mission Unlocked!" 
+         0 
+         20 
+         ( true ) 
+         ( false ) 
+         2000 
+         2000 
+      )
+      ( play-sound-from-file "arcade.ogg" ) 
+   )
+   ( when 
+      ( and 
+         ( > 
+            ( script-eval-num "getCarrot()" ) 
+            0 
+         )
+         ( = 
+            ( script-eval-num 
+               "fexist('bta1_a2_carrots.fs2')" 
+            )
+            0 
+         )
+      )
+      ( script-eval-block 
+         "flcpy('maps','missions','" 
+         "bonus2.dds" 
+         "','" 
+         "bta1_a2_carrots.fs2" 
+         "')" 
+      )
+      ( show-subtitle-text 
+         "Mission Unlocked!" 
+         0 
+         20 
+         ( true ) 
+         ( false ) 
+         2000 
+         2000 
+      )
+      ( play-sound-from-file "arcade.ogg" ) 
+   )
+)
++Name: Bonus Missions
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: -----END CAMPAIGN EVENTS-----
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-out 0 1 ) 
+   ( play-sound-from-file "warp_1.wav" ) 
+   ( fade-in 1500 ) 
+)
++Name: Exit Warp
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Majestic" 
+      "Adele" 
+      "Laybenne-TLY-002" 
+      "Laybenne-TLY-003" 
+      "Laybenne-TLY-004" 
+      "Pioneer 21" 
+      "Stennis Shipping 1" 
+      "Stennis Shipping 2" 
+      "Cross Creek" 
+      "Tranquility" 
+   )
+   ( true ) 
+   ( turret-lock-all 
+      "Majestic" 
+      "Adele" 
+      "Laybenne-TLY-002" 
+      "Laybenne-TLY-003" 
+      "Laybenne-TLY-004" 
+      "Pioneer 21" 
+      "Stennis Shipping 1" 
+      "Stennis Shipping 2" 
+      "Kraken" 
+   )
+   ( cap-waypoint-speed "<argument>" 25 ) 
+   ( script-eval 
+      "pm('optimalvelocity.ogg',1,100)" 
+   )
+)
++Name: Initial Conditions
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-guardian-threshold 
+      ( rand-multiple 15 32 ) 
+      "Alpha 2" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 15 32 ) 
+      "Alpha 3" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 15 32 ) 
+      "Alpha 4" 
+   )
+)
++Name: Alpha guardian - TRIG
++Repeat Count: -1
++Trigger Count: 3
++Interval: 2
+
+$Formula: ( when 
+   ( has-time-elapsed 2 ) 
+   ( send-message-list 
+      "Alpha 3" 
+      "High" 
+      "A3 - got'em" 
+      0 
+      "Alpha 2" 
+      "High" 
+      "A2 - get'em" 
+      6000 
+      "Majestic" 
+      "High" 
+      "Maj - under attack" 
+      7500 
+      "Omega 1" 
+      "High" 
+      "O1 - that's it" 
+      7000 
+      "Kraken" 
+      "High" 
+      "Krak - help coming" 
+      5000 
+      "Alpha 2" 
+      "High" 
+      "A2 - full pwr" 
+      7000 
+   )
+   ( script-eval "saveship('Alpha 1')" ) 
+   ( ship-subsys-guardian-threshold 
+      13 
+      "Omega 1" 
+      "engine" 
+   )
+   ( ship-subsys-guardian-threshold 
+      7 
+      "Omega 2" 
+      "engine" 
+   )
+)
++Name: Intro
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-disabled-delay 
+      0 
+      "Cross Creek" 
+      "Tranquility" 
+   )
+   ( key-reset-multiple "1" ) 
+   ( script-eval 
+      "pm('settlethescore.ogg',1,100)" 
+   )
+)
++Name: Disable Transports
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Objective:  XSTR("Disable Transports", 2225)
++Objective key:  XSTR("Ignore Skadi Wing", 2226)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Transports" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Player took too long" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Omega 1" 
+      "High" 
+      "O1 - disabled, beacon" 
+   )
+   ( flash-hud-gauge "DIRECTIVES_VIEW" ) 
+   ( add-remove-escort "Omega 2" 33 ) 
+   ( add-remove-escort "Omega 1" 33 ) 
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-stay-near-ship "Alpha 1" 89 ) 
+   )
+   ( add-goal 
+      "Alpha 3" 
+      ( ai-stay-near-ship "Alpha 1" 89 ) 
+   )
+   ( add-goal 
+      "Alpha 4" 
+      ( ai-stay-near-ship "Alpha 1" 89 ) 
+   )
+   ( set-object-position 
+      "Beacon Marker" 
+      ( get-object-x "Cross Creek" ) 
+      ( get-object-y "Cross Creek" ) 
+      ( get-object-z "Cross Creek" ) 
+   )
+)
++Name: Disabled in time?
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "GTA Recon 415" 
+   )
+   ( set-object-position 
+      "Beacon Marker" 
+      ( get-object-x "Decoy Beacon" ) 
+      ( get-object-y "Decoy Beacon" ) 
+      ( get-object-z "Decoy Beacon" ) 
+   )
+)
++Name: Deploy Decoy Beacon
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Objective:  XSTR("Deploy Decoy Beacon", 2227)
++Objective key:  XSTR("Press $Alt-Shift-S$", 4624)
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Disabled in time?" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: Is 'Disabled in time?' true?
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      1 
+      "PVN Recon 087" 
+   )
+   ( do-nothing ) 
+)
++Name: Prevent Scanning of Omega
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Objective:  XSTR("Prevent Scanning of Omega", 2228)
+
+$Formula: ( when-argument 
+   ( any-of "Tranquility" "Cross Creek" ) 
+   ( is-disabled-delay 0 "<argument>" ) 
+   ( add-remove-escort "<argument>" 0 ) 
+   ( invalidate-argument "<argument>" ) 
+   ( change-iff "Unknown" "<argument>" ) 
+   ( change-iff-color 
+      "Friendly" 
+      "Unknown" 
+      100 
+      175 
+      175 
+      "<argument>" 
+   )
+)
++Name: Remove transport from EL - TRIG
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-time-elapsed 4 ) 
+   ( add-goal 
+      "Skadi 1" 
+      ( ai-chase "Alpha 1" 89 ) 
+   )
+   ( add-goal 
+      "Skadi 2" 
+      ( ai-chase "Alpha 2" 89 ) 
+   )
+   ( add-goal 
+      "Skadi 3" 
+      ( ai-chase "Alpha 3" 89 ) 
+   )
+   ( add-goal 
+      "Skadi 4" 
+      ( ai-chase "Alpha 4" 89 ) 
+   )
+)
++Name: Skadi reacts to Alpha
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( cap-waypoint-speed "Cross Creek" 55 ) 
+   ( cap-waypoint-speed "Tranquility" 55 ) 
+)
++Name: Transports speed up
++Repeat Count: 1
++Interval: 1
++Chained: 16
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "Gamma 1 (Kraken)" 
+      "Gamma 2 (Kraken)" 
+      "Beta 1 (Kraken)" 
+      "Beta 2 (Kraken)" 
+      "Alpha 1 (Kraken)" 
+      "Alpha 2 (Kraken)" 
+      "Alpha 3 (Kraken)" 
+   )
+   ( do-nothing ) 
+)
++Name: Avoid GTA Fighters
++Repeat Count: 1
++Interval: 1
++Chained: 40
++Objective key:  XSTR("GTA Fighters - Press F11", 2229)
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Transports" 
+         0 
+      )
+      ( key-pressed "Alt-Shift-S" ) 
+   )
+   ( do-nothing ) 
+)
++Name: Deploy Beacon
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Roskva" ) 
+   ( do-nothing ) 
+)
++Name: Intercept Roskva
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Roskva", 2230)
+
+$Formula: ( when-argument 
+   ( any-of "Omega 1" ) 
+   ( and 
+      ( has-docked-delay 
+         "<argument>" 
+         "Tranquility" 
+         1 
+         10 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Prevent scanning failed" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "<argument>" 
+      "High" 
+      "O2 - docked" 
+   )
+   ( turret-lock-all "Omega 1" "Omega 2" ) 
+)
++Name: Omega docking
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Roskva 1" 
+      "Roskva 2" 
+      "Bragi 2" 
+      "Bragi 3" 
+   )
+   ( and 
+      ( or 
+         ( < 
+            ( distance "<argument>" "Omega 1" ) 
+            2000 
+         )
+         ( < 
+            ( distance "<argument>" "Omega 2" ) 
+            2000 
+         )
+      )
+      ( not 
+         ( has-departed-delay 0 "Omega 1" ) 
+      )
+   )
+   ( do-nothing ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase-any 89 ) 
+   )
+   ( when-argument 
+      ( any-of 
+         "O1 - incoming 2" 
+         "O1 - incoming 3" 
+      )
+      ( true ) 
+      ( send-message 
+         "Omega 1" 
+         "High" 
+         "<argument>" 
+      )
+      ( invalidate-argument "<argument>" ) 
+   )
+)
++Name: Bandits close - TRIG
++Repeat Count: -1
++Trigger Count: 3
++Interval: 45
+
+$Formula: ( when 
+   ( has-time-elapsed 75 ) 
+   ( add-goal 
+      "Stennis Shipping 1" 
+      ( ai-waypoints-once 
+         "Stennis evasive waypt" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Stennis Shipping 2" 
+      ( ai-waypoints-once 
+         "Stennis evasive waypt" 
+         89 
+      )
+   )
+   ( cap-waypoint-speed 
+      "Stennis Shipping 1" 
+      60 
+   )
+   ( cap-waypoint-speed 
+      "Stennis Shipping 2" 
+      60 
+   )
+)
++Name: Stennis evasive
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance 
+         "Stennis Shipping 1" 
+         "Stennis evasive waypt:1" 
+      )
+      400 
+   )
+   ( clear-goals 
+      "Stennis Shipping 1" 
+      "Stennis Shipping 2" 
+   )
+)
++Name: Clear Stennis orders
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Stennis Shipping 1" 
+      ( ai-waypoints-once 
+         "stennis 1 finish waypt" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Stennis Shipping 2" 
+      ( ai-waypoints-once 
+         "stennis 2 finish waypt" 
+         89 
+      )
+   )
+)
++Name: Stennis resumes normal waypts
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( cap-waypoint-speed 
+      "Stennis Shipping 1" 
+      25 
+   )
+   ( cap-waypoint-speed 
+      "Stennis Shipping 2" 
+      25 
+   )
+)
++Name: Stennis resumes normal speed
++Repeat Count: 1
++Interval: 1
++Chained: 50
+
+$Formula: ( when-argument 
+   ( any-of "Omega 1" "Omega 2" ) 
+   ( < 
+      ( distance 
+         "Beta 1 (Kraken)" 
+         "<argument>" 
+      )
+      8500 
+   )
+   ( send-message 
+      "Alpha 3" 
+      "High" 
+      "A3 - cmon cmon" 
+   )
+)
++Name: Alpha Gets Worried
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of "Omega 1" "Omega 2" ) 
+   ( < 
+      ( distance 
+         "Beta 1 (Kraken)" 
+         "<argument>" 
+      )
+      12000 
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 - beta warning 1" 
+      0 
+      "Omega 1" 
+      "High" 
+      "O1 - Stand by" 
+      5500 
+   )
+)
++Name: Beta Getting Close
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of "Omega 1" "Omega 2" ) 
+   ( < 
+      ( distance 
+         "Beta 1 (Kraken)" 
+         "<argument>" 
+      )
+      6000 
+   )
+   ( send-message 
+      "Omega 1" 
+      "High" 
+      "O1 - Beta close, trouble" 
+   )
+   ( script-eval 
+      "pm('btwnlghtandshdw.ogg',1,100)" 
+   )
+)
++Name: Beta close
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Alpha 2" ) 
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - ack" 
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-disable-ship 
+         "Beta 1 (Kraken)" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-disable-ship 
+         "Beta 2 (Kraken)" 
+         89 
+      )
+   )
+)
++Name: MSG - A2 - ok
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( is-disabled-delay 
+      0 
+      "Beta 1 (Kraken)" 
+      "Beta 2 (Kraken)" 
+   )
+   ( protect-ship "Beta 1 (Kraken)" ) 
+   ( protect-ship "Beta 2 (Kraken)" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Omega 1" 89 ) 
+   )
+)
++Name: Disable Beta
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Disable Beta", 2231)
++Objective key:  XSTR("Press F11", 2047)
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Beta 1 (Kraken)" 
+      "High" 
+      "B1 - this sux" 
+   )
+)
++Name: MSG - B1 - this sux
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( is-event-true-delay "Beta close" 0 ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-disable-ship 
+         "Beta 1 (Kraken)" 
+         200 
+      )
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-disable-ship 
+         "Beta 2 (Kraken)" 
+         89 
+      )
+   )
+)
++Name: Is 'Beta close' true?
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Kraken" 
+      "High" 
+      "Krak - stop this crap" 
+   )
+)
++Name: MSG - Krak - stop!
++Repeat Count: 1
++Interval: 1
++Chained: 22
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Beta 1 (Kraken)" 
+      "Beta 2 (Kraken)" 
+   )
+   ( is-disabled-delay 0 "<argument>" ) 
+   ( change-iff "Unknown" "<argument>" ) 
+   ( change-iff-color 
+      "Friendly" 
+      "Unknown" 
+      100 
+      175 
+      175 
+      "<argument>" 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Beta IFF, AI - TRIG
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Omega 2" 
+      "Tranquility" 
+      1 
+      150 
+   )
+   ( transfer-cargo 
+      "Tranquility" 
+      "Omega 2" 
+   )
+)
++Name: Tranq-O2 tranfer
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-docked-delay 
+         "Omega 2" 
+         "Tranquility" 
+         1 
+         159 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Omega 2" ) 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Tranquility" ) 
+      )
+   )
+   ( add-goal "Omega 2" ( ai-undock 89 ) ) 
+)
++Name: Omega 2 finished
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "Omega 2" 
+      "High" 
+      "O2 - we're good" 
+      0 
+      "Omega 1" 
+      "High" 
+      "O1 - stalling" 
+      7000 
+   )
+)
++Name: MSG - O2 - finished
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( self-destruct "Tranquility" ) 
++Name: Tranquility 'splodes!
++Repeat Count: 1
++Interval: 1
++Chained: 18
+
+$Formula: ( when 
+   ( has-undocked-delay 
+      "Omega 2" 
+      "Tranquility" 
+      1 
+      7 
+   )
+   ( add-goal 
+      "Omega 2" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: Omega 2 departure order
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 3 "Support 1" ) 
+   ( send-message 
+      "Omega 1" 
+      "High" 
+      "O1 - support ship" 
+   )
+)
++Name: Support Ship Alert
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( false ) 
+   ( add-remove-escort "Support 1" 40 ) 
+   ( flash-hud-gauge "ESCORT_VIEW" ) 
+)
++Name: Add Support 1 to EL-DISABLED
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-disabled-delay 0 "Support 1" ) 
+   ( change-iff "Unknown" "Support 1" ) 
+   ( change-iff-color 
+      "Friendly" 
+      "Unknown" 
+      0 
+      0 
+      255 
+      "Support 1" 
+   )
+)
++Name: Disable Support Ship
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Disable Support Ship", 2232)
+
+$Formula: ( when 
+   ( is-event-true-delay "Intro" 5 ) 
+   ( flash-hud-gauge "DIRECTIVES_VIEW" ) 
+)
++Name: Flash Directives HUD box
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( flash-hud-gauge "DIRECTIVES_VIEW" ) 
++Name: Flash again
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Bragi" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Bragi
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Bragi", 2052)
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Disable Beta" 
+         1 
+      )
+      ( not 
+         ( is-event-true-delay "Beta close" 0 ) 
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - Alpha inbound" 
+   )
+)
++Name: MSG - A2 - Hercs
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( has-arrived-delay 
+      3 
+      "Decoy Beacon" 
+      "Hrid" 
+   )
+   ( self-destruct "PVN Recon 087" ) 
+)
++Name: Hrid inbound
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Hrid" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Hrid
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Objective:  XSTR("Destroy Hrid", 2233)
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 0 "Decoy Beacon" ) 
+      ( has-arrived-delay 2 "Hrid" ) 
+   )
+   ( send-message 
+      "Omega 1" 
+      "High" 
+      "O1 - bombers" 
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Hrid" 150 ) 
+   )
+)
++Name: Hrid inbound message
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "PVN Recon 087" 
+   )
+   ( send-message 
+      "Omega 1" 
+      "High" 
+      "O1 - scans made, scrwd" 
+   )
+)
++Name: Prevent scanning failed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Omega 1" "Omega 2" ) 
+)
++Name: AI aborts mission
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal "Omega 1" ( ai-undock 89 ) ) 
+   ( add-goal "Omega 2" ( ai-undock 89 ) ) 
+)
++Name: Omega undocks
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: RTB - Mission failed!
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Abort Mission", 2049)
++Objective key:  XSTR("Press $Alt-J$", 1604)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "AI aborts mission" 
+      4 
+   )
+   ( add-goal "Alpha" ( ai-warp-out 89 ) ) 
+)
++Name: Alpha leaves - failure
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Omega 1" 
+      ( ai-warp-out 89 ) 
+   )
+   ( add-goal 
+      "Omega 2" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: Omega leaves - failure
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( percent-ships-destroyed 
+      1 
+      "Gamma 1 (Kraken)" 
+      "Gamma 2 (Kraken)" 
+      "Beta 1 (Kraken)" 
+      "Beta 2 (Kraken)" 
+      "Alpha 1 (Kraken)" 
+      "Alpha 2 (Kraken)" 
+      "Alpha 3 (Kraken)" 
+      "Alpha 4 (Kraken)" 
+      "Support 1" 
+   )
+   ( send-message 
+      "Omega 1" 
+      "High" 
+      "O1 - WTF" 
+   )
+   ( flash-hud-gauge "DIRECTIVES_VIEW" ) 
+)
++Name: GTA fighter 'sploded
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal "Omega 1" ( ai-undock 89 ) ) 
+   ( add-goal "Omega 2" ( ai-undock 89 ) ) 
+)
++Name: Omega undocks again
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Omega undocks" 
+         5 
+      )
+      ( is-event-true-delay 
+         "Omega undocks again" 
+         5 
+      )
+      ( is-event-true-delay 
+         "Omega Undocks third time" 
+         5 
+      )
+   )
+   ( add-goal 
+      "Omega 1" 
+      ( ai-warp-out 89 ) 
+   )
+   ( add-goal 
+      "Omega 2" 
+      ( ai-warp-out 89 ) 
+   )
+   ( add-goal "Alpha" ( ai-warp-out 89 ) ) 
+)
++Name: Omaga leaves cause failure
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "End mission - failure" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Omega 1 destroyed" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: End Mission Failure True
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: Mission Failed
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return to Base", 1603)
++Objective key:  XSTR("Press $Alt-J$", 1604)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "GTA fighter 'sploded" 
+      1 
+   )
+   ( add-goal "Alpha" ( ai-warp-out 89 ) ) 
+   ( add-goal "Omega 1" ( ai-undock 89 ) ) 
+   ( add-goal "Omega 2" ( ai-undock 89 ) ) 
+)
++Name: End mission - failure
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Omega 2 finished" 
+         100 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Omega 1" ) 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Omega 2" ) 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Cross Creek" ) 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "GTA fighter 'sploded" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Omega 1" 
+      "High" 
+      "O1 - we're good" 
+   )
+   ( transfer-cargo 
+      "Cross Creek" 
+      "Omega 1" 
+   )
+)
++Name: Omega 1 finished!
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal "Omega 1" ( ai-undock 89 ) ) 
+)
++Name: Omega 1 undocks
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Omega 1" ) 
+   ( self-destruct "PVN Recon 087" ) 
+)
++Name: Stay near Omega 1
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Wait for Omega 1 to depart", 2234)
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 0 "Cross Creek" ) 
+      ( is-event-true-delay 
+         "Omega 1 undocks" 
+         0 
+      )
+      ( has-departed-delay 0 "Omega 1" ) 
+   )
+   ( send-message 
+      "@CommandSender[#Command]" 
+      "High" 
+      "COM - mission success" 
+   )
+   ( key-reset "Alt-J" ) 
+)
++Name: All good
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: RTB - Success!
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return to Base", 1603)
++Objective key:  XSTR("Press $Alt-J$", 1604)
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "All good" 0 ) 
+      ( key-pressed "Alt-J" ) 
+   )
+   ( protect-ship "Alpha 1" ) 
+)
++Name: Player Warps Out
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-undocked-delay 
+         "Omega 1" 
+         "Cross Creek" 
+         1 
+         6 
+      )
+      ( is-event-true-delay 
+         "Omega 1 finished!" 
+         0 
+      )
+   )
+   ( add-goal 
+      "Omega 1" 
+      ( ai-waypoints-once 
+         "O1 departure waypt" 
+         89 
+      )
+   )
+   ( send-message 
+      "Omega 1" 
+      "High" 
+      "O1 - clear and rdy!" 
+   )
+)
++Name: Omega 1 flies away
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( add-goal 
+   "Omega 1" 
+   ( ai-warp-out 89 ) 
+)
++Name: Omega 1 jumps
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Omega 1 jumps" 
+         0 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Cross Creek" ) 
+      )
+   )
+   ( self-destruct "Cross Creek" ) 
+)
++Name: EMP weapon detonate cue
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+   ( true ) 
+   ( add-goal 
+      "<argument>" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: Rest of Alpha departs
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( unprotect-ship "Alpha 1" ) 
+)
++Name: Unprotect player
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 0 "Omega 1" ) 
+      ( not 
+         ( is-event-true-delay 
+            "GTA fighter 'sploded" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@CommandSender[#Command]" 
+      "High" 
+      "COM - oh crap" 
+   )
+   ( hud-gauge-set-active 
+      "SecureChannel" 
+      ( true ) 
+   )
+)
++Name: Omega 1 destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-gauge-set-active 
+      "SecureChannel" 
+      ( false ) 
+   )
+)
++Name: Clear Special Gauge
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: RTB - Mission failed! 2
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Abort Mission", 2049)
++Objective key:  XSTR("Press $Alt-J$", 1604)
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+   ( is-event-true-delay 
+      "Omega 1 destroyed" 
+      8 
+   )
+   ( add-goal 
+      "<argument>" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: Alpha leaves in disgrace
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of "Roskva" "Bragi" "Hrid" ) 
+   ( and 
+      ( destroyed-or-departed-delay 
+         0 
+         "<argument>" 
+      )
+      ( or 
+         ( not 
+            ( is-event-true-delay "Beta close" 0 ) 
+         )
+         ( is-disabled-delay 
+            0 
+            "Beta 1 (Kraken)" 
+            "Beta 2 (Kraken)" 
+         )
+      )
+   )
+   ( clear-goals "Alpha" ) 
+   ( add-goal 
+      "Alpha 3" 
+      ( ai-stay-near-ship "Omega 2" 89 ) 
+   )
+   ( add-goal 
+      "Alpha 4" 
+      ( ai-stay-near-ship "Omega 2" 89 ) 
+   )
+   ( when 
+      ( has-departed-delay 0 "Omega 2" ) 
+      ( add-goal 
+         "Alpha 3" 
+         ( ai-stay-near-ship "Omega 1" 89 ) 
+      )
+      ( add-goal 
+         "Alpha 4" 
+         ( ai-stay-near-ship "Omega 1" 89 ) 
+      )
+   )
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-stay-near-ship "Omega 1" 89 ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Alpha stay near Omega - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+   ( and 
+      ( is-event-true-delay "Beta close" 6 ) 
+      ( destroyed-or-departed-delay 
+         0 
+         "Bragi" 
+      )
+   )
+   ( add-goal 
+      "<argument>" 
+      ( ai-disable-ship 
+         "Beta 1 (Kraken)" 
+         89 
+      )
+   )
+   ( add-goal 
+      "<argument>" 
+      ( ai-disable-ship 
+         "Beta 2 (Kraken)" 
+         89 
+      )
+   )
+)
++Name: Alpha after Beta
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Beta 1 (Kraken)" 
+      "Beta 2 (Kraken)" 
+   )
+   ( < ( hits-left "<argument>" ) 20 ) 
+   ( protect-ship "<argument>" ) 
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Beta heavily damaged - TRIG
++Repeat Count: -1
++Trigger Count: 2
++Interval: 2
+
+$Formula: ( every-time-argument 
+   ( any-of 
+      "Beta 1 (Kraken)" 
+      "Beta 2 (Kraken)" 
+   )
+   ( < 
+      ( hits-left-subsystem-specific 
+         "<argument>" 
+         "engine" 
+      )
+      50 
+   )
+   ( set-afterburner-energy 
+      0 
+      "<argument>" 
+   )
+)
++Name: Beta helper event - EV
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-time-elapsed 110 ) 
+      ( not 
+         ( is-event-true-delay 
+            "Disable Transports" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Transports Destroyed" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "GTA fighter 'sploded" 
+            0 
+         )
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Omega 1" ) 
+      )
+   )
+   ( send-message 
+      "Omega 1" 
+      "High" 
+      "O1 - no go" 
+   )
+)
++Name: Player took too long
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal "Omega 1" ( ai-undock 89 ) ) 
+   ( add-goal "Omega 2" ( ai-undock 89 ) ) 
+)
++Name: Omega Undocks third time
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Omega 1" "Omega 2" ) 
+   ( add-goal 
+      "Omega 1" 
+      ( ai-warp-out 89 ) 
+   )
+   ( add-goal 
+      "Omega 2" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: Clear Omega goals
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: RTB - Mission failed! 3
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Abort Mission", 2049)
++Objective key:  XSTR("Press $Alt-J$", 1604)
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+   ( is-event-true-delay 
+      "Clear Omega goals" 
+      3 
+   )
+   ( add-goal 
+      "<argument>" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: All depart
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Battle Snail" "Alpha 1" ) 
+         400 
+      )
+      ( is-facing 
+         "Alpha 1" 
+         "Battle Snail" 
+         43 
+      )
+   )
+   ( ship-unstealthy "Battle Snail" ) 
+   ( ship-visible "Battle Snail" ) 
+   ( add-goal 
+      "Battle Snail" 
+      ( ai-evade-ship "Alpha 1" 89 ) 
+   )
+)
++Name: Snail discovered!
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 
+      0 
+      "Battle Snail" 
+   )
+   ( add-goal 
+      "Battle Snail" 
+      ( ai-evade-ship "Alpha 1" 89 ) 
+   )
+   ( modify-variable 
+      @SnailTemp[0] 
+      ( + @SnailFound[0] 1 ) 
+   )
+   ( training-msg 
+      "BattleSnail!!!" 
+      "BattleSnail!!!" 
+      0 
+      2 
+   )
+   ( play-sound-from-file 
+      "battlesnail.ogg" 
+   )
+   ( modify-variable 
+      "@SnailSave[false]" 
+      "true" 
+   )
+)
++Name: Snail scanned!
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( >= @SnailTemp[0] 1 ) 
+   ( modify-variable 
+      "@SnailCheck[snail]" 
+      "@SnailPlural[snails]" 
+   )
+)
++Name: Snail Syntax Variable
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Beta" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Snail scanned!" 
+            0 
+         )
+      )
+   )
+   ( clear-goals "Battle Snail" ) 
+   ( add-goal 
+      "Battle Snail" 
+      ( ai-waypoints-once 
+         "liner finish waypt" 
+         89 
+      )
+   )
+)
++Name: Snail heads for Kraken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Deploy Beacon" 
+      0 
+   )
+   ( if-then-else 
+      ( <= 
+         ( distance 
+            "Decoy Beacon" 
+            "Cross Creek" 
+         )
+         3050 
+      )
+      ( modify-variable @BetaDelay[36] 30 ) 
+      ( do-nothing ) 
+   )
+   ( if-then-else 
+      ( <= 
+         ( distance 
+            "Decoy Beacon" 
+            "Cross Creek" 
+         )
+         1500 
+      )
+      ( modify-variable @BetaDelay[36] 5 ) 
+      ( do-nothing ) 
+   )
+)
++Name: Beacon Distance Variable
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-destroyed-delay 2 "Cross Creek" ) 
+         ( not 
+            ( is-event-true-delay 
+               "EMP weapon detonate cue" 
+               0 
+            )
+         )
+         ( not 
+            ( is-destroyed-delay 0 "Omega 1" ) 
+         )
+      )
+      ( and 
+         ( is-destroyed-delay 2 "Tranquility" ) 
+         ( not 
+            ( is-event-true-delay 
+               "Tranquility 'splodes!" 
+               0 
+            )
+         )
+         ( not 
+            ( is-destroyed-delay 0 "Omega 2" ) 
+         )
+      )
+   )
+   ( send-message 
+      "@CommandSender[#Command]" 
+      "High" 
+      "COM - Transport Down" 
+   )
+   ( add-goal "Alpha" ( ai-warp-out 89 ) ) 
+   ( add-goal "Omega 1" ( ai-undock 89 ) ) 
+   ( add-goal "Omega 2" ( ai-undock 89 ) ) 
+   ( hud-gauge-set-active 
+      "SecureChannel" 
+      ( true ) 
+   )
+)
++Name: Transports Destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-gauge-set-active 
+      "SecureChannel" 
+      ( false ) 
+   )
+)
++Name: Clear Gauge Again
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Transports Destroyed" 
+      2 
+   )
+   ( add-goal 
+      "Omega 1" 
+      ( ai-warp-out 89 ) 
+   )
+   ( add-goal 
+      "Omega 2" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: Transports Warp Out
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: RTB - Mission failed! 3
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Abort Mission", 2049)
++Objective key:  XSTR("Press $Alt-J$", 1604)
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Deploy Beacon" 
+         0 
+      )
+      ( >= 
+         ( distance 
+            "Decoy Beacon" 
+            "Cross Creek" 
+         )
+         2900 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Beacon Placed Correctly
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Support 1" 
+      "Beta 1 (Kraken)" 
+      1 
+      25 
+   )
+   ( repair-subsystem 
+      "Beta 1 (Kraken)" 
+      "engine" 
+      100 
+   )
+   ( add-goal 
+      "Support 1" 
+      ( ai-undock 89 ) 
+   )
+   ( send-message 
+      "@CommandSender[#Command]" 
+      "High" 
+      "COM - Beta Back Up" 
+   )
+   ( change-iff 
+      "Hostile" 
+      "Beta 1 (Kraken)" 
+   )
+   ( unprotect-ship "Beta 1 (Kraken)" ) 
+)
++Name: Support Docks Beta 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Support 1" 
+      ( ai-dock 
+         "Beta 2 (Kraken)" 
+         "lower ring" 
+         "fighter dock" 
+         89 
+      )
+   )
+)
++Name: Support To Beta 2
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Support 1" 
+      "Beta 2 (Kraken)" 
+      1 
+      25 
+   )
+   ( repair-subsystem 
+      "Beta 2 (Kraken)" 
+      "engine" 
+      100 
+   )
+   ( add-goal 
+      "Support 1" 
+      ( ai-undock 89 ) 
+   )
+   ( change-iff 
+      "Hostile" 
+      "Beta 2 (Kraken)" 
+   )
+   ( unprotect-ship "Beta 2 (Kraken)" ) 
+)
++Name: Support Docks Beta 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "Alt-J" ) 
+      ( not 
+         ( is-event-true-delay 
+            "Omega undocks" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "End Mission Failure True" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay "All good" 0 ) 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Clear Special Gauge" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Clear Omega goals" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Transports Warp Out" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Alpha Leaves Cause Why
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-iff "Traitor" "Alpha 1" ) 
+   ( clear-goals "Alpha" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( script-eval "Lockdown('Alpha 1')" ) 
+   ( hud-set-custom-gauge-active 
+      ( true ) 
+      "CommTreeMain" 
+      "CommTree1" 
+   )
+   ( hud-set-text 
+      "CommTreeMain" 
+      "@Traitor1[Ship Status:]" 
+   )
+   ( hud-set-text 
+      "CommTree1" 
+      "@Traitor2[Disabled By Remote]" 
+   )
+   ( hud-set-color "CommTree1" 255 0 0 ) 
+   ( fade-out 10000 ) 
+)
++Name: Alpha Goes Traitor
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: Traitor End Mission
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+#Goals		;! 4 total
+
+$Type: Primary
++Name: Capture Senators
+$MessageNew:  XSTR("Assist in Capturing the Senators.", 2235)
+$end_multi_text
+$Formula: ( and 
+   ( has-departed-delay 
+      0 
+      "Omega 1" 
+      "Omega 2" 
+   )
+   ( is-event-true-delay 
+      "Omega 1 finished!" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Player took too long" 
+         0 
+      )
+   )
+)
+
+$Type: Primary
++Name: Prevent Scanning
+$MessageNew:  XSTR("Prevent hostiles from scanning and tracking Omega transports.", 2236)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "Hrid inbound" 
+   0 
+)
++No music
+
+$Type: Primary
++Name: No kill
+$MessageNew:  XSTR("Do not destroy any GTA craft.", 2237)
+$end_multi_text
+$Formula: ( and 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( not 
+      ( is-event-true-delay 
+         "End mission - failure" 
+         0 
+      )
+   )
+)
++No music
+
+$Type: Secondary
++Name: Disable 130
+$MessageNew:  XSTR("Disable both transports within ninety seconds of mission start.", 2238)
+$end_multi_text
+$Formula: ( and 
+   ( is-disabled-delay 
+      0 
+      "Cross Creek" 
+      "Tranquility" 
+   )
+   ( not ( has-time-elapsed 90 ) ) 
+)
++No music
+
+#Waypoints		;! 9 lists total
+
+$Name: liner finish waypt
+$List: (		;! 1 points in list
+	( 34124.187500, 0.000000, -1293.635376 )
+)
+
+$Name: laybenne finish waypt
+$List: (		;! 1 points in list
+	( 33853.417969, 0.000000, -1693.867798 )
+)
+
+$Name: Pioneer finish waypt
+$List: (		;! 1 points in list
+	( 33854.210938, 0.000000, -1053.847412 )
+)
+
+$Name: stennis 1 finish waypt
+$List: (		;! 1 points in list
+	( 32794.000000, -75.000000, -994.684326 )
+)
+
+$Name: stennis 2 finish waypt
+$List: (		;! 1 points in list
+	( 32678.187500, -75.000000, -844.777161 )
+)
+
+$Name: Creek finish waypt
+$List: (		;! 1 points in list
+	( 33336.828125, 0.000000, -794.247986 )
+)
+
+$Name: Tranquility finish waypt
+$List: (		;! 1 points in list
+	( 32820.246094, 0.000000, -694.654724 )
+)
+
+$Name: Stennis evasive waypt
+$List: (		;! 1 points in list
+	( 93.769150, -75.000000, -2143.432129 )
+)
+
+$Name: O1 departure waypt
+$List: (		;! 1 points in list
+	( -794.799988, 5000.000000, -940.399841 )
+)
+
+#Messages		;! 33 total
+
+
+$Name: Krak - help coming
+$Team: -1
+$MessageNew:  XSTR("Kraken Control to Convoy Group REG-08, patrol units are being scrambled to assist. Stand by.", 2239)
+$end_multi_text
++AVI Name: Head-CM9
++Wave Name: bta1_m1_04_ms01.ogg
+
+$Name: Maj - under attack
+$Team: -1
+$MessageNew:  XSTR("Mayday, mayday, mayday! This is SS Majestic to Kraken Station. Convoy crafts are under attack by four Mustang-class fighters.", 2240)
+$end_multi_text
++AVI Name: Head-Civ6
++Wave Name: bta1_m1_04_ms02.ogg
+
+$Name: A3 - got'em
+$Team: -1
+$MessageNew:  XSTR("Intersystem jumps completed. Transports Cross Creek and Tranquility sighted five hundred meters port of the passenger liners.", 2241)
+$end_multi_text
++AVI Name: Head-TP8
++Wave Name: bta1_m1_04_ms03.ogg
+
+$Name: A2 - get'em
+$Team: -1
+$MessageNew:  XSTR("Escort wing Skadi consists of four fighters. Alpha leader, we'll screen for you so that you can hit the transports!", 2242)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: bta1_m1_04_ms04.ogg
+
+$Name: O1 - that's it
+$Team: -1
+$MessageNew:  XSTR("There's the call. We've got six, maybe seven minutes before Kraken Station's fighters get here.", 2243)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms05.ogg
+
+$Name: O2 - docked
+$Team: -1
+$MessageNew:  XSTR("Omega transport reporting seal secured. Capture team disembarking now.", 2244)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: bta1_m1_04_ms06.ogg
+
+$Name: O1 - disabled, beacon
+$Team: -1
+$MessageNew:  XSTR("Nice work, Alpha. You've got about ninety seconds to get that decoy beacon up and running. Three kilometers from us would be ideal.", 2245)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms07.ogg
+
+$Name: O1 - Beta close, trouble
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, Omega 1. Beta wing is inbound at five clicks. Sorry, we won't be done before they get here.", 2246)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms09.ogg
+
+$Name: A2 - ack
+$Team: -1
+$MessageNew:  XSTR("Copy that, Omega 1. Alpha, switch to Disruptors. We're going to have to do this the hard way.", 2247)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: bta1_m1_04_ms10.ogg
+
+$Name: Krak - stop this crap
+$Team: -1
+$MessageNew:  XSTR("Kraken Station to unidentified fighters, cease your attacks at once or be fired upon. This is your only warning.", 2248)
+$end_multi_text
++AVI Name: Head-CM9
++Wave Name: bta1_m1_04_ms12.ogg
+
+$Name: O2 - we're good
+$Team: -1
+$MessageNew:  XSTR("Omega 2 here. Trophy's bagged and presents are under the tree. Enjoy the fireworks. We're bugging out.", 2249)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: bta1_m1_04_ms13.ogg
+
+$Name: O1 - stalling
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, Omega 1. Our friends on Cross Creek are doing their best to stall for time. Give us a couple more minutes.", 2250)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms14.ogg
+
+$Name: O1 - support ship
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, be aware that a Centaur-class support ship just jumped into the field. They are trying to bring Beta back online.", 2251)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms15.ogg
+
+$Name: O1 - bombers
+$Team: -1
+$MessageNew:  XSTR("Four bruisers just jumped in near the decoy beacon. I think our smuggling friends just gave up on tracking their senators down. Looks like this is the cleanup crew.", 2252)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms16.ogg
+
+$Name: A2 - Alpha inbound
+$Team: -1
+$MessageNew:  XSTR("Kraken Station sortied four Hercs against us. We don't stand a chance if this keeps up.", 2253)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: bta1_m1_04_ms17.ogg
+
+$Name: O1 - we're good
+$Team: -1
+$MessageNew:  XSTR("Omega 1 to all fighters, packages secured and the present has been delivered. Rally on us. The fireworks are about to begin!", 2254)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms18.ogg
+
+$Name: O1 - scans made, scrwd
+$Team: -1
+$MessageNew:  XSTR("Dammit, we've been compromised! Abort, abort, abort!", 2255)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms19.ogg
+
+$Name: O1 - WTF
+$Team: -1
+$MessageNew:  XSTR("Blue on blue fatality. Say again, blue on blue fatality! What the hell, pilot!? Return to base immediately!", 2256)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms20.ogg
+
+$Name: O1 - clear and rdy!
+$Team: -1
+$MessageNew:  XSTR("We're clear, pilots! Thanks for the help!", 2257)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms21.ogg
+
+$Name: B1 - this sux
+$Team: -1
+$MessageNew:  XSTR("<ENCRYPTION FAILURE> Beta wing is combat ineffective! We need a support ship and more firepower out here now!", 2258)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_m1_04_ms22.ogg
+
+$Name: A2 - full pwr
+$Team: -1
+$MessageNew:  XSTR("Full power to engines, Alpha. Let's go.", 2259)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: bta1_m1_04_ms23.ogg
+
+$Name: COM - oh crap
+$Team: -1
+$MessageNew:  XSTR("<Secure Channel> Pilots, mission objectives deemed unobtainable. Abort mission and return to base.", 2260)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: bta1_m1_04_ms24.ogg
+
+$Name: O1 - no go
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, this is Omega 1. Mission is a no-go. Our time requirement exceeds the ETA of incoming fighters. Abort, abort!", 2261)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms25.ogg
+
+$Name: BattleSnail!!!
+$Team: -1
+$MessageNew:  XSTR("$SnailTemp $SnailCheck found!", 2096)
+$end_multi_text
++Wave Name: bta1_m1_04_ms26.ogg
+
+$Name: O1 - incoming 2
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, those hostiles are vectoring in for sensors scans! Blast them or this mission is finished!", 2262)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms27.ogg
+
+$Name: O1 - incoming 3
+$Team: -1
+$MessageNew:  XSTR("Omega here, hostiles will be on top of us in ten seconds. It's now or never, pilots.", 2263)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms28.ogg
+
+$Name: COM - Transport Down
+$Team: -1
+$MessageNew:  XSTR("<Secure Channel> We've lost a transport! Abort mission and return to base.", 2264)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: bta1_m1_04_ms29.ogg
+
+$Name: COM - Beta Back Up
+$Team: -1
+$MessageNew:  XSTR("Beta has been repaired!", 2265)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: bta1_m1_04_ms30.ogg
+
+$Name: A2 - beta warning 1
+$Team: -1
+$MessageNew:  XSTR("Beta wing is closing fast, Omega. What's your status?", 2266)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: bta1_m1_04_ms31.ogg
+
+$Name: O1 - Stand by
+$Team: -1
+$MessageNew:  XSTR("We're working on it, Alpha. Stand by.", 2267)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_m1_04_ms32.ogg
+
+$Name: A3 - cmon cmon
+$Team: -1
+$MessageNew:  XSTR("C'mon.. c'mon.. We're running out of time..", 2268)
+$end_multi_text
++AVI Name: Head-TP8
++Wave Name: bta1_m1_04_ms33.ogg
+
+$Name: COM - mission success
+$Team: -1
+$MessageNew:  XSTR("Alpha, the package is wrapped and secured. Return to base.", 2269)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: bta1_m1_04_ms34.ogg
+
+$Name: MissionUnlocker
+$Team: -1
+$MessageNew:  XSTR("Mission Unlocked!", 2012)
+$end_multi_text
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 3 total
+
+$Num stars: 2000
+$Ambient light level: 7895160
+
+$Bitmap List:
+$Sun: SunAntaresB
++Angles: 6.195914 0.000000 3.385936
++Scale: 1.000000
+$Starbitmap: NebulC4-Whisp
++Angles: 1.047197 0.383972 4.101521
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulC11-Whisp
++Angles: 0.872664 0.750491 3.316123
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: BtAPlanet25
++Angles: 0.000000 3.001964 4.712385
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: Brief1
+
+#End
+

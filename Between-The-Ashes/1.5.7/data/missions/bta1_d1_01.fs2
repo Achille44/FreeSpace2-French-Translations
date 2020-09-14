@@ -1,0 +1,7695 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("The Gulnara Heist", 1552)
+$Author: broken bells
+$Created: 12/15/11 at 20:55:12
+$Modified: 11/17/19 at 14:41:52
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Smugglers hijack some artifacts from a science station.", 1553)
+$end_multi_text
++Game Type Flags: 1
++Flags: 26
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 2922.581543, 1734.861450, -6979.013672
++Viewer orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+
+
+$Load Screen 640: LoadingBG.pcx
+$Load Screen 1024: 2_d1_01_load.png
+
+$Skybox Model: gulnarab-box.pof
+
+$AI Profile: BTA
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"CampMode"		"false"		"string"
+		1		"CheckpointReached"		"0"		"number"		"save-on-mission-close"
+		2		"CountCheck"		"0"		"number"		"save-on-mission-progress"
+		3		"DataPacket"		" "		"string"		"save-on-mission-progress"
+		4		"demoSnailsFOUND"		"0"		"number"		"save-on-mission-progress"
+		5		"Emissions_Readout"		"Emissions Readout"		"string"
+		6		"filename"		"bonus.fs2"		"string"
+		7		"gameUP"		"0"		"number"
+		8		"gtC"		"Guernica Comm: "		"string"
+		9		"gtCF"		"none"		"string"
+		10		"gtCs"		"0"		"string"
+		11		"gtJ"		"Guernica Jump Drive: "		"string"
+		12		"gtJF"		"none"		"string"
+		13		"gtJs"		"0"		"string"
+		14		"guernCOMM"		"0"		"number"
+		15		"guernJUMP"		"0"		"number"
+		16		"guernLIMIT"		"0"		"number"
+		17		"guernRES"		"0"		"number"
+		18		"hudGC"		"CommTree1"		"string"
+		19		"hudGJ"		"CommTree2"		"string"
+		20		"hudJC"		"CommTree1"		"string"
+		21		"hudJJ"		"CommTree2"		"string"
+		22		"hudKC"		"CommTree1"		"string"
+		23		"hudKJ"		"CommTree2"		"string"
+		24		"jtC"		"S. Janaan Comm: "		"string"
+		25		"jtCF"		"none"		"string"
+		26		"jtCs"		"0"		"string"
+		27		"jtJ"		"S. Janaan Jump Drive: "		"string"
+		28		"jtJF"		"none"		"string"
+		29		"jtJs"		"0"		"string"
+		30		"kavinCOMM"		"0"		"number"
+		31		"kavinJUMP"		"0"		"number"
+		32		"kavinLIMIT"		"0"		"number"
+		33		"kavinRES"		"0"		"number"
+		34		"Key"		"?"		"string"
+		35		"ktC"		"Kavinsky 2 Comm: "		"string"
+		36		"ktCF"		"none"		"string"
+		37		"ktCs"		"0"		"string"
+		38		"ktJ"		"Kavinsky 2 Jump Drive: "		"string"
+		39		"ktJF"		"none"		"string"
+		40		"ktJs"		"0"		"string"
+		41		"sarwanCOMM"		"0"		"number"
+		42		"sarwanJUMP"		"0"		"number"
+		43		"sarwanLIMIT"		"0"		"number"
+		44		"sarwanRES"		"0"		"number"
+		45		"saveexist"		"0"		"number"
+		46		"tauntMSG"		"A2 - taunt random 1"		"string"
+)
+
+#Cutscenes
+
+$Pre-Game Cutscene: subspace.ogg
++formula: ( true )
+
+#end
+
+#Command Briefing
+
+$Background 640: commandbrief.pcx
+$Background 1024: 2_CommandBriefB_Demo.png
+
+$Stage Text:
+ XSTR("$b July $b 25, $b 2336
+
+Our clients have just given the go-ahead for our next op. The objective is a collection of Ancient archaeological specimens held on the $b Gulnara $b Research station in the $b Antares system. Our mission is to liberate these artifacts and turn them over to our employers at a secure rendezvous point. The boss has assembled the appropriate personnel for the job and you've been chosen to lead the flight.", 1554)
+$end_multi_text
+$Ani Filename: cb_gulnara.ani
++Wave Filename: bta1_d1_01_cb01.ogg
+
+#Briefing
+$start_briefing
+$briefing_background_640: brief.pcx
+$briefing_background_1024: 2_Brief_Demo1.png
+$ship_select_background_640: shipselect.pcx
+$ship_select_background_1024: 2_ShipSelect_Demo.png
+$weapon_select_background_640: weaponloadout.pcx
+$weapon_select_background_1024: 2_WeaponLoadout_Demo.png
+$num_stages: 4
+$start_stage
+$multi_text
+ XSTR("Listen good because we won't have time to go over this in mission. The strike force consists of Elysium-class transports $f Zabiela and $f Liquilade, and four Mustang-class superiority fighters of $f Alpha wing. The locals have been outsourcing security to a number of private firms in Antares due to discontent with the $b GTA's effort, so we'll be going in under the guise of hired protection for those transports. Once our ships dock, we'll have to disarm the relevant defenses quickly. In this case, the research outpost has only one operational turret located on her dorsal surface. The $f Zabiela will be flying right by it on her way to the dock and will be within its firing arc if we don't neutralize it after the heist begins.", 1555)
+$end_multi_text
+$voice: bta1_d1_01_br01.ogg
+$camera_pos: 2922.581543, 1734.861450, -6979.013672
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 4
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 15
+$team: Neutral
+$class: TSS Adonis
+$pos: 3627.924072, -0.000000, -6979.013672
+$label:  XSTR("Gulnara Research", 1556)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: 3076.929932, 0.000000, -7318.086426
+$label:  XSTR("Alpha", 1557)
++id: 2
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: 2760.933350, 0.000000, -6782.004883
+$label:  XSTR("Zabiela", 1558)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: 2624.542725, 0.000000, -7100.250000
+$label:  XSTR("Liquilade", 1559)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("As soon as the turret has been neutralized, $f Alphas $f 1 and $f 2 will proceed to interdict local traffic. $b Immediately make scans of assigned transports and freighters in the area so your sensors can begin an emission spectrum analysis. If their $b comm or $b jump $b drive system power levels exceed $h 50 $h percent, send four or five near misses their way to convince them to stick around and stay quiet. Usually parking within a quarter kilometer of suspect ships and pointing your guns directly at them gets the point across as well. We're not looking for a massacre - avoid shooting the civilians directly or we may cause them to panic and do exactly what we don't want them to do, which is call for help or try to escape.  Just watch those emission readings like a hawk until we're ready to roll.", 1560)
+$end_multi_text
+$voice: bta1_d1_01_br02.ogg
+$camera_pos: 4356.286133, 2079.456543, -6979.013672
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 3
+$line_start: 1
+$line_end: 5
+$line_start: 1
+$line_end: 6
+$line_start: 4
+$line_end: 6
+$num_icons: 7
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 15
+$team: Neutral
+$class: TSS Adonis
+$pos: 3627.924072, -0.000000, -6979.013672
+$label:  XSTR("Gulnara Research", 1556)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: 4901.225586, 0.000000, -6658.104492
+$label:  XSTR("Alpha 1", 1561)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: 2760.933350, 0.000000, -6782.004883
+$label:  XSTR("Zabiela", 1558)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: 5070.761719, 0.000000, -7354.416504
+$label:  XSTR("Alpha 2", 1562)
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 29
+$team: Neutral
+$class: GTF Angel
+$pos: 5712.579590, 0.000000, -6458.293457
++id: 6
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 27
+$team: Neutral
+$class: TCa Canberra
+$pos: 5718.634766, 0.000000, -6942.684082
+$label:  XSTR("Civilian Traffic", 1563)
++id: 7
+$hlight: 0
+$mirror: 0
+$use wing icon: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 12
+$team: Neutral
+$class: GTF Angel
+$pos: 5621.756836, 0.000000, -7536.062500
++id: 8
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Meanwhile, Seek and Slice in $f Alphas $f 3 and $f 4 respectively will be setting up our own escape. $f Three will tap into the station's automated defense systems and co-opt the missile platform on station outside the nearby $b Beta $b Aquilae node. $f Four has written a program that will overload the systems of the repair drones in the area. She'll need a few uninterrupted minutes to hack into the remote access center and upload the new routines. Once we have access, you'll be able to boss the drones about. Slice advises us not to sic them on the same target all at once - the chain reaction will be 'counterproductive,' as she says.", 1564)
+$end_multi_text
+$voice: bta1_d1_01_br03.ogg
+$camera_pos: 2296.543945, 2062.112305, -6528.183594
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 3
+$line_start: 8
+$line_end: 9
+$line_start: 0
+$line_end: 8
+$line_start: 0
+$line_end: 9
+$num_icons: 12
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 15
+$team: Neutral
+$class: TSS Adonis
+$pos: 3627.924072, -0.000000, -6979.013672
+$label:  XSTR("Gulnara Research", 1556)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: 2806.916504, 0.000041, -6882.441895
+$label:  XSTR("Zabiela", 1558)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: 2482.679932, 0.000050, -7074.581543
+$label:  XSTR("Liquilade", 1559)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: 2764.885742, 0.000030, -6378.074219
+$label:  XSTR("Alpha 3", 1565)
++id: 9
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 32
+$team: Neutral
+$class: Modular Turret
+$pos: 3157.450684, 0.000000, -6324.034668
+$label:  XSTR("Defense Node", 1566)
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 33
+$team: Friendly
+$class: Waypoint#Marker
+$pos: 3721.862549, 0.000000, -6137.898926
+$label:  XSTR("Beta Aquilae Jump Node", 1567)
++id: 11
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: 1998.605225, 0.000000, -6882.441895
+$label:  XSTR("Alpha 4", 1568)
++id: 12
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 10
+$team: Friendly
+$class: GTDr Phidias
+$pos: 1470.219727, 0.000000, -6288.008301
+$label:  XSTR("Repair Drones", 1569)
++id: 13
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 10
+$team: Friendly
+$class: GTDr Phidias
+$pos: 1332.119019, 0.000000, -6486.152344
++id: 14
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 10
+$team: Friendly
+$class: GTDr Phidias
+$pos: 1524.259033, 0.000000, -6756.350098
++id: 15
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 10
+$team: Friendly
+$class: GTDr Phidias
+$pos: 1248.057495, 0.000000, -6894.450684
++id: 16
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 10
+$team: Friendly
+$class: GTDr Phidias
+$pos: 1758.429932, 0.000000, -6486.152344
++id: 17
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("$f Three and $f Four will see transport $f Zabiela out of harms way. $f One and $f Two will take $f Liquilade to the $b Beta $b Aquilae jump point. If you're pursued, make use of whatever drones you have command of and use the $b defense $b node to cover your escape. That sentry gun has six missile launchers - more than enough to give any fighters chasing you a second thought. We'll meet at rendezvous point Salvo after the op. Good luck. You're gonna need it.", 1570)
+$end_multi_text
+$voice: bta1_d1_01_br04.ogg
+$camera_pos: 4787.098633, 2543.723145, -6518.068848
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 7
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: 4901.225586, 0.000000, -6658.104492
+$label:  XSTR("Alpha 1", 1561)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: 2806.916504, 0.000041, -6882.441895
+$label:  XSTR("Zabiela", 1558)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: 5261.128418, -0.000096, -7177.266602
+$label:  XSTR("Alpha 2", 1562)
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: 2764.885742, 0.000030, -6378.074219
+$label:  XSTR("Alpha 3", 1565)
++id: 9
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 32
+$team: Friendly
+$class: Modular Turret
+$pos: 3157.450684, 0.000000, -6324.034668
+$label:  XSTR("Defense Node", 1566)
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 33
+$team: Friendly
+$class: Waypoint#Marker
+$pos: 3721.862549, 0.000000, -6137.898926
+$label:  XSTR("Beta Aquilae Jump Node", 1567)
++id: 11
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: TF Mustang Alpha
+$pos: 5514.408203, 0.000000, -6492.539063
+$label:  XSTR("Alpha 4", 1568)
++id: 12
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Background 640: debriefsingle.pcx
+$Background 1024: 2_DebriefSingle_Demo.png
+
+$Num stages: 3
+
+$Formula: ( is-event-true-delay "Time To Go" 0 ) 
+$Multi text
+    XSTR("That's, what, one more flawless op under your belt? Not bad at all, ladies and gentlemen. Our clients are extremely pleased with what you've delivered. So pleased they've requested our services for the next part of their little project. Get some rest and I'll give you the details.", 1571)
+$end_multi_text
+$Voice: bta1_d1_01_db01.ogg
+$Recommendation text:
+    XSTR("", 591)
+$end_multi_text
+
+$Formula: ( or 
+   ( is-event-true-delay 
+      "Liquilade Destroyed" 
+      0 
+   )
+   ( is-event-true-delay 
+      "Abort Mission" 
+      0 
+   )
+)
+$Multi text
+    XSTR("I know the plan wasn't the most straightforward in the universe but that doesn't excuse this kind of performance. It's unfortunate that we failed. The boss said this was going to be one of the biggest payouts in months. Needless to say, he isn't exactly happy with you.", 1572)
+$end_multi_text
+$Voice: bta1_d1_01_db02.ogg
+$Recommendation text:
+    XSTR("Fly better?
+
+
+
+
+Calm down! It was just a joke...", 1573)
+$end_multi_text
+
+$Formula: ( and 
+   ( not 
+      ( is-event-true-delay "Time To Go" 0 ) 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Liquilade Destroyed" 
+         0 
+      )
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Abort Mission" 
+         0 
+      )
+   )
+)
+$Multi text
+    XSTR("What the hell was that? Was the money not good enough for you? I highly recommend you stay clear of the boss for while...", 1574)
+$end_multi_text
+$Voice: bta1_d1_01_db03.ogg
+$Recommendation text:
+    XSTR("Remember Rule 1 and 2? If the boss didn't give you the go-ahead, don't do it! ", 1575)
+$end_multi_text
+
+#Alternate Types:
+$Alt: Drone Relay Center
+$Alt: TG Patriot
+$Alt: TT Elysium
+$Alt: TFr Poseidon
+$Alt: SIFr Chronos
+$Alt: BTGs Prominence
+$Alt: GTSS Adonis
+$Alt: TF Valkyrie
+$Alt: TB Zeus
+
+#end
+
+
+#Callsigns:
+$Callsign: Grunt
+$Callsign: Seeker
+$Callsign: Slice
+$Callsign: Seek
+$Callsign: Gavel
+$Callsign: Under Construction
+$Callsign: Im Bau
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+)
+
++Weaponry Pool: (
+	"Avenger"	8
+	"Fury"	400
+)
+
+#Objects		;! 94 total
+
+$Name: Alpha 1		;! Object #0
+$Class: TF Mustang Alpha
+$Team: Friendly
+$Team Color Setting: None
+$Location: 577.943115, -96.845009, 1071.908447
+$Orientation:
+	-0.856889, 0.000000, 0.515501,
+	0.214898, 0.908966, 0.357212,
+	-0.468573, 0.416871, -0.778883
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Flags2: ( "no-builtin-messages" )
++Respawn priority: 0
++Special Hitpoints: 900
++Special Shield Points: 600
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Gulnara Research		;! Object #1
+
+$Display name:  XSTR("Gulnara Research", 1556)
+$Class: TSS Adonis
+$Alt: GTSS Adonis
+
+$Team: Friendly
+$Location: -79.165604, 460.678467, -318.309937
+$Orientation:
+	0.362358, 0.000000, -0.932039,
+	0.000000, 1.000000, 0.000000,
+	0.932039, 0.000000, 0.362358
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Damage: 100
++Sbank Ammo: ( 0 )
++Subsystem: turret02
+$Damage: 100
++Sbank Ammo: ( 0 )
++Subsystem: turret03
+$Damage: 100
++Sbank Ammo: ( 0 )
++Subsystem: turret04
+$Damage: 100
++Sbank Ammo: ( 0 )
++Subsystem: turret05
++Subsystem: turret06
+$Damage: 100
++Subsystem: turret07
+$Damage: 100
++Subsystem: turret08
+$Damage: 100
++Subsystem: turret09
+$Damage: 100
++Subsystem: turret10
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 30
++Group: 0
++Use Table Score:
++Score: 200
+
+$Name: Zabiela		;! Object #2
+$Class: GTT Elysium
+$Alt: TT Elysium
+
+$Team: Friendly
+$Location: 826.924622, 122.250641, 778.581909
+$Orientation:
+	-0.820653, 0.000000, 0.571427,
+	0.180181, 0.948986, 0.258766,
+	-0.542276, 0.315317, -0.778789
+$AI Behavior: None
+$AI Goals: ( goals ( ai-dock "Gulnara Research" "topside docking" "Topside Dock" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Zabiela" 
+   "Zabiela run waypt" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 11
++Special Hitpoints: 10500
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Liquilade		;! Object #3
+$Class: GTT Elysium
+$Alt: TT Elysium
+
+$Team: Friendly
+$Location: 791.813904, 0.000000, 1044.229126
+$Orientation:
+	-0.842565, 0.000000, 0.538595,
+	0.147561, 0.961737, 0.230840,
+	-0.517987, 0.273974, -0.810326
+$AI Behavior: None
+$AI Goals: ( goals ( ai-dock "Gulnara Research" "topside docking" "Bottomside Dock" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Liquilade" 
+   "Liquilade jump node pt" 
+   5 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 11
++Special Hitpoints: 7500
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Alpha 2		;! Object #4
+$Class: TF Mustang Alpha
+$Callsign: Gavel
+
+$Team: Friendly
+$Team Color Setting: Smuggler 4
+$Location: 864.052307, -87.266685, 906.379822
+$Orientation:
+	-0.856889, 0.000000, 0.515501,
+	0.214898, 0.908966, 0.357212,
+	-0.468573, 0.416871, -0.778882
+$AI Behavior: None
++AI Class: BtA-General
+$AI Goals: ( goals ( ai-waypoints-once "A2 strike pt" 89 ) ( ai-stay-still "Gulnara Research" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "guardian" )
++Flags2: ( "no-builtin-messages" )
++Respawn priority: 0
++Special Hitpoints: 900
++Special Shield Points: 600
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Alpha 3		;! Object #5
+$Class: TF Mustang Alpha
+$Callsign: Seeker
+
+$Team: Friendly
+$Team Color Setting: Smuggler 5
+$Location: 686.214722, -115.349579, 1056.246216
+$Orientation:
+	-0.856889, 0.000000, 0.515501,
+	0.214898, 0.908966, 0.357212,
+	-0.468573, 0.416871, -0.778882
+$AI Behavior: None
++AI Class: BtA-General
+$AI Goals: ( goals ( ai-waypoints-once "A3 hack waypt" 89 ) ( ai-play-dead 80 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "guardian" )
++Flags2: ( "no-builtin-messages" )
++Respawn priority: 0
++Special Hitpoints: 900
++Special Shield Points: 600
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Alpha 4		;! Object #6
+$Class: TF Mustang Alpha
+$Callsign: Slice
+
+$Team: Friendly
+$Team Color Setting: Smuggler 2
+$Location: 661.218140, -136.921921, 1126.181519
+$Orientation:
+	-0.856889, 0.000000, 0.515501,
+	0.214898, 0.908966, 0.357212,
+	-0.468573, 0.416871, -0.778882
+$AI Behavior: None
++AI Class: BtA-General
+$AI Goals: ( goals ( ai-waypoints-once "A4 hack waypt" 50 ) ( ai-stay-still "A4 hack waypt:1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "guardian" )
++Flags2: ( "no-builtin-messages" )
++Respawn priority: 0
++Special Hitpoints: 900
++Special Shield Points: 600
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Guernica		;! Object #7
+$Class: GTT Elysium
+$Alt: TT Elysium
+
+$Team: Friendly
+$Location: 443.996155, 278.621857, -342.287415
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.908966, -0.416871,
+	0.000000, 0.416871, 0.908966
+$AI Behavior: None
+$Cargo 1:  XSTR("Freight Crew", 1577)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 2
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sarwan Janaan		;! Object #8
+$Class: TT Proton
+$Team: Friendly
+$Location: 607.222412, 201.622635, -685.996948
+$Orientation:
+	0.380925, 0.000000, -0.924606,
+	0.000000, 1.000000, 0.000000,
+	0.924606, 0.000000, 0.380925
+$AI Behavior: None
+$Cargo 1:  XSTR("Refugees", 1578)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 2
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Kavinsky 2		;! Object #9
+$Class: GTFr Poseidon
+$Alt: TFr Poseidon
+
+$Team: Friendly
+$Location: 366.789368, 353.064240, -709.381958
+$Orientation:
+	0.886995, 0.000000, -0.461779,
+	0.000000, 1.000000, 0.000000,
+	0.461779, 0.000000, 0.886995
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 2
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Impala 06.20-1A		;! Object #10
+$Class: TSC 2
+$Team: Friendly
+$Location: 364.513000, 335.682800, -713.745544
+$Orientation:
+	0.886996, -0.000000, -0.461777,
+	0.000001, 1.000000, 0.000002,
+	0.461777, -0.000002, 0.886996
+$AI Behavior: None
+$Cargo 1:  XSTR("Antique Cars", 1579)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Kavinsky 2
+$Docker Point: cargo dock
+$Dockee Point: cargo dock
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Icarus		;! Object #11
+$Class: GTFr Chronos
+$Alt: SIFr Chronos
+
+$Team: Friendly
+$Location: -152.048050, 292.188538, 235.197220
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 500
++Special Exp Blast: 125
++Special Exp Inner Radius: 115
++Special Exp Outer Radius: 120
++Special Exp Shockwave Speed: 50
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Sarif Industries TGC-018		;! Object #12
+$Class: TAC 1
+$Team: Friendly
+$Location: -151.855499, 305.668182, 231.160950
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.999999, 0.001548,
+	-0.000000, -0.001548, 0.999999
+$AI Behavior: None
+$Cargo 1:  XSTR("Cybernetics", 1580)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 500
++Special Exp Blast: 125
++Special Exp Inner Radius: 115
++Special Exp Outer Radius: 120
++Special Exp Shockwave Speed: 50
++Docked With: Icarus
+$Docker Point: cargo dockpoint
+$Dockee Point: cargo dockpoint
++Group: 0
++Use Table Score:
++Score: 5
+
+$Name: Starlight Intruder		;! Object #13
+$Class: TF Ion
+$Team: Friendly
+$Team Color Setting: None
+$Location: -354.227448, 292.188538, 411.038544
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: TSS Adonis 14		;! Object #14
+$Class: Docking Pad
+$Team: Neutral
+$Location: -1.763354, 449.189911, -79.292824
+$Orientation:
+	0.362358, 0.000000, -0.932039,
+	0.000000, 1.000000, 0.000000,
+	0.932039, 0.000000, 0.362358
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Score: 200
+
+$Name: Docking Pad 15		;! Object #15
+$Class: Docking Pad
+$Team: Neutral
+$Location: 143.540344, 449.189911, -443.752167
+$Orientation:
+	0.362358, 0.000000, -0.932039,
+	0.000000, 1.000000, 0.000000,
+	0.932039, 0.000000, 0.362358
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Docking Pad 16		;! Object #16
+$Class: Docking Pad
+$Team: Neutral
+$Location: -156.814575, 449.189911, -558.197632
+$Orientation:
+	-0.342150, 0.000000, 0.939645,
+	0.000000, 1.000000, 0.000000,
+	-0.939645, 0.000000, -0.342150
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Docking Pad 17		;! Object #17
+$Class: Docking Pad
+$Team: Neutral
+$Location: -300.920502, 449.189911, -191.901413
+$Orientation:
+	-0.342150, 0.000000, 0.939646,
+	0.000000, 1.000000, 0.000000,
+	-0.939646, 0.000000, -0.342150
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Docking Ring		;! Object #18
+$Class: Model 3 Gas Ring
+$Team: Neutral
+$Location: -245.943787, 461.000000, -380.408356
+$Orientation:
+	0.025892, 0.998937, -0.038143,
+	-0.936210, 0.010853, -0.351274,
+	-0.350486, 0.044805, 0.935496
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Orders Accepted: 257		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 5
+
+$Name: Girder 23 Cell 19		;! Object #19
+$Class: Girder 23 Cell
+$Team: Neutral
+$Location: -732.016541, 724.128418, -2044.212158
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Girder 23 Cell 20		;! Object #20
+$Class: Girder 23 Cell
+$Team: Neutral
+$Location: -885.884949, 724.128418, -2044.212158
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: CrossCube 21		;! Object #21
+$Class: CrossCube
+$Team: Neutral
+$Location: -886.030701, 724.128418, -2176.582764
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: CrossCube 22		;! Object #22
+$Class: CrossCube
+$Team: Neutral
+$Location: -730.818787, 724.128418, -2177.609863
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Drone Control Hub		;! Object #23
+$Class: CrossCube
+$Alt: Drone Relay Center
+
+$Team: Friendly
+$Location: -731.821655, 724.128418, -1912.497437
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: CrossCube 24		;! Object #24
+$Class: CrossCube
+$Team: Neutral
+$Location: -884.796997, 724.128418, -1912.134033
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Girder 11 Cell 25		;! Object #25
+$Class: Girder 11 Cell
+$Team: Neutral
+$Location: -808.088867, 724.128418, -2177.352295
+$Orientation:
+	0.005000, 0.000000, 0.999987,
+	0.000000, 1.000000, -0.000000,
+	-0.999987, 0.000000, 0.005000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Girder 11 Cell 26		;! Object #26
+$Class: Girder 11 Cell
+$Team: Neutral
+$Location: -808.088867, 724.128418, -1912.452515
+$Orientation:
+	0.005000, 0.000000, 0.999987,
+	0.000000, 1.000000, -0.000000,
+	-0.999987, 0.000000, 0.005000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: CrossCube 27		;! Object #27
+$Class: Scanner Dish
+$Team: Neutral
+$Location: -731.821655, 757.666504, -1912.497437
+$Orientation:
+	-0.596557, 0.000000, -0.802571,
+	0.000000, 1.000000, 0.000000,
+	0.802571, 0.000000, -0.596557
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Scanner Dish 28		;! Object #28
+$Class: Scanner Dish
+$Team: Neutral
+$Location: -731.821655, 690.772644, -1912.497437
+$Orientation:
+	-0.350037, -0.001530, -0.936735,
+	0.000950, -0.999999, 0.001278,
+	-0.936736, -0.000443, 0.350038
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Decisive Wind		;! Object #29
+$Class: TGs Prominence
+$Alt: BTGs Prominence
+
+$Team: Neutral
+$Location: 396.599976, 450.000000, -1551.099976
+$Orientation:
+	0.303969, -0.109778, 0.946336,
+	0.033572, 0.993956, 0.104519,
+	-0.952091, 0.000000, 0.305817
+$AI Behavior: None
++AI Class: Captain
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 15
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Primary Banks: ( "Terran Turret" )
++Subsystem: Turret02
++Primary Banks: ( "Terran Turret" )
++Subsystem: Turret03
++Primary Banks: ( "Terran Turret" )
++Subsystem: Turret04
++Primary Banks: ( "Terran Turret" )
++Subsystem: Turret05
++Primary Banks: ( "Terran Turret" )
++Subsystem: Turret06
++Primary Banks: ( "Terran Turret" )
++Subsystem: Turret07
++Primary Banks: ( "Terran Turret" )
++Subsystem: Turret08a
++Secondary Banks: ( "Fusion Mortar" )
++Sbank Ammo: ( 0 )
++Subsystem: Turret09a
++Secondary Banks: ( "Fusion Mortar" )
++Sbank Ammo: ( 0 )
++Subsystem: Turret10a
++Secondary Banks: ( "Fusion Mortar" )
++Sbank Ammo: ( 0 )
++Subsystem: Turret11a
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "Player held them up good" 
+      30 
+   )
+   ( is-event-true-delay 
+      "Monitor Emissions failed" 
+      64 
+   )
+   ( is-event-true-delay 
+      "Guernica hostile" 
+      43 
+   )
+   ( is-event-true-delay 
+      "Janaan hostile" 
+      47 
+   )
+   ( is-event-true-delay 
+      "Kavinsky hostile" 
+      45 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 8
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Score: 100
+
+$Name: GULRES-AA-021		;! Object #30
+$Class: TTC 1
+$Team: Friendly
+$Location: 202.079605, 456.599976, -452.926270
+$Orientation:
+	0.932327, 0.000000, 0.361615,
+	0.000000, 1.000000, 0.000000,
+	-0.361615, 0.000000, 0.932327
+$AI Behavior: None
+$Cargo 1:  XSTR("Praxis Kits", 1581)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 5
+
+$Name: GULRES-AA-022		;! Object #31
+$Class: TTC 1
+$Team: Friendly
+$Location: 155.463318, 456.599976, -471.006989
+$Orientation:
+	0.932327, -0.000000, 0.361615,
+	0.000000, 1.000000, 0.000000,
+	-0.361615, 0.000000, 0.932327
+$AI Behavior: None
+$Cargo 1:  XSTR("Archaeological Equipment", 1582)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 5
+
+$Name: GULRES-AA-023		;! Object #32
+$Class: TTC 1
+$Team: Friendly
+$Location: 180.000626, 456.599976, -396.001587
+$Orientation:
+	0.932327, -0.000000, 0.361615,
+	0.000000, 1.000000, 0.000000,
+	-0.361615, 0.000000, 0.932327
+$AI Behavior: None
+$Cargo 1:  XSTR("GPR Array", 1583)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 5
+
+$Name: GULRES-AA-024		;! Object #33
+$Class: TTC 1
+$Team: Friendly
+$Location: 133.384323, 456.599976, -414.082306
+$Orientation:
+	0.932327, -0.000000, 0.361615,
+	0.000000, 1.000000, 0.000000,
+	-0.361615, 0.000000, 0.932327
+$AI Behavior: None
+$Cargo 1:  XSTR("Synthetic Aperture Radar Array", 1584)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 5
+
+$Name: GULRES-FR-02		;! Object #34
+$Class: GTFr Chronos
+$Team: Friendly
+$Location: -324.626648, 456.599976, -200.907578
+$Orientation:
+	0.932327, -0.000000, 0.361615,
+	0.000000, 1.000000, 0.000000,
+	-0.361615, 0.000000, 0.932327
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 5
+
+$Name: GULRES-BB-001		;! Object #35
+$Class: TC 2
+$Team: Friendly
+$Location: 17.992353, 436.968903, -47.182774
+$Orientation:
+	0.362358, 0.000000, -0.932039,
+	0.000000, 1.000000, 0.000000,
+	0.932039, 0.000000, 0.362358
+$AI Behavior: None
++AI Class: Captain
+$Cargo 1:  XSTR("Vasudan Artifacts", 1585)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 150
+
+$Name: GULRES-BB-002		;! Object #36
+$Class: TC 2
+$Team: Friendly
+$Location: 35.850235, 436.968903, -92.476639
+$Orientation:
+	0.362358, 0.000000, -0.932039,
+	0.000000, 1.000000, 0.000000,
+	0.932039, 0.000000, 0.362358
+$AI Behavior: None
++AI Class: Captain
+$Cargo 1:  XSTR("Survey Equipment", 1586)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Dorsal Turret Point		;! Object #37
+$Class: Docking Ring
+$Team: Neutral
+$Location: 26.423407, 524.420471, -273.199341
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: GTA-TRP-01478		;! Object #38
+$Class: Terran Probe
+$Team: Neutral
+$Location: -2109.699707, 0.000000, 6713.737305
+$Orientation:
+	-0.407033, 0.000000, 0.913414,
+	0.000000, 1.000000, 0.000000,
+	-0.913414, 0.000000, -0.407033
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-departure-warp" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Freki 1		;! Object #39
+$Class: TF Shrike
+$Team: Neutral
+$Team Color Setting: Smuggler 4
+$Location: -1629.918335, 0.000000, 197.860672
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) ( ai-chase-any 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 15
+
+$Name: GULRES-CC-001		;! Object #40
+$Class: TC 2
+$Team: Neutral
+$Location: 300.000000, 331.135651, -1200.000000
+$Orientation:
+	0.913089, 0.000000, -0.407761,
+	0.000000, 1.000000, 0.000000,
+	0.407761, 0.000000, 0.913089
+$AI Behavior: None
+$Cargo 1:  XSTR("Mass Spectrometer", 1587)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 3
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: GULRES-CC-002		;! Object #41
+$Class: TC 2
+$Team: Neutral
+$Location: 208.691284, 331.135651, -1159.224243
+$Orientation:
+	0.913089, 0.000000, -0.407761,
+	-0.000000, 1.000000, 0.000000,
+	0.407761, 0.000000, 0.913089
+$AI Behavior: None
+$Cargo 1:  XSTR("Soil Analyzer", 1588)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 3
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: GULRES-CC-003		;! Object #42
+$Class: TC 2
+$Team: Neutral
+$Location: 117.382622, 331.135651, -1118.448608
+$Orientation:
+	0.913089, 0.000000, -0.407761,
+	-0.000000, 1.000000, 0.000000,
+	0.407761, 0.000000, 0.913089
+$AI Behavior: None
+$Cargo 1:  XSTR("Orbital Survey Platform", 1589)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 3
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: GULRES-CC-004		;! Object #43
+$Class: TC 2
+$Team: Neutral
+$Location: 26.074038, 331.135651, -1077.672485
+$Orientation:
+	0.913089, 0.000000, -0.407761,
+	-0.000000, 1.000000, 0.000000,
+	0.407761, 0.000000, 0.913089
+$AI Behavior: None
+$Cargo 1:  XSTR("Load Lifter Parts", 1590)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 3
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: GULRES-CC-005		;! Object #44
+$Class: TC 2
+$Team: Neutral
+$Location: 238.836411, 331.135651, -1336.962524
+$Orientation:
+	0.913089, 0.000000, -0.407761,
+	-0.000000, 1.000000, 0.000000,
+	0.407761, 0.000000, 0.913089
+$AI Behavior: None
+$Cargo 1:  XSTR("Prefab. Habitation Module", 1591)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 3
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: GULRES-CC-006		;! Object #45
+$Class: TC 2
+$Team: Neutral
+$Location: 147.527527, 331.135651, -1296.187500
+$Orientation:
+	0.913089, 0.000000, -0.407761,
+	-0.000000, 1.000000, 0.000000,
+	0.407761, 0.000000, 0.913089
+$AI Behavior: None
+$Cargo 1:  XSTR("Prefab. Habitation Module", 1591)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 3
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: GULRES-CC-007		;! Object #46
+$Class: TC 2
+$Team: Neutral
+$Location: 56.219215, 331.135651, -1255.411011
+$Orientation:
+	0.913089, 0.000000, -0.407761,
+	-0.000000, 1.000000, 0.000000,
+	0.407761, 0.000000, 0.913089
+$AI Behavior: None
+$Cargo 1:  XSTR("Industrial Grade Centrifuges", 1592)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 3
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: GULRES-CC-008		;! Object #47
+$Class: TC 2
+$Team: Neutral
+$Location: -35.089375, 331.135651, -1214.635132
+$Orientation:
+	0.913089, 0.000000, -0.407761,
+	-0.000000, 1.000000, 0.000000,
+	0.407761, 0.000000, 0.913089
+$AI Behavior: None
+$Cargo 1:  XSTR("Laser Microscopes", 1593)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 3
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Repair Drone A 1		;! Object #48
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -718.818787, 724.099976, -2128.762207
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 350
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 2225
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone A 2		;! Object #49
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -718.818787, 724.099976, -2098.762207
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 350
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 2225
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone A 3		;! Object #50
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -718.818787, 724.099976, -2068.762695
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 350
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 2225
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone E 1		;! Object #51
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -718.818787, 724.099976, -2038.763062
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 300
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 2225
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone C 1		;! Object #52
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -771.845825, 724.000000, -1899.263062
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 200
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 2225
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone E 2		;! Object #53
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -718.818787, 724.099976, -2008.763062
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 300
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 2225
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone E 3		;! Object #54
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -718.818787, 724.099976, -1978.763062
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 300
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 2225
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone B 1		;! Object #55
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -899.727905, 724.099976, -1971.936890
+$Orientation:
+	-0.018406, 0.000000, 0.999831,
+	0.000000, 1.000000, 0.000000,
+	-0.999831, 0.000000, -0.018406
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 400
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 237
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone B 2		;! Object #56
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -899.175903, 724.099976, -2001.934937
+$Orientation:
+	-0.018406, 0.000000, 0.999831,
+	0.000000, 1.000000, 0.000000,
+	-0.999831, 0.000000, -0.018406
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 400
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 237
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone B 3		;! Object #57
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -898.623657, 724.099976, -2031.928955
+$Orientation:
+	-0.018406, 0.000000, 0.999831,
+	0.000000, 1.000000, 0.000000,
+	-0.999831, 0.000000, -0.018406
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 400
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 237
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone F 1		;! Object #58
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -898.071411, 724.099976, -2061.927002
+$Orientation:
+	-0.018406, 0.000000, 0.999831,
+	0.000000, 1.000000, 0.000000,
+	-0.999831, 0.000000, -0.018406
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 300
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 237
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone F 2		;! Object #59
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -899.117065, 724.099976, -2091.331299
+$Orientation:
+	0.011593, -0.000000, 0.999933,
+	0.000000, 1.000000, 0.000000,
+	-0.999933, 0.000000, 0.011593
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 300
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 237
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone F 3		;! Object #60
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -899.465027, 724.099976, -2121.328613
+$Orientation:
+	0.011593, -0.000000, 0.999933,
+	0.000000, 1.000000, 0.000000,
+	-0.999933, 0.000000, 0.011593
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 300
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 237
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone C 2		;! Object #61
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -794.117371, 724.000000, -1899.263062
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 200
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 2225
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone C 3		;! Object #62
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -817.527832, 724.000000, -1899.263062
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 200
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 2225
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone C 4		;! Object #63
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -839.747192, 724.000000, -1899.263062
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 200
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 2225
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone D 1		;! Object #64
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -850.027527, 724.099976, -2191.375488
+$Orientation:
+	-1.000000, 0.000000, -0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, -1.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 200
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 237
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone D 2		;! Object #65
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -821.371582, 724.099976, -2191.375488
+$Orientation:
+	-1.000000, 0.000000, -0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, -1.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 200
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 237
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone D 3		;! Object #66
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -793.265747, 724.099976, -2191.375488
+$Orientation:
+	-1.000000, 0.000000, -0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, -1.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 200
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 237
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone D 4		;! Object #67
+$Class: GTDr Phidias
+$Team: Unknown
+$Location: -768.013611, 724.099976, -2191.375488
+$Orientation:
+	-1.000000, 0.000000, -0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, -1.000000
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "kamikaze" )
++Flags2: ( )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 200
++Special Exp Blast: 125
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 50
++Kamikaze Damage: 237
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Freki 2		;! Object #68
+$Class: TF Shrike
+$Team: Neutral
+$Team Color Setting: Smuggler 1
+$Location: -1643.342896, 0.000000, 183.910233
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 89 ) ( ai-chase "Liquilade" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Freki 3		;! Object #69
+$Class: TB Mustang Beta
+$Team: Neutral
+$Team Color Setting: None
+$Location: -1620.323120, 0.000000, 165.804718
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 89 ) ( ai-chase "Liquilade" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Hornet" "Hornet" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Bragi 1		;! Object #70
+$Class: TF Shrike
+$Team: Neutral
+$Team Color Setting: Smuggler 4
+$Location: 268.623993, 450.000000, -1577.500732
+$Orientation:
+	0.303969, -0.109778, 0.946336,
+	0.033572, 0.993956, 0.104519,
+	-0.952091, 0.000000, 0.305817
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 400
+
+$Name: Bragi 2		;! Object #71
+$Class: TF Shrike
+$Team: Neutral
+$Team Color Setting: None
+$Location: 406.987244, 450.000000, -1491.913452
+$Orientation:
+	0.303969, -0.109778, 0.946336,
+	0.033572, 0.993956, 0.104519,
+	-0.952091, 0.000000, 0.305817
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Freki 4		;! Object #72
+$Class: TB Mustang Beta
+$Team: Neutral
+$Team Color Setting: Smuggler 1
+$Location: -1660.086182, -0.000000, 141.285431
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 89 ) ( ai-chase "Liquilade" 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Hornet" "Hornet" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 15
+
+$Name: GTA-TRP-01422		;! Object #73
+$Class: Terran Probe
+$Team: Neutral
+$Location: -2106.006348, 0.000000, 6730.376953
+$Orientation:
+	-0.407033, 0.000000, 0.913414,
+	0.000000, 1.000000, 0.000000,
+	-0.913414, 0.000000, -0.407033
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Port master convinced" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-departure-warp" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Defense Node AA-24		;! Object #74
+
+$Display name:  XSTR("Defense Node AA-24", 1594)
+$Class: CrossCube
+$Alt: TG Patriot
+
+$Callsign: Under Construction
+
+$Team: Friendly
+$Location: -88.906090, 1999.134888, -11519.451172
+$Orientation:
+	0.946412, -0.322225, -0.021802,
+	0.321202, 0.932067, 0.167572,
+	-0.033675, -0.165594, 0.985619
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Defense Node AA-23		;! Object #75
+
+$Display name:  XSTR("Defense Node AA-23", 1596)
+$Class: CrossCube
+$Alt: TG Patriot
+
+$Team: Friendly
+$Location: 1252.564209, 1200.000000, -7641.133301
+$Orientation:
+	0.976471, 0.112620, -0.183907,
+	-0.085649, 0.985190, 0.148542,
+	0.197913, -0.129296, 0.971655
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Special Hitpoints: 20000
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Missile Launcher 1		;! Object #76
+$Class: Modular Turret
+$Team: Friendly
+$Location: 1249.592651, 1234.843140, -7635.832520
+$Orientation:
+	0.976471, 0.112620, -0.183907,
+	-0.085649, 0.985190, 0.148542,
+	0.197913, -0.129296, 0.971655
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++AI Class: General
++Secondary Banks: ( "FighterKiller" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Missile Launcher 2		;! Object #77
+$Class: Modular Turret
+$Team: Friendly
+$Location: 1259.646118, 1195.492798, -7606.661133
+$Orientation:
+	0.976471, 0.112620, -0.183907,
+	0.196089, -0.108781, 0.974534,
+	0.089746, -0.987666, -0.128304
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++AI Class: General
++Secondary Banks: ( "FighterKiller" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Missile Launcher 3		;! Object #78
+$Class: Modular Turret
+$Team: Friendly
+$Location: 1218.283691, 1196.044556, -7634.850098
+$Orientation:
+	0.167493, -0.112023, 0.979489,
+	-0.981781, -0.109396, 0.155373,
+	0.089746, -0.987666, -0.128304
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++AI Class: General
++Secondary Banks: ( "FighterKiller" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Missile Launcher 4		;! Object #79
+$Class: Modular Turret
+$Team: Friendly
+$Location: 1245.806519, 1204.296875, -7675.635254
+$Orientation:
+	0.976471, 0.112620, -0.183907,
+	-0.197981, 0.130080, -0.971537,
+	-0.085491, 0.985087, 0.149315
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++AI Class: General
++Secondary Banks: ( "FighterKiller" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Missile Launcher 5		;! Object #80
+$Class: Modular Turret
+$Team: Friendly
+$Location: 1287.247925, 1203.825562, -7647.589844
+$Orientation:
+	0.190608, -0.149173, 0.970267,
+	0.978021, 0.113975, -0.174607,
+	-0.084539, 0.982221, 0.167618
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++AI Class: General
++Secondary Banks: ( "FighterKiller" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Missile Launcher 6		;! Object #81
+$Class: Modular Turret
+$Team: Friendly
+$Location: 1255.869141, 1165.150269, -7646.439453
+$Orientation:
+	0.976471, 0.112620, -0.183907,
+	0.089277, -0.987403, -0.130632,
+	-0.196303, 0.111141, -0.974225
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++AI Class: General
++Secondary Banks: ( "FighterKiller" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Defense Node Comm		;! Object #82
+$Class: Scanner Dish
+$Team: Friendly
+$Location: 1232.655884, 1207.307129, -7636.785645
+$Orientation:
+	0.952334, 0.302485, 0.039546,
+	-0.304312, 0.932918, 0.192505,
+	0.021337, -0.195364, 0.980499
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Special Hitpoints: 1000
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Ute		;! Object #83
+$Class: GTC Fenris
+$Team: Neutral
+$Location: -1801.117920, 574.621460, -3034.758545
+$Orientation:
+	-0.227202, 0.000000, -0.973848,
+	0.000000, 1.000000, 0.000000,
+	0.973848, 0.000000, -0.227202
+$AI Behavior: None
++AI Class: Captain
+$AI Goals: ( goals ( ai-waypoints-once "Liquilade jump node pt" 89 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09a-01-main
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( destroyed-or-departed-delay 
+      ( rand-multiple 53 70 ) 
+      "Decisive Wind" 
+   )
+   ( is-event-true-delay 
+      "Gone wit da wind" 
+      ( rand-multiple 53 70 ) 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( has-departed-delay 3 "Liquilade" ) 
+   ( <= ( hits-left "Ute" ) 23 ) 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 30
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
+$Texture Replace:
++old: nameplate
++new: gtc_ute
+
+$Name: Skadi 1		;! Object #84
+$Class: GTF Apollo
+$Team: Neutral
+$Team Color Setting: Smuggler 6
+$Location: -1576.635742, 605.103149, -3247.269287
+$Orientation:
+	-0.227202, 0.000000, -0.973848,
+	0.000000, 1.000000, 0.000000,
+	0.973848, 0.000000, -0.227202
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 100
+
+$Name: Skadi 2		;! Object #85
+$Class: GTF Apollo
+$Team: Neutral
+$Team Color Setting: None
+$Location: -1653.980347, 631.403870, -3276.822998
+$Orientation:
+	-0.227202, 0.000000, -0.973848,
+	0.000000, 1.000000, 0.000000,
+	0.973848, 0.000000, -0.227202
+$AI Behavior: None
++AI Class: BtA-Lieutenant
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Avenger" "" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: GTA-TRP-01466		;! Object #86
+$Class: Terran Probe
+$Team: Friendly
+$Location: -2112.175781, -0.000044, 6683.900391
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-destroyed-delay 0 "Liquilade" ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-departure-warp" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Famine 1		;! Object #87
+$Class: GTF Valkyrie
+$Alt: TF Valkyrie
+
+$Team: Hostile
+$Team Color Setting: Smuggler 3
+$Location: 5000.000000, 1103.300049, -10168.500000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "secondaries-locked" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Famine 2		;! Object #88
+$Class: GTF Valkyrie
+$Alt: TF Valkyrie
+
+$Team: Hostile
+$Team Color Setting: Smuggler 3
+$Location: 4977.904297, 1103.300049, -9924.922852
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "secondaries-locked" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: War 1		;! Object #89
+$Class: GTB Zeus
+$Alt: TB Zeus
+
+$Team: Hostile
+$Team Color Setting: Smuggler 3
+$Location: 5086.896973, 1349.116211, -10587.706055
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "secondaries-locked" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: War 2		;! Object #90
+$Class: GTB Zeus
+$Alt: TB Zeus
+
+$Team: Hostile
+$Team Color Setting: Smuggler 3
+$Location: 5039.763184, 1349.116211, -10233.326172
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "secondaries-locked" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Battle Snail#1		;! Object #91
+$Class: Battle Snail
+$Team: Friendly
+$Location: -804.046875, 730.000000, -1974.209229
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BtA-Colonel
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "CampMode" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "SnailsFound" 
+   45 
+)
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "no-arrival-warp" "invulnerable" "hidden-from-sensors" "scannable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "hide-ship-name" "cloaked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 7
+
+$Name: Battle Snail#2		;! Object #92
+$Class: Battle Snail
+$Team: Friendly
+$Location: -808.094116, 730.000000, -2091.566895
+$Orientation:
+	-0.968518, 0.000000, 0.248947,
+	0.000000, 1.000000, 0.000000,
+	-0.248947, 0.000000, -0.968518
+$AI Behavior: None
++AI Class: BtA-Colonel
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "CampMode" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "SnailsFound" 
+   45 
+)
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "no-arrival-warp" "invulnerable" "hidden-from-sensors" "scannable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "hide-ship-name" "cloaked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 7
+
+$Name: GTA-TRP-01498		;! Object #93
+$Class: Terran Probe
+$Team: Friendly
+$Location: -2150.154053, 0.000151, 6707.777344
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 1576)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "Drones active and commandable" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( has-departed-delay 0 "Liquilade" ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-warp" "no-departure-warp" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+#Wings		;! 12 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+	"Alpha 4"
+)
++Hotkey: 0
++Flags: ( )
+
+$Name: Freki
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Freki 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 1500
+$Arrival Anchor: Gulnara Research
+$Arrival Cue: ( is-event-true-delay 
+   "Monitor Emissions failed" 
+   45 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Freki 1"
+	"Freki 2"
+	"Freki 3"
+	"Freki 4"
+)
++Flags: ( )
+
+$Name: Repair Drone A
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Repair Drone A 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Repair Drone A 1"
+	"Repair Drone A 2"
+	"Repair Drone A 3"
+)
++Flags: ( )
+
+$Name: Repair Drone B
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Repair Drone B 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Repair Drone B 1"
+	"Repair Drone B 2"
+	"Repair Drone B 3"
+)
++Flags: ( )
+
+$Name: Repair Drone C
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Repair Drone C 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Repair Drone C 1"
+	"Repair Drone C 2"
+	"Repair Drone C 3"
+	"Repair Drone C 4"
+)
++Flags: ( )
+
+$Name: Repair Drone D
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Repair Drone D 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Repair Drone D 1"
+	"Repair Drone D 2"
+	"Repair Drone D 3"
+	"Repair Drone D 4"
+)
++Flags: ( )
+
+$Name: Bragi
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Bragi 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Decisive Wind" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Bragi 1"
+	"Bragi 2"
+)
+$AI Goals: ( goals ( ai-chase "Zabiela" 50 ) )
++Flags: ( )
+
+$Name: Repair Drone E
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Repair Drone E 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Repair Drone E 1"
+	"Repair Drone E 2"
+	"Repair Drone E 3"
+)
++Flags: ( )
++Wave Delay Min: 5
++Wave Delay Max: 10
+
+$Name: Repair Drone F
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Repair Drone F 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Repair Drone F 1"
+	"Repair Drone F 2"
+	"Repair Drone F 3"
+)
++Flags: ( )
++Wave Delay Min: 5
++Wave Delay Max: 15
+
+$Name: Skadi
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Skadi 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Ute" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Skadi 1"
+	"Skadi 2"
+)
+$AI Goals: ( goals ( ai-chase "Alpha 1" 50 ) ( ai-chase "Defense Node AA-23" 50 ) ( ai-ignore-new "Liquilade" 50 ) )
++Flags: ( )
+
+$Name: Famine
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Famine 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 1800
+$Arrival Anchor: Liquilade
++Arrival delay: 1
+$Arrival Cue: ( <= 
+   ( distance 
+      "Liquilade" 
+      "Liquilade jump node pt:1" 
+   )
+   400 
+)
+$Departure Location: Hyperspace
++Departure delay: 1
+$Departure Cue: ( is-event-true-delay 
+   "Liquilade Clear" 
+   2 
+)
+$Ships: (		;! 2 total
+	"Famine 1"
+	"Famine 2"
+)
+$AI Goals: ( goals ( ai-chase "Liquilade" 50 ) )
++Hotkey: 7
++Flags: ( )
+
+$Name: War
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! War 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 1800
+$Arrival Anchor: Liquilade
+$Arrival Cue: ( <= 
+   ( distance 
+      "Liquilade" 
+      "Liquilade jump node pt:1" 
+   )
+   400 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Liquilade Clear" 
+   2 
+)
+$Ships: (		;! 2 total
+	"War 1"
+	"War 2"
+)
+$AI Goals: ( goals ( ai-chase "Liquilade" 50 ) )
++Flags: ( )
+
+#Events		;! 132 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@gtC[Guernica Comm: ]" 
+      "Guernica Comm: " 
+      1677 
+   )
+   ( modify-variable-xstr 
+      "@gtJ[Guernica Jump Drive: ]" 
+      "Guernica Jump Drive: " 
+      1678 
+   )
+   ( modify-variable-xstr 
+      "@jtC[S. Janaan Comm: ]" 
+      "S. Janaan Comm: " 
+      1679 
+   )
+   ( modify-variable-xstr 
+      "@jtJ[S. Janaan Jump Drive: ]" 
+      "S. Janaan Jump Drive: " 
+      1680 
+   )
+   ( modify-variable-xstr 
+      "@ktC[Kavinsky 2 Comm: ]" 
+      "Kavinsky 2 Comm: " 
+      1681 
+   )
+   ( modify-variable-xstr 
+      "@ktJ[Kavinsky 2 Jump Drive: ]" 
+      "Kavinsky 2 Jump Drive: " 
+      1682 
+   )
+   ( modify-variable-xstr 
+      "@Emissions_Readout[Emissions Readout]" 
+      "Emissions Readout" 
+      1683 
+   )
+)
++Name: Translation & Localization
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-time-elapsed 2 ) 
+   ( modify-variable 
+      "@filename[bonus.fs2]" 
+      "bta1_d1_01.sscp" 
+   )
+)
++Name: Shipsave Filename
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Guernica" 
+      "Sarwan Janaan" 
+      "Kavinsky 2" 
+      "Icarus" 
+      "Starlight Intruder" 
+      "Sarif Industries TGC-018" 
+      "Impala 06.20-1A" 
+      "GULRES-FR-02" 
+      "GTA-TRP-01478" 
+   )
+   ( true ) 
+   ( turret-lock-all 
+      "Gulnara Research" 
+      "<argument>" 
+   )
+   ( set-thrusters-status 
+      ( false ) 
+      "<argument>" 
+   )
+   ( change-iff-color 
+      "Friendly" 
+      "Friendly" 
+      236 
+      151 
+      23 
+      "<argument>" 
+   )
+   ( deactivate-glow-maps 
+      "GTA-TRP-01478" 
+   )
+   ( script-eval 
+      "pm('engmtclgndloop.ogg',1,100)" 
+   )
+)
++Name: Initial Settings
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( key-reset-multiple "Left Ctrl" ) 
+)
++Name: Key reset - RE
++Repeat Count: 99999
++Interval: 1
+
+$Formula: ( when-argument 
+   ( random-multiple-of 
+      "GULRES-CC-001" 
+      "GULRES-CC-002" 
+      "GULRES-CC-003" 
+      "GULRES-CC-004" 
+      "GULRES-CC-005" 
+      "GULRES-CC-006" 
+      "GULRES-CC-007" 
+      "GULRES-CC-008" 
+   )
+   ( true ) 
+   ( set-cargo 
+      "Vasudan Artifacts" 
+      "<argument>" 
+   )
+)
++Name: Assign Vasudan Artifacts
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( every-of 
+      "GULRES-AA-021" 
+      "GULRES-AA-022" 
+      "GULRES-AA-023" 
+      "GULRES-AA-024" 
+      "GULRES-BB-001" 
+      "GULRES-BB-002" 
+      "GULRES-FR-02" 
+   )
+   ( true ) 
+   ( change-iff-color 
+      "Friendly" 
+      "Friendly" 
+      0 
+      64 
+      128 
+      "<argument>" 
+   )
+)
++Name: Assign Cargo IFF color
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when-argument 
+   ( every-of 
+      "GULRES-CC-001" 
+      "GULRES-CC-002" 
+      "GULRES-CC-003" 
+      "GULRES-CC-004" 
+      "GULRES-CC-005" 
+      "GULRES-CC-006" 
+      "GULRES-CC-007" 
+      "GULRES-CC-008" 
+   )
+   ( true ) 
+   ( change-iff-color 
+      "Friendly" 
+      "Neutral" 
+      0 
+      64 
+      128 
+      "<argument>" 
+   )
+)
++Name: Assign GULRES-CC IFF color
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Repair Drone A" 
+      "Repair Drone B" 
+      "Repair Drone C" 
+      "Repair Drone D" 
+      "Repair Drone E" 
+      "Repair Drone F" 
+   )
+   ( true ) 
+   ( change-iff-color 
+      "Friendly" 
+      "Unknown" 
+      0 
+      64 
+      128 
+      "<argument>" 
+   )
+   ( set-thrusters-status 
+      ( false ) 
+      "<argument>" 
+   )
+)
++Name: Assign Drone IFF color/thruster
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+   ( true ) 
+   ( ship-guardian-threshold 
+      ( rand-multiple 40 70 ) 
+      "<argument>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "<argument>" 
+      "<all engines>" 
+   )
+)
++Name: Alpha guardian
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( in-sequence "J" "3" ) 
+   ( and 
+      ( = 
+         ( + @CountCheck[0] 1 ) 
+         @demoSnailsFOUND[0] 
+      )
+      ( is-event-true-delay "CampMode" 0 ) 
+   )
+   ( modify-variable 
+      "@Key[?]" 
+      "<argument>" 
+   )
+   ( modify-variable 
+      @CountCheck[0] 
+      ( + @CountCheck[0] 1 ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: String Setup
++Repeat Count: -1
++Trigger Count: 2
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ----------AI BEHAVIOR----------
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( <= @guernRES[0] 70 ) 
+   ( modify-variable 
+      @guernCOMM[0] 
+      ( rand-multiple 0 10 ) 
+   )
+   ( modify-variable 
+      @guernJUMP[0] 
+      ( rand-multiple 0 10 ) 
+   )
+   ( modify-variable @guernLIMIT[0] 0 ) 
+)
++Name: Low em Guern - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( <= @sarwanRES[0] 70 ) 
+   ( modify-variable 
+      @sarwanCOMM[0] 
+      ( rand-multiple 0 10 ) 
+   )
+   ( modify-variable 
+      @sarwanJUMP[0] 
+      ( rand-multiple 0 10 ) 
+   )
+   ( modify-variable @sarwanLIMIT[0] 0 ) 
+)
++Name: Low em Sarwan - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( <= @kavinRES[0] 70 ) 
+   ( modify-variable 
+      @kavinCOMM[0] 
+      ( rand-multiple 0 10 ) 
+   )
+   ( modify-variable 
+      @kavinJUMP[0] 
+      ( rand-multiple 0 10 ) 
+   )
+   ( modify-variable @kavinLIMIT[0] 0 ) 
+)
++Name: Low em Kavin - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= @guernRES[0] 120 ) 
+      ( > @guernRES[0] 70 ) 
+   )
+   ( modify-variable 
+      @guernCOMM[0] 
+      ( rand-multiple 30 50 ) 
+   )
+   ( modify-variable 
+      @guernJUMP[0] 
+      ( rand-multiple 30 50 ) 
+   )
+   ( modify-variable @guernLIMIT[0] 0 ) 
+)
++Name: Normal em Guern - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= @sarwanRES[0] 120 ) 
+      ( > @sarwanRES[0] 70 ) 
+   )
+   ( modify-variable 
+      @sarwanCOMM[0] 
+      ( rand-multiple 30 50 ) 
+   )
+   ( modify-variable 
+      @sarwanJUMP[0] 
+      ( rand-multiple 30 50 ) 
+   )
+)
++Name: Normal em Sarwan - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= @kavinRES[0] 120 ) 
+      ( > @kavinRES[0] 70 ) 
+   )
+   ( modify-variable 
+      @kavinCOMM[0] 
+      ( rand-multiple 30 50 ) 
+   )
+   ( modify-variable 
+      @kavinJUMP[0] 
+      ( rand-multiple 30 50 ) 
+   )
+)
++Name: Normal em Kavin - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( not 
+         ( is-event-true-delay 
+            "Monitor Emissions failed" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Player held them up good" 
+            0 
+         )
+      )
+   )
+   ( int-to-string 
+      @guernCOMM[0] 
+      "@gtCs[0]" 
+   )
+   ( int-to-string 
+      @guernJUMP[0] 
+      "@gtJs[0]" 
+   )
+   ( string-concatenate 
+      "@gtC[Guernica Comm: ]" 
+      "@gtCs[0]" 
+      "@gtCF[none]" 
+   )
+   ( string-concatenate 
+      "@gtJ[Guernica Jump Drive: ]" 
+      "@gtJs[0]" 
+      "@gtJF[none]" 
+   )
+)
++Name: Guernica Text VAR
++Repeat Count: -1
++Trigger Count: -1
++Interval: 0
+
+$Formula: ( when 
+   ( or 
+      ( not 
+         ( is-event-true-delay 
+            "Monitor Emissions failed" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Player held them up good" 
+            0 
+         )
+      )
+   )
+   ( int-to-string 
+      @sarwanCOMM[0] 
+      "@jtCs[0]" 
+   )
+   ( int-to-string 
+      @sarwanJUMP[0] 
+      "@jtJs[0]" 
+   )
+   ( string-concatenate 
+      "@jtC[S. Janaan Comm: ]" 
+      "@jtCs[0]" 
+      "@jtCF[none]" 
+   )
+   ( string-concatenate 
+      "@jtJ[S. Janaan Jump Drive: ]" 
+      "@jtJs[0]" 
+      "@jtJF[none]" 
+   )
+)
++Name: Janaan Text VAR
++Repeat Count: -1
++Trigger Count: -1
++Interval: 0
+
+$Formula: ( when 
+   ( or 
+      ( not 
+         ( is-event-true-delay 
+            "Monitor Emissions failed" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Player held them up good" 
+            0 
+         )
+      )
+   )
+   ( int-to-string 
+      @kavinCOMM[0] 
+      "@ktCs[0]" 
+   )
+   ( int-to-string 
+      @kavinJUMP[0] 
+      "@ktJs[0]" 
+   )
+   ( string-concatenate 
+      "@ktC[Kavinsky 2 Comm: ]" 
+      "@ktCs[0]" 
+      "@ktCF[none]" 
+   )
+   ( string-concatenate 
+      "@ktJ[Kavinsky 2 Jump Drive: ]" 
+      "@ktJs[0]" 
+      "@ktJF[none]" 
+   )
+)
++Name: Kavinsky Text VAR
++Repeat Count: -1
++Trigger Count: -1
++Interval: 0
+
+$Formula: ( every-time 
+   ( and 
+      ( not 
+         ( has-departed-delay 
+            0 
+            "GTA-TRP-01478" 
+         )
+      )
+      ( not 
+         ( is-destroyed-delay 
+            0 
+            "GTA-TRP-01478" 
+         )
+      )
+      ( is-cargo-known-delay 
+         0 
+         "Guernica" 
+         "Sarwan Janaan" 
+         "Kavinsky 2" 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Emissions readout - EV
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Guernica" 
+      "Sarwan Janaan" 
+      "Kavinsky 2" 
+   )
+   ( is-cargo-known-delay 0 "<argument>" ) 
+   ( when 
+      ( string-equals 
+         "<argument>" 
+         "Guernica" 
+      )
+      ( when 
+         ( = ( num-valid-arguments ) 3 ) 
+         ( modify-variable 
+            "@hudJC[CommTree1]" 
+            "CommTree3" 
+         )
+         ( modify-variable 
+            "@hudJJ[CommTree2]" 
+            "CommTree4" 
+         )
+         ( modify-variable 
+            "@hudKC[CommTree1]" 
+            "CommTree3" 
+         )
+         ( modify-variable 
+            "@hudKJ[CommTree2]" 
+            "CommTree4" 
+         )
+      )
+      ( when 
+         ( = ( num-valid-arguments ) 2 ) 
+         ( when 
+            ( is-cargo-known-delay 
+               0 
+               "Sarwan Janaan" 
+            )
+            ( modify-variable 
+               "@hudKC[CommTree1]" 
+               "CommTree5" 
+            )
+            ( modify-variable 
+               "@hudKJ[CommTree2]" 
+               "CommTree6" 
+            )
+         )
+         ( when 
+            ( is-cargo-known-delay 0 "Kavinsky 2" ) 
+            ( modify-variable 
+               "@hudJC[CommTree1]" 
+               "CommTree5" 
+            )
+            ( modify-variable 
+               "@hudJJ[CommTree2]" 
+               "CommTree6" 
+            )
+         )
+         ( hud-set-color 
+            "CommTree3" 
+            255 
+            255 
+            255 
+         )
+         ( hud-set-color 
+            "CommTree4" 
+            255 
+            255 
+            255 
+         )
+      )
+      ( when 
+         ( = ( num-valid-arguments ) 1 ) 
+         ( do-nothing ) 
+      )
+   )
+   ( when 
+      ( string-equals 
+         "<argument>" 
+         "Sarwan Janaan" 
+      )
+      ( when 
+         ( = ( num-valid-arguments ) 3 ) 
+         ( modify-variable 
+            "@hudGC[CommTree1]" 
+            "CommTree3" 
+         )
+         ( modify-variable 
+            "@hudGJ[CommTree2]" 
+            "CommTree4" 
+         )
+         ( modify-variable 
+            "@hudKC[CommTree1]" 
+            "CommTree3" 
+         )
+         ( modify-variable 
+            "@hudKJ[CommTree2]" 
+            "CommTree4" 
+         )
+      )
+      ( when 
+         ( = ( num-valid-arguments ) 2 ) 
+         ( when 
+            ( is-cargo-known-delay 0 "Guernica" ) 
+            ( modify-variable 
+               "@hudKC[CommTree1]" 
+               "CommTree5" 
+            )
+            ( modify-variable 
+               "@hudKJ[CommTree2]" 
+               "CommTree6" 
+            )
+         )
+         ( when 
+            ( is-cargo-known-delay 0 "Kavinsky 2" ) 
+            ( modify-variable 
+               "@hudGC[CommTree1]" 
+               "CommTree5" 
+            )
+            ( modify-variable 
+               "@hudGJ[CommTree2]" 
+               "CommTree6" 
+            )
+         )
+         ( hud-set-color 
+            "CommTree3" 
+            255 
+            255 
+            255 
+         )
+         ( hud-set-color 
+            "CommTree4" 
+            255 
+            255 
+            255 
+         )
+      )
+      ( when 
+         ( = ( num-valid-arguments ) 1 ) 
+         ( do-nothing ) 
+      )
+   )
+   ( when 
+      ( string-equals 
+         "<argument>" 
+         "Kavinsky 2" 
+      )
+      ( when 
+         ( = ( num-valid-arguments ) 3 ) 
+         ( modify-variable 
+            "@hudGC[CommTree1]" 
+            "CommTree3" 
+         )
+         ( modify-variable 
+            "@hudGJ[CommTree2]" 
+            "CommTree4" 
+         )
+         ( modify-variable 
+            "@hudJC[CommTree1]" 
+            "CommTree3" 
+         )
+         ( modify-variable 
+            "@hudJJ[CommTree2]" 
+            "CommTree4" 
+         )
+      )
+      ( when 
+         ( = ( num-valid-arguments ) 2 ) 
+         ( when 
+            ( is-cargo-known-delay 0 "Guernica" ) 
+            ( modify-variable 
+               "@hudJC[CommTree1]" 
+               "CommTree5" 
+            )
+            ( modify-variable 
+               "@hudJJ[CommTree2]" 
+               "CommTree6" 
+            )
+         )
+         ( when 
+            ( is-cargo-known-delay 
+               0 
+               "Sarwan Janaan" 
+            )
+            ( modify-variable 
+               "@hudGC[CommTree1]" 
+               "CommTree5" 
+            )
+            ( modify-variable 
+               "@hudGJ[CommTree2]" 
+               "CommTree6" 
+            )
+         )
+         ( hud-set-color 
+            "CommTree3" 
+            255 
+            255 
+            255 
+         )
+         ( hud-set-color 
+            "CommTree4" 
+            255 
+            255 
+            255 
+         )
+      )
+      ( when 
+         ( = ( num-valid-arguments ) 1 ) 
+         ( do-nothing ) 
+      )
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: HUD Readout Ordering
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         4 
+      )
+      ( is-cargo-known-delay 0 "Guernica" ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTreeMain" 
+      ( true ) 
+   )
+   ( hud-set-text 
+      "CommTreeMain" 
+      "@Emissions_Readout[Emissions Readout]" 
+   )
+   ( hud-set-color 
+      "CommTreeMain" 
+      250 
+      206 
+      47 
+   )
+   ( hud-gauge-set-active 
+      "@hudGC[CommTree1]" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "@hudGJ[CommTree2]" 
+      ( true ) 
+   )
+)
++Name: Guernica Readout Active
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         4 
+      )
+      ( is-cargo-known-delay 
+         0 
+         "Sarwan Janaan" 
+      )
+   )
+   ( hud-gauge-set-active 
+      "CommTreeMain" 
+      ( true ) 
+   )
+   ( hud-set-text 
+      "CommTreeMain" 
+      "@Emissions_Readout[Emissions Readout]" 
+   )
+   ( hud-set-color 
+      "CommTreeMain" 
+      250 
+      206 
+      47 
+   )
+   ( hud-gauge-set-active 
+      "@hudJC[CommTree1]" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "@hudJJ[CommTree2]" 
+      ( true ) 
+   )
+)
++Name: Janaan Readout Active
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         4 
+      )
+      ( is-cargo-known-delay 0 "Kavinsky 2" ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTreeMain" 
+      ( true ) 
+   )
+   ( hud-set-text 
+      "CommTreeMain" 
+      "@Emissions_Readout[Emissions Readout]" 
+   )
+   ( hud-set-color 
+      "CommTreeMain" 
+      250 
+      206 
+      47 
+   )
+   ( hud-gauge-set-active 
+      "@hudKC[CommTree1]" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "@hudKJ[CommTree2]" 
+      ( true ) 
+   )
+)
++Name: Kavinsky Readout Active
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( is-event-true-delay 
+      "Guernica Readout Active" 
+      0 
+   )
+   ( hud-set-text 
+      "@hudGC[CommTree1]" 
+      "@gtCF[none]" 
+   )
+   ( hud-set-text 
+      "@hudGJ[CommTree2]" 
+      "@gtJF[none]" 
+   )
+)
++Name: Guernica Readout Text
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( is-event-true-delay 
+      "Janaan Readout Active" 
+      0 
+   )
+   ( hud-set-text 
+      "@hudJC[CommTree1]" 
+      "@jtCF[none]" 
+   )
+   ( hud-set-text 
+      "@hudJJ[CommTree2]" 
+      "@jtJF[none]" 
+   )
+)
++Name: Janaan Readout Text
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( is-event-true-delay 
+      "Kavinsky Readout Active" 
+      0 
+   )
+   ( hud-set-text 
+      "@hudKC[CommTree1]" 
+      "@ktCF[none]" 
+   )
+   ( hud-set-text 
+      "@hudKJ[CommTree2]" 
+      "@ktJF[none]" 
+   )
+)
++Name: Kavinsky Readout Text
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Neutralize Dorsal Turret" 
+      17 
+   )
+   ( modify-variable 
+      @guernRES[0] 
+      ( + 
+         @guernRES[0] 
+         ( rand-multiple 1 5 ) 
+      )
+   )
+)
++Name: Guernica resolve - RE
++Repeat Count: 999
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( key-pressed "Left Ctrl" ) 
+      ( facing "Guernica" 15 ) 
+      ( < 
+         ( distance "Alpha 1" "Guernica" ) 
+         1000 
+      )
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         17 
+      )
+   )
+   ( modify-variable 
+      @guernRES[0] 
+      ( - @guernRES[0] 1 ) 
+   )
+   ( modify-variable @guernLIMIT[0] 0 ) 
+)
++Name: Guernica fired at - EV
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( > @guernRES[0] 120 ) 
+   ( if-then-else 
+      ( > @guernCOMM[0] @guernJUMP[0] ) 
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @guernCOMM[0] 
+            ( rand-multiple 51 100 ) 
+         )
+         ( modify-variable 
+            @guernJUMP[0] 
+            ( rand-multiple 30 50 ) 
+         )
+      )
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @guernJUMP[0] 
+            ( rand-multiple 51 100 ) 
+         )
+         ( modify-variable 
+            @guernCOMM[0] 
+            ( rand-multiple 30 50 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @guernLIMIT[0] 
+      ( + @guernLIMIT[0] 1 ) 
+   )
+)
++Name: Guernica increment LIMIT - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Neutralize Dorsal Turret" 
+      17 
+   )
+   ( modify-variable 
+      @sarwanRES[0] 
+      ( + 
+         @sarwanRES[0] 
+         ( rand-multiple 1 5 ) 
+      )
+   )
+)
++Name: Janaan resolve - RE
++Repeat Count: 999
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( key-pressed "Left Ctrl" ) 
+      ( facing "Sarwan Janaan" 15 ) 
+      ( < 
+         ( distance "Alpha 1" "Sarwan Janaan" ) 
+         1000 
+      )
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         17 
+      )
+   )
+   ( modify-variable 
+      @sarwanRES[0] 
+      ( - @sarwanRES[0] 1 ) 
+   )
+   ( modify-variable @sarwanLIMIT[0] 0 ) 
+)
++Name: Janaan fired at - EV
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( > @sarwanRES[0] 120 ) 
+   ( if-then-else 
+      ( > @sarwanCOMM[0] @sarwanJUMP[0] ) 
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @sarwanCOMM[0] 
+            ( rand-multiple 51 100 ) 
+         )
+         ( modify-variable 
+            @sarwanJUMP[0] 
+            ( rand-multiple 30 50 ) 
+         )
+      )
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @sarwanJUMP[0] 
+            ( rand-multiple 51 100 ) 
+         )
+         ( modify-variable 
+            @sarwanCOMM[0] 
+            ( rand-multiple 30 50 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @sarwanLIMIT[0] 
+      ( + @sarwanLIMIT[0] 1 ) 
+   )
+)
++Name: Janaan increment LIMIT - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Neutralize Dorsal Turret" 
+      17 
+   )
+   ( modify-variable 
+      @kavinRES[0] 
+      ( + 
+         @kavinRES[0] 
+         ( rand-multiple 1 5 ) 
+      )
+   )
+)
++Name: Kavinsky resolve - RE
++Repeat Count: 999
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( key-pressed "Left Ctrl" ) 
+      ( facing "Kavinsky 2" 15 ) 
+      ( < 
+         ( distance "Alpha 1" "Kavinsky 2" ) 
+         1000 
+      )
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         17 
+      )
+   )
+   ( modify-variable 
+      @kavinRES[0] 
+      ( - @kavinRES[0] 1 ) 
+   )
+   ( modify-variable @kavinLIMIT[0] 0 ) 
+)
++Name: Kavinsky fired at - EV
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( > @kavinRES[0] 120 ) 
+   ( if-then-else 
+      ( > @kavinCOMM[0] @kavinJUMP[0] ) 
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @kavinCOMM[0] 
+            ( rand-multiple 51 100 ) 
+         )
+         ( modify-variable 
+            @kavinJUMP[0] 
+            ( rand-multiple 30 50 ) 
+         )
+      )
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @kavinJUMP[0] 
+            ( rand-multiple 51 100 ) 
+         )
+         ( modify-variable 
+            @kavinCOMM[0] 
+            ( rand-multiple 30 50 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @kavinLIMIT[0] 
+      ( + @kavinLIMIT[0] 1 ) 
+   )
+)
++Name: Kavinsky increment LIMIT - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( facing "Guernica" 6 ) 
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         17 
+      )
+      ( > @guernRES[0] 0 ) 
+      ( < 
+         ( distance "Alpha 1" "Guernica" ) 
+         300 
+      )
+   )
+   ( modify-variable 
+      @guernRES[0] 
+      ( - @guernRES[0] 10 ) 
+   )
+)
++Name: Guern looked at - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( facing "Sarwan Janaan" 6 ) 
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         17 
+      )
+      ( > @sarwanRES[0] 0 ) 
+      ( < 
+         ( distance "Alpha 1" "Sarwan Janaan" ) 
+         300 
+      )
+   )
+   ( modify-variable 
+      @sarwanRES[0] 
+      ( - @sarwanRES[0] 10 ) 
+   )
+)
++Name: Janaan looked at - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( facing "Kavinsky 2" 6 ) 
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         17 
+      )
+      ( > @kavinRES[0] 0 ) 
+      ( < 
+         ( distance "Alpha 1" "Kavinsky 2" ) 
+         300 
+      )
+   )
+   ( modify-variable 
+      @kavinRES[0] 
+      ( - @kavinRES[0] 10 ) 
+   )
+)
++Name: Kavinsky looked at - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < @guernRES[0] -120 ) 
+      ( and 
+         ( < ( hits-left "Guernica" ) 91 ) 
+         ( >= 
+            ( get-damage-caused 
+               "Guernica" 
+               "Alpha 1" 
+            )
+            10 
+         )
+      )
+   )
+   ( change-iff "Neutral" "Guernica" ) 
+   ( turret-free-all "Guernica" ) 
+   ( send-message 
+      "Guernica" 
+      "High" 
+      "Guern - going hostile" 
+   )
+)
++Name: Guernica hostile
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( random-multiple-of 
+      "A2 - taunt random 2" 
+      "A2 - taunt random 3" 
+      "A2 - taunt random 4" 
+      "A2 - taunt random 1" 
+   )
+   ( or 
+      ( and 
+         ( key-pressed "Left Ctrl" ) 
+         ( facing "Guernica" 25 ) 
+         ( is-event-true-delay 
+            "Neutralize Dorsal Turret" 
+            22 
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Monitor Emissions failed" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Player held them up good" 
+               0 
+            )
+         )
+      )
+      ( and 
+         ( key-pressed "Left Ctrl" ) 
+         ( facing "Kavinsky 2" 25 ) 
+         ( is-event-true-delay 
+            "Neutralize Dorsal Turret" 
+            22 
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Monitor Emissions failed" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Player held them up good" 
+               0 
+            )
+         )
+      )
+      ( and 
+         ( key-pressed "Left Ctrl" ) 
+         ( facing "Sarwan Janaan" 25 ) 
+         ( is-event-true-delay 
+            "Neutralize Dorsal Turret" 
+            22 
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Monitor Emissions failed" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Player held them up good" 
+               0 
+            )
+         )
+      )
+   )
+   ( modify-variable 
+      "@tauntMSG[A2 - taunt random 1]" 
+      "<argument>" 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Civvie Taunt Message Shuffle
++Repeat Count: -1
++Trigger Count: 4
++Interval: 30
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Guernica" 
+      "Sarwan Janaan" 
+      "Kavinsky 2" 
+   )
+   ( and 
+      ( key-pressed "Left Ctrl" ) 
+      ( facing "<argument>" 25 ) 
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         22 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Monitor Emissions failed" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Player held them up good" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "@tauntMSG[A2 - taunt random 1]" 
+   )
+)
++Name: Alpha 2 taunts civvies
++Repeat Count: -1
++Trigger Count: 4
++Interval: 30
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( and 
+            ( > @guernLIMIT[0] 11 ) 
+            ( = @gameUP[0] 0 ) 
+            ( > @guernCOMM[0] 50 ) 
+         )
+         ( is-destroyed-delay 7 "Kavinsky 2" ) 
+         ( is-destroyed-delay 
+            7 
+            "Sarwan Janaan" 
+         )
+      )
+      ( or 
+         ( not 
+            ( is-event-true-delay 
+               "Kavinsky distress" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Janaan distress" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "Guernica" 
+      "High" 
+      "Guern - distress" 
+   )
+   ( modify-variable @gameUP[0] 1 ) 
+)
++Name: Guerncia sends distress
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( > @guernLIMIT[0] 11 ) 
+         ( = @gameUP[0] 0 ) 
+         ( > @guernJUMP[0] 50 ) 
+      )
+      ( is-event-true-delay 
+         "Monitor Emissions failed" 
+         ( rand-multiple 1 8 ) 
+      )
+      ( or 
+         ( and 
+            ( is-event-true-delay 
+               "Guernica hostile" 
+               0 
+            )
+            ( <= ( hits-left "Guernica" ) 75 ) 
+         )
+         ( is-event-true-delay 
+            "Guernica hostile" 
+            8 
+         )
+      )
+   )
+   ( add-goal 
+      "Guernica" 
+      ( ai-warp-out 89 ) 
+   )
+   ( modify-variable @gameUP[0] 1 ) 
+)
++Name: Guernica jumps
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( and 
+            ( > @sarwanLIMIT[0] 11 ) 
+            ( = @gameUP[0] 0 ) 
+            ( > @sarwanCOMM[0] 50 ) 
+         )
+         ( is-destroyed-delay 5 "Guernica" ) 
+         ( is-destroyed-delay 5 "Kavinsky 2" ) 
+      )
+      ( or 
+         ( not 
+            ( is-event-true-delay 
+               "Kavinsky distress" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Guerncia sends distress" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "Sarwan Janaan" 
+      "High" 
+      "Sarw - distress" 
+   )
+   ( modify-variable @gameUP[0] 1 ) 
+)
++Name: Janaan distress
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( > @sarwanLIMIT[0] 11 ) 
+         ( = @gameUP[0] 0 ) 
+         ( > @sarwanJUMP[0] 50 ) 
+      )
+      ( is-event-true-delay 
+         "Monitor Emissions failed" 
+         ( rand-multiple 1 8 ) 
+      )
+      ( or 
+         ( and 
+            ( is-event-true-delay 
+               "Janaan hostile" 
+               0 
+            )
+            ( <= ( hits-left "Sarwan Janaan" ) 75 ) 
+         )
+         ( is-event-true-delay 
+            "Janaan hostile" 
+            7 
+         )
+      )
+   )
+   ( add-goal 
+      "Sarwan Janaan" 
+      ( ai-warp-out 89 ) 
+   )
+   ( modify-variable @gameUP[0] 1 ) 
+)
++Name: Janaan jumps
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( and 
+            ( > @kavinLIMIT[0] 11 ) 
+            ( = @gameUP[0] 0 ) 
+            ( > @kavinCOMM[0] 50 ) 
+         )
+         ( is-destroyed-delay 
+            8 
+            "Sarwan Janaan" 
+         )
+         ( is-destroyed-delay 8 "Guernica" ) 
+      )
+      ( or 
+         ( not 
+            ( is-event-true-delay 
+               "Guerncia sends distress" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Janaan distress" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "Kavinsky 2" 
+      "High" 
+      "Kav - distress" 
+   )
+   ( modify-variable @gameUP[0] 1 ) 
+)
++Name: Kavinsky distress
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( > @kavinLIMIT[0] 11 ) 
+         ( = @gameUP[0] 0 ) 
+         ( > @kavinJUMP[0] 50 ) 
+      )
+      ( is-event-true-delay 
+         "Monitor Emissions failed" 
+         ( rand-multiple 1 8 ) 
+      )
+      ( or 
+         ( and 
+            ( is-event-true-delay 
+               "Kavinsky hostile" 
+               0 
+            )
+            ( <= ( hits-left "Kavinsky 2" ) 75 ) 
+         )
+         ( is-event-true-delay 
+            "Kavinsky hostile" 
+            6 
+         )
+      )
+   )
+   ( add-goal 
+      "Kavinsky 2" 
+      ( ai-warp-out 89 ) 
+   )
+   ( modify-variable @gameUP[0] 1 ) 
+)
++Name: Kavinsky jumps
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < @sarwanRES[0] -120 ) 
+      ( and 
+         ( < ( hits-left "Sarwan Janaan" ) 91 ) 
+         ( >= 
+            ( get-damage-caused 
+               "Sarwan Janaan" 
+               "Alpha 1" 
+            )
+            10 
+         )
+      )
+   )
+   ( change-iff 
+      "Neutral" 
+      "Sarwan Janaan" 
+   )
+   ( send-message 
+      "Sarwan Janaan" 
+      "High" 
+      "Sarw - going hostile" 
+   )
+)
++Name: Janaan hostile
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < @kavinRES[0] -120 ) 
+      ( and 
+         ( < ( hits-left "Kavinsky 2" ) 91 ) 
+         ( >= 
+            ( get-damage-caused 
+               "Kavinsky 2" 
+               "Alpha 1" 
+            )
+            10 
+         )
+      )
+   )
+   ( change-iff "Neutral" "Kavinsky 2" ) 
+   ( turret-free-all "Kavinsky 2" ) 
+   ( send-message 
+      "Kavinsky 2" 
+      "High" 
+      "Kav - going hostile" 
+   )
+)
++Name: Kavinsky hostile
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Sarif Industries TGC-018" 
+      "Starlight Intruder" 
+      "Icarus" 
+      "GULRES-FR-02" 
+   )
+   ( and 
+      ( or 
+         ( is-destroyed-delay 0 "<argument>" ) 
+         ( >= 
+            ( get-damage-caused 
+               "<argument>" 
+               "Alpha 1" 
+            )
+            30 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Neutralize Dorsal Turret" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Gulnara Calls Help" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Gulnara Research" 
+      "High" 
+      "Guln - distress" 
+   )
+)
++Name: Player Is Crazy
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Guernica" 
+      "Sarwan Janaan" 
+      "Kavinsky 2" 
+   )
+   ( and 
+      ( destroyed-or-departed-delay 
+         7 
+         "<argument>" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Player Is Crazy" 
+            0 
+         )
+      )
+      ( not 
+         ( has-arrived-delay 0 "Decisive Wind" ) 
+      )
+   )
+   ( send-message-list 
+      "Gulnara Research" 
+      "High" 
+      "Guln - distress" 
+      0 
+      "Alpha 2" 
+      "High" 
+      "A2 - dammit one" 
+      4500 
+   )
+)
++Name: Gulnara Calls Help
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( <= 
+      ( hits-left "Gulnara Research" ) 
+      53 
+   )
+   ( set-armor-type 
+      "Gulnara Research" 
+      ( true ) 
+      "Heavy Armor 40" 
+      "Hull" 
+   )
+)
++Name: Gulnara Gets Armor
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: --------MISSION EVENTS-------
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-out 0 1 ) 
+   ( play-sound-from-file "warp_1.wav" ) 
+   ( fade-in 1500 ) 
+)
++Name: Exit Warp
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 - cover those 3" 
+      1000 
+   )
+)
++Name: Intro
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 
+         14 
+         "Decisive Wind" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Neutralize Dorsal Turret" 
+            0 
+         )
+      )
+   )
+   ( add-goal "Zabiela" ( ai-undock 89 ) ) 
+   ( add-goal 
+      "Liquilade" 
+      ( ai-undock 89 ) 
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - were blown" 
+   )
+)
++Name: Abort Mission
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Player Is Crazy" 
+      2 
+   )
+   ( add-goal "Zabiela" ( ai-undock 89 ) ) 
+   ( add-goal 
+      "Liquilade" 
+      ( ai-undock 89 ) 
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - dammit one" 
+   )
+)
++Name: Player Goes Traitor
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Abort Mission" 
+         0 
+      )
+      ( is-event-true-delay 
+         "Player Goes Traitor" 
+         0 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Abort Or Traitor
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: Return To Base ABORT
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Objective:  XSTR("Return to Base", 1603)
++Objective key:  XSTR("Press $Alt-J$", 1604)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Abort Or Traitor" 
+      5 
+   )
+   ( add-goal "Alpha" ( ai-warp-out 89 ) ) 
+   ( add-goal 
+      "Zabiela" 
+      ( ai-warp-out 89 ) 
+   )
+   ( add-goal 
+      "Liquilade" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: Team Aborts
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Zabiela" 
+      "Gulnara Research" 
+      1 
+      4 
+   )
+   ( send-message 
+      "Zabiela" 
+      "High" 
+      "Zab - dock secured" 
+   )
+)
++Name: Zabiela docks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-docked-delay 
+         "Liquilade" 
+         "Gulnara Research" 
+         1 
+         1 
+      )
+      ( not 
+         ( has-arrived-delay 0 "Decisive Wind" ) 
+      )
+   )
+   ( send-message-list 
+      "Liquilade" 
+      "High" 
+      "Liq - dock secured" 
+      0 
+      "Alpha 2" 
+      "High" 
+      "A2 - do it" 
+      4510 
+   )
+   ( lua-turrethotkey-add 
+      "F11" 
+      "Gulnara Research" 
+      "turret05" 
+      "true" 
+   )
+)
++Name: Liquilade docks
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "Gulnara Research" 
+      "turret05" 
+      0 
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 - rules 1" 
+      0 
+      "Alpha 2" 
+      "High" 
+      "A2 - rules 2" 
+      7500 
+      "Alpha 3" 
+      "High" 
+      "A3 - lockdown" 
+      7000 
+      "Alpha 4" 
+      "High" 
+      "A4 - in position" 
+      6000 
+      "Alpha 2" 
+      "High" 
+      "A2 - watchdog" 
+      7500 
+      "Alpha 2" 
+      "High" 
+      "A2 - lower than 50" 
+      7000 
+   )
+   ( protect-ship 
+      "Gulnara Research" 
+      "Zabiela" 
+   )
+   ( add-remove-escort "Zabiela" 0 ) 
+   ( add-remove-escort "Liquilade" 0 ) 
+   ( add-remove-escort "Guernica" 20 ) 
+   ( add-remove-escort 
+      "Sarwan Janaan" 
+      20 
+   )
+   ( add-remove-escort "Kavinsky 2" 20 ) 
+   ( change-iff 
+      "Friendly" 
+      "Gulnara Research" 
+   )
+   ( change-iff-color 
+      "Friendly" 
+      "Friendly" 
+      236 
+      151 
+      23 
+      "Gulnara Research" 
+   )
+   ( add-remove-escort 
+      "Gulnara Research" 
+      0 
+   )
+   ( script-eval "ert_act()" ) 
+)
++Name: Neutralize Dorsal Turret
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Objective:  XSTR("Neutralize Dorsal Turret", 1605)
++Objective key:  XSTR("Press F11", 4622)
+
+$Formula: ( when 
+   ( is-cargo-known-delay 
+      0 
+      "Guernica" 
+      "Sarwan Janaan" 
+      "Kavinsky 2" 
+   )
+   ( do-nothing ) 
+)
++Name: Scan Transports
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Objective:  XSTR("Scan Transports", 1606)
++Objective key:  XSTR("Press F7", 1607)
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "GTA-TRP-01478" 
+   )
+   ( do-nothing ) 
+)
++Name: Monitor Emissions
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Objective:  XSTR("Monitor Emissions", 1608)
++Objective key:  XSTR("Press F7", 1607)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Liquilade docks" 
+      4 
+   )
+   ( change-iff 
+      "Neutral" 
+      "Gulnara Research" 
+   )
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-destroy-subsystem 
+         "Gulnara Research" 
+         "turret05" 
+         89 
+      )
+   )
+   ( turret-lock-all 
+      "Starlight Intruder" 
+   )
+   ( add-goal 
+      "Starlight Intruder" 
+      ( ai-ignore-new "Gulnara Research" 89 ) 
+   )
+)
++Name: Gulnara Research goes hostile
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Guernica" 
+      "Sarwan Janaan" 
+      "Kavinsky 2" 
+   )
+   ( true ) 
+   ( set-thrusters-status 
+      ( true ) 
+      "<argument>" 
+   )
+)
++Name: Civvy thrusters active
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( < 
+      ( hits-left-subsystem-specific 
+         "Gulnara Research" 
+         "turret05" 
+      )
+      98 
+   )
+   ( turret-free 
+      "Gulnara Research" 
+      "turret05" 
+   )
+)
++Name: Gulnara turret 05 active
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Neutralize Dorsal Turret" 
+      5 
+   )
+   ( add-goal 
+      "Starlight Intruder" 
+      ( ai-play-dead 89 ) 
+   )
+)
++Name: Starlight Intruder halts
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Neutralize Dorsal Turret" 
+      0 
+   )
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-waypoints-once 
+         "A2 overwatch waypt" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-play-dead 70 ) 
+   )
+)
++Name: Alpha 2 watching orders
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Guernica" 
+      "Sarwan Janaan" 
+      "Kavinsky 2" 
+   )
+   ( and 
+      ( is-event-true-delay 
+         "Scan Transports" 
+         10 
+      )
+      ( < ( hits-left "<argument>" ) 95 ) 
+      ( not 
+         ( has-arrived-delay 0 "Decisive Wind" ) 
+      )
+      ( not ( has-arrived-delay 0 "Freki" ) ) 
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - EZ 1!" 
+   )
+)
++Name: Civvy hit 1 - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( facing "Dorsal Turret Point" 10 ) 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "Dorsal Turret Point" 
+            )
+            300 
+         )
+      )
+      ( targeted 
+         "Gulnara Research" 
+         1 
+         "turret05" 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Find Dorsal Station Turret
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Find Dorsal Station Turret", 1609)
++Objective key:  XSTR("Follow Zabiela", 1610)
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Guernica" 
+      "Sarwan Janaan" 
+      "Kavinsky 2" 
+   )
+   ( and 
+      ( or 
+         ( has-departed-delay 0 "<argument>" ) 
+         ( is-event-true-delay 
+            "Guerncia sends distress" 
+            0 
+         )
+         ( is-event-true-delay 
+            "Janaan distress" 
+            0 
+         )
+         ( is-event-true-delay 
+            "Kavinsky distress" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Player held them up good" 
+            0 
+         )
+      )
+   )
+   ( add-goal 
+      "GTA-TRP-01478" 
+      ( ai-warp-out 89 ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTreeMain" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree1" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree2" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree3" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree4" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree5" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree6" 
+      ( false ) 
+   )
+   ( script-eval "ert_inact()" ) 
+)
++Name: Monitor Emissions failed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Guernica" 
+      "Sarwan Janaan" 
+      "Kavinsky 2" 
+   )
+   ( and 
+      ( has-departed-delay 0 "<argument>" ) 
+      ( not 
+         ( or 
+            ( is-event-true-delay 
+               "Guerncia sends distress" 
+               6 
+            )
+            ( is-event-true-delay 
+               "Janaan distress" 
+               6 
+            )
+            ( is-event-true-delay 
+               "Kavinsky distress" 
+               6 
+            )
+         )
+      )
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Player held them up good" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 - transport jumped" 
+      0 
+      "Zabiela" 
+      "High" 
+      "Zab - working 2 mins" 
+      4500 
+      "Alpha 2" 
+      "High" 
+      "A2 - 3 and 4, how we doing" 
+      6000 
+      "Alpha 3" 
+      "High" 
+      "A3 - good 2 go" 
+      3500 
+      "Alpha 4" 
+      "High" 
+      "A4 - so not ready" 
+      7000 
+      "Alpha 2" 
+      "High" 
+      "A2 - artifacts smartifacts" 
+      6500 
+   )
+)
++Name: A2 - transport jumped - MSG
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "Guerncia sends distress" 
+            6 
+         )
+         ( is-event-true-delay 
+            "Janaan distress" 
+            6 
+         )
+         ( is-event-true-delay 
+            "Kavinsky distress" 
+            6 
+         )
+      )
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Player held them up good" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 - transport jumped" 
+      0 
+      "Zabiela" 
+      "High" 
+      "Zab - working 2 mins" 
+      4500 
+      "Alpha 2" 
+      "High" 
+      "A2 - 3 and 4, how we doing" 
+      6000 
+      "Alpha 3" 
+      "High" 
+      "A3 - good 2 go" 
+      3500 
+      "Alpha 4" 
+      "High" 
+      "A4 - so not ready" 
+      7000 
+      "Alpha 2" 
+      "High" 
+      "A2 - artifacts smartifacts" 
+      6500 
+   )
+)
++Name: A2 - transport called - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Monitor Emissions failed" 
+      ( rand-multiple 3 8 ) 
+   )
+   ( add-goal 
+      "Icarus" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: Everybody runsssss
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( is-event-true-delay 
+            "Monitor Emissions failed" 
+            0 
+         )
+      )
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         167 
+      )
+   )
+   ( send-message-list 
+      "Zabiela" 
+      "High" 
+      "Zab - we're good" 
+      0 
+      "Alpha 2" 
+      "High" 
+      "A2 - 3 and 4, how we doing" 
+      5000 
+      "Alpha 3" 
+      "High" 
+      "A3 - good 2 go" 
+      3500 
+      "Alpha 4" 
+      "High" 
+      "A4 - ready" 
+      6000 
+      "Alpha 2" 
+      "High" 
+      "A2 - copy Zab, let's do it" 
+      7500 
+   )
+   ( self-destruct "GTA-TRP-01478" ) 
+   ( modify-variable @gameUP[0] 1 ) 
+   ( hud-gauge-set-active 
+      "CommTreeMain" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree1" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree2" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree3" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree4" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree5" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "CommTree6" 
+      ( false ) 
+   )
+   ( script-eval "ert_inact()" ) 
+)
++Name: Player held them up good
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-guard "Liquilade" 89 ) 
+   )
+   ( add-goal 
+      "Alpha 3" 
+      ( ai-guard "Zabiela" 89 ) 
+   )
+   ( add-goal 
+      "Alpha 4" 
+      ( ai-guard "Zabiela" 89 ) 
+   )
+)
++Name: Alpha orders
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Player held them up good" 
+         0 
+      )
+      ( has-arrived-delay 
+         48 
+         "Decisive Wind" 
+      )
+   )
+   ( add-goal 
+      "Decisive Wind" 
+      ( ai-waypoints-once 
+         "Liquilade jump node pt" 
+         89 
+      )
+   )
+   ( cap-waypoint-speed 
+      "Decisive Wind" 
+      50 
+   )
+)
++Name: BT behavior - GOOD
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Monitor Emissions failed" 
+      0 
+   )
+   ( add-goal 
+      "Decisive Wind" 
+      ( ai-waypoints-once 
+         "wind bad waypts" 
+         89 
+      )
+   )
+)
++Name: BT behavior - BAD
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Freki" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Freki
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Freki", 1611)
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Guernica" 
+      "Sarwan Janaan" 
+      "Kavinsky 2" 
+   )
+   ( or 
+      ( is-event-true-delay 
+         "Monitor Emissions failed" 
+         0 
+      )
+      ( is-event-true-delay 
+         "Player held them up good" 
+         0 
+      )
+   )
+   ( add-remove-escort "<argument>" 0 ) 
+   ( add-remove-escort "Liquilade" 45 ) 
+)
++Name: Escort List Shuffle
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Freki" ) 
+   ( send-message 
+      "Freki 1" 
+      "High" 
+      "F1 - sup, surrender!" 
+   )
+   ( clear-goals "Alpha" ) 
+)
++Name: BT Gamma - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Freki" 89 ) 
+   )
+)
++Name: Alpha engages Freki
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Repair Drone A 1" 
+      "Repair Drone A 2" 
+      "Repair Drone A 3" 
+      "Repair Drone E 1" 
+      "Repair Drone C 1" 
+      "Repair Drone E 2" 
+      "Repair Drone E 3" 
+      "Repair Drone B 1" 
+      "Repair Drone B 2" 
+      "Repair Drone B 3" 
+      "Repair Drone F 1" 
+      "Repair Drone F 2" 
+      "Repair Drone F 3" 
+      "Repair Drone C 2" 
+      "Repair Drone C 3" 
+      "Repair Drone C 4" 
+      "Repair Drone D 1" 
+      "Repair Drone D 2" 
+      "Repair Drone D 3" 
+      "Repair Drone D 4" 
+   )
+   ( > 
+      ( get-object-speed-z 
+         "<argument>" 
+         ( true ) 
+      )
+      10 
+   )
+   ( self-destruct "GTA-TRP-01498" ) 
+)
++Name: Drones Commanded
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 4" 
+      "High" 
+      "A4 - drones away" 
+   )
+)
++Name: Drones Commanded MSG
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when-argument 
+   ( every-of 
+      "Repair Drone A" 
+      "Repair Drone B" 
+      "Repair Drone C" 
+      "Repair Drone D" 
+      "Repair Drone E" 
+      "Repair Drone F" 
+   )
+   ( or 
+      ( is-event-true-delay 
+         "Port master convinced" 
+         14 
+      )
+      ( is-event-true-delay 
+         "Player held them up good" 
+         18 
+      )
+   )
+   ( change-iff "Friendly" "<argument>" ) 
+   ( set-thrusters-status 
+      ( true ) 
+      "<argument>" 
+   )
+)
++Name: Drones active and commandable
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "GTA-TRP-01498" 
+   )
+   ( do-nothing ) 
+)
++Name: Launch Drones
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Launch Drones", 1612)
++Objective key:  XSTR("Press $C$, 2", 1613)
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Repair Drone A" 
+      "Repair Drone B" 
+      "Repair Drone C" 
+      "Repair Drone D" 
+      "Repair Drone E" 
+      "Repair Drone F" 
+   )
+   ( or 
+      ( query-orders 
+         "<argument>" 
+         "Destroy my target" 
+         8 
+         "Decisive Wind" 
+      )
+      ( query-orders 
+         "<argument>" 
+         "Destroy my target" 
+         8 
+         "Freki" 
+      )
+      ( query-orders 
+         "<argument>" 
+         "Destroy my target" 
+         8 
+         "Bragi" 
+      )
+      ( query-orders 
+         "<argument>" 
+         "Destroy my target" 
+         8 
+         "Ute" 
+      )
+      ( query-orders 
+         "<argument>" 
+         "Destroy my target" 
+         8 
+         "Skadi" 
+      )
+   )
+   ( training-msg 
+      "drones target accptd" 
+      "drones target accptd" 
+      0 
+      8 
+   )
+)
++Name: Drone command accepted - TRIG
++Repeat Count: -1
++Trigger Count: 999
++Interval: 9
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "Decisive Wind" 
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - wind destroyed" 
+   )
+)
++Name: Neutralize Decisive Wind
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Neutralize Decisive Wind", 1614)
+
+$Formula: ( when 
+   ( <= ( hits-left "Decisive Wind" ) 30 ) 
+   ( clear-goals "Decisive Wind" ) 
+   ( add-goal 
+      "Decisive Wind" 
+      ( ai-waypoints-once 
+         "Decisive Wind retreat waypt" 
+         89 
+      )
+   )
+)
++Name: Gone wit da wind
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Decisive Wind" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: Wind jumps
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - drones failed" 
+   )
+)
++Name: No More Drones - MSG
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Player held them up good" 
+         14 
+      )
+      ( is-event-true-delay 
+         "Monitor Emissions failed" 
+         87 
+      )
+   )
+   ( add-goal "Zabiela" ( ai-undock 89 ) ) 
+   ( add-goal 
+      "Zabiela" 
+      ( ai-waypoints-once 
+         "Zabiela run waypt" 
+         70 
+      )
+   )
+)
++Name: Zabiela undocks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Liquilade" 
+      ( ai-undock 89 ) 
+   )
+   ( add-goal 
+      "Liquilade" 
+      ( ai-waypoints-once 
+         "Liquilade jump node pt" 
+         70 
+      )
+   )
+)
++Name: Liquilade undocks
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Liquilade" ) 
+   ( do-nothing ) 
+)
++Name: Protect Liquilade
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Protect Liquilade", 1615)
+
+$Formula: ( when 
+   ( <= 
+      ( distance 
+         "Liquilade" 
+         "Liquilade jump node pt:1" 
+      )
+      1300 
+   )
+   ( send-message 
+      "Liquilade" 
+      "High" 
+      "Liq - almost there" 
+   )
+)
++Name: Liquilade Close
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( are-waypoints-done-delay 
+      "Liquilade" 
+      "Liquilade jump node pt" 
+      0 
+   )
+   ( send-message 
+      "Liquilade" 
+      "High" 
+      "Liq - clear" 
+   )
+)
++Name: Liquilade Clear
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-departed-delay 7 "Liquilade" ) 
+      ( is-event-true-delay 
+         "Liquilade Clear" 
+         0 
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - lesgo" 
+   )
+)
++Name: Time To Go
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal "Alpha" ( ai-warp-out 89 ) ) 
+)
++Name: Alpha Departs
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: Return To Base SUCCESS
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return to Base", 1603)
++Objective key:  XSTR("Press $Alt-J$", 1604)
+
+$Formula: ( when 
+   ( has-arrived-delay 3 "Decisive Wind" ) 
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 - decisive wind" 
+      0 
+      "Liquilade" 
+      "High" 
+      "Liq - do somethin" 
+      7000 
+   )
+   ( add-goal 
+      "Alpha 3" 
+      ( ai-ignore-new "Decisive Wind" 89 ) 
+   )
+   ( add-goal 
+      "Alpha 4" 
+      ( ai-ignore-new "Decisive Wind" 89 ) 
+   )
+   ( script-eval 
+      "pm('targetsacquired.ogg',1,100)" 
+   )
+)
++Name: Foul wind - MSG + MUS
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Monitor Emissions failed" 
+         0 
+      )
+      ( or 
+         ( is-event-true-delay 
+            "A2 - transport jumped - MSG" 
+            0 
+         )
+         ( is-event-true-delay 
+            "A2 - transport called - MSG" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Is "Monitor...failed" true?
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "GTA-TRP-01422" 
+   )
+   ( do-nothing ) 
+)
++Name: Find or destroy artifacts
++Repeat Count: 1
++Interval: 1
++Chained: 25
++Objective:  XSTR("Find or destroy artifacts", 1616)
++Objective key:  XSTR("Scan or Destroy Cargo: Press F8", 1617)
+
+$Formula: ( when-argument 
+   ( any-of 
+      "GULRES-CC-001" 
+      "GULRES-CC-002" 
+      "GULRES-CC-003" 
+      "GULRES-CC-004" 
+      "GULRES-CC-005" 
+      "GULRES-CC-006" 
+      "GULRES-CC-007" 
+      "GULRES-CC-008" 
+   )
+   ( or 
+      ( and 
+         ( percent-ships-destroyed 
+            1 
+            "GULRES-CC-001" 
+            "GULRES-CC-002" 
+            "GULRES-CC-003" 
+            "GULRES-CC-004" 
+            "GULRES-CC-005" 
+            "GULRES-CC-006" 
+            "GULRES-CC-007" 
+            "GULRES-CC-008" 
+         )
+         ( is-event-true-delay 
+            "Monitor Emissions failed" 
+            35 
+         )
+      )
+      ( and 
+         ( is-cargo-known-delay 0 "<argument>" ) 
+         ( is-event-true-delay 
+            "Monitor Emissions failed" 
+            35 
+         )
+         ( is-cargo 
+            "Vasudan Artifacts" 
+            "<argument>" 
+         )
+      )
+   )
+   ( send-message-list 
+      "Gulnara Research" 
+      "High" 
+      "Guln - codes" 
+      0 
+      "Alpha 4" 
+      "High" 
+      "A4 - tyvm" 
+      6000 
+      "Alpha 4" 
+      "High" 
+      "A4 - ready" 
+      8000 
+   )
+)
++Name: Port master convinced
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( distance 
+            "Decisive Wind" 
+            "Liquilade" 
+         )
+         1600 
+      )
+      ( has-arrived-delay 
+         90 
+         "Decisive Wind" 
+      )
+   )
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-ignore-new "Decisive Wind" 89 ) 
+   )
+   ( add-goal 
+      "Alpha 3" 
+      ( ai-ignore-new "Decisive Wind" 89 ) 
+   )
+   ( add-goal 
+      "Alpha 4" 
+      ( ai-ignore-new "Decisive Wind" 89 ) 
+   )
+)
++Name: Alpha ignore Wind
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( distance "Alpha 1" "Liquilade" ) 
+         2700 
+      )
+      ( has-undocked-delay 
+         "Liquilade" 
+         "Gulnara Research" 
+         1 
+         10 
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - stick transport" 
+   )
+)
++Name: Stick with charges - MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 0 "Skadi" ) 
+      ( has-departed-delay 0 "Liquilade" ) 
+   )
+   ( self-destruct "GTA-TRP-01466" ) 
+)
++Name: GTA Delayed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Ute" ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - ute destroyed" 
+   )
+)
++Name: Utes Destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Ute" ) 
+   ( do-nothing ) 
+)
++Name: Utes Trigger
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "GTA-TRP-01466" 
+   )
+   ( do-nothing ) 
+)
++Name: Delay GTA forces
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Delay GTA forces", 1618)
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Ute" ) 
+   ( send-message-list 
+      "Ute" 
+      "High" 
+      "Ute - stop in the name of love" 
+      0 
+      "Alpha 2" 
+      "High" 
+      "A2 - delay GTA 1" 
+      6500 
+   )
+)
++Name: Utes arrival
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-remove-escort 
+      "Defense Node AA-23" 
+      5 
+   )
+)
++Name: Add Defense Node to EL
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Neutralize Dorsal Turret" 
+         3 
+      )
+      ( false ) 
+   )
+   ( flash-hud-gauge "ESCORT_VIEW" ) 
+   ( flash-hud-gauge "DIRECTIVES_VIEW" ) 
+)
++Name: HUD flash help 1 - TRIG
++Repeat Count: -1
++Trigger Count: 5
++Interval: 3
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Utes arrival" 
+         7 
+      )
+      ( false ) 
+   )
+   ( flash-hud-gauge "ESCORT_VIEW" ) 
+   ( flash-hud-gauge "DIRECTIVES_VIEW" ) 
+)
++Name: HUD flash help 2 - TRIG
++Repeat Count: -1
++Trigger Count: 5
++Interval: 3
+
+$Formula: ( when 
+   ( has-arrived-delay 4 "War" ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 - new guys" 
+   )
+)
++Name: New Guys Arrive MSG
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Famine" "War" ) 
+   ( do-nothing ) 
+)
++Name: Destroy New Guys
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Hostiles", 1619)
++Objective key:  XSTR("Press F12", 1620)
+
+$Formula: ( when-argument 
+   ( any-of 
+      "War 1" 
+      "War 2" 
+      "Famine 1" 
+      "Famine 2" 
+   )
+   ( and 
+      ( is-facing "Alpha 1" "<argument>" 45 ) 
+      ( <= 
+         ( distance "Alpha 1" "<argument>" ) 
+         1200 
+      )
+   )
+   ( clear-goals "<argument>" ) 
+   ( add-goal 
+      "<argument>" 
+      ( ai-chase-any 89 ) 
+   )
+)
++Name: New Guys Target Alpha
++Repeat Count: -1
++Trigger Count: 4
++Interval: 3
+
+$Formula: ( every-time-argument 
+   ( any-of 
+      "Repair Drone A 1" 
+      "Repair Drone A 2" 
+      "Repair Drone A 3" 
+      "Repair Drone B 1" 
+      "Repair Drone B 2" 
+      "Repair Drone B 3" 
+      "Repair Drone C 1" 
+      "Repair Drone C 2" 
+      "Repair Drone C 3" 
+      "Repair Drone C 4" 
+      "Repair Drone D 1" 
+      "Repair Drone D 2" 
+      "Repair Drone D 3" 
+      "Repair Drone D 4" 
+      "Repair Drone E 1" 
+      "Repair Drone E 2" 
+      "Repair Drone E 3" 
+      "Repair Drone F 1" 
+      "Repair Drone F 2" 
+      "Repair Drone F 3" 
+   )
+   ( false ) 
+   ( set-object-speed-z 
+      "<argument>" 
+      70 
+      ( true ) 
+   )
+)
++Name: Drone speed test - EV
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Liquilade" ) 
+   ( send-message 
+      "Alpha 4" 
+      "High" 
+      "A4 - liquilade down" 
+   )
+)
++Name: Liquilade Destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: Return To Base FAILURE
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Objective:  XSTR("Return to Base", 1603)
++Objective key:  XSTR("Press $Alt-J$", 1604)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Liquilade Destroyed" 
+      2 
+   )
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-warp-out 89 ) 
+   )
+   ( when 
+      ( not 
+         ( is-event-true-delay 
+            "Alpha orders" 
+            0 
+         )
+      )
+      ( add-goal "Alpha" ( ai-warp-out 89 ) ) 
+      ( add-goal "Zabiela" ( ai-undock 89 ) ) 
+   )
+)
++Name: Alpha 4 Warps  Out
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "Alpha orders" 
+         0 
+      )
+   )
+   ( add-goal 
+      "Zabiela" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: Zabiela Warps Out
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( is-event-true-delay "Time To Go" 0 ) 
+   ( do-nothing ) 
+)
++Name: Continue Campaign
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-previous-event-false 
+      "bta1_d1_00" 
+      "CampMode" 
+      ( false ) 
+   )
+   ( modify-variable 
+      "@CampMode[false]" 
+      "true" 
+   )
+   ( modify-variable 
+      @CheckpointReached[0] 
+      0 
+   )
+)
++Name: CampMode
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "CampMode" 0 ) 
+      ( or 
+         ( <= 
+            ( distance "Alpha 1" "Battle Snail#1" ) 
+            200 
+         )
+         ( <= 
+            ( distance "Alpha 1" "Battle Snail#2" ) 
+            200 
+         )
+      )
+   )
+   ( ship-visible "Battle Snail#1" ) 
+   ( ship-visible "Battle Snail#2" ) 
+   ( ship-unstealthy "Battle Snail#1" ) 
+   ( ship-unstealthy "Battle Snail#2" ) 
+   ( friendly-stealth-visible 
+      "Battle Snail#1" 
+   )
+   ( friendly-stealth-visible 
+      "Battle Snail#2" 
+   )
+   ( ship-effect 
+      "Decloak" 
+      2000 
+      "Battle Snail#1" 
+      "Battle Snail#2" 
+   )
+   ( clear-goals 
+      "Battle Snail#1" 
+      "Battle Snail#2" 
+   )
+   ( add-goal 
+      "Battle Snail#1" 
+      ( ai-evade-ship "Alpha 1" 89 ) 
+   )
+   ( add-goal 
+      "Battle Snail#2" 
+      ( ai-evade-ship "Alpha 1" 89 ) 
+   )
+)
++Name: SnailsFound
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 
+      0 
+      "Battle Snail#1" 
+   )
+   ( modify-variable 
+      @demoSnailsFOUND[0] 
+      ( + @demoSnailsFOUND[0] 1 ) 
+   )
+   ( add-goal 
+      "Battle Snail#1" 
+      ( ai-warp-out 89 ) 
+   )
+   ( if-then-else 
+      ( > @demoSnailsFOUND[0] 1 ) 
+      ( training-msg "Snails Found" ) 
+      ( training-msg "Snail Found" ) 
+   )
+   ( play-sound-from-file 
+      "battlesnail.ogg" 
+   )
+)
++Name: Snail 1 Scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( string-concatenate 
+      "@DataPacket[ ]" 
+      "@Key[?]" 
+      "@DataPacket[ ]" 
+   )
+)
++Name: Snail Math 1
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 
+      0 
+      "Battle Snail#2" 
+   )
+   ( modify-variable 
+      @demoSnailsFOUND[0] 
+      ( + @demoSnailsFOUND[0] 1 ) 
+   )
+   ( add-goal 
+      "Battle Snail#2" 
+      ( ai-warp-out 89 ) 
+   )
+   ( if-then-else 
+      ( > @demoSnailsFOUND[0] 1 ) 
+      ( training-msg "Snails Found" ) 
+      ( training-msg "Snail Found" ) 
+   )
+   ( play-sound-from-file 
+      "battlesnail.ogg" 
+   )
+)
++Name: Snail 2 Scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( string-concatenate 
+      "@DataPacket[ ]" 
+      "@Key[?]" 
+      "@DataPacket[ ]" 
+   )
+)
++Name: Snail Math 2
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+#Goals		;! 2 total
+
+$Type: Primary
++Name: Defend Liquilade
+$MessageNew:  XSTR("See the Liquilade safely to the Beta Aquilae jump node.", 1621)
+$end_multi_text
+$Formula: ( and 
+   ( has-departed-delay 0 "Liquilade" ) 
+   ( is-event-true-delay 
+      "Liquilade Clear" 
+      0 
+   )
+)
+
+$Type: Secondary
++Name: Lockdown
+$MessageNew:  XSTR("Buy the transports enough time to dock and escape by preventing distress calls and stalling pursuers.", 1622)
+$end_multi_text
+$Formula: ( and 
+   ( has-departed-delay 0 "Liquilade" ) 
+   ( is-event-true-delay 
+      "Liquilade Clear" 
+      0 
+   )
+)
+
+#Waypoints		;! 8 lists total
+
+
+$Jump Node: 885.857178, 1193.264282, -10339.922852
+$Jump Node Name: Beta Aquilae
+$Name: A4 hack waypt
+$List: (		;! 1 points in list
+	( -728.692749, 758.000000, -1878.231812 )
+)
+
+$Name: A3 hack waypt
+$List: (		;! 4 points in list
+	( 641.000000, 500.000000, -140.399994 )
+	( 651.643127, 0.000000, -121.707245 )
+	( -457.507172, 0.000000, -623.135376 )
+	( -251.618576, 350.000000, -441.206879 )
+)
+
+$Name: A2 overwatch waypt
+$List: (		;! 2 points in list
+	( 54.400002, 611.000000, 294.799988 )
+	( -135.500000, 410.000000, 334.399994 )
+)
+
+$Name: A2 strike pt
+$List: (		;! 1 points in list
+	( 344.399994, 700.000000, -435.500000 )
+)
+
+$Name: Zabiela run waypt
+$List: (		;! 1 points in list
+	( -16452.199219, 4000.000000, 7785.699707 )
+)
+
+$Name: Liquilade jump node pt
+$List: (		;! 1 points in list
+	( 809.169189, 1100.364380, -9666.980469 )
+)
+
+$Name: wind bad waypts
+$List: (		;! 5 points in list
+	( -338.500000, 450.000000, -1297.800049 )
+	( -390.599976, 350.000000, -784.799988 )
+	( -906.299988, 350.000000, -519.799988 )
+	( -1415.099976, 400.000000, -1791.699829 )
+	( 246.357300, 1000.364380, -7746.723633 )
+)
+
+$Name: Decisive Wind retreat waypt
+$List: (		;! 1 points in list
+	( 13495.817383, -3000.000000, 9962.451172 )
+)
+
+#Messages		;! 53 total
+
+
+$Name: Zab - dock secured
+$Team: -1
+$MessageNew:  XSTR("Zabiela reporting docking point secure.", 1624)
+$end_multi_text
++AVI Name: Head-NLFR1
++Wave Name: bta1_d1_01_ms03.ogg
+
+$Name: Liq - dock secured
+$Team: -1
+$MessageNew:  XSTR("Liquilade signaling dock secure. Let's do it.", 1625)
+$end_multi_text
++AVI Name: Head-NLFR2
++Wave Name: bta1_d1_01_ms04.ogg
+
+$Name: A2 - rules 1
+$Team: -1
+$MessageNew:  XSTR("Your attention please. Gulnara Station and all craft in the vicinity are now under our jurisdiction. You are to fire your breaking thrusters immediately and cease all comm activity.", 1626)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms05.ogg
+
+$Name: A2 - rules 2
+$Team: -1
+$MessageNew:  XSTR("We are monitoring your communication systems and jump drive power plant emissions. If we see a power spike then expect to take an exciting and unscheduled space walk.", 1627)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms06.ogg
+
+$Name: A3 - lockdown
+$Team: -1
+$MessageNew:  XSTR("This is Three. Commencing lockdown of automated defense systems. Standby.", 1628)
+$end_multi_text
++AVI Name: Head-TP4
++Wave Name: bta1_d1_01_ms07.ogg
+
+$Name: A4 - in position
+$Team: -1
+$MessageNew:  XSTR("Four is in position. Drone hub access granted - uploading new protocols.", 1629)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bta1_d1_01_ms08.ogg
+
+$Name: A2 - watchdog
+$Team: -1
+$MessageNew:  XSTR("Two to One, I've got this sector covered. This yahoo in the Ion sounds like she might try to play hero. My hands are full so good luck over there.", 1630)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms09.ogg
+
+$Name: A2 - cover those 3
+$Team: -1
+$MessageNew:  XSTR("Alpha lead, see those three transports at your ten o'clock? The Janaan, the Guernica, and the Kavinsky? You cover those three when the time comes. I'll take the rest.", 1631)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms10.ogg
+
+$Name: A2 - EZ 1!
+$Team: -1
+$MessageNew:  XSTR("Uhh, everything okay over there, Alpha lead?", 1632)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms11.ogg
+
+$Name: A2 - taunt random 1
+$Team: -1
+$MessageNew:  XSTR("If that comm board or jump drive key looks that tempting maybe you people should sit on your hands for a while.", 1633)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms12.ogg
+
+$Name: A2 - taunt random 2
+$Team: -1
+$MessageNew:  XSTR("Relax folks, my partner over there is just testing the guns. I think.", 1634)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms13.ogg
+
+$Name: A2 - taunt random 3
+$Team: -1
+$MessageNew:  XSTR("You should all know my wing leader is crazy unpredictable. He hulled a Cain-class cruiser during the war just so he could fly in one side and out the other.", 1635)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms14.ogg
+
+$Name: A2 - taunt random 4
+$Team: -1
+$MessageNew:  XSTR("A Terran, a Vasudan, and a Shivan walk into a bar.  The Vasudan says 'stop messing with your comm systems and jump drives or I'll rip your damn heads off.' Seriously...", 1636)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms15.ogg
+
+$Name: A2 - do it
+$Team: -1
+$MessageNew:  XSTR("Alpha lead, open fire!", 1637)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms16.ogg
+
+$Name: Kav - distress
+$Team: -1
+$MessageNew:  XSTR("This is Kavinsky 2 to GTA Sector Command. We are under siege by a four fighter pirate force.  Gulnara Research Station has been boarded.", 1638)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_d1_01_ms17.ogg
+
+$Name: Guern - distress
+$Team: -1
+$MessageNew:  XSTR("SS Guernica to Gulnara Overwatch, we have bandits at the research outpost! Request garrison dispatch from Antares Station immediately!", 1639)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: bta1_d1_01_ms18.ogg
+
+$Name: Sarw - distress
+$Team: -1
+$MessageNew:  XSTR("Transport Sarwan Janaan to Antares Station, Gulnara Research is under siege by pirate forces!", 1640)
+$end_multi_text
++AVI Name: Head-TP4
++Wave Name: bta1_d1_01_ms19.ogg
+
+$Name: A2 - transport jumped
+$Team: -1
+$MessageNew:  XSTR("Dammit!  Alpha wing, buckle up, we've got incoming bogies. Zabiela, how we doing?", 1641)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms20.ogg
+
+$Name: Zab - working 2 mins
+$Team: -1
+$MessageNew:  XSTR("The vault's been breached and we're moving the goods dockside now. Buy us a little more time.", 1642)
+$end_multi_text
++AVI Name: Head-NLFR1
++Wave Name: bta1_d1_01_ms21.ogg
+
+$Name: A2 - lower than 50
+$Team: -1
+$MessageNew:  XSTR("Keep an eye on their power levels. If they spike above fifty, spit some plasma their way. Not too much. If they feel like we're going to torch them anyway, they may panic and do something stupid.", 1643)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms23.ogg
+
+$Name: Zab - we're good
+$Team: -1
+$MessageNew:  XSTR("Zabiela reporting extraction successful. Alpha wing, we are go for the next phase.", 1644)
+$end_multi_text
++AVI Name: Head-NLFR1
++Wave Name: bta1_d1_01_ms24.ogg
+
+$Name: A2 - copy Zab, let's do it
+$Team: -1
+$MessageNew:  XSTR("Right, Two and Three, see the Zabiela out of the area. One and I will cover the Liquilade to the node. See you at the RP.", 1645)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms25.ogg
+
+$Name: A2 - decisive wind
+$Team: -1
+$MessageNew:  XSTR("Oh shit, positive identification on Belltower private security gunship, designation Decisive Wind. We're being targeted.", 1646)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms26.ogg
+
+$Name: Liq - do somethin
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, there's no way we can outrun that thing. Do something!", 1647)
+$end_multi_text
++AVI Name: Head-NLFR2
++Wave Name: bta1_d1_01_ms27.ogg
+
+$Name: A2 - wind destroyed
+$Team: -1
+$MessageNew:  XSTR("Decisive Wind is going down. Keep sharp, as more security forces are definitely en route now.", 1648)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms28.ogg
+
+$Name: A2 - 3 and 4, how we doing
+$Team: -1
+$MessageNew:  XSTR("Three and Four, how we looking?", 1649)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms29.ogg
+
+$Name: A3 - good 2 go
+$Team: -1
+$MessageNew:  XSTR("Alpha 3 here. Automated defense system has been compromised and new targeting data uploaded. We're green and anything we don't like is red.", 1650)
+$end_multi_text
++AVI Name: Head-TP4
++Wave Name: bta1_d1_01_ms30.ogg
+
+$Name: A4 - ready
+$Team: -1
+$MessageNew:  XSTR("Four here. Control Hub has accepted the new program and we've got admin privileges! One, I strongly recommend you stagger the commands and not launch all the drones at once.", 1651)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bta1_d1_01_ms31.ogg
+
+$Name: A4 - so not ready
+$Team: -1
+$MessageNew:  XSTR("I'm having trouble getting top level admin privileges. The port master here knows the codes but I don't think he's going to volunteer them.", 1652)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bta1_d1_01_ms32.ogg
+
+$Name: Guern - going hostile
+$Team: -1
+$MessageNew:  XSTR("This crazy bastard's going to kill us!", 1653)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: bta1_d1_01_ms33.ogg
+
+$Name: Sarw - going hostile
+$Team: -1
+$MessageNew:  XSTR("Enough! I've got fifty refugees on board. The rest of you stay with this sadistic madman if you want. I'll have none of it.", 1654)
+$end_multi_text
++AVI Name: Head-TP4
++Wave Name: bta1_d1_01_ms34.ogg
+
+$Name: Kav - going hostile
+$Team: -1
+$MessageNew:  XSTR("If you had the guts to blast us to scrap you would have done it, pirate. You just overplayed your hand. Game's up.", 1655)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: bta1_d1_01_ms35.ogg
+
+$Name: F1 - sup, surrender!
+$Team: -1
+$MessageNew:  XSTR("Belltower flight Gamma One-Twelve to unidentified raiders, we have been authorized to use lethal force. Surrender or be destroyed.", 1656)
+$end_multi_text
++AVI Name: Head-TP7
++Wave Name: bta1_d1_01_ms36.ogg
+
+$Name: drones target accptd
+$Team: -1
+$MessageNew:  XSTR("Attempting to repair target.
+
+--- WARNING ---
+Catastrophic failure in cooling system capacitors.
+Repair beam overload imminent.
+Target unlikely to be repaired.", 1657)
+$end_multi_text
++Wave Name: bta1_d1_01_ms37.ogg
+
+$Name: A2 - artifacts smartifacts
+$Team: -1
+$MessageNew:  XSTR("No problem, Homeslice. One, I bet if we find some of the science team's precious artifacts in the drop off depot and warm them up, they'll be a little more forthcoming with their information.", 1658)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms38.ogg
+
+$Name: Guln - codes
+$Team: -1
+$MessageNew:  XSTR("Okay, okay, okay! Just... leave the specimens alone. They're irrepleacable. I'm sending the drone command codes now.", 1659)
+$end_multi_text
++AVI Name: Head-Sci01
++Wave Name: bta1_d1_01_ms39.ogg
+
+$Name: A4 - tyvm
+$Team: -1
+$MessageNew:  XSTR("Why thank you.", 1660)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bta1_d1_01_ms40.ogg
+
+$Name: A2 - stick transport
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, don't get separated from your transports. More trouble in the form of local security or fleet resources could show up at any second.", 1661)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms41.ogg
+
+$Name: Ute - stop in the name of love
+$Team: -1
+$MessageNew:  XSTR("Transport Liquilade and accompanying fighters, surrender immediately or be destroyed. This is your only warning.", 1662)
+$end_multi_text
++AVI Name: Head-CM3
++Wave Name: bta1_d1_01_ms42.ogg
+
+$Name: A2 - delay GTA 1
+$Team: -1
+$MessageNew:  XSTR("The cruiser can't catch us before we make the node but those fighters are another story. Use the defense node and stall those two Apollos until the Liquilade sends the all clear.", 1663)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms43.ogg
+
+$Name: Liq - clear
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, we are clear! Thanks for the cover!", 1664)
+$end_multi_text
++AVI Name: Head-NLFR2
++Wave Name: bta1_d1_01_ms44.ogg
+
+$Name: A2 - lesgo
+$Team: -1
+$MessageNew:  XSTR("Gavel to Alpha wing, if you're still in the area get out now, we are good to go. Punch it, One.", 1665)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms45.ogg
+
+$Name: A2 - drones failed
+$Team: -1
+$MessageNew:  XSTR("Looks like the Port Master didn't like us using his bots that way. I hope you made good use of them, One.", 1666)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms47.ogg
+
+$Name: A4 - liquilade down
+$Team: -1
+$MessageNew:  XSTR("The Liquilade has been destroyed! One, we have to abort. Warp out now.", 1667)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bta1_d1_01_ms48.ogg
+
+$Name: A2 - were blown
+$Team: -1
+$MessageNew:  XSTR("We're blown. Abort and head to the rendezvous!", 1668)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms49.ogg
+
+$Name: A2 - dammit one
+$Team: -1
+$MessageNew:  XSTR("Dammit, One...", 1669)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms50.ogg
+
+$Name: Guln - distress
+$Team: -1
+$MessageNew:  XSTR("Gulnara Research to Antares Station, we are under attack!", 1670)
+$end_multi_text
++AVI Name: Head-Sci01
++Wave Name: bta1_d1_01_ms51.ogg
+
+$Name: A2 - ute destroyed
+$Team: -1
+$MessageNew:  XSTR("The Ute is blowing out. Antares Station won't be too thrilled about that one!", 1671)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms52.ogg
+
+$Name: A2 - new guys
+$Team: -1
+$MessageNew:  XSTR("Damn, hostiles in at close range. Who are these guys?", 1672)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bta1_d1_01_ms53.ogg
+
+$Name: Snail Found
+$Team: -1
+$MessageNew:  XSTR("$demoSnailsFOUND Snail Found!", 1673)
+$end_multi_text
++Wave Name: bta1_d1_01_ms54.ogg
+
+$Name: Snails Found
+$Team: -1
+$MessageNew:  XSTR("$demoSnailsFOUND Snails Found!", 1674)
+$end_multi_text
++Wave Name: bta1_d1_01_ms55.ogg
+
+$Name: A4 - drones away
+$Team: -1
+$MessageNew:  XSTR("Haha! The drones are on their way. I bet their designer never intended them to be used like this!", 1675)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bta1_d1_01_ms56.ogg
+
+$Name: Liq - almost there
+$Team: -1
+$MessageNew:  XSTR("We're almost clear, Alpha. Stay close.", 1676)
+$end_multi_text
++AVI Name: Head-NLFR2
++Wave Name: bta1_d1_01_ms57.ogg
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 500
+$Ambient light level: 7895160
+
+$Bitmap List:
+$Sun: SunAntaresB
++Angles: 5.724676 1.186823 2.792525
++Scale: 0.500000
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: Brief1
+
+#End
+
