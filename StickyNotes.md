@@ -15,6 +15,7 @@ This can help in case I find these words elsewhere later.
 Acknowledged = Entendu
 Average = médiocre
 Battlegroup = groupement tactique
+Bank = Soute
 Barracks = Quartiers
 Beam cannons = Canons à photons
 Boarding = abordage
