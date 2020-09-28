@@ -48,8 +48,8 @@ XSTR("Return to base", 2275)
 The unique integer can be used to be translated in a separate translation file.
 
 There are initially 2 translation files:
-- string.tbl (https://wiki.hard-light.net/index.php/Strings.tbl)
-- tstring.tbl (https://wiki.hard-light.net/index.php/Tstrings.tbl)
+- strings.tbl (https://wiki.hard-light.net/index.php/Strings.tbl)
+- tstrings.tbl (https://wiki.hard-light.net/index.php/Tstrings.tbl)
 
 If these files are not present or don't contain all strings present in the mod, then it means the mod is not ready for translation, and you should contact the authors of the mod before going further.
 
@@ -69,9 +69,9 @@ END
 
 default is the English language. If the other languages are not present in the file, you can add it yourself, and the SCP engine will recognize it. It means that all strings located in that section will be used depending on the language set in Knossos launcher.
 
-string.tbl and tstring.tbl can be extended (https://wiki.hard-light.net/index.php/Modular_Tables) with other files using the following pattern:
-- for string.tbl => xxxxx-lcl.tbm
-- for tstring.tbl => xxxxx-tlc.tbm
+strings.tbl and tstrings.tbl can be extended (https://wiki.hard-light.net/index.php/Modular_Tables) with other files using the following pattern:
+- for strings.tbl => xxxxx-lcl.tbm
+- for tstrings.tbl => xxxxx-tlc.tbm
 
 The author of the mod could have created some files extending the original translation files. It is the case for the mod Between The Ashes for example, with the following files which contain translation strings:
 
@@ -85,7 +85,7 @@ xstr_bta1_single-tlc.tbm
 
 #### How do the extended files are managed by the game engine?
 
-The SCP engine prioritizes the extended files over the original files, and different extended files are prioritized per alphabetical order, which means that if the same string (identified with the same integer) is present on xstr_bta1_d-tlc.tbm, xstr_bta1_m-tlc.tbm and tstring.tbl, then only the string in xstr_bta1_d-tlc.tbm will be taken into account.
+The SCP engine prioritizes the extended files over the original files, and different extended files are prioritized per alphabetical order, which means that if the same string (identified with the same integer) is present on xstr_bta1_d-tlc.tbm, xstr_bta1_m-tlc.tbm and tstrings.tbl, then only the string in xstr_bta1_d-tlc.tbm will be taken into account.
 
 ### How to avoid interfering with future mod changes?
 
