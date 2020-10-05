@@ -34,6 +34,7 @@ IFF = IFF
 Issue = Munition
 Jump node = portail de saut
 Loadout = chargement
+OpEval = évaluation opérationnelle
 Orbitals = stations orbitales
 Override = contournement
 Patrol path = itinéraire de patrouille
