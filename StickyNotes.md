@@ -40,7 +40,7 @@ Post-Sol = l'Isolement
 PVN (Parliamentary Vasudan Navy)
 Roger that = bien reçu
 Ready Room = Salle de Préparation
-Sentry gun = tourelle statique
+Sentry gun = sentinelle
 spaceframe = structure
 Stand by = rester en attente
 Standard issue = munition standard
