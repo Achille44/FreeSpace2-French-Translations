@@ -31,8 +31,11 @@ $Unicode mode: True
 
 Once the unicode mode is enabled, simply run the mod and check if there is no error. If there are errors, then the mod is not compatible and you will have to ask help from the authors of the mod.
 
+If the mod uses a version prior to 19.0, then you will need to change the fonts used by the mod, and hope it doesn't break the mod.
 
-If the mod uses an version prior to 19.0, then you will need to change the fonts used by the mod, and hope it doesn't break the mod.
+#### Alternative to Unicode mode
+
+If the Unicode mode is not possible for whatever reason, there is a possibility to copy the beheavior of the fsport mod translations. This mod uses specific fonts for languages with special characters, without using Unicde mode. So you can copy these fonts to the mod you want to translate, but in this case your strings.tbl and tstrings.tbl files need to use the "Western (Windows 1252)" encoding, otherwise the special characters won't show up!
 
 ### Where are located the files to be translated?
 
