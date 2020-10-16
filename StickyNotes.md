@@ -35,6 +35,7 @@ Issue = Munition
 Jump node = portail de saut
 Loadout = chargement
 Need to know = Besoin d'en connaître
+On the doule = Au plus vite
 OpEval = évaluation opérationnelle
 Orbitals = stations orbitales
 Override = contournement
