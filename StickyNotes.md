@@ -65,11 +65,11 @@ https://en.wikipedia.org/wiki/Ranks_in_the_French_Navy
 
 Ensign = Enseigne => Enseigne de vaisseau de 2e classe
 Lieutenant Junior Grade => Enseigne de vaisseau de 1e classe
-Lieutenant => Lieutenant de vaisseau
-Lieutenant Commander => Capitaine de corvette
-Commander => Capitaine de frégate
-Captain => Capitaine de vaisseau
+Lieutenant => Lieutenant de Vaisseau
+Lieutenant Commander => Capitaine de Corvette
+Commander => Capitaine de Frégate
+Captain => Capitaine de Vaisseau
 Commodore / Rear Admiral, lower half => Non-existent in France, so let's cheat and shift next ranks... ==> Contre-Amiral
 Rear Admiral => Contre-Amiral ==> Vice-Amiral
-Vice Admiral => Vice-Amiral ==> Vice-Amiral d'escadre
+Vice Admiral => Vice-Amiral ==> Vice-Amiral d'Escadre
 Admiral => Amiral
