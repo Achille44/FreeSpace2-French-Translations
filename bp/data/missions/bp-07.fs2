@@ -1,0 +1,2509 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Frankenstein's Monsters", 3653)
+$Author: Owner
+$Created: 02/20/07 at 10:08:59
+$Modified: 11/02/15 at 14:28:22
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 3422)
+$end_multi_text
++Game Type Flags: 1
++Flags: 327808
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: -6885.614746, 118.007370, 3420.986816
++Viewer orient:
+	0.751193, -0.000000, 0.660083,
+	-0.061946, 0.995587, 0.070497,
+	-0.657170, -0.093847, 0.747878
+
+
+$Skybox Model: starfield.pof
+
+$AI Profile: BP
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"Commshitsleft"		"100"		"number"		"campaign-persistent"
+		1		"Enginehitsleft"		"100"		"number"		"campaign-persistent"
+		2		"giveTips"		"0"		"number"		"campaign-persistent"
+		3		"Navhitsleft"		"100"		"number"		"campaign-persistent"
+		4		"Sensorshitsleft"		"100"		"number"		"campaign-persistent"
+		5		"Weaponshitsleft"		"100"		"number"		"campaign-persistent"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 1
+$start_stage
+$multi_text
+ XSTR("Personal Log, Commander Bei.
+
+The GTC Duke is a haunted ship.
+
+No one was there to greet me at the airlock when I broke through to the Duke's corridors. The entire ship was silent. My skin crawled as soon as I left my environment suit and the hairs stood up at the back of my neck. I felt as though I was being watched as I made my way to the Duke's bridge.
+
+The crew were at their stations, but...they were in some kind of stupor. Every one of them, including Captain Sassana. They didn't respond to my presence. They just...sat there, with their sightless eyes staring. It sent chills down my spine just to look at them. They were alive, but not. As though something had taken away their souls, their essence...their psyche.
+
+And the ship. The ship seems possessed. I heard voices, ghostly footsteps down the hallways. The strange thing was...I recognised some of those voices. I've heard them before...in my dreams. Those voices were manning the ship in place of the crew. Ancient, ancient voices...
+
+Something happened to the Duke and her crew in Delta Serpentis. Something that possessed the ship and drove the crew into catatonia.
+
+There was nothing else I could do. I returned to my fighter, and awaited the arrival of the Temeraire...", 3654)
+$end_multi_text
+$voice: bp07-sam-log01.ogg
+$camera_pos: 0.000000, 150.000000, -200.000000
+$camera_orient:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.866025, 0.500000,
+	0.000000, -0.500000, 0.866025
+$camera_time: 500
+$num_lines: 0
+$num_icons: 0
+$Flags: 0
+$Formula: ( true ) 
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 2
+
+$Formula: ( is-event-true-delay 
+   "alpha 1 dock" 
+   0 
+)
+$Multi text
+    XSTR("Welcome to the GTD Temeraire, pilot. Rear Admiral Carey has approved your temporary transfer here until we re-establish contact with the GTD Orestes. In the meantime you'll report to me. I'm Captain Kristae of the 56 Squadron.
+
+Good work in apprehending the GTC Duke. We're in the process of transferring the crew to the GTL Solace for analysis and treatment. Repair crews are fixing most of the damage in her hull, and her reactor will be repaired within the day. Say what you will about the Vasudans, at least they know how to build their reactors to last.
+
+Don't worry, Commander, your wingmen are safe. We picked them up not too long ago at various points in the system. Apart from some minor damage to their fighter's navigation computers, they were fine.
+
+Questioning of pilots Iwakura and Tell is scheduled for 2100 hours tonight. You are ordered to attend and assist with your own report. In the meantime, you're off-duty. Dismissed.", 3655)
+$end_multi_text
+$Voice: bp07-kristae-db01.ogg
+$Recommendation text:
+    XSTR("", 3493)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "Duke destroyed" 
+   0 
+)
+$Multi text
+    XSTR("The Duke was destroyed. With it, so was her crew and any explanation of what she was doing in this system.", 3656)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("Target first any threats to the GTC Duke. Iwakura and Tell are assisting you in guarding the Duke, but they are limited in their capabilities.", 3657)
+$end_multi_text
+
+#Alternate Types:
+$Alt: Unknown
+$Alt: Captain Iwakura
+$Alt: Commander Tell
+
+#end
+
+
+#Callsigns:
+$Callsign: Bei
+$Callsign: Iwakura
+$Callsign: Tell
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+)
+
++Weaponry Pool: (
+	"Subach HL-7"	16
+	"Prometheus S"	2
+	"Balor"	2
+	"Tornado"	55
+	"Harpoon"	16
+	"Prometheus R"	1
+	"Hornet"	27
+)
+
+#Objects		;! 20 total
+
+$Name: Alpha 1		;! Object #0
+$Class: GTF Perseus
+$Callsign: Bei
+
+$Team: Friendly
+$Location: -613.900024, 14.112446, -78.699997
+$Orientation:
+	0.969710, 0.000000, 0.244257,
+	-0.003907, 0.999872, 0.015508,
+	-0.244226, -0.015993, 0.969586
+$AI Behavior: Stay Near
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "ignore-count" "player-start" "red-alert-carry" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Duke		;! Object #1
+$Class: GTC Hyperion
+$Team: Friendly
+$Location: -773.840088, 74.105782, -98.854156
+$Orientation:
+	0.958244, -0.149658, -0.243662,
+	0.281830, 0.638444, 0.716212,
+	0.048378, -0.754978, 0.653964
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Engine
+$Damage: 100
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "ignore-count" "no-shields" "escort" "red-alert-carry" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 500
+$Texture Replace:
++old: nameplate
++new: gtc_duke
+
+$Name: Unknown 1		;! Object #2
+$Class: GTF Comanche
+$Callsign: Iwakura
+
+$Team: Friendly
+$Location: -786.336914, 0.000092, 432.068939
+$Orientation:
+	-0.846408, 0.000000, -0.532535,
+	0.000000, 1.000000, 0.000000,
+	0.532535, 0.000000, -0.846408
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Prometheus S" )
++Secondary Banks: ( "Harpoon" "Rockeye" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Temeraire
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "ignore-count" )
++Flags2: ( "no-builtin-messages" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 7
++Persona Index: 0
+
+$Name: Unknown 2		;! Object #3
+$Class: GTF Seminole
+$Callsign: Tell
+
+$Team: Friendly
+$Location: -749.588318, 22.479046, 522.006592
+$Orientation:
+	-0.846408, 0.000000, -0.532535,
+	0.000000, 1.000000, 0.000000,
+	0.532535, 0.000000, -0.846408
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Prometheus S" )
++Secondary Banks: ( "Rockeye" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Temeraire
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "ignore-count" )
++Flags2: ( "no-builtin-messages" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 6
++Persona Index: 2
+
+$Name: Kyton		;! Object #4
+$Class: SD Demon
+$Team: Hostile
+$Location: -8890.524414, 0.000058, 6177.850098
+$Orientation:
+	-0.202151, -0.572868, -0.794328,
+	-0.141287, 0.819648, -0.555171,
+	0.969109, 0.000000, -0.246632
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01-base
++Subsystem: turret02-base
++Subsystem: turret03a-base
++Subsystem: turret04-base
++Subsystem: turret05-base
++Subsystem: turret06a-base
++Subsystem: turret07a-base
++Subsystem: turret08-base
++Subsystem: turret09-base
++Subsystem: turret10-base
++Subsystem: turret11-base
++Subsystem: turret12-base
++Subsystem: turret13-base
++Subsystem: turret14-base
++Subsystem: turret15-base
++Subsystem: turret16-base
++Subsystem: turret17-base
++Subsystem: turret18-base
++Subsystem: turret19-base
++Subsystem: turret20-base
++Subsystem: turret21-base
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "Demon arrives" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 840
+
+$Name: Vishnu 1		;! Object #5
+$Class: SF Manticore
+$Team: Hostile
+$Location: -7899.568359, -0.000101, 3841.092773
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: Stay Near
++AI Class: Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 13
+
+$Name: Vishnu 2		;! Object #6
+$Class: SF Manticore
+$Team: Hostile
+$Location: -7976.180176, -0.000037, 3776.009521
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: Stay Near
++AI Class: Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 13
+
+$Name: Vishnu 3		;! Object #7
+$Class: SF Manticore
+$Team: Hostile
+$Location: -7789.074707, -0.000054, 3768.509277
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: Stay Near
++AI Class: Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 13
+
+$Name: Vishnu 4		;! Object #8
+$Class: SF Manticore
+$Team: Hostile
+$Location: -7880.881836, -0.000041, 3671.483154
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: Stay Near
++AI Class: Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 13
+
+$Name: Shivore 1		;! Object #9
+$Class: SF Basilisk
+$Team: Hostile
+$Location: -7944.434082, -0.000069, 3227.917480
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Shivan" "Hornet#Shivan" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Shivore 2		;! Object #10
+$Class: SF Basilisk
+$Team: Hostile
+$Location: -8098.786621, -0.000072, 3131.633057
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Shivan" "Hornet#Shivan" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Shivore 3		;! Object #11
+$Class: SF Basilisk
+$Team: Hostile
+$Location: -7741.442871, -0.000045, 3096.596680
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Shivan" "Hornet#Shivan" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Shivore 4		;! Object #12
+$Class: SF Basilisk
+$Team: Hostile
+$Location: -7915.536133, -0.000049, 2990.282715
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Shivan" "Hornet#Shivan" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Temeraire		;! Object #13
+$Class: GTD Titan
+$Team: Friendly
+$Location: -6053.342285, -208.966370, -5138.065918
+$Orientation:
+	0.961865, 0.000000, -0.273524,
+	-0.012204, 0.999004, -0.042918,
+	0.273252, 0.044619, 0.960907
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
++Subsystem: turret31
++Subsystem: turret32
++Subsystem: turret33
++Subsystem: turret34
++Subsystem: turret35
++Subsystem: turret36
++Subsystem: turret37
++Subsystem: turret38
++Subsystem: turret39
++Subsystem: turret40
++Subsystem: turret42
++Subsystem: turret43
++Subsystem: turret44
++Subsystem: turret45
++Subsystem: turret46
++Subsystem: turret47
++Subsystem: turret48
++Subsystem: turret49
++Subsystem: turret50
++Subsystem: turret51
++Subsystem: turret52
++Subsystem: turret53
++Subsystem: turret54
+$Arrival Location: Hyperspace
++Arrival Delay: 5
+$Arrival Cue: ( and 
+   ( is-event-true-delay 
+      "cavalry cutscene set up" 
+      0 
+   )
+   ( > ( hits-left "Duke" ) 0 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "ignore-count" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 10
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 40
+$Texture Replace:
++old: nameplate
++new: gtd_temeraire
+
+$Name: Bretonia		;! Object #14
+$Class: GTC Hyperion
+$Team: Friendly
+$Location: -1489.522949, -0.002276, -5637.815918
+$Orientation:
+	0.955337, 0.000000, -0.295520,
+	0.000000, 1.000000, 0.000000,
+	0.295520, 0.000000, 0.955337
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
+$Arrival Location: Hyperspace
++Arrival Delay: 7
+$Arrival Cue: ( and 
+   ( is-event-true-delay 
+      "cavalry cutscene set up" 
+      0 
+   )
+   ( > ( hits-left "Duke" ) 0 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "ignore-count" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 10
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 500
+$Texture Replace:
++old: nameplate
++new: gtc_bretonia
+
+$Name: Labouchere		;! Object #15
+$Class: GTCv Chimera
+$Team: Friendly
+$Location: -7532.662109, 288.216949, -2668.552734
+$Orientation:
+	0.811909, 0.000000, -0.583784,
+	-0.000018, 1.000000, -0.000025,
+	0.583784, 0.000031, 0.811909
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 10" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
+$Arrival Location: Hyperspace
++Arrival Delay: 2
+$Arrival Cue: ( and 
+   ( is-event-true-delay 
+      "cavalry cutscene set up" 
+      0 
+   )
+   ( > ( hits-left "Duke" ) 0 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "ignore-count" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 10
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 40
+$Texture Replace:
++old: nameplate
++new: gtcv_labouchere
+
+$Name: Solace		;! Object #16
+$Class: GTL Anemoi
+$Team: Friendly
+$Location: -6103.212402, -0.000429, -12137.890625
+$Orientation:
+	0.963771, 0.000000, -0.266731,
+	0.000000, 1.000000, 0.000000,
+	0.266731, 0.000000, 0.963771
+$AI Behavior: Stay Near
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
+$Arrival Location: Hyperspace
++Arrival Delay: 12
+$Arrival Cue: ( and 
+   ( is-event-true-delay 
+      "cavalry cutscene set up" 
+      0 
+   )
+   ( > ( hits-left "Duke" ) 0 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "ignore-count" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 1300
+
+$Name: Brahma 1		;! Object #17
+$Class: SB Taurvi
+$Team: Hostile
+$Location: -7740.709961, 0.000550, 4428.929199
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Shivan Bomb#Short" "Shivan Bomb#Short" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 16
+
+$Name: Brahma 2		;! Object #18
+$Class: SB Taurvi
+$Team: Hostile
+$Location: -7915.292480, 0.000636, 4296.837891
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Shivan Bomb#Short" "Shivan Bomb#Short" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 16
+
+$Name: Brahma 3		;! Object #19
+$Class: SB Taurvi
+$Team: Hostile
+$Location: -7508.650879, 0.000539, 4293.864258
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Shivan Bomb#Short" "Shivan Bomb#Short" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 16
+
+#Wings		;! 5 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
++Departure delay: 1
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Alpha 1"
+)
++Hotkey: 0
++Flags: ( )
+
+$Name: Unknown
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Unknown 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "what the" 0 ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Temeraire
+$Departure Cue: ( is-event-true-delay "ok" 0 ) 
+$Ships: (		;! 2 total
+	"Unknown 1"
+	"Unknown 2"
+)
+$AI Goals: ( goals ( ai-play-dead 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Vishnu
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Vishnu 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kyton
+$Arrival Cue: ( and 
+   ( has-arrived-delay 15 "Kyton" ) 
+   ( > ( hits-left "Kyton" ) 0 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Vishnu 1"
+	"Vishnu 2"
+	"Vishnu 3"
+	"Vishnu 4"
+)
+$AI Goals: ( goals ( ai-chase-any 50 ) )
++Flags: ( "no-arrival-message" )
++Wave Delay Min: 12
++Wave Delay Max: 15
+
+$Name: Shivore
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Shivore 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kyton
++Arrival delay: 17
+$Arrival Cue: ( has-arrived-delay 0 "Kyton" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Shivore 1"
+	"Shivore 2"
+	"Shivore 3"
+	"Shivore 4"
+)
+$AI Goals: ( goals ( ai-chase "Duke" 50 ) )
++Flags: ( "no-arrival-message" )
+
+$Name: Brahma
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Brahma 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kyton
+$Arrival Cue: ( and 
+   ( is-destroyed-delay 13 "Shivore" ) 
+   ( > ( hits-left "Kyton" ) 0 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Brahma 1"
+	"Brahma 2"
+	"Brahma 3"
+)
+$AI Goals: ( goals ( ai-chase "Duke" 50 ) )
++Flags: ( "no-arrival-message" "no-dynamic" )
+
+#Events		;! 70 total
+
+$Formula: ( when 
+   ( true ) 
+   ( never-warp "Alpha 1" ) 
+   ( script-eval "jsv(1,'bp07')" ) 
+)
++Name: no jump out
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-subsystem-strength 
+      "Duke" 
+      "communications" 
+      @Commshitsleft[100] 
+   )
+   ( set-subsystem-strength 
+      "Duke" 
+      "sensors" 
+      @Sensorshitsleft[100] 
+   )
+   ( set-subsystem-strength 
+      "Duke" 
+      "navigation" 
+      @Navhitsleft[100] 
+   )
+   ( set-subsystem-strength 
+      "Duke" 
+      "weapons" 
+      @Weaponshitsleft[100] 
+   )
+   ( deactivate-glow-maps "Duke" ) 
+   ( activate-glow-points "Duke" ) 
+)
++Name: Duke subsystems
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 3 "Kyton" ) 
+   ( cap-waypoint-speed "Kyton" 10 ) 
+)
++Name: demonwaypoints
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Unknown" ) 
+   ( ship-guardian-threshold 
+      ( rand 20 50 ) 
+      "Unknown 1" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Unknown 1" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Unknown 1" 
+      "weapons" 
+   )
+)
++Name: don't die on me U1
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Unknown" ) 
+   ( ship-guardian-threshold 
+      ( rand 20 50 ) 
+      "Unknown 2" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Unknown 2" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Unknown 2" 
+      "weapons" 
+   )
+)
++Name: don't die on me U2
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Kyton" ) 
+   ( beam-lock-all "Kyton" ) 
+)
++Name: beamlock when dead
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( never-warp "Alpha 1" ) 
+   ( player-use-ai ) 
+   ( add-goal 
+      "Alpha 1" 
+      ( ai-play-dead 89 ) 
+   )
+)
++Name: play dead
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Brahma" ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "bombers" 
+   )
+)
++Name: bombers
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-in 1300 ) 
+   ( set-camera-position -598 0 -105 ) 
+   ( set-camera-facing-object "Alpha 1" ) 
+   ( lock-primary-weapon "Alpha 1" ) 
+   ( lock-secondary-weapon "Alpha 1" ) 
+   ( key-reset "Left Ctrl" ) 
+   ( show-subtitle 
+      15 
+      15 
+      "Press Fire to Skip" 
+      8000 
+      "<any string>" 
+      1000 
+   )
+   ( hud-disable-except-messages 1 ) 
+)
++Name: cutscene
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "what the" 
+   )
+)
++Name: what the
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -773 0 333 ) 
+   ( set-camera-facing -745 0 442 ) 
+)
++Name: arrivals
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -598 0 -105 ) 
+   ( set-camera-facing-object "Alpha 1" ) 
+)
++Name: back to alpha 1
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "unidentified vessels" 
+   )
+)
++Name: unidentified vessels
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -773 0 333 ) 
+   ( set-camera-facing -745 0 442 ) 
+)
++Name: back to arrivals
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -598 0 -105 ) 
+   ( set-camera-facing-object "Alpha 1" ) 
+)
++Name: back to alpha 1
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "repeat" 
+   )
+)
++Name: repeat
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "not good" 
+   )
+)
++Name: not good
++Repeat Count: 1
++Interval: 1
++Chained: 10
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -773 0 333 ) 
+   ( set-camera-facing -745 0 442 ) 
+)
++Name: back to arrivals
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "Iwakura speaks 1" 
+   )
+)
++Name: GTVA?
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -598 0 -105 ) 
+   ( set-camera-facing-object "Alpha 1" ) 
+)
++Name: back to alpha 1
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "GTVA!" 
+   )
+)
++Name: GTVA
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "not heard of us?" 
+   )
+)
++Name: heard of us
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -773 0 333 ) 
+   ( set-camera-facing -745 0 442 ) 
+)
++Name: back to arrivals
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "Iwakura 2" 
+   )
+)
++Name: from the sanctuary
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Team: 0
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "Iwakura 3" 
+   )
+)
++Name: unaware of terran presence
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -598 0 -105 ) 
+   ( set-camera-facing-object "Alpha 1" ) 
+)
++Name: back to alpha 1
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "sanctuary where?" 
+   )
+)
++Name: where is sanctuary?
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -773 0 333 ) 
+   ( set-camera-facing -745 0 442 ) 
+)
++Name: back to arrivals
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "Iwakura 4" 
+   )
+)
++Name: hiding
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -598 0 -105 ) 
+   ( set-camera-facing-object "Alpha 1" ) 
+)
++Name: back to alpha 1
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "hiding from what?" 
+   )
+)
++Name: where is sanctuary?
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( set-camera-position -773 0 333 ) 
+   ( set-camera-facing -745 0 442 ) 
+)
++Name: back to arrivals
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "Iwakura 5" 
+   )
+)
++Name: from shivans
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not ( key-pressed "Left Ctrl" ) ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "Iwakura 6" 
+   )
+)
++Name: lingered
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( key-pressed "Left Ctrl" ) 
+         ( is-event-true-delay "lingered" 8 ) 
+      )
+      ( has-arrived-delay 1 "Unknown" ) 
+   )
+   ( set-camera-position -5612 0 3867 ) 
+   ( set-camera-facing -8632 0 6532 ) 
+)
++Name: Demon arrives
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( reset-camera ) 
+   ( reset-fov ) 
+   ( hud-disable 0 ) 
+   ( unlock-primary-weapon "Alpha 1" ) 
+   ( unlock-secondary-weapon "Alpha 1" ) 
+   ( player-not-use-ai ) 
+   ( repair-subsystem 
+      "Alpha 1" 
+      "<all engines>" 
+      100 
+   )
+   ( hud-disable-except-messages 0 ) 
+)
++Name: combat starts
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "their demon" 
+   )
+)
++Name: their demon
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "protect the Duke" 
+   )
+)
++Name: protect the Duke
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "against a demon?" 
+   )
+)
++Name: against a demon?
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "Reinforcements are on the way" 
+   )
+)
++Name: Reinforcements are on the way
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "all right" 
+   )
+)
++Name: All right
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Unknown" 
+      ( ai-guard "Duke" 89 ) 
+   )
+)
++Name: form up around the duke
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( has-arrived-delay 5 "Temeraire" ) 
+   ( do-nothing ) 
+)
++Name: wait for temeraire
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Protect GTC Duke", 3658)
+
+$Formula: ( when 
+   ( has-arrived-delay 60 "Kyton" ) 
+   ( add-goal 
+      "Kyton" 
+      ( ai-waypoints-once "Demon path" 89 ) 
+   )
+)
++Name: Kyton moves
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Temeraire" ) 
+   ( do-nothing ) 
+)
++Name: dir wait for reinforcements
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Wait for Reinforcements", 3659)
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "Vishnu" 
+      "Shivore" 
+      "Brahma" 
+   )
+   ( ship-invulnerable 
+      "Alpha 1" 
+      "Unknown 1" 
+      "Unknown 2" 
+      "Duke" 
+   )
+   ( set-camera-position -6680 0 460 ) 
+   ( set-camera-facing -6794 0 -1479 ) 
+   ( set-object-position 
+      "Kyton" 
+      -3295 
+      0 
+      3335 
+   )
+   ( set-object-facing 
+      "Kyton" 
+      -1441 
+      0 
+      1445 
+   )
+   ( beam-lock-all "Kyton" ) 
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file 
+      "machineamb.ogg" 
+      1 
+   )
+   ( set-fov 45 ) 
+   ( hud-disable-except-messages 1 ) 
+)
++Name: cavalry cutscene set up
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-rotation 
+      -10 
+      10 
+      150 
+      6000 
+      2000 
+   )
+   ( beam-lock-all "Temeraire" ) 
+   ( beam-lock-all "Labouchere" ) 
+)
++Name: rotate
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Temeraire" 
+      "High" 
+      "Temeraire is badass" 
+   )
+)
++Name: this is temeraire
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Temeraire" 
+      "High" 
+      "Temeraire fires" 
+   )
+)
++Name: fire beams
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: fire beams 2
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position -3591 0 1591 ) 
+   ( set-camera-facing -3295 0 3335 ) 
+   ( self-destruct "Kyton" ) 
+)
++Name: camera kyton
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position -7056 4579 2698 ) 
+   ( set-camera-facing -4523 0 1307 ) 
+)
++Name: overview
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "fire beams" 5 ) 
+   ( fire-beam 
+      "Labouchere" 
+      "turret02" 
+      "Kyton" 
+   )
+   ( fire-beam 
+      "Labouchere" 
+      "turret03" 
+      "Kyton" 
+   )
+   ( fire-beam 
+      "Labouchere" 
+      "turret01" 
+      "Kyton" 
+   )
+)
++Name: fire beams L
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "fire beams" 3 ) 
+   ( fire-beam 
+      "Temeraire" 
+      "turret02" 
+      "Kyton" 
+   )
+   ( fire-beam 
+      "Temeraire" 
+      "turret03" 
+      "Kyton" 
+   )
+   ( fire-beam 
+      "Temeraire" 
+      "turret01" 
+      "Kyton" 
+   )
+)
++Name: fire beams T
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "overview" 12 ) 
+   ( reset-camera ) 
+   ( reset-fov ) 
+   ( hud-disable-except-messages 0 ) 
+)
++Name: back to normal
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Temeraire" 
+      "High" 
+      "This is the Temeraire" 
+   )
+)
++Name: This is the temeraire
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "functional" 
+   )
+)
++Name: functional
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "nice ships" 
+   )
+)
++Name: nice ships
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Temeraire" 
+      "High" 
+      "unidentified ships" 
+   )
+)
++Name: unidentified ships
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "disabled because of shivans" 
+   )
+)
++Name: disabled because of shivans
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Temeraire" 
+      "High" 
+      "dock with us" 
+   )
+)
++Name: dock with us
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Unknown 1" 
+      "High" 
+      "ok" 
+   )
+)
++Name: ok
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Temeraire" 
+      "High" 
+      "Alpha 1 dock" 
+   )
+)
++Name: alpha 1 dock
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( < 
+      ( distance-ship-subsystem 
+         "Alpha 1" 
+         "Temeraire" 
+         "fighterbay" 
+      )
+      250 
+   )
+   ( end-mission ) 
+)
++Name: dir dock
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Objective:  XSTR("Enter Temeraire fighterbay", 3660)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "alpha 1 dock" 
+      7 
+   )
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "what about A2 and A3" 
+   )
+)
++Name: what about A2 and A3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Temeraire" 
+      "High" 
+      "be picked up soon" 
+   )
+)
++Name: be picked up soon
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Duke" ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "Duke destroyed" 
+   )
+)
++Name: Duke destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: end mission (Bad)
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "cutscene" 0 ) 
+   ( set-fov 45 ) 
+)
++Name: Set FOV
++Repeat Count: 1
++Interval: 1
++Team: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "form up around the duke" 
+         3 
+      )
+      ( = @giveTips[0] 1 ) 
+      ( has-arrived-delay 0 "Brahma" ) 
+   )
+   ( training-msg "How to target bombs" ) 
+)
++Name: How to target bombs
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 1 total
+
+$Type: Primary
++Name: Duke
+$MessageNew:  XSTR("Protect the GTC Duke", 3661)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "alpha 1 dock" 
+   0 
+)
+
+#Waypoints		;! 11 lists total
+
+$Name: Waypoint path 1
+$List: (		;! 1 points in list
+	( -598.584351, 0.000003, -105.237518 )
+)
+
+$Name: Arrivals camera
+$List: (		;! 1 points in list
+	( -773.853638, 0.000013, 333.736511 )
+)
+
+$Name: Kyton camera
+$List: (		;! 1 points in list
+	( -3591.310303, 0.001368, 1591.409790 )
+)
+
+$Name: Demon path
+$List: (		;! 1 points in list
+	( -2634.811279, -0.000282, 480.441254 )
+)
+
+$Name: Cavalry initial camera
+$List: (		;! 1 points in list
+	( -6641.233887, 0.000465, -84.394531 )
+)
+
+$Name: cavalry initial camera facing
+$List: (		;! 1 points in list
+	( -6740.910645, -0.000472, -1456.792358 )
+)
+
+$Name: new Kyton position
+$List: (		;! 1 points in list
+	( -3295.212646, 0.000517, 3335.439453 )
+)
+
+$Name: Kyton new facing
+$List: (		;! 1 points in list
+	( -2819.590088, -0.000009, 2983.918457 )
+)
+
+$Name: topdown camera
+$List: (		;! 2 points in list
+	( -7056.000000, 4579.000000, 2698.000000 )
+	( -4523.455566, -0.000058, 1307.471069 )
+)
+
+$Name: Waypoint path 10
+$List: (		;! 1 points in list
+	( -5988.203613, 288.299500, -520.569580 )
+)
+
+$Name: Waypoint path 11
+$List: (		;! 1 points in list
+	( -4773.577148, 0.004995, -637.696960 )
+)
+
+#Messages		;! 34 total
+
+
+$Name: their demon
+$Team: -1
+$MessageNew:  XSTR("The Shivans have sent their Demon to hunt us down.", 3662)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp07-iwakura07.ogg
+
+$Name: protect the Duke
+$Team: -1
+$MessageNew:  XSTR("Captain Iwakura, I request that you and your wingman assist me in protecting the lives aboard the GTC Duke.", 3663)
+$end_multi_text
++Wave Name: bp07-sam-ingame09.ogg
+
+$Name: against a demon?
+$Team: -1
+$MessageNew:  XSTR("Against a Demon, Commander? How are three fighters going to repel its attack?", 3664)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp07-iwakura08.ogg
+
+$Name: Reinforcements are on the way
+$Team: -1
+$MessageNew:  XSTR("I've got reinforcements on the way, Captain. We just have to hold them off for a few minutes.", 3665)
+$end_multi_text
++Wave Name: bp07-sam-ingame10.ogg
+
+$Name: all right
+$Team: -1
+$MessageNew:  XSTR("All right, Commander. Our guns are yours for now. Commander Tell, form up around the GTC Duke.", 3666)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp07-iwakura09.ogg
+
+$Name: bombers
+$Team: -1
+$MessageNew:  XSTR("We've got bombers launching from the Kyton!", 3667)
+$end_multi_text
++Wave Name: bp07-sam-ingame11.ogg
+
+$Name: This is the Temeraire
+$Team: -1
+$MessageNew:  XSTR("This is the GTD Temeraire. Alpha 1, what is your status?", 3668)
+$end_multi_text
++AVI Name: Head-CM15
++Wave Name: bp07-temeraire-ingame03.ogg
+
+$Name: functional
+$Team: -1
+$MessageNew:  XSTR("Systems remain functional, Temeraire. The GTC Duke has been apprehended. Her crew will require some medical attention, and the ship will need repairs to her reactor.", 3669)
+$end_multi_text
++Wave Name: bp07-sam-ingame12.ogg
+
+$Name: nice ships
+$Team: -1
+$MessageNew:  XSTR("Your ships are as beautiful as they are powerful, Commander Bei. Your presence here in this system will give our people hope such as we have not had for decades.", 3670)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp07-iwakura10.ogg
+
+$Name: unidentified ships
+$Team: -1
+$MessageNew:  XSTR("Unidentified fighters, your transponder codes are inactive. Identify yourselves immediately.", 3671)
+$end_multi_text
++AVI Name: Head-CM15
++Wave Name: bp07-temeraire-ingame04.ogg
+
+$Name: disabled because of shivans
+$Team: -1
+$MessageNew:  XSTR("We had them silent so as not to draw the Shivans to ourselves. Due to your intervention, the danger has passed. Activating IFF codes.", 3672)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp07-iwakura11.ogg
+
+$Name: dock with us
+$Team: -1
+$MessageNew:  XSTR("IFF confirmed. Terran fighters, you are requested to dock with our ship for the time being. We wish to ask you some questions.", 3673)
+$end_multi_text
++AVI Name: Head-CM15
++Wave Name: bp07-temeraire-ingame05.ogg
+
+$Name: ok
+$Team: -1
+$MessageNew:  XSTR("Acknowledged, Temeraire. Making course for your fighterbay.", 3674)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp07-iwakura12.ogg
+
+$Name: Alpha 1 dock
+$Team: -1
+$MessageNew:  XSTR("Alpha 1, your mission is complete. Dock with us for your debriefing.", 3675)
+$end_multi_text
++AVI Name: Head-CM15
++Wave Name: bp07-temeraire-ingame06.ogg
+
+$Name: what about A2 and A3
+$Team: -1
+$MessageNew:  XSTR("What about the rest of my wing?", 3676)
+$end_multi_text
++Wave Name: bp07-sam-ingame13.ogg
+
+$Name: be picked up soon
+$Team: -1
+$MessageNew:  XSTR("We will ren-dez-vous with them soon, assuming they have not left their positions.", 3677)
+$end_multi_text
++AVI Name: Head-CM15
++Wave Name: bp07-temeraire-ingame07.ogg
+
+$Name: Duke destroyed
+$Team: -1
+$MessageNew:  XSTR("The Duke is down!", 3678)
+$end_multi_text
++Wave Name: bp07-sam-dukelost.ogg
+
+$Name: what the
+$Team: -1
+$MessageNew:  XSTR("What the...", 3679)
+$end_multi_text
++Wave Name: bp07-sam-ingame01.ogg
+
+$Name: unidentified vessels
+$Team: -1
+$MessageNew:  XSTR("Unknown fighters, identify yourselves. This is Commander Bei of the 222nd Nightwolves, GTD Orestes.", 3680)
+$end_multi_text
++Wave Name: bp07-sam-ingame02.ogg
+
+$Name: repeat
+$Team: -1
+$MessageNew:  XSTR("I repeat, this is Commander Bei of the GTD Orestes, GTVA 14th Battlegroup. Identify yourselves immediately.", 3681)
+$end_multi_text
++Wave Name: bp07-sam-ingame03.ogg
+
+$Name: not good
+$Team: -1
+$MessageNew:  XSTR("They're not responding...this doesn't look good.", 3682)
+$end_multi_text
++Wave Name: bp07-sam-ingame04.ogg
+
+$Name: Iwakura speaks 1
+$Team: -1
+$MessageNew:  XSTR("Unknown fighter. Your GTVA designation is not know to us. Nor do we recognize the designs of your ships.", 3683)
+$end_multi_text
++Wave Name: bp07-iwakura01.ogg
+
+$Name: GTVA!
+$Team: -1
+$MessageNew:  XSTR("GTVA...Galactic Terran-Vasudan Alliance. Formed in 2358 under the Beta Aquilae Convention.", 3684)
+$end_multi_text
++Wave Name: bp07-sam-ingame05.ogg
+
+$Name: not heard of us?
+$Team: -1
+$MessageNew:  XSTR("We've been the largest power in these systems for decades. How could you not have heard of us?", 3685)
+$end_multi_text
++Wave Name: bp07-sam-ingame06.ogg
+
+$Name: Iwakura 2
+$Team: -1
+$MessageNew:  XSTR("You are speaking to Captain Iwakura of the Terran sleeper ship Sanctuary. We know of Vasudans, but not of your Terran-Vasudan alliance.", 3686)
+$end_multi_text
++Wave Name: bp07-iwakura02.ogg
+
+$Name: Iwakura 3
+$Team: -1
+$MessageNew:  XSTR("We were unaware of any Terran presence in this sector save our own.", 3687)
+$end_multi_text
++Wave Name: bp07-iwakura03.ogg
+
+$Name: sanctuary where?
+$Team: -1
+$MessageNew:  XSTR("You say you're from a sleeper ship. Where is it?", 3688)
+$end_multi_text
++Wave Name: bp07-sam-ingame07.ogg
+
+$Name: Iwakura 4
+$Team: -1
+$MessageNew:  XSTR("The Sanctuary is hiding, Commander Bei, and has been for the past fifty years. If you had any sense, you would be hiding too.", 3689)
+$end_multi_text
++Wave Name: bp07-iwakura04.ogg
+
+$Name: hiding from what?
+$Team: -1
+$MessageNew:  XSTR("Hiding...from what?", 3690)
+$end_multi_text
++Wave Name: bp07-sam-ingame08.ogg
+
+$Name: Iwakura 5
+$Team: -1
+$MessageNew:  XSTR("Shivans. They are everywhere, and they are looking for us.", 3691)
+$end_multi_text
++Wave Name: bp07-iwakura05.ogg
+
+$Name: Iwakura 6
+$Team: -1
+$MessageNew:  XSTR("Already we have lingered for too long. The enemy knows we are here. They are coming.", 3692)
+$end_multi_text
++Wave Name: bp07-iwakura06.ogg
+
+$Name: Temeraire is badass
+$Team: -1
+$MessageNew:  XSTR("This is the GTD Temeraire. All fighters, stand clear of the SD Kyton. Targeting the Kyton with primary photon beam cannons.", 3693)
+$end_multi_text
++Wave Name: bp07-temeraire-ingame01.ogg
+
+$Name: Temeraire fires
+$Team: -1
+$MessageNew:  XSTR("Gunnery control, open fire!", 3694)
+$end_multi_text
++Wave Name: bp07-temeraire-ingame02.ogg
+
+$Name: How to target bombs
+$Team: -1
+$MessageNew:  XSTR("$b$ targets bombs and bombers", 3695)
+$end_multi_text
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 44 total
+
+$Num stars: 100
+$Ambient light level: 7895160
+
+$Bitmap List:
+$Sun: SunBlue
++Angles: 2.705258 0.000000 0.191986
++Scale: 0.200000
+$Starbitmap: nebulB2-main
++Angles: 0.349066 0.000000 0.436332
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulB5-whisp
++Angles: 0.541052 5.759582 0.593412
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulB4-whisp
++Angles: 0.628318 6.195914 0.261799
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulB6-whisp
++Angles: 0.314159 1.623155 0.069813
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulB7-whisp
++Angles: 0.069813 0.383972 0.383972
++ScaleX: 4.000000
++ScaleY: 3.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulB8-whisp
++Angles: 0.069813 3.089230 0.610865
++ScaleX: 3.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD10-whisp
++Angles: 0.349066 0.366519 0.261799
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulB3-main
++Angles: 0.069813 5.567596 0.000000
++ScaleX: 4.000000
++ScaleY: 3.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulB8-whisp
++Angles: 0.471239 1.047197 6.178461
++ScaleX: 4.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: nebulB8-whisp
++Angles: 0.750491 6.161007 0.069813
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: nebulB7-whisp
++Angles: 1.064650 0.802851 0.506145
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulB8-whisp
++Angles: 0.506145 4.520399 0.680678
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulB8-whisp
++Angles: 0.034907 2.356193 0.296706
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulE3-main
++Angles: 5.777035 0.000000 3.141590
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulE8-whisp
++Angles: 5.742129 3.019417 2.827431
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF2-main
++Angles: 5.567596 0.000000 3.141590
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF9-whisp
++Angles: 5.323250 0.000000 3.141590
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF12-whisp
++Angles: 5.480330 0.000000 3.490656
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF5-whisp
++Angles: 5.148717 0.000000 3.839721
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF4-whisp
++Angles: 4.572759 0.000000 3.839721
++ScaleX: 3.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF12-whisp
++Angles: 4.118974 0.750491 3.543016
++ScaleX: 2.500000
++ScaleY: 5.000000
++DivX: 3
++DivY: 3
+$Starbitmap: nebulD14-whisp
++Angles: 3.700095 0.314159 3.106684
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD14-whisp
++Angles: 3.769908 1.326449 2.478366
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD4-whisp
++Angles: 3.979347 0.349066 2.251473
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD3-whisp
++Angles: 4.450586 4.223693 2.059487
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: nebulD3-whisp
++Angles: 4.136427 4.625119 1.937314
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF1-main
++Angles: 5.235984 0.575958 1.954767
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF5-whisp
++Angles: 5.585049 0.052360 2.199113
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF2-main
++Angles: 5.777035 0.000000 2.722712
++ScaleX: 7.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD1-main
++Angles: 6.073741 4.817105 2.914698
++ScaleX: 3.000000
++ScaleY: 2.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD4-whisp
++Angles: 6.230821 5.497783 2.844884
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD7-whisp
++Angles: 6.230821 0.000000 3.089230
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD6-whisp
++Angles: 0.104720 0.000000 2.932151
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD4-whisp
++Angles: 0.174533 1.570795 2.879791
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD13-whisp
++Angles: 0.575958 0.000000 2.775071
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD1-main
++Angles: 0.855211 4.712385 2.583085
++ScaleX: 5.000000
++ScaleY: 6.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD1-main
++Angles: 1.064650 1.483529 2.635445
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD5-whisp
++Angles: 1.343902 6.178461 2.530725
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD2-main
++Angles: 1.745328 6.108648 2.460912
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF1-main
++Angles: 2.094393 0.000000 2.460912
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 1
+$Starbitmap: nebulF2-main
++Angles: 2.530725 0.000000 2.740165
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulF6-whisp
++Angles: 2.775071 0.000000 2.740165
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD2-main
++Angles: 3.001964 6.265727 2.827431
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 5
++DivY: 5
+$Starbitmap: nebulD7-whisp
++Angles: 3.193950 6.021381 3.001964
++ScaleX: 3.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: 2: Exodus
+$Substitute Event Music: 2: Exodus
+$Briefing Music: None
+
+#End
+

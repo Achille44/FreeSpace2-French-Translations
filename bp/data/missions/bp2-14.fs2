@@ -1,0 +1,6682 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Pawns on a Board of Bone", 6070)
+$Author: Seth Dickinson
+$Created: 01/12/10 at 12:53:10
+$Modified: 11/15/15 at 11:14:33
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Moving to find a Queen", 6071)
+$end_multi_text
++Game Type Flags: 1
++Flags: 262336
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 0
++Hull Repair Ceiling: 70.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: -2253.333496, 5491.748535, 1944.297607
++Viewer orient:
+	0.572802, -0.000000, 0.819694,
+	-0.734125, 0.444842, 0.513007,
+	-0.364634, -0.895609, 0.254806
+
+
+$Skybox Model: htsb.pof
+
+$AI Profile: BP2
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"alpha1m14"		"100"		"number"		"player-persistent"
+		1		"alpha2m14"		"100"		"number"		"player-persistent"
+		2		"alpha3m14"		"100"		"number"		"player-persistent"
+		3		"Antenorbeamcount"		"0"		"number"
+		4		"antenorm14"		"100"		"number"		"player-persistent"
+		5		"beta1m14"		"100"		"number"		"player-persistent"
+		6		"beta2m14"		"100"		"number"		"player-persistent"
+		7		"beta3m14"		"100"		"number"		"player-persistent"
+		8		"beta4m14"		"100"		"number"		"player-persistent"
+		9		"checkpointreachedm14"		"0"		"number"		"player-persistent"
+		10		"karenBattered"		"0"		"number"
+		11		"olefumiBattered"		"0"		"number"
+		12		"simmsBattered"		"0"		"number"
+		13		"sopronm14"		"100"		"number"		"player-persistent"
+		14		"tatabanyam14"		"100"		"number"		"player-persistent"
+)
+
+#Fiction Viewer
+
+$File: m14.txt
+
+#Command Briefing
+
+$Stage Text:
+ XSTR("$b *** $b  INDUS $b INTERNAL $b COMMUNIQUE $b  ***
+Restricted Distribution, Priority Urgent, Compartmentalized Information
+FROM: Captain Sorensen
+TO: Captain Lorna Simms, Sublieutenant Noemi Laporte, Flight Lieutenant Ehud Levi
+CC: Flight Lieutenant Karen Ng'Mei, UEFg Yangtze
+
+I've just returned from a conference with Admiral Netreba and the other Wargods captains. The situation is grim. Deep-range recon reports that the Vasudan logistical train is gearing up, and supplies are pouring through the node and into Steele's Jovian depots. We can't attack the Vasudan supply convoys without escalating the war further. Without pressure on his logistics, Steele's final attack on Earth could happen within weeks instead of months.
+
+All our gains are in danger of slipping away. Admiral Calder and Admiral Netreba have decided to take aggressive direct action. We believe that if we can eliminate a Terran destroyer, we will deal a critical blow to Tev morale and political support.
+
+Our target is the $r GTD $r Carthage.", 6072)
+$end_multi_text
+$Ani Filename: uef_cb_default
++Wave Filename: bp214cb01.ogg
+
+$Stage Text:
+ XSTR("The $r Carthage is an Orion-class destroyer that saw service during the Second Shivan Incursion. Although her spaceframe is obsolete, she has been refitted as a Combat Evaluation Unit destroyer. We believe the $r Carthage mounts a prototype tactical subspace drive that allows it to make rapid sequential short-range jumps, akin to the capabilities of the $r GTD $r Atreus. Additionally, her weapons systems have been upgraded to modern standards, and her hull has been reinforced with molybdenum plating and experimental reactive armor that grants her enhanced resilience against our artillery weapons and torpedoes.
+
+Admiral Steele employs the $r Carthage as a raider and a base for aggressive fighter and bomber deployments. The destroyer's impressive firepower makes it a difficult target. Projections indicate that we will need to engage with at least four frigates to guarantee a kill without warship losses. We must carry out this operation without significant casualties in order to maintain our momentum.
+
+Fortunately, we have a critical edge: a source inside the $r GTVA who has provided us with tactical information on the $r Carthage's upcoming operations and a psychological profile of the Carthage's commander. This is the same source that gave us the $f Agincourt, and he or she has come through again. We know exactly how to hit them.", 6073)
+$end_multi_text
+$Ani Filename: uef_cb_default
++Wave Filename: bp214cb02.ogg
+
+$Stage Text:
+ XSTR("Information on Admiral Anita Lopez has been added to your techroom database. I will summarize the salient points. Admiral Lopez is a veteran GTVA officer, decorated for heroism during the Second Shivan Incursion due to her actions as acting CO of the $r Carthage. She commands a remarkable degree of respect and loyalty from her crew and the crews of her battlegroup's ships. Psychological analysts suggests she displays a 'transformational leadership' profile, characterized by intense personal bonds between herself and her subordinates.
+
+We plan to exploit this mutual loyalty to draw Lopez into a trap.
+
+Our source inside the GTVA tells us that the $r Carthage battle group will disperse to attack targets throughout the Asteroid Belt tomorrow. The $r Carthage itself will remain in reserve along with the corvettes $r Iolanthe and $r Deianira, as the $r Leander, $r  Legionary, $r Joketsu, $r Systema, $r Grissom, $r Antenor, $r Norfolk and $r Voronezh, along with multiple squadrons, devastate Belt mining, manufacturing, and processing platforms. Loss of these facilities will cut our shipyard output in half.
+
+This presents us with a golden oppportunity.", 6074)
+$end_multi_text
+$Ani Filename: uef_cb_default
++Wave Filename: bp214cb03.ogg
+
+$Stage Text:
+ XSTR("Captain Simms, I have forwarded our tactical plan for the destruction of the $r GTD $r Carthage for your inspection. You will lead the Wargods' fighter elements in a critical role before the main attack.
+
+This will be our riskiest operation yet, but it may destroy the GTVA's political will. This could be our Tet Offensive, our Siege of Yorktown or Battle of Algiers. 
+
+Bear in mind that our source in the GTVA will probably be found and executed once it becomes clear the $r Carthage's battle plan was leaked. We have a responsibility to this unknown hero to pull this off.
+
+As the Elders would say: for humanity. And for all the people we've lost. Let's do this.
+
+Captain Lloyd Sorensen
+UEFg Indus, Federation Wargods", 6075)
+$end_multi_text
+$Ani Filename: uef_cb_default
++Wave Filename: bp214cb04.ogg
+
+$Stage Text:
+ XSTR("$b Federation $b Pilot's $b Reference
+$b Uriel $b Gunship
+
+Heavily armed and armored strike craft designed for anti-warship assault and heavy fighter suppression. Reverse thrust and reverse afterburner capability. 
+
+Three primary banks w/o firelink option. First bank has two firepoints for a specialist weapon such as the Scalpel disruptor or Gattler long-range mass driver. Second bank has six firepoints for a dogfight weapon such as the Rapier. Third bank mounts the Archer gauss cannon for long-range anti-turret attack.
+
+Automatic fast-tracking independently targeting Vulcan turret provides light anti-fighter defense.
+
+Three secondary weapon stations provide tactical flexibility. Slammer suppression warheads recommended for anti-bomber and anti-fighter tasking. Paveway bombs recommended for anti-warship duty. Dart heat-seeking missiles provide rapid acquisition dogfight engagement ability.", 6076)
+$end_multi_text
+$Ani Filename: uef_cb_default
++Wave Filename: bp214cb05.ogg
+
+#Briefing
+$start_briefing
+$num_stages: 6
+$start_stage
+$multi_text
+ XSTR("Eyes up!
+
+All of you know what Laporte and I saw. An Elder gunned down as part of a political ploy. The Tevs playing their own allies for fools.
+
+But now we're going to turn the tables on them. Now we're going to show them just what kind of punishment we can dish out.
+
+Is that clear? Damn straight it is!", 6077)
+$end_multi_text
+$voice: bp214b01.ogg
+$camera_pos: -872.969116, 26063.734375, -4196.046387
+$camera_orient:
+	-1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, -0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 3
+$Flags: 1
+$Formula: ( true ) 
+$start_icon
+$type: 28
+$team: Hostile
+$class: GTCv Deimos
+$pos: -1176.534790, -0.011857, -3133.566406
+$label: Carthage Battle Group
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 6
+$team: Hostile
+$class: Orion Refit
+$pos: -13622.694336, 0.060735, -3057.678223
+$label: Carthage
++id: 2
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: UEI Ceres
+$pos: 12635.699219, -0.000013, -3209.458252
+$label: Belt Installations
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("At 0450 tomorrow the $r GTCv $r Antenor will jump in to attack $f Sopron and $f Tatabanya stations, a fuel storage site for Belt mining ships. Nonessential personnel were evacuated months ago, but the stations still maintain a crew of 700 civilian workers each.
+
+We are going to jump in a small force and disable the $r Antenor. We will not destroy it. We will not present an overwhelming threat. We will not take out her comms system. We're just going to slip in and leave the $r Antenor helpless, using a small enough force that we don't seem much of a threat.
+
+Then we're going to let the $r Antenor start crying for assistance.", 6078)
+$end_multi_text
+$voice: bp214b02.ogg
+$camera_pos: 748.867126, 23613.402344, 6930.676270
+$camera_orient:
+	-1.000000, -0.000000, 0.000000,
+	0.000000, -0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 28
+$team: Hostile
+$class: GTCv Deimos
+$pos: -9221.173828, -0.012336, 6348.179688
+$label: Antenor
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: UEI Ceres
+$pos: 13264.383789, 0.000741, 4422.652832
+$label: Sopron Station
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: UEI Ceres
+$pos: 4100.431641, -882.538208, 11033.016602
+$label: Tatabanya Station
++id: 12
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("When the $r Antenor has called for help, we'll disable her comms and bring in more Wargods, including a special asset contributed by Admiral Calder's Jovians.
+
+Admiral Lopez of the $r Carthage, a woman who cares deeply for those under her command, will scramble a Jump Five team and a warship to assist the $r Antenor. They'll walk into our trap.
+
+Since any good trick is worth pulling twice, we'll take out the Jump Five fighters and disable the response warship too. Neither warship should be destroyed$semicolon we want to take prisoners if we can.", 6079)
+$end_multi_text
+$voice: bp214b03.ogg
+$camera_pos: 276.076874, 34732.378906, 8378.363281
+$camera_orient:
+	-1.000000, -0.000000, 0.000000,
+	0.000000, -0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 3000
+$num_lines: 0
+$num_icons: 5
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 28
+$team: Unknown
+$class: GTCv Deimos
+$pos: 2816.551514, -0.006920, 9864.833984
+$label: Antenor
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: UEI Ceres
+$pos: 16132.867188, -0.002575, 4063.357178
+$label: Sopron Station
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: GTF Perseus
+$pos: -13802.220703, -499.992798, 5431.269043
+$label: Carthage Fighters
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 4
+$team: Hostile
+$class: GTC Aeolus
+$pos: -10985.516602, 5000.000488, 13037.963867
+$label: Jump Five Warship
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: UEI Ceres
+$pos: 14162.608398, -882.534607, 14507.304688
+$label: Tatabanya Station
++id: 12
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Once the Jump Five warship has been added to our little ship graveyard, we'll use the capabilities of that special asset I mentioned: the $g Hanuman, an AWACS like the $g Anjaneya that saved us from Serkr Team back during the $r Agincourt extraction.
+
+The $g Hanuman will jam outbound distress calls from the disabled GTVA warships - who will doubtless warn the $r Carthage away - and replace them with edited versions that beg Admiral Lopez for help.
+
+The $g Hanuman will also be able to intercept incoming transmissions and even anticipate the arrival of hostile warships. It will allow us the forewarning we need to pull off the last stage of our plan.", 6080)
+$end_multi_text
+$voice: bp214b04.ogg
+$camera_pos: -3086.644531, 34609.207031, 9295.541992
+$camera_orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 3000
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 28
+$team: Unknown
+$class: GTCv Deimos
+$pos: -22132.894531, -0.008933, 7481.613770
+$label: Antenor
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 4
+$team: Unknown
+$class: GTC Aeolus
+$pos: -10985.516602, 5000.000488, 13037.963867
+$label: Jump Five Warship
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 30
+$team: Friendly
+$class: UEA Oculus
+$pos: 13044.172852, 200.004639, 9696.307617
+$label: Hanuman
++id: 6
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Faced with the capture or death of so many of her beloved subordinates, all pleading for her help, Admiral Lopez will bring the $r Carthage in to conduct a gallant rescue.
+
+Unfortunately for her, the $g Katana and $g Altan $g Orde, the Jovian half of the Wargods' frigate forces, will be waiting in the wings to jump in and blow the hell out of the $r Carthage. If the $r Carthage withdraws using its tactical drive, the $g Hanuman will track its exit vector, and the $g Yangtze and $g Indus will pursue it.
+
+One way or another, that ship is going down.", 6081)
+$end_multi_text
+$voice: bp214b05.ogg
+$camera_pos: -2459.293945, 41688.550781, 6381.304688
+$camera_orient:
+	-1.000000, -0.000000, -0.000000,
+	0.000000, 0.000000, -1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 3000
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 6
+$team: Hostile
+$class: GTD Orion
+$pos: -24107.314453, 0.057849, 3560.377930
+$label: Carthage
++id: 7
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 28
+$team: Friendly
+$class: UEFg Karuna
+$pos: 17147.578125, 200.003174, -1887.979614
+$label: Katana
++id: 8
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 28
+$team: Friendly
+$class: UEFg Karuna
+$pos: 15934.739258, 400.000183, 12632.871094
+$label: Altan Orde
++id: 9
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("This is a delicate and complex plan. 'Delicate' and 'complex' is perhaps not exactly our style, but we can do finesse when we must, can't we, Wargods?
+
+Laporte! You'll be leading the initial disarm operation on the $r Antenor. I recommend Uriel gunships. Use your Archers and Paveways for precision strikes. Karen and Beta Wing will give you escort. I know you two trust each other.
+
+Your strike package will use the callsign 'Ozone'. I'll roll in my own gunships once you've disarmed and disabled the Antenor. Be quick, or she'll slip away.
+
+One last note. Saving the crews of $f Tatabanya and $f Sopron Stations is not a priority. I'm afraid those civilians are expendable.", 6082)
+$end_multi_text
+$voice: bp214b06.ogg
+$camera_pos: 1947.915771, 11419.013672, -2158.739746
+$camera_orient:
+	0.000000, 0.000000, -1.000000,
+	1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 3000
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 1
+$team: Friendly
+$class: UEF Uriel
+$pos: 1947.898682, 1497.150269, 2145.885986
+$label: Alpha Wing
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: UEF Kentauroi
+$pos: 2005.678833, 1497.150757, -6261.134766
+$label: Beta Wing
++id: 11
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: UEI Ceres
+$pos: 14162.608398, -882.534607, 14507.304688
+$label: Tatabanya Station
++id: 12
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 3
+
+$Formula: ( is-event-true-delay 
+   "Antenor escaped" 
+   0 
+)
+$Multi text
+    XSTR("We failed to set the bait for our trap. The Antenor never sent off a distress signal to lure warships in, and as a result, our whole plan disintegrated.
+
+Look, I understand it was a high-pressure situation, but you had four frigates and an elite squadron counting on you to do your jobs. I can't accept that kind of failure, and neither can Admiral Netreba.
+
+I expected better of you.", 6083)
+$end_multi_text
+$Voice: bp214db01.ogg
+$Recommendation text:
+    XSTR("Use Scalpels, Paveways, and Archer fire to disable the Antenor. Once it is disabled, fall back, get hull repairs, and disarm it at your leisure.
+
+Don't take out the ship's comm system until explicitly told to do so.", 6084)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "fail: Norfolk destroyed" 
+   0 
+)
+$Multi text
+    XSTR("We failed to set the bait for our trap. The Norfolk never sent off a distress signal to lure the Carthage in, and as a result, our whole plan disintegrated.
+
+Look, I understand it was a high-pressure situation, but you had four frigates and an elite squadron counting on you to do your jobs. I can't accept that kind of failure, and neither can Admiral Netreba.
+
+I expected better of you.", 6085)
+$end_multi_text
+$Voice: bp214db02.ogg
+$Recommendation text:
+    XSTR("Use Scalpels, Paveways, and Archer fire to disable the Norfolk. Stay at long range to avoid its flak and beams. Once it is disabled, fall back, get hull repairs, and disarm it at your leisure.
+
+Don't take out the ship's comm system until explicitly told to do so.", 6086)
+$end_multi_text
+
+$Formula: ( has-departed-delay 0 "Carthage" ) 
+$Multi text
+    XSTR("We're rolling! We'll hit the Carthage at Saturn in five minutes. If you want to alter your loadouts or ship choice, tell the deck crew right now.
+
+I'll brief you on the hangar deck. Then we launch and jump after the Carthage.", 6087)
+$end_multi_text
+$Voice: bp214db03.ogg
+$Recommendation text:
+    XSTR("Personal Log, Noemi Laporte
+
+Here we go. Here we go.", 6088)
+$end_multi_text
+
+#Alternate Types:
+$Alt: Fusion Fuel Dump
+$Alt: 181st Bloodhounds
+$Alt: 663rd Firebearers
+$Alt: 332nd Firebearers
+$Alt: 330th Scythians
+
+#end
+
+
+#Callsigns:
+$Callsign: Ng'Mei
+$Callsign: Laporte
+$Callsign: Puck
+$Callsign: Logos
+$Callsign: Olefumi
+$Callsign: Pirate
+$Callsign: Smoke
+$Callsign: Simms
+$Callsign: Grim
+$Callsign: Mad Dog
+$Callsign: Rosary
+$Callsign: Thee
+$Callsign: Fade
+$Callsign: 181st Bloodhounds
+$Callsign: 663rd Firebearers
+$Callsign: 330th Scythians
+$Callsign: 332nd Firebearers
+$Callsign: 378th Blue Diamonds
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+	"UEF Uhlan"	4
+	"UEF Kentauroi"	4
+	"UEF Uriel"	4
+)
+
++Weaponry Pool: (
+	"Vulcan"	12
+	"Maul"	9
+	"Rapier"	24
+	"Gattler"	8
+	"Scalpel"	11
+	"Archer"	20
+	"Javelin"	232
+	"Dart"	3840
+	"Dirk"	3200
+	"Slammer"	96
+	"Paveway"	142
+	"Hellfire"	10080
+	"Grimler"	240
+)
+
+#Objects		;! 70 total
+
+$Name: Alpha 1		;! Object #0
+$Class: UEF Uriel
+$Callsign: Laporte
+
+$Team: Friendly
+$Location: 2540.699951, 1500.000000, -2857.600098
+$Orientation:
+	0.676216, -0.310423, 0.668109,
+	-0.066330, 0.877553, 0.474871,
+	-0.733711, -0.365431, 0.572825
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Gattler" "Rapier" "Archer" )
++Secondary Banks: ( "Paveway" "Paveway" "Slammer" )
++Subsystem: turret01
++AI Class: BP2-Colonel
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Antenor		;! Object #1
+$Class: GTCv Deimos
+$Team: Hostile
+$Location: -471.000000, 0.000000, -506.299988
+$Orientation:
+	0.502663, 0.000000, 0.864483,
+	0.000000, 1.000000, -0.000000,
+	-0.864483, 0.000000, 0.502663
+$AI Behavior: None
++AI Class: BP2-Captain
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Primary Banks: ( "Terran Turret" )
++Subsystem: turret02
++Primary Banks: ( "Terran Turret" )
++Subsystem: turret03
++Primary Banks: ( "Terran Turret" )
++Subsystem: turret04
++Primary Banks: ( "Terran Turret" )
++Subsystem: turret05
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret06
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret07
++Primary Banks: ( "AAAh" )
++Subsystem: turret08
++Primary Banks: ( "AAAh" )
++Subsystem: turret09
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret10
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Primary Banks: ( "AAAh" )
++Subsystem: turret17
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Primary Banks: ( "AAAh" )
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Sbank Ammo: ( 0 )
++Subsystem: turret26
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( has-time-elapsed 200 ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 40
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 800
+$Texture Replace:
++old: nameplate
++new: gtcv_antenor
+
+$Name: Alpha 2		;! Object #2
+$Class: UEF Uriel
+$Callsign: Puck
+
+$Team: Friendly
+$Location: 2563.412109, 1499.999878, -2955.168213
+$Orientation:
+	0.622362, 0.000000, 0.782730,
+	-0.292598, 0.927502, 0.232650,
+	-0.725984, -0.373818, 0.577242
+$AI Behavior: None
++AI Class: BP2-Colonel
+$AI Goals: ( goals ( ai-destroy-subsystem "Antenor" "engine02" 50 ) ( ai-destroy-subsystem "Antenor" "turret25" 70 ) ( ai-disarm-ship "Antenor" 40 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Gattler" "Rapier" "Archer" )
++Secondary Banks: ( "Paveway" "Paveway" "Slammer" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 100
++Persona Index: 16
+
+$Name: Alpha 3		;! Object #3
+$Class: UEF Uriel
+$Callsign: Logos
+
+$Team: Friendly
+$Location: 2621.472412, 1499.999878, -2866.941895
+$Orientation:
+	0.599941, 0.000000, 0.800044,
+	-0.299623, 0.927224, 0.224683,
+	-0.741820, -0.374508, 0.556280
+$AI Behavior: None
++AI Class: BP2-Colonel
+$AI Goals: ( goals ( ai-destroy-subsystem "Antenor" "engine03" 50 ) ( ai-destroy-subsystem "Antenor" "turret26" 27 ) ( ai-disarm-ship "Antenor" 40 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Gattler" "Rapier" "Archer" )
++Secondary Banks: ( "Paveway" "Paveway" "Slammer" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 100
++Persona Index: 15
+
+$Name: Beta 1		;! Object #4
+$Class: UEF Kentauroi
+$Callsign: Ng'Mei
+
+$Team: Friendly
+$Location: 2662.300049, 1500.000000, -2716.100098
+$Orientation:
+	0.576345, 0.000000, 0.817206,
+	-0.297734, 0.931269, 0.209981,
+	-0.761039, -0.364331, 0.536733
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Scalpel" "Rapier" )
++Secondary Banks: ( "Paveway" "Dart" "Hellfire" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 21
+
+$Name: Beta 2		;! Object #5
+$Class: UEF Kentauroi
+$Callsign: Olefumi
+
+$Team: Friendly
+$Location: 2714.592773, 1500.000000, -2754.571533
+$Orientation:
+	0.576618, 0.000000, 0.817014,
+	-0.293352, 0.933317, 0.207037,
+	-0.762533, -0.359054, 0.538167
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Scalpel" "Rapier" )
++Secondary Banks: ( "Paveway" "Javelin" "Hellfire" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 24
+
+$Name: Beta 3		;! Object #6
+$Class: UEF Kentauroi
+$Callsign: Smoke
+
+$Team: Friendly
+$Location: 2641.028076, 1500.000000, -2751.449219
+$Orientation:
+	0.585075, 0.000000, 0.810979,
+	-0.295251, 0.931373, 0.213006,
+	-0.755324, -0.364067, 0.544923
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Scalpel" "Rapier" )
++Secondary Banks: ( "Paveway" "Dart" "Hellfire" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 18
+
+$Name: Gemini 1		;! Object #7
+$Class: GTF Perseus
+$Callsign: 181st Bloodhounds
+
+$Team: Hostile
+$Location: -209.442047, -0.000632, -306.172760
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Gemini 2		;! Object #8
+$Class: GTF Perseus
+$Callsign: 181st Bloodhounds
+
+$Team: Hostile
+$Location: -251.731003, -0.000789, -351.622955
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Gemini 3		;! Object #9
+$Class: GTF Perseus
+$Callsign: 181st Bloodhounds
+
+$Team: Hostile
+$Location: -159.347900, -0.000764, -343.610535
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Aries 1		;! Object #10
+$Class: GTF Nyx
+$Callsign: 181st Bloodhounds
+
+$Team: Hostile
+$Location: -819.126770, -0.000917, -468.912933
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Aries 2		;! Object #11
+$Class: GTF Nyx
+$Callsign: 181st Bloodhounds
+
+$Team: Hostile
+$Location: -893.460754, -0.000850, -533.495361
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: UEC-DEM 1		;! Object #12
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -1101.221802, 0.001020, 795.409607
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Tritium (One Frigate-Week)", 6089)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 2		;! Object #13
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -759.006348, 0.001007, 849.028137
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Tritium (One Frigate-Week)", 6089)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 3		;! Object #14
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -408.077972, 0.000999, 853.060791
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Deuterium (One Frigate-Week)", 6090)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 4		;! Object #15
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -43.933163, 0.000999, 869.474365
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Deuterium (One Frigate-Week)", 6090)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 5		;! Object #16
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -254.776001, 0.000953, 1302.265015
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Deuterium (One Frigate-Week)", 6090)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 6		;! Object #17
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -611.942383, 0.001015, 1330.967041
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Deuterium (One Frigate-Week)", 6090)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 7		;! Object #18
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -997.892273, 0.000895, 1348.650513
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Ball Bearings", 6091)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: Sopron Station		;! Object #19
+$Class: UEI Ceres#Resupply
+$Alt: Fusion Fuel Dump
+
+$Team: Friendly
+$Location: -525.314331, 0.001790, 2299.069824
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 1000
+
+$Name: Sagittarius 1		;! Object #20
+$Class: GTF Atalanta
+$Callsign: 663rd Firebearers
+
+$Team: Hostile
+$Location: -773.453491, -0.004210, -1139.369019
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Balor" "Prometheus S" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Sagittarius 2		;! Object #21
+$Class: GTF Atalanta
+$Callsign: 663rd Firebearers
+
+$Team: Hostile
+$Location: -800.487610, -0.004178, -1234.976074
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Balor" "Prometheus S" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Tatabanya Station		;! Object #22
+$Class: UEI Ceres#Resupply
+$Alt: Fusion Fuel Dump
+
+$Team: Friendly
+$Location: -4655.378906, -0.012201, 4915.907715
+$Orientation:
+	-0.424367, 0.903160, -0.064923,
+	0.853073, 0.374732, -0.363103,
+	-0.303610, -0.209473, -0.929486
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 1000
+
+$Name: UEC-DEM 8		;! Object #23
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -3772.211426, -1161.469849, 5792.187500
+$Orientation:
+	-0.424367, 0.903160, -0.064923,
+	0.853073, 0.374732, -0.363102,
+	-0.303610, -0.209472, -0.929485
+$AI Behavior: None
+$Cargo 1:  XSTR("Tritium (One Frigate-Week)", 6089)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 9		;! Object #24
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -3842.766113, -1959.048218, 4803.423828
+$Orientation:
+	-0.424367, 0.903160, -0.064923,
+	0.853073, 0.374732, -0.363102,
+	-0.303610, -0.209472, -0.929485
+$AI Behavior: None
+$Cargo 1:  XSTR("Centrifuged Fissiles", 6092)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 10		;! Object #25
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -4369.245117, -1765.062012, 3766.784668
+$Orientation:
+	-0.424367, 0.903160, -0.064923,
+	0.853073, 0.374732, -0.363102,
+	-0.303610, -0.209472, -0.929485
+$AI Behavior: None
+$Cargo 1:  XSTR("AM Containment Coils", 6093)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 11		;! Object #26
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -4204.229980, -1313.398804, 4620.496582
+$Orientation:
+	-0.424367, 0.903160, -0.064923,
+	0.853073, 0.374732, -0.363102,
+	-0.303610, -0.209472, -0.929485
+$AI Behavior: None
+$Cargo 1:  XSTR("Deuterium (One Frigate-Week)", 6090)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 12		;! Object #27
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -5219.554688, -395.042084, 3182.873535
+$Orientation:
+	-0.424367, 0.903160, -0.064923,
+	0.853073, 0.374732, -0.363102,
+	-0.303610, -0.209472, -0.929485
+$AI Behavior: None
+$Cargo 1:  XSTR("Deuterium (One Frigate-Week)", 6090)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 13		;! Object #28
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -5523.644531, 58.181042, 2936.166992
+$Orientation:
+	-0.424367, 0.903160, -0.064923,
+	0.853073, 0.374732, -0.363102,
+	-0.303610, -0.209472, -0.929485
+$AI Behavior: None
+$Cargo 1:  XSTR("Collection Scoop Systems", 6094)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: UEC-DEM 14		;! Object #29
+$Class: UEC-DEM
+$Team: Friendly
+$Location: -5837.088867, 714.584045, 2877.131836
+$Orientation:
+	-0.424367, 0.903160, -0.064923,
+	0.853073, 0.374732, -0.363102,
+	-0.303610, -0.209472, -0.929485
+$AI Behavior: None
+$Cargo 1:  XSTR("Photovoltaics", 6095)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: dscargo
++new: dshull
+
+$Name: Gamma 1		;! Object #30
+$Class: UEF Uriel
+$Callsign: Simms
+
+$Team: Friendly
+$Location: -3158.100098, 0.000000, 4111.200195
+$Orientation:
+	-0.864303, 0.000000, -0.502971,
+	0.000000, 1.000000, 0.000000,
+	0.502971, 0.000000, -0.864303
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Paveway" "Dart" "Slammer" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
++Persona Index: 20
+
+$Name: Gamma 2		;! Object #31
+$Class: UEF Uriel
+$Callsign: Mad Dog
+
+$Team: Friendly
+$Location: -3275.913818, 0.000107, 4007.389160
+$Orientation:
+	-0.849361, 0.000000, -0.527813,
+	0.000000, 1.000000, -0.000000,
+	0.527813, -0.000000, -0.849361
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Paveway" "Dart" "Slammer" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
++Persona Index: 14
+
+$Name: Gamma 3		;! Object #32
+$Class: UEF Uriel
+$Callsign: Rosary
+
+$Team: Friendly
+$Location: -3287.160889, 0.000017, 4211.793457
+$Orientation:
+	-0.858671, 0.000000, -0.512528,
+	0.000000, 1.000000, -0.000000,
+	0.512528, -0.000000, -0.858671
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Paveway" "Dart" "Slammer" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
++Persona Index: 18
+
+$Name: Beta 4		;! Object #33
+$Class: UEF Kentauroi
+$Callsign: Grim
+
+$Team: Friendly
+$Location: 2750.399902, 1450.000000, -2716.000000
+$Orientation:
+	0.565657, 0.000000, 0.824640,
+	-0.286962, 0.937500, 0.196840,
+	-0.773101, -0.347984, 0.530304
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Paveway" "Javelin" "Dart" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 10
+
+$Name: Hanuman		;! Object #34
+$Class: UEA Oculus
+$Team: Friendly
+$Location: -1208.657593, -999.999939, -1729.482666
+$Orientation:
+	0.218335, 0.481072, -0.849058,
+	-0.864893, -0.307580, -0.396681,
+	-0.451985, 0.820954, 0.348920
+$AI Behavior: None
++AI Class: BP2-Captain
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "beams are clean, ready to move" 
+      11 
+   )
+   ( has-arrived-delay 1 "Checkpoint 1" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 45
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
+
+$Name: Norfolk		;! Object #35
+$Class: GTC Aeolus
+$Team: Hostile
+$Location: -2222.800049, 5000.000000, 714.099976
+$Orientation:
+	-0.481674, -0.039933, -0.875441,
+	0.873895, 0.052839, -0.483234,
+	0.065554, -0.997804, 0.009447
+$AI Behavior: None
++AI Class: BP2-Captain
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 2" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret03
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret04
++Subsystem: turret05
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret06
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret07
++Primary Banks: ( "AAAh" )
++Subsystem: turret08
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret09
++Primary Banks: ( "AAAh" )
++Subsystem: turret10
++Primary Banks: ( "Heavy Flak" )
++Subsystem: turret11
++Subsystem: turret12
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "remember: destroy, disable" 
+   9 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( has-arrived-delay 195 "Norfolk" ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 50
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 500
+$Texture Replace:
++old: nameplate
++new: gtc_norfolk
+
+$Name: Aquila 1		;! Object #36
+$Class: GTF Hercules Mark II
+$Callsign: 330th Scythians
+
+$Team: Hostile
+$Location: -2123.061768, 4999.999023, 741.259155
+$Orientation:
+	-0.762233, 0.000000, -0.647303,
+	0.646767, 0.040685, -0.761601,
+	0.026335, -0.999172, -0.031011
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) ( ai-chase-wing "Beta" 50 ) ( ai-chase-wing "Gamma" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Aquila 2		;! Object #37
+$Class: GTF Hercules Mark II
+$Callsign: 330th Scythians
+
+$Team: Hostile
+$Location: -2097.516357, 4999.999023, 710.481812
+$Orientation:
+	-0.760446, 0.000000, -0.649401,
+	0.649054, 0.032702, -0.760040,
+	0.021237, -0.999465, -0.024868
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) ( ai-chase-wing "Beta" 50 ) ( ai-chase-wing "Gamma" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Aquila 3		;! Object #38
+$Class: GTF Hercules Mark II
+$Callsign: 330th Scythians
+
+$Team: Hostile
+$Location: -2134.054688, 4999.999023, 712.604370
+$Orientation:
+	-0.663236, 0.000000, -0.748410,
+	0.747866, 0.038127, -0.662754,
+	0.028535, -0.999273, -0.025287
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) ( ai-chase-wing "Beta" 50 ) ( ai-chase-wing "Gamma" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Draco 1		;! Object #39
+$Class: GTF Myrmidon
+$Callsign: 330th Scythians
+
+$Team: Hostile
+$Location: -2356.782471, 4999.999023, 750.679077
+$Orientation:
+	-0.410626, 0.000000, -0.911804,
+	0.908888, 0.079916, -0.409313,
+	0.072868, -0.996802, -0.032816
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Draco 2		;! Object #40
+$Class: GTF Myrmidon
+$Callsign: 330th Scythians
+
+$Team: Hostile
+$Location: -2327.421143, 4999.999023, 709.352417
+$Orientation:
+	-0.344314, 0.000000, -0.938855,
+	0.936457, 0.071425, -0.343434,
+	0.067057, -0.997446, -0.024592
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Draco 3		;! Object #41
+$Class: GTF Myrmidon
+$Callsign: 330th Scythians
+
+$Team: Hostile
+$Location: -2392.835693, 4999.999023, 709.044800
+$Orientation:
+	-0.292808, 0.000000, -0.956171,
+	0.952816, 0.083699, -0.291781,
+	0.080030, -0.996491, -0.024508
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Draco 4		;! Object #42
+$Class: GTF Myrmidon
+$Callsign: 330th Scythians
+
+$Team: Hostile
+$Location: -2365.527588, 4999.999023, 666.151306
+$Orientation:
+	-0.209227, 0.000000, -0.977867,
+	0.975015, 0.076321, -0.208617,
+	0.074632, -0.997083, -0.015969
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cepheus 1		;! Object #43
+$Class: GTF Nyx
+$Callsign: 330th Scythians
+
+$Team: Hostile
+$Location: -1992.063232, 4999.999023, 668.309509
+$Orientation:
+	-0.999954, 0.000000, -0.009565,
+	0.009564, 0.016445, -0.999819,
+	0.000157, -0.999865, -0.016445
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Cepheus 2		;! Object #44
+$Class: GTF Nyx
+$Callsign: 330th Scythians
+
+$Team: Hostile
+$Location: -1998.710449, 4999.999023, 631.614685
+$Orientation:
+	-0.986937, 0.000000, -0.161108,
+	0.161101, 0.009228, -0.986895,
+	0.001487, -0.999957, -0.009107
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Gamma 4		;! Object #45
+$Class: UEF Uriel
+$Callsign: Thee
+
+$Team: Friendly
+$Location: -3385.509033, -0.000989, 4099.862305
+$Orientation:
+	-0.845045, 0.000000, -0.534695,
+	-0.000000, 1.000000, 0.000000,
+	0.534695, 0.000000, -0.845045
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
++Persona Index: 14
+
+$Name: Carthage		;! Object #46
+$Class: GTD Carthage
+$Team: Hostile
+$Location: -52.177849, 0.058371, -9399.135742
+$Orientation:
+	0.179813, 0.000000, -0.983701,
+	0.000000, 1.000000, 0.000000,
+	0.983701, 0.000000, 0.179813
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01a
++Subsystem: turret02a
++Subsystem: turret03a
++Subsystem: turret04a
++Subsystem: turret05a
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "simms likes everybody" 
+   9 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Carthage retreat time" 
+   15 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 100
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 1000
+$Texture Replace:
++old: chg-capital01-05
++new: gtd_carthage
+
+$Name: Altan Orde		;! Object #47
+$Class: UEFg Karuna
+$Team: Friendly
+$Team Color Setting: 3rdFleet
+$Location: 1403.865601, 400.000336, 168.289566
+$Orientation:
+	-0.904681, 0.000001, -0.426090,
+	-0.000002, 1.000000, 0.000007,
+	0.426090, 0.000007, -0.904681
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 3" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
++Subsystem: turret31
++Subsystem: turret32
++Subsystem: turret35
++Subsystem: turret36
++Subsystem: turret37
++Subsystem: turret38
++Subsystem: turret39
++Subsystem: turret40
++Subsystem: turret41
++Subsystem: turret42
++Subsystem: turret43
++Subsystem: turret44
++Subsystem: turret45
++Subsystem: turret46
++Subsystem: turret47
++Subsystem: turret48
++Subsystem: turret49
++Subsystem: turret50
++Subsystem: turret51
++Subsystem: Turret52
++Subsystem: Turret53
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "simms: let's do it" 
+   11 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 300
+$Texture Replace:
++old: nameplate
++new: altan_orde
++old: nameplate
++new: altan_orde
++old: nameplate
++new: altan_orde
+
+$Name: Katana		;! Object #48
+$Class: UEFg Karuna
+$Team: Friendly
+$Team Color Setting: 3rdFleet
+$Location: 3520.243652, 400.008148, 1159.928955
+$Orientation:
+	-0.929964, 0.000003, -0.367651,
+	0.000000, 1.000000, 0.000007,
+	0.367651, 0.000007, -0.929964
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 4" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
++Subsystem: turret31
++Subsystem: turret32
++Subsystem: turret35
++Subsystem: turret36
++Subsystem: turret37
++Subsystem: turret38
++Subsystem: turret39
++Subsystem: turret40
++Subsystem: turret41
++Subsystem: turret42
++Subsystem: turret43
++Subsystem: turret44
++Subsystem: turret45
++Subsystem: turret46
++Subsystem: turret47
++Subsystem: turret48
++Subsystem: turret49
++Subsystem: turret50
++Subsystem: turret51
++Subsystem: Turret52
++Subsystem: Turret53
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "simms: let's do it" 
+   10 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 300
+$Texture Replace:
++old: nameplate
++new: katana
++old: nameplate
++new: katana
+
+$Name: Alpha 4		;! Object #49
+$Class: UEF Uriel
+$Callsign: Fade
+
+$Team: Friendly
+$Location: 2650.199951, 1494.300049, -2955.899902
+$Orientation:
+	0.617390, 0.000000, 0.786658,
+	-0.277258, 0.935830, 0.217600,
+	-0.736178, -0.352451, 0.577772
+$AI Behavior: None
++AI Class: BP2-Colonel
+$AI Goals: ( goals ( ai-destroy-subsystem "Antenor" "turret07" 89 ) ( ai-destroy-subsystem "Antenor" "turret08" 70 ) ( ai-destroy-subsystem "Antenor" "turret09" 60 ) ( ai-destroy-subsystem "Antenor" "turret10" 50 ) ( ai-disarm-ship "Antenor" 40 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Gattler" "Rapier" "Archer" )
++Secondary Banks: ( "Paveway" "Paveway" "Paveway" )
++Subsystem: turret01
++AI Class: BP2-Colonel
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 100
++Persona Index: 16
+
+$Name: Aquarius 1		;! Object #50
+$Class: GTF Myrmidon
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 5572.107910, -0.002063, -9182.805664
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Aquarius 2		;! Object #51
+$Class: GTF Myrmidon
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 5506.185059, -0.001850, -9238.682617
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Aquarius 3		;! Object #52
+$Class: GTF Myrmidon
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 5435.476074, -0.001991, -9163.697266
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Aquarius 4		;! Object #53
+$Class: GTF Myrmidon
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 5505.996094, -0.001935, -9073.676758
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Aquarius 5		;! Object #54
+$Class: GTF Myrmidon
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 5627.350098, -0.001828, -9037.397461
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Aquarius 6		;! Object #55
+$Class: GTF Myrmidon
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 5414.996094, -0.002088, -9021.629883
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Capricorn 1		;! Object #56
+$Class: GTF Perseus
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 6339.494629, -0.000063, -8965.095703
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Capricorn 2		;! Object #57
+$Class: GTF Perseus
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 6378.180176, -0.000116, -9037.891602
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Capricorn 3		;! Object #58
+$Class: GTF Perseus
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 6289.359863, -0.000104, -9072.589844
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Capricorn 4		;! Object #59
+$Class: GTF Perseus
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 6361.332031, -0.000014, -9102.544922
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Capricorn 5		;! Object #60
+$Class: GTF Perseus
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 6417.703613, 0.000033, -9103.172852
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Capricorn 6		;! Object #61
+$Class: GTF Perseus
+$Callsign: 378th Blue Diamonds
+
+$Team: Hostile
+$Location: 6277.851074, -0.000054, -9143.544922
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Checkpoint 1		;! Object #62
+$Class: GTNB Pharos
+$Team: Friendly
+$Location: 12048.299805, 10000.000000, 3025.399902
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( < ( mission-time ) 16 ) 
+   ( = @checkpointreachedm14[0] 1 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( > ( mission-time ) 15 ) 
+$Determination: 10
++Flags: ( "cargo-known" "reinforcement" "no-shields" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-collide" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Auriga 1		;! Object #63
+$Class: GTF Nyx
+$Team: Hostile
+$Location: -883.807739, 0.001587, -1154.887939
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$AI Goals: ( goals ( ai-guard "Antenor" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Auriga 2		;! Object #64
+$Class: GTF Nyx
+$Team: Hostile
+$Location: -942.500610, 0.001587, -1199.346436
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$AI Goals: ( goals ( ai-guard "Antenor" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Auriga 3		;! Object #65
+$Class: GTF Nyx
+$Team: Hostile
+$Location: -864.713745, 0.001587, -1204.440063
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$AI Goals: ( goals ( ai-guard "Antenor" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Auriga 4		;! Object #66
+$Class: GTF Nyx
+$Team: Hostile
+$Location: -927.453430, 0.001617, -1249.797607
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$AI Goals: ( goals ( ai-guard "Antenor" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Caedus 1		;! Object #67
+$Class: GTF Ares
+$Team: Hostile
+$Location: -2030.300049, 5500.000000, 699.400024
+$Orientation:
+	0.076142, 0.000000, 0.997097,
+	-0.930166, 0.360202, 0.071031,
+	-0.359157, -0.932874, 0.027426
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Trebuchet" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Caedus 2		;! Object #68
+$Class: GTF Ares
+$Team: Hostile
+$Location: -1981.300781, 5500.000000, 831.022278
+$Orientation:
+	-0.435766, 0.000000, 0.900060,
+	-0.793083, 0.472848, -0.383972,
+	-0.425591, -0.881144, -0.206051
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Trebuchet" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Caedus 3		;! Object #69
+$Class: GTF Ares
+$Team: Hostile
+$Location: -2086.354248, 5500.000000, 822.026978
+$Orientation:
+	-0.620376, 0.000000, 0.784305,
+	-0.740747, 0.328617, -0.585922,
+	-0.257736, -0.944463, -0.203866
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Trebuchet" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 15
+
+#Wings		;! 13 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+	"Alpha 4"
+)
++Hotkey: 0
++Flags: ( )
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Beta 1"
+	"Beta 2"
+	"Beta 3"
+	"Beta 4"
+)
+$AI Goals: ( goals ( ai-chase-wing "Gemini" 89 ) ( ai-chase-wing "Aries" 89 ) ( ai-disarm-ship "Antenor" 50 ) )
++Hotkey: 1
++Flags: ( )
+
+$Name: Gemini
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Gemini 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Gemini 1"
+	"Gemini 2"
+	"Gemini 3"
+)
+$AI Goals: ( goals ( ai-guard "Antenor" 50 ) )
++Flags: ( )
+
+$Name: Aries
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Aries 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Aries 1"
+	"Aries 2"
+)
+$AI Goals: ( goals ( ai-guard "Antenor" 50 ) )
++Flags: ( )
+
+$Name: Sagittarius
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Sagittarius 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 2500
+$Arrival Anchor: Antenor
+$Arrival Cue: ( and 
+   ( is-destroyed-delay 
+      25 
+      "Gemini" 
+      "Aries" 
+   )
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Sagittarius 1"
+	"Sagittarius 2"
+)
+$AI Goals: ( goals ( ai-guard "Antenor" 50 ) )
++Flags: ( "no-arrival-message" )
++Wave Delay Min: 8
++Wave Delay Max: 16
+
+$Name: Gamma
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Gamma 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "disable comms now" 
+      7 
+   )
+   ( has-arrived-delay 1 "Checkpoint 1" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Gamma 1"
+	"Gamma 2"
+	"Gamma 3"
+	"Gamma 4"
+)
+$AI Goals: ( goals ( ai-destroy-subsystem "Antenor" "turret11" 100 ) ( ai-destroy-subsystem "Antenor" "turret12" 100 ) ( ai-destroy-subsystem "Antenor" "turret23" 100 ) ( ai-destroy-subsystem "Antenor" "turret24" 100 ) ( ai-disarm-ship "Antenor" 50 ) )
++Hotkey: 2
++Flags: ( "no-arrival-message" )
+
+$Name: Aquila
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Aquila 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "remember: destroy, disable" 
+   9 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Aquila 1"
+	"Aquila 2"
+	"Aquila 3"
+)
+$AI Goals: ( goals ( ai-guard "Norfolk" 50 ) )
++Flags: ( )
+
+$Name: Cepheus
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Cepheus 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "remember: destroy, disable" 
+   9 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Cepheus 1"
+	"Cepheus 2"
+)
+$AI Goals: ( goals ( ai-chase-wing "Beta" 50 ) ( ai-chase-wing "Gamma" 50 ) ( ai-chase-wing "Alpha" 30 ) )
++Flags: ( )
+
+$Name: Draco
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Draco 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "remember: destroy, disable" 
+   9 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Draco 1"
+	"Draco 2"
+	"Draco 3"
+	"Draco 4"
+)
+$AI Goals: ( goals ( ai-guard "Norfolk" 50 ) )
++Flags: ( )
+
+$Name: Aquarius
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Aquarius 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Carthage
+$Arrival Cue: ( is-event-true-delay 
+   "carthage: jamming?" 
+   14 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Carthage retreat time" 
+   15 
+)
+$Ships: (		;! 6 total
+	"Aquarius 1"
+	"Aquarius 2"
+	"Aquarius 3"
+	"Aquarius 4"
+	"Aquarius 5"
+	"Aquarius 6"
+)
+$AI Goals: ( goals ( ai-guard "Carthage" 100 ) )
++Flags: ( )
+
+$Name: Capricorn
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Capricorn 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Carthage
+$Arrival Cue: ( is-event-true-delay 
+   "carthage: jamming?" 
+   2 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Carthage retreat time" 
+   15 
+)
+$Ships: (		;! 6 total
+	"Capricorn 1"
+	"Capricorn 2"
+	"Capricorn 3"
+	"Capricorn 4"
+	"Capricorn 5"
+	"Capricorn 6"
+)
+$AI Goals: ( goals ( ai-guard "Carthage" 100 ) )
++Flags: ( )
+
+$Name: Auriga
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Auriga 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 600
+$Arrival Anchor: Sagittarius 1
+$Arrival Cue: ( and 
+   ( has-arrived-delay 3 "Sagittarius 1" ) 
+   ( skill-level-at-least "Hard" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Auriga 1"
+	"Auriga 2"
+	"Auriga 3"
+	"Auriga 4"
+)
++Flags: ( )
+
+$Name: Caedus
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Caedus 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( has-arrived-delay 2 "Norfolk" ) 
+   ( skill-level-at-least "Hard" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Caedus 1"
+	"Caedus 2"
+	"Caedus 3"
+)
+$AI Goals: ( goals ( ai-guard "Norfolk" 50 ) )
++Flags: ( )
+
+#Events		;! 130 total
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-guardian-threshold 
+      ( rand 20 20 ) 
+      "Beta 1" 
+   )
+   ( ship-guardian-threshold 
+      ( rand 20 20 ) 
+      "Beta 2" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand 20 60 ) 
+      "Beta 1" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand 20 60 ) 
+      "Beta 2" 
+      "<all engines>" 
+   )
+   ( never-warp "Alpha 1" ) 
+   ( good-secondary-time 
+      "Friendly" 
+      1000 
+      "Paveway" 
+      "Antenor" 
+   )
+   ( play-sound-from-file 
+      "revolution.ogg" 
+      1 
+   )
+   ( script-eval "jsv(1,'m14')" ) 
+   ( set-armor-type 
+      "Alpha 1" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+   ( set-armor-type 
+      "Alpha 2" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+   ( set-armor-type 
+      "Alpha 3" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+   ( set-armor-type 
+      "Alpha 4" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+   ( set-armor-type 
+      "Beta 1" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+   ( set-armor-type 
+      "Beta 2" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+   ( set-armor-type 
+      "Beta 3" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+   ( set-armor-type 
+      "Beta 4" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+)
++Name: Mission start (guardians/warp)
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "laporte in" 
+   )
+)
++Name: laporte in
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "we've got you, noemi" 
+   )
+)
++Name: we've got you, noemi
++Repeat Count: 1
++Interval: 1
++Chained: 10
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Sopron Station" 
+      "High" 
+      "help us!" 
+   )
+)
++Name: help us!
++Repeat Count: 1
++Interval: 1
++Chained: 12
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "she's gonna jump" 
+   )
+)
++Name: she's gonna jump
++Repeat Count: 1
++Interval: 1
++Chained: 12
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Antenor" 
+      "High" 
+      "<intercept> 1" 
+   )
+)
++Name: intercept 1
++Repeat Count: 1
++Interval: 1
++Chained: 14
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Sopron Station" ) 55 ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Sopron Station" 
+      "High" 
+      "Sopron damaged" 
+   )
+)
++Name: Sopron hurt bad
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         0 
+         "Sopron Station" 
+      )
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Tatabanya Station" 
+      "High" 
+      "Sopron destroyed" 
+   )
+)
++Name: Sopron lost
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Sagittarius" ) 
+   ( add-goal 
+      "Beta" 
+      ( ai-chase "Sagittarius" 89 ) 
+   )
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "Sag incoming" 
+   )
+)
++Name: Sag incoming
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Sagittarius" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Sag
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Sagittarius", 4337)
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 0 "Aries" ) 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Aries
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Aries", 4931)
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 0 "Gemini" ) 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Gemini
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Gemini", 5073)
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-disabled-delay 0 "Antenor" ) 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( when 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+      ( send-message 
+         "#Alpha 1" 
+         "High" 
+         "Antenor disabled" 
+      )
+   )
+)
++Name: Disable Antenor
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Disable Antenor", 6096)
++Team: 0
+
+$Formula: ( when 
+   ( is-disarmed-delay 0 "Antenor" ) 
+   ( do-nothing ) 
+)
++Name: Disarm Antenor (deprecated)
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( has-departed-delay 0 "Antenor" ) 
+      ( is-event-true-delay 
+         "failconditions: comm/destroy" 
+         0 
+      )
+   )
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "Antenor escaped" 
+   )
+)
++Name: Antenor escaped
++Repeat Count: 1
++Interval: 1
++Team: 0
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "Antenor escaped 2" 
+   )
+   ( allow-warp "Alpha 1" ) 
+)
++Name: Antenor escaped 2
++Repeat Count: 1
++Interval: 1
++Chained: 10
++Objective:  XSTR("Return to Base", 4338)
++Objective key:  XSTR("Press $Alt-J$", 4339)
++Team: 0
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Sagittarius" ) 
+   ( send-message 
+      "Antenor" 
+      "High" 
+      "Sag wing destroyed - int 2" 
+   )
+)
++Name: intercept 2
++Repeat Count: 1
++Interval: 1
++Team: 0
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( and 
+      ( is-disabled-delay 15 "Antenor" ) 
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Antenor" 
+            "communications" 
+            0 
+         )
+      )
+      ( is-destroyed-delay 
+         15 
+         "Sagittarius" 
+         "Aries" 
+         "Gemini" 
+      )
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Antenor" 
+      "High" 
+      "Antenor complains - int 3" 
+   )
+)
++Name: Antenor complains
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "time for stage 2" 
+   )
+   ( allow-treason ( true ) ) 
+)
++Name: good, they send backup
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-subsystem-destroyed-delay 
+         "Antenor" 
+         "communications" 
+         0 
+      )
+      ( destroyed-or-departed-delay 
+         0 
+         "Gemini" 
+         "Aries" 
+         "Sagittarius" 
+      )
+   )
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "Antenor comms down" 
+   )
+   ( allow-treason ( false ) ) 
+)
++Name: disable comms now
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Objective:  XSTR("Disable Antenor Comms", 6097)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-destroyed-delay 0 "Antenor" ) 
+         ( is-subsystem-destroyed-delay 
+            "Antenor" 
+            "communications" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Antenor complains" 
+            0 
+         )
+      )
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: failconditions: comm/destroy
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 0 "Gamma 1" ) 
+      ( is-disarmed-delay 0 "Antenor" ) 
+      ( or 
+         ( is-event-true-delay 
+            "Laporte teases back 2" 
+            7 
+         )
+         ( is-event-true-delay 
+            "Laporte teases back" 
+            7 
+         )
+      )
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "stage 2 begins" 
+   )
+   ( good-rearm-time "Friendly" 60 ) 
+   ( close-sound-from-file ( true ) ) 
+)
++Name: stage 2 begins
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "I know I'm good" 
+   )
+   ( play-sound-from-file 
+      "animus1.ogg" 
+      1 
+   )
+)
++Name: I know I'm good
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "disable comms now" 
+      10 
+   )
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "it saved Simms" 
+   )
+)
++Name: it saved Simms
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "disable comms now" 
+      10 
+   )
+   ( send-message 
+      "Beta 2" 
+      "High" 
+      "olefumi likes you" 
+   )
+)
++Name: olefumi likes you
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "Tatabanya Station" 
+   )
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "Tatabanya destroyed" 
+   )
+)
++Name: Tatabanya destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 0 "Gamma" ) 
+      ( not 
+         ( is-disarmed-delay 0 "Antenor" ) 
+      )
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "gamma has arrived" 
+   )
+   ( ship-guardian-threshold 
+      ( rand 20 20 ) 
+      "Gamma 1" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand 20 60 ) 
+      "Gamma 1" 
+      "<all engines>" 
+   )
+   ( ship-guardian-threshold 
+      ( rand 40 60 ) 
+      "Gamma 2" 
+   )
+   ( ship-guardian-threshold 
+      ( rand 40 60 ) 
+      "Gamma 3" 
+   )
+)
++Name: Simms has arrived
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Simms asks for status" 
+         8 
+      )
+      ( and 
+         ( = ( num-ships-in-wing "Alpha" ) 4 ) 
+         ( = ( num-ships-in-wing "Beta" ) 4 ) 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Some casualties report" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "no casualties!" 
+   )
+)
++Name: No casualties report
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Simms asks for status" 
+         8 
+      )
+      ( percent-ships-destroyed 
+         1 
+         "Alpha" 
+         "Beta" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "No casualties report" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "some casualties!" 
+   )
+)
++Name: Some casualties report
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "No casualties report" 
+            8 
+         )
+         ( is-event-true-delay 
+            "Some casualties report" 
+            8 
+         )
+      )
+      ( is-destroyed-delay 
+         0 
+         "Sopron Station" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Civilians saved" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "karen: we lost civilians" 
+   )
+)
++Name: Civilians died
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "No casualties report" 
+            8 
+         )
+         ( is-event-true-delay 
+            "Some casualties report" 
+            8 
+         )
+      )
+      ( not 
+         ( is-destroyed-delay 
+            0 
+            "Sopron Station" 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Civilians died" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "karen: we saved civilians!" 
+   )
+)
++Name: Civilians saved
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Laporte teases back" 
+      8 
+   )
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "clean up beams?" 
+   )
+   ( add-goal 
+      "Gamma" 
+      ( ai-disarm-ship "Antenor" 89 ) 
+   )
+)
++Name: Let's finish off Antenor beams
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Sopron hurt bad" 
+      5 
+   )
+   ( training-msg 
+      "training: sorry, buddy" 
+   )
+)
++Name: thought: can't save everyone
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ready for hanuman
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "No casualties report" 
+            18 
+         )
+         ( is-event-true-delay 
+            "Some casualties report" 
+            18 
+         )
+      )
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Antenor" 
+            "turret11" 
+            0 
+         )
+         ( true ) 
+         ( is-subsystem-destroyed-delay 
+            "Antenor" 
+            "turret12" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Antenor" 
+            "turret23" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Antenor" 
+            "turret24" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: antenor clean" 
+   )
+)
++Name: beams are clean, ready to move
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 3 "Hanuman" ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Hanuman" 
+      "High" 
+      "hanuman: online!" 
+   )
+)
++Name: AWACS online
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: what can you see?" 
+   )
+)
++Name: what can you see?
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "what can you see?" 
+         6 
+      )
+      ( is-event-true-delay 
+         "checkpoint 1 fadein" 
+         1 
+      )
+   )
+   ( send-message 
+      "Hanuman" 
+      "High" 
+      "hanuman: incoming" 
+   )
+   ( modify-variable 
+      @checkpointreachedm14[0] 
+      1 
+   )
+   ( change-iff "Unknown" "Antenor" ) 
+   ( ship-guardian-threshold 
+      ( rand 40 60 ) 
+      "Gamma 1" 
+   )
+   ( set-armor-type 
+      "Gamma 1" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+   ( set-armor-type 
+      "Gamma 2" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+   ( set-armor-type 
+      "Gamma 3" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+   ( set-armor-type 
+      "Gamma 4" 
+      ( true ) 
+      "Medium Armor 100" 
+      "Hull" 
+      "Shields" 
+   )
+)
++Name: large inbound transit
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: destroy, disable" 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( play-sound-from-file 
+      "vortalcombatintro.ogg" 
+      0 
+   )
+)
++Name: remember: destroy, disable
++Repeat Count: 1
++Interval: 1
++Chained: 10
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Norfolk" ) 
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: let's hit" 
+   )
+   ( ship-guardian-threshold 
+      0 
+      "Gamma 2" 
+      "Gamma 3" 
+   )
+   ( add-goal 
+      "Gamma" 
+      ( ai-chase "Aquila" 89 ) 
+   )
+   ( add-goal 
+      "Gamma" 
+      ( ai-chase "Cepheus" 89 ) 
+   )
+   ( add-goal 
+      "Gamma" 
+      ( ai-chase "Draco" 89 ) 
+   )
+   ( add-goal 
+      "Gamma" 
+      ( ai-disarm-ship "Norfolk" 70 ) 
+   )
+   ( set-armor-type 
+      "Norfolk" 
+      ( true ) 
+      "Heavy Armor 60" 
+      "Hull" 
+   )
+)
++Name: let's hit them
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "let's hit them" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Aquila dirtrig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Aquila" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Aquila
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Aquila", 6098)
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Beta 2" 
+      "High" 
+      "olefumi: here we go..." 
+   )
+)
++Name: here we go
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( false ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "laporte: all nervous" 
+   )
+)
++Name: I'm all nervous
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: okay, hold...
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "let's hit them" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Cepheus dirtrig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Cepheus" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Cepheus
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Cepheus", 6099)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "let's hit them" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Draco dirtrig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Draco" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Draco
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Draco", 6100)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "let's hit them" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: Disable Norfolk dirtrig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-disabled-delay 0 "Norfolk" ) 
+   ( do-nothing ) 
+)
++Name: Disable Norfolk
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Disable Norfolk", 6101)
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-destroyed-delay 0 "Norfolk" ) 
+         ( is-event-incomplete 
+            "carthage, carthage, do you read" 
+         )
+      )
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Norfolk" 
+            "communications" 
+            0 
+         )
+         ( is-event-incomplete "doctored" ) 
+      )
+      ( has-departed-delay 0 "Norfolk" ) 
+   )
+   ( send-message-list 
+      "#Alpha 1" 
+      "High" 
+      "Norfolk destroyed" 
+      0 
+      "Gamma 1" 
+      "High" 
+      "Norfolk destroyed 2" 
+      8000 
+   )
+   ( allow-warp "Alpha 1" ) 
+)
++Name: fail: Norfolk destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-disabled-delay 0 "Norfolk" ) 
+      ( not 
+         ( is-event-true-delay 
+            "fail: Norfolk destroyed" 
+            0 
+         )
+      )
+      ( not 
+         ( is-destroyed-delay 
+            0 
+            "Aquila" 
+            "Cepheus" 
+            "Draco" 
+         )
+      )
+   )
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: clean up escort" 
+   )
+)
++Name: Norfolk disabled (escort left)
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-disabled-delay 0 "Norfolk" ) 
+      ( not 
+         ( is-event-true-delay 
+            "fail: Norfolk destroyed" 
+            0 
+         )
+      )
+      ( is-destroyed-delay 
+         0 
+         "Aquila" 
+         "Cepheus" 
+         "Draco" 
+      )
+   )
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: Norfolk disabled" 
+   )
+)
++Name: Norfolk disabled, escort gone
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hanuman" 
+      "Normal" 
+      "Hanuman: doctoring" 
+   )
+   ( close-sound-from-file ( true ) ) 
+)
++Name: waiting for distres
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Norfolk" 
+      "Normal" 
+      "Norfolk: it's a trap!" 
+   )
+   ( play-sound-from-file 
+      "carbonised.ogg" 
+      1 
+   )
+)
++Name: it's a trap!
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hanuman" 
+      "Normal" 
+      "Hanuman: doctored" 
+   )
+)
++Name: doctored
++Repeat Count: 1
++Interval: 1
++Chained: 17
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Norfolk" 
+      "Normal" 
+      "Norfolk: carthage, carthage" 
+   )
+)
++Name: carthage, carthage, do you read
++Repeat Count: 1
++Interval: 1
++Chained: 12
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "karen: feel sorry for them" 
+   )
+)
++Name: feel sorry for them
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: no we don't!" 
+   )
+)
++Name: no we don't!
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "laporte: no we don't!" 
+   )
+)
++Name: we so don't!
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( when 
+      ( true ) 
+      ( send-message 
+         "Beta 1" 
+         "High" 
+         "karen: right, guess we don't" 
+      )
+   )
+)
++Name: right, guess we don't
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hanuman" 
+      "High" 
+      "Hanuman: inbound, big" 
+   )
+)
++Name: inbound, big
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: plan is on!" 
+   )
+)
++Name: we're on this thing!
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "laporte: all nervous" 
+   )
+)
++Name: laporte is nervous
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "karen: going to work" 
+   )
+)
++Name: karen exudes confidence
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: whatever happens" 
+   )
+   ( close-sound-from-file ( true ) ) 
+)
++Name: simms likes everybody
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-disable-except-messages 1 ) 
+   ( set-camera-position 1723 -510 -8579 ) 
+   ( set-camera-facing 1012 0 -9545 ) 
+   ( play-sound-from-file 
+      "machineamb.ogg" 
+      1 
+   )
+   ( add-goal 
+      "Beta" 
+      ( ai-stay-near-ship "Hanuman" 90 ) 
+   )
+   ( add-goal 
+      "Gamma" 
+      ( ai-stay-near-ship "Hanuman" 90 ) 
+   )
+   ( set-fov 45 ) 
+   ( ship-invulnerable "Alpha 1" ) 
+)
++Name: Carthage arrival cutscene
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( reset-camera ) 
+   ( hud-disable-except-messages 0 ) 
+   ( clear-goals "Carthage" ) 
+   ( reset-fov ) 
+   ( set-armor-type 
+      "Carthage" 
+      ( true ) 
+      "Medium Armor 5" 
+      "Hull" 
+   )
+   ( set-armor-type 
+      "Carthage" 
+      ( true ) 
+      "Light Armor 5" 
+      "engines" 
+      "weapons" 
+      "communication" 
+      "navigation" 
+      "turret01a" 
+      "turret02a" 
+      "turret03a" 
+      "turret04a" 
+      "turret05a" 
+      "turret06" 
+      "turret07" 
+      "turret08" 
+      "turret09" 
+      "turret10" 
+      "turret11" 
+      "turret12" 
+      "turret13" 
+      "turret14" 
+      "turret15" 
+      "turret16" 
+   )
+   ( ship-vulnerable "Alpha 1" ) 
+)
++Name: cutscene reset
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Carthage" 
+      "High" 
+      "carthage: hails warships" 
+   )
+   ( add-goal 
+      "Carthage" 
+      ( ai-waypoints-once 
+         "Waypoint path 1" 
+         100 
+      )
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 92 94 ) 
+      "Carthage" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 41 53 ) 
+      "Carthage" 
+      "<all engines>" 
+      "weapons" 
+      "sensors" 
+      "communication" 
+      "navigation" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 59 74 ) 
+      "Carthage" 
+      "<all turrets>" 
+   )
+)
++Name: carthage hails
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Beta 2" 
+      "High" 
+      "olefumi :she's very big" 
+   )
+)
++Name: wow, she's big
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Carthage" 
+      "High" 
+      "carthage: hello?" 
+   )
+)
++Name: carthage: jamming?
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: call in the guns" 
+   )
+)
++Name: simms: let's do it
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Katana" ) 
+   ( close-sound-from-file ( true ) ) 
+   ( protect-ship "Antenor" "Norfolk" ) 
+)
++Name: Katana arrival music
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 3 "Katana" ) 
+   ( send-message 
+      "Katana" 
+      "High" 
+      "Katana on station" 
+   )
+   ( add-goal 
+      "Beta" 
+      ( ai-guard "Altan Orde" 100 ) 
+   )
+   ( add-goal 
+      "Gamma" 
+      ( ai-guard "Katana" 100 ) 
+   )
+   ( add-goal 
+      "Beta" 
+      ( ai-stay-near-ship "Altan Orde" 100 ) 
+   )
+   ( add-goal 
+      "Gamma" 
+      ( ai-stay-near-ship "Katana" 100 ) 
+   )
+   ( set-armor-type 
+      "Katana" 
+      ( true ) 
+      "Heavy Armor 5" 
+      "Hull" 
+   )
+   ( set-armor-type 
+      "Altan Orde" 
+      ( true ) 
+      "Heavy Armor 5" 
+      "Hull" 
+   )
+   ( protect-ship "Carthage" ) 
+)
++Name: Katana on station
++Repeat Count: 1
++Interval: 1
++Team: 0
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Altan Orde" 
+      "High" 
+      "Altan orde here" 
+   )
+   ( play-sound-from-file 
+      "Boatyard3.ogg" 
+      1 
+   )
+   ( cap-waypoint-speed "Altan Orde" 15 ) 
+   ( cap-waypoint-speed "Katana" 15 ) 
+   ( clear-goals "Carthage" ) 
+   ( add-goal 
+      "Carthage" 
+      ( ai-waypoints-once 
+         "Waypoint path 4" 
+         89 
+      )
+   )
+)
++Name: altan orde here
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Katana" 
+      "High" 
+      "Katana: thanks, guys" 
+   )
+)
++Name: katana thanks
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Altan Orde" 
+      "High" 
+      "Altan Orde: give up" 
+   )
+)
++Name: altan orde threatens
++Repeat Count: 1
++Interval: 1
++Chained: 12
++Team: 0
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "altan orde threatens" 
+         18 
+      )
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Antenor" 
+            "Sensors" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Hanuman" 
+      "High" 
+      "Hanuman: Antenor is talking" 
+   )
+)
++Name: hanuman: antenor talking
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "hanuman: antenor talking" 
+         10 
+      )
+      ( is-event-true-delay 
+         "hanuman: antenor talking 2" 
+         10 
+      )
+      ( is-event-true-delay 
+         "hanuman: antenor talking 3" 
+         10 
+      )
+      ( is-event-true-delay 
+         "hanuman: antenor talking 4" 
+         10 
+      )
+   )
+   ( send-message 
+      "Antenor" 
+      "High" 
+      "Antenor: run!" 
+   )
+)
++Name: antenor begs
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: carthage won't go
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: antenor says please
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Carthage" 
+      "High" 
+      "Carthage: hello no" 
+   )
+)
++Name: carthage says really no
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "simms: shut them up" 
+   )
+)
++Name: simms: shut that corvette up
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "antenor" 
+      "High" 
+      "Antenor: anita!" 
+   )
+)
++Name: antenor: anitaaa
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Carthage" 
+      "High" 
+      "Carthage: nuuu" 
+   )
+)
++Name: Carthage goes nuuu
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Carthage" 
+      "High" 
+      "Carthage: withdraw time" 
+   )
+)
++Name: Carthage retreat time
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "Simms: they're gone" 
+   )
+)
++Name: she can jump?
++Repeat Count: 1
++Interval: 1
++Chained: 17
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hanuman" 
+      "High" 
+      "Hanuman: locked her vector" 
+   )
+)
++Name: hanuman: got her exit vector
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hanuman" 
+      "High" 
+      "Hanuman: she's at Saturn" 
+   )
+)
++Name: she's at Saturn
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Katana" 
+      "High" 
+      "Katana: go to Indus" 
+   )
+)
++Name: katana: go to indus
++Repeat Count: 1
++Interval: 1
++Chained: 10
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "Simms: on the hunt" 
+   )
+   ( allow-warp "Alpha 1" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-warp-out 100 ) 
+   )
+   ( add-goal "Beta" ( ai-warp-out 100 ) ) 
+   ( add-goal 
+      "Gamma" 
+      ( ai-warp-out 100 ) 
+   )
+)
++Name: simms: jump jump jump
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Carthage retreat time" 
+      15 
+   )
+   ( do-nothing ) 
+)
++Name: carthage jumpout
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "katana thanks" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: Form on Katana dirtrig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Carthage" ) 
+   ( do-nothing ) 
+)
++Name: Form on Katana dir
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Defend Katana", 6102)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Norfolk disabled, escort gone" 
+      0 
+   )
+   ( ship-guardian "Antenor" ) 
+   ( set-armor-type 
+      "Antenor" 
+      ( true ) 
+      "Heavy Armor 5" 
+      "Hull" 
+   )
+)
++Name: guardian antenor/norfolk
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Antenor escaped 2" 
+         0 
+      )
+      ( is-event-true-delay 
+         "fail: Norfolk destroyed" 
+         0 
+      )
+      ( is-event-true-delay 
+         "simms: jump jump jump" 
+         0 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: return to base dirtrig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: return to base dir
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return to Indus", 5163)
++Objective key:  XSTR("Press $Alt-J$", 4339)
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Let's finish off Antenor beams" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: disarm antenor beams
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-disarmed-delay 0 "Antenor" ) 
+   ( do-nothing ) 
+)
++Name: Disarm Antenor main beams
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Disarm Antenor", 6103)
+
+$Formula: ( when 
+   ( and 
+      ( is-disarmed-delay 0 "Antenor" ) 
+      ( is-disabled-delay 0 "Antenor" ) 
+   )
+   ( change-iff "Friendly" "Antenor" ) 
+   ( protect-ship "Antenor" ) 
+   ( clear-goals "Alpha" "Beta" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Antenor" 85 ) 
+   )
+   ( add-goal 
+      "Beta" 
+      ( ai-guard "Antenor" 85 ) 
+   )
+   ( change-iff-color 
+      "Friendly" 
+      "Hostile" 
+      255 
+      0 
+      0 
+      "Antenor" 
+   )
+)
++Name: Leave Antenor be
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Gamma" ) 
+   ( clear-goals "Gamma" ) 
+   ( add-goal 
+      "Gamma" 
+      ( ai-guard "Antenor" 85 ) 
+   )
+)
++Name: Gamma leave Antenor be
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-disabled-delay 0 "Norfolk" ) 
+      ( is-disarmed-delay 0 "Norfolk" ) 
+   )
+   ( change-iff "Unknown" "Norfolk" ) 
+   ( protect-ship "Norfolk" ) 
+   ( clear-goals "Alpha" "Beta" "Gamma" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Alpha 1" 89 ) 
+   )
+   ( add-goal 
+      "Beta" 
+      ( ai-guard "Alpha 1" 89 ) 
+   )
+   ( add-goal 
+      "Gamma" 
+      ( ai-guard "Alpha 1" 89 ) 
+   )
+)
++Name: Norfolk IFF change
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( are-waypoints-done-delay 
+      "Carthage" 
+      "Waypoint path 4" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: Carthage turns?
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-disabled-delay 15 "Antenor" ) 
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Antenor" 
+            "communications" 
+            0 
+         )
+      )
+      ( is-destroyed-delay 
+         15 
+         "Sagittarius" 
+         "Aries" 
+         "Gemini" 
+      )
+      ( is-event-true-delay 
+         "good, they send backup" 
+         0 
+         ( true ) 
+      )
+   )
+   ( protect-ship "Norfolk" ) 
+)
++Name: Preserve comms dir
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Preserve Antenor Comms", 6104)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "good, they send backup" 
+      10 
+   )
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "oh sure I'll shut them up" 
+   )
+)
++Name: Laporte remark
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 0 "Gamma" ) 
+      ( is-disarmed-delay 0 "Antenor" ) 
+      ( not 
+         ( is-event-true-delay 
+            "Simms has arrived" 
+            0 
+         )
+      )
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "gamma has arrived 2" 
+   )
+   ( ship-guardian-threshold 
+      ( rand 40 60 ) 
+      "Gamma 1" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand 20 60 ) 
+      "Gamma 1" 
+      "<all engines>" 
+   )
+   ( ship-guardian-threshold 
+      ( rand 40 60 ) 
+      "Gamma 2" 
+   )
+   ( ship-guardian-threshold 
+      ( rand 40 60 ) 
+      "Gamma 3" 
+   )
+)
++Name: Simms has arrived 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "Laporte teases back 2" 
+   )
+)
++Name: Laporte teases back 2
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Simms has arrived" 
+      8 
+   )
+   ( send-message 
+      "#Alpha 1" 
+      "High" 
+      "Laporte teases back" 
+   )
+)
++Name: Laporte teases back
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "olefumi likes you" 
+         7 
+      )
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "Simms asks for status" 
+   )
+)
++Name: Simms asks for status
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "let's hit them" 
+      10 
+   )
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "Karen's tactical advice" 
+   )
+)
++Name: Karen tactical advice
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "carthage, carthage, do you read" 
+         0 
+      )
+      ( is-destroyed-delay 0 "Norfolk" ) 
+   )
+   ( send-message 
+      "Gamma 1" 
+      "High" 
+      "norfolk down okay" 
+   )
+)
++Name: Antenor destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "altan orde threatens" 
+      10 
+   )
+   ( send-message 
+      "Katana" 
+      "High" 
+      "katana: fighters inbound" 
+   )
+   ( clear-goals "Capricorn" ) 
+   ( clear-goals "Aquarius" ) 
+   ( add-goal 
+      "Aquarius" 
+      ( ai-chase-any 89 ) 
+   )
+   ( add-goal 
+      "Capricorn" 
+      ( ai-chase-any 89 ) 
+   )
+)
++Name: fighters inbound
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "remember: destroy, disable" 
+      15 
+   )
+   ( play-sound-from-file 
+      "vortalcombat.ogg" 
+      1 
+   )
+)
++Name: loop vortalcombat
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 11 "Gamma 1" ) 
+   ( send-message 
+      "Katana" 
+      "High" 
+      "katana: go go go" 
+   )
+)
++Name: you better go
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "altan orde threatens" 
+         18 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Antenor" 
+         "Sensors" 
+         0 
+      )
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Antenor" 
+            "weapons" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Hanuman" 
+      "High" 
+      "Hanuman: antenor is talking b" 
+   )
+)
++Name: hanuman: antenor talking 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "altan orde threatens" 
+         18 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Antenor" 
+         "Sensors" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Antenor" 
+         "weapons" 
+         0 
+      )
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Antenor" 
+            "navigation" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Hanuman" 
+      "High" 
+      "Hanuman: antenor is talking C" 
+   )
+)
++Name: hanuman: antenor talking 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "altan orde threatens" 
+         18 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Antenor" 
+         "Sensors" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Antenor" 
+         "weapons" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Antenor" 
+         "navigation" 
+         0 
+      )
+   )
+   ( send-message 
+      "Hanuman" 
+      "High" 
+      "Hanuman: antenor is talking D" 
+   )
+)
++Name: hanuman: antenor talking 4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and-in-sequence 
+      ( = @checkpointreachedm14[0] 0 ) 
+      ( = @checkpointreachedm14[0] 1 ) 
+   )
+   ( training-msg 
+      "checkpoint 1 unlocked" 
+   )
+)
++Name: checkpoint 1 unlocked
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 5 ) 
+      ( = @checkpointreachedm14[0] 1 ) 
+   )
+   ( training-msg "checkpoint available" ) 
+)
++Name: notify player of checkpoint
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "large inbound transit" 
+      0 
+   )
+   ( modify-variable 
+      @alpha1m14[100] 
+      ( hits-left "Alpha 1" ) 
+   )
+   ( modify-variable 
+      @alpha2m14[100] 
+      ( hits-left "Alpha 2" ) 
+   )
+   ( modify-variable 
+      @alpha3m14[100] 
+      ( hits-left "Alpha 3" ) 
+   )
+   ( modify-variable 
+      @beta1m14[100] 
+      ( hits-left "Beta 1" ) 
+   )
+   ( modify-variable 
+      @beta2m14[100] 
+      ( hits-left "Beta 2" ) 
+   )
+   ( modify-variable 
+      @beta3m14[100] 
+      ( hits-left "Beta 3" ) 
+   )
+   ( modify-variable 
+      @beta4m14[100] 
+      ( hits-left "Beta 4" ) 
+   )
+   ( modify-variable 
+      @sopronm14[100] 
+      ( hits-left "Sopron Station" ) 
+   )
+   ( modify-variable 
+      @tatabanyam14[100] 
+      ( hits-left "Tatabanya Station" ) 
+   )
+   ( modify-variable 
+      @antenorm14[100] 
+      ( hits-left "Antenor" ) 
+   )
+)
++Name: store health at checkpoint 1
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Checkpoint 1" ) 
+   ( fade-out 1000 ) 
+)
++Name: checkpoint 1 fadeout
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( true ) 
+   ( when-argument 
+      ( every-of 
+         "turret01" 
+         "turret02" 
+         "turret03" 
+         "turret04" 
+         "turret05" 
+         "turret06" 
+         "turret07" 
+         "turret08" 
+         "turret09" 
+         "turret10" 
+         "turret11" 
+         "turret12" 
+         "turret13" 
+         "turret14" 
+         "turret15" 
+         "turret16" 
+         "turret17" 
+         "turret18" 
+         "turret19" 
+         "turret20" 
+         "turret21" 
+         "turret22" 
+         "turret23" 
+         "turret24" 
+         "turret25" 
+         "turret26" 
+         "engine01" 
+         "engine02" 
+         "engine03" 
+      )
+      ( true ) 
+      ( set-subsystem-strength 
+         "Antenor" 
+         "<argument>" 
+         0 
+      )
+   )
+   ( set-subsystem-strength 
+      "Alpha 1" 
+      "Hull" 
+      @alpha1m14[100] 
+   )
+   ( set-subsystem-strength 
+      "Alpha 2" 
+      "Hull" 
+      @alpha2m14[100] 
+   )
+   ( set-subsystem-strength 
+      "Alpha 3" 
+      "Hull" 
+      @alpha3m14[100] 
+   )
+   ( set-subsystem-strength 
+      "Beta 1" 
+      "Hull" 
+      @beta1m14[100] 
+   )
+   ( set-subsystem-strength 
+      "Beta 2" 
+      "Hull" 
+      @beta1m14[100] 
+   )
+   ( set-subsystem-strength 
+      "Beta 3" 
+      "Hull" 
+      @beta3m14[100] 
+   )
+   ( set-subsystem-strength 
+      "Beta 4" 
+      "Hull" 
+      @beta4m14[100] 
+   )
+   ( set-subsystem-strength 
+      "Antenor" 
+      "Hull" 
+      @antenorm14[100] 
+   )
+   ( set-subsystem-strength 
+      "Sopron Station" 
+      "Hull" 
+      @sopronm14[100] 
+   )
+   ( set-subsystem-strength 
+      "Tatabanya Station" 
+      "Hull" 
+      @tatabanyam14[100] 
+   )
+   ( ship-vanish 
+      "Gemini 1" 
+      "Gemini 2" 
+      "Gemini 3" 
+      "Aries 1" 
+      "Aries 2" 
+   )
+)
++Name: checkpoint 1 health magic!
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 1
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( true ) 
+   ( set-object-position 
+      "Alpha 1" 
+      ( + ( get-object-x "Antenor" ) 0 ) 
+      ( + ( get-object-y "Antenor" ) 250 ) 
+      ( + ( get-object-z "Antenor" ) 200 ) 
+   )
+   ( set-object-position 
+      "Alpha 2" 
+      ( + ( get-object-x "Antenor" ) 150 ) 
+      ( + ( get-object-y "Antenor" ) 250 ) 
+      ( + ( get-object-z "Antenor" ) 200 ) 
+   )
+   ( set-object-position 
+      "Alpha 3" 
+      ( + ( get-object-x "Antenor" ) -150 ) 
+      ( + ( get-object-y "Antenor" ) 250 ) 
+      ( + ( get-object-z "Antenor" ) 200 ) 
+   )
+   ( set-object-position 
+      "Beta 1" 
+      ( + ( get-object-x "Antenor" ) 0 ) 
+      ( + ( get-object-y "Antenor" ) 250 ) 
+      ( + ( get-object-z "Antenor" ) -200 ) 
+   )
+   ( set-object-position 
+      "Beta 2" 
+      ( + ( get-object-x "Antenor" ) 150 ) 
+      ( + ( get-object-y "Antenor" ) 250 ) 
+      ( + ( get-object-z "Antenor" ) -200 ) 
+   )
+   ( set-object-position 
+      "Beta 3" 
+      ( + ( get-object-x "Antenor" ) -150 ) 
+      ( + ( get-object-y "Antenor" ) 250 ) 
+      ( + ( get-object-z "Antenor" ) -200 ) 
+   )
+   ( set-object-position 
+      "Beta 4" 
+      ( + ( get-object-x "Antenor" ) 0 ) 
+      ( + ( get-object-y "Antenor" ) 250 ) 
+      ( + ( get-object-z "Antenor" ) -340 ) 
+   )
+   ( set-object-position 
+      "Gamma 4" 
+      ( + ( get-object-x "Hanuman" ) 0 ) 
+      ( + ( get-object-y "Hanuman" ) 250 ) 
+      ( + ( get-object-z "Hanuman" ) -340 ) 
+   )
+   ( set-object-position 
+      "Gamma 1" 
+      ( + ( get-object-x "Hanuman" ) 0 ) 
+      ( + ( get-object-y "Hanuman" ) 250 ) 
+      ( + ( get-object-z "Hanuman" ) -200 ) 
+   )
+   ( set-object-position 
+      "Gamma 2" 
+      ( + ( get-object-x "Hanuman" ) 150 ) 
+      ( + ( get-object-y "Hanuman" ) 250 ) 
+      ( + ( get-object-z "Hanuman" ) -200 ) 
+   )
+   ( set-object-position 
+      "Gamma 3" 
+      ( + ( get-object-x "Hanuman" ) -150 ) 
+      ( + ( get-object-y "Hanuman" ) 250 ) 
+      ( + ( get-object-z "Hanuman" ) -200 ) 
+   )
+)
++Name: checkpoint 1 positional magic!
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when ( true ) ( fade-in 1000 ) ) 
++Name: checkpoint 1 fadein
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 1
+
+$Formula: ( when 
+   ( skill-level-at-least "Hard" ) 
+   ( when 
+      ( true ) 
+      ( when 
+         ( and 
+            ( < ( hits-left "Gamma 1" ) 21 ) 
+            ( = @simmsBattered[0] 0 ) 
+         )
+         ( protect-ship "Gamma 1" ) 
+         ( sabotage-subsystem 
+            "Gamma 1" 
+            "Weapons" 
+            100 
+         )
+         ( modify-variable @simmsBattered[0] 1 ) 
+         ( when-argument 
+            ( every-of "laser" "flak" "beam" ) 
+            ( true ) 
+            ( turret-protect-ship 
+               "<argument>" 
+               "Gamma 1" 
+            )
+         )
+      )
+      ( when 
+         ( and 
+            ( < ( hits-left "Beta 1" ) 21 ) 
+            ( = @karenBattered[0] 1 ) 
+         )
+         ( protect-ship "Beta 1" ) 
+         ( sabotage-subsystem 
+            "Beta 1" 
+            "Weapons" 
+            100 
+         )
+         ( modify-variable @karenBattered[0] 1 ) 
+         ( when-argument 
+            ( every-of "laser" "flak" "beam" ) 
+            ( true ) 
+            ( turret-protect-ship 
+               "<argument>" 
+               "Beta 1" 
+            )
+         )
+      )
+      ( when 
+         ( and 
+            ( < ( hits-left "Beta 2" ) 21 ) 
+            ( = @olefumiBattered[0] 0 ) 
+         )
+         ( protect-ship "Beta 2" ) 
+         ( sabotage-subsystem 
+            "Beta 2" 
+            "Weapons" 
+            100 
+         )
+         ( modify-variable 
+            @olefumiBattered[0] 
+            1 
+         )
+         ( when-argument 
+            ( every-of "laser" "flak" "beam" ) 
+            ( true ) 
+            ( turret-protect-ship 
+               "<argument>" 
+               "Beta 2" 
+            )
+         )
+      )
+   )
+   ( when 
+      ( true ) 
+      ( when 
+         ( and 
+            ( > ( hits-left "Gamma 1" ) 41 ) 
+            ( = @simmsBattered[0] 1 ) 
+         )
+         ( unprotect-ship "Gamma 1" ) 
+         ( repair-subsystem 
+            "Gamma 1" 
+            "Weapons" 
+            100 
+         )
+         ( modify-variable @simmsBattered[0] 0 ) 
+         ( when-argument 
+            ( every-of "laser" "flak" "beam" ) 
+            ( true ) 
+            ( turret-unprotect-ship 
+               "<argument>" 
+               "Gamma 1" 
+            )
+         )
+      )
+      ( when 
+         ( and 
+            ( > ( hits-left "Beta 1" ) 41 ) 
+            ( = @karenBattered[0] 1 ) 
+         )
+         ( unprotect-ship "Beta 1" ) 
+         ( repair-subsystem 
+            "Beta 1" 
+            "Weapons" 
+            100 
+         )
+         ( modify-variable @karenBattered[0] 0 ) 
+         ( when-argument 
+            ( every-of "laser" "flak" "beam" ) 
+            ( true ) 
+            ( turret-unprotect-ship 
+               "<argument>" 
+               "Beta 1" 
+            )
+         )
+      )
+      ( when 
+         ( and 
+            ( > ( hits-left "Beta 2" ) 41 ) 
+            ( = @olefumiBattered[0] 1 ) 
+         )
+         ( unprotect-ship "Beta 2" ) 
+         ( repair-subsystem 
+            "Beta 2" 
+            "Weapons" 
+            100 
+         )
+         ( modify-variable 
+            @olefumiBattered[0] 
+            0 
+         )
+         ( when-argument 
+            ( every-of "laser" "flak" "beam" ) 
+            ( true ) 
+            ( turret-unprotect-ship 
+               "<argument>" 
+               "Beta 2" 
+            )
+         )
+      )
+   )
+)
++Name: wingman health system
++Repeat Count: -1
++Trigger Count: 9999999
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of "Gamma 1" "Beta 1" "Beta 2" ) 
+   ( and 
+      ( skill-level-at-least "Hard" ) 
+      ( < ( hits-left "<argument>" ) 85 ) 
+   )
+   ( repair-subsystem 
+      "<argument>" 
+      "Hull" 
+      4 
+   )
+)
++Name: wingmen regenerate chunks
++Repeat Count: 9999999
++Interval: 5
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Auriga" ) 
+   ( do-nothing ) 
+)
++Name: destroy auriga trigger
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Auriga" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Auriga
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Auriga", 6105)
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Caedus" ) 
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Alpha 1" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Alpha 2" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Alpha 3" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Alpha 4" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Beta 1" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Beta 2" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Beta 3" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Beta 4" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Gamma 1" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Gamma 2" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Gamma 3" 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      1000000 
+      "Trebuchet" 
+      "Gamma 4" 
+   )
+)
++Name: treb time!
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 4 total
+
+$Type: Primary
++Name: Disable GTCv Antenor
+$MessageNew:  XSTR("Disable GTCv Antenor", 6106)
+$end_multi_text
+$Formula: ( is-disabled-delay 0 "Antenor" ) 
+
+$Type: Primary
++Name: Disable Reinforcement Warship
+$MessageNew:  XSTR("Disable Reinforcement Warships", 6107)
+$end_multi_text
+$Formula: ( is-disabled-delay 0 "Norfolk" ) 
++No music
+
+$Type: Primary
++Name: Lure Out GTD Carthage
+$MessageNew:  XSTR("Lure Out GTD Carthage", 6108)
+$end_multi_text
+$Formula: ( has-arrived-delay 0 "Carthage" ) 
+
+$Type: Bonus
++Name: Save Civilian Platforms
+$MessageNew:  XSTR("Save Civilian Platforms", 6109)
+$end_multi_text
+$Formula: ( and 
+   ( has-arrived-delay 0 "Katana" ) 
+   ( not 
+      ( is-destroyed-delay 
+         0 
+         "Sopron Station" 
+      )
+   )
+)
+
+#Waypoints		;! 4 lists total
+
+$Name: Waypoint path 1
+$List: (		;! 6 points in list
+	( -1538.982300, 0.000330, 114.689926 )
+	( -2043.345581, -0.000070, 1532.570068 )
+	( -1173.558716, 0.000213, 3815.870605 )
+	( 597.698242, 0.000303, 3878.432861 )
+	( 1551.501709, 0.000066, 2412.958740 )
+	( 484.458588, 0.000132, 129.177246 )
+)
+
+$Name: Waypoint path 2
+$List: (		;! 6 points in list
+	( -1991.300049, 1000.000000, 586.099976 )
+	( -1013.500000, 500.000000, 408.799988 )
+	( -614.099976, 600.000000, 818.700012 )
+	( -1615.099976, 600.000000, 1373.400024 )
+	( -2537.298340, 500.000031, 824.746582 )
+	( -1591.400024, 500.000000, -436.000000 )
+)
+
+$Name: Waypoint path 3
+$List: (		;! 1 points in list
+	( 8448.309570, 0.005036, -10434.124023 )
+)
+
+$Name: Waypoint path 4
+$List: (		;! 1 points in list
+	( 8449.848633, 0.005984, -10429.760742 )
+)
+
+#Messages		;! 88 total
+
+
+$Name: laporte in
+$Team: -1
+$MessageNew:  XSTR("Wargod Six, this is Ozone Six. Target in sight, fangs out. Karen, can you handle that escort?", 6110)
+$end_multi_text
++Wave Name: bp214s01.ogg
+
+$Name: help us!
+$Team: -1
+$MessageNew:  XSTR("Thank God, someone got our distress call. They told us we were a military target! You have to stop them!", 6111)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp214s02.ogg
+
+$Name: she's gonna jump
+$Team: -1
+$MessageNew:  XSTR("Laporte, the Antenor is powering her jump drive. She'll be gone in five minutes.", 6112)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s03.ogg
+
+$Name: we've got you, noemi
+$Team: -1
+$MessageNew:  XSTR("We've got you, Alpha. Smoke, Grim, break in after Olefumi hits the merge.", 6113)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s04.ogg
+
+$Name: <intercept> 1
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Carthage, Antenor. Our escort has been tumbled by a heavy UEF strike. Request immediate relief.", 6114)
+$end_multi_text
++Wave Name: bp214s05.ogg
+
+$Name: Sopron destroyed
+$Team: -1
+$MessageNew:  XSTR("We just lost Sopron's beacon! We're next!", 6115)
+$end_multi_text
++AVI Name: Head-CM15
++Wave Name: bp214s06.ogg
+
+$Name: Sopron damaged
+$Team: -1
+$MessageNew:  XSTR("This is Sopron Control. I have seven hundred souls aboard, please help us!", 6116)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp214s07.ogg
+
+$Name: Sag incoming
+$Team: -1
+$MessageNew:  XSTR("Heads up, Laporte, I've got a Tev quick-response team jumping in. Beta, roll in hot.", 6117)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s08.ogg
+
+$Name: Antenor escaped
+$Team: -1
+$MessageNew:  XSTR("So much for using the Antenor as bait. Bring it in, Wargods. We blew this one bad.", 6118)
+$end_multi_text
++Wave Name: bp214s09.ogg
+
+$Name: Antenor escaped 2
+$Team: -1
+$MessageNew:  XSTR("Damn. I'm sorry, Noemi. We should've given you more time.", 6119)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s10.ogg
+
+$Name: Sag wing destroyed - int 2
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Carthage, Antenor, commit splashed, say again, your commit splashed. Situation degrading.", 6120)
+$end_multi_text
++Wave Name: bp214s11.ogg
+
+$Name: Antenor disabled
+$Team: -1
+$MessageNew:  XSTR("The Antenor's engines are out. Alpha, Beta, let's pick off any remaining turrets. Pilots, rearm and repair if you need to.", 6121)
+$end_multi_text
++Wave Name: bp214s12.ogg
+
+$Name: Antenor complains - int 3
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Carthage, this is Captain Hamid. My ship has been disabled and we have pilots adrift here. Scramble the Jump Five unit.", 6122)
+$end_multi_text
++Wave Name: bp214s13.ogg
+
+$Name: time for stage 2
+$Team: -1
+$MessageNew:  XSTR("Okay, they've sent off a distress call. Laporte, how about that comms subsystem?", 6123)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s14.ogg
+
+$Name: Antenor comms down
+$Team: -1
+$MessageNew:  XSTR("Wargod Six, this is Ozone Six. Target is mute, escort is sanitized, and her friends are on the way. Bring in your team.", 6124)
+$end_multi_text
++Wave Name: bp214s15.ogg
+
+$Name: stage 2 begins
+$Team: -1
+$MessageNew:  XSTR("Smooth work detoothing that corvette, Laporte. You're a natural.", 6125)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s16.ogg
+
+$Name: I know I'm good
+$Team: -1
+$MessageNew:  XSTR("Copy that, Karen. Coming from you, that means something.", 6126)
+$end_multi_text
++Wave Name: bp214s17.ogg
+
+$Name: it saved Simms
+$Team: -1
+$MessageNew:  XSTR("Hey, if you ever get tired of Simms, I'd be happy to have you on my wing. I'll trade Olefumi for you.", 6127)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s18.ogg
+
+$Name: olefumi likes you
+$Team: -1
+$MessageNew:  XSTR("No objection here. Laporte's done wonders for Captain Simms' mood...what's your secret?", 6128)
+$end_multi_text
++AVI Name: Head-TP8
++Wave Name: bp214s19.ogg
+
+$Name: Tatabanya destroyed
+$Team: -1
+$MessageNew:  XSTR("We've lost the second processing platform! No pods on sensors...Tev butchers.", 6129)
+$end_multi_text
++Wave Name: bp214s20.ogg
+
+$Name: gamma has arrived
+$Team: -1
+$MessageNew:  XSTR("Wargod Six is in. Well, look at that, there's something left for us to do. Figured you'd have the Antenor wrapped up by now, Laporte.", 6130)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: bp214s21.ogg
+
+$Name: no casualties!
+$Team: -1
+$MessageNew:  XSTR("No casualties, boss. We're green for stage two.", 6131)
+$end_multi_text
++Wave Name: bp214s22.ogg
+
+$Name: some casualties!
+$Team: -1
+$MessageNew:  XSTR("We've got casualties, but we're still on our feet. Let's push to stage two.", 6132)
+$end_multi_text
++Wave Name: bp214s23.ogg
+
+$Name: clean up beams?
+$Team: -1
+$MessageNew:  XSTR("Right. Let's clean up the Antenor's turrets before I call in the Hanuman.", 6133)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: bp214s24.ogg
+
+$Name: karen: we lost civilians
+$Team: -1
+$MessageNew:  XSTR("We lost a lot of civilians, Simms. It wasn't pretty. I wish we could've done something for them.", 6134)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s25.ogg
+
+$Name: karen: we saved civilians!
+$Team: -1
+$MessageNew:  XSTR("We stopped the Antenor from completing her objectives as well. The civilian platforms are still holding together.", 6135)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s26.ogg
+
+$Name: training: sorry, buddy
+$Team: -1
+$MessageNew:  XSTR("Let's see if we can save these people.", 6136)
+$end_multi_text
++Wave Name: bp214s27.ogg
+
+$Name: simms: antenor clean
+$Team: -1
+$MessageNew:  XSTR("Okay, I'm calling in the Hanuman. We need that AWACS on-scene to filter distress calls and track inbound traffic.", 6137)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s28.ogg
+
+$Name: olefumi: here we go...
+$Team: -1
+$MessageNew:  XSTR("Here we go!", 6138)
+$end_multi_text
++AVI Name: Head-TP8
++Wave Name: bp214s29.ogg
+
+$Name: laporte: all nervous
+$Team: -1
+$MessageNew:  XSTR("...wow, I've got butterflies in my stomach.", 6139)
+$end_multi_text
++Wave Name: bp214s30.ogg
+
+$Name: karen: going to work
+$Team: -1
+$MessageNew:  XSTR("Easy, Laporte. We're going to do this. I can feel it.", 6140)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s31.ogg
+
+$Name: simms: whatever happens
+$Team: -1
+$MessageNew:  XSTR("I've got your back if you've got mine, Laporte.", 6141)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s32.ogg
+
+$Name: hanuman: online!
+$Team: -1
+$MessageNew:  XSTR("Wargods, this is the Hanuman. Activating long-range sensors. Stand by for our plot.", 6142)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s33.ogg
+
+$Name: simms: what can you see?
+$Team: -1
+$MessageNew:  XSTR("What can you see, Hanuman?", 6143)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s34.ogg
+
+$Name: hanuman: incoming
+$Team: -1
+$MessageNew:  XSTR("We've detected a large inbound transit. It must be the Carthage's Jump Five team. Stand by...ten seconds to hostile arrival!", 6144)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s35.ogg
+
+$Name: simms: destroy, disable
+$Team: -1
+$MessageNew:  XSTR("Remember, Wargods: destroy fighters, disable warships. We need our bait intact and screaming.", 6145)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s36.ogg
+
+$Name: simms: let's hit
+$Team: -1
+$MessageNew:  XSTR("Here comes the Norfolk, Aeolus-class. Heavy fighter escort, but what the hell - let's hit 'em now. Laporte, disable flak guns and beam cannons.", 6146)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s37.ogg
+
+$Name: karen: right behind you
+$Team: -1
+$MessageNew:  XSTR("", 3493)
+$end_multi_text
++Wave Name: bp214s38.ogg
+
+$Name: Norfolk destroyed
+$Team: -1
+$MessageNew:  XSTR("Aw, hell, there's no way the Norfolk will get off a signal now. So much for our bait.", 6147)
+$end_multi_text
++Wave Name: bp214s39.ogg
+
+$Name: Norfolk destroyed 2
+$Team: -1
+$MessageNew:  XSTR("Wargods: abort, abort, abort. Jump home, we're done here.", 6148)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s40.ogg
+
+$Name: simms: Norfolk disabled
+$Team: -1
+$MessageNew:  XSTR("Not bad, people, not bad. The Norfolk's now part of our little butterfly collection. Hanuman?", 6149)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s41.ogg
+
+$Name: Hanuman: doctoring
+$Team: -1
+$MessageNew:  XSTR("She's sending a distress call. Stand by, we're recording it...", 6150)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s42.ogg
+
+$Name: Norfolk: it's a trap!
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Carthage, Norfolk. We are adrift and our escort has been eliminated. Federation presence is strong. We advise against any rescue attempt. Carthage, do you read? Do not attempt a rescue operation! We're bait!", 6151)
+$end_multi_text
++Wave Name: bp214s43.ogg
+
+$Name: Hanuman: doctored
+$Team: -1
+$MessageNew:  XSTR("We're cutting out the warning and rebroadcasting the distress call. If Admiral Lopez trusts her officers, she'll come running.", 6152)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s44.ogg
+
+$Name: simms: clean up escort
+$Team: -1
+$MessageNew:  XSTR("Okay, Wargods, let's clean up the escort. Watch yourselves.", 6153)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s45.ogg
+
+$Name: Norfolk: carthage, carthage
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Carthage, Carthage, do you read? Tell the Admiral we're past her help. Do NOT, under any circumstances, enter the area! Carthage, respond!", 6154)
+$end_multi_text
++Wave Name: bp214s46.ogg
+
+$Name: karen: feel sorry for them
+$Team: -1
+$MessageNew:  XSTR("To know that you're bringing your own Admiral to her death...you almost have to feel sorry for them.", 6155)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s47.ogg
+
+$Name: simms: no we don't!
+$Team: -1
+$MessageNew:  XSTR("No, we don't.", 6156)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s48.ogg
+
+$Name: laporte: no we don't!
+$Team: -1
+$MessageNew:  XSTR("No we don't!", 6157)
+$end_multi_text
++Wave Name: bp214s49.ogg
+
+$Name: karen: right, guess we don't
+$Team: -1
+$MessageNew:  XSTR("Right, then, I guess we don't.", 6158)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s50.ogg
+
+$Name: Hanuman: inbound, big
+$Team: -1
+$MessageNew:  XSTR("Someone's transmitting to the Norfolk...Wargods, we're on! The Carthage is inbound!", 6159)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s51.ogg
+
+$Name: simms: plan is on!
+$Team: -1
+$MessageNew:  XSTR("All Wargods elements, we are a go. Stand by.", 6160)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s52.ogg
+
+$Name: carthage: hails warships
+$Team: -1
+$MessageNew:  XSTR("<intercepted> This is the GTD Carthage to allied warships. Stand by for relief. We're deploying squadrons to assist you.", 6161)
+$end_multi_text
++Wave Name: bp214s53.ogg
+
+$Name: carthage: hello?
+$Team: -1
+$MessageNew:  XSTR("<intercepted> We're reading heavy communications jamming in the area. Targeting the Federation AWACS. We'll call in the Legionary and Leander once comms are clear.", 6162)
+$end_multi_text
++Wave Name: bp214s54.ogg
+
+$Name: olefumi :she's very big
+$Team: -1
+$MessageNew:  XSTR("Ey, that cuiter's huge!", 6163)
+$end_multi_text
++AVI Name: Head-TP8
++Wave Name: bp214s55.ogg
+
+$Name: simms: call in the guns
+$Team: -1
+$MessageNew:  XSTR("Hanuman, pass to the Katana: call is 'cataphract', say again, 'cataphract'. We're ready to rock.", 6164)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s56.ogg
+
+$Name: Katana on station
+$Team: -1
+$MessageNew:  XSTR("Katana jump complete. Altan Orde, say your status.", 6165)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp214s57.ogg
+
+$Name: Altan orde here
+$Team: -1
+$MessageNew:  XSTR("Right with you, Captain Genady. Fire control has a clean lock on the Carthage.", 6166)
+$end_multi_text
++AVI Name: Head-CM12
++Wave Name: bp214s58.ogg
+
+$Name: Katana: thanks, guys
+$Team: -1
+$MessageNew:  XSTR("Captain Simms, Lieutenant Ng'Mei, Sublieutenant Laporte - beautiful work. Keep close, and give us what cover you can. I want you to go home alive.", 6167)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp214s59.ogg
+
+$Name: Altan Orde: give up
+$Team: -1
+$MessageNew:  XSTR("Admiral Lopez, we are the Federation Wargods. Your subspace drive is in its charge cycle and you are severely outgunned. More of our warships are on the way. Surrender now, and we will spare your crews.", 6168)
+$end_multi_text
++AVI Name: Head-CM12
++Wave Name: bp214s60.ogg
+
+$Name: Hanuman: Antenor is talking
+$Team: -1
+$MessageNew:  XSTR("The Antenor is using its subspace sensors to transmit a short-range message to the Carthage! Attempting to jam!", 6169)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s61.ogg
+
+$Name: Antenor: run!
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Admiral, this is Captain Hamid! You're the real target! Get out now, or they'll rip you apart!", 6170)
+$end_multi_text
++Wave Name: bp214s62.ogg
+
+$Name: Carthage: not leaving without
+$Team: -1
+$MessageNew:  XSTR("<intercepted> I'm not leaving without you, Captain. Nor the Norfolk. I will not abandon my crews.", 6171)
+$end_multi_text
++Wave Name: bp214s63.ogg
+
+$Name: Antenor: please!
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Admiral, please. We're expendable. You and your ship aren't. You have to withdraw.", 6172)
+$end_multi_text
++Wave Name: bp214s64.ogg
+
+$Name: Carthage: hello no
+$Team: -1
+$MessageNew:  XSTR("<intercepted> I would sooner die than see my men in an Ubuntu camp. Stand by, Captain. We'll have the jamming cleared in five minutes.", 6173)
+$end_multi_text
++Wave Name: bp214s65.ogg
+
+$Name: simms: shut them up
+$Team: -1
+$MessageNew:  XSTR("Hanuman, shut that corvette up!", 6174)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s66.ogg
+
+$Name: Antenor: anita!
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Admiral! We are NOT WORTH IT! Get the hell out while you still can!", 6175)
+$end_multi_text
++Wave Name: bp214s67.ogg
+
+$Name: Carthage: nuuu
+$Team: -1
+$MessageNew:  XSTR("<intercepted> God damn it.", 6176)
+$end_multi_text
++Wave Name: bp214s68.ogg
+
+$Name: Carthage: withdraw time
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Ops, signal all hands to brace for a crash jump. Helm, spool up the tactical drive. Captain Hamid - godspeed. I will be back for you, just as soon as I can.", 6177)
+$end_multi_text
++Wave Name: bp214s69.ogg
+
+$Name: Simms: they're gone
+$Team: -1
+$MessageNew:  XSTR("She's jumping out! Katana, request mission update!", 6178)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s70.ogg
+
+$Name: Hanuman: locked her vector
+$Team: -1
+$MessageNew:  XSTR("Not a problem, Wargods. We tracked her exit vector - that experimental drive doesn't have the range to take her back to Jupiter.", 6179)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s71.ogg
+
+$Name: Katana: go to Indus
+$Team: -1
+$MessageNew:  XSTR("Hanuman, pass those coordinates to the Indus and Yangtze. Wargods, jump home and dock ASAP - you're going after the Carthage. We'll join the attack as soon as our drives have cycled.", 6180)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp214s72.ogg
+
+$Name: Simms: on the hunt
+$Team: -1
+$MessageNew:  XSTR("Let's go, let's go, let's go! She's not getting away from us, Wargods!", 6181)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s73.ogg
+
+$Name: Hanuman: she's at Saturn
+$Team: -1
+$MessageNew:  XSTR("Her crash jump trajectory will snag on Saturn's gravity well. She's trapped there until she recharges.", 6182)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s74.ogg
+
+$Name: oh sure I'll shut them up
+$Team: -1
+$MessageNew:  XSTR("Roger, silencing the Antenor so we can bring in backup on the sly.", 6183)
+$end_multi_text
++Wave Name: bp214s75.ogg
+
+$Name: gamma has arrived 2
+$Team: -1
+$MessageNew:  XSTR("Wargod Six is in. Nice job with the Antenor, Laporte. You know how to make a lady feel welcome.", 6184)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s76.ogg
+
+$Name: Laporte teases back 2
+$Team: -1
+$MessageNew:  XSTR("Heh, you should've heard her captain sputter. Impotent rage at its finest.", 6185)
+$end_multi_text
++Wave Name: bp214s77.ogg
+
+$Name: Laporte teases back
+$Team: -1
+$MessageNew:  XSTR("Sorry, I thought I'd leave you at least some reason to draw danger pay.", 6186)
+$end_multi_text
++Wave Name: bp214s78.ogg
+
+$Name: Simms asks for status
+$Team: -1
+$MessageNew:  XSTR("She's really bad at cards. Cut the chatter and give me a sitrep, ladies.", 6187)
+$end_multi_text
++Wave Name: bp214s79.ogg
+
+$Name: Karen's tactical advice
+$Team: -1
+$MessageNew:  XSTR("Hit the escort with your Slammers, then cut a 1500-meter arc around the Norfolk and come in from the stern!", 6188)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s80.ogg
+
+$Name: norfolk down okay
+$Team: -1
+$MessageNew:  XSTR("The Norfolk just lost reactor containment. Intel's going to be pissed that we didn't get those prisoners.", 6189)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: bp214s81.ogg
+
+$Name: katana: fighters inbound
+$Team: -1
+$MessageNew:  XSTR("Her screen fighters are engaging. There's our answer.", 6190)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp214s82.ogg
+
+$Name: katana: go go go
+$Team: -1
+$MessageNew:  XSTR("You need to jump to the Indus, pilot! The engagement with the Carthage will begin as soon as you're prepared!", 6191)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp214s83.ogg
+
+$Name: Hanuman: antenor is talking b
+$Team: -1
+$MessageNew:  XSTR("The Antenor is using its targeting sensors to transmit a short-range message to the Carthage! Attempting to jam!", 6192)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s84.ogg
+
+$Name: Hanuman: antenor is talking C
+$Team: -1
+$MessageNew:  XSTR("The Antenor is using its navigational sensors to transmit a short-range message to the Carthage! Attempting to jam!", 6193)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s85.ogg
+
+$Name: Hanuman: antenor is talking D
+$Team: -1
+$MessageNew:  XSTR("The Antenor is using some kind of improvised transceiver to transmit a short-range message to the Carthage! Attempting to jam!", 6194)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp214s86.ogg
+
+$Name: checkpoint 1 unlocked
+$Team: -1
+$MessageNew:  XSTR("Checkpoint Reached
+", 6195)
+$end_multi_text
++Wave Name: bp214s87.ogg
+
+$Name: checkpoint available
+$Team: -1
+$MessageNew:  XSTR("You have 15 seconds to select a checkpoint from the reinforcements menu.", 6196)
+$end_multi_text
++Wave Name: bp214s88.ogg
+
+#Reinforcements		;! 1 total
+
+$Name: Checkpoint 1
+$Type: Attack/Protect
+$Num times: 1
++Arrival Delay: 0
++No Messages: ( )
++Yes Messages: ( )
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 0
+$Ambient light level: 11842740
+
+$Bitmap List:
+$Sun: SolMars
++Angles: 0.000000 0.000000 0.785398
++Scale: 0.800000
+
+#Asteroid Fields
+
+$Density: 360
++Field Type: 1
++Debris Genre: 0
++Field Debris Type: 0
+$Average Speed: 0.999763
+$Minimum: -5000.000000, -5000.000000, -5000.000000
+$Maximum: 5000.000000, 5000.000000, 5000.000000
+
+#Music
+
+$Event Music: None
+$Briefing Music: Brief4
+$Substitute Briefing Music: Brief4
+$Fiction Viewer Music: Brief10
+
+#End
+

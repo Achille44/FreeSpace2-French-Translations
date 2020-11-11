@@ -1,0 +1,5427 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("The Cost of War", 4313)
+$Author: Danial Bell
+$Created: 08/13/08 at 22:26:03
+$Modified: 12/29/16 at 21:59:48
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Europa is lost, and the great bastion of Jupiter has fallen. A convoy from Artemis Station needs protection from GTVA strike wings. A rookie flight is dispatched from the Solaris to cover their escape", 4314)
+$end_multi_text
++Game Type Flags: 1
++Flags: 262208
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 0
++Hull Repair Ceiling: 70.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 6002.080078, 9231.719727, 18575.585938
++Viewer orient:
+	-0.769991, -0.000000, 0.638055,
+	-0.447069, 0.713481, -0.539513,
+	-0.455240, -0.700675, -0.549374
+
+
+$Load Screen 640: LoadingBG.pcx
+$Load Screen 1024: 2_LoadingBGM01.png
+
+$Skybox Model: htsb.pof
+
+$AI Profile: BP2
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"alpha1healthm01"		"100"		"number"		"player-persistent"
+		1		"alpha2healthm01"		"100"		"number"		"player-persistent"
+		2		"alpha3healthm01"		"100"		"number"		"player-persistent"
+		3		"argentmisthealth"		"100"		"number"		"player-persistent"
+		4		"check1reachedm01"		"0"		"number"		"player-persistent"
+		5		"convoydamage"		"0"		"number"
+		6		"ironhidehealth"		"100"		"number"		"player-persistent"
+		7		"leeuwenhoekhealth"		"100"		"number"		"player-persistent"
+		8		"sigma1health"		"100"		"number"		"player-persistent"
+		9		"sigma2health"		"100"		"number"		"player-persistent"
+		10		"sigma3health"		"100"		"number"		"player-persistent"
+		11		"suffronhealth"		"100"		"number"		"player-persistent"
+		12		"suffx"		"0"		"number"
+		13		"suffy"		"0"		"number"
+		14		"suffz"		"0"		"number"
+)
+
+#Fiction Viewer
+
+$File: m01.txt
+
+#Command Briefing
+
+$Stage Text:
+ XSTR("$b UED $b Solaris
+$b UEF $b First $b Fleet
+$b 9$b $slash$b 27$b $slash$b 86
+
+This is Admiral Byrne. Give me your ears.
+
+I will be plain with you. The rumors you have heard are correct. 
+
+After an eighteen-month stand, Jupiter has fallen to the $r GTVA. The Jovian Systems Republic issued an unconditional surrender at 2330. Admiral Calder's $f Third $f Fleet has been routed.
+
+Alliance marines are now landing on Ganymede. The Jovian government, under threat of orbital bombardment, has agreed to cooperate.", 4315)
+$end_multi_text
+$Ani Filename: CB_Solaris
++Wave Filename: bp201cb01.ogg
+
+$Stage Text:
+ XSTR("The details of the Fall of Jupiter are now available for your inspection on FleetNet.
+
+For now, know this. The GTVA has committed to total war.
+
+At 0330 yesterday the front-line destroyers $r Atreus and $r Imperieuse, under $r Admiral $r Chiwetel $r Steele, transited the Delta Serpentis node. These ships and their battle groups carried out the attack on Jupiter at 0700. Steele himself personally captured $f Artemis $f Station, before scorched-earth protocols could be enacted.
+
+By capturing Jupiter's gate network and civilian infrastructure intact, Steele has accomplished what $r Admiral $r Cyrus $r Severanti could not: he has given the GTVA the logistical footing for full-scale war.", 4316)
+$end_multi_text
+$Ani Filename: CB_Solaris
++Wave Filename: bp201cb02.ogg
+
+$Stage Text:
+ XSTR("I ask all of you to trust in the strategy set out by the Council of Elders. We will maintain our defensive posture until a diplomatic solution to the war can be achieved.
+
+We have a more immediate task, however. $f Third $f Fleet's survivors need our help. At 2335, Fleet Admiral Calder issued the order for a full-scale retreat to Mars. Warships and strike craft from the $r Imperieuse and $r Atreus battle groups are pursuing these survivors, as well as any civilian convoys that have refused the no-fly order.
+
+As $f Second $f Fleet $f Mars fends off raids from the $r Hood, $r Carthage, and $r Meridian, I will deploy our squadrons to cover the retreat of civilians and $f Third $f Fleet from Jupiter space.
+
+Flight operations commence immediately.", 4317)
+$end_multi_text
+$Ani Filename: CB_Solaris
++Wave Filename: bp201cb03.ogg
+
+$Stage Text:
+ XSTR("Remember this. The GTVA wants our worlds and our infrastructure intact. They hope to break our fighting spirit, or to draw us into a foolish offensive.
+
+We will remain implacable and unmoved, and so stymie them. Ubuntu gives us that strength.
+
+Fleet Admiral Robert Byrne
+Military Representative to the Council of Elders
+UED Solaris", 4318)
+$end_multi_text
+$Ani Filename: CB_Solaris
++Wave Filename: bp201cb04.ogg
+
+$Stage Text:
+ XSTR("$b FLEETNET $b COMMUNIQUE
+$b SENDER: $b Flight $b Lieutenant $b Manuel $b Brie
+
+Noemi, it's Brie.
+
+You know what's happening out there. You've been trained, you've flown patrols. You're ready.
+
+I want you to trust yourself. Yes, your psych profile makes you look like a lamb, and Kassim has his discipline issues, but the two of you have aptitude scores better than most of First Fleet. There's a reason I asked for you two in my wing.
+
+You can fly like no one I've seen. Our Uhlans can match any fighter the Tevs have. The two of you will survive. And I've got a few tricks up my sleeve myself.
+
+Captain Telfer is about to pass on our frag orders. Get to the ready room. If you need to throw up, do it before we launch.", 4319)
+$end_multi_text
+$Ani Filename: uef_cb_default
++Wave Filename: bp201cb05.ogg
+
+#Briefing
+$start_briefing
+$num_stages: 5
+$start_stage
+$multi_text
+ XSTR("Eyes up, pilots. If you're a newcomer or a reservist, welcome aboard. I'm Captain Telfer, squadron leader of the 170th Fighting Navajas. 
+
+I've been authorized to confirm that the Jovian capital at Ganymede has fallen. The Tevs have $g Artemis $g Station, the scorched earth program failed, and the gate system and the Jovian comm net are under their control.
+
+Admiral Byrne has ordered the $g Solaris to deploy its squadrons to cover the Jovian retreat. Deck crews are running final prep on our Uhlans right now. We'll be airborne in twenty minutes.", 4320)
+$end_multi_text
+$voice: bp201b01.ogg
+$camera_pos: 4069.401123, 8468.095703, 3783.308105
+$camera_orient:
+	0.000000, 0.000000, 1.000000,
+	-1.000000, -0.000166, 0.000000,
+	0.000166, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 0
+$Flags: 1
+$Formula: ( true ) 
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Scattered tactical reports are still coming in from Jupiter. Admiral Calder's flagship $g Toutatis escaped $r Ganymede and is rallying all surviving Jovian fleet assets for a retreat to Mars. Hundreds of civilian ships are also fleeing the Tev advance. 
+
+Admiral Byrne has agreed to deploy $g Solaris fighter wings to cover this exodus, but major First and Second Fleet assets will remain at Earth and Mars. 
+
+These are our fragment orders. Gamma wing will escort the battered $f UEFg $f Rhineland. Cosoleto, your Beta wing is on standby. Brie, your Alpha wing will deploy to the asteroid belt to cover a civilian convoy that didn't make Calder's rendezvous.", 4321)
+$end_multi_text
+$voice: bp201b02.ogg
+$camera_pos: 373.745758, 9295.906250, 4006.525391
+$camera_orient:
+	0.000003, -0.000000, 1.000000,
+	-1.000000, -0.000000, 0.000003,
+	0.000000, -1.000000, -0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 4
+$Flags: 3
+$Formula: ( true ) 
+$start_icon
+$type: 6
+$team: Hostile
+$class: GTD Titan
+$pos: -595.130432, -0.001682, 2310.024902
+$label: GTVA Advance
++id: 1
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 7
+$team: Friendly
+$class: UEI Kumari
+$pos: 579.516541, -0.000332, 7790.463379
+$label: Jovian Fleet Headquarters
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 18
+$team: Hostile
+$class: GTCv Chimera
+$pos: 880.476074, -0.002377, 4095.954834
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 18
+$team: Hostile
+$class: GTCv Chimera
+$pos: 880.898621, -0.001881, 1205.056396
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("This convoy of civilian sublight transports escaped the fall of Artemis Station. The cruisers $g Ironhide and $g Suffron are providing escort. Alpha, you will provide area defense against Tev strike wings. Hostile skirmishers have already engaged the convoy, and more firepower is likely on the way.
+
+The civilian ships have no jump drives, so they're fleeing Jupiter space via the intrasystem gate network. Last transmission puts them between $g Belt $g Gate $g 42 and $g Mars-Belt $g Gate $g 3, on the inner curve of the asteroid belt.", 4322)
+$end_multi_text
+$voice: bp201b03.ogg
+$camera_pos: -26.406979, 7949.949707, 3028.517578
+$camera_orient:
+	0.000000, 0.000000, 1.000000,
+	-1.000000, -0.000252, 0.000000,
+	0.000252, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 3
+$Flags: 2
+$Formula: ( true ) 
+$start_icon
+$type: 18
+$team: Friendly
+$class: UEC Sanctus
+$pos: 90.642784, 0.000280, 6735.051758
+$label: Ironhide
++id: 6
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 18
+$team: Friendly
+$class: UEC Sanctus
+$pos: 127.813240, -0.002009, -930.820801
+$label: Suffron
++id: 7
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 5
+$team: Friendly
+$class: UEFr Demeter
+$pos: -30.406948, -1.999907, 2694.018311
++id: 10
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Many of you have never seen combat. This is not practice and you are not shooting at objects. You will be tangling with ruthless, intelligent enemy pilots. The civilians in your care are husbands, wives, and children. Every ship you lose to the Tevs means more people who will never see their loved ones again.
+
+This is a terrifying responsibility, but an honour afforded to few. Are you clear on this? Good. Bring those people home.", 4323)
+$end_multi_text
+$voice: bp201b04.ogg
+$camera_pos: 1233.188232, 10585.535156, 4928.396484
+$camera_orient:
+	0.000000, 0.000000, 1.000000,
+	-1.000000, -0.000026, 0.000000,
+	0.000026, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 5
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 18
+$team: Friendly
+$class: UEC Sanctus
+$pos: 90.642784, 0.000280, 6735.051758
+$label: Ironhide
++id: 6
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 18
+$team: Friendly
+$class: UEC Sanctus
+$pos: 133.894974, -0.001611, -517.877319
+$label: Suffron
++id: 7
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: UEF Uhlan
+$pos: 3223.193115, 1351.072388, 6219.054688
+$label: Alpha
++id: 8
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 33
+$team: Friendly
+$class: Intrasystem Gate
+$pos: 613.331116, 1326.247803, 9323.005859
+$label: Mars-Belt Gate 3
++id: 9
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 5
+$team: Friendly
+$class: UEFr Demeter
+$pos: 98.964996, -2.000078, 3271.512695
++id: 10
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("One minute, Noemi. Walk with me.
+
+Before he died, your father asked me to give you his namkha to carry on your first proper sortie. He was never a spiritual person, unlike your mother, and my sister and your father came to odds enough times over it. But he believed in this article, and that was enough for him. 
+
+No more standing on the sidelines, Noemi. You're about to be thrown into the thick of this war. I hope you're ready for it.", 4324)
+$end_multi_text
+$voice: bp201b05.ogg
+$camera_pos: 4086.260498, 8468.095703, 4928.186523
+$camera_orient:
+	0.014723, -0.000000, 0.999892,
+	-0.146667, 0.989184, 0.002160,
+	-0.989076, -0.146683, 0.014564
+$camera_time: 500
+$num_lines: 0
+$num_icons: 2
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 5
+$team: Friendly
+$class: UEFr Demeter
+$pos: 98.964996, -2.000078, 3271.512695
++id: 10
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 18
+$team: Friendly
+$class: UEC Sanctus
+$pos: 90.642784, 0.000280, 6735.051758
+$label: Ironhide
++id: 6
+$hlight: 0
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 3
+
+$Formula: ( is-goal-true-delay 
+   "All ships escape" 
+   0 
+)
+$Multi text
+    XSTR("Welcome back, Alpha wing. You brought both your rooks home, Brie. Good work.
+
+Latest reports from Mars indicate that the Ironhide, Suffron and the rest of the convoy arrived safe and intact. Reports show significant losses of Jovian forces during the retreat and word's going round that Admiral Calder is furious with Admiral Byrne for not providing reinforcements during the GTVA attack.
+
+All outbound communications from Jupiter have ceased following the Tev occupation of Ganymede, and we've lost control of the regional intrasystem gate network. All scheduled civilian traffic to the area has been cancelled. All in all, it looks like we've lost the entire Jovian system to the GTVA.
+
+Besides that, you all did well out there, pilots. Though things are looking grim for us, we all need to do our own little bit to help.
+
+Take five to get some water and stims if you need 'em. There's a combat psych waiting to triage you. When you're done, get back to your birds. The remnants of the Jovian Rim Fleet are still trickling in, and we need to give them cover.
+
+Expect another sortie inside the hour. We'll remember Gamma's pilots when we get the chance.", 4325)
+$end_multi_text
+$Voice: bp201db01.ogg
+$Recommendation text:
+    XSTR("Personal Log, Noemi Laporte
+
+It felt...good. Like I'd been doing it my whole life. Like I'd found the place I'm meant to be. The fact that that realization came at the moment when I first took a life is slightly horrifying.
+
+Kassim talks tough, but he came out of his cockpit and threw up all over the deck. I don't think he knows I saw.
+
+I don't understand why it felt so good.", 4326)
+$end_multi_text
+
+$Formula: ( and 
+   ( < @convoydamage[0] 6 ) 
+   ( is-goal-true-delay 
+      "Protect convoy" 
+      0 
+   )
+   ( is-goal-false-delay 
+      "All ships escape" 
+      0 
+   )
+)
+$Multi text
+    XSTR("Welcome back, Alpha wing. You brought both your rooks home, Brie. Good work.
+
+Latest reports from Mars indicate that the surviving ships of the convoy arrived intact. Reports show significant losses of Jovian forces during the retreat and word's going round that Admiral Calder is furious with Admiral Byrne for not providing reinforcements during the GTVA attack.
+
+All outbound communications from Jupiter have ceased following the Tev occupation of Ganymede, and we've lost control of the regional intrasystem gate network. All scheduled civilian traffic to the area has been cancelled. All in all, it looks like we've lost the entire Jovian system to the GTVA.
+
+Things are looking bad for us. We thought things were tough before, but everything's about to get a whole lot worse. This war has finally come home, and we need to prepare for it however we can.
+
+Take five to get some water and stims if you need them. There's a combat psych waiting to triage you. When you're done, get back to your birds. The remnants of the Jovian Rim Fleet are still trickling in, and we need to give them cover.
+
+Expect another sortie inside the hour. We'll remember Gamma's pilots when we get the chance.", 4327)
+$end_multi_text
+$Voice: bp201db02.ogg
+$Recommendation text:
+    XSTR("Personal Log, Noemi Laporte
+
+We lost ships out there. People died. I killed people, too.
+
+It felt...good. Like I'd been doing it my whole life. Like I'd found the place I'm meant to be. The fact that that realization came at the moment when I first took a life is slightly horrifying.
+
+Kassim talks tough, but he came out of his cockpit and threw up all over the deck. I don't think he knows I saw.
+
+I don't understand why I feel so good when so many people died.", 4328)
+$end_multi_text
+
+$Formula: ( > @convoydamage[0] 5 ) 
+$Multi text
+    XSTR("What happened out there today was a tragedy of immeasurable scope. The Tevs butchered the convoy like lambs in a slaughterhouse. Hundreds of civilians are dead, and Admiral Calder has lodged an official complaint to Admiral Byrne regarding your wing's performance out there. Manuel Brie, as wing leader you must take responsibility for today's poor performance. The nature of your disciplinary action will be revealed later on. Consider this a warning that from now on, such a poor show will not be tolerated in this squadron.
+
+Reports show significant losses of Jovian forces during the retreat and word's going round that Admiral Calder is furious with Admiral Byrne for not providing reinforcements during the GTVA attack.
+
+All outbound communications from Jupiter have ceased following the GalTev occupation of Ganymede, and we've lost control of the regional intrasystem gate network. All scheduled civilian traffic to the area has been cancelled. All in all, it looks like we've lost the entire Jovian system to the GTVA.
+
+Things are looking bad for us. We thought things were tough before, but everything's about to get a whole lot worse. This war has finally come home, and we need to prepare for it however we can.
+
+Take five to get some water and stims if you need them. There's a combat psych waiting to triage you. When you're done, get back to your birds. The remnants of the Jovian Rim Fleet are still trickling in, and we need to give them cover.
+
+Expect another sortie inside the hour. We'll remember Gamma's pilots when we get the chance.", 4329)
+$end_multi_text
+$Voice: bp201db03.ogg
+$Recommendation text:
+    XSTR("Prioritize hostile bombers. Remember, you can use the last wave's predicted jump-in location to position yourself.
+
+If your hull is low, call in a support ship for hull repairs and recharge.", 4330)
+$end_multi_text
+
+#Alternate Types:
+$Alt: Brie
+$Alt: Kassim
+$Alt: Nav Buoy
+$Alt: 101st Sidewinders
+$Alt: 501st Helldivers
+$Alt: 42nd Pythons
+$Alt: 11th Strategic Assault
+$Alt: 11th Tactical Assault
+
+#end
+
+
+#Callsigns:
+$Callsign: Brie
+$Callsign: Kassim
+$Callsign: Laporte
+$Callsign: 42nd Pythons
+$Callsign: 11th Tactical Assault
+$Callsign: 101st Sidewinders
+$Callsign: 501st Helldivers
+$Callsign: 500th Helldivers
+$Callsign: 103rd Archers
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 3
+$Ship Choices: (
+)
+
++Weaponry Pool: (
+	"Vulcan"	12
+	"Maul"	6
+	"Scalpel"	4
+	"Javelin"	248
+	"Dirk"	620
+	"Hellfire"	980
+)
+
+#Objects		;! 38 total
+
+$Name: Alpha 1		;! Object #0
+$Class: UEF Uhlan
+$Callsign: Brie
+
+$Team: Friendly
+$Location: 451.200012, 2065.399902, 14162.381836
+$Orientation:
+	-0.998357, 0.000000, 0.057308,
+	-0.021756, 0.925136, -0.379013,
+	-0.053018, -0.379636, -0.923615
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "no-builtin-messages" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 22
+
+$Name: Alpha 2		;! Object #1
+$Class: UEF Uhlan
+$Callsign: Kassim
+
+$Team: Friendly
+$Location: 492.800873, 2079.504639, 14208.173828
+$Orientation:
+	-0.997850, 0.000000, 0.065536,
+	-0.024817, 0.925528, -0.377866,
+	-0.060655, -0.378680, -0.923538
+$AI Behavior: None
++AI Class: BP2-Captain
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 23
+
+$Name: Alpha 3		;! Object #2
+$Class: UEF Uhlan
+$Callsign: Laporte
+
+$Team: Friendly
+$Location: 377.421875, 2161.350830, 14284.880859
+$Orientation:
+	-0.999562, 0.015381, 0.025269,
+	0.001578, 0.880711, -0.473651,
+	-0.029540, -0.473404, -0.880350
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Flags2: ( "no-builtin-messages" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Ironhide		;! Object #3
+$Class: UEC Sanctus
+$Team: Friendly
+$Team Color Setting: 3rdFleet
+$Location: 183.449890, 148.174026, 9497.975586
+$Orientation:
+	0.999977, 0.000000, 0.006814,
+	0.000000, 1.000000, 0.000000,
+	-0.006814, 0.000000, 0.999977
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 50 ) )
+$Cargo 1:  XSTR("Supplies", 4331)
++Initial Velocity: 100
++Initial Hull: 88
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: engine01
+$Damage: 23
++Subsystem: engine02
+$Damage: 13
++Subsystem: communications
+$Damage: 28
++Subsystem: Sensors
+$Damage: 18
++Subsystem: weapons
+$Damage: 43
++Subsystem: Turret01
+$Damage: 35
++AI Class: General
++Subsystem: Turret02
+$Damage: 51
++AI Class: General
++Subsystem: Turret03
+$Damage: 45
++Subsystem: Turret04
+$Damage: 43
++Subsystem: Turret05
+$Damage: 44
++Subsystem: Turret06
+$Damage: 12
++Subsystem: turret07
+$Damage: 40
++Sbank Ammo: ( 0 )
++Subsystem: turret08
+$Damage: 57
++Sbank Ammo: ( 0 )
++Subsystem: Turret09
+$Damage: 33
++Subsystem: Turret10
+$Damage: 57
++Subsystem: Turret11
+$Damage: 91
++Subsystem: Turret12
+$Damage: 76
++Subsystem: Turret13
+$Damage: 42
++Subsystem: Turret14
+$Damage: 65
++Subsystem: Turret15
+$Damage: 96
++Subsystem: Turret16
+$Damage: 38
++Subsystem: Turret17
+$Damage: 26
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "all civilians made it" 
+      7 
+   )
+   ( is-event-true-delay 
+      "we're heading out" 
+      7 
+   )
+   ( is-event-true-delay 
+      "some civilians made it" 
+      7 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 5
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 300
+
+$Name: Suffron		;! Object #4
+$Class: UEC Sanctus
+$Team: Friendly
+$Team Color Setting: 3rdFleet
+$Location: 468.206696, -128.633224, 7371.041992
+$Orientation:
+	0.999977, 0.000000, 0.006814,
+	0.000000, 1.000000, 0.000000,
+	-0.006814, 0.000000, 0.999977
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 2" 50 ) )
+$Cargo 1:  XSTR("Supplies", 4331)
++Initial Velocity: 100
++Initial Hull: 66
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: engine01
+$Damage: 30
++Subsystem: engine02
+$Damage: 26
++Subsystem: communications
+$Damage: 34
++Subsystem: Sensors
+$Damage: 32
++Subsystem: weapons
+$Damage: 30
++Subsystem: Turret01
+$Damage: 25
++AI Class: General
++Subsystem: Turret02
+$Damage: 29
++AI Class: General
++Subsystem: Turret03
+$Damage: 37
++Subsystem: Turret04
+$Damage: 35
++Subsystem: Turret05
+$Damage: 36
++Subsystem: Turret06
+$Damage: 40
++Subsystem: turret07
+$Damage: 40
++Sbank Ammo: ( 0 )
++Subsystem: turret08
+$Damage: 28
++Sbank Ammo: ( 0 )
++Subsystem: Turret09
+$Damage: 22
++Subsystem: Turret10
+$Damage: 64
++Subsystem: Turret11
+$Damage: 14
++Subsystem: Turret12
+$Damage: 7
++Subsystem: Turret13
+$Damage: 29
++Subsystem: Turret14
+$Damage: 18
++Subsystem: Turret15
+$Damage: 10
++Subsystem: Turret16
+$Damage: 30
++Subsystem: Turret17
+$Damage: 10
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
++Departure delay: 2
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "all civilians made it" 
+      7 
+   )
+   ( is-event-true-delay 
+      "we're heading out" 
+      7 
+   )
+   ( is-event-true-delay 
+      "some civilians made it" 
+      7 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 5
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 300
+
+$Name: Taurus 1		;! Object #5
+$Class: GTF Hercules Mark II
+$Callsign: 42nd Pythons
+
+$Team: Hostile
+$Location: 484.765045, 187.968079, 6758.295410
+$Orientation:
+	0.979912, 0.033511, -0.196596,
+	-0.021944, 0.997914, 0.060720,
+	0.198220, -0.055186, 0.978603
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Tempest" "Hornet" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 1
+
+$Name: Taurus 2		;! Object #6
+$Class: GTF Hercules Mark II
+$Callsign: 42nd Pythons
+
+$Team: Hostile
+$Location: 623.558411, 148.000000, 6363.975098
+$Orientation:
+	-0.981693, 0.000000, 0.190469,
+	-0.000000, 1.000000, -0.000000,
+	-0.190469, -0.000000, -0.981693
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Tempest" "Hornet" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 0
+
+$Name: Taurus 3		;! Object #7
+$Class: GTF Hercules Mark II
+$Callsign: 42nd Pythons
+
+$Team: Hostile
+$Location: 730.372864, 157.863022, 6952.673340
+$Orientation:
+	-0.975125, 0.000000, 0.221655,
+	0.010017, 0.998978, 0.044066,
+	-0.221428, 0.045190, -0.974129
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Tempest" "Hornet" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 2
+
+$Name: Cancer 1		;! Object #8
+$Class: GTF Myrmidon
+$Callsign: 42nd Pythons
+
+$Team: Hostile
+$Location: -1562.215576, 0.032129, 10197.799805
+$Orientation:
+	-0.572616, 0.043611, -0.818663,
+	0.000555, 0.998604, 0.052808,
+	0.819824, 0.029785, -0.571841
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-chase "Ironhide" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Stiletto II" "Hornet" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
++Persona Index: 4
+
+$Name: Cancer 2		;! Object #9
+$Class: GTF Myrmidon
+$Callsign: 42nd Pythons
+
+$Team: Hostile
+$Location: -1629.722656, 15.833450, 10276.773438
+$Orientation:
+	-0.580763, 0.050081, -0.812531,
+	0.001243, 0.998159, 0.060634,
+	0.814072, 0.034204, -0.579756
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-chase "Ironhide" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Stiletto II" "Hornet" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
++Persona Index: 3
+
+$Name: Belt - Mars		;! Object #10
+$Class: Intrasystem Gate
+$Team: Friendly
+$Location: 269.475250, -0.005397, 30007.785156
+$Orientation:
+	0.852525, 0.522687, 0.000000,
+	-0.522687, 0.852525, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Belt System Gate 42		;! Object #11
+$Class: Intrasystem Gate
+$Team: Friendly
+$Location: 9.205282, -0.000156, -4549.005371
+$Orientation:
+	-0.999933, 0.000000, 0.011593,
+	0.000000, 1.000000, 0.000000,
+	-0.011593, 0.000000, -0.999933
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "ignore-count" "protect-ship" "no-shields" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Sigma 1		;! Object #12
+$Class: UET Kadmos
+$Team: Friendly
+$Location: 144.891739, 148.000183, 8796.434570
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 50 ) )
+$Cargo 1:  XSTR("Passengers", 4332)
++Initial Hull: 87
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( < 
+   ( distance 
+      "Sigma 1" 
+      "Waypoint path 1:1" 
+   )
+   250 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 99
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Sigma 2		;! Object #13
+$Class: UET Kadmos
+$Team: Friendly
+$Location: 138.576202, 147.999924, 8111.870605
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 50 ) )
+$Cargo 1:  XSTR("Passengers", 4332)
++Initial Hull: 79
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( < 
+   ( distance 
+      "Sigma 2" 
+      "Waypoint path 1:1" 
+   )
+   250 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 99
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Sigma 3		;! Object #14
+$Class: UET Kadmos
+$Team: Friendly
+$Location: 642.799988, -129.000015, 8390.582031
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 2" 50 ) )
+$Cargo 1:  XSTR("Passengers", 4332)
++Initial Hull: 85
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( < 
+   ( distance 
+      "Sigma 3" 
+      "Waypoint path 2:1" 
+   )
+   250 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 99
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Leeuwenhoek		;! Object #15
+$Class: UEM Galen
+$Team: Friendly
+$Location: 173.851212, 147.999451, 7302.793945
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 50 ) )
+$Cargo 1:  XSTR("Passengers", 4332)
++Initial Velocity: 33
++Initial Hull: 93
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( < 
+   ( distance 
+      "Leeuwenhoek" 
+      "Waypoint path 1:1" 
+   )
+   500 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 25
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 200
+
+$Name: Argent Mist		;! Object #16
+$Class: UEFr Demeter
+$Team: Friendly
+$Location: 557.394348, -129.000320, 9585.155273
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 2" 50 ) )
+$Cargo 1:  XSTR("Supplies", 4331)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01a
++Subsystem: Turret02a
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( < 
+   ( distance 
+      "Argent Mist" 
+      "Waypoint path 2:1" 
+   )
+   500 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 50
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Scorpio 1		;! Object #17
+$Class: GTB Artemis
+$Callsign: 11th Tactical Assault
+
+$Team: Hostile
+$Location: 2804.927246, 0.000342, 12891.187500
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Maxim" )
++Secondary Banks: ( "Cyclops" "Cyclops#short" "Cyclops#short" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 2
+
+$Name: Scorpio 2		;! Object #18
+$Class: GTB Artemis
+$Callsign: 11th Tactical Assault
+
+$Team: Hostile
+$Location: 2866.413818, 0.000355, 12792.253906
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Maxim" )
++Secondary Banks: ( "Cyclops" "Cyclops#short" "Cyclops#short" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 0
+
+$Name: Libra 1		;! Object #19
+$Class: GTF Kulas
+$Callsign: 101st Sidewinders
+
+$Team: Hostile
+$Location: 2799.077148, 0.000344, 13370.366211
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 3
+
+$Name: Libra 2		;! Object #20
+$Class: GTF Kulas
+$Callsign: 101st Sidewinders
+
+$Team: Hostile
+$Location: 2856.083252, 0.000358, 13307.301758
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 0
+
+$Name: Libra 3		;! Object #21
+$Class: GTF Kulas
+$Callsign: 101st Sidewinders
+
+$Team: Hostile
+$Location: 2742.129150, 0.000346, 13316.843750
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 4
+
+$Name: Scorpio 3		;! Object #22
+$Class: GTB Artemis
+$Callsign: 11th Tactical Assault
+
+$Team: Hostile
+$Location: 2695.994141, 0.000678, 12765.933594
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Maxim" )
++Secondary Banks: ( "Cyclops" "Cyclops#short" "Cyclops#short" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 1
+
+$Name: Sagittarius 1		;! Object #23
+$Class: GTF Myrmidon
+$Callsign: 103rd Archers
+
+$Team: Hostile
+$Location: 5560.909668, -259.069031, 31420.710938
+$Orientation:
+	-0.886258, 0.000000, 0.463191,
+	0.000000, 1.000000, 0.000000,
+	-0.463191, 0.000000, -0.886258
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 85
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sagittarius 2		;! Object #24
+$Class: GTF Myrmidon
+$Callsign: 103rd Archers
+
+$Team: Hostile
+$Location: 5545.477539, -259.069000, 31528.154297
+$Orientation:
+	-0.886258, 0.000000, 0.463191,
+	0.000000, 1.000000, 0.000000,
+	-0.463191, 0.000000, -0.886258
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 82
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Balor" )
++Secondary Banks: ( "Tornado" "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Leo 1		;! Object #25
+$Class: GTB Rhea
+$Callsign: 500th Helldivers
+
+$Team: Hostile
+$Location: 5534.969727, 0.002472, 30934.716797
+$Orientation:
+	-0.886258, 0.000000, 0.463191,
+	0.000000, 1.000000, 0.000000,
+	-0.463191, 0.000000, -0.886258
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 90
++Subsystem: Pilot
++Secondary Banks: ( "Cyclops" "Cyclops#short" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Leo 2		;! Object #26
+$Class: GTB Rhea
+$Callsign: 500th Helldivers
+
+$Team: Hostile
+$Location: 5684.646973, 0.002472, 30976.958984
+$Orientation:
+	-0.886258, 0.000000, 0.463191,
+	0.000000, 1.000000, 0.000000,
+	-0.463191, 0.000000, -0.886258
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 77
++Subsystem: Pilot
++Secondary Banks: ( "Cyclops" "Cyclops#short" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Leo 3		;! Object #27
+$Class: GTB Rhea
+$Callsign: 500th Helldivers
+
+$Team: Hostile
+$Location: 5509.272461, 0.002441, 31081.076172
+$Orientation:
+	-0.886258, 0.000000, 0.463191,
+	0.000000, 1.000000, 0.000000,
+	-0.463191, 0.000000, -0.886258
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 87
++Subsystem: Pilot
++Secondary Banks: ( "Cyclops" "Cyclops#short" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Cancer 3		;! Object #28
+$Class: GTF Myrmidon
+$Callsign: 42nd Pythons
+
+$Team: Hostile
+$Location: -1653.104736, 0.032127, 10054.718750
+$Orientation:
+	-0.572616, 0.043611, -0.818663,
+	0.000555, 0.998604, 0.052808,
+	0.819824, 0.029785, -0.571841
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-chase "Leeuwenhoek" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 95
++Subsystem: Pilot
++Secondary Banks: ( "Stiletto II" "Hornet" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cancer 4		;! Object #29
+$Class: GTF Myrmidon
+$Callsign: 42nd Pythons
+
+$Team: Hostile
+$Location: -1721.329468, 15.833450, 10125.243164
+$Orientation:
+	-0.580763, 0.050081, -0.812531,
+	0.001243, 0.998159, 0.060634,
+	0.814072, 0.034204, -0.579756
+$AI Behavior: None
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-chase "Leeuwenhoek" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 85
++Subsystem: Pilot
++Secondary Banks: ( "Stiletto II" "Hornet" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Taurus 4		;! Object #30
+$Class: GTF Hercules Mark II
+$Callsign: 42nd Pythons
+
+$Team: Hostile
+$Location: 787.030884, 157.863022, 6575.709473
+$Orientation:
+	-0.975125, 0.000000, 0.221655,
+	0.010017, 0.998978, 0.044066,
+	-0.221428, 0.045190, -0.974129
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 87
++Subsystem: Pilot
++Secondary Banks: ( "Tempest" "Hornet" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Aquarius 1		;! Object #31
+$Class: GTB Boanerges
+$Callsign: 500th Helldivers
+
+$Team: Hostile
+$Location: 6086.648926, 179.236649, 31064.992188
+$Orientation:
+	-0.886258, 0.000000, 0.463191,
+	0.000000, 1.000000, 0.000000,
+	-0.463191, 0.000000, -0.886258
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 79
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" )
++Secondary Banks: ( "Tornado" "Cyclops" "Cyclops" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-dynamic" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 15
+
+$Name: Aquarius 2		;! Object #32
+$Class: GTB Boanerges
+$Callsign: 500th Helldivers
+
+$Team: Hostile
+$Location: 6236.326172, 179.236649, 31107.234375
+$Orientation:
+	-0.886258, 0.000000, 0.463191,
+	0.000000, 1.000000, 0.000000,
+	-0.463191, 0.000000, -0.886258
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 69
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" )
++Secondary Banks: ( "Tornado" "Cyclops" "Cyclops" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-dynamic" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 15
+
+$Name: Aquarius 3		;! Object #33
+$Class: GTB Boanerges
+$Callsign: 500th Helldivers
+
+$Team: Hostile
+$Location: 6060.951660, 179.236588, 31211.351563
+$Orientation:
+	-0.886258, 0.000000, 0.463191,
+	0.000000, 1.000000, 0.000000,
+	-0.463191, 0.000000, -0.886258
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 87
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" )
++Secondary Banks: ( "Tornado" "Cyclops" "Cyclops" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-dynamic" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 15
+
+$Name: Capricorn 1		;! Object #34
+$Class: GTF Perseus
+$Callsign: 103rd Archers
+
+$Team: Hostile
+$Location: 6130.139160, 2.708193, 31163.779297
+$Orientation:
+	-0.886258, 0.000000, 0.463191,
+	0.000000, 1.000000, 0.000000,
+	-0.463191, 0.000000, -0.886258
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 89
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 15
+
+$Name: Capricorn 2		;! Object #35
+$Class: GTF Perseus
+$Callsign: 103rd Archers
+
+$Team: Hostile
+$Location: 6114.707031, 2.708223, 31271.222656
+$Orientation:
+	-0.886258, 0.000000, 0.463191,
+	0.000000, 1.000000, 0.000000,
+	-0.463191, 0.000000, -0.886258
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Hull: 85
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 15
+
+$Name: Libra 4		;! Object #36
+$Class: GTF Kulas
+$Callsign: 101st Sidewinders
+
+$Team: Hostile
+$Location: 2791.312256, 0.000353, 13249.580078
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Checkpoint 1		;! Object #37
+$Class: GTNB Pharos
+$Team: Friendly
+$Location: 0.000000, 300000.000000, 13190.900391
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 3423)
++Initial Velocity: 33
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( = @check1reachedm01[0] 1 ) 
+   ( not ( has-time-elapsed 15 ) ) 
+   ( is-event-true-delay 
+      "probox: checkpoint load!" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( has-time-elapsed 15 ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" "no-departure-warp" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-collide" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+#Wings		;! 9 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
++Departure delay: 7
+$Departure Cue: ( is-event-true-delay 
+   "get out of here" 
+   0 
+)
+$Ships: (		;! 3 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+)
+$AI Goals: ( goals ( ai-guard "Ironhide" 49 ) ( ai-guard "Suffron" 48 ) ( ai-chase-wing "Taurus" 51 ) ( ai-chase-wing "Cancer" 50 ) )
++Hotkey: 0
++Flags: ( )
+
+$Name: Taurus
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Taurus 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Taurus 1"
+	"Taurus 2"
+	"Taurus 3"
+	"Taurus 4"
+)
+$AI Goals: ( goals ( ai-chase-any 50 ) )
++Flags: ( )
+
+$Name: Cancer
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Cancer 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Cancer 1"
+	"Cancer 2"
+	"Cancer 3"
+	"Cancer 4"
+)
++Flags: ( "no-dynamic" )
+
+$Name: Scorpio
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Scorpio 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 2500
+$Arrival Anchor: Suffron
++Arrival delay: 1
+$Arrival Cue: ( has-arrived-delay 0 "Libra" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Scorpio 1"
+	"Scorpio 2"
+	"Scorpio 3"
+)
+$AI Goals: ( goals ( ai-chase-ship-class "UET Kadmos" 55 ) ( ai-chase "Leeuwenhoek" 50 ) ( ai-chase "Argent Mist" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Libra
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Libra 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 2500
+$Arrival Anchor: Suffron
++Arrival delay: 12
+$Arrival Cue: ( is-event-true-delay 
+   "you're all rookies" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Libra 1"
+	"Libra 2"
+	"Libra 3"
+	"Libra 4"
+)
+$AI Goals: ( goals ( ai-chase "Argent Mist" 50 ) ( ai-chase "Leeuwenhoek" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Sagittarius
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Sagittarius 1
+
+$Arrival Location: Hyperspace
++Arrival delay: 2
+$Arrival Cue: ( has-arrived-delay 0 "Leo" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Sagittarius 1"
+	"Sagittarius 2"
+)
+$AI Goals: ( goals ( ai-guard-wing "Leo" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Leo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Leo 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "hope you kept hellfires" 
+      25 
+   )
+   ( has-arrived-delay 3 "Checkpoint 1" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Leo 1"
+	"Leo 2"
+	"Leo 3"
+)
+$AI Goals: ( goals ( ai-chase "Ironhide" 53 ) ( ai-ignore-new "Suffron" 52 ) ( ai-chase "Argent Mist" 51 ) ( ai-chase "Leeuwenhoek" 50 ) ( ai-chase-any 49 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Aquarius
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Aquarius 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "hope you kept hellfires" 
+      25 
+   )
+   ( has-arrived-delay 3 "Checkpoint 1" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Aquarius 1"
+	"Aquarius 2"
+	"Aquarius 3"
+)
+$AI Goals: ( goals ( ai-chase "Ironhide" 52 ) ( ai-chase "Leeuwenhoek" 51 ) ( ai-ignore-new "Suffron" 50 ) ( ai-chase "Argent Mist" 49 ) ( ai-chase-any 48 ) )
++Flags: ( )
+
+$Name: Capricorn
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Capricorn 1
+
+$Arrival Location: Hyperspace
++Arrival delay: 2
+$Arrival Cue: ( has-arrived-delay 0 "Aquarius" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Capricorn 1"
+	"Capricorn 2"
+)
+$AI Goals: ( goals ( ai-guard-wing "Aquarius" 50 ) )
++Flags: ( )
+
+#Events		;! 150 total
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-guardian-threshold 
+      35 
+      "Ironhide" 
+   )
+)
++Name: guardian ironhide
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-subsys-guardian-threshold 
+      95 
+      "Ironhide" 
+      "<all engines>" 
+      "engine01" 
+      "engine02" 
+   )
+   ( ship-subsys-guardian-threshold 
+      95 
+      "Suffron" 
+      "<all engines>" 
+      "engine01" 
+      "engine02" 
+   )
+   ( ship-subsys-guardian-threshold 
+      95 
+      "Sigma 1" 
+      "<all engines>" 
+      "engine" 
+   )
+   ( ship-subsys-guardian-threshold 
+      95 
+      "Sigma 2" 
+      "<all engines>" 
+      "engine" 
+   )
+   ( ship-subsys-guardian-threshold 
+      95 
+      "Sigma 3" 
+      "<all engines>" 
+      "engine" 
+   )
+   ( ship-subsys-guardian-threshold 
+      95 
+      "Leeuwenhoek" 
+      "<all engines>" 
+      "Engines" 
+   )
+   ( ship-subsys-guardian-threshold 
+      95 
+      "Argent Mist" 
+      "<all engines>" 
+      "Engine" 
+   )
+   ( set-armor-type 
+      "Leeuwenhoek" 
+      ( true ) 
+      "Next-Gen Armor 5" 
+      "Engines" 
+   )
+)
++Name: invuln engines
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-msecs-delay 
+         "invuln engines" 
+         2 
+      )
+      ( or 
+         ( is-event-true-delay 
+            "probox: no checkpoint load" 
+            0 
+         )
+         ( = @check1reachedm01[0] 0 ) 
+      )
+   )
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file 
+      "pacemaker1.ogg" 
+   )
+)
++Name: soundtrack 1
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file 
+      "pacemaker2.ogg" 
+      1 
+   )
+)
++Name: battlemusic
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( never-warp "Alpha 3" ) 
+   ( script-eval "jsv(1,'m01')" ) 
+)
++Name: nowhere to go
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-guardian-threshold 
+      10 
+      "Suffron" 
+      "Ironhide" 
+   )
+   ( ship-subsys-guardian-threshold 
+      50 
+      "Ironhide" 
+      "navigation" 
+   )
+)
++Name: cruisers guardian
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable @convoydamage[0] 0 ) 
+)
++Name: convoy damage reset
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Sigma 1" ) 
+   ( modify-variable 
+      @convoydamage[0] 
+      ( + @convoydamage[0] 1 ) 
+   )
+)
++Name: chnupis 1 destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Sigma 2" ) 
+   ( modify-variable 
+      @convoydamage[0] 
+      ( + @convoydamage[0] 1 ) 
+   )
+)
++Name: chnupis 2 destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Sigma 3" ) 
+   ( modify-variable 
+      @convoydamage[0] 
+      ( + @convoydamage[0] 1 ) 
+   )
+)
++Name: chnupis 3 destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Leeuwenhoek" ) 
+   ( modify-variable 
+      @convoydamage[0] 
+      ( + @convoydamage[0] 3 ) 
+   )
+)
++Name: leeuwenhoek destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Argent Mist" ) 
+   ( modify-variable 
+      @convoydamage[0] 
+      ( + @convoydamage[0] 3 ) 
+   )
+)
++Name: argent mist destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Suffron" ) 
+   ( do-nothing ) 
+)
++Name: suffron destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( cap-waypoint-speed "Ironhide" 35 ) 
+   ( cap-waypoint-speed "Suffron" 35 ) 
+   ( cap-waypoint-speed "Sigma 1" 35 ) 
+   ( cap-waypoint-speed "Sigma 2" 35 ) 
+   ( cap-waypoint-speed "Sigma 3" 35 ) 
+   ( cap-waypoint-speed "Leeuwenhoek" 35 ) 
+   ( cap-waypoint-speed "Argent Mist" 35 ) 
+)
++Name: waypoint speed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+      ( is-destroyed-delay 
+         0 
+         "Taurus" 
+         "Cancer" 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: destroy fighters 1
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy attacking fighters", 4333)
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file 
+      "animus1.ogg" 
+      1 
+   )
+)
++Name: soundtrack 2
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-guardian-threshold 
+      33 
+      "Alpha 1" 
+      "Alpha 2" 
+   )
+   ( ship-subsys-guardian-threshold 
+      42 
+      "Alpha 1" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      21 
+      "Alpha 2" 
+      "<all engines>" 
+   )
+)
++Name: guardianed
++Repeat Count: 1
++Interval: 1
++Team: 0
++Event Log Flags: ( "true" "false" )
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "there they are" 
+   )
+)
++Name: there they are
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "looks like" 
+   )
+)
++Name: looks like
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "three of us" 
+   )
+)
++Name: three of us
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "plus cruisers" 
+   )
+)
++Name: plus cruisers
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "no choice" 
+   )
+)
++Name: no choice
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "destroy fighters 1" 
+         0 
+      )
+      ( < @convoydamage[0] 2 ) 
+      ( is-event-incomplete 
+         "mission continues" 
+      )
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: minimal civ causalties
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         2 
+         "Taurus" 
+         "Cancer" 
+      )
+      ( is-event-incomplete 
+         "take up escort positions" 
+      )
+   )
+   ( send-message 
+      "Ironhide" 
+      "High" 
+      "about time" 
+   )
+)
++Name: about time
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "damned mess" 
+   )
+)
++Name: damned mess
++Repeat Count: 1
++Interval: 1
++Chained: 13
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "where was earth" 
+   )
+)
++Name: where was earth
++Repeat Count: 1
++Interval: 1
++Chained: 13
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "came as fast" 
+   )
+)
++Name: came as fast
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "destroy fighters 1" 
+         0 
+      )
+      ( < @convoydamage[0] 6 ) 
+      ( > @convoydamage[0] 1 ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: some civ casualties
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         2 
+         "Taurus" 
+         "Cancer" 
+      )
+      ( is-event-incomplete 
+         "take up escort positions" 
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "sorry we're late" 
+   )
+)
++Name: sorry we're late
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Ironhide" 
+      "High" 
+      "apologise to the dead" 
+   )
+)
++Name: apologise to the dead
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "ungrateful cargo haulers" 
+   )
+)
++Name: ungrateful cargo haulers
++Repeat Count: 1
++Interval: 1
++Chained: 13
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "cool it kassim" 
+   )
+)
++Name: cool it kassim
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "save your anger" 
+   )
+)
++Name: save your anger
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "destroy fighters 1" 
+         0 
+      )
+      ( > @convoydamage[0] 5 ) 
+      ( is-event-incomplete 
+         "mission continues" 
+      )
+      ( not ( = @convoydamage[0] 9 ) ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: major civ casualties
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         2 
+         "Taurus" 
+         "Cancer" 
+      )
+      ( is-event-incomplete 
+         "take up escort positions" 
+      )
+   )
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "incompetent rookies" 
+   )
+)
++Name: incompetent rookies
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "calm down" 
+   )
+)
++Name: calm down
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "best you could" 
+   )
+)
++Name: best you could
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "ungrateful cargo haulers" 
+   )
+)
++Name: ungrateful cargo haulers 2
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "cool it kassim" 
+   )
+)
++Name: cool it kassim 2
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "save your anger" 
+   )
+)
++Name: save your anger 2
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "came as fast" 
+         9 
+      )
+      ( is-event-true-delay 
+         "save your anger" 
+         9 
+      )
+      ( is-event-true-delay 
+         "save your anger 2" 
+         9 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: mission continues
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "take up escort positions" 
+   )
+)
++Name: take up escort positions
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "ready to fight" 
+   )
+)
++Name: ready to fight
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "listen here rookie" 
+   )
+)
++Name: listen here rookie
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "word rookie" 
+   )
+)
++Name: word rookie
++Repeat Count: 1
++Interval: 1
++Chained: 10
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "ordered to europa" 
+   )
+)
++Name: ordered to europa
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "gutted like a roast" 
+   )
+)
++Name: gutted like a roast
++Repeat Count: 1
++Interval: 1
++Chained: 13
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "dammit kassim" 
+   )
+)
++Name: dammit kassim
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "something that compares" 
+   )
+)
++Name: something that compares
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "you're all rookies" 
+   )
+)
++Name: you're all rookies
++Repeat Count: 1
++Interval: 1
++Chained: 15
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Scorpio" ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "new enemy wing" 
+   )
+   ( play-sound-from-file 
+      "pacemaker2.ogg" 
+      1 
+   )
+)
++Name: enemy wing + new music
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "upped the ante" 
+   )
+)
++Name: upped the ante
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "remember training" 
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Libra" 89 ) 
+   )
+)
++Name: remember training
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "vulcan peashooters" 
+   )
+)
++Name: vulcan peashooters
++Repeat Count: 1
++Interval: 1
++Chained: 15
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Libra" ) 
+   ( do-nothing ) 
+)
++Name: libra arrives
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Libra" ) 
+   ( do-nothing ) 
+)
++Name: dir destroy libra
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Libra", 4334)
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Scorpio" ) 
+   ( do-nothing ) 
+)
++Name: scorpio arrives
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Scorpio" ) 
+   ( do-nothing ) 
+)
++Name: dir destroy scorpio
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Scorpio", 4335)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         4 
+         "Libra" 
+         "Scorpio" 
+      )
+      ( < @convoydamage[0] 1 ) 
+      ( < ( mission-time ) 446 ) 
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "good flying" 
+   )
+   ( play-sound-from-file 
+      "animus1.ogg" 
+      1 
+   )
+)
++Name: good flying
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         4 
+         "Libra" 
+         "Scorpio" 
+      )
+      ( > @convoydamage[0] 0 ) 
+      ( < @convoydamage[0] 8 ) 
+      ( < ( mission-time ) 446 ) 
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "bad flying" 
+   )
+   ( play-sound-from-file 
+      "animus1.ogg" 
+      1 
+   )
+)
++Name: bad flying
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( > @convoydamage[0] 3 ) 
+      ( is-event-incomplete 
+         "incompetent rookies" 
+      )
+      ( not ( = @convoydamage[0] 8 ) ) 
+   )
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "incompetent rookies" 
+   )
+)
++Name: incompetent rookies 2
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( < ( mission-time ) 446 ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "calm down" 
+   )
+)
++Name: calm down 2
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Team: 0
+
+$Formula: ( when 
+   ( < ( mission-time ) 446 ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "best you could" 
+   )
+)
++Name: best you could 2
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay "good flying" 9 ) 
+         ( is-event-true-delay 
+            "best you could 2" 
+            11 
+         )
+         ( and 
+            ( is-event-true-delay "bad flying" 9 ) 
+            ( not ( > @convoydamage[0] 3 ) ) 
+         )
+      )
+      ( < ( mission-time ) 446 ) 
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "you ok laporte" 
+   )
+)
++Name: you ok laporte
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "I'm ok" 
+   )
+)
++Name: i'm ok
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "you got it" 
+   )
+)
++Name: you got it
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "going to whack you" 
+   )
+)
++Name: going to whack you
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "don't deny feelings" 
+   )
+)
++Name: don't deny feelings
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "not a good night" 
+   )
+)
++Name: not a good night
++Repeat Count: 1
++Interval: 1
++Chained: 13
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "keep frequency clear" 
+   )
+)
++Name: keep frequency clear
++Repeat Count: 1
++Interval: 1
++Chained: 13
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "yes uncle" 
+   )
+)
++Name: yes uncle
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "yes sir" 
+   )
+)
++Name: yes sir
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "with any luck" 
+   )
+)
++Name: with any luck
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "they'll know better" 
+   )
+)
++Name: they'll know better
++Repeat Count: 1
++Interval: 1
++Chained: 13
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "trebs" 
+   )
+)
++Name: trebs
++Repeat Count: 1
++Interval: 1
++Chained: 13
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "exercises" 
+   )
+)
++Name: exercises
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "i'm not afraid" 
+   )
+)
++Name: i'm not afraid
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( mission-time ) 446 ) 
+      ( not 
+         ( is-event-true-delay 
+            "lost contact" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "proud or terrified" 
+   )
+)
++Name: proud or terrified
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+      ( is-destroyed-delay 0 "Argent Mist" ) 
+   )
+   ( send-message 
+      "#Argent Mist Beacon" 
+      "High" 
+      "argent mist destroyed" 
+   )
+)
++Name: argent mist destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "argent mist destroyed 2" 
+   )
+)
++Name: argent mist destroyed 2
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( < ( hits-left "Leeuwenhoek" ) 30 ) 
+   ( send-message 
+      "Leeuwenhoek" 
+      "Normal" 
+      "leeuwenhoek damaged" 
+   )
+)
++Name: leeuwenhoek damaged
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+      ( is-destroyed-delay 2 "Leeuwenhoek" ) 
+   )
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "leeuwenhoek destroyed" 
+   )
+)
++Name: leeuwenhoek destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "leeuwenhoek destroyed 2" 
+   )
+)
++Name: leeuwenhoek destroyed 2
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( > ( mission-time ) 390 ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "#Solaris" 
+      "High" 
+      "lost contact" 
+   )
+)
++Name: lost contact
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "#Solaris" 
+      "High" 
+      "vectored to you" 
+   )
+   ( clear-goals "Alpha" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Alpha 3" 89 ) 
+   )
+)
++Name: vectored to you
++Repeat Count: 1
++Interval: 1
++Chained: 15
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "vectored to you" 
+         9 
+      )
+      ( or 
+         ( is-event-true-delay "good flying" 0 ) 
+         ( is-event-true-delay "bad flying" 0 ) 
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "heavy turbulence 1" 
+   )
+)
++Name: heavy turbulence 1
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "vectored to you" 
+         9 
+      )
+      ( or 
+         ( is-event-incomplete 
+            "dir destroy libra" 
+         )
+         ( is-event-incomplete 
+            "dir destroy scorpio" 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "heavy turbulence 2" 
+   )
+)
++Name: heavy turbulence 2
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "heavy turbulence 1" 
+         13 
+      )
+      ( is-event-true-delay 
+         "heavy turbulence 2" 
+         13 
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "hope you kept hellfires" 
+   )
+)
++Name: hope you kept hellfires
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Leo" ) 
+   ( play-sound-from-file 
+      "vortalcombatintro.ogg" 
+      0 
+   )
+   ( change-soundtrack "<No Music>" ) 
+   ( modify-variable 
+      @check1reachedm01[0] 
+      1 
+   )
+   ( modify-variable 
+      @alpha1healthm01[100] 
+      ( hits-left "Alpha 1" ) 
+   )
+   ( modify-variable 
+      @alpha2healthm01[100] 
+      ( hits-left "Alpha 2" ) 
+   )
+   ( modify-variable 
+      @alpha3healthm01[100] 
+      ( hits-left "Alpha 3" ) 
+   )
+   ( modify-variable 
+      @argentmisthealth[100] 
+      ( hits-left "Argent Mist" ) 
+   )
+   ( modify-variable 
+      @ironhidehealth[100] 
+      ( hits-left "Ironhide" ) 
+   )
+   ( modify-variable 
+      @leeuwenhoekhealth[100] 
+      ( hits-left "Leeuwenhoek" ) 
+   )
+   ( modify-variable 
+      @sigma1health[100] 
+      ( hits-left "Sigma 1" ) 
+   )
+   ( modify-variable 
+      @sigma2health[100] 
+      ( hits-left "Sigma 2" ) 
+   )
+   ( modify-variable 
+      @sigma3health[100] 
+      ( hits-left "Sigma 3" ) 
+   )
+   ( modify-variable 
+      @suffronhealth[100] 
+      ( hits-left "Suffron" ) 
+   )
+   ( ship-no-guardian "Ironhide" ) 
+)
++Name: music change
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "here they come" 
+   )
+)
++Name: here they come
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Ironhide" 
+      "High" 
+      "move towards fighters" 
+   )
+   ( cap-waypoint-speed "Ironhide" 40 ) 
+   ( cap-waypoint-speed "Suffron" 40 ) 
+)
++Name: move towards fighters
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Ironhide" ) 
+   ( add-goal 
+      "Ironhide" 
+      ( ai-waypoints-once 
+         "Ironhide break" 
+         89 
+      )
+   )
+)
++Name: ironhide moves out
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Ironhide" 89 ) 
+   )
+)
++Name: alpha follows ironhide
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Suffron" ) 
+   ( add-goal 
+      "Suffron" 
+      ( ai-waypoints-once 
+         "Suffron break" 
+         89 
+      )
+   )
+)
++Name: suffron moves
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "right behind you" 
+   )
+)
++Name: right behind you
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when 
+   ( < 
+      ( distance "<any hostile>" "Ironhide" ) 
+      6000 
+   )
+   ( add-goal 
+      "Alpha 1" 
+      ( ai-chase "Sagittarius" 89 ) 
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "brie: let's go, Alpha" 
+   )
+   ( add-goal 
+      "Alpha 1" 
+      ( ai-chase "Capricorn" 88 ) 
+   )
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-chase "Sagittarius" 89 ) 
+   )
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-chase "Capricorn" 88 ) 
+   )
+   ( add-goal 
+      "Alpha 1" 
+      ( ai-chase-any 80 ) 
+   )
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-chase-any 80 ) 
+   )
+)
++Name: alpha engages
++Repeat Count: 1
++Interval: 1
++Chained: 20
++Team: 0
+
+$Formula: ( when 
+   ( < 
+      ( distance 
+         "Leeuwenhoek" 
+         "Waypoint path 1:1" 
+      )
+      580 
+   )
+   ( send-message 
+      "Leeuwenhoek" 
+      "High" 
+      "leeuwenhoek leaving" 
+   )
+)
++Name: leeuwenhoek leaving
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( < 
+      ( distance 
+         "Argent Mist" 
+         "Waypoint path 2:1" 
+      )
+      560 
+   )
+   ( send-message 
+      "Argent Mist" 
+      "High" 
+      "freighter leaving" 
+   )
+)
++Name: freighter leaving
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( < ( hits-left "Ironhide" ) 38 ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "ironhide get out of there" 
+   )
+)
++Name: ironhide get out of there
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Ironhide" 
+      "High" 
+      "done retreating" 
+   )
+)
++Name: done retreating
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-no-guardian "Ironhide" ) 
+)
++Name: ironhide nonguardianed
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when 
+   ( = @convoydamage[0] 9 ) 
+   ( do-nothing ) 
+)
++Name: convoy all dead
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "all civilians dead" 
+   )
+)
++Name: all civilians dead
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "we're heading out" 
+   )
+)
++Name: we're heading out
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Leo" ) 
+   ( do-nothing ) 
+)
++Name: leo arrives
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Leo" ) 
+   ( do-nothing ) 
+)
++Name: dir destroy leo
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Leo", 4336)
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Sagittarius" ) 
+   ( do-nothing ) 
+)
++Name: sagittarius arrives
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Sagittarius" ) 
+   ( do-nothing ) 
+)
++Name: dir destroy sagittarius
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Sagittarius", 4337)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      2 
+      "Sagittarius" 
+      "Leo" 
+      "Aquarius" 
+      "Capricorn" 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( change-soundtrack "3: Leviticus" ) 
+)
++Name: all destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( destroyed-or-departed-delay 
+         4 
+         "Leeuwenhoek" 
+         "Argent Mist" 
+         "Sigma 1" 
+         "Sigma 2" 
+         "Sigma 3" 
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "take that bastards" 
+   )
+)
++Name: take that bastards
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( destroyed-or-departed-delay 
+         4 
+         "Leeuwenhoek" 
+         "Argent Mist" 
+         "Sigma 1" 
+         "Sigma 2" 
+         "Sigma 3" 
+      )
+   )
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "are they civvies?" 
+   )
+)
++Name: they don't think they're civvie
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( not 
+      ( destroyed-or-departed-delay 
+         0 
+         "Leeuwenhoek" 
+         "Argent Mist" 
+         "Sigma 1" 
+         "Sigma 2" 
+         "Sigma 3" 
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "that's not helping, laporte" 
+   )
+)
++Name: admire your spirit
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( not 
+      ( destroyed-or-departed-delay 
+         4 
+         "Leeuwenhoek" 
+         "Argent Mist" 
+         "Sigma 1" 
+         "Sigma 2" 
+         "Sigma 3" 
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "brie: area seems clear" 
+   )
+)
++Name: brie: area seems clear
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( destroyed-or-departed-delay 
+         0 
+         "Leeuwenhoek" 
+         "Argent Mist" 
+         "Sigma 1" 
+         "Sigma 2" 
+         "Sigma 3" 
+      )
+   )
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "suffron: area seems clear" 
+   )
+)
++Name: suffron: area seems clear
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( destroyed-or-departed-delay 
+         0 
+         "Sigma 1" 
+         "Sigma 2" 
+         "Sigma 3" 
+         "Leeuwenhoek" 
+         "Argent Mist" 
+      )
+      ( is-event-incomplete 
+         "convoy all dead" 
+      )
+   )
+   ( ship-invulnerable "Ironhide" ) 
+)
++Name: nothing left to protect
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( destroyed-or-departed-delay 
+         4 
+         "Leeuwenhoek" 
+         "Argent Mist" 
+         "Sigma 1" 
+         "Sigma 2" 
+         "Sigma 3" 
+      )
+      ( = @convoydamage[0] 0 ) 
+   )
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "all civilians made it" 
+   )
+)
++Name: all civilians made it
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( destroyed-or-departed-delay 
+         4 
+         "Leeuwenhoek" 
+         "Argent Mist" 
+         "Sigma 1" 
+         "Sigma 2" 
+         "Sigma 3" 
+      )
+      ( > @convoydamage[0] 0 ) 
+   )
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "some civilians made it" 
+   )
+)
++Name: some civilians made it
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 2 "Suffron" ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "get out of here" 
+   )
+   ( key-reset "Alt-J" ) 
+   ( allow-warp "Alpha 3" ) 
+)
++Name: get out of here
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( key-pressed "Alt-J" ) 
+   ( do-nothing ) 
+)
++Name: dir depart
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return to Base", 4338)
++Objective key:  XSTR("Press $Alt-J$", 4339)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Ironhide" ) 
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "ironhide destroyed" 
+   )
+)
++Name: ironhide destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( < ( hits-left "Argent Mist" ) 35 ) 
+   ( send-message 
+      "Argent Mist" 
+      "High" 
+      "argent mist damage" 
+   )
+)
++Name: argent mist damage
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "right behind you" 
+      12 
+   )
+   ( send-message 
+      "Sagittarius 1" 
+      "High" 
+      "BETAC" 
+   )
+)
++Name: BETAC
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "we're heading out" 
+      7 
+   )
+   ( allow-warp "Alpha 3" ) 
+)
++Name: total fail RTB
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 3" ) 
+   ( do-nothing ) 
+)
++Name: total fail RTB dir
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return to Base", 4338)
++Objective key:  XSTR("Press $Alt-J$", 4339)
+
+$Formula: ( when 
+   ( and 
+      ( = ( num_kills "Alpha 3" ) 1 ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( training-msg "laporte first kill" ) 
+)
++Name: laporte first kill
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = ( num_kills "Alpha 3" ) 2 ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( training-msg "laporte second kill" ) 
+)
++Name: laporte third kill
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = ( num_kills "Alpha 3" ) 4 ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( training-msg "laporte fourth kill" ) 
+)
++Name: laporte fourth kill
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Aquarius" ) 
+   ( do-nothing ) 
+)
++Name: destroy aquarius
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Aquarius", 4340)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Capricorn" ) 
+   ( do-nothing ) 
+)
++Name: destroy capricorn
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Capricorn", 4341)
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "suffron: area seems clear" 
+         12 
+      )
+      ( > 
+         ( distance 
+            "Leeuwenhoek" 
+            "Waypoint path 1:1" 
+         )
+         750 
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "brie: okay" 
+   )
+   ( clear-goals "Alpha 2" ) 
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-waypoints-once 
+         "freakout kassim" 
+         89 
+      )
+   )
+)
++Name: some additional banter
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( > 
+      ( distance 
+         "Leeuwenhoek" 
+         "Waypoint path 1:1" 
+      )
+      750 
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "kassime: fine, fine" 
+   )
+   ( clear-goals "Alpha 2" ) 
+   ( add-goal 
+      "Alpha 2" 
+      ( ai-guard "Suffron" 89 ) 
+   )
+)
++Name: some additional banter 2
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( > 
+      ( distance 
+         "Leeuwenhoek" 
+         "Waypoint path 1:1" 
+      )
+      750 
+   )
+   ( send-message 
+      "#Alpha 3" 
+      "High" 
+      "laporte: what's the matter?" 
+   )
+)
++Name: some additional banter 3
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( and-in-sequence 
+      ( = @check1reachedm01[0] 0 ) 
+      ( = @check1reachedm01[0] 1 ) 
+   )
+   ( training-msg 
+      "checkpoint 1 unlocked" 
+   )
+)
++Name: checkpoint 1 reached!
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Leo" ) 
+   ( do-nothing ) 
+)
++Name: leo arrives 2 (store xyz)
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Checkpoint 1" ) 
+   ( fade-out 1000 ) 
+)
++Name: checkpoint 1 activated!
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-subsystem-strength 
+      "Alpha 1" 
+      "Hull" 
+      @alpha1healthm01[100] 
+   )
+   ( set-subsystem-strength 
+      "Alpha 2" 
+      "Hull" 
+      @alpha2healthm01[100] 
+   )
+   ( set-subsystem-strength 
+      "Alpha 3" 
+      "Hull" 
+      @alpha3healthm01[100] 
+   )
+   ( set-subsystem-strength 
+      "Argent Mist" 
+      "Hull" 
+      @argentmisthealth[100] 
+   )
+   ( set-subsystem-strength 
+      "Ironhide" 
+      "Hull" 
+      @ironhidehealth[100] 
+   )
+   ( set-subsystem-strength 
+      "Leeuwenhoek" 
+      "Hull" 
+      @leeuwenhoekhealth[100] 
+   )
+   ( set-subsystem-strength 
+      "Sigma 1" 
+      "Hull" 
+      @sigma1health[100] 
+   )
+   ( set-subsystem-strength 
+      "Sigma 2" 
+      "Hull" 
+      @sigma2health[100] 
+   )
+   ( set-subsystem-strength 
+      "Sigma 3" 
+      "Hull" 
+      @sigma3health[100] 
+   )
+   ( set-subsystem-strength 
+      "Suffron" 
+      "Hull" 
+      @suffronhealth[100] 
+   )
+   ( set-object-position 
+      "Ironhide" 
+      143 
+      148 
+      22838 
+   )
+   ( set-object-position 
+      "Suffron" 
+      417 
+      -128 
+      20711 
+   )
+   ( set-object-position 
+      "Sigma 1" 
+      132 
+      148 
+      22058 
+   )
+   ( set-object-position 
+      "Sigma 2" 
+      130 
+      148 
+      21373 
+   )
+   ( set-object-position 
+      "Sigma 3" 
+      470 
+      -128 
+      21631 
+   )
+   ( set-object-position 
+      "Leeuwenhoek" 
+      143 
+      148 
+      20503 
+   )
+   ( set-object-position 
+      "Argent Mist" 
+      439 
+      -128 
+      22640 
+   )
+   ( set-object-position 
+      "Alpha 1" 
+      417 
+      22 
+      20711 
+   )
+   ( set-object-position 
+      "Alpha 2" 
+      567 
+      22 
+      20711 
+   )
+   ( set-object-position 
+      "Alpha 3" 
+      277 
+      22 
+      20711 
+   )
+   ( ship-vanish 
+      "Taurus 1" 
+      "Taurus 2" 
+      "Taurus 3" 
+      "Taurus 4" 
+      "Cancer 1" 
+      "Cancer 2" 
+      "Cancer 3" 
+      "Cancer 4" 
+   )
+   ( fade-in 1000 ) 
+)
++Name: checkpoint 1 magic
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-time-elapsed 1 ) 
+      ( = @check1reachedm01[0] 1 ) 
+      ( not ( has-time-elapsed 16 ) ) 
+      ( false ) 
+   )
+   ( training-msg "checkpoint available" ) 
+)
++Name: yo, checkpoint is available
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "checkpoint 1 activated!" 
+      1 
+   )
+   ( set-object-facing-object 
+      "Alpha 1" 
+      "Belt - Mars" 
+   )
+   ( set-object-facing-object 
+      "Alpha 2" 
+      "Belt - Mars" 
+   )
+   ( set-object-facing-object 
+      "Alpha 3" 
+      "Belt - Mars" 
+   )
+)
++Name: further checkpoint 1 magic
++Repeat Count: 1
++Interval: 1
++Team: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "all civilians made it" 
+         7 
+      )
+      ( is-destroyed-delay 0 "Ironhide" ) 
+   )
+   ( send-message 
+      "Suffron" 
+      "Normal" 
+      "suffron mourns ironhide" 
+   )
+)
++Name: suffron mourns ironhide
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "some civilians made it" 
+         7 
+      )
+      ( is-destroyed-delay 0 "Ironhide" ) 
+   )
+   ( send-message 
+      "Suffron" 
+      "Normal" 
+      "suffron mourns ironhide 2" 
+   )
+)
++Name: suffron mourns ironhide 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 0 "Sigma 1" ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "brie: sigma 1 down" 
+   )
+)
++Name: sigma transport down 1
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 0 "Sigma 2" ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "suffron: sigma 2 down" 
+   )
+)
++Name: sigma transport down 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 0 "Sigma 3" ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Suffron" 
+      "High" 
+      "suffron: sigma 3 down" 
+   )
+)
++Name: sigma transport down 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "music change" 
+      14 
+   )
+   ( play-sound-from-file 
+      "vortalcombat.ogg" 
+      1 
+   )
+)
++Name: loop vortalcombat
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 5 "Scorpio" ) 
+   ( clear-goals "Scorpio" ) 
+   ( add-goal 
+      "Scorpio" 
+      ( ai-chase "Argent Mist" 69 ) 
+   )
+   ( add-goal 
+      "Scorpio" 
+      ( ai-chase-ship-class "UET Kadmos" 89 ) 
+   )
+   ( add-goal 
+      "Scorpio" 
+      ( ai-chase "Leeuwenhoek" 79 ) 
+   )
+)
++Name: scorpio bombers not attacking
++Repeat Count: 5
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: =======WOOP WOOP PROBOX========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-msecs-delay 
+         "invuln engines" 
+         1 
+      )
+      ( = @check1reachedm01[0] 1 ) 
+      ( not ( has-time-elapsed 10 ) ) 
+   )
+   ( script-eval "proBoxAllowPause()" ) 
+   ( script-eval "proBoxOn()" ) 
+   ( script-eval "proBoxSet(2)" ) 
+   ( hud-set-message 
+      "PromptBox" 
+      "probox - check available" 
+   )
+   ( hud-set-message 
+      "PromptBoxOpt1" 
+      "probox - load checkpoint" 
+   )
+   ( hud-set-message 
+      "PromptBoxOpt2" 
+      "probox - start from beginning" 
+   )
+)
++Name: probox on if check available
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = 
+      ( script-eval-num "proBoxValue()" ) 
+      1 
+   )
+   ( script-eval "proBoxOff()" ) 
+)
++Name: probox: checkpoint load!
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = 
+      ( script-eval-num "proBoxValue()" ) 
+      2 
+   )
+   ( script-eval "proBoxOff()" ) 
+)
++Name: probox: no checkpoint load
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( false ) 
+   ( modify-variable 
+      @check1reachedm01[0] 
+      0 
+   )
+)
++Name: probox available in techroom
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 3 total
+
+$Type: Primary
++Name: Protect convoy
+$MessageNew:  XSTR("Protect civilian ships from GTVA attacks", 4342)
+$end_multi_text
+$Formula: ( and 
+   ( destroyed-or-departed-delay 
+      0 
+      "Leeuwenhoek" 
+      "Argent Mist" 
+      "Sigma 1" 
+      "Sigma 2" 
+      "Sigma 3" 
+   )
+   ( < @convoydamage[0] 5 ) 
+)
+
+$Type: Bonus
++Name: All ships escape
+$MessageNew:  XSTR("All ships survive", 4343)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "all civilians made it" 
+      0 
+   )
+   ( = @convoydamage[0] 0 ) 
+   ( is-event-incomplete 
+      "ironhide destroyed" 
+   )
+)
+
+$Type: Secondary
++Name: Protect cruisers
+$MessageNew:  XSTR("Protect the cruisers from GTVA attack", 4344)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "get out of here" 
+      0 
+   )
+   ( and 
+      ( not 
+         ( is-event-true-delay 
+            "suffron destroyed" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "ironhide destroyed" 
+            0 
+         )
+      )
+   )
+)
+
+#Waypoints		;! 6 lists total
+
+$Name: Waypoint path 1
+$List: (		;! 1 points in list
+	( 127.059814, 148.175812, 29983.640625 )
+)
+
+$Name: Waypoint path 2
+$List: (		;! 1 points in list
+	( 391.346497, -128.630157, 29875.267578 )
+)
+
+$Name: Ironhide break
+$List: (		;! 1 points in list
+	( 4181.500000, 100.000000, 29754.000000 )
+)
+
+$Name: Suffron break
+$List: (		;! 1 points in list
+	( 4824.055176, -100.000069, 29330.746094 )
+)
+
+$Name: Waypoint path 5
+$List: (		;! 1 points in list
+	( 7383.312988, -0.000000, 32593.597656 )
+)
+
+$Name: freakout kassim
+$List: (		;! 1 points in list
+	( 1413.599976, 1500.000000, 28932.300781 )
+)
+
+#Messages		;! 96 total
+
+
+$Name: there they are
+$Team: -1
+$MessageNew:  XSTR("Solaris control, I've got visual on the convoy ships. They're taking fire from a Tev strike force.", 4345)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s01.ogg
+
+$Name: looks like
+$Team: -1
+$MessageNew:  XSTR("I tally three transports, a freighter and a medical ship, with two warship escorts. Two wings of bandits.", 4346)
+$end_multi_text
++Wave Name: bp201s02.ogg
+
+$Name: three of us
+$Team: -1
+$MessageNew:  XSTR("Three of us against eight of them.", 4347)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s03.ogg
+
+$Name: plus cruisers
+$Team: -1
+$MessageNew:  XSTR("Three of us plus the cruisers. We can take them!", 4348)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s04.ogg
+
+$Name: no choice
+$Team: -1
+$MessageNew:  XSTR("We've got no other choice. Alpha, split and engage! Don't get reckless, and don't hesitate!", 4349)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s05.ogg
+
+$Name: about time
+$Team: -1
+$MessageNew:  XSTR("This is the Ironhide. It's about time you showed up. Those Tev stingers had been tormenting us ever since we left Jupiter. We lost two ships in transit.", 4350)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s06.ogg
+
+$Name: where was earth
+$Team: -1
+$MessageNew:  XSTR("Where was Earth, anyway? Sitting back home doing a whole lot of nothing while good Jovian soldiers were dying.", 4351)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s07.ogg
+
+$Name: came as fast
+$Team: -1
+$MessageNew:  XSTR("We were deployed as soon as our orders came through, Captain. We came here as fast as we could.", 4352)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s08.ogg
+
+$Name: damned mess
+$Team: -1
+$MessageNew:  XSTR("What a damned bloody mess Europa turned out to be. We couldn't keep it two days after the Tevs stormed the place. How the hell did First Fleet expect us to hold Jupiter without reinforcements?", 4353)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s09.ogg
+
+$Name: sorry we're late
+$Team: -1
+$MessageNew:  XSTR("This is Alpha Wing, 170th Fighting Navajas. Sorry we couldn't get here sooner$semicolon our orders just came through.", 4354)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s10.ogg
+
+$Name: apologise to the dead
+$Team: -1
+$MessageNew:  XSTR("That doesn't do us a damn lot of good, Earther. You owe your apologies to the dead.", 4355)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s11.ogg
+
+$Name: ungrateful cargo haulers
+$Team: -1
+$MessageNew:  XSTR("Listen, you asshole! If it weren't for us you'd be smoking slag by now. Maybe we'll just leave you for the next attack!", 4356)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s12.ogg
+
+$Name: cool it kassim
+$Team: -1
+$MessageNew:  XSTR("That's enough, Kassim! Clear your head, and focus! These people are refugees, and we are not leaving them to die.", 4357)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s13.ogg
+
+$Name: save your anger
+$Team: -1
+$MessageNew:  XSTR("Kassim, after what these people have gone through, I think they have the right to be upset. Save your anger for the GTVA.", 4358)
+$end_multi_text
++Wave Name: bp201s14.ogg
+
+$Name: incompetent rookies
+$Team: -1
+$MessageNew:  XSTR("Alpha wing! Where the hell were you? You just let thousands of civilians die!", 4359)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s15.ogg
+
+$Name: calm down
+$Team: -1
+$MessageNew:  XSTR("Calm down, Captain. We did the best that we could under the circumstances. They outnumbered us more than two to one.", 4360)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s16.ogg
+
+$Name: best you could
+$Team: -1
+$MessageNew:  XSTR("Best you could! Your ineptitude cost the lives of good Jovian people! I'm filing an official complaint to your senior officer as soon as we make it to Mars.", 4361)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s17.ogg
+
+$Name: take up escort positions
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, take up escort positions. Stay alert. The Tevs are likely to send heavier forces to finish off the convoy.", 4362)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s18.ogg
+
+$Name: ready to fight
+$Team: -1
+$MessageNew:  XSTR("Bring them on. I'm ready to fight. Those Tevs won't know what hit 'em.", 4363)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s19.ogg
+
+$Name: listen here rookie
+$Team: -1
+$MessageNew:  XSTR("So this is what First Fleet sends to our aid. An academy-fresh rookie with an ego the size of Pele.", 4364)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s20.ogg
+
+$Name: word rookie
+$Team: -1
+$MessageNew:  XSTR("Who are you calling a rookie, Suffron control? We just bailed you out!", 4365)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s21.ogg
+
+$Name: ordered to europa
+$Team: -1
+$MessageNew:  XSTR("Listen, Earther. We volunteered for a suicide mission to gain time for the evacuation of Artemis Station. Every minute gained was fifty, a hundred civilians that were able to get out.", 4366)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s22.ogg
+
+$Name: gutted like a roast
+$Team: -1
+$MessageNew:  XSTR("We covered the Nelson as Captain Mence ordered a ram into that damned Atreus. The plasma beams gutted his ship like a roast before he could get within a klick. The Suffron was the only ship that survived the battle.", 4367)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s23.ogg
+
+$Name: dammit kassim
+$Team: -1
+$MessageNew:  XSTR("Damn it, Kassim...", 4368)
+$end_multi_text
++Wave Name: bp201s24.ogg
+
+$Name: something that compares
+$Team: -1
+$MessageNew:  XSTR("So tell me something you've experienced, pilot, that compares to seeing ghosts of the Lucifer's own weapons carving up your comrades...and knowing that you're next.", 4369)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s25.ogg
+
+$Name: you're all rookies
+$Team: -1
+$MessageNew:  XSTR("Until then you're all rookies to us.", 4370)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s26.ogg
+
+$Name: new enemy wing
+$Team: -1
+$MessageNew:  XSTR("Heads up! Enemy strike just arrived. Artemis bombers and a Kulas wing.", 4371)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s27.ogg
+
+$Name: upped the ante
+$Team: -1
+$MessageNew:  XSTR("Shit! Those bombers mount Maxim cannons. They'll tear the convoy apart!", 4372)
+$end_multi_text
++Wave Name: bp201s28.ogg
+
+$Name: remember training
+$Team: -1
+$MessageNew:  XSTR("Remember your sim training! Bombers before fighters, bombs before bombers! Move!", 4373)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s29.ogg
+
+$Name: good flying
+$Team: -1
+$MessageNew:  XSTR("Good flying, Alpha. Keep it up and we'll get this convoy out intact. You two do me proud.", 4374)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s30.ogg
+
+$Name: bad flying
+$Team: -1
+$MessageNew:  XSTR("Okay, Alpha wing. Keep it together. There's no telling what the Tevs will throw at us next.", 4375)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s31.ogg
+
+$Name: you ok laporte
+$Team: -1
+$MessageNew:  XSTR("<secure channel> Are you holding up okay, Noemi?", 4376)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s32.ogg
+
+$Name: I'm ok
+$Team: -1
+$MessageNew:  XSTR("<secure channel> Rock steady, Uncle Manuel. I don't know how I'm so calm. You and Kassim just keep them off my tail and I'll do my job.", 4377)
+$end_multi_text
++Wave Name: bp201s33.ogg
+
+$Name: you got it
+$Team: -1
+$MessageNew:  XSTR("<secure channel> You got it, Laporte. You know I enjoy watching your six whenever I get the opportunity.", 4378)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s34.ogg
+
+$Name: going to whack you
+$Team: -1
+$MessageNew:  XSTR("<secure channel> They told us it would take a powerful ego to survive combat stress unchanged. I'm proud to fly alongside living proof.", 4379)
+$end_multi_text
++Wave Name: bp201s35.ogg
+
+$Name: don't deny feelings
+$Team: -1
+$MessageNew:  XSTR("<secure channel> I'm trying to help you out, Laporte. You've got to unwind. Stop volunteering for patrol shifts, take some melatonin, and get your sleep cycles back to normal. You're missing out on some good nights at the Rec room.", 4380)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s36.ogg
+
+$Name: not a good night
+$Team: -1
+$MessageNew:  XSTR("<secure channel> I'm not interested in picking up deckhands while these Jovians die to keep us safe.", 4381)
+$end_multi_text
++Wave Name: bp201s37.ogg
+
+$Name: keep frequency clear
+$Team: -1
+$MessageNew:  XSTR("Kassim, Laporte. Eyes ahead. Focus.", 4382)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s38.ogg
+
+$Name: yes uncle
+$Team: -1
+$MessageNew:  XSTR("Yes sir.", 4383)
+$end_multi_text
++Wave Name: bp201s39.ogg
+
+$Name: yes sir
+$Team: -1
+$MessageNew:  XSTR("Right, boss.", 4384)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s40.ogg
+
+$Name: with any luck
+$Team: -1
+$MessageNew:  XSTR("With any luck the Tevs are reprioritising targets elsewhere. They won't keep sending waves of strikecraft if they think we're too well defended.", 4385)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s41.ogg
+
+$Name: leeuwenhoek destroyed
+$Team: -1
+$MessageNew:  XSTR("Gods above! The Leeuwenhoek...she had five thousand souls aboard.", 4386)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s42.ogg
+
+$Name: leeuwenhoek destroyed 2
+$Team: -1
+$MessageNew:  XSTR("May they be judged kindly in the next life. Tighten up your defence, Alpha wing!", 4387)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s43.ogg
+
+$Name: leeuwenhoek damaged
+$Team: -1
+$MessageNew:  XSTR("This is the Leeuwenhoek. Our power grid can't cope with the strain! We're losing patients, damn it!", 4388)
+$end_multi_text
++Wave Name: bp201s44.ogg
+
+$Name: lost contact
+$Team: -1
+$MessageNew:  XSTR("Navaja Alpha wing, be advised, the Rhineland came under GTVA attack before she could make it to Mars. We lost all contact with the frigate and Gamma wing.", 4389)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp201s45.ogg
+
+$Name: vectored to you
+$Team: -1
+$MessageNew:  XSTR("Recon has vectored the strike force's approach to your area. Stay alert.", 4390)
+$end_multi_text
++AVI Name: Head-CM11
++Wave Name: bp201s46.ogg
+
+$Name: heavy turbulence 1
+$Team: -1
+$MessageNew:  XSTR("Copy that, Solaris control. Okay, Alpha wing. Looks like we're about to hit some heavy turbulence. If the Tevs can take out a frigate, they'll roll all over this convoy. Prepare to move as soon as they arrive.", 4391)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s47.ogg
+
+$Name: hope you kept hellfires
+$Team: -1
+$MessageNew:  XSTR("Roger that, Brie. I hope you saved some Hellfires, Laporte, because I suspect we're gonna need 'em.", 4392)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s48.ogg
+
+$Name: here they come
+$Team: -1
+$MessageNew:  XSTR("Incoming jump signature, here they come! Two wings of bombers, with two escorting fighter wings. Kassim, Laporte: hold for now. Wait for my call.", 4393)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s49.ogg
+
+$Name: move towards fighters
+$Team: -1
+$MessageNew:  XSTR("Helm, take us away from the convoy and move towards the fighters. I want us in the middle of their formations, try to scatter them with our bulk. Alpha, follow us out.", 4394)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s50.ogg
+
+$Name: right behind you
+$Team: -1
+$MessageNew:  XSTR("We're right behind you, Ironhide. Point defence weapons, pick your targets and set turrets to fire at will. Prioritise incoming torpedoes.", 4395)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s51.ogg
+
+$Name: leeuwenhoek leaving
+$Team: -1
+$MessageNew:  XSTR("Leeuwenhoek is at the gate! Fortune's grace on you for your help today, people!", 4396)
+$end_multi_text
++Wave Name: bp201s52.ogg
+
+$Name: freighter leaving
+$Team: -1
+$MessageNew:  XSTR("We're at the gate! Engaging subspace drive...now!", 4397)
+$end_multi_text
++Wave Name: bp201s53.ogg
+
+$Name: ironhide get out of there
+$Team: -1
+$MessageNew:  XSTR("Ironhide, you're taking a pounding! Withdraw to Mars, we'll cover your retreat!", 4398)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s54.ogg
+
+$Name: done retreating
+$Team: -1
+$MessageNew:  XSTR("We're done retreating, Alpha 1. Tighten your defense. We're not leaving until everyone has.", 4399)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s55.ogg
+
+$Name: take that bastards
+$Team: -1
+$MessageNew:  XSTR("Take that, you Tev bastards! Try to attack civilians, will you?", 4400)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s56.ogg
+
+$Name: some civilians made it
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, our job is done here. We're warming up our jump drives and plotting a course for Mars.", 4401)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s57.ogg
+
+$Name: get out of here
+$Team: -1
+$MessageNew:  XSTR("Alpha wing, let's move out. Return to base.", 4402)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s58.ogg
+
+$Name: all civilians dead
+$Team: -1
+$MessageNew:  XSTR("I don't believe it. All of the civilians are dead. You left our people to die!", 4403)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s59.ogg
+
+$Name: we're heading out
+$Team: -1
+$MessageNew:  XSTR("There's no reason for us to stay. We're charging our jump drives and heading to Mars. Get out of our sight, Alpha wing.", 4404)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s60.ogg
+
+$Name: ironhide destroyed
+$Team: -1
+$MessageNew:  XSTR("Ironhide, do you read! Captain Chavez! Damn it!", 4405)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s61.ogg
+
+$Name: argent mist damage
+$Team: -1
+$MessageNew:  XSTR("Tev fire is incessant! We're getting fractures opening up all along the hull!", 4406)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s62.ogg
+
+$Name: heavy turbulence 2
+$Team: -1
+$MessageNew:  XSTR("We're a little busy here Command, but we'll do what we can. Alpha wing, head on a swivel! We're about to hit some heavy turbulence!", 4407)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s63.ogg
+
+$Name: BETAC
+$Team: -1
+$MessageNew:  XSTR("Federation ships. By traveling with armed escort, you have forfeited your protections under the Beta Aquilae Convention and will be presumed military targets. Cut your engines, or we will fire on you.", 4408)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s64.ogg
+
+$Name: vulcan peashooters
+$Team: -1
+$MessageNew:  XSTR("Close in on the bombers and use your Hellfires!", 4409)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s65.ogg
+
+$Name: all civilians made it
+$Team: -1
+$MessageNew:  XSTR("Good work, Alpha. The civilians are all through the gate. Set a course for Mars, jump as soon as you're ready.", 4410)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s66.ogg
+
+$Name: moving to coordinates
+$Team: -1
+$MessageNew:  XSTR("Kassim, Laporte. If that Tev strike force gets within firing range to the convoy, they're as good as dead.", 4411)
+$end_multi_text
++Wave Name: bp201s67.ogg
+
+$Name: are they civvies?
+$Team: -1
+$MessageNew:  XSTR("I don't think they're trying to kill civilians...they're just after our shipping. Cripple our freight, our fuel transport, our medical ability. The rest is collateral -", 4412)
+$end_multi_text
++Wave Name: bp201s68.ogg
+
+$Name: that's not helping, laporte
+$Team: -1
+$MessageNew:  XSTR("Laporte, that's very understanding, very Ubuntu, but really? I think my approach is more useful.", 4413)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s69.ogg
+
+$Name: laporte first kill
+$Team: -1
+$MessageNew:  XSTR("Sorry, mate...better you than me.", 4414)
+$end_multi_text
++Wave Name: bp201s70.ogg
+
+$Name: laporte second kill
+$Team: -1
+$MessageNew:  XSTR("Huh...this isn't so hard.", 4415)
+$end_multi_text
++Wave Name: bp201s71.ogg
+
+$Name: laporte fourth kill
+$Team: -1
+$MessageNew:  XSTR("I'm almost enjoying myself...", 4416)
+$end_multi_text
++Wave Name: bp201s72.ogg
+
+$Name: they'll know better
+$Team: -1
+$MessageNew:  XSTR("They'll know better than to send more fighters our way. Look what happened last time!", 4417)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s73.ogg
+
+$Name: trebs
+$Team: -1
+$MessageNew:  XSTR("Or the next wave could be packing Trebuchets, and we won't have any way to respond. Don't get cocky, Two. I want you home alive.", 4418)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s74.ogg
+
+$Name: exercises
+$Team: -1
+$MessageNew:  XSTR("We've been through counter-Treb ACM, One. I'm not afraid.", 4419)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s75.ogg
+
+$Name: i'm not afraid
+$Team: -1
+$MessageNew:  XSTR("I second that, Brie. I'll do whatever it takes to save this convoy.", 4420)
+$end_multi_text
++Wave Name: bp201s76.ogg
+
+$Name: proud or terrified
+$Team: -1
+$MessageNew:  XSTR("You two handle live combat better than I'd hoped. I don't know whether to feel proud or terrified.", 4421)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s77.ogg
+
+$Name: argent mist destroyed
+$Team: -1
+$MessageNew:  XSTR("HULL INTEGRITY COMPROMISED: AUTOMATED BEACON ACTIVATED", 4422)
+$end_multi_text
++Wave Name: bp201s78.ogg
+
+$Name: argent mist destroyed 2
+$Team: -1
+$MessageNew:  XSTR("The Argent Mist is lost! No survivors...no lifepod ejection.", 4423)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s79.ogg
+
+$Name: brie: let's go, Alpha
+$Team: -1
+$MessageNew:  XSTR("Okay, Alpha, we're going in. Kassim, you and I will go in first and drag the fighters. Laporte, come in behind us and pick them off. Then we'll handle the bombers.", 4424)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s80.ogg
+
+$Name: brie: area seems clear
+$Team: -1
+$MessageNew:  XSTR("Area looks clear. Suffron, are you picking up any transmissions or subspace traffic in the vicinity?", 4425)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s81.ogg
+
+$Name: suffron: area seems clear
+$Team: -1
+$MessageNew:  XSTR("Negative, Alpha 1. Looks like we got them all. Stay with the civilians until they're safely through the gate. We'll continue active scans of the area.", 4426)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s82.ogg
+
+$Name: brie: okay
+$Team: -1
+$MessageNew:  XSTR("Kassim, you're drifting out of formation. Tighten it up.", 4427)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s83.ogg
+
+$Name: kassime: fine, fine
+$Team: -1
+$MessageNew:  XSTR("Sorry, boss. Just - just still pretty pumped up. Lost my focus there.", 4428)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: bp201s84.ogg
+
+$Name: laporte: what's the matter?
+$Team: -1
+$MessageNew:  XSTR("Come on, Kassim, shake it off. You've got a lot of tough talk to live up to.", 4429)
+$end_multi_text
++Wave Name: bp201s85.ogg
+
+$Name: checkpoint 1 unlocked
+$Team: -1
+$MessageNew:  XSTR("Checkpoint Reached", 4430)
+$end_multi_text
++Wave Name: bp201s86.ogg
+
+$Name: checkpoint available
+$Team: -1
+$MessageNew:  XSTR("You have fifteen seconds to select a checkpoint from the reinforcements menu.", 4431)
+$end_multi_text
++Wave Name: bp201s87.ogg
+
+$Name: coordinate tracker
+$Team: -1
+$MessageNew:  XSTR("$suffx $suffy $suffz", 4432)
+$end_multi_text
++Wave Name: bp201s88.ogg
+
+$Name: suffron mourns ironhide
+$Team: -1
+$MessageNew:  XSTR("You made the Ironhide's sacrifice mean something. I imagine you have Roberto Chavez's thanks.", 4433)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s89.ogg
+
+$Name: suffron mourns ironhide 2
+$Team: -1
+$MessageNew:  XSTR("There were a thousand people on the Ironhide. Tell your Admiral Byrne that he should have sent more ships.", 4434)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s90.ogg
+
+$Name: brie: sigma 1 down
+$Team: -1
+$MessageNew:  XSTR("Sigma transport down!", 4435)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: bp201s91.ogg
+
+$Name: suffron: sigma 2 down
+$Team: -1
+$MessageNew:  XSTR("Cover the transports before we lose another! Those were civilian refugees!", 4436)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s92.ogg
+
+$Name: suffron: sigma 3 down
+$Team: -1
+$MessageNew:  XSTR("Sigma 3 is down, Sigma 3 is down. Tighten your screen!", 4437)
+$end_multi_text
++AVI Name: Head-CM14
++Wave Name: bp201s93.ogg
+
+$Name: probox - check available
+$Team: -1
+$MessageNew:  XSTR("Checkpoint Available", 4438)
+$end_multi_text
++Wave Name: bp201s94.ogg
+
+$Name: probox - load checkpoint
+$Team: -1
+$MessageNew:  XSTR("Load Checkpoint", 4439)
+$end_multi_text
++Wave Name: bp201s95.ogg
+
+$Name: probox - start from beginning
+$Team: -1
+$MessageNew:  XSTR("Start from Beginning", 4440)
+$end_multi_text
++Wave Name: bp201s96.ogg
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 0
+$Ambient light level: 8026746
+
+$Bitmap List:
+$Sun: SolJupiter
++Angles: 0.226893 0.541052 1.396262
++Scale: 1.000000
+
+#Asteroid Fields
+
+$Density: 255
++Field Type: 1
++Debris Genre: 0
++Field Debris Type: 0
+$Average Speed: 0.000000
+$Minimum: -30000.000000, -10000.000000, 40000.000000
+$Maximum: 20000.000000, 10000.000000, 80000.000000
+
+#Music
+
+$Event Music: 3: Leviticus
+$Substitute Event Music: 3: Leviticus
+$Briefing Music: Average
+$Substitute Briefing Music: Average
+$Fiction Viewer Music: Titan
+
+#End
+

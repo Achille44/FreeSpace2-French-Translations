@@ -1,0 +1,332 @@
+$Name: Blue Planet - War in Heaven 1
+$Type: single
++Description:
+ XSTR("The civil war between Earth and its colonies enters its final stage.", 9096)
+$end_multi_text
+$Flags: 1
+
+
++Starting Ships: ( "GTF Ulysses"  "GTF Hercules"  "GTF Hercules Mark II"  "GTF Ares"  "GTF Erinyes"  "GTF Loki"  "GTF Pegasus"  "GTF Perseus"  "GTF Myrmidon"  "SF Mara (terrans)"  "GTB Artemis"  "GTB Artemis D.H."  "GTB Medusa"  "GTB Ursa"  "GTB Zeus"  "GTB Boanerges"  "GVF Seth"  "GVF Horus"  "GVF Thoth"  "GVF Serapis"  "GVF Tauret"  "GVB Sekhmet"  "GVB Osiris"  "GVB Bakha"  "GVF Ptah"  "GTF Aurora"  "GTF Kulas"  "GTF Comanche"  "GTF Seminole"  "GTF Cherokee"  "GTB Yurok"  "GTB Navajo"  "Spacesuit"  "GTF Atalanta"  "GTF Nyx"  "GTF Draco"  "GTB Rhea"  "UEF Uhlan"  "UEF Kentauroi"  "UEF Uriel"  "UEF Izra'il"  "UEF Lao Tze"  "UEF Ainsarii"  "UEB Durga"  "UEB Vajradhara"  "Scimitar" )
+
++Starting Weapons: ( "Subach HL-7"  "Subach HL-D"  "Mekhu HL-7"  "Mekhu HL-7D"  "Akheton SDG"  "Morning Star"  "MorningStar D"  "Prometheus R"  "Prometheus S"  "Prometheus D"  "Maxim"  "Maxim D"  "UD-8 Kayser"  "Circe"  "Lamprey"  "Targeting Laser"  "Balor"  "Vishnan Primary"  "Vulcan"  "Maul"  "Rapier"  "Gattler"  "Scalpel"  "Sidhe"  "UX Accelerator"  "Cavalier"  "Archer"  "Redeemer"  "Vajra"  "Rockeye"  "Tempest"  "Hornet"  "Hornet D"  "Hornet#Weak"  "Tornado"  "Harpoon"  "Trebuchet"  "TAG-A"  "TAG-B"  "TAG-C"  "Piranha"  "Stiletto II"  "Infyrno"  "Cyclops"  "Helios"  "EMP Adv."  "Javelin"  "Dart"  "Dirk"  "Slammer"  "Paveway"  "Hellfire"  "Shrike"  "Grimler"  "Warhammer"  "Sledgehammer"  "Jackhammer" )
+
+
+$Mission: bp2-00.fs2
++Flags: 0
++Main Hall: BP2-Act1
++Debriefing Persona Index: 0
++Formula: ( cond
+   ( ( true ) ( next-mission "bp2-01.fs2" ) )
+)
+
++Level: 0
++Position: 1
+
+$Mission: bp2-01.fs2
++Flags: 0
++Main Hall: BP2-Act1
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( or 
+         ( is-previous-goal-true 
+            "bp2-01.fs2" 
+            "All ships escape" 
+         )
+         ( and 
+            ( is-previous-goal-true 
+               "bp2-01.fs2" 
+               "Protect convoy" 
+            )
+            ( not 
+               ( is-previous-goal-true 
+                  "bp2-01.fs2" 
+                  "All ships escape" 
+               )
+            )
+         )
+      )
+      ( next-mission "bp2-02.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-01.fs2" ) )
+)
+
++Level: 1
++Position: 1
+
+$Mission: bp2-02.fs2
++Flags: 0
++Main Hall: BP2-Act1
++Debriefing Persona Index: 0
++Formula: ( cond
+   ( ( true ) ( next-mission "bp2-03.fs2" ) )
+)
+
++Level: 2
++Position: 1
+
+$Mission: bp2-03.fs2
++Flags: 0
++Main Hall: BP2-Act1
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-goal-true 
+            "bp2-03.fs2" 
+            "Destroy Meridian" 
+         )
+         ( not 
+            ( or 
+               ( is-previous-event-true 
+                  "bp2-03.fs2" 
+                  "FAIL1: Indus down" 
+               )
+               ( is-previous-event-true 
+                  "bp2-03.fs2" 
+                  "FAIL1: Churchill down" 
+               )
+            )
+         )
+      )
+      ( next-mission "bp2-04.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-03.fs2" ) )
+)
+
++Level: 3
++Position: 1
+
+$Mission: bp2-04.fs2
++Flags: 0
++Main Hall: BP2-Act1
++Debriefing Persona Index: 0
++Formula: ( cond
+   ( ( true ) ( next-mission "bp2-05.fs2" ) )
+)
+
++Level: 4
++Position: 1
+
+$Mission: bp2-05.fs2
++Flags: 0
++Main Hall: BP2-Act1
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "bp2-05.fs2" 
+         "Recover Nauticus" 
+      )
+      ( next-mission "bp2-06.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-05.fs2" ) )
+)
+
++Level: 5
++Position: 1
+
+$Mission: bp2-06.fs2
++Flags: 0
++Main Hall: BP2-Act1
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "bp2-06.fs2" 
+         "Defend Rheza" 
+      )
+      ( next-mission "bp2-07.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-06.fs2" ) )
+)
+
++Level: 6
++Position: 1
+
+$Mission: bp2-07.fs2
++Flags: 0
++Main Hall: BP2-Act1
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( or 
+         ( is-previous-goal-true 
+            "bp2-07.fs2" 
+            "Secure Dea Icaunis" 
+         )
+         ( is-previous-goal-true 
+            "bp2-07.fs2" 
+            "Yielding" 
+         )
+      )
+      ( next-mission "bp2-08.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-07.fs2" ) )
+)
+
++Level: 7
++Position: 1
+
+$Mission: bp2-08.fs2
++Flags: 0
++Main Hall: BP2-Act2
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "bp2-08.fs2" 
+         "Speak to Simms" 
+      )
+      ( next-mission "bp2-09.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-08.fs2" ) )
+)
+
++Level: 8
++Position: 1
+
+$Mission: bp2-09.fs2
++Flags: 0
++Main Hall: BP2-Act2
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "bp2-09.fs2" 
+         "mission over let's celebrate" 
+      )
+      ( next-mission "bp2-10.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-09.fs2" ) )
+)
+
++Level: 9
++Position: 1
+
+$Mission: bp2-10.fs2
++Flags: 0
++Main Hall: BP2-Act2
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "bp2-10.fs2" 
+         "Escort Agincourt" 
+      )
+      ( next-mission "bp2-11.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-10.fs2" ) )
+)
+
++Level: 10
++Position: 1
+
+$Mission: bp2-11.fs2
++Flags: 0
++Main Hall: BP2-Act2
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "bp2-11.fs2" 
+         "transmission accepted..." 
+      )
+      ( next-mission "bp2-12.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-11.fs2" ) )
+)
+
++Level: 11
++Position: 1
+
+$Mission: bp2-12.fs2
++Flags: 0
++Main Hall: BP2-Act2
++Debriefing Persona Index: 0
++Formula: ( cond
+   ( ( true ) ( next-mission "bp2-13.fs2" ) )
+)
+
++Level: 12
++Position: 1
+
+$Mission: bp2-13.fs2
++Flags: 0
++Main Hall: BP2-Act2
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "bp2-13.fs2" 
+         "leatt: must go!" 
+      )
+      ( next-mission "bp2-14.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-13.fs2" ) )
+)
+
++Level: 13
++Position: 1
+
+$Mission: bp2-14.fs2
++Flags: 0
++Main Hall: BP2-Act2
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "bp2-14.fs2" 
+         "simms: jump jump jump" 
+      )
+      ( next-mission "bp2-15.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-14.fs2" ) )
+)
+
++Level: 14
++Position: 1
+
+$Mission: bp2-15.fs2
++Flags: 0
++Main Hall: BP2-Act2
++Debriefing Persona Index: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "bp2-15.fs2" 
+         "Return to Indus dir" 
+      )
+      ( next-mission "bp2-16.fs2" )
+   )
+   ( ( true ) ( next-mission "bp2-15.fs2" ) )
+)
+
++Level: 15
++Position: 1
+
+$Mission: bp2-16.fs2
++Flags: 0
++Main Hall: BP2-Act3
++Debriefing Persona Index: 0
+
++Formula: ( cond
+   ( ( true ) ( next-mission "bp2-blank.fs2" ) )
+)
+
++Level: 16
++Position: 1
+
+$Mission: bp2-blank.fs2
++Flags: 0
++Main Hall: BP2-Act3
++Debriefing Persona Index: 0
+
++Formula: ( cond
+   ( ( true ) ( end-of-campaign ) )
+)
+
++Level: 17
++Position: 1
+
+#End
