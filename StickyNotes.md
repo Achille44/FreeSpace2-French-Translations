@@ -41,6 +41,7 @@ Orbitals = stations orbitales
 Override = contournement
 Patrol path = itinéraire de patrouille
 Please advise = j'attends vos instructions
+Point defence = défense rapprochée
 Post-Sol = l'Isolement
 PVN (Parliamentary Vasudan Navy)
 Retrofit = Modernisé
@@ -58,20 +59,26 @@ Sweet Fortune = Bon Dieu
 Tech Room = Salle Technique
 Warp out = entrer en distortion
 Wing = Escadrille
+You got it = Pas de problèmes / C'est comme si c'était fait
 
 ## Rank translation
 
-For the translation of the ranks, I decided to translate using the ranks of the French Navy.
+Here are my sources for the rank comparaisons:
+https://en.wikipedia.org/wiki/Ranks_and_insignia_of_NATO
+https://fr.wikipedia.org/wiki/Grades_de_l%27Arm%C3%A9e_britannique#Royal_Air_Force_(Arm%C3%A9e_de_l'air)
 https://fr.wikipedia.org/wiki/Grades_des_Forces_arm%C3%A9es_des_%C3%89tats-Unis#US_Navy_(Marine)
-https://en.wikipedia.org/wiki/Ranks_in_the_French_Navy
 
-Ensign = Enseigne => Enseigne de vaisseau de 2e classe
-Lieutenant Junior Grade => Enseigne de vaisseau de 1e classe
-Lieutenant => Lieutenant de Vaisseau
-Lieutenant Commander => Capitaine de Corvette
-Commander => Capitaine de Frégate
-Captain => Capitaine de Vaisseau
-Commodore / Rear Admiral, lower half => Non-existent in France, so let's cheat and shift next ranks... ==> Contre-Amiral
-Rear Admiral => Contre-Amiral ==> Vice-Amiral
-Vice Admiral => Vice-Amiral ==> Vice-Amiral d'Escadre
-Admiral => Amiral
+---------------------------------------------------------------------------------------------------------------------------------
+NATO 	| Ranks United States Navy	| Marine Nationale 					| Royal Air Force 		| Armée de l'Air 				|
+--------|---------------------------|-----------------------------------|-----------------------|-------------------------------|
+OF-1	| Ensign 					| Enseigne de vaisseau de 2e classe	| Pilot Officer 		| Sous-Lieutenant 				|
+OF-1	| Lieutenant Junior Grade 	| Enseigne de vaisseau de 1e classe | Flying Officer		| Lieutenant 					|
+OF-2	| Lieutenant				| Lieutenant de Vaisseau 			| Flight Lieutenant 	| Capitaine 					|
+OF-3	| Lieutenant Commander		| Capitaine de Corvette 			| Squadron Leader 		| Commandant 					|
+OF-4	| Commander					| Capitaine de Frégate 				| Wing Commander 		| Lieutenant-Colonel 			|
+OF-5	| Captain 					| Capitaine de Vaisseau 			| Group Captain 		| Colonel 						|
+OF-6	| Commodore 				| Contre-Amiral 					| Air Commodore 		| Général de Brigade Aérienne 	|
+OF-7	| Rear Admiral 				| Vice-Amiral 						| Air Vice-Marshal 		| Général de Division Aérienne 	|
+OF-8	| Vice Admiral 				| Vice-Amiral d'Escadre 			| Air Marshal 			| Général de Corps Aérien 		|
+OF-9 	| Admiral 					| Amiral 							| Air Chief Marshal 	| Général d'Armée Aérienne 		|
+OF-10 	| Fleet Admiral 			| Grand Amiral 						| Marshal of the RAF 	| N/A 							|
