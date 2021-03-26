@@ -7,7 +7,7 @@ The mods translated here can be found on the community website http://www.hard-l
 
 First install the mod with Knossos (https://fsnebula.org/knossos/).
 Set the game in French language with the Knossos settings.
-Install the mod you want tot test.
+Install the mod you want to test.
 Then browse the mod files and copy the translation files in the mod folder, keeping the same file tree.
 
 For example for the mod Between the Ashes, copy the 'Between-The-Ashes\1.5.6\data' folder and its content to: %Knossos location%\FS2\BtA-1.5.6 after having installed the mod Between the Ashes
