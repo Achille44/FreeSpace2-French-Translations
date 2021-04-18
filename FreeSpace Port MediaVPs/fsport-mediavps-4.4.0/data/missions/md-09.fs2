@@ -1,0 +1,1625 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Exodus", 3878)
+$Author: Brad Johnson
+$Created: 08/04/98 at 11:34:57
+$Modified: 11/11/07 at 16:41:19
+$Notes:
+This is a FRED created mission
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here", 600)
+$end_multi_text
+
++Game Type Flags: 65
+
++Flags: 131072
+
++Red Alert: 0
+
++Scramble: 1
+
++Disallow Support: 0
+
++Player Entry Delay:
+1.000000
+
++Viewer pos: 192.559875, 2027.562988, -16899.708984
++Viewer orient:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.988709, 0.149849,
+	0.000000, -0.149849, 0.988709
++SquadReassignName: Galactic Terran Intelligence
++SquadReassignLogo: GTI.pcx
+
+;;FSO 3.6.0;; $Skybox Model: starfield.pof
+
+#Plot Info
+
+$Tour:  XSTR("Blah", 601)
+$Pre-Briefing Cutscene: Blah
+$Pre-Mission Cutscene: Blah
+$Next Mission Success: Blah
+$Next Mission Partial: Blah
+$Next Mission Failure: Blah
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 1
+$start_stage
+$multi_text
+ XSTR("GTI fighters have disabled the Krios!  Vital systems going critical!  Return to base pronto!", 1498)
+$end_multi_text
+$voice: brief_mdm9_1.wav
+$camera_pos: -60.842583, 641.113892, 1658.544434
+$camera_orient:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.988709, 0.149849,
+	0.000000, -0.149849, 0.988709
+$camera_time: 500
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 6
+$team: Friendly
+$class: GTD Orion#Krios
+$pos: -60.842583, 0.000889, 5888.630371
+$label: XSTR("Krios", 4858)
+
++id: 1
+$hlight: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: GTF Loki
+$pos: 1349.742920, 0.000334, 5682.996582
+$label: XSTR("Bragi", 4859)
+
++id: 2
+$hlight: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: GTF Loki
+$pos: -1889.630737, 0.000298, 9242.461914
+$label: XSTR("Hrid", 4860)
+
++id: 3
+$hlight: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 3
+
+$Formula: ( has-departed-delay 
+   0 
+   "Hermes 1" 
+   "Hermes 2" 
+   "Hermes 3" 
+   "Hermes 4" 
+   "Hermes 5" 
+   "Hermes 6" 
+   "Hermes 7" 
+   "Hermes 8" 
+)
+$Multi text
+    XSTR("Well done.  The evacuation could have been a massacre, but you got those pods to the jump node safely.", 1499)
+$end_multi_text
+$Voice: debrief_mdm9_1.wav
+$Recommendation text:
+    XSTR("", 606)
+$end_multi_text
+
+$Formula: ( is-destroyed-delay 
+   0 
+   "Hermes 1" 
+   "Hermes 2" 
+   "Hermes 3" 
+   "Hermes 4" 
+   "Hermes 5" 
+   "Hermes 6" 
+   "Hermes 7" 
+   "Hermes 8" 
+)
+$Multi text
+    XSTR("All escape pods were destroyed.  We are deeply saddened by the loss of this brave crew.", 1500)
+$end_multi_text
+$Voice: debrief_mdm9_2.wav
+$Recommendation text:
+    XSTR("Order your wingmen to protect the pods, and engage the fighters as soon as possible.", 1501)
+$end_multi_text
+
+$Formula: ( and 
+   ( or 
+      ( is-destroyed-delay 0 "Hermes 1" ) 
+      ( is-destroyed-delay 0 "Hermes 2" ) 
+      ( is-destroyed-delay 0 "Hermes 3" ) 
+      ( is-destroyed-delay 0 "Hermes 4" ) 
+      ( is-destroyed-delay 0 "Hermes 5" ) 
+      ( is-destroyed-delay 0 "Hermes 6" ) 
+      ( is-destroyed-delay 0 "Hermes 7" ) 
+      ( is-destroyed-delay 0 "Hermes 8" ) 
+   )
+   ( or 
+      ( has-departed-delay 0 "Hermes 1" ) 
+      ( has-departed-delay 0 "Hermes 2" ) 
+      ( has-departed-delay 0 "Hermes 3" ) 
+      ( has-departed-delay 0 "Hermes 4" ) 
+      ( has-departed-delay 0 "Hermes 5" ) 
+      ( has-departed-delay 0 "Hermes 6" ) 
+      ( has-departed-delay 0 "Hermes 7" ) 
+      ( has-departed-delay 0 "Hermes 8" ) 
+   )
+)
+$Multi text
+    XSTR("A handful of escape pods survived the engagement.  We regret that more could not be recovered.", 1502)
+$end_multi_text
+$Voice: debrief_mdm9_3.wav
+$Recommendation text:
+    XSTR("Order your wingmen to protect the pods, and engage the fighters as soon as possible.", 1501)
+$end_multi_text
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+	"GTF Ulysses"	5
+	"GTF Apollo"	5
+	"GTF Valkyrie"	5
+	"GTF Hercules"	5
+	"GTB Athena"	5
+	"GTB Medusa"	5
+	"GTB Ursa"	5
+)
+
++Weaponry Pool: (
+	"Prometheus"	12
+	"Interceptor"	90
+)
+
+#Objects		;! 32 total
+
+$Name: Alpha 1		;! Object #0
+$Display Name: XSTR("Alpha 1", 4190)
+$Class: GTF Valkyrie
+$Team: Friendly
+$Location: -4.097454, 1.198128, 59.139511
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Prometheus" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Krios		;! Object #1
+$Display Name: XSTR("Krios", 4858)
+$Class: GTD Orion#Krios
+$Team: Friendly
+$Location: -60.842583, 0.000889, 5888.630371
+$Orientation:
+	0.072703, -0.724692, 0.685229,
+	0.194408, -0.663571, -0.722413,
+	0.978224, 0.185736, 0.092642
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 9
++Initial Shields: 0
++Subsystem: Pilot
++Subsystem: turret01a
+$Damage: 100
++Subsystem: turret02a
+$Damage: 100
++Subsystem: turret03a
+$Damage: 100
++Subsystem: turret04a
+$Damage: 68
++Subsystem: turret05a
+$Damage: 93
++Subsystem: turret06
+$Damage: 100
++Subsystem: turret07
+$Damage: 63
++Subsystem: turret08
+$Damage: 77
++Subsystem: turret09
+$Damage: 100
++Subsystem: turret10
+$Damage: 98
++Subsystem: turret11
+$Damage: 100
++Subsystem: turret12
+$Damage: 100
++Subsystem: turret13
+$Damage: 100
++Subsystem: turret14
+$Damage: 91
++Subsystem: turret15
+$Damage: 100
++Subsystem: turret16
+$Damage: 100
++Subsystem: radardish01
+$Damage: 35
++Subsystem: radardish02
+$Damage: 100
++Subsystem: radardish03
+$Damage: 97
++Subsystem: navigation
+$Damage: 100
++Subsystem: communication
+$Damage: 77
++Subsystem: weapons
+$Damage: 55
++Subsystem: sensors
+$Damage: 22
++Subsystem: engines
+$Damage: 100
++Subsystem: fighterbay
+$Damage: 55
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 1750
+
+$Name: Alpha 2		;! Object #2
+$Display Name: XSTR("Alpha 2", 4236)
+$Class: GTF Valkyrie
+$Team: Friendly
+$Location: -149.677429, 123.668549, -179.677582
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Prometheus" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Alpha 3		;! Object #3
+$Display Name: XSTR("Alpha 3", 4256)
+$Class: GTF Valkyrie
+$Team: Friendly
+$Location: 142.878998, 86.880768, -147.252487
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Prometheus" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Bragi 1		;! Object #4
+$Display Name: XSTR("Bragi 1", 4861)
+$Class: GTF Loki
+$Team: Hostile
+$Location: 1198.881714, 0.000265, 7036.576172
+$Orientation:
+	-0.673553, 0.000000, 0.739139,
+	0.000000, 1.000000, 0.000000,
+	-0.739139, 0.000000, -0.673553
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Bragi 2		;! Object #5
+$Display Name: XSTR("Bragi 2", 4862)
+$Class: GTF Loki
+$Team: Hostile
+$Location: 1000.923340, 0.000613, 6679.641113
+$Orientation:
+	-0.597428, 0.000000, 0.801922,
+	0.000000, 1.000000, 0.000000,
+	-0.801922, 0.000000, -0.597428
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Bragi 3		;! Object #6
+$Display Name: XSTR("Bragi 3", 4863)
+$Class: GTF Loki
+$Team: Hostile
+$Location: -1097.119751, 0.001364, 5351.087402
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Bragi 4		;! Object #7
+$Display Name: XSTR("Bragi 4", 4864)
+$Class: GTF Loki
+$Team: Hostile
+$Location: -813.157959, 0.001194, 4974.205566
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "kamikaze" )
++Respawn priority: 0
++Kamikaze Damage: 225
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Bragi 5		;! Object #8
+$Display Name: XSTR("Bragi 5", 4865)
+$Class: GTF Loki
+$Team: Hostile
+$Location: -114.488457, -0.000453, 5302.866699
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Hrid 1		;! Object #9
+$Display Name: XSTR("Hrid 1", 4866)
+$Class: GTF Loki
+$Team: Hostile
+$Location: -726.118164, 0.000265, 6929.076172
+$Orientation:
+	-0.842495, 0.000000, -0.538703,
+	0.000000, 1.000000, 0.000000,
+	0.538703, 0.000001, -0.842495
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Hrid 2		;! Object #10
+$Display Name: XSTR("Hrid 2", 4867)
+$Class: GTF Loki
+$Team: Hostile
+$Location: -468.624146, 0.000586, 7001.618164
+$Orientation:
+	-0.938962, 0.000000, -0.344021,
+	0.000000, 1.000000, 0.000000,
+	0.344021, 0.000000, -0.938962
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Hrid 3		;! Object #11
+$Display Name: XSTR("Hrid 3", 4868)
+$Class: GTF Loki
+$Team: Hostile
+$Location: -567.612061, 0.000261, 7074.152832
+$Orientation:
+	-0.919513, 0.000000, -0.393060,
+	0.000000, 1.000000, 0.000000,
+	0.393060, 0.000000, -0.919513
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Hrid 4		;! Object #12
+$Display Name: XSTR("Hrid 4", 4869)
+$Class: GTF Loki
+$Team: Hostile
+$Location: -772.227661, 0.000412, 7100.526855
+$Orientation:
+	-0.862399, 0.000000, -0.506230,
+	0.000000, 1.000000, 0.000000,
+	0.506230, 0.000000, -0.862399
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Buri 1		;! Object #13
+$Display Name: XSTR("Buri 1", 4870)
+$Class: GTB Zeus
+$Team: Hostile
+$Location: 947.362061, 0.000272, 5280.913574
+$Orientation:
+	0.326394, 0.000000, 0.945234,
+	0.000001, 1.000000, 0.000000,
+	-0.945234, 0.000001, 0.326394
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 15
+
+$Name: Buri 2		;! Object #14
+$Display Name: XSTR("Buri 2", 4871)
+$Class: GTB Zeus
+$Team: Hostile
+$Location: 1482.239502, -0.000079, 5023.793457
+$Orientation:
+	0.367299, 0.000000, 0.930103,
+	0.000001, 1.000000, 0.000000,
+	-0.930103, 0.000001, 0.367299
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 15
+
+$Name: Buri 3		;! Object #15
+$Display Name: XSTR("Buri 3", 4872)
+$Class: GTB Zeus
+$Team: Hostile
+$Location: 1092.789307, 0.000165, 4997.416504
+$Orientation:
+	0.490692, 0.000000, 0.871333,
+	0.000001, 1.000000, 0.000000,
+	-0.871333, 0.000001, 0.490692
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 15
+
+$Name: Hermes 1		;! Object #16
+$Display Name: XSTR("Hermes 1", 4414)
+$Class: GTEP Hermes
+$Team: Friendly
+$Location: -403.434082, 662.546570, 5664.048340
+$Orientation:
+	-0.991344, 0.000000, -0.131289,
+	0.052162, 0.917685, -0.393869,
+	0.120482, -0.397308, -0.909742
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Hermes 1" 
+   "Waypoint path 1" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: Hermes 2		;! Object #17
+$Display Name: XSTR("Hermes 2", 4415)
+$Class: GTEP Hermes
+$Team: Friendly
+$Location: -309.725250, 662.546448, 5748.742676
+$Orientation:
+	-0.995105, 0.000000, -0.098826,
+	0.038498, 0.921003, -0.387648,
+	0.091019, -0.389555, -0.916494
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Hermes 2" 
+   "Waypoint path 1" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: Hermes 3		;! Object #18
+$Display Name: XSTR("Hermes 3", 4416)
+$Class: GTEP Hermes
+$Team: Friendly
+$Location: 82.779007, 662.546448, 5731.844238
+$Orientation:
+	-0.999694, 0.000000, 0.024718,
+	-0.009711, 0.919602, -0.392732,
+	-0.022731, -0.392852, -0.919321
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 2" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Hermes 3" 
+   "Waypoint path 2" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: Hermes 4		;! Object #19
+$Display Name: XSTR("Hermes 4", 4417)
+$Class: GTEP Hermes
+$Team: Friendly
+$Location: 250.888763, 662.546570, 5831.614258
+$Orientation:
+	-0.997148, 0.000000, 0.075467,
+	-0.028810, 0.924265, -0.380662,
+	-0.069752, -0.381751, -0.921629
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 2" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Hermes 4" 
+   "Waypoint path 2" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: Hermes 5		;! Object #20
+$Display Name: XSTR("Hermes 5", 4418)
+$Class: GTEP Hermes
+$Team: Friendly
+$Location: -413.531677, 662.546692, 6055.845703
+$Orientation:
+	-0.992829, 0.000000, -0.119545,
+	0.042923, 0.933317, -0.356477,
+	0.111574, -0.359052, -0.926624
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 3" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Hermes 5" 
+   "Waypoint path 3" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: Hermes 6		;! Object #21
+$Display Name: XSTR("Hermes 6", 4419)
+$Class: GTEP Hermes
+$Team: Friendly
+$Location: -312.564087, 662.546692, 6121.029297
+$Orientation:
+	-0.996004, 0.000000, -0.089312,
+	0.031640, 0.935147, -0.352845,
+	0.083520, -0.354261, -0.931410
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 3" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Hermes 6" 
+   "Waypoint path 3" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: Hermes 7		;! Object #22
+$Display Name: XSTR("Hermes 7", 4420)
+$Class: GTEP Hermes
+$Team: Friendly
+$Location: 61.594376, 662.546570, 6069.550781
+$Orientation:
+	-0.999868, 0.000000, 0.016257,
+	-0.005853, 0.932940, -0.359984,
+	-0.015167, -0.360032, -0.932817
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 4" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Hermes 7" 
+   "Waypoint path 4" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: Hermes 8		;! Object #23
+$Display Name: XSTR("Hermes 8", 4873)
+$Class: GTEP Hermes
+$Team: Friendly
+$Location: 162.561920, 662.546570, 6134.735352
+$Orientation:
+	-0.999017, 0.000000, 0.044329,
+	-0.015693, 0.935246, -0.353652,
+	-0.041459, -0.354000, -0.934326
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 4" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Hermes 8" 
+   "Waypoint path 4" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: Beta 1		;! Object #24
+$Display Name: XSTR("Beta 1", 4281)
+$Class: GTF Valkyrie
+$Team: Friendly
+$Location: -900.287964, 1.198323, 47.976227
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Prometheus" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Beta 2		;! Object #25
+$Display Name: XSTR("Beta 2", 4282)
+$Class: GTF Valkyrie
+$Team: Friendly
+$Location: -1045.867920, 0.000094, -190.840851
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Prometheus" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Beta 3		;! Object #26
+$Display Name: XSTR("Beta 3", 4283)
+$Class: GTF Valkyrie
+$Team: Friendly
+$Location: -610.094055, 0.000278, -257.184570
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Prometheus" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Vidar		;! Object #27
+$Display Name: XSTR("Vidar", 4874)
+$Class: GTC Leviathan
+$Team: Hostile
+$Location: 118.232162, -1456.182861, -8798.456055
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Initial Shields: 0
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09a-01-main
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( has-time-elapsed 200 ) 
+   ( not 
+      ( is-destroyed-delay 
+         0 
+         "Hermes 1" 
+         "Hermes 2" 
+         "Hermes 3" 
+         "Hermes 4" 
+         "Hermes 5" 
+         "Hermes 6" 
+         "Hermes 7" 
+         "Hermes 8" 
+      )
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 300
+;;FSO 3.6.8;;$Texture Replace:
+;;FSO 3.6.8;;+old: nameplate
+;;FSO 3.6.8;;+new: GTC_Vidar
+
+$Name: Geri 1		;! Object #28
+$Display Name: XSTR("Geri 1", 4875)
+$Class: GTF Loki
+$Team: Hostile
+$Location: 389.779633, -1425.914551, -8811.871094
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Geri 2		;! Object #29
+$Display Name: XSTR("Geri 2", 4876)
+$Class: GTF Loki
+$Team: Hostile
+$Location: 326.802521, -1425.914551, -8820.707031
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Scald 1		;! Object #30
+$Display Name: XSTR("Scald 1", 4732)
+$Class: GTF Loki
+$Team: Hostile
+$Location: -237.269363, -1397.664429, -8818.517578
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+$Name: Scald 2		;! Object #31
+$Display Name: XSTR("Scald 2", 4733)
+$Class: GTF Loki
+$Team: Hostile
+$Location: -309.497162, -1397.664429, -8907.641602
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 10
+
+#Wings		;! 7 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+)
++Hotkey: 0
++Flags:( )
+
+$Name: Bragi
+;;FSO 3.5.0;; +Squad Logo: gti.pcx
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 1		;! Bragi 2
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 5 total
+	"Bragi 1"
+	"Bragi 2"
+	"Bragi 3"
+	"Bragi 4"
+	"Bragi 5"
+)
+$AI Goals: ( goals ( ai-chase "Krios" 89 ) ( ai-chase-wing "Alpha" 50 ) ( ai-chase "Hermes 7" 50 ) ( ai-chase "Hermes 6" 50 ) ( ai-chase "Hermes 5" 50 ) )
++Flags:( )
+
+$Name: Hrid
+;;FSO 3.5.0;; +Squad Logo: gti.pcx
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Hrid 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Hrid 1"
+	"Hrid 2"
+	"Hrid 3"
+	"Hrid 4"
+)
+$AI Goals: ( goals ( ai-chase "Krios" 89 ) ( ai-chase "Hermes 1" 50 ) ( ai-chase "Hermes 2" 50 ) ( ai-chase "Hermes 3" 50 ) ( ai-chase "Hermes 4" 50 ) )
++Flags:( )
+
+$Name: Buri
+;;FSO 3.5.0;; +Squad Logo: gti.pcx
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Buri 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-destroyed-delay 15 "Krios" ) 
+$Ships: (		;! 3 total
+	"Buri 1"
+	"Buri 2"
+	"Buri 3"
+)
+$AI Goals: ( goals ( ai-chase "Krios" 89 ) )
++Flags:( )
++Wave Delay Min: 75
++Wave Delay Max: 100
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Beta 1"
+	"Beta 2"
+	"Beta 3"
+)
+$AI Goals: ( goals ( ai-guard "Krios" 89 ) )
++Hotkey: 1
++Flags:( )
+
+$Name: Geri
+;;FSO 3.5.0;; +Squad Logo: gti.pcx
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Geri 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 1 "Vidar" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Geri 1"
+	"Geri 2"
+)
+$AI Goals: ( goals ( ai-chase "Hermes 1" 50 ) ( ai-chase "Hermes 2" 50 ) ( ai-chase "Hermes 3" 50 ) ( ai-chase "Hermes 4" 50 ) ( ai-chase-wing "Alpha" 50 ) )
++Flags:( )
+
+$Name: Scald
+;;FSO 3.5.0;; +Squad Logo: gti.pcx
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Scald 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 5 "Vidar" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Scald 1"
+	"Scald 2"
+)
+$AI Goals: ( goals ( ai-chase "Hermes 8" 50 ) ( ai-chase "Hermes 7" 50 ) ( ai-chase "Hermes 6" 50 ) ( ai-chase "Hermes 5" 50 ) ( ai-chase-wing "Alpha" 50 ) )
++Flags:( )
+
+#Events		;! 15 total
+
+$Formula: ( when 
+   ( has-time-elapsed 25 ) 
+   ( self-destruct "Krios" ) 
+)
++Name: Self Destruct
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( good-secondary-time 
+      "Hostile" 
+      100 
+      "Unknown Megabomb" 
+      "Krios" 
+   )
+)
++Name: Good Secondary
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < ( hits-left "Krios" ) 2 ) 
+   ( ship-invulnerable "Krios" ) 
+)
++Name: Invulnerable
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( has-departed-delay 15 "Hermes 1" ) 
+      ( has-departed-delay 15 "Hermes 2" ) 
+      ( has-departed-delay 15 "Hermes 3" ) 
+      ( has-departed-delay 15 "Hermes 4" ) 
+      ( has-departed-delay 15 "Hermes 5" ) 
+      ( has-departed-delay 15 "Hermes 6" ) 
+      ( has-departed-delay 15 "Hermes 7" ) 
+      ( has-departed-delay 15 "Hermes 8" ) 
+   )
+   ( send-message 
+      "#Command" 
+      "High" 
+      "Escape Pods Safe" 
+   )
+)
++Name: Escape Pods Depart
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Bragi" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Bragi
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Bragi", 1503)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Hrid" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Hrid
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Hrid", 1504)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Krios" ) 
+   ( validate-goal 
+      "Save the escape pods" 
+   )
+)
++Name: Validate
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Buri" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Buri
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Buri", 1505)
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "Hermes 1" 
+      "Hermes 2" 
+      "Hermes 3" 
+      "Hermes 4" 
+      "Hermes 5" 
+      "Hermes 6" 
+      "Hermes 7" 
+      "Hermes 8" 
+   )
+   ( add-goal 
+      "Bragi" 
+      ( ai-chase "Alpha" 89 ) 
+   )
+   ( add-goal 
+      "Bragi" 
+      ( ai-chase "Beta" 89 ) 
+   )
+   ( add-goal 
+      "Hrid" 
+      ( ai-chase "Alpha" 89 ) 
+   )
+   ( add-goal 
+      "Hrid" 
+      ( ai-chase "Beta" 89 ) 
+   )
+   ( add-goal 
+      "Geri" 
+      ( ai-chase "Alpha" 89 ) 
+   )
+   ( add-goal 
+      "Geri" 
+      ( ai-chase "Beta" 89 ) 
+   )
+   ( add-goal 
+      "Scald" 
+      ( ai-chase "Alpha" 89 ) 
+   )
+   ( add-goal 
+      "Scald" 
+      ( ai-chase "Beta" 89 ) 
+   )
+   ( send-message 
+      "#Command" 
+      "High" 
+      "Pods Destroyed" 
+   )
+)
++Name: Pods Destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-time-elapsed 10 ) 
+   ( send-message 
+      "Hermes 1" 
+      "Normal" 
+      "Too Late" 
+   )
+)
++Name: Too Late
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Krios" ) 
+   ( send-message 
+      "#Command" 
+      "High" 
+      "Protet the Pods" 
+   )
+)
++Name: Protect Pods
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 0 "Hermes 8" ) 
+      ( is-destroyed-delay 0 "Hermes 2" ) 
+      ( is-destroyed-delay 0 "Hermes 3" ) 
+      ( is-destroyed-delay 0 "Hermes 4" ) 
+      ( is-destroyed-delay 0 "Hermes 5" ) 
+      ( is-destroyed-delay 0 "Hermes 6" ) 
+      ( is-destroyed-delay 0 "Hermes 7" ) 
+   )
+   ( send-message 
+      "Hermes 1" 
+      "Normal" 
+      "Sitting Ducks" 
+   )
+)
++Name: Sitting Duck
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 10 "Vidar" ) 
+   ( send-message 
+      "#Command" 
+      "High" 
+      "Shivan Cruiser" 
+   )
+)
++Name: Shivan Cruiser
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Geri" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Geri
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Geri", 1506)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Scald" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Scald
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Scald", 1507)
+
+#Goals		;! 2 total
+
+$Type: Primary
++Name: Save Destroyer
+$MessageNew:  XSTR("Protect the Destroyer", 1508)
+$end_multi_text
+$Formula: ( and 
+   ( not 
+      ( is-destroyed-delay 0 "Krios" ) 
+   )
+   ( has-time-elapsed 60 ) 
+)
++No music
+
+$Type: Primary
++Name: Save the escape pods
+$MessageNew:  XSTR("Protect the escape pods", 3879)
+$end_multi_text
+$Formula: ( or 
+   ( has-departed-delay 10 "Hermes 1" ) 
+   ( has-departed-delay 10 "Hermes 2" ) 
+   ( has-departed-delay 10 "Hermes 3" ) 
+   ( has-departed-delay 10 "Hermes 4" ) 
+   ( has-departed-delay 10 "Hermes 5" ) 
+   ( has-departed-delay 10 "Hermes 6" ) 
+   ( has-departed-delay 10 "Hermes 7" ) 
+   ( has-departed-delay 10 "Hermes 8" ) 
+)
++Invalid
+
+#Waypoints		;! 4 lists total
+
+
+$Jump Node: 135.603546, -1399.818237, -8729.730469
+$Jump Node Name: Jump Node 0
+$Name: Waypoint path 1
+$List: (		;! 1 points in list
+	( -110.301117, -1346.448730, -8312.275391 )
+)
+
+$Name: Waypoint path 2
+$List: (		;! 1 points in list
+	( -496.009674, -1343.667603, -8437.779297 )
+)
+
+$Name: Waypoint path 3
+$List: (		;! 1 points in list
+	( 385.589813, -1343.667969, -8315.802734 )
+)
+
+$Name: Waypoint path 4
+$List: (		;! 1 points in list
+	( 749.834351, -1343.668091, -8449.217773 )
+)
+
+#Messages		;! 6 total
+
+
+$Name: Escape Pods Safe
+$Team: -1
+$MessageNew:  XSTR("All remaining escape pods have safely reached the jump node.  Return to base.", 1509)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM1
++Wave Name: TC_mdm9_a.wav
+
+$Name: Pods Destroyed
+$Team: -1
+$MessageNew:  XSTR("All escape pods have been destroyed.  Return to base.", 1510)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM1
++Wave Name: TC_mdm9_b.wav
+
+$Name: Too Late
+$Team: -1
+$MessageNew:  XSTR("Krios suffered catastrophic hull failure.  I got forty-three crew in escape pods, and we're flying to the jump node.", 1511)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM1
++Wave Name: L_mdm9_c.wav
+
+$Name: Protet the Pods
+$Team: -1
+$MessageNew:  XSTR("The Krios is going down.  Defend the escape pods!", 1512)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM1
++Wave Name: TC_mdm9_d.wav
+
+$Name: Sitting Ducks
+$Team: -1
+$MessageNew:  XSTR("Alpha!  Beta!  We need cover!  Now!  They'll butcher us out here!", 1513)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM1
++Wave Name: L_mdm9_e.wav
+
+$Name: Shivan Cruiser
+$Team: -1
+$MessageNew:  XSTR("Engage GTI cruiser Vidar.  Keep those gunners occupied till the pods reach the jump node.", 1514)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM1
++Wave Name: TC_mdm9_f.wav
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 683
+$Ambient light level: 7895160
++Nebula: Nebula01
++Color: Red
++Pitch: 240
++Bank: 253
++Heading: 180
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: 4: Numbers
+;;FSO 3.6.9;; $Substitute Event Music: FS1-4: Worlds Apart
+$Briefing Music: Brief7
+;;FSO 3.6.9;; $Substitute Briefing Music: FS1-BRIEF7
+;;FSO 3.6.9;; $Debriefing Success Music: FS1-Success
+;;FSO 3.6.9;; $Debriefing Average Music: FS1-Success
+;;FSO 3.6.9;; $Debriefing Fail Music: FS1-Failure
+
+#End
+
