@@ -1,0 +1,1744 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Training 3", 2250)
+$Author: Brad Johnson
+$Created: 08/06/99 at 11:31:21
+$Modified: 11/22/10 at 14:57:00
+$Notes:
+This is a FRED created mission
+$End Notes:
+
+$Mission Desc:
+ XSTR("Standard Training module TSM-103a", 2251)
+$end_multi_text
+
++Game Type Flags: 4
++Flags: 0
++Red Alert: 0
++Scramble: 0
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 0.000000
+
++Player Entry Delay:
+1.000000
+
++Viewer pos: 0.000000, 266.414459, -99.515190
++Viewer orient:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.349920, 0.936780,
+	0.000000, -0.936780, 0.349920
+
++SquadReassignName: 53rd Hammerheads
++SquadReassignLogo: hammer1.pcx
+
+$Skybox Model: Starfield.pof
+$AI Profile: FS2 RETAIL
+
+#Plot Info
+
+$Tour:  XSTR("Blah", 6)
+$Pre-Briefing Cutscene: Blah
+$Pre-Mission Cutscene: Blah
+$Next Mission Success: Blah
+$Next Mission Partial: Blah
+$Next Mission Failure: Blah
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 2
+$start_stage
+$multi_text
+ XSTR("Welcome to training simulator module TSM-103a, class A qualification for the Myrmidon space superiority fighter. This module has been designed to acquaint pilots with dogfighting techniques.", 2252)
+$end_multi_text
+$voice: TR3_MB_01.wav
+$camera_pos: 0.000000, 266.414459, -99.515190
+$camera_orient:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.349920, 0.936779,
+	0.000000, -0.936779, 0.349920
+$camera_time: 500
+$num_lines: 0
+$num_icons: 2
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Perseus
+$pos: -48.208927, 0.000000, 102.453842
+$label: XSTR("Instructor", 13500)
+
++id: 1
+$hlight: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 22
+$team: Friendly
+$class: GTF Myrmidon
+$pos: 0.000000, 0.000000, 0.000000
+$label: XSTR("Alpha 1", 5458)
+
++id: 2
+$hlight: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("TSM units are approved for use as part of the GTVA combat training program or as a review for qualified pilots. The TSM series is not intended as a substitute for actual field training.", 2190)
+$end_multi_text
+$voice: TR3_MB_02.wav
+$camera_pos: 0.000000, 150.000000, -200.000000
+$camera_orient:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.866025, 0.500000,
+	0.000000, -0.500000, 0.866025
+$camera_time: 900
+$num_lines: 0
+$num_icons: 2
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Perseus
+$pos: -48.208927, 0.000000, 102.453842
+$label: XSTR("Instructor", 13500)
+
++id: 1
+$hlight: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 22
+$team: Friendly
+$class: GTF Myrmidon
+$pos: 0.000000, 0.000000, 0.000000
+$label: XSTR("Alpha 1", 5458)
+
++id: 2
+$hlight: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 2
+
+$Formula: ( or 
+   ( is-event-true-delay "Qualified" 0 ) 
+   ( is-event-true-delay "Qualified 2" 0 ) 
+)
+$Multi text
+    XSTR("Congratulations, pilot. You have successfully completed TSM-103a, Class A qualification for the Myrmidon space superiority fighter.", 2253)
+$end_multi_text
+$Voice: TR3_DB_01.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+$Formula: ( and 
+   ( not 
+      ( is-event-true-delay "Qualified" 0 ) 
+   )
+   ( not 
+      ( is-event-true-delay "Qualified 2" 0 ) 
+   )
+)
+$Multi text
+    XSTR("Your performance was below acceptable standards for TSM-103a, Class A qualification for the Myrmidon space superiority fighter. You will not be authorized to fly the Myrmidon until you have completed this unit successfully.", 2254)
+$end_multi_text
+$Voice: TR3_DB_02.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+	"GTF Ulysses"	5
+	"GTF Hercules"	5
+	"GTF Hercules Mark II"	5
+	"GTF Erinyes"	5
+	"GTF Loki"	5
+	"GTF Pegasus"	5
+	"GTF Perseus"	5
+	"GTF Myrmidon"	5
+	"SF Mara (terrans)"	5
+	"GTB Artemis"	5
+	"GTB Medusa"	5
+	"GTB Ursa"	5
+	"GTB Zeus"	5
+	"GTB Boanerges"	5
+	"GVF Ptah"	5
+)
+
++Weaponry Pool: (
+	"Subach HL-7"	2
+	"Morning Star"	16
+	"Prometheus R"	16
+	"Prometheus S"	16
+	"Maxim"	16
+	"UD-8 Kayser"	16
+	"Circe"	16
+	"Lamprey"	16
+	"Rockeye"	510
+	"Tempest"	660
+	"Hornet"	500
+	"Tornado"	500
+	"Harpoon"	500
+	"Trebuchet"	500
+	"TAG-A"	500
+	"TAG-B"	500
+	"Piranha"	500
+	"Stiletto II"	500
+	"Infyrno"	500
+	"Cyclops"	500
+	"Helios"	500
+	"EMP Adv."	500
+)
+
+#Objects		;! 19 total
+
+$Name: Alpha 1		;! Object #0
+$Display Name: XSTR("Alpha 1", 5458)
+$Class: GTF Myrmidon
+$Team: Friendly
+$Location: 0.000000, 0.000000, 0.000000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Subach HL-7" )
++Secondary Banks: ( "Rockeye" "Rockeye" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Instructor		;! Object #1
+$Display Name: XSTR("Instructor", 13500)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: -48.208927, 0.000000, 102.453842
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Training" "" )
++Secondary Banks: ( "" "" )
++Sbank Ammo: ( 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay "Qualified" 8 ) 
+   ( is-event-true-delay "Qualified 2" 8 ) 
+   ( is-event-true-delay 
+      "Did Not Follow" 
+      8 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 0
++Persona Index: 0
+
+$Name: Drone 01		;! Object #2
+$Display Name: XSTR("Drone 01", 13501)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -68.385414, 0.000020, 555.713501
+$Orientation:
+	-0.998739, 0.000000, -0.050207,
+	0.000000, 1.000000, 0.000000,
+	0.050207, 0.000000, -0.998739
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "Target Drone" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 0
+
+$Name: Drone 02		;! Object #3
+$Display Name: XSTR("Drone 02", 13503)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -103.608429, -21.698776, 800.300171
+$Orientation:
+	-0.996864, 0.000000, -0.079137,
+	0.000000, 1.000000, 0.000000,
+	0.079137, 0.000000, -0.996864
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( is-event-true-delay "Missiles" 8 ) 
+   ( is-destroyed-delay 5 "Drone 01" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 03		;! Object #4
+$Display Name: XSTR("Drone 03", 13502)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: 101.128555, 25.989563, 811.525391
+$Orientation:
+	-0.999738, 0.000000, -0.022901,
+	0.000000, 1.000000, 0.000000,
+	0.022901, 0.000000, -0.999738
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( is-event-true-delay "Missiles" 9 ) 
+   ( is-destroyed-delay 5 "Drone 01" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 04		;! Object #5
+$Display Name: XSTR("Drone 04", 13504)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -194.598267, 29.464540, 921.839294
+$Orientation:
+	-0.998295, 0.000000, -0.058374,
+	0.000000, 1.000000, 0.000000,
+	0.058374, 0.000000, -0.998295
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-evade-ship "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "Good Job" 3 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( < ( hits-left "Alpha 1" ) 40 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 05		;! Object #6
+$Display Name: XSTR("Drone 05", 13510)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -97.946487, -18.823296, 1020.838196
+$Orientation:
+	-0.999999, 0.000000, 0.001593,
+	0.000000, 1.000000, 0.000000,
+	-0.001593, 0.000000, -0.999999
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( is-destroyed-delay 3 "Drone 04" ) 
+   ( is-event-true-delay 
+      "Pilot No Good" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 06		;! Object #7
+$Display Name: XSTR("Drone 06", 13511)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: 4.233900, 21.116474, 1006.115417
+$Orientation:
+	-0.999767, 0.000000, 0.021591,
+	0.000000, 1.000000, 0.000000,
+	-0.021591, 0.000000, -0.999767
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( is-destroyed-delay 3 "Drone 04" ) 
+   ( is-event-true-delay 
+      "Pilot No Good" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 07		;! Object #8
+$Display Name: XSTR("Drone 07", 13512)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -105.249031, 28.886772, 1110.227295
+$Orientation:
+	-0.999831, 0.000000, -0.018406,
+	0.000000, 1.000000, 0.000000,
+	0.018406, 0.000000, -0.999831
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( is-destroyed-delay 
+      2 
+      "Drone 05" 
+      "Drone 06" 
+   )
+   ( is-event-true-delay 
+      "Pilot No Good" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 08		;! Object #9
+$Display Name: XSTR("Drone 08", 13513)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -401.231140, -0.000012, 810.075684
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1000
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-event-true-delay "5 Drones" 3 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 09		;! Object #10
+$Display Name: XSTR("Drone 09", 13514)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -303.826569, -0.000004, 798.463684
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1100
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-event-true-delay "5 Drones" 3 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 11		;! Object #11
+$Display Name: XSTR("Drone 11", 13515)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -305.019623, 0.000002, 700.811340
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1100
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-destroyed-delay 
+   3 
+   "Drone 08" 
+   "Drone 09" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 10		;! Object #12
+$Display Name: XSTR("Drone 10", 13516)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -401.722504, 0.000009, 705.932983
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1000
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-destroyed-delay 
+   3 
+   "Drone 08" 
+   "Drone 09" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 12		;! Object #13
+$Display Name: XSTR("Drone 12", 13517)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -398.462372, -13.313734, 600.515198
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Captain
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1000
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-destroyed-delay 
+   3 
+   "Drone 10" 
+   "Drone 11" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 13		;! Object #14
+$Display Name: XSTR("Drone 13", 13518)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -304.201019, -0.000022, 604.997253
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Captain
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1100
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-destroyed-delay 
+   3 
+   "Drone 10" 
+   "Drone 11" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 14		;! Object #15
+$Display Name: XSTR("Drone 14", 13519)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -396.752319, 0.000024, 512.360535
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Major
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1000
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-destroyed-delay 
+   3 
+   "Drone 12" 
+   "Drone 13" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 15		;! Object #16
+$Display Name: XSTR("Drone 15", 13520)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -305.670776, -0.000019, 496.765442
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Major
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1100
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-destroyed-delay 
+   3 
+   "Drone 12" 
+   "Drone 13" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 16		;! Object #17
+$Display Name: XSTR("Drone 16", 13521)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -409.197144, -0.000017, 406.814209
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Colonel
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1000
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-destroyed-delay 
+   3 
+   "Drone 14" 
+   "Drone 15" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+$Name: Drone 17		;! Object #18
+$Display Name: XSTR("Drone 17", 13522)
+$Class: GTDR Amazon
+$Team: Hostile
+$Location: -301.910553, -0.000025, 396.817627
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Colonel
+$AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 1100
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-destroyed-delay 
+   3 
+   "Drone 14" 
+   "Drone 15" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Respawn priority: 0
++Group: 0
++Score: 0
+
+#Wings		;! 1 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Alpha 1"
+)
++Hotkey: 0
++Flags: ( )
+
+#Events		;! 55 total
+
+$Formula: ( when 
+   ( has-time-elapsed 3 ) 
+   ( training-msg "Welcome" ) 
+   ( ship-guardian "Alpha 1" ) 
+)
++Name: Welcome
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg "Cover" ) 
+)
++Name: Cover
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg "Target Me" ) 
+)
++Name: Target Me
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( targeted "Instructor" ) 
+   ( do-nothing ) 
+)
++Name: Instructor Targeted
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Target Instructor", 2129)
++Objective key:  XSTR("Press $t$ or Press $f$", 2255)
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg "As I Move" ) 
+   ( add-goal 
+      "Instructor" 
+      ( ai-waypoints-once 
+         "Waypoint path 1" 
+         89 
+      )
+   )
+)
++Name: As I Move
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Instructor Targeted" 
+      2 
+   )
+   ( flash-hud-gauge "LEAD_INDICATOR" ) 
+)
++Name: LEAD_INDICATOR
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg "Target Drone" ) 
+)
++Name: Target Drone
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( and 
+      ( targeted "Drone 01" ) 
+      ( not 
+         ( is-destroyed-delay 0 "Drone 01" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Target Drone 2
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Target Drone", 2256)
++Objective key:  XSTR("Press $t$ or Press $h$", 2257)
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Drone 01" ) 
+   )
+   ( training-msg "Target Box" ) 
+)
++Name: Target Box
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Target Drone 2" 
+      2 
+   )
+   ( flash-hud-gauge "TARGET_MONITOR" ) 
+)
++Name: TARGET_MONITOR
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Drone 01" ) 
+   )
+   ( training-msg "Hull Strength" ) 
+)
++Name: Hull Strength
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Drone 01" ) 
+   )
+   ( training-msg "Shoot Drone" ) 
+   ( unprotect-ship "Drone 01" ) 
+   ( add-goal 
+      "Instructor" 
+      ( ai-chase "Drone 01" 89 ) 
+   )
+)
++Name: Shoot Drone
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( < ( hits-left "Drone 01" ) 88 ) 
+   ( protect-ship "Drone 01" ) 
+   ( add-goal 
+      "Instructor" 
+      ( ai-play-dead 89 ) 
+   )
+)
++Name: Stop Shooting Drone
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Drone 01" ) 
+   )
+   ( training-msg "Tactic" ) 
+   ( key-reset "M" ) 
+   ( clear-goals "Drone 01" ) 
+)
++Name: Tactic
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( key-pressed "M" ) 
+   ( training-msg "Match Speed" ) 
+   ( key-reset "Alt-M" ) 
+)
++Name: Match Speed
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Match Speed", 2132)
++Objective key:  XSTR("Press $m$", 2258)
+
+$Formula: ( when 
+   ( key-pressed "Alt-M" ) 
+   ( training-msg "Move All Times" ) 
+)
++Name: Move All Times
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Objective:  XSTR("Use Auto Match Speed", 2259)
++Objective key:  XSTR("Press $alt-m$", 2260)
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Drone 01" ) 
+   )
+   ( training-msg "Destroy Drone" ) 
+)
++Name: Destroy Drone
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 01" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 01
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Drone 01", 2146)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Destroy Drone" 
+      8 
+   )
+   ( training-msg "Missiles" ) 
+)
++Name: Missiles
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 
+      1 
+      "Drone 02" 
+      "Drone 03" 
+   )
+   ( training-msg "Two New Drones" ) 
+)
++Name: Two New Drones
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 02" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 02
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Drone 02", 2201)
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "Drone 02" 
+      "Drone 03" 
+   )
+   ( training-msg "Auto Target" ) 
+)
++Name: Auto Target
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Destroy Drone 02" 
+      2 
+   )
+   ( flash-hud-gauge "AUTO_TARGET" ) 
+   ( key-reset "Alt-H" ) 
+)
++Name: AUTO_TARGET
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( key-pressed "Alt-H" ) 
+   ( training-msg "Good Job" ) 
+)
++Name: Good Job
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Use Auto Targeting", 2261)
++Objective key:  XSTR("Press $alt-h$", 2262)
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg "Armed Drone" ) 
+)
++Name: Armed Drone
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( < ( hits-left "Alpha 1" ) 75 ) 
+   ( training-msg "You Take Damage" ) 
+)
++Name: You Take Damage
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Armed Drone" 
+      11 
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( clear-goals "Drone 04" ) 
+   ( add-goal 
+      "Drone 04" 
+      ( ai-chase "Alpha 1" 89 ) 
+   )
+)
++Name: Unprotect Alpha
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 1 "Drone 04" ) 
+   ( training-msg "Try Again" ) 
+)
++Name: Drone 04 Destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Drone 07" ) 
+   ( training-msg "Another Armed Drone" ) 
+   ( protect-ship "Alpha 1" ) 
+)
++Name: Another Armed Drone
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( unprotect-ship "Alpha 1" ) 
+)
++Name: Unprotect
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Alpha 1" ) 40 ) 
+      ( not 
+         ( is-event-true-delay "5 Drones" 0 ) 
+      )
+   )
+   ( training-msg "Pilot No Good" ) 
+)
++Name: Pilot No Good
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-destroyed-delay 2 "Drone 04" ) 
+         ( not 
+            ( is-event-true-delay 
+               "Pilot No Good" 
+               0 
+            )
+         )
+      )
+      ( is-destroyed-delay 2 "Drone 07" ) 
+   )
+   ( training-msg "5 Drones" ) 
+   ( unprotect-ship "Alpha 1" ) 
+)
++Name: 5 Drones
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "5 Drones" 0 ) 
+      ( < ( hits-left "Alpha 1" ) 40 ) 
+   )
+   ( training-msg "Had Enough" ) 
+)
++Name: Had Enough
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: Return To Base 9
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return To Base", 24)
++Objective key:  XSTR("Press $alt-j$", 520)
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 0 "Drone 01" ) 
+      ( not 
+         ( is-event-true-delay 
+            "Destroy Drone" 
+            0 
+         )
+      )
+   )
+   ( training-msg "Did Not Follow" ) 
+)
++Name: Did Not Follow
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: Return To Base
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return To Base", 24)
++Objective key:  XSTR("Press $alt-j$", 520)
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         2 
+         "Drone 17" 
+         "Drone 16" 
+      )
+      ( > ( hits-left "Alpha 1" ) 90 ) 
+   )
+   ( training-msg "Qualified" ) 
+   ( grant-medal "Wings" ) 
+)
++Name: Qualified
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: Return To Base 2
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return To Base", 24)
++Objective key:  XSTR("Press $alt-j$", 520)
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         2 
+         "Drone 17" 
+         "Drone 16" 
+      )
+      ( < ( hits-left "Alpha 1" ) 91 ) 
+   )
+   ( training-msg "Qualified 2" ) 
+   ( grant-medal "Wings" ) 
+)
++Name: Qualified 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: Return To Base 3
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return To Base", 24)
++Objective key:  XSTR("Press $alt-j$", 520)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 04" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 04
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 04", 2263)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 05" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 05
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 05", 2264)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 03" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 03
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 03", 2265)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 06" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 06
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 06", 2266)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 07" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 07
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 07", 2267)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 08" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 08
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 08", 2268)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 09" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 09
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 09", 2269)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 10" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 10
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 10", 2270)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 11" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 11
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 11", 2271)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 12" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 12
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 12", 2272)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 13" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 13
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 13", 2273)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 14" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 14
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 14", 2274)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 15" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 15
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 15", 2275)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 16" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 16
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 16", 2276)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Drone 17" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Drone 17
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Drone 17", 2277)
+
+#Goals		;! 1 total
+
+$Type: Primary
++Name: Complete Training 3
+$MessageNew:  XSTR("Complete Training", 2149)
+$end_multi_text
+$Formula: ( or 
+   ( is-event-true-delay "Qualified 2" 0 ) 
+   ( is-event-true-delay "Qualified" 0 ) 
+)
+
+#Waypoints		;! 1 lists total
+
+$Name: Waypoint path 1
+$List: (		;! 1 points in list
+	( 101.934372, -0.000025, 205.034927 )
+)
+
+#Messages		;! 26 total
+
+$Name: Welcome
+$Team: -1
+$MessageNew:  XSTR("Welcome to module TSM-103a, pilot. Don't touch the controls until you are told to do so. You will fail this session if you do not follow instructions carefully.", 2278)
+$end_multi_text
++Wave Name: TR-03_IN_01.wav
+
+$Name: Cover
+$Team: -1
+$MessageNew:  XSTR("This simulation will cover dogfighting techniques. You'll be required to use many of the skills you learned in the preceding modules, such as targeting, matching speed, and primary and secondary weapons control.", 2279)
+$end_multi_text
++Wave Name: TR-03_IN_02.wav
+
+$Name: Target Me
+$Team: -1
+$MessageNew:  XSTR("Begin by targeting my fighter.  You can either use your basic targeting control [Press $t$] or your friendly targeting control. [Press $f$]", 2280)
+$end_multi_text
++Wave Name: TR-03_IN_03.wav
+
+$Name: As I Move
+$Team: -1
+$MessageNew:  XSTR("You'll notice as I move, a circular indicator moves in front of my ship.  That is the lead indicator.  It shows you where you need to fire your primary weapon to hit your target.", 2281)
+$end_multi_text
++Wave Name: TR-03_IN_04.wav
+
+$Name: Target Drone
+$Team: -1
+$MessageNew:  XSTR("Now target the drone. You can use your basic targeting control [Press $t$] or your hostile targeting control. [Press $h$]", 2282)
+$end_multi_text
++Wave Name: TR-03_IN_05.wav
+
+$Name: Target Box
+$Team: -1
+$MessageNew:  XSTR("The target box in the lower left-hand corner of the HUD displays the distance to and hull integrity of your target.", 2283)
+$end_multi_text
++Wave Name: TR-03_IN_06.wav
+
+$Name: Hull Strength
+$Team: -1
+$MessageNew:  XSTR("Your target's hull strength is also shown in the lower part of your reticle.", 2284)
+$end_multi_text
++Wave Name: TR-03_IN_07.wav
+
+$Name: Shoot Drone
+$Team: -1
+$MessageNew:  XSTR("As I shoot the drone, watch its hull integrity drop slowly.", 2285)
+$end_multi_text
++Wave Name: TR-03_IN_08.wav
+
+$Name: Tactic
+$Team: -1
+$MessageNew:  XSTR("A good dogfighting tactic is matching speeds with your target.  I want you to match speeds with the drone.  [Press $M$]", 2286)
+$end_multi_text
++Wave Name: TR-03_IN_09.wav
+
+$Name: Match Speed
+$Team: -1
+$MessageNew:  XSTR("Good. Your throttle can be set to automatically match the speed of your target, even as your targets change. Use your auto matching control to toggle this feature on or off. [Press $alt-m$]", 2287)
+$end_multi_text
++Wave Name: TR-03_IN_10.wav
+
+$Name: Move All Times
+$Team: -1
+$MessageNew:  XSTR("Good. You should be on the move at all times during a dogfight.", 2288)
+$end_multi_text
++Wave Name: TR-03_IN_11.wav
+
+$Name: Destroy Drone
+$Team: -1
+$MessageNew:  XSTR("Now destroy the drone.", 2289)
+$end_multi_text
++Wave Name: TR-03_IN_12.wav
+
+$Name: Missiles
+$Team: -1
+$MessageNew:  XSTR("Don't forget you also have missiles.  [Press $spacebar$]", 2290)
+$end_multi_text
++Wave Name: TR-03_IN_13.wav
+
+$Name: Two New Drones
+$Team: -1
+$MessageNew:  XSTR("Two new unarmed drones have arrived.  Destroy both of them.  Remember to match their speed.  [Press $m$]", 2291)
+$end_multi_text
++Wave Name: TR-03_IN_14.wav
+
+$Name: Auto Target
+$Team: -1
+$MessageNew:  XSTR("An easy way to target new hostiles is by using auto targeting.  [Press $alt-h$]  This will automatically target your nearest hostile after your current target has either left the area or has been destroyed.", 2292)
+$end_multi_text
++Wave Name: TR-03_IN_15.wav
+
+$Name: Good Job
+$Team: -1
+$MessageNew:  XSTR("Good job.", 2182)
+$end_multi_text
++Wave Name: TR-03_IN_16.wav
+
+$Name: Armed Drone
+$Team: -1
+$MessageNew:  XSTR("This drone is armed.  It will start firing upon you in 10 seconds.  Destroy it.", 2293)
+$end_multi_text
++Wave Name: TR-03_IN_17.wav
+
+$Name: You Take Damage
+$Team: -1
+$MessageNew:  XSTR("You're sustaining a lot of damage from that drone. You may need to review the first two training modules.", 2294)
+$end_multi_text
++Wave Name: TR-03_IN_18.wav
+
+$Name: Try Again
+$Team: -1
+$MessageNew:  XSTR("Let's try this exercise again.  Here come two more unarmed drones.  Destroy them.", 2295)
+$end_multi_text
++Wave Name: TR-03_IN_19.wav
+
+$Name: Another Armed Drone
+$Team: -1
+$MessageNew:  XSTR("Here is an armed drone.  You have 10 seconds before it opens fire.  Destroy it.", 2296)
+$end_multi_text
++Wave Name: TR-03_IN_20.wav
+
+$Name: Pilot No Good
+$Team: -1
+$MessageNew:  XSTR("Pilot, you are by no means ready for combat.  Engage your jump drive to end this simulation.  [Press $alt-j$]", 2297)
+$end_multi_text
++Wave Name: TR-03_IN_21.wav
+
+$Name: 5 Drones
+$Team: -1
+$MessageNew:  XSTR("Now comes the fun part.  Five pairs of armed drones will jump in.  Destroy as many as you can.", 2298)
+$end_multi_text
++Wave Name: TR-03_IN_22.wav
+
+$Name: Had Enough
+$Team: -1
+$MessageNew:  XSTR("Looks like you've had enough.  Engage your jump drive to end this simulation.  [Press $alt-j$]", 2299)
+$end_multi_text
++Wave Name: TR-03_IN_23.wav
+
+$Name: Did Not Follow
+$Team: -1
+$MessageNew:  XSTR("You did not follow instructions, pilot. You have failed this training simulation. Engage your jump drive.  [Press $alt-j$]", 2300)
+$end_multi_text
++Wave Name: TR-03_IN_24.wav
+
+$Name: Qualified
+$Team: -1
+$MessageNew:  XSTR("Great job, pilot.  You have successfully qualified on the Myrmidon space superiority fighter.  Engage your subspace drive.  [Press $alt-j$]", 2301)
+$end_multi_text
++Wave Name: TR-03_IN_25.wav
+
+$Name: Qualified 2
+$Team: -1
+$MessageNew:  XSTR("You have successfully qualified on the Myrmidon space superiority fighter. Engage your jump drive.  [Press $alt-j$]", 2302)
+$end_multi_text
++Wave Name: TR-03_IN_26.wav
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 18 total
+
+$Num stars: 2000
+$Ambient light level: 7895160
+
+$Bitmap List:
+$Sun: SunVega
++Angles: 1.151916 0.000000 0.000000
++Scale: 2.000000
+$Starbitmap: NebulC5-Whisp
++Angles: 0.000000 0.000000 0.575958
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulC12-Whisp
++Angles: 0.383972 0.000000 0.575958
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulC1-Main
++Angles: 0.000000 0.000000 0.558505
++ScaleX: 1.000000
++ScaleY: 1.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH8-Whisp
++Angles: 0.052360 0.000000 0.558505
++ScaleX: 1.000000
++ScaleY: 1.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH5-Whisp
++Angles: 6.213367 0.000000 0.593412
++ScaleX: 1.000000
++ScaleY: 1.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH3-Main
++Angles: 6.248274 0.000000 0.506145
++ScaleX: 1.000000
++ScaleY: 1.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH7-Whisp
++Angles: 6.213367 0.296706 0.488692
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.000000 0.000000 0.244346
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulC12-Whisp
++Angles: 6.003928 1.535889 0.261799
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulC14-Whisp
++Angles: 6.038835 0.000000 0.296706
++ScaleX: 1.000000
++ScaleY: 1.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH13-Whisp
++Angles: 6.038835 0.000000 0.296706
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH1-Main
++Angles: 5.742129 3.874628 6.195914
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulC1-Main
++Angles: 5.689769 1.535889 6.230821
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulC11-Whisp
++Angles: 5.445423 0.000000 6.003928
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulC2-Main
++Angles: 5.550143 0.000000 6.108648
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH2-Main
++Angles: 5.550143 3.141590 6.108648
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH3-Main
++Angles: 5.619956 0.575958 6.161007
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulC5-Whisp
++Angles: 5.619956 0.000000 6.161007
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: Brief3
+
+#End
+
