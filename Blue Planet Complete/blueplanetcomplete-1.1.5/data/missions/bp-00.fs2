@@ -37,6 +37,13 @@ $Skybox Model: deltaserp-box.pof
 
 $AI Profile: BP
 
+#Sexp_variables
+
+$Variables:
+(
+		0		"autoGenVar0"		"Knossos Portal"		"string"
+)
+
 #Command Briefing
 
 #Briefing
@@ -47,11 +54,6 @@ $end_briefing
 #Debriefing_info
 
 $Num stages: 0
-
-#Alternate Types:
-$Alt: Knossos Portal
-
-#end
 
 
 #Players		;! 1 total
@@ -618,7 +620,6 @@ $Texture Replace:
 $Name: Sol Subspace Portal		;! Object #9
 $Display Name: XSTR("Sol Subspace Portal", 5467)
 $Class: Alliance Jump Gate
-$Alt: Knossos Portal
 
 $Team: Friendly
 $Location: -10012.635742, -0.000559, 2928.445068
@@ -1063,6 +1064,22 @@ $Ships: (		;! 1 total
 +Flags: ( )
 
 #Events		;! 38 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar0[Knossos Portal]" 
+      "Knossos Portal" 
+      5488 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar0[Knossos Portal]" 
+      "Sol Subspace Portal" 
+   )
+)
++Name: Auto generated event for alt names
++Repeat Count: 1
++Interval: 1
 
 $Formula: ( when 
    ( true ) 
