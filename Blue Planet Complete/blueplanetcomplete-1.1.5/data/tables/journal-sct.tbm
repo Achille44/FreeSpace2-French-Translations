@@ -1,0 +1,976 @@
+#Conditional Hooks
+$Application: FS2_Open
+
+$On Game Init:
+[
+
+Journal = {}
+
+--INITIALIZE
+function Journal:Init()
+
+	ba.print("*****Initializing Journal System...\n")
+	
+	io.setCursorHidden(false)
+	
+	if not AXUI then
+		ba.error("JOURNAL SCRIPT:\nThis script requires AXUI-sct.tbm. Please ensure it is present in your tables directory.")
+	end
+		
+	if self.InGame then
+		AXUI.InGame = false
+		AXUI:ScreenInit()
+		self.Time = mn.getMissionTime
+	else
+		self.Time = ba.getFrametimeOverall
+	end
+	
+	self.FullScreen = {w = gr.getScreenWidth(), h = gr.getScreenHeight()}
+	self.LastClicked = nil
+	
+	AXUI:SetFocus(0)
+	
+	self:SetRead()
+	
+	local player = ba.getCurrentPlayer()
+	self.PlayerName = self:GetPlayerName()
+	self.Fonts = {}
+	
+	self.TabOffsets = {}
+	
+	--All the config data we need is here
+	local configname = "journal_" .. player:getCampaignFilename() .. "_config.cfg"
+	
+	if cf.fileExists(configname, "data/config", true) then
+		self.JournalConfig = axemParse:ToTable("journal_" .. player:getCampaignFilename() .. "_config.cfg", true)
+	end
+	
+	if self.JournalConfig then
+		if self.JournalConfig[99] then
+		self.Fonts = self.JournalConfig[99]
+		
+			if self.Fonts.SmallFont then
+				AXUI.Fonts.Small = gr.Fonts[self.Fonts.SmallFont]
+			end
+			
+			if self.Fonts.LargeFont then
+				AXUI.Fonts.Medium = gr.Fonts[self.Fonts.LargeFont]
+			end
+		
+		end
+		
+	end
+	
+	--Let's make some buttans!
+	self.Buttons = {}
+
+	ba.print("About to make...\n")
+	ba.print("Exit button\n")
+	self.Buttons.Exit = AXUI:CreateButton("Quitter", 920, 694, 0, -30, "white", "ui_light_pink", "ui_pink", nil, 0, 0, "2_CAB_050001", "2_CAB_050002", true, 0, self.Fonts.ButtonFont)
+	
+	ba.print("Text up down buttons\n")
+	self.Buttons.TextUp = AXUI:CreateButton(nil, 3, 181, nil, nil, nil, nil, nil, nil, 0, 0, "2_CAB_000001", "2_CAB_000002", true, 0, self.Fonts.ButtonFont)
+	self.Buttons.TextDown = AXUI:CreateButton(nil, 3, 255, nil, nil, nil, nil, nil, nil, 0, 0, "2_CAB_010001", "2_CAB_010002", true, 0, self.Fonts.ButtonFont)
+	
+	ba.print("List up down buttons\n")
+	self.Buttons.ListUp = AXUI:CreateButton(nil, 3, 590, nil, nil, nil, nil, nil, nil, 0, 0, "2_CAB_020001", "2_CAB_020002", true, 0, self.Fonts.ButtonFont)
+	self.Buttons.ListDown = AXUI:CreateButton(nil, 3, 664, nil, nil, nil, nil, nil, nil, 0, 0, "2_CAB_030001", "2_CAB_030002", true, 0, self.Fonts.ButtonFont)
+	
+	--We might be loading without a valid config, so lets not setup tabs then
+	if self.JournalConfig then
+		ba.print("Tab buttons\n")
+		
+	--make this a for loop
+		self.TabGroup = AXUI:CreateRadioGroup()
+		
+		if #self.JournalConfig > 1 then
+				
+			local tabs = #self.JournalConfig
+			local tabGraphic
+			self.Buttons.Tab = {}
+			
+			if tabs == 2 then
+				tabGraphic = "db"
+				self.XTabOffset = 11
+				self.YTabOffsets = {2, 33}
+			elseif tabs == 3 then
+				tabGraphic = "tsb"
+				self.XTabOffset = 12
+				self.YTabOffsets = {5, 31, 56}
+			else	--its 4 tabs
+				tabGraphic = "tdb"
+				self.XTabOffset = 12
+				self.YTabOffsets = {5, 31, 56, 81}
+			end
+						
+			for i = 1, tabs do
+				if tabs <= 4 then
+					self.Buttons.Tab[i] = AXUI:CreateButton(self.JournalConfig[i].Name, self.XTabOffset, self.YTabOffsets[i], 48, 10, "grey", "ui_light_green", "ui_green", nil, 0, 0, "2_" .. tabGraphic .. "_0" .. i-1 .. "0001", "2_" .. tabGraphic .. "_0" .. i-1 .. "0002", true, 0, self.Fonts.ButtonFont)
+					self.TabGroup:AddToGroup(self.Buttons.Tab[i])
+				end
+			end
+		
+		end
+		
+	end
+	
+	ba.print("ListBox\n")
+	self.ListBox = AXUI:CreateListBox(nil, 80, 565, 745, 200, "grey", "blue", "bright_blue", true, 0, self.ListFont)
+	
+	if self.Buttons.Tab[1] then
+		self.TabGroup:SwitchTo(1)
+		self:LoadTab(1)
+	end
+		
+end
+
+--So Freespace doesn't like 32 or more character filenames, so we'll just truncate the player name so we keep it under the required limit
+function Journal:GetPlayerName()
+	
+	local player = ba.getCurrentPlayer()
+	local campaignfilename = player:getCampaignFilename()
+	local maxnamelength = 32 - ("..1.sav."):len() - campaignfilename:len()
+	local name = player:getName()
+	--ba.print("MAX NAME LENGTH: " .. maxnamelength .. "\n")
+	return string.sub(name, 1, maxnamelength)
+
+end
+
+--Load a tab, setup elements, etc
+function Journal:LoadTab(tab)
+
+	self.CurrentTab = self.JournalConfig[tab]
+	local savename = self.CurrentTab.Savetoken or ba.getCurrentPlayer():getCampaignFilename()
+	self.CurrentTab.SaveFilename = savename .. "." .. self.PlayerName .. "." .. tab .. ".sav"
+	
+	--SetupTable will load the table and only return entries that will be visible to the player
+	self.TabEntry = self:SetupTable(axemParse:ToTable(self.CurrentTab.File), self.CurrentTab.RevSort)
+	
+	--Populate the list box
+	local titleList = {}
+	
+	for i = 1, #self.TabEntry do
+		titleList[i] = self.TabEntry[i].Title
+	end
+		
+	self.ListBox:ChangeList(titleList)
+	self.ListBox.Group:SwitchTo(1)
+	self.ListBox.ItemOffset = 0
+			
+	local style = string.lower(self.CurrentTab.Style)
+	
+	--Create the interface items we need and nil the rest
+
+	if style == "fulltext" then
+		self.TextBox = AXUI:CreateTextBox(nil, 75, 160, 850, 320, "white", true, self.CurrentTab.Font)
+		self.ImageBox = nil
+		self.Thumbnails = nil
+		self.FullImage = nil
+		self.Buttons.CloseImage = nil
+		self.Buttons.NextImage = nil
+		self.Buttons.PrevImage = nil
+		self.httpstream = nil
+		self:ShowContent(1)
+		
+	elseif style == "imagetext" then
+		self.TextBox = AXUI:CreateTextBox(nil, 310, 160, 635, 320, "white", true, self.CurrentTab.Font)
+		self.ImageBox = AXUI:CreateImageBox(nil, 60, 175, nil, "white", 245, 320, true, false, true, self.CurrentTab.CaptionFont)
+		self.Thumbnails = nil
+		self.FullImage = nil
+		self.Buttons.CloseImage = nil
+		self.Buttons.NextImage = nil
+		self.Buttons.PrevImage = nil
+		self.httpstream = nil
+		self:ShowContent(1)
+		
+	elseif style == "thumbnails" then
+		self.TextBox = nil
+		self.ImageBox = nil
+		self.FullImage = nil
+		self.Thumbnails = AXUI:CreateThumbnails(nil, 75, 175, 900, 375, 200, 120, 25, 60, true, 0, self.CurrentTab.Font)
+		self.ListBox:ChangeList(nil)
+		self.Buttons.CloseImage = nil
+		self.Buttons.NextImage = nil
+		self.Buttons.PrevImage = nil
+		self.httpstream = nil
+		self.Thumbnails:ChangeThumbnailList(self.TabEntry)
+
+	end
+	
+end
+
+--Checks for saved data, since we can't depend on the index (since it can change) we check the title for a match. String comparisons may suck but we're not dealing with too many and its just once a tab change.
+function Journal:ApplySaveData(t, data)
+
+	--t should be the tab file
+	--data should be the ***loaded*** save data (parseToTable should already have been called)
+	--LoadWith will bring certain entries active if that campaign name is the one loaded. Good for using 1 file across many campaigns
+
+	local player = ba.getCurrentPlayer()
+	
+	for i = 1, #t do
+		for j = 1 , #data do
+			if t[i].Title == data[j].Title then
+			
+				t[i].Visible = data[j].Visible
+				t[i].Read = data[j].Read
+						
+				if t[i].LoadWith then
+					local options = axemParse:ParseCSVLine(t[i].LoadWith)
+				
+					for _, v in ipairs(options) do
+						if v == player:getCampaignFilename() then
+							t[i].Visible = true
+						end
+					end
+				end
+				
+				if t[i].Mission then
+					if t[i].Mission == mn.getMissionFilename() then
+						t[i].Visible = true
+					end
+				end			
+				
+			end
+		end
+	end
+
+end
+
+--Take t and apply them appropriately and sort if needed
+function Journal:SetupTable(t, sorting)
+
+	local finalT = {}
+	local savedData = {}
+	local startAt = 1
+	local endAt = #t
+	local step = 1
+	local index = 1
+	local fileName = self.CurrentTab.SaveFilename
+	
+	for i = 1, #t do
+		if t[i].File then
+			local thisFile = cf.openFile(t[i].File,"rb","data/fiction")
+			local text =  thisFile:read("*a")
+			t[i].Text = text
+			thisFile:close()
+		end
+	end
+		
+	if cf.fileExists(fileName, "data/config", true) then
+		ba.print("***Table setup: loading saved file\n")
+		savedData = axemParse:ToTable(fileName)	--Loads the saved data
+	else
+		ba.print("***Table setup: creating new file\n")
+		savedData = self:SaveData(t, fileName)	--If no saved data exists, we create it here.
+	end
+		
+	self:ApplySaveData(t, savedData)
+		
+	--Reverse sort action
+	if sorting then
+		startAt = #t
+		endAt = 1
+		step = -1
+	end
+	
+	for i = startAt, endAt, step do
+		if t[i].Visible then
+			finalT[index] = t[i]
+			index = index + 1
+		end
+	end
+	
+	return finalT
+	
+end
+
+--Save required t fields to fileName
+function Journal:SaveData(t, fileName)
+
+	--We only need to save the Title, Visiblity and Read status.
+
+	local data = {}
+	
+	for i = 1, #t do
+		data[i] = {}
+		data[i].Title = t[i].Title
+		data[i].Visible = t[i].Visible
+		data[i].Read = t[i].Read
+		
+	end
+
+	axemParse:Write(data, fileName, "data/config")	--axemParse is in parsecfg-sct.tbm
+
+	return data
+	
+end
+
+--Show requested content
+function Journal:ShowContent(index)
+
+	self.ContentIndex = index
+
+	--If we've viewed an entry, mark is read and save the data
+	if self.TabEntry[index].Read ~= true then
+	
+		self.TabEntry[index].Read = true
+		
+		--Now save it PROPERLY, take the original listing, apply save data to it, make the edit, the save the data
+		local file = axemParse:ToTable(self.CurrentTab.File)
+		local data = axemParse:ToTable(self.CurrentTab.SaveFilename)
+		
+		self:ApplySaveData(file, data)
+		
+		for i = 1, #file do
+			if file[i].Title == self.TabEntry[index].Title then
+				file[i].Read = true
+			end
+		end
+
+		ba.print("***Table setup: marking item as read\n")
+		self:SaveData(file, self.CurrentTab.SaveFilename)
+	end
+
+	--If there's a text box around, display its text
+	if self.TextBox then
+		self.TextBox:ChangeText(self.TabEntry[index].Text)
+		self.TextBox.Offset = 0
+	end
+		
+	--If there's an image box, toss up the image and the caption
+	if self.ImageBox then
+		if self.TabEntry[index].Caption then
+			self.ImageBox:ChangeText(self.TabEntry[index].Caption)
+		else
+			self.ImageBox:ChangeText(nil)
+		end
+		
+		if self.TabEntry[index].Image then
+			self.ImageBox:ChangeImage(self.TabEntry[index].Image)
+		else
+			self.ImageBox:ChangeImage(nil)
+		end
+		
+		--If there's an available FullImage, generate a zoom button
+		if self.TabEntry[index].FullImage then
+			self.Buttons.Zoom = AXUI:CreateButton(nil, 0, 0, nil, nil, nil, nil, nil, "axui_zoomin", 0, 0, "axui_zoomin_h", "axui_zoomin_c", false, 0)
+			self.Buttons.Zoom.BitmapX = self.ImageBox.BitmapX + self.ImageBox.BitmapWidth - gr.getImageWidth("axui_zoomin")
+			self.Buttons.Zoom.BitmapY = self.ImageBox.BitmapY
+			self.Buttons.Zoom:CalculateRegion()
+		else
+			self.Buttons.Zoom = nil
+		end
+		
+	end
+	
+	--If there's thumbnails...
+	if self.Thumbnails then
+		
+		self.Thumbnails.Index = index
+		
+		local thisItem = self.Thumbnails.Items[index]
+				
+		--Thumbnail images need a slightly different way of saving their info
+		if thisItem.Read ~= true then
+			thisItem.Read = true
+			self:SaveData(self.Thumbnails.Items, self.CurrentTab.SaveFilename)
+		end
+		
+		Journal:DisplayFullImage(thisItem.Image) --This will also create a close button
+		
+		local halfHeight = (gr.getScreenHeight() / 2) - (gr.getImageHeight("axui_right") / 2)		--This is cheating, but I make the rules here
+		
+		--Making the next and prev buttons
+		self.Buttons.NextImage = AXUI:CreateButton(nil, AXUI.Screen.w - gr.getImageWidth("axui_right"), halfHeight, nil, nil, nil, nil, nil, "axui_right", 0, 0, "axui_right_h", "axui_right_c", false, 1)
+		
+		self.Buttons.PrevImage = AXUI:CreateButton(nil, 0, halfHeight, nil, nil, nil, nil, nil, "axui_left", 0, 0, "axui_left_h", "axui_left_c", false, 1)
+		
+	end
+	
+end
+
+--Display a large image, across the entire screen and centered
+function Journal:DisplayFullImage(imagefilename)
+
+	self.FullImage = AXUI:CreateImageBox(imagefilename, 0, 0, nil, nil, AXUI.Screen.w, AXUI.Screen.h, true, true, false)
+			
+	--Generate the close button
+	self.Buttons.CloseImage = AXUI:CreateButton(nil, 0, 0, nil, nil, nil, nil, nil, "axui_close", 0, 0, "axui_close_h", "axui_close_c", false, 1)
+	
+	--If the close button would be off screen, we should move it so its visible, if not, move it to the top right corner
+	if (self.Buttons.CloseImage.BitmapX + self.Buttons.CloseImage.BitmapWidth) > AXUI.Screen.w then
+		self.Buttons.CloseImage.BitmapX = AXUI.Screen.w - self.Buttons.CloseImage.BitmapWidth
+	else
+		self.Buttons.CloseImage.BitmapX = self.FullImage.BitmapX + self.FullImage.BitmapWidth - gr.getImageWidth("axui_close")
+	end
+	
+	if self.Buttons.CloseImage.BitmapY < 0 then
+		self.Buttons.CloseImage.BitmapY = 0
+	else
+		self.Buttons.CloseImage.BitmapY = self.FullImage.BitmapY
+	end
+	
+	self.Buttons.CloseImage:CalculateRegion()
+
+end
+
+--DRAW THINGS
+function Journal:Draw()
+
+	gr.setColor(0,0,0,255)
+	gr.drawRectangle(0,0,self.FullScreen.w, self.FullScreen.h)
+	
+	gr.drawImage("2_Journal_NT",AXUI.Screen.x,AXUI.Screen.y,AXUI.Screen.x + AXUI.Screen.w,AXUI.Screen.y + AXUI.Screen.h)
+
+	--The background
+	if self.Buttons.Tab and #self.Buttons.Tab > 1 then
+		local tabs = #self.Buttons.Tab
+		local filename = "2_Journal_T" .. tabs
+		local w = gr.getImageWidth(filename) * AXUI.Screen.x_aspect
+		local h = gr.getImageHeight(filename) * AXUI.Screen.y_aspect	
+		
+		gr.drawImage(filename, AXUI.Screen.x, AXUI.Screen.y, AXUI.Screen.x + w, AXUI.Screen.y + h)
+		
+		for _, button in ipairs(self.Buttons.Tab) do
+			button:Draw()
+		end	
+		
+	end
+	
+	--These buttons are always visible
+	self.Buttons.Exit:Draw()
+	self.Buttons.TextUp:Draw()
+	self.Buttons.TextDown:Draw()
+	self.Buttons.ListUp:Draw()
+	self.Buttons.ListDown:Draw()
+	
+	--These might not be, so only draw if they're not nil
+		
+	if self.TextBox then
+		self.TextBox:Draw()
+	end
+	
+	if self.ImageBox then
+		self.ImageBox:Draw()
+		
+		if self.Buttons.Zoom then
+			self.Buttons.Zoom:Draw()
+		end
+		
+	end
+	
+	if self.ListBox then
+		if self.ListBox.List then
+			self.ListBox:DrawList()
+			
+			--Displaying read notification (in red!)
+			for i = 1, self.ListBox.ItemLines do
+				if self.TabEntry[i + self.ListBox.ItemOffset].Read ~= true then
+					AXUI:SetColor("red")
+					gr.drawString("new", self.ListBox.Item[i].TextX - gr.getStringWidth("new") - 5, self.ListBox.Item[i].TextY)
+				end
+			end
+		end
+	end
+
+	if self.Thumbnails then
+		self.Thumbnails:DrawThumbnails()
+		
+		--Displaying read notification (in red!)
+		for i = 1, #self.Thumbnails.Buttons do
+			if self.Thumbnails.Items[i+self.Thumbnails.Offset].Read ~= true then
+				AXUI:SetColor("red")
+				gr.drawString("New!", self.Thumbnails.Buttons[i].BitmapX, self.Thumbnails.Buttons[i].BitmapY-11)
+			end
+		end
+	end
+	
+	if self.FullImage then
+		gr.setColor(0,0,0,128) --Slightly dimming the background like the cool kids do
+		gr.drawRectangle(0,0,gr.getScreenWidth(),gr.getScreenHeight(),true)
+		self.FullImage:Draw()
+		self.Buttons.CloseImage:Draw()
+		
+		if self.Buttons.NextImage then
+			self.Buttons.NextImage:Draw()
+			self.Buttons.PrevImage:Draw()
+		end
+	end
+
+end
+
+--Anytime a mouse button goes up, we check to see if something was clicked, and if it was, we take an action. Anything that scrolls will return true or false, depending if the operation succeeded.
+function Journal:MonitorActions(pressed)
+
+	if pressed and self.MouseDown and self.MouseTimestamp and (Journal.MouseTimestamp < self.Time()) then
+
+		self.MouseTimestamp = self.Time() + 0.1
+		
+		--Sigh, ScrollText uses positive numbers to go up and negative numbers to scroll thumbnails up. I'm sorry. :(
+		if self.Buttons.TextUp:Clicked() then
+			if self.TextBox then
+				if self.TextBox:ScrollText(10) then
+					ad.playInterfaceSound(0) --0 is the normal FreeSpace click sound
+				else
+					ad.playInterfaceSound(10) --10 is a fail sound
+				end
+			elseif self.Thumbnails then
+				if self.Thumbnails:ScrollThumbnails(-1) then
+					ad.playInterfaceSound(0)
+				else
+					ad.playInterfaceSound(10)
+				end
+			else
+				ad.playInterfaceSound(10)
+			end
+		end
+
+		if self.Buttons.TextDown:Clicked() then
+			if self.TextBox then
+				if self.TextBox:ScrollText(-10) then
+					ad.playInterfaceSound(0)
+				else
+					ad.playInterfaceSound(10)
+				end			
+			elseif self.Thumbnails then
+				if self.Thumbnails:ScrollThumbnails(1) then
+					ad.playInterfaceSound(0)
+				else
+					ad.playInterfaceSound(10)
+				end
+			else
+				ad.playInterfaceSound(10)
+			end
+		end
+		
+		if self.Buttons.ListUp:Clicked() then
+			if self.ListBox.List then
+				if self.ListBox:ScrollList(-1) then
+					ad.playInterfaceSound(0)
+				else
+					ad.playInterfaceSound(10)
+				end
+			else
+				ad.playInterfaceSound(10)
+			end
+		end
+		
+		if self.Buttons.ListDown:Clicked() then
+			if self.ListBox.List then
+				if self.ListBox:ScrollList(1) then
+					ad.playInterfaceSound(0)
+				else
+					ad.playInterfaceSound(10)
+				end
+			else
+				ad.playInterfaceSound(10)
+			end
+		end
+			
+	elseif not pressed then
+
+		if self.Buttons.Exit:Clicked() then
+		
+			ad.playInterfaceSound(7)
+			
+			if self.InGame then
+			
+				if mn.SEXPVariables["music"]:isValid() and mn.SEXPVariables["oldMusic"]:isValid() then
+				
+					local music = mn.SEXPVariables["music"]
+					local oldMusic = mn.SEXPVariables["oldMusic"]
+		
+					music.Value = oldMusic.Value
+					oldMusic.Value = "NULL"
+				
+				end
+									
+				self.InGame = nil
+				self:CheckNew()
+				self:Exit()
+				AXUI.InGame = true
+				AXUI:ScreenInit()		
+				
+				if CMap and CMap.Suspended then
+					CMap.Enabled = true
+					CMap.Suspended = nil
+				end
+				
+				return
+				
+			else
+
+				Monitor:GoToState(Monitor.LastState) --Monitor is from imonitor-sct.tbm
+				
+			end
+		end
+
+		if self.Buttons.Tab then
+			for i, button in ipairs(self.Buttons.Tab) do
+				if button:Clicked() then
+					ad.playInterfaceSound(0)
+					self.TabGroup:SwitchTo(i)
+					if not self.Thumbnails then
+						self.ListBox.SelectedItem = 1
+					end
+					self:LoadTab(i)
+				end
+			end
+		end
+		
+		if self.ListBox and self.ListBox.ItemLines then
+			for i = 1, self.ListBox.ItemLines do
+				if self.ListBox.Item[i]:Clicked() then
+					ad.playInterfaceSound(0)
+					self.ListBox.Group:SwitchTo(i)
+					self.ListBox.SelectedItem = i + self.ListBox.ItemOffset
+					self:ShowContent(i+self.ListBox.ItemOffset)	
+				end
+			end
+		end
+				
+		if self.Thumbnails then		
+			for i = 1, #self.Thumbnails.Buttons do
+				if self.Thumbnails.Buttons[i]:Clicked() then
+					ad.playInterfaceSound(0)
+					AXUI:SetFocus(1)	--Focus is normally 0, but while in image mode, it should be 1 so only the full image buttons can be clicked
+					self:ShowContent(i+self.Thumbnails.Offset)
+				end
+			end
+		end
+			
+		if self.Buttons.CloseImage then
+			if self.Buttons.CloseImage:Clicked() then
+				ad.playInterfaceSound(0)
+				self.FullImage = nil
+				self.Buttons.CloseImage = nil
+				AXUI:SetFocus(0)
+			end
+		end
+		
+		if self.Buttons.NextImage then
+			if self.Buttons.NextImage:Clicked() then
+				if (self.Thumbnails.Index + 1) > #self.Thumbnails.Items then
+					self:ShowContent(1)
+				else
+					self:ShowContent(self.Thumbnails.Index + 1)
+				end
+				ad.playInterfaceSound(0)
+			end
+		end
+		
+		if self.Buttons.PrevImage then
+			if self.Buttons.PrevImage:Clicked() then
+				if (self.Thumbnails.Index - 1) <= 0 then
+					self:ShowContent(#self.Thumbnails.Items)
+				else
+					self:ShowContent(self.Thumbnails.Index - 1)
+				end
+				ad.playInterfaceSound(0)
+			end
+		end
+		
+		if self.Buttons.Zoom then
+			if self.Buttons.Zoom:Clicked() then
+				ad.playInterfaceSound(0)
+				AXUI:SetFocus(1)	--Focus is normally 0, but while in image mode, it should be 1 so only the full image buttons can be clicked
+				self:DisplayFullImage(self.TabEntry[self.ContentIndex].FullImage)
+			end
+		end
+	end
+end
+
+--When we exit we should make these things nil
+function Journal:Exit()
+
+	self.JournalConfig = nil
+	self.TextBox = nil
+	self.ImageBox = nil
+	self.Thumbnails = nil
+	self.FullImage = nil
+	self.Buttons.CloseImage = nil
+	self.Buttons.NextImage = nil
+	self.Buttons.PrevImage = nil
+	
+	self.Buttons = nil
+	self.TabGroup = nil
+	self.ListBox = nil
+	
+	if Journal.InGame then
+		io.setCursorHidden(true)
+	end
+
+end
+
+--This is what you use in FRED to make a non-visible item visible. Single quotes!
+function jsv(tab, title)
+	Journal:Unlock(tab,title)
+end
+
+function Journal:Unlock(tab,title,evenNoCampaign)
+
+	if evenNoCampaign or mn.isInCampaign() then
+	
+		local journalConfig = axemParse:ToTable("journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config.cfg", true)
+		local tabEntry
+		local fileName
+			
+		if type(tab) == "number" then
+			tabEntry = axemParse:ToTable(journalConfig[tab].File, true)
+			local savetoken = journalConfig[tab].Savetoken or ba.getCurrentPlayer():getCampaignFilename() 
+			fileName = savetoken .. "." .. Journal:GetPlayerName() .. "." .. tab .. ".sav"
+		else
+			for i = 1, #journalConfig do
+				if string.lower(tab) == string.lower(journalConfig[i].Name) then
+					tabEntry = axemParse:ToTable(journalConfig[i].File, true)
+					local savetoken = journalConfig[i].Savetoken or ba.getCurrentPlayer():getCampaignFilename() 
+					fileName = savetoken .. "." .. Journal:GetPlayerName() .. "." .. i .. ".sav"
+					break
+				end
+			end
+		end
+		
+		if cf.fileExists(fileName, "data/config", true) then
+			local saveData = axemParse:ToTable(fileName, true)	
+			Journal:ApplySaveData(tabEntry, saveData)
+		end
+
+		for j = 1, #tabEntry do
+			if (tabEntry[j].ShortTitle and (string.lower(title) == string.lower(tabEntry[j].ShortTitle))) or (tabEntry[j].Title and (string.lower(title) == string.lower(tabEntry[j].Title))) then
+				if tabEntry[j].Visible == false then
+					tabEntry[j].Visible = true
+					Journal:SaveData(tabEntry, fileName)
+					Journal:SetNew()
+				end
+			end
+		end
+		
+	end
+
+end
+
+--And here we make entries invisible
+function jsi(tab, title)
+
+	Journal:Hide(tab,title)
+
+end
+
+function Journal:Hide(tab,title)
+
+	if mn.isInCampaign() then
+
+		local journalConfig = axemParse:ToTable("journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config.cfg", true)
+		local tabEntry
+		local index
+		
+		if not cf.fileExists(journalConfig[tab].File, "data/config", true) then
+			return
+		end
+		
+		if type(tab) == number then
+			tabEntry = axemParse:ToTable(journalConfig[tab].File, true)
+		else
+			for i = 1, #journalConfig do
+				if string.lower(tab) == string.lower(journalConfig[i].Name) then
+					index = i
+					tabEntry = axemParse:ToTable(journalConfig[i].File, true)
+					break
+				end
+			end
+		end
+		
+		local savetoken = journalConfig[index or tab].Savetoken or ba.getCurrentPlayer():getCampaignFilename() 
+		local fileName = savetoken .. "." .. Journal:GetPlayerName() .. "." .. tab .. ".sav"
+		
+		if cf.fileExists(fileName, "data/config", true) then
+			local saveData = axemParse:ToTable(fileName, true)	
+			Journal:ApplySaveData(tabEntry, saveData)
+		end
+
+		for j = 1, #tabEntry do
+			if (tabEntry[j].ShortTitle and (string.lower(title) == string.lower(tabEntry[j].ShortTitle))) or (tabEntry[j].Title and (string.lower(title) == string.lower(tabEntry[j].Title))) then
+				tabEntry[j].Visible = false
+				Journal:SaveData(tabEntry, fileName)
+				--Journal:SetNew()
+			end
+		end
+
+	end
+
+end
+
+--And this is how we reset progress... by deleting the save files... Clumsy but it works!
+function Journal:ResetProgress()
+
+	if mn.isInCampaign() then
+
+		local journalConfig = axemParse:ToTable("journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config.cfg", true)
+		local fileName = nil
+		
+		for i = 1, #journalConfig do
+			local tab = axemParse:ToTable(journalConfig[i].File, true)
+			local savetoken = journalConfig[i].Savetoken or ba.getCurrentPlayer():getCampaignFilename()
+			fileName =  savetoken .. "." .. Journal:GetPlayerName() .. "." .. i .. ".sav"
+			cf.deleteFile(fileName, "data/config")
+		end
+
+	end
+
+end
+
+--When we jsv we set a notify file to tell us is something is new
+function Journal:SetNew()
+
+	local file = cf.openFile(ba.getCurrentPlayer():getCampaignFilename() .. "." .. Journal:GetPlayerName() .. ".n.sav", "w+", "data/config")
+	
+	file:write("1")
+	file:close()
+
+end
+
+--And we'll just make it an empty file when its been read
+function Journal:SetRead()
+
+	local file = cf.openFile(ba.getCurrentPlayer():getCampaignFilename() .. "." .. Journal:GetPlayerName() .. ".n.sav", "w+", "data/config")
+	
+	file:write("")
+	file:close()
+
+end
+
+--Let's check for new entries!
+function Journal:CheckNew()
+
+	if cf.fileExists(ba.getCurrentPlayer():getCampaignFilename() .. "." .. Journal:GetPlayerName() .. ".n.sav", "data/config", true) then
+		self.NewEntries = axemParse:Open(ba.getCurrentPlayer():getCampaignFilename() .. "." .. Journal:GetPlayerName() .. ".n.sav")[1]
+	else
+		self:SetNew()
+		self.NewEntries = 1
+	end
+
+end
+
+--And draw something if there is
+function Journal:DrawNew()
+
+	AXUI:SetColor("red")
+	gr.drawString("New!", Monitor.Buttons.Journal.BitmapX - gr.getStringWidth("New!") - 20, Monitor.Buttons.Journal.TextY)
+
+end
+
+function Journal:DrawNew2()
+
+	AXUI:SetColor("red")
+	gr.drawString("New!", CMap.Buttons.Journal.BitmapX - gr.getStringWidth("New!") - 20, CMap.Buttons.Journal.TextY)
+
+end
+
+]
+
+$State: GS_STATE_SCRIPTING
+$On State Start:
+[
+	if Monitor.Substate == "Journal" then
+		AXUI.InGame = false
+		AXUI:ScreenInit()
+		Journal:Init()
+		io.setCursorHidden(false)
+	end
+]
+
+$On State End:
+[
+	if Monitor.Substate == "Journal" then
+		Journal:Exit()
+	end
+]
+
+$On Frame:
+[
+	if Monitor.Substate == "Journal" then
+		Journal:Draw()
+		Journal:MonitorActions(true)
+	end
+]
+
+$On Mouse Pressed:
+[
+	if Monitor.Substate == "Journal" then
+		if bit.checkBit(hv.MouseButton, 0) then
+			Journal.MouseDown = true
+			Journal.MouseTimestamp = Journal.Time()
+		end
+	end
+]
+
+$On Mouse Released:
+[
+	if Monitor.Substate == "Journal" then
+		if bit.checkBit(hv.MouseButton, 0) then
+			Journal.MouseDown = nil
+			Journal.MouseTimestamp = nil
+			Journal:MonitorActions()
+		end
+	end
+]
+
+$State: GS_STATE_GAME_PLAY
+$On State End:
+[
+	if Journal.InGame then
+		Journal:Exit()
+	end
+]
+
+$On Frame:
+[
+	if Journal.InGame then
+		if NoSDL2 then
+			io.setCursorHidden(false)
+		end
+		Journal:Draw()
+		Journal:MonitorActions(true)
+	end
+]
+
+$On Mouse Pressed:
+[
+	if Journal.InGame then
+		if bit.checkBit(hv.MouseButton, 0) then
+			Journal.MouseDown = true
+			Journal.MouseTimestamp = Journal.Time()
+		end
+	end
+]
+
+$On Mouse Released:
+[
+	if Journal.InGame then
+		if bit.checkBit(hv.MouseButton, 0) then
+			Journal.MouseDown = nil
+			Journal.MouseTimestamp = nil
+			Journal:MonitorActions()
+		end
+	end
+]
+
+$State: GS_STATE_BRIEFING
+$On State Start:
+[
+	if Monitor and Monitor.Enabled and cf.fileExists(Monitor.ConfigFilename, "data/config", true) then
+		if Monitor.Config.Brief.Journal then
+			Journal:CheckNew()
+		end
+	end
+]
+
+$On Frame:
+[
+	if Monitor and Monitor.Enabled and Journal.NewEntries and Monitor.Buttons.Journal then
+		Journal:DrawNew()
+	end
+]
+
+#End
