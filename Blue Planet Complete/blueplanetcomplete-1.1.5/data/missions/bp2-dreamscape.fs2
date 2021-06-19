@@ -185,6 +185,7 @@ $Variables:
 		141		"autoGenVar70"		"#Thorne"		"string"
 		142		"autoGenVar71"		"#Ricardo Laporte!"		"string"
 		143		"autoGenVar72"		"#Nabirasul"		"string"
+		144		"autoGenVar73"		"#Falcata 1"		"string"
 )
 
 #Fiction Viewer
@@ -515,11 +516,11 @@ $Num stages: 0
 
 
 #Callsigns:
-$Callsign: Laporte
-$Callsign: we are all-da'wa
-$Callsign: vicmouth was right
-$Callsign: sell soul buy time
-$Callsign: 
+$Callsign: XSTR("Laporte", 14930)
+$Callsign: XSTR("we are all-da'wa", 14222)
+$Callsign: XSTR("vicmouth was right", 14221)
+$Callsign: XSTR("sell soul buy time", 14220)
+$Callsign: XSTR("", 3307)
 
 #end
 
@@ -555,7 +556,7 @@ $Ship Choices: (
 $Name: Falcata 1		;! Object #0
 $Display Name: XSTR("Falcata 1", 10711)
 $Class: UEF Ainsarii
-$Callsign: Laporte
+$Callsign: XSTR("Laporte", 14930)
 
 $Team: Friendly
 $Location: -0.000000, 0.000000, 0.000000
@@ -3348,6 +3349,18 @@ $AI Goals: ( goals ( ai-chase-wing "Rrrricardo Laporte!" 50 ) )
 +Wave Delay Max: 15
 
 #Events		;! 367 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar73[#Falcata 1]" 
+      "#Falcata 1" 
+      11190 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
 
 $Formula: ( when 
    ( true ) 
@@ -16648,7 +16661,7 @@ $Formula: ( when
       "High" 
       "Ricardo: beta wing here!" 
       0 
-      "#Falcata 1" 
+      "@autoGenVar73[#Falcata 1]" 
       "High" 
       "m21t laporte ricardo" 
       7000 

@@ -48,6 +48,9 @@ $Variables:
 		8		"autoGenVar5"		"#Solaris"		"string"
 		9		"autoGenVar6"		"#Sergei Gwilym"		"string"
 		10		"autoGenVar7"		"#Survivor"		"string"
+		11		"autoGenVar8"		"#Solaris"		"string"
+		12		"autoGenVar9"		"#Gef"		"string"
+		13		"autoGenVar10"		"#Alpha 3"		"string"
 )
 
 #Fiction Viewer
@@ -579,15 +582,15 @@ $end_multi_text
 
 
 #Callsigns:
-$Callsign: Brie
-$Callsign: Kassim
-$Callsign: Laporte
-$Callsign: Cosoleto
-$Callsign: Gapar
-$Callsign: Crash
-$Callsign: Simms
-$Callsign: Ng'Mei
-$Callsign: Olefumi
+$Callsign: XSTR("Brie", 14928)
+$Callsign: XSTR("Kassim", 14929)
+$Callsign: XSTR("Laporte", 14930)
+$Callsign: XSTR("Cosoleto", 14941)
+$Callsign: XSTR("Gapar", 14942)
+$Callsign: XSTR("Crash", 14943)
+$Callsign: XSTR("Simms", 14944)
+$Callsign: XSTR("Ng'Mei", 14971)
+$Callsign: XSTR("Olefumi", 12633)
 
 #end
 
@@ -753,7 +756,7 @@ $Texture Replace:
 $Name: Alpha 1		;! Object #4
 $Display Name: XSTR("Alpha 1", 6407)
 $Class: UEF Uhlan
-$Callsign: Brie
+$Callsign: XSTR("Brie", 14928)
 
 $Team: Friendly
 $Location: 204.100006, 2966.300049, 7000.000000
@@ -785,7 +788,7 @@ $Determination: 10
 $Name: Alpha 2		;! Object #5
 $Display Name: XSTR("Alpha 2", 6463)
 $Class: UEF Uhlan
-$Callsign: Kassim
+$Callsign: XSTR("Kassim", 14929)
 
 $Team: Friendly
 $Location: 383.855103, 3017.002197, 7216.681152
@@ -817,7 +820,7 @@ $Determination: 10
 $Name: Alpha 3		;! Object #6
 $Display Name: XSTR("Alpha 3", 6464)
 $Class: UEF Uhlan
-$Callsign: Laporte
+$Callsign: XSTR("Laporte", 14930)
 
 $Team: Friendly
 $Location: 44.847427, 3203.608643, 7081.463379
@@ -1559,7 +1562,7 @@ $Determination: 10
 $Name: Yangtze Alpha 1		;! Object #32
 $Display Name: XSTR("Yangtze Alpha 1", 8487)
 $Class: UEF Uriel
-$Callsign: Ng'Mei
+$Callsign: XSTR("Ng'Mei", 14971)
 
 $Team: Friendly
 $Location: -6462.333496, -0.001404, -1064.011353
@@ -1590,7 +1593,7 @@ $Determination: 10
 $Name: Yangtze Alpha 2		;! Object #33
 $Display Name: XSTR("Yangtze Alpha 2", 8488)
 $Class: UEF Uriel
-$Callsign: Olefumi
+$Callsign: XSTR("Olefumi", 12633)
 
 $Team: Friendly
 $Location: -6406.017090, -0.001425, -1118.229370
@@ -1950,6 +1953,28 @@ $AI Goals: ( goals ( ai-chase-wing "Aquarius" 50 ) ( ai-chase-wing "Gemini" 50 )
 $Formula: ( when 
    ( true ) 
    ( modify-variable-xstr 
+      "@autoGenVar8[#Solaris]" 
+      "#Solaris" 
+      7980 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar9[#Gef]" 
+      "#Gef" 
+      8654 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar10[#Alpha 3]" 
+      "#Alpha 3" 
+      7046 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
       "@autoGenVar1[Mars Gate Farm]" 
       "Mars Gate Farm" 
       8652 
@@ -2275,7 +2300,7 @@ $Formula: ( when
       "High" 
       "Brie: reports in" 
       8000 
-      "#Solaris" 
+      "@autoGenVar8[#Solaris]" 
       "High" 
       "Solaris: bomb squad" 
       7000 
@@ -3026,7 +3051,7 @@ $Formula: ( when
       "High" 
       "n1b1: crap, our Argo" 
       10000 
-      "#Gef" 
+      "@autoGenVar9[#Gef]" 
       "High" 
       "n1b1: bomb not working" 
       9000 
@@ -3366,7 +3391,7 @@ $Formula: ( when
       "High" 
       "survivor killed:" 
       0 
-      "#Alpha 3" 
+      "@autoGenVar10[#Alpha 3]" 
       "High" 
       "n2b1 - kill: it's done!" 
       5000 
@@ -3580,7 +3605,7 @@ $Formula: ( when
       "High" 
       "n2b1 - prisoner begs" 
       0 
-      "#Alpha 3" 
+      "@autoGenVar10[#Alpha 3]" 
       "High" 
       "n2b1 - locked - gonna do it" 
       5000 
