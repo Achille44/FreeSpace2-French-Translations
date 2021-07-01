@@ -1,0 +1,2008 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Vasudan Assault", 1299)
+$Author: Brad Johnson
+$Created: 03/19/98 at 13:55:12
+$Modified: 11/11/07 at 17:27:04
+$Notes:
+This is a FRED created mission
+$End Notes:
+
+$Mission Desc:
+ XSTR("A Hammer of Light destroyer has been tracked down and it must be eliminated.  Multiplayer mission.  Max respawns 5.  Recommended respawns 3.", 1300)
+$end_multi_text
+
++Game Type Flags: 10
+
++Flags: 0
+
++Num Players: 8
+
++Num Respawns: 5
+
++Red Alert: 0
+
++Scramble: 0
+
++Disallow Support: 0
+
++Player Entry Delay:
+1.000000
+
++Viewer pos: -47.092834, 11044.515625, 1635.769043
++Viewer orient:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.132527, 0.991179,
+	0.000000, -0.991179, 0.132527
+
+;;FSO 3.6.0;; $Skybox Model: starfield.pof
+
+#Plot Info
+
+$Tour:  XSTR("Blah", 601)
+$Pre-Briefing Cutscene: Blah
+$Pre-Mission Cutscene: Blah
+$Next Mission Success: Blah
+$Next Mission Partial: Blah
+$Next Mission Failure: Blah
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 1
+$start_stage
+$multi_text
+ XSTR("We have the Ptolemy trapped in Beta Aquilae.  It is accompanied by the Gateway.  We are not sure how many fighters are left aboard the Ptolemy.  Be prepared for the worst.", 1301)
+$end_multi_text
+$voice: Brief_m_5_a.wav
+$camera_pos: -1452.457520, 8189.641602, 2233.880127
+$camera_orient:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.132527, 0.991179,
+	0.000000, -0.991179, 0.132527
+$camera_time: 500
+$num_lines: 0
+$num_icons: 2
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 6
+$team: Neutral
+$class: PVD Typhon
+$pos: -1466.008545, -0.000919, 4226.058594
+$label: XSTR("Ptolemy", 4845)
++id: 1
+$hlight: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 18
+$team: Neutral
+$class: PVC Aten
+$pos: -1482.582642, -0.000351, 2812.202393
+$label: XSTR("Gateway", 4846)
++id: 2
+$hlight: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 5
+
+$Formula: ( is-destroyed-delay 0 "Ptolemy" ) 
+$Multi text
+    XSTR("The Ptolemy was destroyed.  This is a major loss to the Hammer of Light, and a major victory for allied forces.", 1302)
+$end_multi_text
+$Voice: Debrief_m_5_a.wav
+$Recommendation text:
+    XSTR("", 606)
+$end_multi_text
+
+$Formula: ( is-destroyed-delay 
+   0 
+   "Gateway" 
+   "Ptolemy" 
+)
+$Multi text
+    XSTR("The Gateway was destroyed as well.  Good job.", 1303)
+$end_multi_text
+$Voice: Debrief_m_5_b.wav
+$Recommendation text:
+    XSTR("", 606)
+$end_multi_text
+
+$Formula: ( has-departed-delay 
+   0 
+   "PVEP 05" 
+   "PVEP 06" 
+   "PVEP 03" 
+   "PVEP 04" 
+   "PVEP 01" 
+   "PVEP 02" 
+)
+$Multi text
+    XSTR("You allowed all of the escape pods to depart.  Some of the Ptolemy's command staff may have been evacuated.  We are sending fighters to hunt down these pods as we speak.", 1304)
+$end_multi_text
+$Voice: Debrief_m_5_c.wav
+$Recommendation text:
+    XSTR("", 606)
+$end_multi_text
+
+$Formula: ( is-destroyed-delay 
+   0 
+   "PVEP 05" 
+   "PVEP 06" 
+   "PVEP 03" 
+   "PVEP 04" 
+   "PVEP 01" 
+   "PVEP 02" 
+)
+$Multi text
+    XSTR("All escape pods were destroyed.  Most impressive.", 1305)
+$end_multi_text
+$Voice: Debrief_m_5_d.wav
+$Recommendation text:
+    XSTR("", 606)
+$end_multi_text
+
+$Formula: ( not 
+   ( is-destroyed-delay 0 "Ptolemy" ) 
+)
+$Multi text
+    XSTR("The Ptolemy was not destroyed.  This mission is a failure.", 1306)
+$end_multi_text
+$Voice: Debrief_m_5_e.wav
+$Recommendation text:
+    XSTR("", 606)
+$end_multi_text
+
+#Players		;! 8 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+	"GTF Ulysses"	4
+	"GTF Apollo"	12
+	"GTF Valkyrie"	8
+	"GTF Hercules"	8
+	"GTB Athena"	4
+	"GTB Medusa"	4
+)
+
++Weaponry Pool: (
+	"ML-16 Laser"	24
+	"Avenger"	20
+	"Flail"	24
+	"Prometheus"	20
+	"MX-50"	480
+	"Fury"	960
+	"Interceptor"	80
+	"Hornet"	480
+	"Phoenix V"	60
+	"Synaptic"	84
+	"Stiletto"	60
+	"Tsunami"	29
+)
+
+#Objects		;! 50 total
+
+$Name: Alpha 1		;! Object #0
+$Display Name: XSTR("Alpha 1", 4346)
+$Class: GTF Ulysses
+$Team: Friendly
+$Location: -15.898013, 68.356224, 458.976593
+$Orientation:
+	0.998789, 0.000000, -0.049201,
+	0.000482, 0.999952, 0.009775,
+	0.049199, -0.009786, 0.998741
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Avenger" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Alpha 2		;! Object #1
+$Display Name: XSTR("Alpha 2", 4392)
+$Class: GTF Ulysses
+$Team: Friendly
+$Location: -123.255135, -0.043380, 367.475739
+$Orientation:
+	0.997970, 0.000000, -0.063684,
+	0.000000, 1.000000, -0.000006,
+	0.063684, 0.000006, 0.997970
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Avenger" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Respawn priority: 0
++Group: 0
++Score: 12
++Persona Index: 0
+
+$Name: Alpha 3		;! Object #2
+$Display Name: XSTR("Alpha 3", 4415)
+$Class: GTF Ulysses
+$Team: Friendly
+$Location: 85.110741, -0.043345, 362.614838
+$Orientation:
+	0.999412, 0.000000, -0.034287,
+	0.000000, 1.000000, -0.000006,
+	0.034287, 0.000006, 0.999412
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Avenger" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Respawn priority: 0
++Group: 0
++Score: 12
++Persona Index: 1
+
+$Name: Alpha 4		;! Object #3
+$Display Name: XSTR("Alpha 4", 4416)
+$Class: GTF Ulysses
+$Team: Friendly
+$Location: -16.528305, -0.043333, 261.625275
+$Orientation:
+	0.998850, 0.000000, -0.047938,
+	0.000000, 1.000000, -0.000006,
+	0.047938, 0.000006, 0.998850
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Avenger" )
++Secondary Banks: ( "Interceptor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Respawn priority: 0
++Group: 0
++Score: 12
++Persona Index: 2
+
+$Name: Beta 1		;! Object #4
+$Display Name: XSTR("Beta 1", 4440)
+$Class: GTB Ursa
+$Team: Friendly
+$Location: 497.689667, -207.999969, 268.522034
+$Orientation:
+	0.999800, 0.000000, 0.020012,
+	0.000523, 0.999658, -0.026153,
+	-0.020005, 0.026158, 0.999458
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Avenger" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Respawn priority: 0
++Group: 0
++Score: 20
++Persona Index: 3
+
+$Name: Beta 2		;! Object #5
+$Display Name: XSTR("Beta 2", 4441)
+$Class: GTB Ursa
+$Team: Friendly
+$Location: 370.666718, -141.523407, 139.610901
+$Orientation:
+	0.999992, 0.000000, 0.003968,
+	0.000070, 0.999847, -0.017521,
+	-0.003968, 0.017521, 0.999839
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Avenger" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Respawn priority: 0
++Group: 0
++Score: 20
++Persona Index: 4
+
+$Name: Beta 3		;! Object #6
+$Display Name: XSTR("Beta 3", 4442)
+$Class: GTB Ursa
+$Team: Friendly
+$Location: 635.598938, -141.523376, 134.416565
+$Orientation:
+	0.999325, 0.000000, 0.036724,
+	0.000643, 0.999847, -0.017486,
+	-0.036718, 0.017498, 0.999172
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Avenger" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Respawn priority: 0
++Group: 0
++Score: 20
++Persona Index: 0
+
+$Name: Beta 4		;! Object #7
+$Display Name: XSTR("Beta 4", 4443)
+$Class: GTB Ursa
+$Team: Friendly
+$Location: 496.589752, -141.523376, 13.095200
+$Orientation:
+	0.999815, 0.000000, 0.019255,
+	0.000332, 0.999851, -0.017244,
+	-0.019252, 0.017247, 0.999666
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus" "Avenger" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Respawn priority: 0
++Group: 0
++Score: 20
++Persona Index: 1
+
+$Name: Ptolemy		;! Object #8
+$Display Name: XSTR("Ptolemy", 4845)
+$Class: PVD Typhon
+$Team: Neutral
+$Location: 831.911743, -0.000960, 4417.123047
+$Orientation:
+	0.488872, 0.000000, 0.872356,
+	0.000000, 1.000000, 0.000000,
+	-0.872356, 0.000000, 0.488872
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 0
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Hotkey: 7
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 2000
+
+$Name: Aries 1		;! Object #9
+$Display Name: XSTR("Aries 1", 4397)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: 452.149872, -0.001339, 2921.217041
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Aries 2		;! Object #10
+$Display Name: XSTR("Aries 2", 4398)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: 341.674591, -0.001280, 2830.631104
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Aries 3		;! Object #11
+$Display Name: XSTR("Aries 3", 4399)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: 556.281616, -0.001183, 2814.483398
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Aries 4		;! Object #12
+$Display Name: XSTR("Aries 4", 4429)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: 459.537750, -0.001340, 2714.051514
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Aries 5		;! Object #13
+$Display Name: XSTR("Aries 5", 4518)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: 821.900146, -0.001180, 2887.806396
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Aries 6		;! Object #14
+$Display Name: XSTR("Aries 6", 4519)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: 711.425171, -0.001121, 2797.220947
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Gateway		;! Object #15
+$Display Name: XSTR("Gateway", 4846)
+$Class: PVC Aten
+$Team: Neutral
+$Location: 555.743896, 297.857330, 3922.657959
+$Orientation:
+	0.904752, 0.000000, 0.425939,
+	0.000000, 1.000000, 0.000000,
+	-0.425939, 0.000000, 0.904752
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Initial Shields: 0
++Subsystem: Pilot
++Subsystem: turret01a
++Subsystem: turret02a
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 150
+
+$Name: Virgo 1		;! Object #16
+$Display Name: XSTR("Virgo 1", 4395)
+$Class: PVF Horus
+$Team: Neutral
+$Location: -97.602905, 0.000000, 3867.199219
+$Orientation:
+	0.509186, -0.000001, -0.860656,
+	0.000001, 1.000000, 0.000000,
+	0.860656, -0.000001, 0.509186
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Virgo 2		;! Object #17
+$Display Name: XSTR("Virgo 2", 4396)
+$Class: PVF Horus
+$Team: Neutral
+$Location: -189.154175, 0.000343, 3705.129395
+$Orientation:
+	0.571978, 0.000000, -0.820269,
+	0.000001, 1.000000, 0.000001,
+	0.820269, -0.000001, 0.571978
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Virgo 3		;! Object #18
+$Display Name: XSTR("Virgo 3", 4469)
+$Class: PVF Horus
+$Team: Neutral
+$Location: 44.821899, 0.000316, 3688.391113
+$Orientation:
+	0.679381, 0.000000, -0.733786,
+	0.000001, 1.000000, 0.000001,
+	0.733786, -0.000001, 0.679381
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Pisces 1		;! Object #19
+$Display Name: XSTR("Pisces 1", 4402)
+$Class: PVF Horus
+$Team: Neutral
+$Location: 502.578918, -0.000138, 3488.368652
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Pisces 2		;! Object #20
+$Display Name: XSTR("Pisces 2", 4403)
+$Class: PVF Horus
+$Team: Neutral
+$Location: 546.242065, -0.000081, 3388.363770
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Pisces 3		;! Object #21
+$Display Name: XSTR("Pisces 3", 4404)
+$Class: PVF Horus
+$Team: Neutral
+$Location: 421.558502, -0.000164, 3363.305664
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: PVEP 05		;! Object #22
+$Display Name: XSTR("PVEP 05", 4847)
+$Class: PVEP Ra
+$Team: Neutral
+$Location: 474.314880, 0.000440, 5801.713379
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( < ( hits-left "Ptolemy" ) 15 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( > 
+      ( distance "PVEP 05" "Ptolemy" ) 
+      1200 
+   )
+   ( are-waypoints-done-delay 
+      "PVEP 05" 
+      "Waypoint path 1" 
+      0 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: PVEP 06		;! Object #23
+$Display Name: XSTR("PVEP 06", 4848)
+$Class: PVEP Ra
+$Team: Neutral
+$Location: 700.491272, 0.000332, 5791.869141
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( < ( hits-left "Ptolemy" ) 15 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( > 
+      ( distance "PVEP 06" "Ptolemy" ) 
+      1200 
+   )
+   ( are-waypoints-done-delay 
+      "PVEP 06" 
+      "Waypoint path 1" 
+      0 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: PVEP 03		;! Object #24
+$Display Name: XSTR("PVEP 03", 4849)
+$Class: PVEP Ra
+$Team: Neutral
+$Location: 461.592468, 0.000328, 6101.719727
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( < ( hits-left "Ptolemy" ) 15 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( > 
+      ( distance "PVEP 03" "Ptolemy" ) 
+      1200 
+   )
+   ( are-waypoints-done-delay 
+      "PVEP 03" 
+      "Waypoint path 1" 
+      0 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: PVEP 04		;! Object #25
+$Display Name: XSTR("PVEP 04", 4850)
+$Class: PVEP Ra
+$Team: Neutral
+$Location: 706.299438, 0.000389, 6074.709961
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( < ( hits-left "Ptolemy" ) 15 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( > 
+      ( distance "PVEP 04" "Ptolemy" ) 
+      1200 
+   )
+   ( are-waypoints-done-delay 
+      "PVEP 04" 
+      "Waypoint path 1" 
+      0 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: PVEP 01		;! Object #26
+$Display Name: XSTR("PVEP 01", 4851)
+$Class: PVEP Ra
+$Team: Neutral
+$Location: 475.195343, 0.000392, 6422.002930
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( < ( hits-left "Ptolemy" ) 15 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( > 
+      ( distance "PVEP 01" "Ptolemy" ) 
+      1200 
+   )
+   ( are-waypoints-done-delay 
+      "PVEP 01" 
+      "Waypoint path 1" 
+      0 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: PVEP 02		;! Object #27
+$Display Name: XSTR("PVEP 02", 4852)
+$Class: PVEP Ra
+$Team: Neutral
+$Location: 737.871399, 0.000356, 6398.717773
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( < ( hits-left "Ptolemy" ) 15 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( > 
+      ( distance "PVEP 02" "Ptolemy" ) 
+      1200 
+   )
+   ( are-waypoints-done-delay 
+      "PVEP 02" 
+      "Waypoint path 1" 
+      0 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "escort" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Score: 10
+
+$Name: Cancer 1		;! Object #28
+$Display Name: XSTR("Cancer 1", 4400)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: -815.622253, -0.001179, 3189.252197
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Cancer 2		;! Object #29
+$Display Name: XSTR("Cancer 2", 4401)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: -926.097412, -0.001120, 3098.666260
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Cancer 3		;! Object #30
+$Display Name: XSTR("Cancer 3", 4437)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: -711.490540, -0.001023, 3082.518555
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Cancer 4		;! Object #31
+$Display Name: XSTR("Cancer 4", 4438)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: -808.234375, -0.001180, 2982.086670
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Cancer 5		;! Object #32
+$Display Name: XSTR("Cancer 5", 4439)
+$Class: PVF Horus
+$Team: Neutral
+$Location: -445.872009, -0.001020, 3155.841553
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Cancer 6		;! Object #33
+$Display Name: XSTR("Cancer 6", 4853)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: -556.346985, -0.000961, 3065.256104
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Capricorn 1		;! Object #34
+$Display Name: XSTR("Capricorn 1", 4502)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: -797.187256, -0.000915, 2435.537598
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Capricorn 2		;! Object #35
+$Display Name: XSTR("Capricorn 2", 4503)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: -907.662415, -0.000856, 2344.951660
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Capricorn 3		;! Object #36
+$Display Name: XSTR("Capricorn 3", 4854)
+$Class: PVF Seth
+$Team: Neutral
+$Location: -693.055542, -0.000759, 2328.803955
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Capricorn 4		;! Object #37
+$Display Name: XSTR("Capricorn 4", 4855)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: -789.799377, -0.000916, 2228.372070
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Capricorn 5		;! Object #38
+$Display Name: XSTR("Capricorn 5", 4856)
+$Class: PVF Seth
+$Team: Neutral
+$Location: -537.911987, -0.000697, 2311.541504
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Gemini 1		;! Object #39
+$Display Name: XSTR("Gemini 1", 4430)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: 427.857086, -0.001408, 2302.581055
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Gemini 2		;! Object #40
+$Display Name: XSTR("Gemini 2", 4431)
+$Class: PVF Horus
+$Team: Neutral
+$Location: 317.381805, -0.001349, 2211.995117
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Major
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Gemini 3		;! Object #41
+$Display Name: XSTR("Gemini 3", 4432)
+$Class: PVF Anubis
+$Team: Neutral
+$Location: 531.988770, -0.001252, 2195.847412
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 6
+
+$Name: Gemini 4		;! Object #42
+$Display Name: XSTR("Gemini 4", 4857)
+$Class: PVF Thoth
+$Team: Neutral
+$Location: 435.244965, -0.001409, 2095.415527
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 14
+
+$Name: Gemini 5		;! Object #43
+$Display Name: XSTR("Gemini 5", 4858)
+$Class: PVF Seth
+$Team: Neutral
+$Location: 687.132324, -0.001190, 2178.584961
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Virgo 4		;! Object #44
+$Display Name: XSTR("Virgo 4", 4470)
+$Class: PVF Horus
+$Team: Neutral
+$Location: -428.529114, 0.000047, 3683.478271
+$Orientation:
+	0.509186, -0.000001, -0.860656,
+	0.000001, 1.000000, 0.000000,
+	0.860656, -0.000001, 0.509186
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Pisces 4		;! Object #45
+$Display Name: XSTR("Pisces 4", 4433)
+$Class: PVF Horus
+$Team: Neutral
+$Location: 519.167847, -0.000113, 3254.981689
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Pisces 5		;! Object #46
+$Display Name: XSTR("Pisces 5", 4859)
+$Class: PVF Horus
+$Team: Neutral
+$Location: 562.830994, -0.000056, 3154.976807
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Capricorn 6		;! Object #47
+$Display Name: XSTR("Capricorn 6", 4860)
+$Class: PVF Horus
+$Team: Neutral
+$Location: -413.437622, -0.000739, 2414.111328
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Gemini 6		;! Object #48
+$Display Name: XSTR("Gemini 6", 4861)
+$Class: PVF Anubis
+$Team: Neutral
+$Location: 782.318176, -0.001279, 2280.775146
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 6
+
+$Name: Pisces 6		;! Object #49
+$Display Name: XSTR("Pisces 6", 4862)
+$Class: PVF Horus
+$Team: Neutral
+$Location: 445.749725, -0.000701, 3147.622559
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$IFF: IFF 1
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 611)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+#Wings		;! 8 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+	"Alpha 4"
+)
++Hotkey: 0
++Flags:( )
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Beta 1"
+	"Beta 2"
+	"Beta 3"
+	"Beta 4"
+)
++Hotkey: 1
++Flags:( )
+
+$Name: Aries
+;;FSO 3.5.0;; +Squad Logo: hol.pcx
+$Waves: 100
+$Wave Threshold: 0
+$Special Ship: 0		;! Aries 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( and 
+   ( < 
+      ( distance "<any friendly>" "Ptolemy" ) 
+      1000 
+   )
+   ( > ( hits-left "Ptolemy" ) 75 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 6 total
+	"Aries 1"
+	"Aries 2"
+	"Aries 3"
+	"Aries 4"
+	"Aries 5"
+	"Aries 6"
+)
+$AI Goals: ( goals ( ai-guard "Ptolemy" 89 ) ( ai-guard "Gateway" 50 ) )
++Flags:( )
++Wave Delay Min: 3
++Wave Delay Max: 8
+
+$Name: Virgo
+;;FSO 3.5.0;; +Squad Logo: hol.pcx
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Virgo 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( and 
+   ( has-time-elapsed 120 ) 
+   ( > ( num-players ) 4 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Virgo 1"
+	"Virgo 2"
+	"Virgo 3"
+	"Virgo 4"
+)
+$AI Goals: ( goals ( ai-guard "Ptolemy" 50 ) ( ai-guard "PVEP 01" 50 ) ( ai-guard "PVEP 02" 50 ) ( ai-guard "PVEP 03" 50 ) ( ai-guard "PVEP 04" 50 ) )
++Flags:( )
++Wave Delay Min: 10
++Wave Delay Max: 15
+
+$Name: Pisces
+;;FSO 3.5.0;; +Squad Logo: hol.pcx
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Pisces 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 6 total
+	"Pisces 1"
+	"Pisces 2"
+	"Pisces 3"
+	"Pisces 4"
+	"Pisces 5"
+	"Pisces 6"
+)
+$AI Goals: ( goals ( ai-guard "Gateway" 89 ) )
++Flags:( )
+
+$Name: Cancer
+;;FSO 3.5.0;; +Squad Logo: hol.pcx
+$Waves: 100
+$Wave Threshold: 0
+$Special Ship: 0		;! Cancer 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( and 
+   ( < ( hits-left "Ptolemy" ) 76 ) 
+   ( > ( hits-left "Ptolemy" ) 50 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 6 total
+	"Cancer 1"
+	"Cancer 2"
+	"Cancer 3"
+	"Cancer 4"
+	"Cancer 5"
+	"Cancer 6"
+)
+$AI Goals: ( goals ( ai-guard "Ptolemy" 89 ) ( ai-guard "Gateway" 50 ) )
++Flags:( )
++Wave Delay Min: 2
++Wave Delay Max: 8
+
+$Name: Capricorn
+;;FSO 3.5.0;; +Squad Logo: hol.pcx
+$Waves: 100
+$Wave Threshold: 0
+$Special Ship: 0		;! Capricorn 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( and 
+   ( < ( hits-left "Ptolemy" ) 51 ) 
+   ( > ( hits-left "Ptolemy" ) 25 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 6 total
+	"Capricorn 1"
+	"Capricorn 2"
+	"Capricorn 3"
+	"Capricorn 4"
+	"Capricorn 5"
+	"Capricorn 6"
+)
+$AI Goals: ( goals ( ai-guard "Ptolemy" 89 ) ( ai-guard "Gateway" 50 ) )
++Flags:( )
++Wave Delay Min: 2
++Wave Delay Max: 8
+
+$Name: Gemini
+;;FSO 3.5.0;; +Squad Logo: hol.pcx
+$Waves: 100
+$Wave Threshold: 0
+$Special Ship: 0		;! Gemini 1
+
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ptolemy
+$Arrival Cue: ( < ( hits-left "Ptolemy" ) 26 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 6 total
+	"Gemini 1"
+	"Gemini 2"
+	"Gemini 3"
+	"Gemini 4"
+	"Gemini 5"
+	"Gemini 6"
+)
+$AI Goals: ( goals ( ai-guard "Ptolemy" 89 ) ( ai-guard "PVEP 04" 50 ) ( ai-guard "PVEP 01" 50 ) ( ai-guard "PVEP 02" 50 ) ( ai-guard "PVEP 03" 50 ) )
++Flags:( )
++Wave Delay Min: 2
++Wave Delay Max: 8
+
+#Events		;! 11 total
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Aries" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Aries
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( good-secondary-time 
+      "Friendly" 
+      100 
+      "Tsunami" 
+      "Ptolemy" 
+   )
+)
++Name: Good Secondary
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Ptolemy" ) 
+   ( send-message 
+      "<any wingman>" 
+      "normal" 
+      "PVD Ptolemy Dead" 
+   )
+)
++Name: PVD Ptolemy Dead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Gateway" ) 
+   ( send-message 
+      "<any wingman>" 
+      "normal" 
+      "VAC Gateway Dead" 
+   )
+)
++Name: VAC Gateway Dead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Pisces" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Pisces
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Virgo" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Virgo
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "PVEP 05" 
+      "PVEP 06" 
+      "PVEP 03" 
+      "PVEP 04" 
+      "PVEP 01" 
+      "PVEP 02" 
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Escape Pods
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Cancer" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Cancer
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Capricorn" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Capricorn
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Gemini" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Gemini
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-goal-true-delay 
+         "Destroy PVD Ptolemy" 
+         0 
+      )
+      ( is-goal-true-delay 
+         "Destroy PVC Gateway" 
+         0 
+      )
+      ( is-goal-true-delay 
+         "Destroy Escape Pods" 
+         0 
+      )
+      ( skill-level-at-least "Hard" ) 
+   )
+   ( grant-medal "Legion of Merit" ) 
+)
++Name: Great Medal
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 3 total
+
+$Type: Primary
++Name: Destroy PVD Ptolemy
+$MessageNew:  XSTR("Destroy the PVD Ptolemy", 1307)
+$end_multi_text
+$Formula: ( is-destroyed-delay 0 "Ptolemy" ) 
++Score: 1000
+
+$Type: Secondary
++Name: Destroy PVC Gateway
+$MessageNew:  XSTR("Destroy the PVC Gateway", 1308)
+$end_multi_text
+$Formula: ( is-destroyed-delay 0 "Gateway" ) 
++Score: 500
+
+$Type: Bonus
++Name: Destroy Escape Pods
+$MessageNew:  XSTR("Destroy All Fleeing Escape Pods", 1309)
+$end_multi_text
+$Formula: ( is-destroyed-delay 
+   0 
+   "PVEP 05" 
+   "PVEP 06" 
+   "PVEP 03" 
+   "PVEP 04" 
+   "PVEP 01" 
+   "PVEP 02" 
+)
+
+#Waypoints		;! 1 lists total
+
+$Name: Waypoint path 1
+$List: (		;! 1 points in list
+	( 218.029434, -1869.320923, 4776.394531 )
+)
+
+#Messages		;! 2 total
+
+
+$Name: PVD Ptolemy Dead
+$Team: -1
+$MessageNew:  XSTR("The PVD Ptolemy is going down.", 1310)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM1
++Wave Name: TC_mm5_a.wav
+
+$Name: VAC Gateway Dead
+$Team: -1
+$MessageNew:  XSTR("The VAC Gateway has been destroyed.", 1311)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM1
++Wave Name: TC_mm5_b.wav
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 205
+$Ambient light level: 7895160
++Nebula: Nebula03
++Color: Purple
++Pitch: 318
++Bank: 185
++Heading: 273
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: 4: Numbers
+;;FSO 3.6.9;; $Substitute Event Music: FS1-4: Worlds Apart
+$Briefing Music: Brief2
+;;FSO 3.6.9;; $Substitute Briefing Music: FS1-BRIEF2
+;;FSO 3.6.9;; $Debriefing Success Music: FS1-Success
+;;FSO 3.6.9;; $Debriefing Average Music: FS1-Success
+;;FSO 3.6.9;; $Debriefing Fail Music: FS1-Failure
+
+#End
+
