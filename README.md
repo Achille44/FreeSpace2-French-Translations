@@ -1,6 +1,6 @@
 # FreeSpace2-French-Translations
 
-Project to translate FreeSpace 2 mods to French language.
+Project to translate FreeSpace 2 mods into French language.
 The mods translated here can be found on the community website http://www.hard-light.net/.
 
 ## How to test the existing translations?
