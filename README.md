@@ -3,7 +3,17 @@
 Project to translate FreeSpace 2 mods into French language.
 The mods translated here can be found on the community website http://www.hard-light.net/.
 
-## How to test the existing translations?
+The main objective of this project is to translate as many mods as possible, not to make them better.
+
+
+## How to learn more about the project or to get involved?
+
+If you are interested in taking part in this project, or if you just want to know more, you can contact me on the discussion tab of this project, or in the translation board of HLP forums: https://www.hard-light.net/forums/index.php?board=277.0.
+
+I would be happy to welcome new translators or testers for translations in progress. Translations into other languages could also be included in this project.
+
+
+## How to test unreleased translations?
 
 First install the mod with Knossos (https://fsnebula.org/knossos/).
 Set the game in French language with the Knossos settings.
@@ -20,7 +30,7 @@ If you want to create your own translations, you may want to check the following
 
 ### Languages with non-ascii characters
 
-In case you want to translate to a language using non-ascii characters (accents, etc) like French for example, you need to check if the mod supports unicode.
+In case you want to translate into a language using non-ascii characters (accents, etc) like French for example, you need to check if the mod supports unicode.
 
 From version 19.0 of the SCP engine, there is an official unicode mode, which can be enabled on mods running with this version or above. To enable it, browse the mod files and find the file 'game_settings.tbl'. Most of the time this file is included in a .vp file so you will have to extract it with the tools provided by the community.
 Inside this file, you need to change/add the following line under '#GAME SETTINGS' section: 
@@ -35,7 +45,7 @@ If the mod uses a version prior to 19.0, then you will need to change the fonts 
 
 #### Alternative to Unicode mode
 
-If the Unicode mode is not possible for whatever reason, there is a possibility to copy the beheavior of the fsport mod translations. This mod uses specific fonts for languages with special characters, without using Unicde mode. So you can copy these fonts to the mod you want to translate, but in this case your strings.tbl and tstrings.tbl files need to use the "Western (Windows 1252)" encoding, otherwise the special characters won't show up!
+If the Unicode mode is not possible for whatever reason, there is a possibility to copy the beheavior of the fsport mod translations. This mod uses specific fonts for languages with special characters, without using Unicode mode. So you can copy these fonts to the mod you want to translate, but in this case your strings.tbl and tstrings.tbl files need to use the "Western (Windows 1252)" encoding, otherwise the special characters won't show up!
 
 ### Where are located the files to be translated?
 
@@ -86,7 +96,7 @@ xstr_bta1_m-tlc.tbm
 xstr_bta1_single-tlc.tbm
 ```
 
-#### How do the extended files are managed by the game engine?
+#### How are the extended files managed by the game engine?
 
 The SCP engine prioritizes the extended files over the original files, and different extended files are prioritized per alphabetical order, which means that if the same string (identified with the same integer) is present on xstr_bta1_d-tlc.tbm, xstr_bta1_m-tlc.tbm and tstrings.tbl, then only the string in xstr_bta1_d-tlc.tbm will be taken into account.
 
