@@ -45,6 +45,13 @@ $Next Mission Success: Blah
 $Next Mission Partial: Blah
 $Next Mission Failure: Blah
 
+#Sexp_variables
+
+$Variables:
+(
+		0		"autoGenVar1"		"Antares Jump Node"		"string"
+)
+
 #Command Briefing
 
 #Briefing
@@ -1469,9 +1476,21 @@ $Ships: (		;! 3 total
 #Events		;! 2 total
 
 $Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[Antares Jump Node]" 
+      "Antares Jump Node" 
+      5121 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
    ( depart-node-delay 
       0 
-      "Antares Jump Node" 
+      "@autoGenVar1[Antares Jump Node]" 
       "GTC Orff" 
    )
    ( validate-goal "Defend the Orff" ) 
