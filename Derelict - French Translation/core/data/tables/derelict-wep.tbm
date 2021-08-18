@@ -1,0 +1,80 @@
+;added by sf-junky
+
+#Primary Weapons
+
+$Name:							SVas#lr
+$Alt Name: XSTR("SVas", 4018)
+$Model File:					none 				; laser1-1.pof
+@Laser Bitmap:               	laserglow01
+@Laser Color:					255, 200, 67
+; Puke pale green 				R 192	G 255	B 200
+@Laser Length:					0.0
+@Laser Head Radius:				0.3
+@Laser Tail Radius:				0.3
+$Mass:                          100.0
+$Velocity:                      1600.0				;; speed of the weapon (initially) -- may or may not change
+$Fire Wait:                     20.0				;; in seconds
+$Damage:                        350					;; NOTE: for beam weapons this is kind of a "continuous" damage applied every few fractions of a second that the beam is on.
+$Armor Factor:                  1.0
+$Shield Factor:                 1.0
+$Subsystem Factor:              1.0
+$Lifetime:                      2.5            		;; How long this thing lives
+$Energy Consumed:               0.30        	    ;; Energy used when fired
+$Cargo Size:                    0.0         	    ;; Amount of space taken up in weapon cargo
+$Homing:                        NO
+$LaunchSnd:                     125             	;; The sound it makes when fired
+$ImpactSnd:                     88              	;; The sound it makes when it hits something
++Weapon Range:					4000				;; Limit to range at which weapon will actively target object
+$Flags:                         ("Big Ship" "huge" "beam")
+$Icon:                          icongun05
+$Anim:                          LoadGun07
+$Impact Explosion:              ExpMissileHit1
+$Impact Explosion Radius:       40.0
+$BeamInfo:
+	+Type:						0					;; 0 - 4 are valid #'s
+	+Life:		  				2.5					;; how long it lasts once the beam is actually firing
+	+Warmup:		  			1500				;; warmup time in ms
+	+Warmdown:					3000				;; warmdown time in ms
+	+Radius:		  			65.0				;; muzzle glow radius in meters
+	+PCount:					25					;; particles spewed every interval
+	+PRadius:					1.4					;; particle radius
+	+PAngle:					60.0				;; angle of the random "cone" where the particles are generated
+	+PAni:						particleexp01		;; particle ani
+	+Miss Factor:				1.0 1.1 1.1 1.1 1.4				;; magic # - higher == miss more (only really applicable to type 0 and type 3 beams)
+	+BeamSound:					121					;; the looping beam-firing sound
+	+WarmupSound:				122					;; associated warmup sound
+	+WarmdownSound:				123					;; associated warmdown sound
+	+Muzzleglow:				beamglow6			;; muzzle glow bitmap
+	+Shots:						0					;; only used for TYPE 3 beams
+	+ShrinkFactor:				0.0			;; what percentage of lifetime where beam starts shrinking (0.1 == 10% life left)
+	+ShrinkPct:					0.0			;; what percentage of max width we subtract per second
+	$Section:								;; one section of the beam (you can have up to 5)
+		+Width:					7.0				;; width of the section
+		+Texture:				beam-white3		;; texture for this section
+		+RGBA Inner:			255 255 255 255	;; rgba values (only for non-textured beam compiles)
+		+RGBA Outer:			150 150 150 10	;; rgba values (only for non-textured beam compiles)
+		+Flicker:				0.1				;; how much it flickers (0.0 to 1.0)
+		+Zadd:					2.0				;; hehe
+	$Section:								;; one section of the beam
+		+Width:					20.0			;; width of the section
+		+Texture:				beam-orange2	;; texture for this section
+		+RGBA Inner:			160 160 0 255	;; rgba values (only for non-textured beam compiles)
+		+RGBA Outer:			60 60 0 10		;; rgba values (only for non-textured beam compiles)
+		+Flicker:				0.2				;; how much it flickers (0.0 to 1.0)
+		+Zadd:					1.0				;; hehe
+	$Section:								;; one section of the beam
+		+Width:					30.0			;; width of the section
+		+Texture:				beam-orange		;; texture for this section
+		+RGBA Inner:			255 0 0 255		;; rgba values (only for non-textured beam compiles)
+		+RGBA Outer:			60 0 0 10		;; rgba values (only for non-textured beam compiles)
+		+Flicker:				0.3				;; how much it flickers (0.0 to 1.0)
+		+Zadd:					0.0				;; hehe
+
+
+$Name: LRBGreen
++nocreate
+$Alt Name: XSTR("LRBGreen", 4019)
+$BeamInfo:
++Range: 240000
+
+#end
