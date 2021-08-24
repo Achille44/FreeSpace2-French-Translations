@@ -1,0 +1,163 @@
+$Name: XSTR("The Destiny of Peace", 8397)
+$Type: single
++Description:
+ XSTR("Seven months have passed since the destruction of the Lucifer.  With the war over and the Terran-Vasudan alliance flourishing, the need for new GTA pilots has declined.  As a gifted young pilot, this disappoints you.  The only job you could land was busting speeders at GTA outposts.  You begin to feel like you're never going to get your chance to live your dream.  Things are about to change...", 8460)
+$end_multi_text
+$Flags: 1
+
+
++Starting Ships: ( "GTF Ulysses"  "GTF Apollo"  "GTF Valkyrie"  "GTF Hercules"  "GTB Athena"  "GTB Medusa"  "GTB Ursa" )
+
++Starting Weapons: ( "ML-16 Laser"  "Disruptor"  "D-Advanced"  "Flail"  "Avenger"  "Prometheus"  "Banshee"  "MX-50"  "Fury"  "Hornet"  "Interceptor"  "Phoenix V"  "Synaptic"  "D-Missile"  "Stiletto"  "Tsunami"  "Harbinger" )
+
+
+$Mission: dop-01.fs2
++Flags: 0
+;;FSO 3.7.2;; +Substitute Main Hall: Wayfarer
+;;FSO 3.6.8;; +Debriefing Persona Index: 1
++Formula: ( cond
+   (
+      ( and
+         ( is-previous-goal-true 
+            "dop-01.fs2" 
+            "Speeders" 
+         )
+         ( is-previous-goal-true 
+            "dop-01.fs2" 
+            "Scan Cruiser" 
+         )
+         ( is-previous-event-true 
+            "dop-01.fs2" 
+            "Return to base" 
+         )
+      )
+      ( next-mission "dop-02.fs2" )
+   )
+   ( ( true ) ( next-mission "dop-01.fs2" ) )
+)
+
++Level: 0
++Position: 0
+
+$Mission: dop-02.fs2
++Flags: 0
+;;FSO 3.7.2;; +Substitute Main Hall: Galatea B
+;;FSO 3.6.8;; +Debriefing Persona Index: 1
++Formula: ( cond
+   (
+      ( and
+         ( is-previous-goal-true 
+            "dop-02.fs2" 
+            "Protect Transports" 
+         )
+         ( is-previous-goal-true 
+            "dop-02.fs2" 
+            "Protect Destiny" 
+         )
+      )
+      ( next-mission "dop-03.fs2" )
+   )
+   ( ( true ) ( next-mission "dop-02.fs2" ) )
+)
+
++Level: 1
++Position: 0
+
+$Mission: dop-03.fs2
++Flags: 0
+;;FSO 3.7.2;; +Substitute Main Hall: Galatea B
+;;FSO 3.6.8;; +Debriefing Persona Index: 1
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "dop-03.fs2" 
+         "Neutralize the Timberland" 
+      )
+      ( next-mission "dop-04.fs2" )
+   )
+   ( ( true ) ( next-mission "dop-03.fs2" ) )
+)
+
++Level: 2
++Position: 0
+
+$Mission: dop-04.fs2
++Flags: 0
+;;FSO 3.7.2;; +Substitute Main Hall: Galatea B
+;;FSO 3.6.8;; +Debriefing Persona Index: 1
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "dop-04.fs2" 
+         "Oversee Meeting" 
+      )
+      ( next-mission "dop-05.fs2" )
+   )
+   ( ( true ) ( next-mission "dop-04.fs2" ) )
+)
+
++Level: 3
++Position: 0
+
+$Mission: dop-05.fs2
++Flags: 0
+;;FSO 3.7.2;; +Substitute Main Hall: Galatea B
+;;FSO 3.6.8;; +Debriefing Persona Index: 1
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "dop-05.fs2" 
+         "Eliminate Unknown" 
+      )
+      ( next-mission "dop-06.fs2" )
+   )
+   ( ( true ) ( next-mission "dop-05.fs2" ) )
+)
+
++Level: 4
++Position: 0
+
+$Mission: dop-06.fs2
++Flags: 0
+;;FSO 3.7.2;; +Substitute Main Hall: Galatea B
+;;FSO 3.6.8;; +Debriefing Persona Index: 1
++Formula: ( cond
+   (
+      ( and
+         ( is-previous-goal-true 
+            "dop-06.fs2" 
+            "Send uplink" 
+         )
+         ( is-previous-goal-true 
+            "dop-06.fs2" 
+            "Nepenthe survives" 
+         )
+      )
+      ( next-mission "dop-07.fs2" )
+   )
+   ( ( true ) ( next-mission "dop-06.fs2" ) )
+)
+
++Level: 5
++Position: 0
+
+$Mission: dop-07.fs2
++Flags: 0
+;;FSO 3.7.2;; +Substitute Main Hall: Soyakaze
+;;FSO 3.6.8;; +Debriefing Persona Index: 1
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "dop-07.fs2" 
+         "Vasudans" 
+      )
+      ( end-of-campaign )
+   )
+   ( ( true ) ( next-mission "dop-07.fs2" ) )
+)
+
++Level: 6
++Position: 0
+
+#End
+
