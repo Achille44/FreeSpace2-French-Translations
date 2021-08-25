@@ -98,6 +98,13 @@ $Variables:
 		50		"autoGenVar9"		" "		"string"
 		51		"autoGenVar10"		"#Ignatius"		"string"
 		52		"autoGenVar11"		"#Falcata 1"		"string"
+		53		"autoGenVar12"		"Multiple Radar Contacts"		"string"
+		54		"autoGenVar13"		"Multiple Fighter Contacts"		"string"
+		55		"autoGenVar14"		"Gauss"		"string"
+		56		"autoGenVar15"		"Missile"		"string"
+		57		"autoGenVar16"		"Flak"		"string"
+		58		"autoGenVar17"		"ECM"		"string"
+		59		"autoGenVar18"		"Repair"		"string"
 )
 
 #Fiction Viewer
@@ -4012,6 +4019,41 @@ $Formula: ( when
       "#Falcata 1" 
       11178 
    )
+   ( modify-variable-xstr 
+      "@autoGenVar12[Multiple Radar Contacts]" 
+      "Multiple Radar Contacts" 
+      12473 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar13[Multiple Fighter Contacts]" 
+      "Multiple Fighter Contacts" 
+      12474 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar14[Gauss]" 
+      "Gauss" 
+      15013 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar15[Missile]" 
+      "Missile" 
+      15014 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar16[Flak]" 
+      "Flak" 
+      15015 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar17[ECM]" 
+      "ECM" 
+      15016 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar18[Repair]" 
+      "Repair" 
+      15017 
+   )
 )
 +Name: Manage translation variables
 +Repeat Count: 1
@@ -4081,7 +4123,7 @@ $Formula: ( when
       "Next Wave Message" 
    )
    ( hide-jumpnode 
-      "Multiple Fighter Contacts" 
+      "@autoGenVar13[Multiple Fighter Contacts]" 
    )
    ( set-armor-type 
       "Kopis" 
@@ -4104,7 +4146,7 @@ $Formula: ( when
       "turret04" 
    )
    ( hide-jumpnode 
-      "Multiple Radar Contacts" 
+      "@autoGenVar12[Multiple Radar Contacts]" 
    )
    ( set-armor-type 
       "Falcata 2" 
@@ -4186,20 +4228,30 @@ $Formula: ( when
    ( script-eval 
       "TDefSetTarget('Refinery F43-V')" 
    )
-   ( script-eval 
-      "TDefense:Set('Gauss', 3)" 
+   ( script-eval-block 
+      "TDefense:Set('" 
+      "@autoGenVar14[Gauss]" 
+      "', 3)" 
    )
-   ( script-eval 
-      "TDefense:Set('Missile', 2)" 
+   ( script-eval-block 
+      "TDefense:Set('" 
+      "@autoGenVar15[Missile]" 
+      "', 2)" 
    )
-   ( script-eval 
-      "TDefense:Set('Flak', 5)" 
+   ( script-eval-block 
+      "TDefense:Set('" 
+      "@autoGenVar16[Flak]" 
+      "', 5)" 
    )
-   ( script-eval 
-      "TDefense:Set('ECM', 2)" 
+   ( script-eval-block 
+      "TDefense:Set('" 
+      "@autoGenVar17[ECM]" 
+      "', 2)" 
    )
-   ( script-eval 
-      "TDefense:Set('Repair', 1)" 
+   ( script-eval-block 
+      "TDefense:Set('" 
+      "@autoGenVar18[Repair]" 
+      "', 1)" 
    )
    ( script-eval 
       "TDefense.ToggleNebula=1" 
@@ -4465,7 +4517,7 @@ $Formula: ( when
    ( modify-variable @nextWave[90] 0 ) 
    ( modify-variable @currentWave[0] 2 ) 
    ( hide-jumpnode 
-      "Multiple Radar Contacts" 
+      "@autoGenVar12[Multiple Radar Contacts]" 
    )
    ( send-message 
       "Falcata 3" 
@@ -4556,7 +4608,7 @@ $Formula: ( when
    )
    ( modify-variable @nextWave[90] 45 ) 
    ( show-jumpnode 
-      "Multiple Fighter Contacts" 
+      "@autoGenVar13[Multiple Fighter Contacts]" 
    )
    ( send-message 
       "@autoGenVar10[#Ignatius]" 
@@ -4628,7 +4680,7 @@ $Formula: ( when
       ( false ) 
    )
    ( hide-jumpnode 
-      "Multiple Fighter Contacts" 
+      "@autoGenVar13[Multiple Fighter Contacts]" 
    )
    ( unlock-primary-weapon 
       "Falcata 2" 
@@ -4674,7 +4726,7 @@ $Formula: ( when
       "Laporte Uplink Online" 
    )
    ( show-jumpnode 
-      "Multiple Radar Contacts" 
+      "@autoGenVar12[Multiple Radar Contacts]" 
    )
    ( training-msg "TRN Projected Path" ) 
 )
