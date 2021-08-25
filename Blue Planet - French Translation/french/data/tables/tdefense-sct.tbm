@@ -1,0 +1,1043 @@
+#Conditional Hooks
+$Application: FS2_Open
+
+$On Game Init:
+[
+
+TDefense = {}
+
+function TDefense:Init()
+
+	AXUI:Init()
+	AXUI.InGame = true
+	AXUI:ScreenInit()
+	self.Camera = nil
+	self.Buttons = {}
+	self.Enabled = true
+	self.FREDFlag = 0
+	self.Host = nil
+	self.Target = nil
+	self.Active = false
+	self.CameraMode = 0		--0 = Flying, 1 = Spy Camera
+	self.SelectMode = 0		--0 = Select platforms, 1 = select deployment
+	self.XMovement = 0
+	self.YMovement = 0
+	self.ZMovement = 0
+	self.RLimit = {}
+	self.RLimit.p = 0.15
+	self.RLimit.h = 0.15
+	self.RLimit.LowF = 0.1
+	self.RLimit.HighF = 0.45
+	self.ToggleNebula = 0
+	
+	self.LaunchFromHost = false		--turn this to true when that stupid bug is fixed
+	
+	self.CameraControls = {}
+	self.CameraControls.p = 0
+	self.CameraControls.h = 0
+	self.CameraControls.f = 0
+	
+	self:InitPlatforms()
+	self:InitTanks()	
+	self:CreateDeploymentButtons()
+	
+	self.SelectedPlatformIndex = nil
+	
+	self.Debug = {}
+
+end
+
+function TDefSetHost(ship)
+
+	if mn.Ships[ship]:isValid() then
+		TDefense.Host = mn.Ships[ship]:getSignature()
+	end
+
+end
+
+function TDefSetTarget(ship)
+
+	if mn.Ships[ship]:isValid() then
+		TDefense.Target = mn.Ships[ship]:getSignature()
+	end
+
+end
+
+function TDefSetB(x1,y1,z1,x2,y2,z2)
+	
+	TDefense.Boundry = {}
+	TDefense.Boundry.x1 = x1*1000
+	TDefense.Boundry.y1 = y1*1000
+	TDefense.Boundry.z1 = z1*1000
+	TDefense.Boundry.x2 = x2*1000
+	TDefense.Boundry.y2 = y2*1000
+	TDefense.Boundry.z2 = z2*1000
+	
+end
+
+function TDefense:InitPlatforms()
+
+	self.Platforms = {}
+	local index = 1
+	
+	ba.print("Init Platforms:")
+
+	for i = 1, #mn.Ships do
+		if string.find(mn.Ships[i].Name, "Platform") then
+			if mn.Ships[i].HitpointsLeft > 0 then
+				self.Platforms[index] = {}
+				self.Platforms[index].Sig = mn.Ships[i]:getSignature()
+				self.Platforms[index].Type = nil
+				self.Platforms[index].Status = 0
+				index = index + 1
+			end
+		end
+	end
+	
+end
+
+function TDefense:InitTanks()
+
+	self.Tanks = {}
+	self.TankTypes = axemParse:ToTable("tdefense.cfg")
+	
+	for i=1, #self.TankTypes do
+		self.TankTypes[i].Available = 0
+		self.TankTypes[i].Deployed = 0
+	end
+	
+end
+
+function TDefense:Set(tanktype, number)
+
+	for i = 1, #self.TankTypes do
+		if string.lower(self.TankTypes[i].Name) == string.lower(tanktype) then
+			self.TankTypes[i].Available = number
+			self:UpdateSEXPVars()
+		end
+	end
+
+end
+
+function TDefense:Add(tanktype, number)
+
+	for i = 1, #self.TankTypes do
+		if string.lower(self.TankTypes[i].Name) == string.lower(tanktype) then
+			self.TankTypes[i].Available = self.TankTypes[i].Available + number
+			self:UpdateSEXPVars()
+		end
+	end
+
+end
+
+function TDefense:ControlPlayer(control)
+
+	local status = not control
+	local Player = hv.Player.Name
+
+	if status == true then
+		mn.runSEXP("(player-use-ai)")
+		mn.runSEXP("(clear-goals !" .. Player .. "!)")
+		mn.runSEXP("(add-goal !" .. Player .. "! (ai-play-dead 200))")
+		--ba.setButtonControlMode(LUA_OVERRIDE_BUTTON_CONTROL)
+	else
+		mn.runSEXP("(player-not-use-ai)")
+		--ba.setButtonControlMode(NORMAL_BUTTON_CONTROLS)
+	end
+	
+	mn.runSEXP("(alter-ship-flag !primaries-locked! " .. tostring(status) .. " true !" .. Player .. "!)")
+	mn.runSEXP("(alter-ship-flag !secondaries-locked! " .. tostring(status) .. " true !" .. Player .. "!)")
+	mn.runSEXP("(alter-ship-flag !afterburner-locked! " .. tostring(status) .. " true !" .. Player .. "!)")
+	mn.runSEXP("(alter-ship-flag !no-ets! " .. tostring(status) .. " true !" .. Player .. "!)")
+
+end
+
+function TDefense:CreateDeploymentButtons()
+
+	ba.print("Making deployment buttons!\n")
+	self.Buttons.Deploy = {}
+	local index = 1
+
+	for i = 1, #self.TankTypes do
+	
+		local thisTankType = self.TankTypes[i]
+		
+		self.Buttons.Deploy[index] = AXUI:CreateButton(thisTankType.Name, AXUI.Screen.x+AXUI.Screen.w-150, (index*75)+205, 72, 5, "white", "blue", "bright_blue", thisTankType.Icon, 0, 0, nil, nil, false, 0)
+		
+		index = index + 1
+	
+	end
+	
+	
+	self.Buttons.Cancel = AXUI:CreateButton(nil, AXUI.Screen.x+AXUI.Screen.w-125, 660, 0, 0, "white", "red", "bright_red", "cancel", 0, 0, "cancel_h", "cancel_c", false, 0)
+	
+	--if self.Active == false then
+		self.Buttons.Activate = AXUI:CreateButton(nil, 25, 660, 0, 0, "white", "green", "bright_green", "activate", 0, 0, "activate_h", "activate_c", false, 0)
+	--end
+	
+	
+	self.Buttons.Platforms = {}
+	self.PlatformGroup = AXUI:CreateRadioGroup()
+	index = 1
+
+	for i,v in ipairs(self.Platforms) do
+			
+		self.Buttons.Platforms[index] = AXUI:CreateDButton(v.Sig, nil, 0, 12, "white", "blue", "bright_blue", nil, nil, nil, nil, nil,  false, 0)
+		self.Buttons.Platforms[index].HostSig = i
+		self.PlatformGroup:AddToGroup(self.Buttons.Platforms[index])
+		
+		index = index + 1
+
+	end
+		
+	self:UpdateDButtonInfo()
+	
+end
+
+function TDefense:UpdateDButtonInfo()
+
+	for i, v in ipairs(self.Buttons.Platforms) do
+	
+		local text = "[INUTILISÉE]"
+		local thisButton = v
+		local thisPlatform = self.Platforms[thisButton.HostSig]
+	
+		if thisPlatform.Type then
+			if thisPlatform.Status == 1 then
+				text = "[DÉPLOIEMENT]"
+			elseif thisPlatform.Status == 2 then
+				text = "[" .. string.upper(thisPlatform.Type.Name) .. "]"
+			end
+		end
+		
+		thisButton.Text = text
+		
+	end
+		
+end
+
+function TDefense:MaybeMoveCamera()
+
+	local mx, my = AXUI.MouseX, AXUI.MouseY
+	local x, z = 0, 0
+	local buffer = AXUI.Screen.w * 0.01
+	local y = self.YMovement
+	
+	if self.Host and self.Target then
+	
+		if ((mx < buffer) or (self.XMovement == -1)) and (math.abs(self.CameraControls.h - 0.005) < self.RLimit.h) then
+			self.CameraControls.h = self.CameraControls.h - 0.005 
+		elseif ((mx > AXUI.Screen.x+AXUI.Screen.w-buffer) or (self.XMovement == 1)) and (math.abs(self.CameraControls.h + 0.005) <= self.RLimit.h) then
+			self.CameraControls.h = self.CameraControls.h + 0.005 
+		end
+		
+		if ((my < buffer) or (self.ZMovement == -1)) and (math.abs(self.CameraControls.p - 0.005) < self.RLimit.p) then
+			self.CameraControls.p = self.CameraControls.p - 0.005
+		elseif ( (my > AXUI.Screen.y+AXUI.Screen.h-buffer) or (self.ZMovement == 1)) and (math.abs(self.CameraControls.p + 0.005) <= self.RLimit.p) then
+			self.CameraControls.p = self.CameraControls.p + 0.005
+		end
+		
+		
+		local fovChange = y / 10000
+		
+		if fovChange ~= 0 and ((self.Camera.FOV + fovChange) < self.RLimit.HighF) and ((self.Camera.FOV + fovChange) > self.RLimit.LowF) then
+			self.Camera.FOV = self.Camera.FOV + fovChange
+		end
+		
+		self:MoveCamera2(self.CameraControls.p,self.CameraControls.h)
+	
+	else
+	
+		if mx < buffer then
+			x = -100
+		elseif mx > AXUI.Screen.x+AXUI.Screen.w-buffer then
+			x = 100
+		end
+		
+		if my < buffer then
+			z = 100
+		elseif my > AXUI.Screen.y+AXUI.Screen.h-buffer then
+			z = -100
+		end
+		
+		if x ~= 0 or y ~= 0 or z ~= 0 then
+			self:MoveCamera(x, y, z)
+		end
+		
+	end
+
+end
+
+function TDefense:MoveCamera2(p, h)
+
+	--ad.playInterfaceSound(20)
+	self.Camera.Orientation = ba.createOrientation(p, 0, h)
+
+end
+
+function TDefense:MoveCamera(x, y, z)
+
+	if ((self.Camera.Position.x + x) < self.Boundry.x1) or ((self.Camera.Position.x + x) > self.Boundry.x2) then
+		x = 0
+	end
+	
+	if ((self.Camera.Position.y + y) < self.Boundry.y1) or ((self.Camera.Position.y + y) > self.Boundry.y2) then
+		y = 0
+	end
+	
+	if ((self.Camera.Position.z + z) < self.Boundry.z1) or ((self.Camera.Position.z + z) > self.Boundry.z2) then
+		z = 0
+	end
+
+	self.Camera.Position = ba.createVector(self.Camera.Position.x + x, self.Camera.Position.y+y, self.Camera.Position.z + z)
+
+end
+
+function TDefense:ForceCameraOff()
+
+	if self.CameraMode == 1 then
+		TDefense:ToggleCamera()
+	end
+
+end
+
+function TDefense:ToggleCamera()
+
+	if self.CameraMode == 0 then
+	
+		self:ControlPlayer(false)
+		io.setCursorHidden(false)
+		
+		self.CameraMode = 1
+		self.SelectMode = 0
+		
+		if self.ToggleNebula == 1 then
+			--mn.runSEXP("mission-set-nebula 0")
+			mn.runSEXP("(nebula-change-pattern !nbackorange!)")
+		end
+		
+		if self.Camera == nil then
+			if self.Host and self.Target then
+				self.Camera = gr.createCamera("Cam1", ba.createVector(0,-76,-60), ba.createOrientation(0,0,0))
+				self.Camera.Self = mn.getObjectFromSignature(self.Host)
+				self.Camera.Target = mn.getObjectFromSignature(self.Target)
+			else
+				self.Camera = gr.createCamera("Cam1", ba.createVector(0,17000,0), ba.createOrientation(1.57079632679,0,0))
+			end
+			
+			self.Camera.FOV = 0.35
+
+		end
+		
+		gr.setCamera(self.Camera)
+		gr.setPostEffect("stripes", 10)
+		--gr.setPostEffect("dithering", 50)
+		--gr.setPostEffect("saturation", 70)
+		gr.setPostEffect("distort noise", 25)
+		ad.playInterfaceSound(41)
+		
+		if io.MouseControlStatus == true then
+			io.MouseControlStatus = false
+			self.OldMouseState = true
+		end
+		
+		AXUI:SetFocus(0)
+		
+		mn.runSEXP("(hud-disable-except-messages 1)")
+		
+	else
+	
+		self:ControlPlayer(true)
+		io.setCursorHidden(true)
+		gr.setCamera()
+		self.CameraMode = 0
+		gr.resetPostEffects()
+		
+		if self.ToggleNebula == 1 then
+			--mn.runSEXP("mission-set-nebula 1")
+			mn.runSEXP("(nebula-change-pattern !nbackblack!)")
+		end
+		
+		if self.OldMouseState == true then
+			io.MouseControlStatus = true
+		end
+		
+		mn.runSEXP("(hud-disable-except-messages 0)")
+		
+	end
+
+end
+
+function TDefense:ActivateTurrets()
+	
+	if self.Active == false then
+	
+	self.Active = true
+	self.FREDFlag = 1
+	
+	ad.playInterfaceSound(7)
+	
+		for i = 1, #self.Platforms do
+			if self.Platforms[i].Status ~= -1 then
+			local thisPlatform = mn.getObjectFromSignature(self.Platforms[i].Sig)
+				mn.runSEXP("(turret-free-all !" .. thisPlatform.Name .. "!)")
+			end
+		end
+	end
+
+end
+
+function TDefense:UpdateSEXPVars()
+
+	for i = 1, #self.TankTypes do
+		local thisType = self.TankTypes[i]
+		local availVar = mn.SEXPVariables[thisType.VariableAvail]
+		local activeVar = mn.SEXPVariables[thisType.VariableAct]
+		
+		if availVar:isValid() and activeVar:isValid() then
+			availVar.Value = thisType.Available
+			activeVar.Value = thisType.Deployed
+		end
+		
+	end
+
+end
+
+function TDefense:Draw()
+
+	local highlightedTank = nil
+	local drawInfo = nil
+	local deployButtonsDrawn = false
+		
+	if self.CameraMode == 1 then
+	
+	for i = 1, #mn.Ships do
+		if mn.Ships[i].Team.Name == "Hostile" then
+			gr.setLineWidth(2)
+			gr.setColor(255,0,0)
+			gr.drawTargetingBrackets(mn.Ships[i])
+			gr.setLineWidth(1)
+		end
+	end
+	
+		if NoSDL2 then
+			io.setCursorHidden(false)
+		end
+		
+		if #self.Buttons.Platforms > 0 then
+			for i,v in ipairs(self.Buttons.Platforms) do
+				if self.Platforms[i].Status ~= -1 then
+				
+					if v:DDraw() == true and self.SelectMode == 0 then
+						drawInfo = i
+					end
+					
+				end
+			end
+		end
+		
+		--gr.setColor(0,0,0,0)
+		gr.drawImage("box1",AXUI.Screen.x+AXUI.Screen.w-160,200)
+		gr.drawImage("box1",-100,200)
+				
+		AXUI:SetColor("ui_green")
+						
+		--Right Box
+		if self.SelectMode == 0 then
+			gr.drawString("CHOIX PLATEFORME", AXUI.Screen.x+AXUI.Screen.w-150, 215)
+					
+		elseif self.SelectMode == 1 then
+			gr.drawString("SÉLECTIONNÉE :", AXUI.Screen.x+AXUI.Screen.w-150, 215)
+			
+			if self.Buttons.Deploy then
+			
+				drawInfo = self.SelectedPlatformIndex
+				
+				local platformStatus = self.Platforms[self.SelectedPlatformIndex].Status
+				local selectedPlatform = mn.getObjectFromSignature(self.Platforms[self.SelectedPlatformIndex].Sig)
+				
+				if platformStatus == 0 then
+					for i = 1, #self.Buttons.Deploy do
+						deployButtonsDrawn = true
+						if self.Buttons.Deploy[i]:Draw() then
+							highlightedTank = i
+						end
+						gr.drawString("Actif : " .. self.TankTypes[i].Deployed, self.Buttons.Deploy[i].X+72, self.Buttons.Deploy[i].Y+25)
+						gr.drawString("Dispo : " .. self.TankTypes[i].Available, self.Buttons.Deploy[i].X+72, self.Buttons.Deploy[i].Y+45)
+						
+					end
+				end
+				
+			else
+				gr.drawString("Indisponible", AXUI.Screen.x+AXUI.Screen.w-150, 215)
+			end
+						
+			self.Buttons.Cancel:Draw()
+
+		end
+		
+		if drawInfo then
+			self:DrawPlatformInfo(drawInfo)
+		end
+		
+		if self.Active == true then
+			gr.drawImage("activated", 25, 660)
+		else
+			self.Buttons.Activate:Draw()
+		end
+		
+		if highlightedTank then
+			local thisButton = self.Buttons.Deploy[highlightedTank]
+			gr.setColor(0,0,0,192)
+			gr.drawRectangle(thisButton.X-130, thisButton.Y-5, thisButton.X-10, thisButton.Y+125)
+			AXUI:SetColor("ui_green")
+			gr.drawString(self.TankTypes[highlightedTank].Description, thisButton.X-125, thisButton.Y, thisButton.X-15, thisButton.Y+120)
+		end
+
+		--Left Box
+		if self.Host and self.Target then
+		
+			local thisHost = mn.getObjectFromSignature(self.Host)
+			local hostHealth =  math.floor((thisHost.HitpointsLeft / thisHost.Class.HitpointsMax) * 100)
+			local thisTarget = mn.getObjectFromSignature(self.Target)
+			
+			gr.drawString("CANAL 25", 5, 215)
+			gr.drawString("ORIGINE : " .. thisHost.Name)
+			gr.drawString("INTÉGRITÉ : " .. hostHealth .. "%")
+			gr.drawString("\nSUIVI :\n " .. thisTarget.Name)
+			gr.drawString("DIST : " .. math.floor(thisHost.Position:getDistance(thisTarget.Position)) .. "m")
+			--gr.drawString("\n\nPress ENTER to revert\nto normal view")
+		
+		end
+		
+		--Left Box
+			if #self.Platforms > 0 then
+			
+				gr.drawString("CHARS ACTIFS :", 5, 450)
+				
+				for i = 1, #self.Platforms do
+					local thisPlatform = self.Platforms[i]
+					local thisObject = mn.getObjectFromSignature(thisPlatform.Sig)
+					
+					if thisPlatform.Status == 2 then
+						gr.drawString(thisObject.Name .. " - " .. thisPlatform.Type.Name)
+					end
+				end
+			end
+		
+		if deployButtonsDrawn == false then
+		
+		--Right Box
+			gr.drawString("SURVEILLANCE :", AXUI.Screen.x+AXUI.Screen.w-150, 450)
+			
+			for i = 1, #mn.EscortShips do
+				local thisEscort = mn.EscortShips[i]
+				local thisEscortHealth = math.floor((thisEscort.HitpointsLeft / thisEscort.Class.HitpointsMax) * 100)
+				if thisEscortHealth >= 0 then
+					local r,g,b = thisEscort.Team:getColor()
+					gr.setColor(r,g,b)
+					gr.drawString(thisEscort.Name, AXUI.Screen.x+AXUI.Screen.w-150, 450 + (gr.CurrentFont.Height * i) + 2)
+					gr.drawString(thisEscortHealth, AXUI.Screen.x+AXUI.Screen.w-40, 450 + (gr.CurrentFont.Height * i) + 2)
+				end
+			end
+		end
+		
+		if hv.Player:isValid() then
+			gr.setColor(0,192,0,255)
+			gr.setLineWidth(2)
+			local x,y = gr.drawTargetingBrackets(hv.Player, true, 10)
+			local name = hv.Player.Name
+			gr.drawString(name,x,y-10)
+		end
+		
+		gr.drawImage("tankcontrols", 0, 0)
+		gr.drawImage("tankcontrols2", AXUI.Screen.x+AXUI.Screen.w-320, 0)
+					
+	end
+
+end
+
+function TDefense:DrawPlatformInfo(platform)
+
+	local thisPlatform = self.Platforms[platform]
+	local thisObject = mn.getObjectFromSignature(thisPlatform.Sig)
+
+	if thisPlatform.Status ~= -1 and thisObject:isValid() then
+	
+		AXUI:SetColor("ui_green")
+		
+		gr.drawString(thisObject.Name, AXUI.Screen.x+AXUI.Screen.w-150, 235)
+		
+		if thisPlatform.Status == 0 then
+			gr.drawString("Statut : [INUTILISÉE]")
+		elseif thisPlatform.Status == 1 then
+			gr.drawString("Statut : Déploiement")
+		elseif thisPlatform.Status == 2 then
+			if self.Active == true then
+				gr.drawString("Statut : Actif")
+			else
+				gr.drawString("Statut : Inactif")
+			end
+			
+			gr.drawString("Type : " .. thisPlatform.Type.Name)
+					
+			local objectHealth = math.floor((thisObject.HitpointsLeft / thisObject.Class.HitpointsMax) * 100)
+			
+			gr.drawString("Intégrité : " .. objectHealth .. "%")
+			gr.drawString("\n======\n")
+			
+			if thisObject.Target and thisObject.Target:isValid() then
+				local thisTarget = thisObject.Target
+				gr.drawString("Cible : " .. thisTarget.Name)
+				gr.drawString("Classe : " .. thisTarget.Class.Name)
+				
+				local targetHealth = math.floor((thisTarget.HitpointsLeft / thisTarget.Class.HitpointsMax) * 100)
+				
+				gr.drawString("Intégrité : " ..targetHealth .. "%")
+				gr.drawString("Dist : " .. math.floor(thisObject.Position:getDistance(thisTarget.Position)) .. "m")
+
+			else
+				gr.drawString("Cible : Aucune")
+			end
+		end
+		
+		if self.SelectMode == 0 then
+			gr.drawString("\n\nCliquer pour Sélectionner")
+		end
+		
+		if thisPlatform.Status == 0 and self.SelectMode == 1 then
+			gr.drawString("Sélectionner cargaison :")
+		end
+	else
+	
+		self.SelectMode = 0
+		self.SelectedPlatformIndex = nil
+		self.PlatformGroup:SwitchTo(nil)
+		ad.playInterfaceSound(19)
+	
+	end
+						
+end
+
+function TDefense:SelectPlatform(platform)
+	
+	self.SelectedPlatformIndex = platform
+	self.SelectMode = 1
+
+end
+
+function TDefense:DeployTank(tanktype, platform)
+
+	local thisTankType = self.TankTypes[tanktype]
+	local thisPlatform = self.Platforms[platform]
+	local thisObject = mn.getObjectFromSignature(thisPlatform.Sig)
+	local effectStart = nil
+	local effectOrientation = nil
+	
+	thisPlatform.Status = 1
+	thisPlatform.Type = thisTankType
+	thisTankType.Available = thisTankType.Available - 1
+	self:UpdateSEXPVars()
+	
+	self:UpdateDButtonInfo()
+	
+	if self.Host and self.LaunchFromHost then
+		local hostShip = mn.getObjectFromSignature(self.Host)
+		local offsetVector = ba.createVector(0,-50,-100)
+		effectStart = hostShip.Position + hostShip.Orientation:unrotateVector(offsetVector)
+		effectOrientation = hostShip.Orientation
+	else
+		effectStart = thisObject.Position + ba.createVector(0,10000,0)
+		effectOrientation = thisObject.Position - effectStart
+		effectOrientation = effectOrientation:getOrientation()
+	end
+
+	if self.Host and self.LaunchFromHost then
+		local weapon = mn.createWeapon(tb.WeaponClasses["Drop Pod Effect#New"], effectOrientation, effectStart)
+		weapon.Target = thisObject
+		weapon.HomingObject = thisObject
+		weapon.HomingPosition = thisObject.Position
+		self.Debug[#self.Debug+1] = {weapon = weapon:getSignature(), platform = thisPlatform.Sig, corrections = 0}
+	else
+		local weapon = mn.createWeapon(tb.WeaponClasses["Drop Pod Effect#NewDumb"], effectOrientation, effectStart)
+	end
+	
+	
+	
+	ad.playGameSound(19)
+
+end
+
+function TDefense:DebugDrops()
+
+	gr.setColor(255,255,255,255)
+	gr.CurrentFont = gr.Fonts[1]
+
+	for i=1, #self.Debug do
+	
+		local thisEntry = self.Debug[i]
+		if thisEntry then
+			local thisDrop = mn.getObjectFromSignature(thisEntry.weapon)
+			local thisPlatform = mn.getObjectFromSignature(thisEntry.platform)
+			
+			if thisDrop and thisDrop:isValid() then
+			
+				--[[if thisDrop.HomingPosition:getDistance(thisPlatform.Position) > 2 then
+					thisDrop.HomingPosition = thisPlatform.Position
+					thisEntry.corrections = thisEntry.corrections + 1
+				end]]--
+
+				local target = thisDrop.Target
+				local targetPos = target.Position
+				local homingObj = thisDrop.HomingObject
+				local homingPos = thisDrop.HomingPosition
+				local wepPos = thisDrop.Position
+				local wepOri = thisDrop.Orientation
+				--local wepRotVel = thisDrop.Physics.RotationalVelocity
+				
+				gr.setColor(255,255,255,255)
+				
+				gr.drawString(i .. ": Drop sig: " .. thisEntry.weapon .. " Platform Sig: " .. thisEntry.platform, 600, (100 + ((i-1)*120)))
+				if not thisPlatform or not thisPlatform:isValid() then
+					gr.drawString("PLATEFORME INVALIDE(???)")
+				else
+					gr.drawString("Cible Prévue : " .. thisPlatform.Name)
+					gr.drawString("P Pos (x,y,z):\t\t\t" .. string.format("%6d", thisPlatform.Position.x) .. ", " .. string.format("%6d", thisPlatform.Position.y) .. ", " .. string.format("%6d", thisPlatform.Position.z))
+				end
+				--[[if not thisDrop.Target or not thisDrop.Target:isValid() then
+					gr.drawString("ACTUAL TARGET INVALID(???)")
+					gr.drawString("Raw Data: '" .. tostring(thisDrop.Target).."'")
+				else
+					gr.drawString("Actual Target: " .. target.Name)
+					gr.drawString("Actual Target Pos (x,y,z):\t\t\t" .. string.format("%6d", target.Position.x) .. ", " .. string.format("%6d", target.Position.y) .. ", " .. string.format("%6d", target.Position.z))
+				end]]--
+				if not homingObj:isValid() then
+					gr.drawString("OBJET DE GUIDAGE NON VALIDE !!!")
+				else
+					gr.drawString("H Pos (x,y,z):\t\t\t" .. string.format("%6d", homingPos.x) .. ", " .. string.format("%6d", homingPos.y) .. ", " .. string.format("%6d", homingPos.z))
+					gr.drawString("Objet de guidage :   " .. homingObj.Name)
+				end
+								
+				if homingPos:getDistance(thisPlatform.Position) < 5 then
+					gr.drawString("Weapon is on target\n")
+				else
+					gr.setColor(255,0,0,255)
+					gr.drawString("L'ARME EST HORS CIBLE !!\n")
+					gr.setColor(255,255,255,255)
+				end
+				
+				gr.drawString("Corrections apportées au parcours : " .. thisEntry.corrections)
+				
+				--[[gr.drawString("Drop Pos (x,y,z):\t\t\t" .. string.format("%6d", wepPos.x) .. ", " .. string.format("%6d", wepPos.y) .. ", " .. string.format("%6d", wepPos.z))
+				gr.drawString("Drop Ori (p,b,h):\t\t\t" .. string.format("%6d", wepOri.p * (180/math.pi)) .. ", " .. string.format("%6d", wepOri.b * (180/math.pi)) .. ", " .. string.format("%6d", wepOri.h * (180/math.pi)))]]--
+				--gr.drawString("Drop RotVel (x,y,z):\t\t\t" .. string.format("%6d", wepRotVel.x) .. ", " .. string.format("%6d", wepRotVel.y) .. ", " .. string.format("%6d", wepRotVel.z))
+			else
+				table.remove(self.Debug,i)
+			end
+		end
+	
+	end
+
+end
+
+function TDefense:MonitorActions()
+
+	if #self.Buttons.Platforms > 0 then
+		for i,v in ipairs(self.Buttons.Platforms) do
+			if self.Platforms[i].Status ~= -1 then
+			
+				if v:Clicked() then
+				
+					self:SelectPlatform(v.HostSig)
+					self.PlatformGroup:SwitchTo(i)
+					ad.playInterfaceSound(0)
+					
+				end
+			end
+		end
+	end
+	
+	if self.Buttons.Cancel and self.Buttons.Cancel:Clicked() then
+		self.SelectMode = 0
+		self.SelectedPlatformIndex = nil
+		self.PlatformGroup:SwitchTo(nil)
+		ad.playInterfaceSound(19)
+	
+	end
+
+	if #self.Buttons.Deploy > 0 then
+		for i,v in ipairs(self.Buttons.Deploy) do
+			if v:Clicked() then
+				if self.TankTypes[i].Available > 0 then
+					self:DeployTank(i, self.SelectedPlatformIndex)
+				else
+					ad.playInterfaceSound(10)
+				end
+			end
+		end
+	end
+
+	if self.Buttons.Activate and self.Buttons.Activate:Clicked() then
+		self:ActivateTurrets()
+	end
+
+end
+
+function TDefense:MonitorKeys(key, released)
+
+	if released then
+	
+		if hv.Key == "Enter" then
+			self:ToggleCamera()
+		end
+		
+		if self.CameraMode == 1 then
+			if key == "Q" then
+				self.YMovement = 0
+			elseif key == "Z" then
+				self.YMovement = 0
+			elseif key == "W" or key == "Up Arrow" then
+				self.ZMovement = 0
+			elseif key == "S" or key == "Down Arrow" then
+				self.ZMovement = 0
+			elseif key == "A" or key == "Right Arrow" then
+				self.XMovement = 0
+			elseif key == "D" or key == "Left Arrow" then
+				self.XMovement = 0
+			end
+		end
+		
+		if self.SelectedPlatformIndex then
+			if key == "1" then
+				if (self.TankTypes[1].Available > 0) and (self.Platforms[self.SelectedPlatformIndex].Status == 0) then
+					self:DeployTank(1, self.SelectedPlatformIndex)
+				else
+					ad.playInterfaceSound(10)
+				end
+			elseif key == "2" then
+				if (self.TankTypes[2].Available > 0) and (self.Platforms[self.SelectedPlatformIndex].Status == 0) then
+					self:DeployTank(2, self.SelectedPlatformIndex)
+				else
+					ad.playInterfaceSound(10)
+				end
+			elseif key == "3" then
+				if (self.TankTypes[3].Available > 0) and (self.Platforms[self.SelectedPlatformIndex].Status == 0) then
+					self:DeployTank(3, self.SelectedPlatformIndex)
+				else
+					ad.playInterfaceSound(10)
+				end
+			elseif key == "4" then
+				if (self.TankTypes[4].Available > 0)  and (self.Platforms[self.SelectedPlatformIndex].Status == 0) then
+					self:DeployTank(4, self.SelectedPlatformIndex)
+				else
+					ad.playInterfaceSound(10)
+				end
+			elseif key == "5" then
+				if (self.TankTypes[5].Available > 0) and (self.Platforms[self.SelectedPlatformIndex].Status == 0) then
+					self:DeployTank(5, self.SelectedPlatformIndex)
+				else
+					ad.playInterfaceSound(10)
+				end			
+			end	
+		end
+		
+		if key == "Alt-X" then
+			self:ActivateTurrets()
+		end
+	
+	else
+	
+		if key == "Q" then
+			self.YMovement = -100
+		elseif key == "Z" then
+			self.YMovement = 100
+		elseif key == "W" or key == "Up Arrow" then
+			self.ZMovement = -1
+		elseif key == "S" or key == "Down Arrow" then
+			self.ZMovement = 1
+		elseif key == "A" or key == "Left Arrow" then
+			self.XMovement = -1
+		elseif key == "D" or key == "Right Arrow" then
+			self.XMovement = 1
+		end
+	
+	end
+
+end
+
+function TDefense:Exit()
+
+	self.Enabled = nil
+	self.Camera = nil
+	self.Buttons = nil
+	self.FREDFlag = nil
+	self.Host = nil
+	self.Target = nil
+	self.Active = nil
+	self.CameraMode = nil
+	self.SelectMode = nil
+	self.XMovement = nil
+	self.YMovement = nil
+	self.ZMovement = nil
+	self.RLimit = nil
+	self.ToggleNebula = nil
+	self.CameraControls = nil
+	io.setCursorHidden(true)
+
+end
+
+]
+
+$State: GS_STATE_GAME_PLAY
+$On State Start:
+[
+	if TDefense.Enabled and TDefense.CameraMode == 1 then
+		io.setCursorHidden(false)
+	end
+]
+
+$On Frame:
+[
+	if TDefense.Enabled and TDefense.CameraMode == 1 then
+		TDefense:Draw()
+	end
+		
+]
+
+$On Mouse Released:
+[
+	if TDefense.Enabled and TDefense.CameraMode == 1 then
+		TDefense:MonitorActions()
+	end
+]
+
+$On Frame:
+[
+	if TDefense.Enabled and TDefense.CameraMode == 1 then
+		if TDefense.Camera then
+			TDefense:MaybeMoveCamera()
+		end
+	end
+	
+	--if TDefense.Enabled then
+	--	TDefense:DebugDrops()
+	--end
+	
+]
+
+$On Key Pressed:
+[
+
+	if TDefense.Enabled and TDefense.CameraMode == 1 then
+
+		TDefense:MonitorKeys(hv.Key)
+
+	end
+]
+
+$On Key Released:
+[
+	if TDefense.Enabled then
+	
+		TDefense:MonitorKeys(hv.Key,true)
+		
+	end
+]
+
+$On Death:
+[
+	if TDefense.Enabled then
+		local thisShip = hv.Self
+		if thisShip:getBreedName() == "Ship" then
+			ba.print(thisShip.Class.Name .. " was destroyed\n")
+			for key,value in pairs(TDefense.Platforms) do
+				if TDefense.Platforms[key].Sig == thisShip:getSignature() then
+				
+					ba.print("This was in the Platform table\n")
+					
+					for key2,value2 in pairs(TDefense.TankTypes) do
+						if thisShip.Class.Name == TDefense.TankTypes[key2].Shipclass then
+							ba.print("Something important got destroyed!!!\n")
+							TDefense.TankTypes[key2].Deployed = TDefense.TankTypes[key2].Deployed - 1
+							ba.print("boop\n")
+							TDefense:UpdateSEXPVars()
+							ba.print("beep\n")
+						end
+					end
+									
+					TDefense.Platforms[key].Status = -1
+									
+					if TDefense.CameraMode == 1 then
+						--TDefense:UpdateDButtonInfo()
+					end
+				end
+			end
+		end
+	end
+]
+
+$On Mission End:
+[
+	if TDefense.Enabled then
+		TDefense:Exit()
+		AXUI.InGame = false
+	end
+]
+
+$Weapon class: Drop Pod Effect#New
+$On Ship Collision:
+[
+
+	if TDefense.Enabled then
+		
+		local target = hv.Ship
+		local targetSig = target:getSignature()
+		
+		for i = 1, #TDefense.Platforms do
+			if TDefense.Platforms[i].Sig == targetSig then
+				target.Class = tb.ShipClasses[TDefense.Platforms[i].Type.Shipclass]
+				if TDefense.Active == false then
+					mn.runSEXP("(turret-lock-all !" .. target.Name .. "!)")
+				end
+				TDefense.Platforms[i].Type.Deployed = TDefense.Platforms[i].Type.Deployed + 1
+				TDefense:UpdateSEXPVars()
+				TDefense.Platforms[i].Status = 2
+				
+				--if TDefense.CameraMode == 1 then
+					TDefense:UpdateDButtonInfo()
+				--end
+			end
+		end
+	
+	end
+]
+
+$Weapon class: Drop Pod Effect#NewDumb
+$On Ship Collision:
+[
+
+	if TDefense.Enabled then
+		
+		local target = hv.Ship
+		local targetSig = target:getSignature()
+		
+		for i = 1, #TDefense.Platforms do
+			if TDefense.Platforms[i].Sig == targetSig then
+				target.Class = tb.ShipClasses[TDefense.Platforms[i].Type.Shipclass]
+				if TDefense.Active == false then
+					mn.runSEXP("(turret-lock-all !" .. target.Name .. "!)")
+				end
+				TDefense.Platforms[i].Type.Deployed = TDefense.Platforms[i].Type.Deployed + 1
+				TDefense:UpdateSEXPVars()
+				TDefense.Platforms[i].Status = 2
+				
+				--if TDefense.CameraMode == 1 then
+					TDefense:UpdateDButtonInfo()
+				--end
+			end
+		end
+	
+	end
+]
+
+#End
