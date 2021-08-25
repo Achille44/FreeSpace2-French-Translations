@@ -78,6 +78,7 @@ $Variables:
 		97		"Lucifer"		"9000"		"block"
 		98		"Lucifer"		"1"		"block"
 		99		"Lucifer"		"600"		"block"
+		29		"autoGenVar1"		"Delta Serpentis Jump Node"		"string"
 )
 
 #Command Briefing
@@ -1265,6 +1266,18 @@ $AI Goals: ( goals ( ai-guard "1st Fleet HQ" 50 ) )
 #Events		;! 16 total
 
 $Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[Delta Serpentis Jump Node]" 
+      "Delta Serpentis Jump Node" 
+      7145 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
    ( has-arrived-delay 0 "Lucifer" ) 
    ( self-destruct "Lucifer" ) 
 )
@@ -1383,7 +1396,7 @@ $Formula: ( when
 ;;FSO 3.6.14;;       "Lucifer dies" 
 ;;FSO 3.6.14;;       9 
 ;;FSO 3.6.14;;    )
-;;FSO 3.6.14;;    ( hide-jumpnode "Delta Serpentis Jump Node" ) 
+;;FSO 3.6.14;;    ( hide-jumpnode "@autoGenVar1[Delta Serpentis Jump Node]" ) 
 ;;FSO 3.6.14;;    ( modify-variable 
 ;;FSO 3.6.14;;       @flicker-timestamp[0] 
 ;;FSO 3.6.14;;       ( mission-time-msecs ) 
@@ -1404,8 +1417,8 @@ $Formula: ( when
 ;;FSO 3.6.14;;    )
 ;;FSO 3.6.14;;    ( if-then-else 
 ;;FSO 3.6.14;;       ( = ( mod @flicker-array-index[0] 2 ) 0 ) 
-;;FSO 3.6.14;;       ( hide-jumpnode "Delta Serpentis Jump Node" ) 
-;;FSO 3.6.14;;       ( show-jumpnode "Delta Serpentis Jump Node" ) 
+;;FSO 3.6.14;;       ( hide-jumpnode "@autoGenVar1[Delta Serpentis Jump Node]" ) 
+;;FSO 3.6.14;;       ( show-jumpnode "@autoGenVar1[Delta Serpentis Jump Node]" ) 
 ;;FSO 3.6.14;;    )
 ;;FSO 3.6.14;;    ( if-then-else 
 ;;FSO 3.6.14;;       ( < 
