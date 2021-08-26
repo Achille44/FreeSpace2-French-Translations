@@ -41,6 +41,7 @@ $AI Profile: BP2 R2
 $Variables:
 (
 		0		"CameraTarget"		"Alpha 1"		"string"
+		1		"autoGenVar1"		"Cam"		"string"
 )
 
 #Command Briefing
@@ -1769,6 +1770,18 @@ $AI Goals: ( goals ( ai-play-dead 50 ) )
 
 $Formula: ( when 
    ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[Cam]" 
+      "Cam" 
+      7584 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
    ( player-use-ai ) 
    ( add-goal 
       "Alpha 1" 
@@ -2105,7 +2118,7 @@ $Formula: ( when
    ( set-camera-rotation 0 0 0 ) 
    ( set-camera-target "Uglies 1" ) 
    ( ship-vanish "Orestes" ) 
-   ( hide-jumpnode "Cam" ) 
+   ( hide-jumpnode "@autoGenVar1[Cam]" ) 
    ( set-skybox-model 
       "deltaserp-box.pof" 
    )
