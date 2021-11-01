@@ -45,7 +45,7 @@ If the mod uses a version prior to 19.0, then you will need to change the fonts 
 
 #### Alternative to Unicode mode
 
-If the Unicode mode is not possible for whatever reason, there is a possibility to copy the beheavior of the fsport mod translations. This mod uses specific fonts for languages with special characters, without using Unicode mode. So you can copy these fonts to the mod you want to translate, but in this case your strings.tbl and tstrings.tbl files need to use the "Western (Windows 1252)" encoding, otherwise the special characters won't show up!
+If the Unicode mode is not possible for whatever reason, there is a possibility to copy the behavior of the fsport mod translations. This mod uses specific fonts for languages with special characters, without using Unicode mode. So you can copy these fonts to the mod you want to translate, but in this case your strings.tbl and tstrings.tbl files need to use the "Western (Windows 1252)" encoding, otherwise the special characters won't show up!
 
 ### Where are located the files to be translated?
 
