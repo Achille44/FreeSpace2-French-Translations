@@ -1,0 +1,567 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("No Frills TvT", 208)
+$Author: Shade
+$Created: 06/23/08 at 15:40:22
+$Modified: 09/09/12 at 11:09:18
+$Notes:
+Version 0.2$End Notes:
+
+$Mission Desc:
+ XSTR("Two teams battle for supremacy. No obstacles.", 209)
+$end_multi_text
+
++Game Type Flags: 18
+
++Flags: 262144
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
+
++Num Players: 8
+
++Num Respawns: 99
+
++Max Respawn Time: 30
+
++Disallow Support: 1
+
++Hull Repair Ceiling: 0.000000
+
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 65.758827, 8059.098633, -7282.424316
++Viewer orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.478276, 0.878209,
+	0.000000, -0.878209, 0.478276
+
+$Starting wing names: ( "Green" "Red" "Blue" )
+$Squadron wing names: ( "Green" "Red" "Blue" "Violet" "Orange" )
+$Team-versus-team wing names: ( "Green" "Red" )
+
+$Load Screen 640:	Y_No_1024x768.tga
+$Load Screen 1024:	Load_MP-R1-TVT1.tga
+
+
+$Skybox Model: SkyBox_Lava_Sunb.pof
+
+$AI Profile: Diaspora_default
+
+#Command Briefing
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 1
+$start_stage
+$multi_text
+ XSTR("Welcome pilots. In this team versus team mission you must neutralize the opposing force by any means necessary. The team with the highest score at the end of combat will be the victor. Good hunting.", 216)
+$end_multi_text
+$voice: MP-R1-B-TVT1.ogg
+$camera_pos: 65.758827, 2382.021973, -3663.957031
+$camera_orient:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 2
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 23
+$team: Friendly
+$class: Viper Mark VII
+$pos: -771.737122, -0.000026, -3457.531982
+$label: XSTR("Green Team", 1884)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: Viper Mark VII
+$pos: 962.233337, -0.000110, -3929.360596
+$label: XSTR("Red Team", 1885)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Briefing
+$start_briefing
+$num_stages: 1
+$start_stage
+$multi_text
+ XSTR("Welcome pilots. In this team versus team mission you must neutralize the opposing force by any means necessary. The team with the highest score at the end of combat will be the victor. Good hunting.", 216)
+$end_multi_text
+$voice: MP-R1-B-TVT1.ogg
+$camera_pos: 65.758827, 2382.021973, -3663.957031
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 2
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 1
+$team: Friendly
+$class: Viper Mark VII
+$pos: -759.611267, -0.000422, -3983.007568
+$label: XSTR("Red Team", 1885)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: Viper Mark VII
+$pos: 780.154785, -0.000665, -3435.072998
+$label: XSTR("Green Team", 1884)
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 2
+
+$Formula: ( > ( team-score 1 ) ( team-score 2 ) ) 
+$Multi text
+    XSTR("Well done, your team earned the highest score.", 218)
+$end_multi_text
+$Voice: MP-R1-DB-TVT1.ogg
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( > ( team-score 2 ) ( team-score 1 ) ) 
+$Multi text
+    XSTR("You failed to defeat the opposing team. Try harder next time, pilots.", 219)
+$end_multi_text
+$Voice: MP-R1-DB-TVT2.ogg
+$Recommendation text:
+    XSTR("Fight better.", 223)
+$end_multi_text
+
+#Debriefing_info
+
+$Num stages: 2
+
+$Formula: ( > ( team-score 2 ) ( team-score 1 ) ) 
+$Multi text
+    XSTR("Well done, your team earned the highest score.", 218)
+$end_multi_text
+$Voice: MP-R1-DB-TVT1.ogg
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( > ( team-score 1 ) ( team-score 2 ) ) 
+$Multi text
+    XSTR("You failed to defeat the opposing team. Try harder next time, pilots.", 219)
+$end_multi_text
+$Voice: MP-R1-DB-TVT2.ogg
+$Recommendation text:
+    XSTR("Fight better.", 223)
+$end_multi_text
+
+#Players		;! 8 total
+
+$Starting Shipname: Green 1
+$Ship Choices: (
+	"Viper Mark VII"	12
+	"Viper Mark VIIe"	12
+	"Assault Raptor"	12
+	"Raider"	12
+	"Advanced Raider"	12
+	"Heavy Raider"	12
+)
+
++Weaponry Pool: (
+	"MEC-A6"	40
+	"GBK-6"	18
+	"30mm 2.1"	32
+	"35mm 5.1"	18
+	"HD-70 Lightning Javelin"	232
+	"HD-51 Arbalest"	100
+	"CTD-17 Jester"	100
+	"HS-24 Lance"	6000
+	"SRM-AF 2.6 Pilum"	200
+	"LRM-AF 1.5 Voulge"	100
+	"EWF-FM 3.1 Siren"	100
+	"CR-HE 2.2 Dart"	6000
+	"SR-HE 1.0 Halberd"	4000
+)
+$Starting Shipname: Green 1
+$Ship Choices: (
+)
+
++Weaponry Pool: (
+	"MEC-A6"	24
+	"MEC-A6#Weak"	16
+	"Training MEC-A6"	16
+	"GBK-6"	16
+	"30mm 2.1"	16
+	"30mm 2.1#Weak"	16
+	"35mm 5.1"	16
+	"HD-70 Lightning Javelin"	532
+	"HD-70 Lightning Javelin#Weak"	500
+	"TM-7 Pyro Javelin"	500
+	"HD-51 Arbalest"	500
+	"CTD-17 Jester"	500
+	"HS-24 Lance"	500
+	"HS-48 Spear"	500
+	"AGM-41 Whiplash"	500
+	"GBU-102 Tercio"	500
+	"GBU-102 Tercio#Weak"	500
+	"TGB-102 Petardo"	500
+	"N4 Nessus"	500
+	"SRM-AF 2.6 Pilum"	500
+	"SRM-AF 2.6 Pilum#Weak"	500
+	"LRM-AF 1.5 Voulge"	500
+	"LRT-AP 2.2 Shipwreck"	500
+	"LRT-AP 2.2 Shipwreck#Weak"	500
+	"MRT-HE 1.0 Scythe"	500
+	"MRT-HE 1.0 Scythe#Weak"	500
+	"EWF-FM 3.1 Siren"	500
+	"MRT-N 2.3 Mangonel"	500
+	"MRT-N 2.3 Mangonel#Weak"	500
+	"CR-HE 2.2 Dart"	500
+	"SR-HE 1.0 Halberd"	500
+)
+
+#Objects		;! 8 total
+
+$Name: Green 1		;! Object #0
+$Display Name: XSTR("Green 1", 1812)
+$Class: Viper Mark VII
+$Team: Friendly
+$Location: -1500.000000, 0.000000, 300.000000
+$Orientation:
+	-0.196116, 0.000000, -0.980581,
+	0.000000, 1.000000, 0.000000,
+	0.980581, 0.000000, -0.196116
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "don't-collide-invisible" )
++Flags2: ( "no-builtin-messages" "no-death-scream" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Green 2		;! Object #1
+$Display Name: XSTR("Green 2", 1813)
+$Class: Viper Mark VII
+$Team: Friendly
+$Location: -1500.000000, 0.000000, 200.000000
+$Orientation:
+	-0.132164, 0.000000, -0.991228,
+	0.000000, 1.000000, 0.000000,
+	0.991228, 0.000000, -0.132164
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "don't-collide-invisible" )
++Flags2: ( "no-builtin-messages" "no-death-scream" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Green 3		;! Object #2
+$Display Name: XSTR("Green 3", 1814)
+$Class: Viper Mark VII
+$Team: Friendly
+$Location: -1500.000000, 0.000000, 100.000000
+$Orientation:
+	-0.066519, 0.000000, -0.997785,
+	0.000000, 1.000000, 0.000000,
+	0.997785, 0.000000, -0.066519
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "don't-collide-invisible" )
++Flags2: ( "no-builtin-messages" "no-death-scream" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Green 4		;! Object #3
+$Display Name: XSTR("Green 4", 1815)
+$Class: Viper Mark VII
+$Team: Friendly
+$Location: -1500.000000, 0.000000, 0.000000
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "don't-collide-invisible" )
++Flags2: ( "no-builtin-messages" "no-death-scream" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Red 1		;! Object #4
+$Display Name: XSTR("Red 1", 1816)
+$Class: Viper Mark VII
+$Team: Hostile
+$Location: 1500.000000, 0.000000, -300.000000
+$Orientation:
+	0.196116, 0.000000, 0.980581,
+	0.000000, 1.000000, 0.000000,
+	-0.980581, 0.000000, 0.196116
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "don't-collide-invisible" )
++Flags2: ( "no-builtin-messages" "no-death-scream" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Red 2		;! Object #5
+$Display Name: XSTR("Red 2", 1817)
+$Class: Viper Mark VII
+$Team: Hostile
+$Location: 1500.000000, 0.000000, -200.000000
+$Orientation:
+	0.132164, 0.000000, 0.991228,
+	0.000000, 1.000000, 0.000000,
+	-0.991228, 0.000000, 0.132164
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "don't-collide-invisible" )
++Flags2: ( "no-builtin-messages" "no-death-scream" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Red 3		;! Object #6
+$Display Name: XSTR("Red 3", 1818)
+$Class: Viper Mark VII
+$Team: Hostile
+$Location: 1500.000000, 0.000000, -100.000000
+$Orientation:
+	0.066519, 0.000000, 0.997785,
+	0.000000, 1.000000, 0.000000,
+	-0.997785, 0.000000, 0.066519
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "don't-collide-invisible" )
++Flags2: ( "no-builtin-messages" "no-death-scream" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Red 4		;! Object #7
+$Display Name: XSTR("Red 4", 1819)
+$Class: Viper Mark VII
+$Team: Hostile
+$Location: 1500.000000, 0.000000, 0.000000
+$Orientation:
+	0.000000, 0.000000, 1.000000,
+	0.000000, 1.000000, 0.000000,
+	-1.000000, 0.000000, 0.000000
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "don't-collide-invisible" )
++Flags2: ( "no-builtin-messages" "no-death-scream" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+#Wings		;! 2 total
+
+$Name: Green
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Green 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Green 1"
+	"Green 2"
+	"Green 3"
+	"Green 4"
+)
++Hotkey: 0
++Flags: ( )
+
+$Name: Red
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Red 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Red 1"
+	"Red 2"
+	"Red 3"
+	"Red 4"
+)
++Hotkey: 1
++Flags: ( )
+
+#Events		;! 1 total
+
+$Formula: ( when 
+   ( true ) 
+   ( set-post-effect "lightshafts" 100 ) 
+)
++Name: lightshafts
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 2 total
+
+$Type: Primary
++Name: primary1
+$MessageNew:  XSTR("Defeat Red Team", 251)
+$end_multi_text
+$Formula: ( is-destroyed-delay 0 "Red" ) 
++Score: 300
++Team: 0
+
+$Type: Primary
++Name: primary2
+$MessageNew:  XSTR("Defeat Green Team", 252)
+$end_multi_text
+$Formula: ( is-destroyed-delay 0 "Green" ) 
++Score: 300
++Team: 1
+
+#Waypoints		;! 0 lists total
+
+
+#Messages		;! 0 total
+
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 0
+$Ambient light level: 8224125
+
+$Bitmap List:
+$Sun: Stars_Sun_Yellow
++Angles: 0.000000 0.000000 3.141590
++Scale: 15.000000
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: 3: Legend of Minos
+$Briefing Music: Brief10
+
+#End
+

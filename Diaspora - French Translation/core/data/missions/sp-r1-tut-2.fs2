@@ -1,0 +1,8021 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Testing Grounds", 846)
+$Author: Hassan "Karajorma" Kazmi
+$Created: 01/14/11 at 13:13:39
+$Modified: 01/05/14 at 11:43:39
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Tutorial Mission 2 - The player competes against pilots using the CNP to see if the program really does improve performance.
+", 849)
+$end_multi_text
++Game Type Flags: 4
++Flags: 8650800
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 344.757019, -24.586807, -185.439377
++Viewer orient:
+	0.455171, 0.000001, 0.890404,
+	-0.003608, 0.999992, 0.001843,
+	-0.890397, -0.004051, 0.455167
++SquadReassignName: 72nd Thunderlords
++SquadReassignLogo: thunderlords.pcx
+
+$Starting wing names: ( "Red" "Beta" "Gamma" )
+$Squadron wing names: ( "Red" "Beta" "Gamma" "Delta" "Epsilon" )
+$Team-versus-team wing names: ( "Red" "Beta" )
+
+$Load Screen 640:	Y_No_1024x768.tga
+$Load Screen 1024:	Load_SP-R1-Tut-2.tga
+
+$Skybox Model: SkyBox_Starfield_01.pof
+
+$AI Profile: Diaspora_default
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"Blue1Damage"		"0"		"number"
+		1		"Blue1Time"		"0"		"number"
+		2		"BulletCount"		"3000"		"number"
+		3		"BulletsUsed1"		"0"		"number"
+		4		"BulletsUsed2"		"0"		"number"
+		5		"BulletsUsed3"		"0"		"number"
+		6		"BulletsUsed4"		"0"		"number"
+		7		"BulletsUsed5"		"0"		"number"
+		8		"BulletsUsed6"		"0"		"number"
+		9		"Counter1"		"0"		"number"
+		10		"CurrentTargetShip"		"Drone 1"		"string"
+		11		"DEFINE_DEBUG"		"0"		"number"
+		12		"Drone1CombatTime"		"0"		"number"
+		13		"Drone1Damage"		"0"		"number"
+		14		"DroneSimHits"		"100"		"number"
+		15		"DroneSubsystem"		"navigation"		"string"
+		16		"FightObitScore"		"0"		"number"
+		17		"GeneralPenalties"		"0"		"number"
+		18		"Green1Damage"		"0"		"number"
+		19		"Green1Time"		"0"		"number"
+		20		"GroupCombatTime"		"0"		"number"
+		21		"GroupDamage"		"0"		"number"
+		22		"InLaunchTube"		"1"		"number"
+		23		"InLaunchTubeSpeed"		"0"		"number"
+		24		"IntroSubtitleLine1"		" "		"string"
+		25		"IntroSubtitleLine2"		" "		"string"
+		26		"IntroSubtitleLine3"		" "		"string"
+		27		"Land_distance_19"		"100"		"number"
+		28		"Land_distance_4-5-6"		"100"		"number"
+		29		"LastDamage"		"100"		"number"
+		30		"Missile_Damage"		"0"		"number"
+		31		"MissileChallengeUsed"		"0"		"number"
+		32		"MissileDronesFinished"		"FALSE"		"string"
+		33		"MissileHits"		"0"		"number"
+		34		"MissileLock"		"0"		"number"
+		35		"MissilesLeftToDodge"		"8"		"number"
+		36		"NumPetardos"		"2"		"number"	
+		37		"Obitchallengeon"		"0"		"number"
+		38		"ObitFightScore"		"0"		"number"
+		39		"PlayerScore"		"0"		"number"
+		40		"RaptorBombsMissed"		"0"		"number"
+		41		"RaptorBombsRemaining"		"8"		"number"
+		42		"RaptorNav"		"FarAway"		"string"
+		43		"RequestedLockChange"		"None"		"string"
+		44		"RequestLockChange"		"0"		"number"
+		45		"RequestSubsystem"		"NO"		"string"
+		46		"RequestTargetDrone"		"NO"		"string"
+		47		"Shooting"		"0"		"number"
+		48		"Shooting_Damage"		"0"		"number"
+		49		"simGaugeOn"		"-1"		"number"
+		50		"simGaugeUpdate"		"-1"		"number"
+		51		"SingleCombatTime"		"0"		"number"
+		52		"Slow_distance_19"		"600"		"number"
+		53		"Slow_distance_4-5-6"		"450"		"number"
+		54		"SubsysNiceName"		"Navigation"		"string"
+		55		"SubsystemsUnvisited"		"6"		"number"
+		56		"Sun"		"0"		"number"
+		57		"TargetDrone"		"Theseus"		"string"
+		58		"TargetSubsystem"		"navigationa"		"string"
+		59		"TargetTest"		"0"		"number"
+		60		"TestCounter"		"0"		"number"
+		61		"autoGenVar1"		"Drone 1 Simulated Hull"		"string"
+		62		"autoGenVar2"		"Blue 1 Simulated Hull"		"string"
+		63		"autoGenVar3"		"Green 1 Simulated Hull"		"string"
+		64		"autoGenVar4"		"Drone 2 Simulated Hull"		"string"
+		65		"autoGenVar5"		"Drone 3 Simulated Hull"		"string"
+		66		"autoGenVar6"		"#Theseus Launch Officer"		"string"
+		67		"autoGenVar7"		"#Trainer"		"string"
+		68		"autoGenVar8"		"#Command"		"string"
+		69		"autoGenVar9"		"#Obit"		"string"
+		70		"autoGenVar10"		"#Harridan"		"string"
+		71		"autoGenVar11"		"#Theseus Landing Signal Officer"		"string"
+)
+
+#Cutscenes
+$Briefing Cutscene: R1T2.ogg
++formula: ( true ) 
+#end
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 0
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 12
+
+$Formula: ( is-event-true-delay "Obit Wins" 0 ) 
+$Multi text
+    XSTR("It was good to finally see Obit in a one on one against you. He's already said that he'll start losing to you as soon as you're more used to the CNP though. 
+
+Given Obit's scores in CNP vipers, I'm not surprised that he beat you. Looks like there's a good challenger for the Theseus' Top Gun.", 871)
+$end_multi_text
+$Voice: SP-02-DB-TRN-01.ogg
+$Recommendation text:
+    XSTR("Save some secondaries for your fight against Obit. Remember to use evasive action and, if necessary, use the Theseus as cover.", 874)
+$end_multi_text
+
+$Formula: ( is-event-true-delay "Defeat Obit" 0 ) 
+$Multi text
+    XSTR("Looks like you managed to conclusively prove that the CNP is not a replacement for the experienced pilot. The CNP techs will have to quit their bragging now. 
+
+Given Obit's scores in CNP vipers, beating him was very impressive. When you're off duty the first round's on me.", 875)
+$end_multi_text
+$Voice: SP-02-DB-TRN-02.ogg
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Disable Blue 1" 
+      0 
+   )
+   ( is-event-false-delay 
+      "obitchallenge" 
+      0 
+   )
+)
+$Multi text
+    XSTR("You managed to show that the CNP isn't a replacement for a skilled pilot. Of course holding your own against a nugget doesn't mean much.
+
+Personally I think it's only a matter of time before you lose your Top Gun status on the Theseus. Obit performed damn well during the CNP trials and it's only a matter of time before he becomes our next top pilot. Maybe if you brush up on your skills with the CNP you can hold onto that title...", 876)
+$end_multi_text
+$Voice: SP-02-DB-TRN-03.ogg
+$Recommendation text:
+    XSTR("Although you defeated the nugget your performance was still poor. You should be able to achieve the tasks given you much more quickly and accurately. ", 877)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay "playerlost3" 0 ) 
+   ( is-event-false-delay "Obit Wins" 0 ) 
+)
+$Multi text
+    XSTR("Well it looks like the eggheads were right and the CNP does mean that even a nugget can beat the Theseus' Top Gun. We'll be the laughing stocks of the fleet.
+
+Personally, I think you need to shape up and remember it's the man behind the stick and not the bird that's important.", 878)
+$end_multi_text
+$Voice: SP-02-DB-TRN-04.ogg
+$Recommendation text:
+    XSTR("Save some missiles for this fight and remember to use countermeasures.", 901)
+$end_multi_text
+
+$Formula: ( is-event-false-delay 
+   "Begin Single Combat" 
+   0 
+)
+$Multi text
+    XSTR("Since I scored higher than you did in the tests, the CAG decided to send me against the nugget. She's sayng that you owe me the Top Gun trophy mug too. ", 902)
+$end_multi_text
+$Voice: SP-02-DB-TRN-05.ogg
+$Recommendation text:
+    XSTR("Remember to quickly target ships and manuver in combat trials. Better performance will earn you a chance against the nugget.", 903)
+$end_multi_text
+
+$Formula: ( true ) 
+$Multi text
+    XSTR("Unfortunately, we won't be getting much more time to play with the CNP anyway. 
+
+Orders have come in for a three month patrol along the armistice line. We'll probably be the last ship in the entire fleet to get the CNP upgrade at this rate. 
+
+You'll have a few days to get your things in order before we ship out. I suggest you take the next shuttle to Picon. Dismissed.", 904)
+$end_multi_text
+$Voice: SP-02-DB-TRN-06.ogg
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( true ) 
+$Multi text
+    XSTR("Targeting Trial Performance:
+
+Time taken to target drones = $TargetTest seconds
+Time taken to obtain missile lock =  $MissileLock seconds
+
+Time taken to shoot each drone once = $Shooting seconds
+Bullets used = $BulletsUsed1
+Time taken to hit each drone with a missile = $MissileHits seconds
+Missiles used = $MissileChallengeUsed
+
+
+Combat Trial Performance:
+
+Bombs shot down = $PlayerScore
+Bombs missed = $RaptorBombsMissed
+Bullets used = $BulletsUsed2
+
+Time in combat with Drone 1 = $Drone1CombatTime seconds
+Damage inflicted by Drone 1 = $Drone1Damage%
+Bullets used = $BulletsUsed3", 905)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "Disable Drone 1" 
+   0 
+)
+$Multi text
+    XSTR("Time in combat with Drones 2 & 3 = $GroupCombatTime seconds
+Damage inflicted by Drones 2 & 3 = $GroupDamage%
+Bullets used = $BulletsUsed4", 911)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "Begin Single Combat" 
+   0 
+)
+$Multi text
+    XSTR("Time in combat with Blue 1 = $Blue1Time seconds
+Damage inflicted by Blue 1 = $Blue1Damage%
+Bullets used = $BulletsUsed5", 912)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "obitchallenge" 
+   0 
+)
+$Multi text
+    XSTR("Time in combat with Green 1 = $Green1Time seconds
+Damage inflicted by Green 1 = $Green1Damage%
+Bullets used = $BulletsUsed6", 916)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( true ) 
+$Multi text
+    XSTR("Penalty points = $GeneralPenalties
+", 917)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( = @DEFINE_DEBUG[0] 1 ) 
+$Multi text
+    XSTR("Total Score = $ObitFightScore
+", 928)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+#Callsigns:
+$Callsign: XSTR("Obit", 1891)
+$Callsign: XSTR("Thief", 1942)
+$Callsign: XSTR("Veritgo", 1939)
+$Callsign: XSTR("Vertigo", 1946)
+$Callsign: XSTR("Ace", 1677)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Red 1
+$Ship Choices: (
+	"Viper Mark VII"	5
+)
+
++Weaponry Pool: (
+	"Training MEC-A6"	18
+	"HD-70 Lightning Javelin"	100
+	"MEC-A6"	0
+	"TM-7 Pyro Javelin"	8
+)
+
+#Objects		;! 10 total
+
+$Name: Red 1		;! Object #0
+$Display Name: XSTR("Red 1", 1816)
+$Class: Viper Mark VII
+$Team: Friendly
+$Location: 0.100000, -38.000000, -135.000000
+$Orientation:
+	0.999832, 0.018406, 0.000000,
+	0.018406, -0.999832, 0.000000,
+	0.000000, 0.000000, -1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Training MEC-A6" "Training MEC-A6" )
++Secondary Banks: ( "TM-7 Pyro Javelin" "TM-7 Pyro Javelin" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "don't-collide-invisible" )
++Flags2: ( "no-subspace-drive" "primaries-locked" "secondaries-locked" "immobile" "no-ets" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Theseus		;! Object #1
+$Display Name: XSTR("Theseus", 1834)
+$Class: Battlestar Sobek Class
+$Team: Friendly
+$Location: 0.000000, 0.000000, 0.000000
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret-01a
++Primary Banks: ( "" )
++Subsystem: turret-02a
++Primary Banks: ( "" )
++Subsystem: turret-03a
++Primary Banks: ( "" )
++Subsystem: turret-04a
++Primary Banks: ( "" )
++Subsystem: turret-05a
++Primary Banks: ( "" )
++Subsystem: turret-06a
++Primary Banks: ( "" )
++Subsystem: turret-07a
++Primary Banks: ( "" )
++Subsystem: turret-08a
++Primary Banks: ( "" )
++Subsystem: turret-09a
++Primary Banks: ( "" )
++Subsystem: turret-10a
++Primary Banks: ( "" )
++Subsystem: turret-11a
++Primary Banks: ( "" )
++Subsystem: turret-12a
++Primary Banks: ( "" )
++Subsystem: turret-13a
++Primary Banks: ( "" )
++Subsystem: turret-14a
++Primary Banks: ( "" )
++Subsystem: turret-15a
++Primary Banks: ( "" )
++Subsystem: turret-16a
++Primary Banks: ( "" )
++Subsystem: turret-17a
++Primary Banks: ( "" )
++Subsystem: turret-18a
++Primary Banks: ( "" )
++Subsystem: turret-19a
++Primary Banks: ( "" )
++Subsystem: turret-20a
++Primary Banks: ( "" )
++Subsystem: turret-21a
++Primary Banks: ( "" )
++Subsystem: turret-22a
++Primary Banks: ( "" )
++Subsystem: turret-23a
++Primary Banks: ( "" )
++Subsystem: turret-24a
++Primary Banks: ( "" )
++Subsystem: turret-25a
++Primary Banks: ( "" )
++Subsystem: turret-26a
++Primary Banks: ( "" )
++Subsystem: gunturret_01a
++Primary Banks: ( "" )
++Subsystem: gunturret_02a
++Primary Banks: ( "" )
++Subsystem: gunturret_03a
++Primary Banks: ( "" )
++Subsystem: gunturret_04a
++Primary Banks: ( "" )
++Subsystem: gunturret_05a
++Primary Banks: ( "" )
++Subsystem: gunturret_06a
++Primary Banks: ( "" )
++Subsystem: gunturret_07a
++Primary Banks: ( "" )
++Subsystem: gunturret_08a
++Primary Banks: ( "" )
++Subsystem: CIWS_Turret-01a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-02a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-03a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-04a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-05a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-06a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-07a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-08a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-09a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-10a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-11a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-12a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-13a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-14a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-15a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-16a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-17a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-18a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-19a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-20a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-21a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-22a
++Subsystem: CIWS_Turret-23a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-24a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-25a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-26a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-27a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-28a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-29a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-30a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-31a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-32a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-33a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-34a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-35a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-36a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-37a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-38a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-39a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-40a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-41a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-42a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-43a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-44a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-45a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-46a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-47a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-48a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-49a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-50a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-51a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-52a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-53a
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-54a
++Primary Banks: ( "" "" )
++Subsystem: VLS_turret-01a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-02a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-03a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-04a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-05a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-06a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-07a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-08a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-09a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-10a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-11a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-12a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-13a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-14a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-15a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-16a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-17a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-18a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-19a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-20a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-21a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-22a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-23a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-24a
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "don't-collide-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Escort priority: 5
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 2250
+$Texture Replace:
++old: col_bs_sobek_sob
++new: col_bs_sobek_the
++old: col_bs_sobek_sob-glow
++new: col_bs_sobek_the-glow
++old: col_bs_sobek_sob-normal
++new: col_bs_sobek_the-normal
++old: col_bs_sobek_sob-shine
++new: col_bs_sobek_the-shine
+
+$Name: Drone 1		;! Object #2
+$Display Name: XSTR("Drone 1", 2064)
+$Class: Cylotron Mark X Drone
+$Team: Friendly
+$Location: 300.000000, -300.000000, -500.000000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Target Drone
+$AI Goals: ( goals ( ai-play-dead 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Training MEC-A6" )
++Secondary Banks: ( "TM-7 Pyro Javelin#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus
++Departure Paths: ( "$Bay04" )
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "drone1invisi" 
+      3 
+   )
+   ( is-event-true-delay 
+      "Player Disabled By Drones" 
+      0 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "hidden-from-sensors" )
++Flags2: ( "no-subspace-drive" "afterburners-locked" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Drone 2		;! Object #3
+$Display Name: XSTR("Drone 2", 2065)
+$Class: Cylotron Mark X Drone
+$Team: Friendly
+$Location: 0.000000, 200.000000, -500.000000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Target Drone
+$AI Goals: ( goals ( ai-play-dead 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Training MEC-A6" )
++Secondary Banks: ( "TM-7 Pyro Javelin#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus
++Departure Paths: ( "$Bay05" )
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "dronesdisabled" 
+      3 
+   )
+   ( is-event-true-delay 
+      "Player Disabled By Drones" 
+      3 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "hidden-from-sensors" )
++Flags2: ( "no-subspace-drive" "secondaries-locked" "afterburners-locked" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Drone 3		;! Object #4
+$Display Name: XSTR("Drone 3", 2166)
+$Class: Cylotron Mark X Drone
+$Team: Friendly
+$Location: -300.000000, -300.000000, -500.000000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Target Drone
+$AI Goals: ( goals ( ai-play-dead 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Training MEC-A6" )
++Secondary Banks: ( "TM-7 Pyro Javelin#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus
++Departure Paths: ( "$Bay06" )
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "dronesdisabled" 
+      4 
+   )
+   ( is-event-true-delay 
+      "Player Disabled By Drones" 
+      4 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "hidden-from-sensors" )
++Flags2: ( "no-subspace-drive" "secondaries-locked" "afterburners-locked" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Orange 1		;! Object #5
+$Display Name: XSTR("Orange 1", 1958)
+$Class: Assault Raptor
+$Callsign: XSTR("Ace", 1677)
+
+$Team: Hostile
+$Location: 953.923706, -0.000010, 393.987701
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Theseus" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Secondary Banks: ( "TM-7 Pyro Javelin" "TGB-102 Petardo" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "don't-collide-invisible" )
++Flags2: ( "primaries-locked" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Blue 1		;! Object #6
+$Display Name: XSTR("Blue 1", 1820)
+$Class: Viper Mark VII
+$Callsign: XSTR("Thief", 1942)
+
+$Team: Friendly
+$Location: 18691.781250, 0.000071, -174.417603
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$AI Goals: ( goals ( ai-play-dead 200 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Training MEC-A6" "Training MEC-A6" )
++Secondary Banks: ( "TM-7 Pyro Javelin#Weak" "TM-7 Pyro Javelin#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-subspace-drive" "secondaries-locked" "afterburners-locked" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 7
+
+$Name: Green 1		;! Object #7
+$Display Name: XSTR("Green 1", 1812)
+$Class: Viper Mark VII
+$Callsign: XSTR("Obit", 1891)
+
+$Team: Friendly
+$Location: 18787.785156, 0.000231, -245.171127
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Duelist
+$AI Goals: ( goals ( ai-play-dead 200 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Training MEC-A6" "Training MEC-A6" )
++Secondary Banks: ( "TM-7 Pyro Javelin" "TM-7 Pyro Javelin" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" "don't-collide-invisible" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 1
+
+$Name: IntroCamera		;! Object #8
+$Display Name: XSTR("IntroCamera", 2167)
+$Class: Camera
+$Team: Object
+$Location: -776.789795, 1764.378296, -989.001953
+$Orientation:
+	1.000000, -0.000000, -0.000000,
+	-0.000000, 1.000000, -0.000003,
+	0.000000, 0.000003, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: THE-056		;! Object #9
+$Display Name: XSTR("THE-056", 2018)
+$Class: Shuttle Mark I
+$Team: Friendly
+$Location: 298.200012, -28.200001, -177.899994
+$Orientation:
+	0.026785, 0.000000, -0.999641,
+	-0.033874, 0.999426, -0.000908,
+	0.999067, 0.033886, 0.026770
+$AI Behavior: None
++AI Class: Lieutenant
+$AI Goals: ( goals ( ai-waypoints-once "ShuttlePath" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 30
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Initial Events" 
+   7 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 12
+
+#Wings		;! 4 total
+
+$Name: Red
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Red 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Red 1"
+)
++Flags: ( )
+
+$Name: Blue
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Blue 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "Begin Single Combat" 
+   0 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus
++Departure Paths: ( "$Bay19" )
+$Departure Cue: ( is-event-true-delay "Blue 1 RTB" 0 ) 
+$Ships: (		;! 1 total
+	"Blue 1"
+)
++Hotkey: 1
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Green
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Green 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "obitchallenge" 
+   24 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus
++Departure Paths: ( "$Bay19" )
+$Departure Cue: ( is-event-true-delay "Green 1 RTB" 0 ) 
+$Ships: (		;! 1 total
+	"Green 1"
+)
++Hotkey: 2
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" "no-dynamic" )
+
+$Name: Orange
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Orange 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 3000
+$Arrival Anchor: Theseus
+$Arrival Cue: ( is-event-true-delay 
+   "countdownbomb" 
+   6 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Orange 1"
+)
++Flags: ( "no-arrival-music" "no-arrival-message" "no-dynamic" )
+
+#Events		;! 229 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[Drone 1 Simulated Hull]" 
+      "Drone 1 Simulated Hull" 
+      2173 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[Blue 1 Simulated Hull]" 
+      "Blue 1 Simulated Hull" 
+      2174 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[Green 1 Simulated Hull]" 
+      "Green 1 Simulated Hull" 
+      2175 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar4[Drone 2 Simulated Hull]" 
+      "Drone 2 Simulated Hull" 
+      2176 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar5[Drone 3 Simulated Hull]" 
+      "Drone 3 Simulated Hull" 
+      2177 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar6[#Theseus Launch Officer]" 
+      "#Theseus Launch Officer" 
+      1882 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar7[#Trainer]" 
+      "#Trainer" 
+      2178 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar8[#Command]" 
+      "#Command" 
+      2179 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar9[#Obit]" 
+      "#Obit" 
+      1973 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar10[#Harridan]" 
+      "#Harridan" 
+      2180 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar11[#Theseus Landing Signal Officer]" 
+      "#Theseus Landing Signal Officer" 
+      1883 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( player-use-ai ) 
+   ( protect-ship "Theseus" ) 
+   ( set-subsystem-strength 
+      "Red 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( modify-variable 
+      @RequestLockChange[0] 
+      1 
+   )
+   ( modify-variable 
+      "@RequestedLockChange[None]" 
+      "All" 
+   )
+   ( add-to-collision-group "Theseus" 1 ) 
+)
++Name: Initial Events
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "cutsceneend" 1 ) 
+   ( remove-sun-bitmap 0 ) 
+   ( play-sound-from-file 
+      "Event_Launch_Standby.ogg" 
+      1 
+   )
+)
++Name: LaunchStart
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( skill-level-at-least "Medium" ) 
+   ( clear-goals 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( add-goal 
+      "Drone 1" 
+      ( ai-waypoints "Drone Path 1" 89 ) 
+   )
+   ( add-goal 
+      "Drone 2" 
+      ( ai-waypoints "Drone Path 2" 89 ) 
+   )
+   ( add-goal 
+      "Drone 3" 
+      ( ai-waypoints "Drone Path 3" 89 ) 
+   )
+   ( lock-primary-weapon 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( lock-secondary-weapon 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+)
++Name: Assign Drones Paths
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: =========== FLUSH ===========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not ( key-pressed "\" ) ) 
+      ( is-event-true-delay "LaunchStart" 0 ) 
+   )
+   ( send-message 
+      "@autoGenVar6[#Theseus Launch Officer]" 
+      "High" 
+      "Launch Checklist Prt 1" 
+   )
+)
++Name: FLUSH Checklist Prt 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "FLUSH Checklist Prt 1" 
+      0 
+   )
+   ( ignore-key 0 "\" ) 
+)
++Name: unlocklaunch
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not ( key-pressed "\" ) ) 
+      ( is-event-true-delay 
+         "FLUSH Checklist Prt 1" 
+         2 
+      )
+   )
+   ( send-message 
+      "@autoGenVar6[#Theseus Launch Officer]" 
+      "High" 
+      "Launch Checklist Prt 2" 
+   )
+)
++Name: FLUSH Checklist Prt 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not ( key-pressed "\" ) ) 
+      ( is-event-true-delay 
+         "FLUSH Checklist Prt 2" 
+         4 
+      )
+   )
+   ( send-message 
+      "@autoGenVar6[#Theseus Launch Officer]" 
+      "High" 
+      "Launch Checklist Prt 3" 
+   )
+)
++Name: FLUSH Checklist Prt 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not ( key-pressed "\" ) ) 
+      ( is-event-true-delay 
+         "FLUSH Checklist Prt 3" 
+         2 
+      )
+   )
+   ( send-message 
+      "@autoGenVar6[#Theseus Launch Officer]" 
+      "High" 
+      "Launch Checklist Prt 4" 
+   )
+)
++Name: FLUSH Checklist Prt 4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( key-pressed "\" ) 
+   ( do-nothing ) 
+)
++Name: FLUSH DirectiveDummy
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Launch", 460)
++Objective key:  XSTR("Press $\$", 461)
+
+$Formula: ( when 
+   ( > @InLaunchTube[1] 0 ) 
+   ( when 
+      ( = @InLaunchTube[1] 1 ) 
+      ( send-message 
+         "@autoGenVar6[#Theseus Launch Officer]" 
+         "High" 
+         "Launch Goodbye" 
+      )
+      ( play-sound-from-file 
+         "Event_Launch_Tube_Start.ogg" 
+      )
+      ( set-camera-shudder 10000 2000 ) 
+      ( set-mobile "Red 1" ) 
+      ( modify-variable @InLaunchTube[1] 2 ) 
+   )
+   ( when 
+      ( = @InLaunchTube[1] 2 ) 
+      ( modify-variable 
+         @InLaunchTubeSpeed[0] 
+         ( + @InLaunchTubeSpeed[0] 1 ) 
+      )
+      ( set-object-speed-z 
+         "Red 1" 
+         @InLaunchTubeSpeed[0] 
+         ( true ) 
+      )
+   )
+   ( when 
+      ( and 
+         ( = @InLaunchTube[1] 2 ) 
+         ( < 
+            ( distance "Red 1" "LaunchPath:1" ) 
+            25 
+         )
+      )
+      ( add-sun-bitmap 
+         "Stars_Sun_White" 
+         0 
+         0 
+         0 
+         200 
+         @Sun[0] 
+      )
+      ( play-sound-from-file 
+         "Event_Launch_Tube_Exit.ogg" 
+      )
+      ( set-camera-shudder 250 150 ) 
+      ( modify-variable 
+         @InLaunchTubeSpeed[0] 
+         110 
+      )
+      ( set-object-speed-z 
+         "Red 1" 
+         @InLaunchTubeSpeed[0] 
+         ( true ) 
+      )
+      ( modify-variable @InLaunchTube[1] 0 ) 
+   )
+)
++Name: FLUSH (UpUpAndAway! :p @ ACE)
++Repeat Count: 999999999
++Interval: 0
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "FLUSH Checklist Prt 4" 
+         10 
+      )
+      ( = @InLaunchTube[1] 1 ) 
+   )
+   ( send-message 
+      "@autoGenVar6[#Theseus Launch Officer]" 
+      "High" 
+      "Why Are You Still Here?" 
+   )
+   ( modify-variable 
+      @GeneralPenalties[0] 
+      ( + @GeneralPenalties[0] 1 ) 
+   )
+   ( when 
+      ( = @DEFINE_DEBUG[0] 1 ) 
+      ( training-msg 
+         "Penalty Points Assigned" 
+      )
+   )
+)
++Name: Why Are You Still Here?
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ======Advanced Targetting======
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @InLaunchTube[1] 0 ) 
+   ( lock-perspective ( false ) ) 
+   ( training-msg "controls locked" ) 
+   ( if-then-else 
+      ( skill-level-at-least "Medium" ) 
+      ( modify-variable 
+         "@RequestedLockChange[None]" 
+         "Unlock All Movement" 
+      )
+      ( training-msg "controls locked" ) 
+   )
+)
++Name: Begin Mission
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Targetting" 
+      0 
+   )
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( send-message-list 
+         "@autoGenVar7[#Trainer]" 
+         "High" 
+         "Targetting - Easy" 
+         10000 
+      )
+   )
+   ( when 
+      ( and 
+         ( not ( skill-level-at-least "Hard" ) ) 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( send-message-list 
+         "@autoGenVar7[#Trainer]" 
+         "High" 
+         "Targetting - Medium" 
+         10000 
+      )
+   )
+   ( when 
+      ( skill-level-at-least "Hard" ) 
+      ( send-message-list 
+         "@autoGenVar7[#Trainer]" 
+         "High" 
+         "Targetting - Hard" 
+         10000 
+      )
+   )
+)
++Name: Target Drones
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Start Test In 5" 
+      0 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "4" 
+      1488 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "3" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "2" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "1" 
+      1000 
+   )
+)
++Name: Start Test 1 - Message
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( true ) 
+   ( player-not-use-ai ) 
+   ( modify-variable 
+      @TargetTest[0] 
+      ( mission-time ) 
+   )
+   ( modify-variable 
+      "@RequestTargetDrone[NO]" 
+      "YES" 
+   )
+   ( change-iff 
+      "Hostile" 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( modify-variable 
+      @RequestLockChange[0] 
+      1 
+   )
+   ( ship-visible 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( modify-variable 
+         "@RequestedLockChange[None]" 
+         "Unlock PBH" 
+      )
+   )
+)
++Name: Start Test 1 - Really
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( and 
+      ( = @TestCounter[0] 3 ) 
+      ( directive-value 
+         ( - 3 @TestCounter[0] ) 
+      )
+   )
+   ( modify-variable 
+      @TargetTest[0] 
+      ( - ( mission-time ) @TargetTest[0] ) 
+   )
+   ( modify-variable @TestCounter[0] 0 ) 
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( modify-variable 
+         @RequestLockChange[0] 
+         1 
+      )
+      ( modify-variable 
+         "@RequestedLockChange[None]" 
+         "Lock PBH" 
+      )
+   )
+)
++Name: Target Drones Directive
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Face All Three Drones", 1030)
++Objective key:  XSTR("Press $H$ to target", 1031)
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-invisible 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+)
++Name: dronesinvis
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( and 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( is-event-true-delay 
+         "Start Test 1 - Really" 
+         0 
+      )
+      ( facing "<argument>" 3 ) 
+      ( targeted "<argument>" ) 
+   )
+   ( modify-variable 
+      @TestCounter[0] 
+      ( + @TestCounter[0] 1 ) 
+   )
+   ( training-msg "Drone Targetted" ) 
+   ( change-iff "Object" "<argument>" ) 
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Drone Targetted - Easy
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( skill-level-at-least "Medium" ) 
+      ( string-equals 
+         "@RequestTargetDrone[NO]" 
+         "YES" 
+      )
+   )
+   ( when-argument 
+      ( in-sequence 
+         "Drone 1" 
+         "Drone 2" 
+         "Drone 3" 
+      )
+      ( not ( skill-level-at-least "Hard" ) ) 
+      ( modify-variable 
+         "@TargetDrone[Theseus]" 
+         "<argument>" 
+      )
+      ( modify-variable 
+         @DroneSimHits[100] 
+         ( sim-hits-left "<argument>" ) 
+      )
+      ( invalidate-argument "<argument>" ) 
+      ( when 
+         ( = ( num-valid-arguments ) 0 ) 
+         ( validate-all-arguments ) 
+      )
+   )
+   ( when-argument 
+      ( random-multiple-of 
+         "Drone 1" 
+         "Drone 2" 
+         "Drone 3" 
+      )
+      ( skill-level-at-least "Hard" ) 
+      ( modify-variable 
+         "@TargetDrone[Theseus]" 
+         "<argument>" 
+      )
+      ( modify-variable 
+         @DroneSimHits[100] 
+         ( sim-hits-left "<argument>" ) 
+      )
+      ( invalidate-argument "<argument>" ) 
+      ( when 
+         ( = ( num-valid-arguments ) 0 ) 
+         ( validate-all-arguments ) 
+      )
+   )
+   ( training-msg "Your Target Will Be" ) 
+   ( modify-variable 
+      "@RequestTargetDrone[NO]" 
+      "NO" 
+   )
+)
++Name: Request Target Drone
++Repeat Count: -1
++Trigger Count: 12
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( skill-level-at-least "Medium" ) 
+      ( is-event-true-delay 
+         "Start Test 1 - Really" 
+         0 
+      )
+      ( targeted "@TargetDrone[Theseus]" ) 
+      ( facing "@TargetDrone[Theseus]" 3 ) 
+   )
+   ( modify-variable 
+      @TestCounter[0] 
+      ( + @TestCounter[0] 1 ) 
+   )
+   ( change-iff 
+      "Object" 
+      "@TargetDrone[Theseus]" 
+   )
+   ( when 
+      ( < @TestCounter[0] 3 ) 
+      ( modify-variable 
+         "@RequestTargetDrone[NO]" 
+         "YES" 
+      )
+   )
+)
++Name: Drone Targetted - Medium + Hard
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( and 
+      ( skill-level-at-least "Medium" ) 
+      ( is-event-true-delay 
+         "Start Test 1 - Really" 
+         0 
+      )
+      ( or 
+         ( string-greater-than 
+            "@TargetDrone[Theseus]" 
+            "<argument>" 
+         )
+         ( string-less-than 
+            "@TargetDrone[Theseus]" 
+            "<argument>" 
+         )
+      )
+      ( targeted "<argument>" 2 ) 
+      ( facing "<argument>" 3 ) 
+   )
+   ( modify-variable 
+      @GeneralPenalties[0] 
+      ( + @GeneralPenalties[0] 1 ) 
+   )
+   ( when 
+      ( = @DEFINE_DEBUG[0] 1 ) 
+      ( do-nothing ) 
+   )
+)
++Name: Wrong Drone Targetted
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "dronesinvis" 4 ) 
+   ( do-nothing ) 
+)
++Name: =======Changing Weapons========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( is-event-true-delay "dronesinvis" 5 ) 
+   )
+   ( key-reset-multiple "Shift-." ) 
+   ( flash-hud-gauge "WEAPONS_GAUGE" ) 
+   ( flash-hud-gauge 
+      "WEAPON_LINKING_GAUGE" 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Changing Primaries" 
+      0 
+   )
+)
++Name: Change Primaries - Nuggets Only
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-primary-selected "Red 1" 0 ) 
+      ( is-primary-selected "Red 1" 1 ) 
+      ( key-pressed "." ) 
+   )
+   ( key-reset-multiple "." ) 
+)
++Name: Really Change Primaries
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Select Both KEW Banks", 1040)
++Objective key:  XSTR("Press $.$ Twice", 1055)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Change Primaries - Nuggets Only" 
+      8 
+   )
+   ( key-reset-multiple "/" ) 
+   ( flash-hud-gauge "WEAPONS_GAUGE" ) 
+   ( flash-hud-gauge 
+      "WEAPON_LINKING_GAUGE" 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Changing Secondaries" 
+      0 
+   )
+)
++Name: Change Secondaries
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( key-pressed "/" ) 
+   ( do-nothing ) 
+)
++Name: Really Change Secondaries
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Change Selected Missile Bank", 1064)
++Objective key:  XSTR("Press $/$ To Change", 1065)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Change Secondaries" 
+      9 
+   )
+   ( flash-hud-gauge "WEAPONS_GAUGE" ) 
+   ( flash-hud-gauge 
+      "WEAPON_LINKING_GAUGE" 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Linking Secondaries" 
+      0 
+   )
+   ( key-reset-multiple "Shift-/" ) 
+)
++Name: Link Secondaries
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( key-pressed "Shift-/" ) 
+   ( do-nothing ) 
+)
++Name: Really Link Secondaries
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Set Dual Fire Mode", 1077)
++Objective key:  XSTR("Press $Shift-/$ To Change", 1078)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Link Secondaries" 
+      7 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Return To Single Fire Mode" 
+      0 
+   )
+   ( key-reset-multiple "Shift-/" ) 
+)
++Name: Return To Single Fire
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "Shift-/" ) 
+      ( xor 
+         ( is-primary-selected "Red 1" 0 ) 
+         ( is-primary-selected "Red 1" 1 ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Really Return To Single Fire
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Return To Single Fire Mode", 1079)
++Objective key:  XSTR("Press $.$ And $Shift-/$ Again", 1080)
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ====Shooting And Targetting====
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-event-true-delay 
+            "Really Return To Single Fire" 
+            3 
+         )
+         ( is-event-true-delay 
+            "Return To Single Fire" 
+            5 
+         )
+      )
+      ( and 
+         ( skill-level-at-least "Medium" ) 
+         ( is-event-true-delay "dronesinvis" 5 ) 
+      )
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Lock Drone With Missile." 
+      0 
+   )
+)
++Name: Lock Missile
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Lock Missile" 
+      12 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Start Test In 5" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "4" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "3" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "2" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "1" 
+      1000 
+   )
+)
++Name: Start Lock Missile
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Start Lock Missile" 
+      6 
+   )
+   ( modify-variable 
+      @MissileLock[0] 
+      ( mission-time ) 
+   )
+   ( modify-variable 
+      "@RequestTargetDrone[NO]" 
+      "YES" 
+   )
+   ( change-iff 
+      "Hostile" 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( ship-visible 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( modify-variable 
+         @RequestLockChange[0] 
+         1 
+      )
+      ( modify-variable 
+         "@RequestedLockChange[None]" 
+         "Unlock PBH" 
+      )
+   )
+)
++Name: Start Lock Missile - Really
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @TestCounter[0] 3 ) 
+      ( directive-value 
+         ( - 3 @TestCounter[0] ) 
+      )
+   )
+   ( modify-variable 
+      @MissileLock[0] 
+      ( - ( mission-time ) @MissileLock[0] ) 
+   )
+   ( when 
+      ( = @DEFINE_DEBUG[0] 1 ) 
+      ( do-nothing ) 
+   )
+   ( lock-primary-weapon "Red 1" ) 
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( modify-variable 
+         @RequestLockChange[0] 
+         1 
+      )
+      ( modify-variable 
+         "@RequestedLockChange[None]" 
+         "Lock PBH" 
+      )
+   )
+)
++Name: Missile Lock Drones
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Lock But Don't Shoot Each Drone", 2168)
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( and 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( is-event-true-delay 
+         "Start Lock Missile - Really" 
+         0 
+      )
+      ( missile-locked 0 "<argument>" ) 
+   )
+   ( modify-variable 
+      @TestCounter[0] 
+      ( + @TestCounter[0] 1 ) 
+   )
+   ( training-msg "Drone Missile Locked" ) 
+   ( change-iff "Object" "<argument>" ) 
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Missile Locked - Easy
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( skill-level-at-least "Medium" ) 
+      ( is-event-true-delay 
+         "Start Lock Missile - Really" 
+         0 
+      )
+      ( missile-locked 
+         0 
+         "@TargetDrone[Theseus]" 
+      )
+   )
+   ( change-iff 
+      "Object" 
+      "@TargetDrone[Theseus]" 
+   )
+   ( modify-variable 
+      @TestCounter[0] 
+      ( + @TestCounter[0] 1 ) 
+   )
+   ( when 
+      ( < @TestCounter[0] 3 ) 
+      ( modify-variable 
+         "@RequestTargetDrone[NO]" 
+         "YES" 
+      )
+   )
+)
++Name: Drone Locked - Medium + Hard
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Missile Lock Drones" 
+      2 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Shoot Once" 
+      0 
+   )
+   ( ship-invisible 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( modify-variable @TestCounter[0] 0 ) 
+)
++Name: Shoot Once
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Start Test In 5" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "4" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "3" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "2" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "1" 
+      1000 
+   )
+)
++Name: Start Test 2 - Message
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable 
+      @Shooting[0] 
+      ( mission-time ) 
+   )
+   ( modify-variable 
+      "@RequestTargetDrone[NO]" 
+      "YES" 
+   )
+   ( unlock-primary-weapon "Red 1" ) 
+   ( change-iff 
+      "Hostile" 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( set-subsystem-strength 
+      "Drone 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( set-subsystem-strength 
+      "Drone 2" 
+      "Simulated Hull" 
+      100 
+   )
+   ( set-subsystem-strength 
+      "Drone 3" 
+      "Simulated Hull" 
+      100 
+   )
+   ( ship-visible 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( modify-variable 
+         @RequestLockChange[0] 
+         1 
+      )
+      ( modify-variable 
+         "@RequestedLockChange[None]" 
+         "Unlock PBH" 
+      )
+   )
+)
++Name: Start Test 2 - Really
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( or 
+      ( and 
+         ( skill-level-at-least "Medium" ) 
+         ( string-equals 
+            "<argument>" 
+            "@TargetDrone[Theseus]" 
+         )
+         ( < 
+            ( sim-hits-left 
+               "@TargetDrone[Theseus]" 
+            )
+            @DroneSimHits[100] 
+         )
+      )
+      ( and 
+         ( not 
+            ( skill-level-at-least "Medium" ) 
+         )
+         ( < 
+            ( sim-hits-left "<argument>" ) 
+            100 
+         )
+      )
+   )
+   ( change-iff "Object" "<argument>" ) 
+   ( invalidate-argument "<argument>" ) 
+   ( when 
+      ( = ( num-valid-arguments ) 0 ) 
+      ( modify-variable 
+         @Shooting[0] 
+         ( - ( mission-time ) @Shooting[0] ) 
+      )
+      ( modify-variable 
+         @Shooting_Damage[0] 
+         ( + 
+            ( sim-hits-left "Drone 1" ) 
+            ( sim-hits-left "Drone 2" ) 
+            ( sim-hits-left "Drone 3" ) 
+         )
+      )
+   )
+   ( when 
+      ( and 
+         ( skill-level-at-least "Medium" ) 
+         ( != ( num-valid-arguments ) 0 ) 
+      )
+      ( modify-variable 
+         "@RequestTargetDrone[NO]" 
+         "YES" 
+      )
+   )
+   ( modify-variable 
+      @TestCounter[0] 
+      ( + @TestCounter[0] 1 ) 
+   )
+)
++Name: Shoot Drones Once - All
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Start Test 2 - Really" 
+      3 
+   )
+   ( if-then-else 
+      ( and 
+         ( skill-level-at-least "Medium" ) 
+         ( is-event-true-delay 
+            "Start Test 2 - Really" 
+            3 
+         )
+      )
+      ( send-message 
+         "@autoGenVar7[#Trainer]" 
+         "High" 
+         "New Reticle" 
+      )
+      ( training-msg "autofiremessage" ) 
+   )
+)
++Name: autoaimmessage
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( and 
+         ( > @Shooting_Damage[0] 0 ) 
+         ( is-event-true-delay 
+            "Start Test 2 - Really" 
+            0 
+         )
+      )
+      ( directive-value 
+         ( - 3 @TestCounter[0] ) 
+      )
+   )
+   ( lock-primary-weapon "Red 1" ) 
+   ( modify-variable 
+      @BulletsUsed1[0] 
+      ( - 
+         @BulletCount[3000] 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @BulletCount[3000] 
+      ( + 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( modify-variable 
+         @RequestLockChange[0] 
+         1 
+      )
+      ( modify-variable 
+         "@RequestedLockChange[None]" 
+         "Lock PBH" 
+      )
+   )
+)
++Name: Shoot Drones Directive
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Shoot Each Drone Once", 1098)
++Objective key:  XSTR("Press $Left Ctrl$ To shoot", 1099)
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-invisible 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+)
++Name: locktargetting
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( secondary-ammo-pct "Red 1" 4 ) 
+         100 
+      )
+      ( is-event-true-delay 
+         "Lock Missile" 
+         0 
+      )
+      ( is-event-incomplete 
+         "Start Missile Ships - Really" 
+      )
+   )
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Early Missile Fire" 
+   )
+   ( when 
+      ( = @DEFINE_DEBUG[0] 1 ) 
+      ( send-message 
+         "@autoGenVar8[#Command]" 
+         "High" 
+         "Penalty Points Assigned" 
+      )
+   )
+   ( modify-variable 
+      @GeneralPenalties[0] 
+      ( + @GeneralPenalties[0] 1 ) 
+   )
+)
++Name: Early Missile Fire
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Shoot Drones Directive" 
+      5 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Missile Drones" 
+      0 
+   )
+   ( modify-variable @TestCounter[0] 0 ) 
+)
++Name: Missile Drones
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Start Test In 5" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "4" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "3" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "2" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "1" 
+      1000 
+   )
+)
++Name: Start Missile Drones
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable 
+      @MissileHits[0] 
+      ( mission-time ) 
+   )
+   ( modify-variable 
+      "@RequestTargetDrone[NO]" 
+      "YES" 
+   )
+   ( ship-visible 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( set-subsystem-strength 
+      "Drone 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( set-subsystem-strength 
+      "Drone 2" 
+      "Simulated Hull" 
+      100 
+   )
+   ( set-subsystem-strength 
+      "Drone 3" 
+      "Simulated Hull" 
+      100 
+   )
+   ( change-iff 
+      "Hostile" 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( unlock-secondary-weapon "Red 1" ) 
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( modify-variable 
+         @RequestLockChange[0] 
+         1 
+      )
+      ( modify-variable 
+         "@RequestedLockChange[None]" 
+         "Unlock PBH" 
+      )
+   )
+   ( set-num-countermeasures "Drone 1" 0 ) 
+   ( set-num-countermeasures "Drone 2" 0 ) 
+   ( set-num-countermeasures "Drone 3" 0 ) 
+)
++Name: Start Missile Ships - Really
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( and 
+      ( and 
+         ( is-event-true-delay 
+            "Start Missile Ships - Really" 
+            0 
+            ( false ) 
+         )
+         ( string-equals 
+            "@MissileDronesFinished[FALSE]" 
+            "TRUE" 
+         )
+      )
+      ( directive-value 
+         ( - 3 @TestCounter[0] ) 
+      )
+   )
+   ( lock-secondary-weapon "Red 1" ) 
+   ( modify-variable 
+      @MissileChallengeUsed[0] 
+      ( - 
+         8 
+         ( get-secondary-ammo "Red 1" 0 ) 
+         ( get-secondary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( modify-variable 
+         @RequestLockChange[0] 
+         1 
+      )
+      ( modify-variable 
+         "@RequestedLockChange[None]" 
+         "Lock PBH" 
+      )
+   )
+)
++Name: Missile Drones
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Shoot Each Drone With A Missile", 1114)
++Objective key:  XSTR("Press $Spacebar$ To Fire", 1115)
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-invisible 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( clear-goals 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( add-goal 
+      "Drone 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( add-goal 
+      "Drone 2" 
+      ( ai-play-dead 89 ) 
+   )
+   ( add-goal 
+      "Drone 3" 
+      ( ai-play-dead 89 ) 
+   )
+   ( set-num-countermeasures 
+      "Drone 1" 
+      20 
+   )
+   ( set-num-countermeasures 
+      "Drone 2" 
+      20 
+   )
+   ( set-num-countermeasures 
+      "Drone 3" 
+      20 
+   )
+)
++Name: invisaftermis
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( and 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( is-event-true-delay 
+         "Start Missile Ships - Really" 
+         0 
+      )
+      ( < 
+         ( sim-hits-left "<argument>" ) 
+         100 
+      )
+   )
+   ( change-iff "Object" "<argument>" ) 
+   ( invalidate-argument "<argument>" ) 
+   ( modify-variable 
+      @TestCounter[0] 
+      ( + @TestCounter[0] 1 ) 
+   )
+)
++Name: Missile Ships - Easy 1 Hit
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( sim-hits-left "Drone 1" ) 100 ) 
+      ( < ( sim-hits-left "Drone 2" ) 100 ) 
+      ( < ( sim-hits-left "Drone 3" ) 100 ) 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( is-event-true-delay 
+         "Start Missile Ships - Really" 
+         0 
+      )
+   )
+   ( modify-variable 
+      @MissileHits[0] 
+      ( - ( mission-time ) @MissileHits[0] ) 
+   )
+   ( modify-variable 
+      @Missile_Damage[0] 
+      ( + 
+         ( sim-hits-left "Drone 1" ) 
+         ( sim-hits-left "Drone 2" ) 
+         ( sim-hits-left "Drone 3" ) 
+      )
+   )
+   ( modify-variable 
+      "@MissileDronesFinished[FALSE]" 
+      "TRUE" 
+   )
+)
++Name: Missile Ships - Easy
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( and 
+      ( skill-level-at-least "Medium" ) 
+      ( < 
+         ( sim-hits-left 
+            "@TargetDrone[Theseus]" 
+         )
+         @DroneSimHits[100] 
+      )
+      ( is-event-true-delay 
+         "Start Missile Ships - Really" 
+         0 
+      )
+      ( string-equals 
+         "<argument>" 
+         "@TargetDrone[Theseus]" 
+      )
+   )
+   ( change-iff "Object" "<argument>" ) 
+   ( invalidate-argument "<argument>" ) 
+   ( when 
+      ( = ( num-valid-arguments ) 0 ) 
+      ( modify-variable 
+         @MissileHits[0] 
+         ( - ( mission-time ) @MissileHits[0] ) 
+      )
+      ( modify-variable 
+         @Missile_Damage[0] 
+         ( + 
+            ( sim-hits-left "Drone 1" ) 
+            ( sim-hits-left "Drone 2" ) 
+            ( sim-hits-left "Drone 3" ) 
+         )
+      )
+      ( modify-variable 
+         "@MissileDronesFinished[FALSE]" 
+         "TRUE" 
+      )
+   )
+   ( when 
+      ( != ( num-valid-arguments ) 0 ) 
+      ( modify-variable 
+         "@RequestTargetDrone[NO]" 
+         "YES" 
+      )
+   )
+   ( modify-variable 
+      @TestCounter[0] 
+      ( + @TestCounter[0] 1 ) 
+   )
+)
++Name: Missile Ships - Medium + Hard
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ====Subsys Targetting - Easy===
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "invisaftermis" 
+         1 
+      )
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Targetting Subsystems - Easy" 
+      0 
+   )
+)
++Name: Begin Subsys Targetting - Easy
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Targetsubsys2" 
+      900 
+   )
+   ( ship-visible "Drone 1" ) 
+   ( change-iff 
+      "Hostile" 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( modify-variable 
+      @RequestLockChange[0] 
+      1 
+   )
+   ( modify-variable 
+      "@RequestedLockChange[None]" 
+      "Unlock PBH" 
+   )
+)
++Name: reallysubsystemtarget
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "Send Subsystem Target Keys" 
+   )
+   ( flash-hud-gauge "TARGET_MONITOR" ) 
+)
++Name: Send Subsystem Target Keys
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( targeted "Drone 1" 1 "sensors" ) 
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "subsystemtargeting2" 
+   )
+)
++Name: First Drone Subsystem
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Target Drone 1 Sensors", 1129)
++Objective key:  XSTR("Press $U$ or $V$", 2169)
+
+$Formula: ( when 
+   ( targeted 
+      "Drone 1" 
+      1 
+      "communication" 
+   )
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "subsystemtargeting3" 
+   )
+)
++Name: Second Drone Subsystem
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Objective:  XSTR("Target Drone 1 Communications", 1135)
+
+$Formula: ( when 
+   ( targeted "Drone 1" 1 "navigation" ) 
+   ( script-eval "lockContr('bank')" ) 
+   ( script-eval "lockContr('pi')" ) 
+   ( script-eval "lockContr('head')" ) 
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "subsystemtargeting4" 
+   )
+   ( training-msg "controls locked" ) 
+)
++Name: All Drone Subsystem Targetted
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Objective:  XSTR("Target Drone 1 Navigation", 1136)
+
+$Formula: ( when 
+   ( true ) 
+   ( change-iff 
+      "Object" 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( ship-invisible "Drone 1" ) 
+)
++Name: changedronetarget
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when ( false ) ( do-nothing ) ) 
++Name: =========Bomb Intercept========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "changedronetarget" 
+         8 
+      )
+      ( and 
+         ( is-event-true-delay 
+            "invisaftermis" 
+            6 
+         )
+         ( skill-level-at-least "Medium" ) 
+      )
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Begin Bomb Intercept" 
+      0 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Bomb Tracking Improvements" 
+      10912 
+   )
+   ( modify-variable 
+      @PlayerScore[0] 
+      ( ship_score "Red 1" ) 
+   )
+   ( when 
+      ( skill-level-at-least "Medium" ) 
+      ( modify-variable 
+         @NumPetardos[2] 
+         ( + @NumPetardos[2] 1 ) 
+      )
+   )
+   ( when 
+      ( skill-level-at-least "Hard" ) 
+      ( modify-variable 
+         @NumPetardos[2] 
+         ( + @NumPetardos[2] 1 ) 
+      )
+   )
+   ( when 
+      ( skill-level-at-least "Insane" ) 
+      ( modify-variable 
+         @NumPetardos[2] 
+         ( + @NumPetardos[2] 1 ) 
+      )
+   )
+   ( set-subsystem-strength 
+      "Red 1" 
+      "Simulated Hull" 
+      100 
+   )
+)
++Name: Begin Bomb Intercept
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( skill-level-at-least "Medium" ) 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "unlockedcontrols" 
+      368 
+   )
+)
++Name: Controls Unlocked
++Repeat Count: 1
++Interval: 1
++Chained: 19
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Begin Bomb Intercept" 
+      28 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Start Test In 5" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "4" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "3" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "2" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "1" 
+      1000 
+   )
+)
++Name: countdownbomb
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "countdownbomb" 
+      5 
+   )
+   ( unlock-primary-weapon "Red 1" ) 
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( modify-variable 
+         @RequestLockChange[0] 
+         1 
+      )
+      ( modify-variable 
+         "@RequestedLockChange[None]" 
+         "Unlock All Movement" 
+      )
+   )
+)
++Name: Start Bomb Intercept - Really
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Orange 1" ) 
+   ( good-secondary-time 
+      "Hostile" 
+      100 
+      "TGB-102 Petardo" 
+      "Theseus" 
+   )
+   ( set-subsystem-strength 
+      "Orange 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( send-message 
+         "@autoGenVar7[#Trainer]" 
+         "High" 
+         "New Reticle" 
+      )
+   )
+)
++Name: Raptor Arrives
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( has-departed-delay 0 "Orange 1" ) 
+      )
+      ( >= 
+         ( ship_score "Red 1" ) 
+         ( + @PlayerScore[0] @NumPetardos[2] ) 
+      )
+      ( directive-value 
+         ( - 
+            ( + @PlayerScore[0] @NumPetardos[2] ) 
+            ( ship_score "Red 1" ) 
+         )
+      )
+   )
+   ( clear-goals "Orange 1" ) 
+   ( change-iff "Friendly" "Orange 1" ) 
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "bombconcluded" 
+   )
+   ( modify-variable 
+      @PlayerScore[0] 
+      ( - 
+         ( ship_score "Red 1" ) 
+         @PlayerScore[0] 
+      )
+   )
+   ( modify-variable 
+      @BulletsUsed2[0] 
+      ( - 
+         @BulletCount[3000] 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @BulletCount[3000] 
+      ( + 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+)
++Name: Shoot Down Bombs
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Intercept Bombs", 1149)
++Objective key:  XSTR("Press $b$ To Target Bombs", 1164)
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Shoot Down Bombs" 
+         15 
+      )
+      ( is-event-true-delay 
+         "Raptor Out Of Ammo" 
+         20 
+      )
+   )
+   ( add-goal 
+      "Orange 1" 
+      ( ai-warp-out 89 ) 
+   )
+   ( modify-variable 
+      @RaptorBombsMissed[0] 
+      ( - 
+         8 
+         ( get-secondary-ammo "Orange 1" 1 ) 
+         @PlayerScore[0] 
+      )
+   )
+)
++Name: Don't Need Raptor
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 0 "Orange 1" ) 
+      ( not 
+         ( has-departed-delay 0 "Orange 1" ) 
+      )
+      ( != 
+         ( get-secondary-ammo "Orange 1" 1 ) 
+         @RaptorBombsRemaining[8] 
+      )
+   )
+   ( modify-variable 
+      @RaptorBombsRemaining[8] 
+      ( get-secondary-ammo "Orange 1" 1 ) 
+   )
+   ( training-msg "Bomb Launched" ) 
+)
++Name: Bomb Launched
++Repeat Count: -1
++Trigger Count: 16
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance 
+            "Orange 1" 
+            "@RaptorNav[FarAway]" 
+         )
+         100 
+      )
+      ( not 
+         ( string-equals 
+            "@RaptorNav[FarAway]" 
+            "FarAway" 
+         )
+      )
+      ( is-event-incomplete "bombsdown2" ) 
+   )
+   ( clear-goals "Red 1" ) 
+   ( add-goal 
+      "Orange 1" 
+      ( ai-chase "Theseus" 89 ) 
+   )
+   ( good-secondary-time 
+      "Hostile" 
+      100 
+      "TGB-102 Petardo" 
+      "Theseus" 
+   )
+   ( modify-variable 
+      "@RaptorNav[FarAway]" 
+      "FarAway" 
+   )
+   ( when 
+      ( = @DEFINE_DEBUG[0] 1 ) 
+      ( send-message 
+         "Orange 1" 
+         "High" 
+         "Beginning Bombing Run" 
+      )
+   )
+)
++Name: Start Bombing Run
++Repeat Count: -1
++Trigger Count: 16
++Interval: 1
+
+$Formula: ( when-argument 
+   ( random-multiple-of 
+      "RaptorAttackRun1" 
+      "RaptorAttackRun2" 
+      "RaptorAttackRun3" 
+      "RaptorAttackRun4" 
+      "RaptorAttackRun5" 
+      "RaptorAttackRun6" 
+   )
+   ( and 
+      ( is-in-box 
+         "Orange 1" 
+         -900 
+         900 
+         -400 
+         400 
+         -500 
+         500 
+      )
+      ( string-equals 
+         "@RaptorNav[FarAway]" 
+         "FarAway" 
+      )
+      ( is-event-incomplete "bombsdown2" ) 
+   )
+   ( when 
+      ( = @DEFINE_DEBUG[0] 1 ) 
+      ( send-message-list 
+         "Orange 1" 
+         "High" 
+         "End Bombing Run" 
+         0 
+      )
+   )
+   ( clear-goals "Orange 1" ) 
+   ( add-goal 
+      "Orange 1" 
+      ( ai-waypoints-once "<argument>" 150 ) 
+   )
+   ( modify-variable 
+      "@RaptorNav[FarAway]" 
+      "<argument>" 
+   )
+   ( string-concatenate 
+      "@RaptorNav[FarAway]" 
+      ":1" 
+      "@RaptorNav[FarAway]" 
+   )
+)
++Name: End Bombing Run
++Repeat Count: -1
++Trigger Count: 100
++Interval: 15
+
+$Formula: ( when 
+   ( and 
+      ( = 
+         ( get-secondary-ammo "Orange 1" 1 ) 
+         1 
+      )
+      ( has-arrived-delay 0 "Orange 1" ) 
+      ( not 
+         ( has-departed-delay 0 "Orange 1" ) 
+      )
+   )
+   ( send-message 
+      "Orange 1" 
+      "High" 
+      "Raptor Almost Out Of Ammo" 
+   )
+)
++Name: Raptor Almost Out Of Ammo
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = 
+         ( get-secondary-ammo "Orange 1" 1 ) 
+         0 
+      )
+      ( has-arrived-delay 0 "Orange 1" ) 
+      ( not 
+         ( has-departed-delay 0 "Orange 1" ) 
+      )
+   )
+   ( send-message 
+      "Orange 1" 
+      "High" 
+      "Raptor Out Of Ammo" 
+   )
+   ( clear-goals "Orange 1" ) 
+   ( add-goal 
+      "Orange 1" 
+      ( ai-ignore-new "Red 1" 89 ) 
+   )
+   ( add-goal 
+      "Orange 1" 
+      ( ai-ignore-new "Theseus" 89 ) 
+   )
+   ( modify-variable 
+      @PlayerScore[0] 
+      ( - 
+         ( ship_score "Red 1" ) 
+         @PlayerScore[0] 
+      )
+   )
+   ( change-iff "Friendly" "Orange 1" ) 
+)
++Name: Raptor Out Of Ammo
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Shoot Down Bombs" 
+         10 
+      )
+      ( is-event-true-delay 
+         "Raptor Out Of Ammo" 
+         28 
+      )
+      ( has-departed-delay 0 "Orange 1" ) 
+   )
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "targetingtrialsdone" 
+   )
+)
++Name: bombsdown2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ========Countermeasures========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "bombsdown2" 8 ) 
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Missile Avoidance" 
+   )
+   ( lock-primary-weapon "Red 1" ) 
+)
++Name: Begin Missile Avoidance
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Start Test In 5" 
+      0 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "4" 
+      1488 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "3" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "2" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "1" 
+      1000 
+   )
+   ( training-msg 
+      "How To Dodge Missiles" 
+   )
+)
++Name: Countdown To Avoidance
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Drone 1" ) 
+   ( add-goal 
+      "Drone 1" 
+      ( ai-chase "Red 1" 89 ) 
+   )
+   ( change-iff "Hostile" "Drone 1" ) 
+   ( set-subsystem-strength 
+      "Red 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( ship-visible "Drone 1" ) 
+   ( training-msg "droneactive" ) 
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file 
+      "Dia_Btl_I01.ogg" 
+      1 
+   )
+   ( unlock-secondary-weapon "Drone 1" ) 
+   ( lock-primary-weapon "Drone 1" ) 
+   ( add-goal 
+      "Drone 1" 
+      ( ai-ignore-new "Theseus" 89 ) 
+   )
+)
++Name: Really Begin Missile Avoidance
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Drone Out Of Missiles" 
+         8 
+         ( true ) 
+      )
+      ( is-event-incomplete 
+         "Took One Missile Too Many" 
+      )
+      ( directive-value 
+         ( get-secondary-ammo "Drone 1" 0 ) 
+      )
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Avoided Missiles" 
+      0 
+   )
+   ( ship-invisible "Drone 1" ) 
+)
++Name: Avoid Drone 1's Missiles
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Avoid Drone 1's Missiles", 1170)
++Objective key:  XSTR("$'$ to use countermeasures", 2170)
+
+$Formula: ( when 
+   ( = 
+      ( get-secondary-ammo "Drone 1" 0 ) 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: Drone Out Of Missiles
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-invisible "Drone 1" ) 
+)
++Name: Make Drone Invisible Again
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( and 
+      ( is-event-incomplete 
+         "Avoid Drone 1's Missiles" 
+      )
+      ( < ( sim-hits-left "Red 1" ) 70 ) 
+      ( is-event-true-delay 
+         "Countdown To Avoidance" 
+         0 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Took One Missile Too Many
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Drone Out Of Missiles" 
+      8 
+      ( true ) 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Didn't Avoid Enough" 
+      0 
+   )
+   ( ship-invisible "Drone 1" ) 
+   ( lock-secondary-weapon "Drone 1" ) 
+)
++Name: Complain About Avoiding Badly
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Avoid Drone 1's Missiles" 
+         4 
+      )
+      ( is-event-true-delay 
+         "Complain About Avoiding Badly" 
+         8 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Avoidance Test Over
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Really Begin Missile Avoidance" 
+         15 
+      )
+      ( >= 
+         ( distance "Red 1" "Drone 1" ) 
+         1000 
+      )
+      ( is-event-incomplete 
+         "Drone Out Of Missiles" 
+      )
+   )
+   ( training-msg 
+      "Out Of Drone 1's Range" 
+   )
+)
++Name: Player Out Of Range Of Drone
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( get-secondary-ammo "Drone 1" 0 ) 
+      @MissilesLeftToDodge[8] 
+   )
+   ( modify-variable 
+      @MissilesLeftToDodge[8] 
+      ( get-secondary-ammo "Drone 1" 0 ) 
+   )
+   ( training-msg 
+      "Missiles Left To Dodge" 
+   )
+)
++Name: Missiles Left To Dodge
++Repeat Count: -1
++Trigger Count: 6
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ============Combat=============
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Avoidance Test Over" 
+      0 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Single Combat" 
+      0 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "SingleCombat2" 
+      6050 
+   )
+   ( modify-variable @TestCounter[0] 0 ) 
+)
++Name: Begin Combat
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Start Test In 5" 
+      0 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "4" 
+      1488 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "3" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "2" 
+      1000 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "1" 
+      1000 
+   )
+)
++Name: Start Drone 1 Combat - Message
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Drone 1" ) 
+   ( add-goal 
+      "Drone 1" 
+      ( ai-chase "Red 1" 89 ) 
+   )
+   ( set-subsystem-strength 
+      "Drone 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( modify-variable 
+      @Drone1CombatTime[0] 
+      ( mission-time ) 
+   )
+   ( change-iff "Hostile" "Drone 1" ) 
+   ( unlock-primary-weapon 
+      "Red 1" 
+      "Drone 1" 
+   )
+   ( unlock-secondary-weapon "Red 1" ) 
+   ( set-subsystem-strength 
+      "Red 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( change-iff "Object" "Theseus" ) 
+   ( when 
+      ( not ( skill-level-at-least "Easy" ) ) 
+      ( lock-secondary-weapon "Drone 1" ) 
+   )
+   ( when 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( set-secondary-ammo "<argument>" 0 1 ) 
+   )
+   ( ship-visible "Drone 1" ) 
+   ( training-msg "droneactive" ) 
+   ( change-iff-color 
+      "Friendly" 
+      "Object" 
+      0 
+      255 
+      0 
+      "Theseus" 
+   )
+   ( modify-variable @simGaugeOn[-1] 1 ) 
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( true ) 
+   )
+   ( hud-set-text 
+      "MiscSEXPBar" 
+      "@autoGenVar1[Drone 1 Simulated Hull]" 
+   )
+)
++Name: Take On Drone 1
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( < ( sim-hits-left "Drone 1" ) 1 ) 
+   ( add-goal 
+      "Drone 1" 
+      ( ai-play-dead 200 ) 
+   )
+   ( change-iff "Object" "Drone 1" ) 
+   ( modify-variable 
+      @Drone1CombatTime[0] 
+      ( - 
+         ( mission-time ) 
+         @Drone1CombatTime[0] 
+      )
+   )
+   ( modify-variable 
+      @Drone1Damage[0] 
+      ( - 100 ( sim-hits-left "Red 1" ) ) 
+   )
+   ( modify-variable 
+      @BulletsUsed3[0] 
+      ( - 
+         @BulletCount[3000] 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @BulletCount[3000] 
+      ( + 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+)
++Name: Disable Drone 1
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Neutralize Drone 1", 1180)
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-invisible "Drone 1" ) 
+   ( training-msg "damagereset" ) 
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( false ) 
+   )
+)
++Name: drone1invisi
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Next Set Of Drones" 
+   )
+)
++Name: Next Set Of Drones
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Drone 2" "Drone 3" ) 
+   ( add-goal 
+      "Drone 2" 
+      ( ai-chase "Red 1" 89 ) 
+   )
+   ( add-goal 
+      "Drone 3" 
+      ( ai-chase "Red 1" 89 ) 
+   )
+   ( set-subsystem-strength 
+      "Drone 2" 
+      "Simulated Hull" 
+      100 
+   )
+   ( set-subsystem-strength 
+      "Drone 3" 
+      "Simulated Hull" 
+      100 
+   )
+   ( modify-variable 
+      @GroupCombatTime[0] 
+      ( mission-time ) 
+   )
+   ( change-iff 
+      "Hostile" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( unlock-primary-weapon 
+      "Red 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( unlock-secondary-weapon 
+      "Red 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( when 
+      ( not ( skill-level-at-least "Easy" ) ) 
+      ( lock-secondary-weapon 
+         "Drone 2" 
+         "Drone 3" 
+      )
+   )
+   ( when-argument 
+      ( every-of "Drone 2" "Drone 3" ) 
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+      ( set-secondary-ammo "<argument>" 0 1 ) 
+   )
+   ( set-subsystem-strength 
+      "Red 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( change-iff "Object" "Theseus" ) 
+   ( ship-visible "Drone 2" "Drone 3" ) 
+   ( training-msg "droneactive" ) 
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( true ) 
+   )
+   ( add-goal 
+      "Drone 2" 
+      ( ai-ignore-new "Theseus" 89 ) 
+   )
+   ( add-goal 
+      "Drone 3" 
+      ( ai-ignore-new "Theseus" 89 ) 
+   )
+)
++Name: Group Combat
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when-argument 
+   ( any-of "Drone 2" "Drone 3" ) 
+   ( < ( sim-hits-left "<argument>" ) 1 ) 
+   ( add-goal 
+      "<argument>" 
+      ( ai-play-dead 200 ) 
+   )
+   ( change-iff "Object" "<argument>" ) 
+   ( invalidate-argument "<argument>" ) 
+   ( when 
+      ( = ( num-valid-arguments ) 0 ) 
+      ( modify-variable 
+         @SingleCombatTime[0] 
+         ( - 
+            ( mission-time ) 
+            @SingleCombatTime[0] 
+         )
+      )
+   )
+   ( modify-variable 
+      @TestCounter[0] 
+      ( + @TestCounter[0] 1 ) 
+   )
+)
++Name: Drone Disabled
++Repeat Count: -1
++Trigger Count: 3
++Interval: 1
++Chained: 0
+
+$Formula: ( when-argument 
+   ( every-of "Drone 2" "Drone 3" ) 
+   ( and 
+      ( and 
+         ( is-event-true-delay 
+            "Group Combat" 
+            0 
+            ( true ) 
+         )
+         ( < ( sim-hits-left "<argument>" ) 1 ) 
+         ( is-event-true-delay 
+            "Next Set Of Drones" 
+            0 
+         )
+         ( is-event-incomplete 
+            "Player Disabled By Drones" 
+         )
+      )
+      ( directive-value 
+         ( - 2 @TestCounter[0] ) 
+      )
+   )
+   ( modify-variable 
+      @GroupDamage[0] 
+      ( - 100 ( sim-hits-left "Red 1" ) ) 
+   )
+   ( modify-variable 
+      @BulletsUsed4[0] 
+      ( - 
+         @BulletCount[3000] 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @BulletCount[3000] 
+      ( + 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @GroupCombatTime[0] 
+      ( - 
+         ( mission-time ) 
+         @GroupCombatTime[0] 
+      )
+   )
+)
++Name: Disable All Drones
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Defeat Remaining Drones", 1202)
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-invisible "Drone 2" "Drone 3" ) 
+   ( training-msg "damagereset" ) 
+   ( close-sound-from-file ( true ) ) 
+   ( change-soundtrack 
+      "10: Children of Humanity" 
+   )
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( false ) 
+   )
+)
++Name: dronesdisabled
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Take On Drone 1" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "drone1invisi" 
+            0 
+         )
+      )
+      ( < ( sim-hits-left "Red 1" ) 1 ) 
+   )
+   ( modify-variable 
+      @Drone1Damage[0] 
+      100 
+   )
+   ( modify-variable 
+      @BulletsUsed3[0] 
+      ( - 
+         @BulletCount[3000] 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @Drone1CombatTime[0] 
+      ( - 
+         ( mission-time ) 
+         @Drone1CombatTime[0] 
+      )
+   )
+)
++Name: Player Disabled By Drone 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Group Combat" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "dronesdisabled" 
+            0 
+         )
+      )
+      ( < ( sim-hits-left "Red 1" ) 1 ) 
+   )
+   ( modify-variable @GroupDamage[0] 100 ) 
+   ( modify-variable 
+      @BulletsUsed4[0] 
+      ( - 
+         @BulletCount[3000] 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @GroupCombatTime[0] 
+      ( - 
+         ( mission-time ) 
+         @GroupCombatTime[0] 
+      )
+   )
+)
++Name: Player Diasbled By Drones 2 & 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Player Disabled By Drone 1" 
+         0 
+      )
+      ( is-event-true-delay 
+         "Player Diasbled By Drones 2 & 3" 
+         0 
+      )
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Player Killed By Drones" 
+      0 
+   )
+   ( player-use-ai ) 
+   ( add-goal 
+      "Red 1" 
+      ( ai-play-dead 200 ) 
+   )
+   ( change-iff 
+      "Friendly" 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( training-msg "controls locked" ) 
+)
++Name: Player Disabled By Drones
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Next Set Of Drones" 
+         10 
+      )
+      ( not 
+         ( skill-level-at-least "Medium" ) 
+      )
+   )
+   ( training-msg "countermeasures" ) 
+   ( flash-hud-gauge "CMEASURE_GAUGE" ) 
+)
++Name: dronecmmessage
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of "Drone 2" "Drone 3" ) 
+   ( != 
+      ( get-secondary-ammo "<argument>" 0 ) 
+      8 
+   )
+   ( lock-secondary-weapon "<argument>" ) 
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Drone Shoots Its Missile
++Repeat Count: -1
++Trigger Count: 2
++Interval: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: =========Single Combat=========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "dronesdisabled" 
+         5 
+      )
+      ( or 
+         ( not 
+            ( skill-level-at-least "Medium" ) 
+         )
+         ( true ) 
+      )
+   )
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "finalexercise" 
+   )
+)
++Name: Begin Single Combat
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Blue 1" ) 
+   ( set-docked 
+      "Blue 1" 
+      "Pod Dock" 
+      "Theseus" 
+      "Port Tube8" 
+   )
+)
++Name: Place Blue 2 In Tube
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of "Blue 1" ) 
+   ( has-arrived-delay 3 "Blue 1" ) 
+   ( force-glide "<argument>" ( true ) ) 
+   ( jettison-cargo-delay "<argument>" 0 ) 
+   ( add-to-collision-group 
+      "<argument>" 
+      1 
+   )
+   ( set-object-speed-x 
+      "<argument>" 
+      ( get-object-speed-x "Theseus" ) 
+   )
+   ( set-object-speed-y 
+      "<argument>" 
+      ( get-object-speed-y "Theseus" ) 
+   )
+   ( set-object-speed-z 
+      "<argument>" 
+      ( get-object-speed-z "Theseus" ) 
+   )
+   ( ship-lat-maneuver 
+      "<argument>" 
+      2000 
+      0 
+      0 
+      100 
+      ( true ) 
+   )
+   ( set-object-speed-z 
+      "<argument>" 
+      150 
+      ( true ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Launch Blue 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Blue" ) 
+   ( add-goal 
+      "Blue" 
+      ( ai-waypoints-once 
+         "RaptorAttackRun1" 
+         89 
+      )
+   )
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Go To Starting Point" 
+   )
+   ( remove-from-collision-group 
+      "Blue 1" 
+      1 
+   )
+)
++Name: Take Dueling Positions
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( > 
+      ( distance "Blue 1" "Red 1" ) 
+      3000 
+   )
+   ( clear-goals "Blue 1" ) 
+   ( add-goal 
+      "Blue 1" 
+      ( ai-chase "Red 1" 89 ) 
+   )
+   ( unlock-primary-weapon "Red 1" ) 
+   ( unlock-secondary-weapon "Red 1" ) 
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Start Duel" 
+   )
+   ( set-subsystem-strength 
+      "Red 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( change-iff "Hostile" "Blue 1" ) 
+   ( training-msg "blue1h" ) 
+   ( modify-variable 
+      @LastDamage[100] 
+      100 
+   )
+   ( if-then-else 
+      ( skill-level-at-least "Medium" ) 
+      ( set-subsystem-strength 
+         "Blue 1" 
+         "Simulated Hull" 
+         100 
+      )
+      ( set-subsystem-strength 
+         "Blue 1" 
+         "Simulated Hull" 
+         50 
+      )
+   )
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file 
+      "Dia_Btl_I03.ogg" 
+      1 
+   )
+   ( modify-variable 
+      @Blue1Time[0] 
+      ( mission-time ) 
+   )
+   ( modify-variable 
+      "@CurrentTargetShip[Drone 1]" 
+      "Blue 1" 
+   )
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( true ) 
+   )
+   ( hud-set-text 
+      "MiscSEXPBar" 
+      "@autoGenVar2[Blue 1 Simulated Hull]" 
+   )
+)
++Name: Go To Starting Point
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Objective:  XSTR("Enter Starting Position", 1207)
++Objective key:  XSTR("Be 3000m from Blue 1", 1208)
+
+$Formula: ( when 
+   ( and 
+      ( < ( sim-hits-left "Blue 1" ) 1 ) 
+      ( not 
+         ( is-event-true-delay 
+            "Player Disabled By Blue 1" 
+            0 
+            ( true ) 
+         )
+      )
+   )
+   ( add-goal 
+      "Blue 1" 
+      ( ai-play-dead 200 ) 
+   )
+   ( change-iff "Object" "Blue 1" ) 
+   ( force-glide "Blue 1" ( false ) ) 
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "blue1down" 
+   )
+   ( training-msg "damagereset" ) 
+   ( close-sound-from-file ( true ) ) 
+   ( play-sound-from-file 
+      "Dia_Amb_I01.ogg" 
+      1 
+   )
+   ( modify-variable 
+      @Blue1Damage[0] 
+      ( - 100 ( sim-hits-left "Red 1" ) ) 
+   )
+   ( modify-variable 
+      @BulletsUsed5[0] 
+      ( - 
+         @BulletCount[3000] 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @BulletCount[3000] 
+      ( + 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @Blue1Time[0] 
+      ( - ( mission-time ) @Blue1Time[0] ) 
+   )
+)
++Name: Disable Blue 1
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Defeat Blue 1", 1209)
+
+$Formula: ( when 
+   ( true ) 
+   ( change-iff "Friendly" "Blue 1" ) 
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( false ) 
+   )
+)
++Name: blue1refriendly
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Go To Starting Point" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Disable Blue 1" 
+            0 
+         )
+      )
+      ( < ( sim-hits-left "Red 1" ) 1 ) 
+   )
+   ( send-message-list 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Player Defeated By Blue 1" 
+      0 
+   )
+   ( player-use-ai ) 
+   ( add-goal 
+      "Red 1" 
+      ( ai-play-dead 200 ) 
+   )
+   ( force-glide "Red 1" ( false ) ) 
+   ( change-iff "Friendly" "Blue 1" ) 
+   ( training-msg "controls locked" ) 
+   ( modify-variable 
+      @BulletsUsed5[0] 
+      ( - 
+         @BulletCount[3000] 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable @Blue1Damage[0] 100 ) 
+   ( modify-variable 
+      @Blue1Time[0] 
+      ( - ( mission-time ) @Blue1Time[0] ) 
+   )
+)
++Name: Player Disabled By Blue 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( or 
+         ( is-event-true-delay 
+            "Player Disabled By Blue 1" 
+            6 
+         )
+         ( is-event-true-delay "Obit Wins" 8 ) 
+      )
+      ( is-event-true-delay 
+         "Player Disabled By Drones" 
+         6 
+      )
+   )
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Player Lost" 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( change-soundtrack 
+      "10: Children of Humanity" 
+   )
+)
++Name: playerlost2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( player-not-use-ai ) 
+   ( training-msg "controls unlocked" ) 
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( false ) 
+   )
+)
++Name: playerlost3
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Player Disabled By Blue 1" 
+         5 
+      )
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Blue 1 RTB
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Take Dueling Positions" 
+         10 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Go To Starting Point" 
+            0 
+         )
+      )
+      ( < ( distance "Blue 1" "Red 1" ) 500 ) 
+   )
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "Make Duel Not Love" 
+   )
+)
++Name: Red 1 Doing It All Wrong
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( <= 
+      ( + 
+         ( get-secondary-ammo "Blue 1" 0 ) 
+         ( get-secondary-ammo "Blue 1" 1 ) 
+      )
+      6 
+   )
+   ( lock-secondary-weapon "Blue 1" ) 
+)
++Name: Blue 2 Fires Off A Couple
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ===Obit Battle Calcs - Points==
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @TargetTest[0] 20 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @TargetTest[0] 10 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Targeting Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @MissileLock[0] 20 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @MissileLock[0] 15 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Missile Lock Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @Shooting[0] 15 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @Shooting[0] 30 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Shooting Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @BulletsUsed1[0] 10 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @BulletsUsed1[0] 20 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Bullets Used 1 - Add Score
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @MissileHits[0] 25 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @MissileHits[0] 30 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Missile Hits Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( <= @MissileChallengeUsed[0] 3 ) 
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Missiles Used
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @BulletsUsed2[0] 50 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @BulletsUsed2[0] 60 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Bullets Used 2 - Add Score
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @RaptorBombsMissed[0] 0 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @RaptorBombsMissed[0] 0 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Bombs Missed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Disable Blue 1" 
+      5 
+   )
+   ( if-then-else 
+      ( is-event-true-delay 
+         "Avoid Drone 1's Missiles" 
+         0 
+      )
+      ( modify-variable 
+         @ObitFightScore[0] 
+         ( + @ObitFightScore[0] 1 ) 
+      )
+      ( modify-variable 
+         @ObitFightScore[0] 
+         ( - @ObitFightScore[0] 1 ) 
+      )
+   )
+)
++Name: Missiles Dodged
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @Drone1CombatTime[0] 60 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @Drone1CombatTime[0] 50 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Defeat Drone 1 - Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @Drone1Damage[0] 20 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @Drone1Damage[0] 0 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Defeat Drone 1 - Damage Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @BulletsUsed3[0] 200 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @BulletsUsed3[0] 150 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Bullets Used 3 - Add Score
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @GroupCombatTime[0] 180 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @GroupCombatTime[0] 90 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Defeat Drone 2 & 3 - Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @GroupDamage[0] 50 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @GroupDamage[0] 5 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Defeat Drone 2 & 3 - Damage
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @BulletsUsed4[0] 400 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @BulletsUsed4[0] 250 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Bullets Used 4 - Add Score
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @Blue1Time[0] 180 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @Blue1Time[0] 50 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Defeat Blue 1 - Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @Blue1Damage[0] 80 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @Blue1Damage[0] 20 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Defeat Blue 1 - Damage Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( <= @BulletsUsed5[0] 200 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( <= @BulletsUsed5[0] 120 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( + @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Bullets Used 5 - Add Score
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ==Obit Battle Calcs - Penalty==
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @TargetTest[0] 30 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @TargetTest[0] 20 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Targeting Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @MissileLock[0] 30 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @MissileLock[0] 30 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Missile Lock Time
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @Shooting[0] 30 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @Shooting[0] 60 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Shooting Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @BulletsUsed1[0] 30 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @BulletsUsed1[0] 200 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Bullets Used 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @MissileHits[0] 50 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @MissileHits[0] 50 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Missile Hits Time
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @MissileChallengeUsed[0] 4 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @MissileChallengeUsed[0] 4 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Missiles Used
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @BulletsUsed2[0] 200 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @BulletsUsed2[0] 200 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Bullets Used 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @RaptorBombsMissed[0] 2 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @RaptorBombsMissed[0] 1 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Bombs Missed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @Drone1CombatTime[0] 120 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @Drone1CombatTime[0] 120 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Defeat Drone 1 - Time
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @Drone1Damage[0] 40 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @Drone1Damage[0] 20 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Defeat Drone 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @BulletsUsed3[0] 400 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @BulletsUsed3[0] 250 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Bullets Used 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @GroupCombatTime[0] 300 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @GroupCombatTime[0] 180 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Defeat Drones - Time
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @GroupDamage[0] 90 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @GroupDamage[0] 30 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Defeat Drones
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @BulletsUsed4[0] 700 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @BulletsUsed4[0] 450 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Bullets Used 4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @Blue1Time[0] 300 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @Blue1Time[0] 120 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Defeat Blue 1 - Time
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( skill-level-at-least "Medium" ) 
+      ( >= @Blue1Damage[0] 50 ) 
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Defeat Blue 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @BulletsUsed5[0] 400 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @BulletsUsed5[0] 250 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      ( - @ObitFightScore[0] 1 ) 
+   )
+)
++Name: Penalty - Bullets Used 5
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ====Obit Battle Calcs - Fail===
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @TargetTest[0] 120 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @TargetTest[0] 90 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Targeting Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @MissileLock[0] 80 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @MissileLock[0] 120 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Missile Lock Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @Shooting[0] 120 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @Shooting[0] 180 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Shooting Time Taken
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @BulletsUsed1[0] 100 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @BulletsUsed1[0] 500 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Bullets Used 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @MissileHits[0] 80 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @MissileHits[0] 120 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Missile Hits Time
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @MissileChallengeUsed[0] 6 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @MissileChallengeUsed[0] 5 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Missiles Used
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @BulletsUsed2[0] 400 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @BulletsUsed2[0] 400 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Bullets Used 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @RaptorBombsMissed[0] 4 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @RaptorBombsMissed[0] 3 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Bombs Missed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @Drone1CombatTime[0] 240 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @Drone1CombatTime[0] 180 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Defeat Drone 1 - Time
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @Drone1Damage[0] 98 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @Drone1Damage[0] 50 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Defeat Drone 1 - Damage
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @BulletsUsed3[0] 1000 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @BulletsUsed3[0] 400 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Bullets Used 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @GroupCombatTime[0] 600 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @GroupCombatTime[0] 240 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Defeat Drones - Time
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( skill-level-at-least "Medium" ) 
+      ( >= @GroupDamage[0] 50 ) 
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Defeat Drones - Damage
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @BulletsUsed4[0] 1200 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @BulletsUsed4[0] 800 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Bullets Used 4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @Blue1Time[0] 600 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @Blue1Time[0] 180 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Defeat Blue 1 - Time
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @BulletsUsed5[0] 1000 ) 
+         )
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @BulletsUsed5[0] 500 ) 
+         )
+      )
+   )
+   ( modify-variable 
+      @ObitFightScore[0] 
+      0 
+   )
+)
++Name: Fail - Bullets Used 5
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ==========vs Obit==============
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Disable Blue 1" 
+         5 
+      )
+      ( or 
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( >= @ObitFightScore[0] 6 ) 
+         )
+         ( and 
+            ( not 
+               ( skill-level-at-least "Medium" ) 
+            )
+            ( >= @ObitFightScore[0] 2 ) 
+         )
+      )
+   )
+   ( send-message-list 
+      "@autoGenVar9[#Obit]" 
+      "High" 
+      "Obit's Challenge" 
+      0 
+      "#Harridan" 
+      "High" 
+      "obitchallenge2" 
+      10700 
+   )
+)
++Name: obitchallenge
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Green 1" ) 
+   ( set-docked 
+      "Green 1" 
+      "Pod Dock" 
+      "Theseus" 
+      "Port Tube20" 
+   )
+   ( set-primary-ammo 
+      "Green 1" 
+      0 
+      ( get-primary-ammo "Red 1" 0 ) 
+   )
+   ( set-primary-ammo 
+      "Green 1" 
+      1 
+      ( get-primary-ammo "Red 1" 1 ) 
+   )
+   ( set-secondary-ammo 
+      "Green 1" 
+      0 
+      ( get-secondary-ammo "Red 1" 0 ) 
+   )
+   ( set-secondary-ammo 
+      "Green 1" 
+      1 
+      ( get-secondary-ammo "Red 1" 1 ) 
+   )
+   ( add-goal 
+      "Green" 
+      ( ai-play-dead 89 ) 
+   )
+)
++Name: Place Obit In Tube
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of "Green 1" ) 
+   ( has-arrived-delay 3 "Green 1" ) 
+   ( force-glide "<argument>" ( true ) ) 
+   ( jettison-cargo-delay "<argument>" 0 ) 
+   ( add-to-collision-group 
+      "<argument>" 
+      1 
+   )
+   ( set-object-speed-x 
+      "<argument>" 
+      ( get-object-speed-x "Theseus" ) 
+   )
+   ( set-object-speed-y 
+      "<argument>" 
+      ( get-object-speed-y "Theseus" ) 
+   )
+   ( set-object-speed-z 
+      "<argument>" 
+      ( get-object-speed-z "Theseus" ) 
+   )
+   ( ship-lat-maneuver 
+      "<argument>" 
+      2000 
+      0 
+      0 
+      100 
+      ( true ) 
+   )
+   ( set-object-speed-z 
+      "<argument>" 
+      150 
+      ( true ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Launch Obit
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Green" ) 
+   ( add-goal 
+      "Green" 
+      ( ai-waypoints-once 
+         "RaptorAttackRun5" 
+         89 
+      )
+   )
+   ( send-message 
+      "Green 1" 
+      "High" 
+      "Obit Moves Into Position" 
+   )
+   ( remove-from-collision-group 
+      "Green 1" 
+      1 
+   )
+)
++Name: Position For Obit Duel
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( > 
+      ( distance "Green 1" "Red 1" ) 
+      3000 
+   )
+   ( clear-goals "Green 1" ) 
+   ( add-goal 
+      "Green 1" 
+      ( ai-chase "Red 1" 89 ) 
+   )
+   ( unlock-primary-weapon "Red 1" ) 
+   ( unlock-secondary-weapon "Red 1" ) 
+   ( send-message 
+      "Green 1" 
+      "High" 
+      "Obit Tries To Kill You" 
+   )
+   ( set-subsystem-strength 
+      "Green 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( set-subsystem-strength 
+      "Red 1" 
+      "Simulated Hull" 
+      100 
+   )
+   ( change-iff "Hostile" "Green 1" ) 
+   ( training-msg "green1h" ) 
+   ( modify-variable 
+      @LastDamage[100] 
+      100 
+   )
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file 
+      "Dia_Btl_I03" 
+      1 
+   )
+   ( modify-variable 
+      @Green1Time[0] 
+      ( mission-time ) 
+   )
+   ( modify-variable 
+      "@CurrentTargetShip[Drone 1]" 
+      "Green 1" 
+   )
+   ( hud-set-text 
+      "MiscSEXPBar" 
+      "@autoGenVar3[Green 1 Simulated Hull]" 
+   )
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( true ) 
+   )
+)
++Name: Get In Place
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Objective:  XSTR("Enter Starting Position", 1207)
++Objective key:  XSTR("Be 3000m from Green 1", 1217)
+
+$Formula: ( when 
+   ( and 
+      ( < ( sim-hits-left "Green 1" ) 1 ) 
+      ( not 
+         ( is-event-true-delay 
+            "Obit Wins" 
+            0 
+            ( true ) 
+         )
+      )
+   )
+   ( add-goal 
+      "Green 1" 
+      ( ai-play-dead 200 ) 
+   )
+   ( change-iff "Object" "Green 1" ) 
+   ( force-glide "Green 1" ( false ) ) 
+   ( send-message 
+      "Green 1" 
+      "High" 
+      "obitdefeated" 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( change-soundtrack 
+      "10: Children of Humanity" 
+   )
+   ( modify-variable 
+      @Green1Damage[0] 
+      ( - 100 ( sim-hits-left "Red 1" ) ) 
+   )
+   ( modify-variable 
+      @BulletsUsed6[0] 
+      ( - 
+         @BulletCount[3000] 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @Green1Time[0] 
+      ( - ( mission-time ) @Green1Time[0] ) 
+   )
+)
++Name: Defeat Obit
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Defeat Green 1", 1220)
+
+$Formula: ( when 
+   ( true ) 
+   ( change-iff "Friendly" "Green 1" ) 
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( false ) 
+   )
+)
++Name: obitrefriendly
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Get In Place" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay "Defeat Obit" 0 ) 
+      )
+      ( < ( sim-hits-left "Red 1" ) 1 ) 
+   )
+   ( send-message-list 
+      "Green 1" 
+      "High" 
+      "Obit Wins" 
+      0 
+   )
+   ( player-use-ai ) 
+   ( add-goal 
+      "Red 1" 
+      ( ai-play-dead 200 ) 
+   )
+   ( force-glide "Red 1" ( false ) ) 
+   ( change-iff "Friendly" "Green 1" ) 
+   ( training-msg "controls locked" ) 
+   ( modify-variable 
+      @BulletsUsed6[0] 
+      ( - 
+         @BulletCount[3000] 
+         ( get-primary-ammo "Red 1" 0 ) 
+         ( get-primary-ammo "Red 1" 1 ) 
+      )
+   )
+   ( modify-variable 
+      @Green1Damage[0] 
+      100 
+   )
+   ( modify-variable 
+      @Green1Time[0] 
+      ( - ( mission-time ) @Green1Time[0] ) 
+   )
+)
++Name: Obit Wins
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay "Obit Wins" 5 ) 
+      ( is-event-true-delay "Defeat Obit" 5 ) 
+   )
+   ( do-nothing ) 
+)
++Name: Green 1 RTB
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: =========Combat Landing========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay "playerlost3" 5 ) 
+      ( is-event-true-delay "Defeat Obit" 9 ) 
+      ( and 
+         ( is-event-true-delay 
+            "Disable Blue 1" 
+            5 
+         )
+         ( or 
+            ( and 
+               ( skill-level-at-least "Medium" ) 
+               ( < @ObitFightScore[0] 6 ) 
+            )
+            ( and 
+               ( not 
+                  ( skill-level-at-least "Medium" ) 
+               )
+               ( < @ObitFightScore[0] 2 ) 
+            )
+         )
+      )
+   )
+   ( send-message-list 
+      "Theseus" 
+      "High" 
+      "concludes" 
+      0 
+      "@autoGenVar11[#Theseus Landing Signal Officer]" 
+      "High" 
+      "Begin Combat Landing" 
+      8000 
+      "@autoGenVar11[#Theseus Landing Signal Officer]" 
+      "High" 
+      "combatlanding2" 
+      8000 
+   )
+   ( change-soundtrack "<No Music>" ) 
+   ( close-sound-from-file ( true ) ) 
+   ( play-sound-from-file 
+      "Theseus_Civilian.ogg" 
+   )
+   ( modify-variable @simGaugeOn[-1] -1 ) 
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( false ) 
+   )
+)
++Name: Begin Combat Landing
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( or 
+            ( < 
+               ( distance-ship-subsystem 
+                  "Red 1" 
+                  "Theseus" 
+                  "fighterbay01a" 
+               )
+               35 
+            )
+            ( < 
+               ( distance-ship-subsystem 
+                  "Red 1" 
+                  "Theseus" 
+                  "fighterbay02a" 
+               )
+               35 
+            )
+         )
+         ( not 
+            ( skill-level-at-least "Medium" ) 
+         )
+      )
+      ( or 
+         ( and 
+            ( < ( current-speed "Red 1" ) 5 ) 
+            ( is-in-box 
+               "Red 1" 
+               120 
+               200 
+               -47 
+               -30 
+               -150 
+               315 
+               "Theseus" 
+            )
+         )
+         ( and 
+            ( < ( current-speed "Red 1" ) 5 ) 
+            ( is-in-box 
+               "Red 1" 
+               -200 
+               -120 
+               -47 
+               -30 
+               -150 
+               315 
+               "Theseus" 
+            )
+         )
+      )
+   )
+   ( set-camera-shudder 1000 800 ) 
+   ( set-immobile "Red 1" ) 
+   ( send-message-list 
+      "@autoGenVar11[#Theseus Landing Signal Officer]" 
+      "High" 
+      "Landed - 1" 
+      500 
+   )
+   ( play-sound-from-file 
+      "Landing_Mag_Lock.ogg" 
+   )
+)
++Name: Land
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Enter Flightpod", 438)
+
+$Formula: ( when ( true ) ( fade-out 500 ) ) 
++Name: Fade Out
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: End Mission
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Begin Combat Landing" 
+         22 
+      )
+      ( is-event-incomplete "Land" ) 
+   )
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "How To Combat Land" 
+   )
+)
++Name: How To Combat Land
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-incomplete "Land" ) 
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "How To Combat Land 2" 
+   )
+)
++Name: How To Combat Land 2
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Blue 1" 
+      "Green 1" 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( and 
+      ( or 
+         ( and 
+            ( < ( current-speed "<argument>" ) 5 ) 
+            ( is-in-box 
+               "<argument>" 
+               120 
+               200 
+               -47 
+               -30 
+               -150 
+               315 
+               "Theseus" 
+            )
+         )
+         ( and 
+            ( < ( current-speed "<argument>" ) 5 ) 
+            ( is-in-box 
+               "<argument>" 
+               -200 
+               -120 
+               -47 
+               -30 
+               -150 
+               315 
+               "Theseus" 
+            )
+         )
+      )
+      ( has-arrived-delay 10 "<argument>" ) 
+   )
+   ( set-immobile "<argument>" ) 
+)
++Name: AI touchdown
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( and 
+      ( < 
+         ( distance-ship-subsystem 
+            "<argument>" 
+            "Theseus" 
+            "fighterbay01a" 
+         )
+         @Slow_distance_4-5-6[450] 
+      )
+      ( or 
+         ( is-event-true-delay 
+            "dronesdisabled" 
+            0 
+         )
+         ( is-event-true-delay 
+            "Player Disabled By Drones" 
+            0 
+         )
+      )
+   )
+   ( cap-waypoint-speed "<argument>" 20 ) 
+   ( invalidate-argument "<argument>" ) 
+   ( protect-ship "<argument>" ) 
+   ( modify-variable 
+      @Slow_distance_4-5-6[450] 
+      ( + @Slow_distance_4-5-6[450] 30 ) 
+   )
+)
++Name: Slow-4-5-6
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+   ( and 
+      ( < 
+         ( distance-ship-subsystem 
+            "<argument>" 
+            "Theseus" 
+            "fighterbay01a" 
+         )
+         @Land_distance_4-5-6[100] 
+      )
+      ( or 
+         ( is-event-true-delay 
+            "dronesdisabled" 
+            0 
+         )
+         ( is-event-true-delay 
+            "Player Disabled By Drones" 
+            0 
+         )
+      )
+   )
+   ( clear-goals "<argument>" ) 
+   ( add-goal 
+      "<argument>" 
+      ( ai-play-dead 89 ) 
+   )
+   ( ship-lat-maneuver 
+      "<argument>" 
+      10000 
+      -25 
+      0 
+      0 
+      ( true ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+   ( modify-variable 
+      @Land_distance_4-5-6[100] 
+      ( + @Land_distance_4-5-6[100] 30 ) 
+   )
+)
++Name: Land-4-5-6
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when-argument 
+   ( any-of "Green 1" "Blue 1" ) 
+   ( and 
+      ( < 
+         ( distance-ship-subsystem 
+            "<argument>" 
+            "Theseus" 
+            "fighterbay02a" 
+         )
+         @Slow_distance_19[600] 
+      )
+      ( or 
+         ( and 
+            ( is-event-true-delay "Blue 1 RTB" 0 ) 
+            ( string-equals "<argument>" "Blue 1" ) 
+         )
+         ( and 
+            ( is-event-true-delay "Green 1 RTB" 0 ) 
+            ( string-equals 
+               "<argument>" 
+               "Green 1" 
+            )
+         )
+      )
+   )
+   ( cap-waypoint-speed "<argument>" 45 ) 
+   ( invalidate-argument "<argument>" ) 
+   ( protect-ship "<argument>" ) 
+   ( modify-variable 
+      @Slow_distance_19[600] 
+      ( + @Slow_distance_19[600] 30 ) 
+   )
+)
++Name: Slow-19
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when-argument 
+   ( any-of "Green 1" "Blue 1" ) 
+   ( and 
+      ( < 
+         ( distance-ship-subsystem 
+            "<argument>" 
+            "Theseus" 
+            "fighterbay02a" 
+         )
+         @Land_distance_19[100] 
+      )
+      ( or 
+         ( and 
+            ( is-event-true-delay "Blue 1 RTB" 0 ) 
+            ( string-equals "<argument>" "Blue 1" ) 
+         )
+         ( and 
+            ( is-event-true-delay "Green 1 RTB" 0 ) 
+            ( string-equals 
+               "<argument>" 
+               "Green 1" 
+            )
+         )
+      )
+   )
+   ( clear-goals "<argument>" ) 
+   ( add-goal 
+      "<argument>" 
+      ( ai-play-dead 89 ) 
+   )
+   ( ship-lat-maneuver 
+      "<argument>" 
+      10000 
+      -25 
+      0 
+      0 
+      ( true ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+   ( modify-variable 
+      @Land_distance_19[100] 
+      ( + @Land_distance_19[100] 30 ) 
+   )
+)
++Name: Land-19
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Begin Combat Landing" 
+      60 
+   )
+   ( change-soundtrack 
+      "10: Children of Humanity" 
+   )
+)
++Name: musicafterend
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ====It's All Gone Pete Tong====
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Red 1" ) 99 ) 
+      ( > ( hits-left "Red 1" ) 90 ) 
+   )
+   ( send-message-list 
+      "Theseus" 
+      "Low" 
+      "Had A Bit Of A Prang" 
+      4000 
+   )
+)
++Name: Had A Bit Of A Prang
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "dronecmmessage" 
+         0 
+      )
+      ( is-event-true-delay "playerlost3" 0 ) 
+      ( is-event-true-delay "Obit Wins" 0 ) 
+   )
+   ( do-nothing ) 
+)
++Name: Got Duffed Up
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ==========Debug Stuff==========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @DEFINE_DEBUG[0] 1 ) 
+      ( key-pressed "1" ) 
+   )
+   ( player-not-use-ai ) 
+   ( script-eval "unlockContr('bank')" ) 
+   ( script-eval "unlockContr('pi')" ) 
+   ( script-eval "unlockContr('head')" ) 
+   ( training-msg "controls unlocked" ) 
+)
++Name: Debug Unlock
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( skill-level-at-least "Medium" ) 
+   ( unlock-afterburner 
+      "Drone 1" 
+      "Drone 2" 
+      "Drone 3" 
+   )
+)
++Name: unlockdroneAB
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( skill-level-at-least "Easy" ) 
+   ( unlock-afterburner "Blue 1" ) 
+)
++Name: unlockblue1AB
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( sim-hits-left "Red 1" ) 
+         @LastDamage[100] 
+      )
+      ( < 
+         ( sim-hits-left "Red 1" ) 
+         @LastDamage[100] 
+      )
+   )
+   ( modify-variable 
+      @LastDamage[100] 
+      ( sim-hits-left "Red 1" ) 
+   )
+   ( training-msg "Taking Damage" ) 
+)
++Name: Taking Damage
++Repeat Count: -1
++Trigger Count: 1500
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( skill-level-at-least "Hard" ) 
+         ( is-event-true-delay 
+            "Group Combat" 
+            0 
+         )
+      )
+      ( or 
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( is-event-true-delay 
+               "Group Combat" 
+               20 
+            )
+         )
+         ( and 
+            ( skill-level-at-least "Very Easy" ) 
+            ( is-event-true-delay 
+               "Group Combat" 
+               30 
+            )
+         )
+      )
+   )
+   ( unlock-secondary-weapon 
+      "Drone 2" 
+      "Drone 3" 
+   )
+)
++Name: unlockdronemissiles
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( skill-level-at-least "Hard" ) 
+         ( is-event-true-delay 
+            "Go To Starting Point" 
+            0 
+         )
+      )
+      ( or 
+         ( and 
+            ( skill-level-at-least "Medium" ) 
+            ( is-event-true-delay 
+               "Go To Starting Point" 
+               20 
+            )
+         )
+         ( and 
+            ( skill-level-at-least "Very Easy" ) 
+            ( is-event-true-delay 
+               "Go To Starting Point" 
+               30 
+            )
+         )
+      )
+   )
+   ( unlock-secondary-weapon "Blue 1" ) 
+)
++Name: unlockblue1missiles
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Shoot Down Bombs" 
+         0 
+      )
+      ( < ( sim-hits-left "Red 1" ) 99 ) 
+      ( is-event-incomplete "bombsdown2" ) 
+   )
+   ( training-msg "damagereset" ) 
+)
++Name: ifbombdamaged
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ===dogfight1taunts===
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Go To Starting Point" 
+      8 
+   )
+   ( send-message 
+      "Blue 1" 
+      "High" 
+      "blue1start" 
+   )
+)
++Name: blue1start
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( and 
+         ( < ( sim-hits-left "Blue 1" ) 66 ) 
+         ( is-event-true-delay 
+            "Go To Starting Point" 
+            10 
+         )
+      )
+      ( skill-level-at-least "Medium" ) 
+   )
+   ( send-message 
+      "Blue 1" 
+      "High" 
+      "blue166" 
+   )
+)
++Name: blue166
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( sim-hits-left "Blue 1" ) 33 ) 
+      ( is-event-true-delay 
+         "Go To Starting Point" 
+         15 
+      )
+   )
+   ( send-message 
+      "Blue 1" 
+      "High" 
+      "blue133" 
+   )
+)
++Name: blue133
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( sim-hits-left "Red 1" ) 66 ) 
+      ( and 
+         ( is-event-true-delay 
+            "Go To Starting Point" 
+            0 
+         )
+         ( is-event-incomplete 
+            "Disable Blue 1" 
+         )
+      )
+   )
+   ( send-message 
+      "Blue 1" 
+      "High" 
+      "red166" 
+   )
+)
++Name: red166
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( sim-hits-left "Red 1" ) 33 ) 
+      ( and 
+         ( is-event-true-delay 
+            "Go To Starting Point" 
+            0 
+         )
+         ( is-event-incomplete 
+            "Disable Blue 1" 
+         )
+      )
+   )
+   ( send-message 
+      "Blue 1" 
+      "High" 
+      "red133" 
+   )
+)
++Name: red133
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ===bombingrunidiot===
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( sim-hits-left "Red 1" ) 99 ) 
+      ( and 
+         ( is-event-true-delay 
+            "Raptor Arrives" 
+            0 
+         )
+         ( is-event-incomplete 
+            "Shoot Down Bombs" 
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar7[#Trainer]" 
+      "High" 
+      "stayclearofbombs" 
+   )
+)
++Name: idiotduringbombingrun
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( sim-hits-left "Orange 1" ) 95 ) 
+      ( is-event-true-delay 
+         "Start Bomb Intercept - Really" 
+         8 
+      )
+   )
+   ( send-message 
+      "Orange 1" 
+      "High" 
+      "stopfiringonraptor" 
+   )
+)
++Name: idiotduringbombingrun2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ===obittaunt===
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( sim-hits-left "Green 1" ) 50 ) 
+      ( is-event-true-delay 
+         "Get In Place" 
+         12 
+      )
+      ( is-event-incomplete "Defeat Obit" ) 
+   )
+   ( send-message 
+      "Green 1" 
+      "High" 
+      "obit50" 
+   )
+)
++Name: obit50
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( sim-hits-left "Red 1" ) 50 ) 
+      ( is-event-true-delay 
+         "Get In Place" 
+         12 
+      )
+      ( is-event-incomplete "Defeat Obit" ) 
+   )
+   ( send-message 
+      "Green 1" 
+      "High" 
+      "red150" 
+   )
+)
++Name: red150
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ==Sim Hits Gauge==
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( mission-time-msecs ) 
+         @simGaugeUpdate[-1] 
+      )
+      ( = @simGaugeOn[-1] 1 ) 
+   )
+   ( modify-variable 
+      @simGaugeUpdate[-1] 
+      ( + ( mission-time-msecs ) 500 ) 
+   )
+   ( hud-set-frame 
+      "MiscSEXPBar" 
+      ( / 
+         ( sim-hits-left 
+            "@CurrentTargetShip[Drone 1]" 
+         )
+         10 
+      )
+   )
+)
++Name: Update Sim Hits Gauge
++Repeat Count: -1
++Trigger Count: 99999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Group Combat" 
+         0 
+      )
+      ( is-event-incomplete 
+         "Disable All Drones" 
+      )
+      ( not 
+         ( targeted 
+            "@CurrentTargetShip[Drone 1]" 
+         )
+      )
+   )
+   ( when 
+      ( targeted "Drone 2" ) 
+      ( modify-variable 
+         "@CurrentTargetShip[Drone 1]" 
+         "Drone 2" 
+      )
+      ( hud-set-text 
+         "MiscSEXPBar" 
+         "@autoGenVar4[Drone 2 Simulated Hull]" 
+      )
+   )
+   ( when 
+      ( targeted "Drone 3" ) 
+      ( modify-variable 
+         "@CurrentTargetShip[Drone 1]" 
+         "Drone 3" 
+      )
+      ( hud-set-text 
+         "MiscSEXPBar" 
+         "@autoGenVar5[Drone 3 Simulated Hull]" 
+      )
+   )
+)
++Name: Target Drone 2 Or 3
++Repeat Count: 99999999
++Interval: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ============Controls===========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @RequestLockChange[0] 1 ) 
+   ( when 
+      ( string-equals 
+         "@RequestedLockChange[None]" 
+         "None" 
+      )
+      ( do-nothing ) 
+   )
+   ( when 
+      ( string-equals 
+         "@RequestedLockChange[None]" 
+         "Lock PBH" 
+      )
+      ( script-eval "lockContr('bank')" ) 
+      ( script-eval "lockContr('pi')" ) 
+      ( script-eval "lockContr('head')" ) 
+      ( training-msg "controls locked" ) 
+   )
+   ( when 
+      ( string-equals 
+         "@RequestedLockChange[None]" 
+         "All" 
+      )
+      ( add-goal 
+         "Red 1" 
+         ( ai-play-dead 89 ) 
+      )
+      ( script-eval "contrOver(true)" ) 
+      ( script-eval "lockContr('pi')" ) 
+      ( script-eval "lockContr('head')" ) 
+      ( script-eval "lockContr('bank')" ) 
+      ( script-eval "lockContr('vert')" ) 
+      ( script-eval "lockContr('side')" ) 
+      ( script-eval "lockContr('forw')" ) 
+      ( force-glide "Red 1" ( false ) ) 
+      ( ignore-key 
+         -1 
+         "\" 
+         "[" 
+         "]" 
+         "=" 
+         "-" 
+         "Tab" 
+         "Q" 
+         "W" 
+         "A" 
+         "Z" 
+      )
+      ( lock-perspective ( true ) ) 
+   )
+   ( when 
+      ( string-equals 
+         "@RequestedLockChange[None]" 
+         "Unlock PBH" 
+      )
+      ( script-eval "unlockContr('bank')" ) 
+      ( script-eval "unlockContr('pi')" ) 
+      ( script-eval "unlockContr('head')" ) 
+      ( training-msg "controls unlocked" ) 
+   )
+   ( modify-variable 
+      @RequestLockChange[0] 
+      0 
+   )
+   ( when 
+      ( string-equals 
+         "@RequestedLockChange[None]" 
+         "Unlock All Movement" 
+      )
+      ( script-eval "contrReset(true)" ) 
+      ( script-eval "unlockContr('head')" ) 
+      ( script-eval "unlockContr('pi')" ) 
+      ( script-eval "unlockContr('bank')" ) 
+      ( script-eval "unlockContr('forw')" ) 
+      ( script-eval "unlockContr('vert')" ) 
+      ( script-eval "unlockContr('side')" ) 
+      ( ignore-key 
+         0 
+         "\" 
+         "[" 
+         "]" 
+         "=" 
+         "-" 
+         "Tab" 
+         "Q" 
+         "W" 
+         "A" 
+         "Z" 
+      )
+      ( training-msg "controls unlocked" ) 
+   )
+)
++Name: Control Lock Change Request
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ==Cutscene==
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-cutscene-bars ) 
+   ( fade-out 0 ) 
+   ( fade-in 1000 ) 
+   ( set-camera-position -776 864 -989 ) 
+   ( set-camera-target "Theseus" ) 
+)
++Name: Setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "cutsceneend" 1 ) 
+   )
+   ( when 
+      ( is-event-true-delay "Setup" 1 ) 
+      ( when-argument 
+         ( in-sequence 
+            "b" 
+            "a" 
+            "t" 
+            "t" 
+            "l" 
+            "e" 
+            "s" 
+            "t" 
+            "a" 
+            "r" 
+            " " 
+            "t" 
+            "h" 
+            "e" 
+            "s" 
+            "e" 
+            "u" 
+            "s" 
+         )
+         ( = ( mod @Counter1[0] 2 ) 0 ) 
+         ( string-concatenate 
+            "@IntroSubtitleLine1[ ]" 
+            "<argument>" 
+            "@IntroSubtitleLine1[ ]" 
+         )
+         ( invalidate-argument "<argument>" ) 
+      )
+      ( when-argument 
+         ( in-sequence 
+            "c" 
+            "n" 
+            "p" 
+            "-" 
+            "c" 
+            "o" 
+            "m" 
+            "b" 
+            "a" 
+            "t" 
+            " " 
+            "t" 
+            "r" 
+            "i" 
+            "a" 
+            "l" 
+            "s" 
+         )
+         ( = ( mod @Counter1[0] 2 ) 0 ) 
+         ( string-concatenate 
+            "@IntroSubtitleLine2[ ]" 
+            "<argument>" 
+            "@IntroSubtitleLine2[ ]" 
+         )
+         ( invalidate-argument "<argument>" ) 
+      )
+      ( when-argument 
+         ( in-sequence 
+            "p" 
+            "h" 
+            "a" 
+            "r" 
+            "s" 
+            "a" 
+            "l" 
+            "l" 
+            "u" 
+            "s" 
+            " " 
+            "f" 
+            "i" 
+            "e" 
+            "l" 
+            "d" 
+         )
+         ( = ( mod @Counter1[0] 2 ) 0 ) 
+         ( string-concatenate 
+            "@IntroSubtitleLine3[ ]" 
+            "<argument>" 
+            "@IntroSubtitleLine3[ ]" 
+         )
+         ( invalidate-argument "<argument>" ) 
+      )
+      ( when 
+         ( true ) 
+         ( show-subtitle-text 
+            "AutoGeneratedMessage1" 
+            -35 
+            74 
+            ( false ) 
+            ( false ) 
+            0 
+            0 
+            100 
+            255 
+            255 
+            255 
+            "font02.vf" 
+         )
+         ( show-subtitle-text 
+            "AutoGeneratedMessage2" 
+            -35 
+            76 
+            ( false ) 
+            ( false ) 
+            0 
+            0 
+            100 
+            255 
+            255 
+            255 
+            "font02.vf" 
+         )
+         ( show-subtitle-text 
+            "AutoGeneratedMessage3" 
+            -35 
+            80 
+            ( false ) 
+            ( false ) 
+            0 
+            0 
+            100 
+            255 
+            255 
+            255 
+            "font02.vf" 
+         )
+         ( modify-variable 
+            @Counter1[0] 
+            ( + @Counter1[0] 1 ) 
+         )
+      )
+      ( when 
+         ( and 
+            ( = @Counter1[0] 1 ) 
+            ( not 
+               ( is-event-true-delay "cutsceneend" 0 ) 
+            )
+         )
+         ( play-sound-from-file 
+            "Interface_Text_Write.ogg" 
+         )
+      )
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage4" 
+      0 
+      92 
+      ( true ) 
+      ( false ) 
+      0 
+      0 
+      100 
+      255 
+      255 
+      255 
+      "font01.vf" 
+      ( false ) 
+   )
+)
++Name: INTRO AnimatedSubtitles
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( or 
+      ( or 
+         ( key-pressed "Spacebar" ) 
+         ( key-pressed "Left Ctrl" ) 
+      )
+      ( is-event-true-delay "Setup" 8 ) 
+   )
+   ( fade-out 1000 ) 
+)
++Name: cutsceneend
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( reset-camera ) 
+   ( unset-cutscene-bars ) 
+   ( fade-in 1000 ) 
+)
++Name: cutscenefade
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+#Goals		;! 3 total
+
+$Type: Primary
++Name: completetarget
+$MessageNew:  XSTR("Complete Targeting Trials", 1236)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Missile Drones" 
+      0 
+   )
+   ( is-event-true-delay 
+      "Shoot Down Bombs" 
+      0 
+   )
+)
++Score: 100
+
+$Type: Primary
++Name: completecombat
+$MessageNew:  XSTR("Complete Combat Trials", 1237)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Disable All Drones" 
+      0 
+   )
+   ( is-event-true-delay 
+      "Disable Blue 1" 
+      0 
+   )
+   ( and 
+      ( is-event-false-delay 
+         "Player Disabled By Blue 1" 
+         0 
+      )
+      ( is-event-false-delay 
+         "Player Disabled By Drones" 
+         0 
+      )
+   )
+)
++Score: 100
+
+$Type: Bonus
++Name: obit
+$MessageNew:  XSTR("Defeat CNP Champion", 1242)
+$end_multi_text
+$Formula: ( is-event-true-delay "Defeat Obit" 0 ) 
++Score: 200
+
+#Waypoints		;! 12 lists total
+
+$Name: RaptorAttackRun1
+$List: (		;! 1 points in list
+	( -2900.000000, 0.000000, 0.000000 )
+)
+
+$Name: RaptorAttackRun2
+$List: (		;! 1 points in list
+	( 2900.000000, 0.000000, 0.000000 )
+)
+
+$Name: RaptorAttackRun3
+$List: (		;! 1 points in list
+	( 0.000000, -2400.000000, 0.000000 )
+)
+
+$Name: RaptorAttackRun4
+$List: (		;! 1 points in list
+	( 0.000000, 2400.000000, 0.000000 )
+)
+
+$Name: RaptorAttackRun5
+$List: (		;! 1 points in list
+	( 0.000000, 0.000000, -2500.000000 )
+)
+
+$Name: RaptorAttackRun6
+$List: (		;! 1 points in list
+	( 0.000000, 0.000000, 2500.000000 )
+)
+
+$Name: FarAway
+$List: (		;! 1 points in list
+	( 20000.000000, 0.000000, 0.000000 )
+)
+
+$Name: LaunchPath
+$List: (		;! 1 points in list
+	( 0.100000, -38.000000, -247.000000 )
+)
+
+$Name: Drone Path 1
+$List: (		;! 4 points in list
+	( 138.207382, 0.000375, -2070.448242 )
+	( -49.732094, -142.308731, -1220.373413 )
+	( -533.960327, -0.000165, -962.915894 )
+	( 204.898743, -0.000123, -1327.471924 )
+)
+
+$Name: Drone Path 2
+$List: (		;! 4 points in list
+	( 750.263489, 191.834290, -718.234009 )
+	( 466.517944, -130.229599, -2011.354004 )
+	( 1245.095093, 84.730843, -1535.435547 )
+	( 794.948425, 196.831009, -112.679001 )
+)
+
+$Name: Drone Path 3
+$List: (		;! 4 points in list
+	( -297.613129, -162.405228, -1194.624756 )
+	( 253.588348, -162.405258, -1706.216919 )
+	( 617.113647, -162.405167, -914.590332 )
+	( 202.089813, -162.405197, -179.482544 )
+)
+
+$Name: ShuttlePath
+$List: (		;! 1 points in list
+	( 1563.501587, 14.716355, -143.996368 )
+)
+
+#Messages		;! 92 total
+
+$Command Sender: Theseus
+
+$Name: Targetting
+$Team: -1
+$MessageNew:  XSTR("For the first exercise we'll be testing your ability to quickly target and face hostiles. There are three drones in close proximity. Use your targeting controls to quickly target and face these three drones. ", 1244)
+$end_multi_text
++Wave Name: SP-02-TRN-001.ogg
+
+$Name: Start Test In 5
+$Team: -1
+$MessageNew:  XSTR("Test begins in 5...", 1245)
+$end_multi_text
++Wave Name: SP-02-TRN-002.ogg
+
+$Name: 4
+$Team: -1
+$MessageNew:  XSTR("4", 1246)
+$end_multi_text
++Wave Name: SP-02-TRN-003.ogg
+
+$Name: 3
+$Team: -1
+$MessageNew:  XSTR("3", 1247)
+$end_multi_text
++Wave Name: SP-02-TRN-004.ogg
+
+$Name: 2
+$Team: -1
+$MessageNew:  XSTR("2", 1250)
+$end_multi_text
++Wave Name: SP-02-TRN-005.ogg
+
+$Name: 1
+$Team: -1
+$MessageNew:  XSTR("1", 1251)
+$end_multi_text
++Wave Name: SP-02-TRN-006.ogg
+
+$Name: Shoot Once
+$Team: -1
+$MessageNew:  XSTR("For the next trial, you must hit each target once using your guns. You will be penalized for multiple hits.", 1254)
+$end_multi_text
++Wave Name: SP-02-TRN-007.ogg
+
+$Name: Lock Drone With Missile.
+$Team: -1
+$MessageNew:  XSTR("Good. Now we are going to test your reaction time with secondary weapons. Obtain a missile lock on all three drones. Target a drone and center it in your reticle until the lock indicator informs you to shoot.", 1258)
+$end_multi_text
++Wave Name: SP-02-TRN-008.ogg
+
+$Name: Targetting - Easy
+$Team: -1
+$MessageNew:  XSTR("You may target the drones in any order", 1259)
+$end_multi_text
++Wave Name: SP-02-TRN-009.ogg
+
+$Name: Targetting - Medium
+$Team: -1
+$MessageNew:  XSTR("You must target the drones in numerical order. ", 1260)
+$end_multi_text
++Wave Name: SP-02-TRN-010.ogg
+
+$Name: Targetting - Hard
+$Team: -1
+$MessageNew:  XSTR("You will be given a random drone to target. ", 1261)
+$end_multi_text
++Wave Name: SP-02-TRN-011.ogg
+
+$Name: Your Target Will Be
+$Team: -1
+$MessageNew:  XSTR("Target $TargetDrone", 1262)
+$end_multi_text
+
+$Name: Drone Targetted
+$Team: -1
+$MessageNew:  XSTR("Drone Successfully Targeted", 1263)
+$end_multi_text
+
+$Name: Drone Missile Locked
+$Team: -1
+$MessageNew:  XSTR("Drone Successfully Targeted With Missile", 1264)
+$end_multi_text
+
+$Name: Early Missile Fire
+$Team: -1
+$MessageNew:  XSTR("What the hell do you think you're doing pilot? You were told not to fire any missiles!", 1265)
+$end_multi_text
++Wave Name: SP-02-TRN-015.ogg
+
+$Name: Single Combat
+$Team: -1
+$MessageNew:  XSTR("For the next test you will have to attempt to $quotedestroy$quote the drones. Once a drone is $quotedestroyed$quote it will be removed from combat.", 1266)
+$end_multi_text
++Wave Name: SP-02-TRN-016.ogg
+
+$Name: Missile Drones
+$Team: -1
+$MessageNew:  XSTR("For the next test you will try to hit each drone with a single missile. The dummy warheads in your loadout are armed with pyrotechnics so you can tell when you score a hit.", 1267)
+$end_multi_text
++Wave Name: SP-02-TRN-017.ogg
+
+$Name: Changing Primaries
+$Team: -1
+$MessageNew:  XSTR("The Viper MK VII is fitted with two primary banks which can be cycled for single or linked fire. Set your primary weapons to linked fire now.", 1268)
+$end_multi_text
++Wave Name: SP-02-TRN-018.ogg
+
+$Name: Linking Secondaries
+$Team: -1
+$MessageNew:  XSTR("Vipers can fire missiles individually or in volleys. Set your active secondary weapon bank to dual fire now.", 1269)
+$end_multi_text
++Wave Name: SP-02-TRN-019.ogg
+
+$Name: Changing Secondaries
+$Team: -1
+$MessageNew:  XSTR("The MKVII also has two secondary banks. Each bank may be fitted with different ordnance that can be accessed by cycling banks. Do this now.", 1270)
+$end_multi_text
++Wave Name: SP-02-TRN-020.ogg
+
+$Name: Return To Single Fire Mode
+$Team: -1
+$MessageNew:  XSTR("Return your primary and secondary weapons to single fire mode for the next test.", 1271)
+$end_multi_text
++Wave Name: SP-02-TRN-021.ogg
+
+$Name: Targetting Subsystems - Easy
+$Team: -1
+$MessageNew:  XSTR("For this next trial we will review subsystem targeting. You will be required to actively target parts of Drone 1, which is now hostile. ", 1272)
+$end_multi_text
++Wave Name: SP-02-TRN-022.ogg
+
+$Name: Player Killed By Drones
+$Team: -1
+$MessageNew:  XSTR("Looks like the CAG was wrong to put you up for this test, pilot. How the hell did you manage to get yourself killed by drones?", 1273)
+$end_multi_text
++Wave Name: SP-02-TRN-023.ogg
+
+$Name: Begin Bomb Intercept
+$Team: -1
+$MessageNew:  XSTR("Vipers have the capacity to target and track active warheads. For this exercise an Assault Raptor will make several bombing runs at the Theseus with training weapons. You are to intercept these warheads.", 1274)
+$end_multi_text
++Wave Name: SP-02-TRN-024.ogg
+
+$Name: Bomb Launched
+$Team: -1
+$MessageNew:  XSTR("<<<BOMB LAUNCHED>>>", 1275)
+$end_multi_text
+
+$Name: Bomb Tracking Improvements
+$Team: -1
+$MessageNew:  XSTR("Your bomb targeting system will, in order, track active warheads, craft capable of launching them, and finally the nearest hostile if enemy fighters carrying warheads are absent.
+", 1276)
+$end_multi_text
++Wave Name: SP-02-TRN-025.ogg
+
+$Name: Beginning Bombing Run
+$Team: -1
+$MessageNew:  XSTR("Starting bombing run.", 1277)
+$end_multi_text
++Wave Name: SP-02-TRN-026.ogg
+
+$Name: End Bombing Run
+$Team: -1
+$MessageNew:  XSTR("Ending bombing run.", 1278)
+$end_multi_text
++Wave Name: SP-02-TRN-027.ogg
+
+$Name: New Reticle
+$Team: -1
+$MessageNew:  XSTR("When you are in range of a target your gun reticle will appear. This displays where you need to aim in order to hit your target. Just place it over your target and fire away.", 1279)
+$end_multi_text
++Wave Name: SP-02-TRN-076.ogg
+
+$Name: Launch Checklist Prt 1
+$Team: -1
+$MessageNew:  XSTR("Viper 7-2-1$slashTheseus. ", 1280)
+$end_multi_text
++Wave Name: SP-02-TRN-028.ogg
+
+$Name: Launch Checklist Prt 2
+$Team: -1
+$MessageNew:  XSTR("Clear forward, nav-con green, interval check.", 705)
+$end_multi_text
++Wave Name: SP-02-TRN-029.ogg
+
+$Name: Launch Checklist Prt 3
+$Team: -1
+$MessageNew:  XSTR("Thrust positive and steady.", 1024)
+$end_multi_text
++Wave Name: SP-02-TRN-030.ogg
+
+$Name: Launch Checklist Prt 4
+$Team: -1
+$MessageNew:  XSTR("You are cleared for launch.", 1281)
+$end_multi_text
++Wave Name: SP-02-TRN-031.ogg
+
+$Name: Launch Goodbye
+$Team: -1
+$MessageNew:  XSTR("Good-bye.", 1026)
+$end_multi_text
++Wave Name: SP-02-TRN-032.ogg
+
+$Name: Landed - 1
+$Team: -1
+$MessageNew:  XSTR("Viper 7-2-1$slashTheseus. Skids down, mag-lock secure. ", 1282)
+$end_multi_text
++Wave Name: SP-02-TRN-033.ogg
+
+$Name: Begin Combat Landing
+$Team: -1
+$MessageNew:  XSTR("Viper 7-2-1$slashTheseus. Approach ventral starboard landing bay. ", 1283)
+$end_multi_text
++Wave Name: SP-02-TRN-034.ogg
+
+$Name: Player Defeated By Blue 1
+$Team: -1
+$MessageNew:  XSTR("Blue 1 wins!", 1284)
+$end_multi_text
++Wave Name: SP-02-TRN-035.ogg
+
+$Name: Go To Starting Point
+$Team: -1
+$MessageNew:  XSTR("Set your distance to over 3000m away from Blue 1 and await permission to engage.", 1285)
+$end_multi_text
++Wave Name: SP-02-TRN-036.ogg
+
+$Name: Start Duel
+$Team: -1
+$MessageNew:  XSTR("Red and Blue leads you are now authorized for weapons free.", 1286)
+$end_multi_text
++Wave Name: SP-02-TRN-037.ogg
+
+$Name: Make Duel Not Love
+$Team: -1
+$MessageNew:  XSTR("If you two would stop messing around and get into position we can begin. It shouldn't be that hard for you both to fly in opposite directions!", 1287)
+$end_multi_text
++Wave Name: SP-02-TRN-038.ogg
+
+$Name: Send Subsystem Target Keys
+$Team: -1
+$MessageNew:  XSTR("Press $U$ to cycle through subsystems. $V$ targets subsystems in your reticle. $K$ cycles through turrets and missile launchers. ", 2171)
+$end_multi_text
+
+$Name: Why Are You Still Here?
+$Team: -1
+$MessageNew:  XSTR("Are you experiencing difficulties, sir? Do you need to abort the launch?", 1027)
+$end_multi_text
++Wave Name: SP-02-TRN-039.ogg
+
+$Name: Raptor Almost Out Of Ammo
+$Team: -1
+$MessageNew:  XSTR("I'm down to my last warhead.", 1290)
+$end_multi_text
++Wave Name: SP-02-TRN-040.ogg
+
+$Name: Raptor Out Of Ammo
+$Team: -1
+$MessageNew:  XSTR("That's it. Out of ammo.", 1291)
+$end_multi_text
++Wave Name: SP-02-TRN-041.ogg
+
+$Name: Had A Bit Of A Prang
+$Team: -1
+$MessageNew:  XSTR("The chief's going to have kittens when he sees what you've done to that viper!", 1292)
+$end_multi_text
++Wave Name: SP-02-TRN-042.ogg
+
+$Name: Next Set Of Drones
+$Team: -1
+$MessageNew:  XSTR("Well done. Now booting up drones 2 and 3. Be advised that these drones are armed with missiles.", 1293)
+$end_multi_text
++Wave Name: SP-02-TRN-043.ogg
+
+$Name: Obit's Challenge
+$Team: -1
+$MessageNew:  XSTR("Sir, we all knew he could beat the nugget. I think the real test of the CNP would be to put him up against the next highest scoring pilot in a CNP viper and see if he can beat him.", 1294)
+$end_multi_text
++Wave Name: SP-02-TRN-044.ogg
+
+$Name: Player Lost
+$Team: -1
+$MessageNew:  XSTR("I think that answers that question. We'll release your controls now. Since you're low on combat landing practice, we will still run that part of today's exercises.", 1295)
+$end_multi_text
++Wave Name: SP-02-TRN-045.ogg
+
+$Name: Obit Moves Into Position
+$Team: -1
+$MessageNew:  XSTR("Okay sir, I'm moving into position. Let's do this like you did with the nugget and get 3 klicks between us. ", 1296)
+$end_multi_text
++Wave Name: SP-02-TRN-046.ogg
+
+$Name: Obit Tries To Kill You
+$Team: -1
+$MessageNew:  XSTR("Sir, let's see if the CNP actually gives me the edge.", 1298)
+$end_multi_text
++Wave Name: SP-02-TRN-047.ogg
+
+$Name: Obit Wins
+$Team: -1
+$MessageNew:  XSTR("Wow sir, I actually beat you. Looks like the CNP really does give you an advantage. ", 1300)
+$end_multi_text
++Wave Name: SP-02-TRN-048.ogg
+
+$Name: Penalty Points Assigned
+$Team: -1
+$MessageNew:  XSTR("New Penalty Score = $GeneralPenalties", 1301)
+$end_multi_text
+
+$Name: subsystemtargeting2
+$Team: -1
+$MessageNew:  XSTR("Good. Now target Drone 1's Communications system.", 1302)
+$end_multi_text
++Wave Name: SP-02-TRN-049.ogg
+
+$Name: subsystemtargeting3
+$Team: -1
+$MessageNew:  XSTR("Well done. Now to complete the exercise, target Drone 1's Navigation subsystem.", 1304)
+$end_multi_text
++Wave Name: SP-02-TRN-050.ogg
+
+$Name: subsystemtargeting4
+$Team: -1
+$MessageNew:  XSTR("Excellent. Remember that targeting subsystems and turrets is vital when engaging larger vessels.", 1306)
+$end_multi_text
++Wave Name: SP-02-TRN-051.ogg
+
+$Name: bombconcluded
+$Team: -1
+$MessageNew:  XSTR("Interception exercise is concluded.", 1308)
+$end_multi_text
++Wave Name: SP-02-TRN-052.ogg
+
+$Name: finalexercise
+$Team: -1
+$MessageNew:  XSTR("For your final exercise we will pit you against a nugget with a CNP enabled Viper.", 1309)
+$end_multi_text
++Wave Name: SP-02-TRN-053.ogg
+
+$Name: unlockedcontrols
+$Team: -1
+$MessageNew:  XSTR("For the remainder of these exercises your flight controls will be unlocked.", 1310)
+$end_multi_text
++Wave Name: SP-02-TRN-054.ogg
+
+$Name: blue1down
+$Team: -1
+$MessageNew:  XSTR("Ha! Looks like the CNP doesn't turn a nugget into an ace after all. Great work Red lead.", 1311)
+$end_multi_text
++Wave Name: SP-02-TRN-055.ogg
+
+$Name: countermeasures
+$Team: -1
+$MessageNew:  XSTR("Press $'$ to deploy countermeasures.", 2172)
+$end_multi_text
+
+$Name: obitchallenge2
+$Team: -1
+$MessageNew:  XSTR("Theseus actual to Red lead. This is the CAG. Obit is already in launch prep for the next round of training. We'll have you two dogfight. Then I want you back here for debrief.", 1314)
+$end_multi_text
++Wave Name: SP-02-TRN-056.ogg
+
+$Name: controls unlocked
+$Team: -1
+$MessageNew:  XSTR("<<<CONTROLS UNLOCKED>>>", 1315)
+$end_multi_text
+
+$Name: controls locked
+$Team: -1
+$MessageNew:  XSTR(">>>CONTROLS LOCKED<<<", 1316)
+$end_multi_text
+
+$Name: Targetsubsys2
+$Team: -1
+$MessageNew:  XSTR("Begin by targeting the drone's Sensor subsystem.", 1317)
+$end_multi_text
++Wave Name: SP-02-TRN-057.ogg
+
+$Name: targetingtrialsdone
+$Team: -1
+$MessageNew:  XSTR("Targeting trials have been completed. Stand by for combat trials.", 1319)
+$end_multi_text
++Wave Name: SP-02-TRN-058.ogg
+
+$Name: combatlanding2
+$Team: -1
+$MessageNew:  XSTR("Hands-on, speed nine zero, checkers red, call the ball.", 715)
+$end_multi_text
++Wave Name: SP-02-TRN-059.ogg
+
+$Name: SingleCombat2
+$Team: -1
+$MessageNew:  XSTR("Begin by neutralizing Drone 1.", 1323)
+$end_multi_text
++Wave Name: SP-02-TRN-060.ogg
+
+$Name: autofiremessage
+$Team: -1
+$MessageNew:  XSTR("Primary weapons have aim assist on Easy and Normal difficulties.", 1325)
+$end_multi_text
+
+$Name: concludes
+$Team: -1
+$MessageNew:  XSTR("That concludes our exercises. Red lead, you are authorized for combat landing. Repeat, you are to manually land.", 1327)
+$end_multi_text
++Wave Name: SP-02-TRN-062.ogg
+
+$Name: droneactive
+$Team: -1
+$MessageNew:  XSTR("<<<LIVE DRONES>>>", 1329)
+$end_multi_text
+
+$Name: blue1h
+$Team: -1
+$MessageNew:  XSTR("<<<BLUE 1 HOSTILE>>", 1330)
+$end_multi_text
+
+$Name: green1h
+$Team: -1
+$MessageNew:  XSTR("<<<GREEN 1 HOSTILE>>", 1331)
+$end_multi_text
+
+$Name: Taking Damage
+$Team: -1
+$MessageNew:  XSTR("<<<$LastDamage% Simulated Hull>>>", 1333)
+$end_multi_text
+
+$Name: damagereset
+$Team: -1
+$MessageNew:  XSTR(">>>SIMULATED HULL RESET<<<", 1335)
+$end_multi_text
+
+$Name: obitdefeated
+$Team: -1
+$MessageNew:  XSTR("Sir, that was a good fight. It looks like the CNP isn't a substitute for skill. ", 1337)
+$end_multi_text
++Wave Name: SP-02-TRN-063.ogg
+
+$Name: stayclearofbombs
+$Team: -1
+$MessageNew:  XSTR("Remember to stay clear from the blast when shooting down warheads. ", 1339)
+$end_multi_text
++Wave Name: SP-02-TRN-064.ogg
+
+$Name: stopfiringonraptor
+$Team: -1
+$MessageNew:  XSTR("Check your gods damn fire pilot! You're supposed to be shooting down the missiles, not me.", 1340)
+$end_multi_text
++Wave Name: SP-02-TRN-065.ogg
+
+$Name: blue1start
+$Team: -1
+$MessageNew:  XSTR("CNP or not, I'm gonna make you sweat.", 1341)
+$end_multi_text
++Wave Name: SP-02-TRN-066.ogg
+
+$Name: red166
+$Team: -1
+$MessageNew:  XSTR("I don't think you've got what it takes.", 1342)
+$end_multi_text
++Wave Name: SP-02-TRN-067.ogg
+
+$Name: red133
+$Team: -1
+$MessageNew:  XSTR("I have you right where I want you...", 1343)
+$end_multi_text
++Wave Name: SP-02-TRN-068.ogg
+
+$Name: blue133
+$Team: -1
+$MessageNew:  XSTR("Get off my fraking six!", 1344)
+$end_multi_text
++Wave Name: SP-02-TRN-069.ogg
+
+$Name: blue166
+$Team: -1
+$MessageNew:  XSTR("Come on... that's all you've got?", 1345)
+$end_multi_text
++Wave Name: SP-02-TRN-070.ogg
+
+$Name: obit50
+$Team: -1
+$MessageNew:  XSTR("Fine shooting sir! You almost have me.", 1346)
+$end_multi_text
++Wave Name: SP-02-TRN-071.ogg
+
+$Name: red150
+$Team: -1
+$MessageNew:  XSTR("Sorry sir, it looks like the CNP is giving me an advantage.", 1347)
+$end_multi_text
++Wave Name: SP-02-TRN-072.ogg
+
+$Name: Missile Avoidance
+$Team: -1
+$MessageNew:  XSTR("For the first combat test Drone 1 will fire missiles at you. You are to dodge or spoof them using your countermeasures. You are not to fire upon the drone. Remember to save some countermeasures for our next exercise. ", 1349)
+$end_multi_text
++Wave Name: SP-02-TRN-075.ogg
+
+$Name: Avoided Missiles
+$Team: -1
+$MessageNew:  XSTR("Well done. You managed to evade the missiles.", 1074)
+$end_multi_text
++Wave Name: SP-02-TRN-073.ogg
+
+$Name: Didn't Avoid Enough
+$Team: -1
+$MessageNew:  XSTR("Too many of the missiles got through. You shouldn't rely on always being able to kill the other guy to avoid getting hit by their missiles. ", 1352)
+$end_multi_text
++Wave Name: SP-02-TRN-074.ogg
+
+$Name: How To Combat Land
+$Team: -1
+$MessageNew:  XSTR("To make a combat landing, approach any of Theseus' landing pods and once you are inside gently attempt to bring yourself into contact with the runway surface. That's gently...", 1085)
+$end_multi_text
++Wave Name: SP-02-TRN-078.ogg
+
+$Name: How To Combat Land 2
+$Team: -1
+$MessageNew:  XSTR("During a combat landing situation the landing officer will often call out a preferred landing bay. Remember that this is an advisory and the final decision lies with the pilot to choose which landing bay will provide them with the least dangerous landing. ", 1086)
+$end_multi_text
++Wave Name: SP-02-TRN-079.ogg
+
+$Name: Out Of Drone 1's Range
+$Team: -1
+$MessageNew:  XSTR("The Drone can only fire missiles at you if you are within range. You must close in on the drone. ", 1359)
+$end_multi_text
+
+$Name: Missiles Left To Dodge
+$Team: -1
+$MessageNew:  XSTR("Drone 1 has $MissilesLeftToDodge missiles. ", 1360)
+$end_multi_text
+
+$Name: How To Dodge Missiles
+$Team: -1
+$MessageNew:  XSTR("In order to avoid missiles you should wait until the missile is close and release a countermeasure. Be careful to avoid rapid turns that bleed off your speed and make you an easy target.", 1093)
+$end_multi_text
+
+$Name: AutoGeneratedMessage1
+$Team: -1
+$MessageNew:  XSTR("@IntroSubtitleLine1[ ]", 1950)
+$end_multi_text
+
+$Name: AutoGeneratedMessage2
+$Team: -1
+$MessageNew:  XSTR("@IntroSubtitleLine2[ ]", 1951)
+$end_multi_text
+
+$Name: AutoGeneratedMessage3
+$Team: -1
+$MessageNew:  XSTR("@IntroSubtitleLine3[ ]", 1952)
+$end_multi_text
+
+$Name: AutoGeneratedMessage4
+$Team: -1
+$MessageNew:  XSTR("press FIRE to skip cutscene", 2086)
+$end_multi_text
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 11 total
+
+$Num stars: 0
+$Ambient light level: 70171
+
+$Bitmap List:
+$Sun: Stars_Sun_BHaze
++Angles: 0.000000 0.000000 0.000000
++Scale: 2.000000
+$Starbitmap: Stars_Dust
++Angles: 0.000000 0.000000 0.000000
++ScaleX: 6.000000
++ScaleY: 6.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Dust
++Angles: 6.126101 1.256636 0.471239
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Dust
++Angles: 0.261799 1.605702 5.899208
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Asteroid01
++Angles: 5.183624 6.230820 6.230820
++ScaleX: 6.000000
++ScaleY: 6.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Ast_Med01
++Angles: 0.000000 6.265727 5.777035
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Ast_Med02
++Angles: 6.265727 0.314159 0.471239
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Ast_Med01
++Angles: 0.000000 2.687805 6.230820
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Ast_Big01
++Angles: 0.174533 5.986475 5.497783
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Ast_Big02
++Angles: 0.000000 0.000000 0.541052
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Asteroid02
++Angles: 5.811942 6.161007 3.769908
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Dust
++Angles: 6.248274 6.248274 3.735002
++ScaleX: 4.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: 10: Children of Humanity
+$Briefing Music: Brief11
+
+#End
+

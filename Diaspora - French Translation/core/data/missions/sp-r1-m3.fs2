@@ -1,0 +1,7900 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Shadow Walking", 268)
+$Author: Adam N. Rorabaugh
+$Created: 08/12/09 at 22:30:01
+$Modified: 12/19/13 at 18:43:22
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("A SAR mission goes horribly wrong.", 272)
+$end_multi_text
+
++Game Type Flags: 1
+
++Flags: 262144
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
+
++Disallow Support: 0
+
++Hull Repair Ceiling: 0.000000
+
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 1155.422241, 7959.593262, -1620.118042
++Viewer orient:
+	0.647137, -0.000003, 0.762374,
+	-0.760796, -0.064316, 0.645797,
+	0.049031, -0.997930, -0.041624
++SquadReassignName: 3rd Silver Star
++SquadReassignLogo: silverstar.pcx
+
+$Starting wing names: ( "Orange" "Gold" "Green" )
+$Squadron wing names: ( "Orange" "Gold" "Green" "Red" "Yellow" )
+$Team-versus-team wing names: ( "Orange" "Gold" )
+
+$Load Screen 640:	Y_No_1024x768.tga
+$Load Screen 1024:	Load_SP-R1-M3.tga
+
+$Skybox Model: SkyBox_Gas_02.pof
+
+$AI Profile: Diaspora_default
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"alphapatrol"		"0"		"number"
+		1		"bgM2A"		"0"		"number"
+		2		"bgM2B"		"0"		"number"
+		3		"bgM2c"		"0"		"number"
+		4		"bgM3"		"0"		"number"
+		5		"centurionsaboard"		"0"		"number"
+		6		"constellationpatrol"		"0"		"number"
+		7		"countdowntimer"		"60"		"number"
+		8		"donem3"		"0"		"number"		"campaign-persistent"
+		9		"fov"		"51"		"number"
+		10		"fovunedited"		"51"		"number"
+		11		"guardians"		"0"		"number"
+		12		"heavyraiderprot"		"0"		"number"
+		13		"IntroSubtitleCounter"		"0"		"number"
+		14		"IntroSubtitleLine1"		" "		"string"
+		15		"IntroSubtitleLine2"		" "		"string"
+		16		"Land_distance_20"		"100"		"number"
+		17		"Land_distance_21"		"140"		"number"
+		18		"m3sun"		"0"		"number"
+		19		"missiontime"		"0"		"number"
+		20		"missiontime2"		"0"		"number"
+		21		"nextPoll"		"0"		"number"
+		22		"pilotvisible"		"0"		"number"
+		23		"pilotvisiblestart"		"0"		"number"
+		24		"primaryammo"		"100"		"number"
+		25		"red3location"		"0"		"number"
+		26		"secondaryammo"		"100"		"number"
+		27		"sensorsdisrupted"		"0"		"number"
+		28		"sigA"		"0"		"number"
+		29		"sigD"		"0"		"number"
+		30		"signalstrength"		"0"		"number"
+		31		"signalstrengthtoggle"		"0"		"number"
+		32		"sigS"		"0"		"number"
+		33		"skillevelmodifier"		"0"		"number"
+		34		"Slow_distance_20"		"600"		"number"
+		35		"Slow_distance_21"		"600"		"number"
+		36		"sunM2"		"0"		"number"
+		37		"system"		"0"		"number"
+		38		"theseushull2"		"70"		"number"		"campaign-persistent"
+		39		"theseushull3"		"60"		"number"		"campaign-persistent"
+		40		"autoGenVar1"		"Red 3"		"string"
+		41		"autoGenVar2"		"Signal Strength"		"string"
+		42		"autoGenVar3"		"#Theseus Launch Officer"		"string"
+		43		"autoGenVar4"		"#Hammer"		"string"
+		44		"autoGenVar5"		"#Obit"		"string"
+		45		"autoGenVar6"		"#Theseus"		"string"
+		46		"autoGenVar7"		"#Orange 2"		"string"
+		47		"autoGenVar8"		"#Hammmer"		"string"
+		48		"autoGenVar9"		"#Theseus Landing Signal Officer"		"string"
+)
+
+#Cutscenes
+$Briefing Cutscene: R1M3.ogg
++formula: ( true ) 
+#end
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 0
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 8
+
+$Formula: ( and 
+   ( is-goal-true-delay "rescue" 0 ) 
+   ( is-event-true-delay "landing" 0 ) 
+)
+$Multi text
+    XSTR("You rescued Obit against the odds. I don't wish to sound ungrateful, as we need every pilot we have, but you violated a direct order to recall and defend the Theseus. Under normal circumstances, you would be subject to a court martial.
+
+However, I am grateful that you made it out of there alive, and came to our aid when you did.", 341)
+$end_multi_text
+$Voice: SP-03-DB-01.ogg
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay "orange2dead" 0 ) 
+   ( is-event-true-delay "landing" 0 ) 
+)
+$Multi text
+    XSTR("Orange 2 was destroyed. We lost several good pilots today, all in an attempt to save one life.", 352)
+$end_multi_text
+$Voice: SP-03-DB-02.ogg
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay "obitisdead" 0 ) 
+   ( is-event-true-delay "landing" 0 ) 
+)
+$Multi text
+    XSTR("Losing Obit is... an unfortunate turn of events. He will be missed, and we'll make the toasters pay for everyone we've lost today... ", 360)
+$end_multi_text
+$Voice: SP-03-DB-03.ogg
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( and 
+   ( and 
+      ( is-goal-true-delay "stealth" 0 ) 
+      ( is-goal-true-delay "rescue" 0 ) 
+   )
+   ( is-event-true-delay "landing" 0 ) 
+)
+$Multi text
+    XSTR("You remained undetected while retrieving Obit Unfortunately, these efforts to cover our tracks were all for nothing....", 371)
+$end_multi_text
+$Voice: SP-03-DB-04.ogg
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-goal-true-delay "defend" 0 ) 
+   ( is-event-true-delay "landing" 0 ) 
+)
+$Multi text
+    XSTR("I have grave news. The Cylons look like us now. A Cylon agent detonated an explosive device near our fuel lines. We nearly lost the Theseus, but the damage was contained.
+
+The Cylon agent was jamming wireless communications and transmitting our position to their fleet, and signalled for the boarding action. This... machine was neutralized.
+
+Our recalled recon flights have confirmed devastation on Picon and Tauron. Picon Fleet Headquaters were destroyed in the initial attacks. We have received messages that surviving Colonial assets are currently being marshalled in orbit of Virgon. 
+
+Our top priorities are to replenish our tylium reserves and establish contact with the fleet. We do not have enough fuel to jump to Virgon and we will be unable to maintain combat operations with our current supply.", 374)
+$end_multi_text
+$Voice: SP-03-DB-05.ogg
+$Recommendation text:
+    XSTR("", 213)
+$end_multi_text
+
+$Formula: ( or 
+   ( is-destroyed-delay 0 "Theseus#" ) 
+   ( is-event-true-delay 
+      "tessiedefinatelyscrewed" 
+      0 
+   )
+)
+$Multi text
+    XSTR("The Theseus was destroyed with all hands aboard. The Cylons have jumped out, leaving us to our fate knowing that we don't have rendezvous coordinates or enough fuel to reach any Colonial installations that might still survive.
+", 381)
+$end_multi_text
+$Voice: SP-02-DB-06.ogg
+$Recommendation text:
+    XSTR("Destroy heavy raiders before they can land and intercept incoming nuclear warheads.", 382)
+$end_multi_text
+
+$Formula: ( has-departed-delay 0 "Theseus#" ) 
+$Multi text
+    XSTR("The Theseus jumped without us. Cylon forces jumped out of the area in pursuit. We don't have rendezvous coordinates or enough fuel to reach any Colonial installations that might still survive.
+
+For what it's worth... it was an honor serving with you pilot. ", 386)
+$end_multi_text
+$Voice: SP-02-DB-07.ogg
+$Recommendation text:
+    XSTR("Remain near the Theseus to safely land before she jumps.", 356)
+$end_multi_text
+
+$Formula: ( is-event-true-delay "sociopath4" 0 ) 
+$Multi text
+    XSTR("From what we have learned today, it is possible that Orange lead was a Cylon agent. Why this pilot volunteered for a mission to ensure the death of a single pilot, as opposed to aiding the detonation of explosives as a second agent did, is a mystery. 
+
+The Colonies are in ruins, and our own future is grim. It is only a matter of time before the Cylons find us in our damaged state, and finally end this...", 390)
+$end_multi_text
+$Voice: SP-03-DB-08.ogg
+$Recommendation text:
+    XSTR("Don't open fire on Obit.", 392)
+$end_multi_text
+
+
+#Callsigns:
+$Callsign: XSTR("Obit", 1891)
+$Callsign: XSTR("Vertigo", 1946)
+$Callsign: XSTR("Orphan", 1889)
+$Callsign: XSTR("Crispy", 1890)
+$Callsign: 
+$Callsign: XSTR("Thief", 1942)
+$Callsign: XSTR("Jackal", 1954)
+$Callsign: XSTR("Killjoy", 1955)
+$Callsign: XSTR("Princess", 1956)
+$Callsign: XSTR("Obsidian", 1957)
+$Callsign: XSTR("Duke", 1937)
+$Callsign: XSTR("Flask", 1932)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Orange 1
+$Ship Choices: (
+	"Assault Raptor"	1
+)
+
++Weaponry Pool: (
+	"GBK-6"	7
+	"HD-70 Lightning Javelin"	32
+	"HD-51 Arbalest"	28
+	"CTD-17 Jester"	12
+	"HS-24 Lance"	1940
+)
+
+#Objects		;! 69 total
+
+$Name: Orange 1		;! Object #0
+$Display Name: XSTR("Orange 1", 1958)
+$Class: Assault Raptor
+$Team: Friendly
+$Location: 0.000000, -30.628920, 50.000000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Secondary Banks: ( "HS-24 Lance" "HD-51 Arbalest" )
++Subsystem: Co_Pilota
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "don't-collide-invisible" )
++Flags2: ( "no-subspace-drive" "immobile" "no-ets" )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Theseus		;! Object #1
+$Display Name: XSTR("Theseus", 1834)
+$Class: Battlestar Sobek Class
+$Team: Friendly
+$Location: 177.164490, -0.000000, 27.741049
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 80
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret-01a
++Subsystem: turret-02a
++Subsystem: turret-03a
++Subsystem: turret-04a
++Subsystem: turret-05a
++Subsystem: turret-06a
++Subsystem: turret-07a
++Subsystem: turret-08a
++Subsystem: turret-09a
++Subsystem: turret-10a
++Subsystem: turret-11a
++Subsystem: turret-12a
++Subsystem: turret-13a
++Subsystem: turret-14a
++Subsystem: turret-15a
++Subsystem: turret-16a
++Subsystem: turret-17a
++Subsystem: turret-18a
++Subsystem: turret-19a
++Subsystem: turret-20a
++Subsystem: turret-21a
++Subsystem: turret-22a
++Subsystem: turret-23a
++Subsystem: turret-24a
++Subsystem: turret-25a
++Subsystem: turret-26a
++Subsystem: gunturret_01a
++Subsystem: gunturret_02a
++Subsystem: gunturret_03a
++Subsystem: gunturret_04a
++Subsystem: gunturret_05a
++Subsystem: gunturret_06a
++Subsystem: gunturret_07a
++Subsystem: gunturret_08a
++Subsystem: CIWS_Turret-01a
++Subsystem: CIWS_Turret-02a
++Subsystem: CIWS_Turret-03a
++Subsystem: CIWS_Turret-04a
++Subsystem: CIWS_Turret-05a
++Subsystem: CIWS_Turret-06a
++Subsystem: CIWS_Turret-07a
++Subsystem: CIWS_Turret-08a
++Subsystem: CIWS_Turret-09a
++Subsystem: CIWS_Turret-10a
++Subsystem: CIWS_Turret-11a
++Subsystem: CIWS_Turret-12a
++Subsystem: CIWS_Turret-13a
++Subsystem: CIWS_Turret-14a
++Subsystem: CIWS_Turret-15a
++Subsystem: CIWS_Turret-16a
++Subsystem: CIWS_Turret-17a
++Subsystem: CIWS_Turret-18a
++Subsystem: CIWS_Turret-19a
++Subsystem: CIWS_Turret-20a
++Subsystem: CIWS_Turret-21a
++Subsystem: CIWS_Turret-22a
++Subsystem: CIWS_Turret-23a
++Subsystem: CIWS_Turret-24a
++Subsystem: CIWS_Turret-25a
++Subsystem: CIWS_Turret-26a
++Subsystem: CIWS_Turret-27a
++Subsystem: CIWS_Turret-28a
++Subsystem: CIWS_Turret-29a
++Subsystem: CIWS_Turret-30a
++Subsystem: CIWS_Turret-31a
++Subsystem: CIWS_Turret-32a
++Subsystem: CIWS_Turret-33a
++Subsystem: CIWS_Turret-34a
++Subsystem: CIWS_Turret-35a
++Subsystem: CIWS_Turret-36a
++Subsystem: CIWS_Turret-37a
++Subsystem: CIWS_Turret-38a
++Subsystem: CIWS_Turret-39a
++Subsystem: CIWS_Turret-40a
++Subsystem: CIWS_Turret-41a
++Subsystem: CIWS_Turret-42a
++Subsystem: CIWS_Turret-43a
++Subsystem: CIWS_Turret-44a
++Subsystem: CIWS_Turret-45a
++Subsystem: CIWS_Turret-46a
++Subsystem: CIWS_Turret-47a
++Subsystem: CIWS_Turret-48a
++Subsystem: CIWS_Turret-49a
++Subsystem: CIWS_Turret-50a
++Subsystem: CIWS_Turret-51a
++Subsystem: CIWS_Turret-52a
++Subsystem: CIWS_Turret-53a
++Subsystem: CIWS_Turret-54a
++Subsystem: VLS_turret-01a
++Subsystem: VLS_turret-02a
++Subsystem: VLS_turret-03a
++Subsystem: VLS_turret-04a
++Subsystem: VLS_turret-05a
++Subsystem: VLS_turret-06a
++Subsystem: VLS_turret-07a
++Subsystem: VLS_turret-08a
++Subsystem: VLS_turret-09a
++Subsystem: VLS_turret-10a
++Subsystem: VLS_turret-11a
++Subsystem: VLS_turret-12a
++Subsystem: VLS_turret-13a
++Subsystem: VLS_turret-14a
++Subsystem: VLS_turret-15a
++Subsystem: VLS_turret-16a
++Subsystem: VLS_turret-17a
++Subsystem: VLS_turret-18a
++Subsystem: VLS_turret-19a
++Subsystem: VLS_turret-20a
++Subsystem: VLS_turret-21a
++Subsystem: VLS_turret-22a
++Subsystem: VLS_turret-23a
++Subsystem: VLS_turret-24a
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 100
++Special Hitpoints: 1700000
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 2250
+$Texture Replace:
++old: col_bs_sobek_sob
++new: col_bs_sobek_the
++old: col_bs_sobek_sob-glow
++new: col_bs_sobek_the-glow
++old: col_bs_sobek_sob-normal
++new: col_bs_sobek_the-normal
++old: col_bs_sobek_sob-shine
++new: col_bs_sobek_the-shine
++old: col_bs_sobek_sob
++new: col_bs_sobek_the
++old: col_bs_sobek_sob-glow
++new: col_bs_sobek_the-glow
++old: col_bs_sobek_sob-normal
++new: col_bs_sobek_the-normal
++old: col_bs_sobek_sob-shine
++new: col_bs_sobek_the-shine
+
+$Name: Red 1#		;! Object #2
+$Display Name: XSTR("Red 1", 1816)
+$Class: Viper Mark VII
+$Callsign: XSTR("Flask", 1932)
+
+$Team: Friendly
+$Location: -927.887695, -485.000000, 51.473289
+$Orientation:
+	0.722042, 0.000000, -0.691849,
+	-0.000000, 1.000000, 0.000000,
+	0.691849, 0.000000, 0.722042
+$AI Behavior: None
++AI Class: Colonial Elite
+$AI Goals: ( goals ( ai-guard "Theseus" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 4
+
+$Name: Red 3#a		;! Object #3
+$Display Name: XSTR("Red 3", 1818)
+$Class: Viper Mark VII
+$Callsign: XSTR("Crispy", 1890)
+
+$Team: Friendly
+$Location: -897.743774, -485.000000, 21.865499
+$Orientation:
+	0.760451, 0.000000, -0.649396,
+	-0.000000, 1.000000, 0.000000,
+	0.649396, 0.000000, 0.760450
+$AI Behavior: None
++AI Class: Colonial Elite
+$AI Goals: ( goals ( ai-guard "Theseus" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 5
+
+$Name: Red 2#		;! Object #4
+$Display Name: XSTR("Red 2", 1817)
+$Class: Viper Mark VII
+$Callsign: XSTR("Orphan", 1889)
+
+$Team: Friendly
+$Location: -944.900024, -485.000000, 24.900000
+$Orientation:
+	0.727519, 0.000000, -0.686088,
+	-0.000000, 1.000000, 0.000000,
+	0.686088, 0.000000, 0.727519
+$AI Behavior: None
++AI Class: Colonial Elite
+$AI Goals: ( goals ( ai-guard "Theseus" 50 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 11
+
+$Name: Red 3#		;! Object #5
+$Display Name: XSTR("Red 3", 1818)
+$Class: Viper Pilot
+
+$Callsign: XSTR("Obit", 1891)
+
+$Team: Unknown_Ally
+$Location: -3081.699951, 0.000000, 3276.600098
+$Orientation:
+	-0.363865, -0.280524, -0.888206,
+	0.494076, 0.750238, -0.439354,
+	0.789615, -0.598706, -0.134385
+$AI Behavior: None
++AI Class: Captain
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Near Ship
++Arrival Distance: 6500
+$Arrival Anchor: Orange 1
+$Arrival Cue: ( is-event-true-delay "ftlevents" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "no-arrival-warp" "no-departure-warp" "stealth" "friendly-stealth-invisible" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
++Persona Index: 1
+
+$Name: Bravo 1		;! Object #6
+$Display Name: XSTR("Bravo 1", 1835)
+$Class: Raider
+$Team: Hostile
+$Location: -2245.884277, 0.000000, 190.932419
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonial Hot Shot
+$AI Goals: ( goals ( ai-chase "Orange 1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
++Sbank Ammo: ( 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Theseus#		;! Object #7
+$Display Name: XSTR("Theseus", 1834)
+$Class: Battlestar Sobek Class
+$Team: Friendly
+$Location: 180.100006, 30.000000, 1149.400024
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 80
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret-01a
++Subsystem: turret-02a
++Subsystem: turret-03a
++Subsystem: turret-04a
++Subsystem: turret-05a
++Subsystem: turret-06a
++Subsystem: turret-07a
++Subsystem: turret-08a
++Subsystem: turret-09a
++Subsystem: turret-10a
++Subsystem: turret-11a
++Subsystem: turret-12a
++Subsystem: turret-13a
++Subsystem: turret-14a
++Subsystem: turret-15a
++Subsystem: turret-16a
++Subsystem: turret-17a
++Subsystem: turret-18a
++Subsystem: turret-19a
++Subsystem: turret-20a
++Subsystem: turret-21a
++Subsystem: turret-22a
++Subsystem: turret-23a
++Subsystem: turret-24a
++Subsystem: turret-25a
++Subsystem: turret-26a
++Subsystem: gunturret_01a
++Subsystem: gunturret_02a
++Subsystem: gunturret_03a
++Subsystem: gunturret_04a
++Subsystem: gunturret_05a
++Subsystem: gunturret_06a
++Subsystem: gunturret_07a
++Subsystem: gunturret_08a
++Subsystem: CIWS_Turret-01a
++Subsystem: CIWS_Turret-02a
++Subsystem: CIWS_Turret-03a
++Subsystem: CIWS_Turret-04a
++Subsystem: CIWS_Turret-05a
++Subsystem: CIWS_Turret-06a
++Subsystem: CIWS_Turret-07a
++Subsystem: CIWS_Turret-08a
++Subsystem: CIWS_Turret-09a
++Subsystem: CIWS_Turret-10a
++Subsystem: CIWS_Turret-11a
++Subsystem: CIWS_Turret-12a
++Subsystem: CIWS_Turret-13a
++Subsystem: CIWS_Turret-14a
++Subsystem: CIWS_Turret-15a
++Subsystem: CIWS_Turret-16a
++Subsystem: CIWS_Turret-17a
++Subsystem: CIWS_Turret-18a
++Subsystem: CIWS_Turret-19a
++Subsystem: CIWS_Turret-20a
++Subsystem: CIWS_Turret-21a
++Subsystem: CIWS_Turret-22a
++Subsystem: CIWS_Turret-23a
++Subsystem: CIWS_Turret-24a
++Subsystem: CIWS_Turret-25a
++Subsystem: CIWS_Turret-26a
++Subsystem: CIWS_Turret-27a
++Subsystem: CIWS_Turret-28a
++Subsystem: CIWS_Turret-29a
++Subsystem: CIWS_Turret-30a
++Subsystem: CIWS_Turret-31a
++Subsystem: CIWS_Turret-32a
++Subsystem: CIWS_Turret-33a
++Subsystem: CIWS_Turret-34a
++Subsystem: CIWS_Turret-35a
++Subsystem: CIWS_Turret-36a
++Subsystem: CIWS_Turret-37a
++Subsystem: CIWS_Turret-38a
++Subsystem: CIWS_Turret-39a
++Subsystem: CIWS_Turret-40a
++Subsystem: CIWS_Turret-41a
++Subsystem: CIWS_Turret-42a
++Subsystem: CIWS_Turret-43a
++Subsystem: CIWS_Turret-44a
++Subsystem: CIWS_Turret-45a
++Subsystem: CIWS_Turret-46a
++Subsystem: CIWS_Turret-47a
++Subsystem: CIWS_Turret-48a
++Subsystem: CIWS_Turret-49a
++Subsystem: CIWS_Turret-50a
++Subsystem: CIWS_Turret-51a
++Subsystem: CIWS_Turret-52a
++Subsystem: CIWS_Turret-53a
++Subsystem: CIWS_Turret-54a
++Subsystem: VLS_turret-01a
++Subsystem: VLS_turret-02a
++Subsystem: VLS_turret-03a
++Subsystem: VLS_turret-04a
++Subsystem: VLS_turret-05a
++Subsystem: VLS_turret-06a
++Subsystem: VLS_turret-07a
++Subsystem: VLS_turret-08a
++Subsystem: VLS_turret-09a
++Subsystem: VLS_turret-10a
++Subsystem: VLS_turret-11a
++Subsystem: VLS_turret-12a
++Subsystem: VLS_turret-13a
++Subsystem: VLS_turret-14a
++Subsystem: VLS_turret-15a
++Subsystem: VLS_turret-16a
++Subsystem: VLS_turret-17a
++Subsystem: VLS_turret-18a
++Subsystem: VLS_turret-19a
++Subsystem: VLS_turret-20a
++Subsystem: VLS_turret-21a
++Subsystem: VLS_turret-22a
++Subsystem: VLS_turret-23a
++Subsystem: VLS_turret-24a
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "ftlevents2" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( and 
+   ( = @countdowntimer[60] 0 ) 
+   ( is-event-incomplete "landing" ) 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-music" "no-arrival-warp" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 100
++Special Hitpoints: 1700000
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 2250
+$Texture Replace:
++old: col_bs_sobek_sob
++new: col_bs_sobek_the
++old: col_bs_sobek_sob-glow
++new: col_bs_sobek_the-glow
++old: col_bs_sobek_sob-normal
++new: col_bs_sobek_the-normal
++old: col_bs_sobek_sob-shine
++new: col_bs_sobek_the-shine
+
+$Name: Red 1		;! Object #8
+$Display Name: XSTR("Red 1", 1816)
+$Class: Viper Mark VII
+$Callsign: XSTR("Flask", 1932)
+
+$Team: Friendly
+$Location: 583.599365, 0.000000, 903.941345
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 82
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 4
+
+$Name: Red 2		;! Object #9
+$Display Name: XSTR("Red 2", 1817)
+$Class: Viper Mark VII
+$Callsign: XSTR("Orphan", 1889)
+
+$Team: Friendly
+$Location: 629.761353, 0.000000, 843.734863
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 36
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 11
+
+$Name: Red 3		;! Object #10
+$Display Name: XSTR("Red 3", 1818)
+$Class: Viper Mark VII
+$Callsign: XSTR("Crispy", 1890)
+
+$Team: Friendly
+$Location: 571.723022, 0.000000, 836.310852
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 60
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 5
+
+$Name: Constellation 1		;! Object #11
+$Display Name: XSTR("Constellation 1", 1851)
+$Class: Raider
+$Team: Hostile
+$Location: -2184.303711, 0.000000, 553.737122
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Constellation 2		;! Object #12
+$Display Name: XSTR("Constellation 2", 1852)
+$Class: Raider
+$Team: Hostile
+$Location: -2172.733154, 0.000000, 572.370667
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Alpha 1		;! Object #13
+$Display Name: XSTR("Alpha 1", 1843)
+$Class: Raider
+$Team: Hostile
+$Location: 2568.893066, 0.000000, -8914.398438
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Alpha 2		;! Object #14
+$Display Name: XSTR("Alpha 2", 1844)
+$Class: Raider
+$Team: Hostile
+$Location: 2937.412109, 0.000000, -8845.228516
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Halo 1		;! Object #15
+$Display Name: XSTR("Halo 1", 1859)
+$Class: Raider
+$Team: Hostile
+$Location: -1022.900024, 523.000000, -258.399994
+$Orientation:
+	0.760234, 0.000000, -0.649650,
+	0.176572, 0.962355, 0.206629,
+	0.625193, -0.271796, 0.731615
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Halo 2		;! Object #16
+$Display Name: XSTR("Halo 2", 1860)
+$Class: Raider
+$Team: Hostile
+$Location: -1066.065430, 523.000000, -161.051956
+$Orientation:
+	0.724652, 0.000000, -0.689115,
+	0.191452, 0.960632, 0.201325,
+	0.661986, -0.277823, 0.696125
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Delta 1		;! Object #17
+$Display Name: XSTR("Delta 1", 1855)
+$Class: Raider
+$Team: Hostile
+$Location: 1857.069336, -917.099976, -843.360901
+$Orientation:
+	0.765132, 0.000000, 0.643874,
+	0.213854, 0.943232, -0.254128,
+	-0.607322, 0.332136, 0.721696
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Delta 2		;! Object #18
+$Display Name: XSTR("Delta 2", 1856)
+$Class: Raider
+$Team: Hostile
+$Location: 1790.982544, -917.099976, -965.048462
+$Orientation:
+	0.795458, 0.000000, 0.606009,
+	0.197649, 0.945319, -0.259437,
+	-0.572871, 0.326148, 0.751961
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Delta 3		;! Object #19
+$Display Name: XSTR("Delta 3", 1857)
+$Class: Raider
+$Team: Hostile
+$Location: 1677.900024, -917.099976, -1207.900024
+$Orientation:
+	0.844037, 0.000000, 0.536284,
+	0.167310, 0.950088, -0.263323,
+	-0.509517, 0.311981, 0.801910
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Kilo 1		;! Object #20
+$Display Name: XSTR("Kilo 1", 1896)
+$Class: Raider
+$Team: Hostile
+$Location: -1283.613037, 0.000000, 2505.360840
+$Orientation:
+	-0.679584, 0.000000, -0.733598,
+	0.000000, 1.000000, 0.000000,
+	0.733598, -0.000000, -0.679584
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Kilo 2		;! Object #21
+$Display Name: XSTR("Kilo 2", 1897)
+$Class: Raider
+$Team: Hostile
+$Location: -1378.599976, 0.000000, 2434.899902
+$Orientation:
+	-0.636252, 0.000000, -0.771481,
+	0.000000, 1.000000, 0.000000,
+	0.771481, -0.000000, -0.636252
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Kilo 3		;! Object #22
+$Display Name: XSTR("Kilo 3", 1898)
+$Class: Raider
+$Team: Hostile
+$Location: -1523.060425, 0.000000, 2330.920898
+$Orientation:
+	-0.569991, 0.000000, -0.821651,
+	0.000000, 1.000000, 0.000000,
+	0.821651, -0.000000, -0.569991
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Epsilon 1		;! Object #23
+$Display Name: XSTR("Epsilon 1", 1959)
+$Class: Heavy Raider
+$Team: Hostile
+$Location: -6815.586426, 0.000000, 48.616131
+$Orientation:
+	0.155439, 0.000000, -0.987846,
+	0.000000, 1.000000, 0.000000,
+	0.987846, -0.000000, 0.155439
+$AI Behavior: None
++AI Class: Nugget
+$AI Goals: ( goals ( ai-waypoints-once "hvyraiderpath1" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Secondary Banks: ( "CR-HE 2.2 Dart" "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Hotkey: 3
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Epsilon 2		;! Object #24
+$Display Name: XSTR("Epsilon 2", 1960)
+$Class: Heavy Raider
+$Team: Hostile
+$Location: -6842.000000, 0.000000, 200.800003
+$Orientation:
+	0.133871, 0.000000, -0.990999,
+	0.000000, 1.000000, 0.000000,
+	0.990999, -0.000000, 0.133871
+$AI Behavior: None
++AI Class: Nugget
+$AI Goals: ( goals ( ai-waypoints-once "hvyraiderpath2" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Secondary Banks: ( "CR-HE 2.2 Dart" "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Hotkey: 3
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Ion 1		;! Object #25
+$Display Name: XSTR("Ion 1", 1863)
+$Class: Heavy Raider
+$Team: Hostile
+$Location: -6953.583496, 0.000000, 352.616516
+$Orientation:
+	0.111003, 0.000000, -0.993820,
+	0.000000, 1.000000, 0.000000,
+	0.993820, -0.000000, 0.111003
+$AI Behavior: None
++AI Class: Nugget
+$AI Goals: ( goals ( ai-waypoints-once "hvyraiderpath5" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Secondary Banks: ( "CR-HE 2.2 Dart" "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Hotkey: 3
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Ion 2		;! Object #26
+$Display Name: XSTR("Ion 2", 1864)
+$Class: Heavy Raider
+$Team: Hostile
+$Location: -7017.335449, -18.361145, 430.190857
+$Orientation:
+	0.099430, 0.000000, -0.995045,
+	-0.002526, 0.999997, -0.000252,
+	0.995041, 0.002538, 0.099430
+$AI Behavior: None
++AI Class: Nugget
+$AI Goals: ( goals ( ai-waypoints-once "hvyraiderpath6" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Secondary Banks: ( "CR-HE 2.2 Dart" "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Hotkey: 3
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Fractal 1		;! Object #27
+$Display Name: XSTR("Fractal 1", 1847)
+$Class: Heavy Raider
+$Team: Hostile
+$Location: 6505.829590, 825.400024, 4026.552490
+$Orientation:
+	-0.414021, 0.000000, 0.910267,
+	-0.107362, 0.993020, -0.048832,
+	-0.903914, -0.117946, -0.411131
+$AI Behavior: None
++AI Class: Nugget
+$AI Goals: ( goals ( ai-waypoints-once "hvyraiderpath3" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Fractal 2		;! Object #28
+$Display Name: XSTR("Fractal 2", 1848)
+$Class: Heavy Raider
+$Team: Hostile
+$Location: 6443.435547, 825.400024, 4153.028809
+$Orientation:
+	-0.432408, 0.000000, 0.901678,
+	-0.106394, 0.993014, -0.051022,
+	-0.895379, -0.117996, -0.429387
+$AI Behavior: None
++AI Class: Nugget
+$AI Goals: ( goals ( ai-waypoints-once "hvyraiderpath4" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Grail 1		;! Object #29
+$Display Name: XSTR("Grail 1", 1893)
+$Class: Heavy Raider
+$Team: Hostile
+$Location: 6285.869629, 825.400024, 4376.571777
+$Orientation:
+	-0.467290, 0.000000, 0.884104,
+	-0.104919, 0.992933, -0.055454,
+	-0.877857, -0.118672, -0.463988
+$AI Behavior: None
++AI Class: Nugget
+$AI Goals: ( goals ( ai-waypoints-once "hvryraiderpath7" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Grail 2		;! Object #30
+$Display Name: XSTR("Grail 2", 1894)
+$Class: Heavy Raider
+$Team: Hostile
+$Location: 6327.600098, 825.400024, 4298.799805
+$Orientation:
+	-0.455955, 0.000000, 0.890003,
+	-0.105602, 0.992936, -0.054101,
+	-0.883716, -0.118653, -0.452734
+$AI Behavior: None
++AI Class: Nugget
+$AI Goals: ( goals ( ai-waypoints-once "hvryraiderpath8" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Yellow 1		;! Object #31
+$Display Name: XSTR("Yellow 1", 1877)
+$Class: Assault Raptor
+$Callsign: XSTR("Thief", 1942)
+
+$Team: Friendly
+$Location: -578.302917, -0.000000, 458.432709
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 15
++Persona Index: 9
+
+$Name: Yellow 2		;! Object #32
+$Display Name: XSTR("Yellow 2", 1878)
+$Class: Assault Raptor
+$Callsign: XSTR("Jackal", 1954)
+
+$Team: Friendly
+$Location: -586.157104, -0.000000, 494.230194
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonial Elite
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 15
++Persona Index: 12
+
+$Name: Cylon Basestar#Nuke1		;! Object #33
+$Display Name: XSTR("Cylon Basestar", 1826)
+$Class: Basestar
+$Team: Hostile
+$Location: -1229.319702, 0.000000, 1323.101440
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Theseus#" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret-01a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-02a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-03a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-04a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-05a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-06a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-07a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-08a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-09a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-10a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-11a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-12a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-13a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-14a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-15a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-16a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-17a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-18a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-19a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-20a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-21a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-22a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-23a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-24a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-25a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-26a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-27a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-28a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-29a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-30a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-31a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-32a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-33a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-34a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-35a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-36a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Near Ship
++Arrival Distance: 1500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( is-event-true-delay 
+   "tessiedefinatelyscrewed" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 80
++Group: 0
++Use Table Score:
++Score: 2500
+
+$Name: Cylon Basestar#Nuke2		;! Object #34
+$Display Name: XSTR("Cylon Basestar", 1826)
+$Class: Basestar
+$Team: Hostile
+$Location: 1509.870728, 0.000000, 1424.696167
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Theseus#" 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret-01a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-02a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-03a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-04a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-05a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-06a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-07a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-08a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-09a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-10a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-11a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-12a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-13a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-14a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-15a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-16a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-17a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-18a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-19a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-20a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-21a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-22a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-23a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-24a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-25a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-26a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-27a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-28a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-29a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-30a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-31a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-32a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-33a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-34a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-35a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-36a
++Secondary Banks: ( "Cylon Nuclear Torpedo" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Near Ship
++Arrival Distance: 1800
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( has-arrived-delay 
+   1 
+   "Cylon Basestar#Nuke1" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 70
++Group: 0
++Use Table Score:
++Score: 2500
+
+$Name: Cylon Basestar#End1		;! Object #35
+$Display Name: XSTR("Cylon Basestar", 1826)
+$Class: Basestar
+$Team: Hostile
+$Location: 317.424744, 0.000000, -1701.052734
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret-01a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-02a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-03a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-04a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-05a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-06a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-07a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-08a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-09a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-10a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-11a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-12a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-13a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-14a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-15a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-16a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-17a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-18a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-19a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-20a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-21a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-22a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-23a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-24a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-25a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-26a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-27a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-28a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-29a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-30a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-31a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-32a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-33a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-34a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-35a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-36a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Near Ship
++Arrival Distance: 1600
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( is-event-true-delay "ftlrepaired" 9 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 80
++Group: 0
++Use Table Score:
++Score: 2500
+
+$Name: Cylon Basestar#End2		;! Object #36
+$Display Name: XSTR("Cylon Basestar", 1826)
+$Class: Basestar
+$Team: Hostile
+$Location: 1677.130127, 0.000000, -2320.829590
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret-01a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-02a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-03a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-04a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-05a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-06a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-07a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-08a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-09a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-10a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-11a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-12a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-13a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-14a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-15a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-16a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-17a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-18a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-19a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-20a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-21a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-22a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-23a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-24a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-25a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-26a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-27a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-28a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-29a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-30a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-31a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-32a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-33a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-34a
++Secondary Banks: ( "Cylon Torpedo#1 Pack Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-35a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
++Subsystem: turret-36a
++Secondary Banks: ( "Cylon Heavy Torpedo#Weak" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Near Ship
++Arrival Distance: 1600
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( has-arrived-delay 
+   1 
+   "Cylon Basestar#End1" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 70
++Group: 0
++Use Table Score:
++Score: 2500
+
+$Name: X-Ray 1		;! Object #37
+$Display Name: XSTR("X-Ray 1", 1914)
+$Class: Advanced Raider
+$Team: Hostile
+$Location: 4574.770508, 0.000000, -565.181396
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Fraktard
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "MRT-N 2.3 Mangonel#Weak" "MRT-N 2.3 Mangonel#Weak" "MRT-N 2.3 Mangonel#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Zenith 1		;! Object #38
+$Display Name: XSTR("Zenith 1", 1903)
+$Class: Raider
+$Team: Hostile
+$Location: -548.683655, 0.000000, -663.732361
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Zenith 2		;! Object #39
+$Display Name: XSTR("Zenith 2", 1904)
+$Class: Raider
+$Team: Hostile
+$Location: -501.670135, 0.000000, -643.385925
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
++Sbank Ammo: ( 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Limbo 1		;! Object #40
+$Display Name: XSTR("Limbo 1", 1961)
+$Class: Advanced Raider
+$Team: Hostile
+$Location: 3401.509033, -0.012702, 4717.918457
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "LRT-AP 2.2 Shipwreck#Weak" "LRT-AP 2.2 Shipwreck#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Limbo 2		;! Object #41
+$Display Name: XSTR("Limbo 2", 1962)
+$Class: Advanced Raider
+$Team: Hostile
+$Location: 3409.700684, -0.012302, 4876.749023
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "LRT-AP 2.2 Shipwreck#Weak" "LRT-AP 2.2 Shipwreck#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Limbo 3		;! Object #42
+$Display Name: XSTR("Limbo 3", 1963)
+$Class: Advanced Raider
+$Team: Hostile
+$Location: 3425.873047, -0.012965, 5104.658691
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "LRT-AP 2.2 Shipwreck#Weak" "LRT-AP 2.2 Shipwreck#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Optic 1		;! Object #43
+$Display Name: XSTR("Optic 1", 1920)
+$Class: Advanced Raider
+$Team: Hostile
+$Location: 4069.363037, -0.012889, 4162.086914
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "LRT-AP 2.2 Shipwreck#Weak" "LRT-AP 2.2 Shipwreck#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Optic 2		;! Object #44
+$Display Name: XSTR("Optic 2", 1921)
+$Class: Advanced Raider
+$Team: Hostile
+$Location: 4273.359863, -0.012463, 4364.349609
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "LRT-AP 2.2 Shipwreck#Weak" "LRT-AP 2.2 Shipwreck#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Optic 3		;! Object #45
+$Display Name: XSTR("Optic 3", 1922)
+$Class: Advanced Raider
+$Team: Hostile
+$Location: 4329.099609, -0.012259, 4576.088867
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "LRT-AP 2.2 Shipwreck#Weak" "LRT-AP 2.2 Shipwreck#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Optic 4		;! Object #46
+$Display Name: XSTR("Optic 4", 1923)
+$Class: Advanced Raider
+$Team: Hostile
+$Location: 4454.884277, -0.012683, 4926.694336
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "LRT-AP 2.2 Shipwreck#Weak" "LRT-AP 2.2 Shipwreck#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Jack 1		;! Object #47
+$Display Name: XSTR("Jack 1", 1899)
+$Class: Raider
+$Team: Hostile
+$Location: -3932.480713, -0.000212, -1476.661255
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Jack 2		;! Object #48
+$Display Name: XSTR("Jack 2", 1900)
+$Class: Raider
+$Team: Hostile
+$Location: -4169.831055, 0.000142, -1599.381470
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Jack 3		;! Object #49
+$Display Name: XSTR("Jack 3", 1901)
+$Class: Raider
+$Team: Hostile
+$Location: -4449.967773, -0.000156, -1827.999512
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Nebula 1		;! Object #50
+$Display Name: XSTR("Nebula 1", 1924)
+$Class: Raider
+$Team: Hostile
+$Location: 3825.745117, 0.000166, 37.643539
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Nebula 2		;! Object #51
+$Display Name: XSTR("Nebula 2", 1925)
+$Class: Raider
+$Team: Hostile
+$Location: 3955.980957, -0.000092, 129.774506
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Nebula 3		;! Object #52
+$Display Name: XSTR("Nebula 3", 1926)
+$Class: Raider
+$Team: Hostile
+$Location: 3739.248047, 0.000167, 178.674774
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Nebula 4		;! Object #53
+$Display Name: XSTR("Nebula 4", 1927)
+$Class: Raider
+$Team: Hostile
+$Location: 3906.873535, 0.000170, 285.934448
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: X-Ray 2		;! Object #54
+$Display Name: XSTR("X-Ray 2", 1915)
+$Class: Advanced Raider
+$Team: Hostile
+$Location: 4587.489258, -0.000013, -569.744507
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Fraktard
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "MRT-N 2.3 Mangonel#Weak" "MRT-N 2.3 Mangonel#Weak" "MRT-N 2.3 Mangonel#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Orange 2#Start		;! Object #55
+$Display Name: XSTR("Orange 2", 1964)
+$Class: Raptor
+$Callsign: XSTR("Duke", 1937)
+
+$Team: Friendly
+$Location: 27.900000, -29.000000, 100.099998
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	-0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Orange2jump" 50 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "endintro2" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( are-waypoints-done-delay 
+   "Orange 2#Start" 
+   "Orange2jump" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "no-arrival-warp" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Orange 2		;! Object #56
+$Display Name: XSTR("Orange 2", 1964)
+$Class: Raptor
+$Callsign: XSTR("Duke", 1937)
+
+$Team: Friendly
+$Location: -116.364777, -0.000003, -14.184813
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Near Ship
++Arrival Distance: 125
+$Arrival Anchor: Red 3#
+$Arrival Cue: ( is-event-true-delay "obitalive" 23 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 10
+
+$Name: Orange 2#Returntothes		;! Object #57
+$Display Name: XSTR("Orange 2", 1964)
+$Class: Raptor
+$Callsign: XSTR("Duke", 1937)
+
+$Team: Friendly
+$Location: 116.025826, 0.000361, -3816.141846
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Near Ship
++Arrival Distance: 2500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( and 
+   ( has-departed-delay 0 "Orange 2" ) 
+   ( is-event-true-delay "ftlevents2" 0 ) 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus#
++Departure Paths: ( "$Bay21" )
+$Departure Cue: ( true ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-music" "no-arrival-warp" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 10
+
+$Name: THE-172		;! Object #58
+$Display Name: XSTR("THE-172", 1965)
+$Class: Shuttle Mark I
+$Team: Friendly
+$Location: -17.031818, -29.186892, 124.629906
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: engine1a
+$Damage: 100
++Subsystem: engine2a
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "ftlevents2" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 50
+$Texture Replace:
++old: col_shuttle_mk1_g356
++new: col_shuttle_mk1_t172
++old: col_shuttle_mk1_g356-normal
++new: col_shuttle_mk1_t172-normal
++old: col_shuttle_mk1_g356-shine
++new: col_shuttle_mk1_t172-shine
+
+$Name: Zenith 3		;! Object #59
+$Display Name: XSTR("Zenith 3", 1905)
+$Class: Raider
+$Team: Hostile
+$Location: -478.199585, 0.001019, -646.549805
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Zenith 4		;! Object #60
+$Display Name: XSTR("Zenith 4", 1912)
+$Class: Raider
+$Team: Hostile
+$Location: -468.612213, 0.001023, -632.736938
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Halo 3		;! Object #61
+$Display Name: XSTR("Halo 3", 1861)
+$Class: Raider
+$Team: Hostile
+$Location: -1292.947144, -0.001753, 14.484737
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Halo 4		;! Object #62
+$Display Name: XSTR("Halo 4", 1862)
+$Class: Raider
+$Team: Hostile
+$Location: -1253.549438, -0.001712, -133.675385
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Halo 5		;! Object #63
+$Display Name: XSTR("Halo 5", 1875)
+$Class: Raider
+$Team: Hostile
+$Location: -1381.320435, -0.001685, -26.330261
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Halo 6		;! Object #64
+$Display Name: XSTR("Halo 6", 1876)
+$Class: Raider
+$Team: Hostile
+$Location: -1342.762085, -0.001754, -144.750412
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Virus infected
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Victor 1		;! Object #65
+$Display Name: XSTR("Victor 1", 1966)
+$Class: Raider
+$Team: Hostile
+$Location: 1367.007690, -0.000437, -9501.902344
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Fraktard
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( "secondaries-locked" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Victor 2		;! Object #66
+$Display Name: XSTR("Victor 2", 1967)
+$Class: Raider
+$Team: Hostile
+$Location: 1194.045044, 0.000578, -9154.654297
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Fraktard
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( "secondaries-locked" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Victor 3		;! Object #67
+$Display Name: XSTR("Victor 3", 1968)
+$Class: Raider
+$Team: Hostile
+$Location: 1560.967773, 0.000629, -8893.444336
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Fraktard
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( "secondaries-locked" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Victor 4		;! Object #68
+$Display Name: XSTR("Victor 4", 1969)
+$Class: Raider
+$Team: Hostile
+$Location: 1682.302368, -0.000721, -9177.425781
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Fraktard
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "30mm 2.1#Weak" )
++Secondary Banks: ( "SRM-AF 2.6 Pilum#Weak" "SRM-AF 2.6 Pilum#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( "secondaries-locked" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+#Wings		;! 20 total
+
+$Name: Orange
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Orange 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Orange 1"
+)
++Flags: ( )
+
+$Name: Bravo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Bravo 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 250
+$Arrival Anchor: Red 3#
+$Arrival Cue: ( is-event-true-delay "stealthdead" 6 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( < ( hits-left "Orange 1" ) 66 ) 
+   ( < ( hits-left "Bravo 1" ) 40 ) 
+)
+$Ships: (		;! 1 total
+	"Bravo 1"
+)
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" )
+
+$Name: Red
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Red 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( is-event-true-delay "ftlevents2" 0 ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus#
++Departure Paths: ( "$Bay20" )
+$Departure Cue: ( is-event-true-delay 
+   "countdowntimertrigger" 
+   0 
+)
+$Ships: (		;! 3 total
+	"Red 1"
+	"Red 2"
+	"Red 3"
+)
+$AI Goals: ( goals ( ai-guard "Theseus#" 89 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" )
+
+$Name: Constellation
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Constellation 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 4000
+$Arrival Anchor: Orange 1
+$Arrival Cue: ( is-event-true-delay 
+   "jumpcomplete" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "jumpfov2" 0 ) 
+$Ships: (		;! 2 total
+	"Constellation 1"
+	"Constellation 2"
+)
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" "no-departure-warp" )
++Wave Delay Min: 30
++Wave Delay Max: 45
+
+$Name: Alpha
+$Waves: 3
+$Wave Threshold: 1
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Constellation" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "jumpfov2" 0 ) 
+$Ships: (		;! 2 total
+	"Alpha 1"
+	"Alpha 2"
+)
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" "no-departure-warp" )
++Wave Delay Min: 20
++Wave Delay Max: 40
+
+$Name: Halo
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Halo 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( is-event-true-delay "ftlevents2" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 6 total
+	"Halo 1"
+	"Halo 2"
+	"Halo 3"
+	"Halo 4"
+	"Halo 5"
+	"Halo 6"
+)
+$AI Goals: ( goals ( ai-chase-any 89 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" )
++Wave Delay Min: 4
++Wave Delay Max: 16
+
+$Name: Delta
+$Waves: 4
+$Wave Threshold: 0
+$Special Ship: 0		;! Delta 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( is-event-true-delay "ftlevents2" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Delta 1"
+	"Delta 2"
+	"Delta 3"
+)
+$AI Goals: ( goals ( ai-chase "Theseus#" 89 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" )
++Wave Delay Min: 20
++Wave Delay Max: 30
+
+$Name: Kilo
+$Waves: 4
+$Wave Threshold: 1
+$Special Ship: 0		;! Kilo 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( is-event-true-delay "ftlevents2" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Kilo 1"
+	"Kilo 2"
+	"Kilo 3"
+)
+$AI Goals: ( goals ( ai-chase "Theseus#" 89 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" )
++Wave Delay Min: 12
++Wave Delay Max: 30
+
+$Name: Epsilon
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Epsilon 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 4000
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( is-event-true-delay 
+   "tessiehurt" 
+   ( rand 120 150 ) 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus#
+$Departure Cue: ( has-arrived-delay 0 "Epsilon" ) 
+$Ships: (		;! 2 total
+	"Epsilon 1"
+	"Epsilon 2"
+)
++Flags: ( "no-arrival-message" "no-dynamic" )
+
+$Name: Fractal
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Fractal 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 3500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( has-arrived-delay 12 "Epsilon" ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus#
+$Departure Cue: ( has-arrived-delay 0 "Fractal" ) 
+$Ships: (		;! 2 total
+	"Fractal 1"
+	"Fractal 2"
+)
++Flags: ( "no-arrival-message" "no-dynamic" )
+
+$Name: Yellow
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Yellow 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( is-event-true-delay 
+   "heavyraiders" 
+   26 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus#
++Departure Paths: ( "$Bay21" )
+$Departure Cue: ( is-event-true-delay 
+   "countdowntimertrigger" 
+   0 
+)
+$Ships: (		;! 2 total
+	"Yellow 1"
+	"Yellow 2"
+)
+$AI Goals: ( goals ( ai-guard "Theseus#" 89 ) )
++Flags: ( "no-arrival-message" )
+
+$Name: Ion
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Ion 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 4000
+$Arrival Anchor: Theseus#
++Arrival delay: 20
+$Arrival Cue: ( or 
+   ( percent-ships-destroyed 
+      50 
+      "Epsilon" 
+   )
+   ( percent-ships-departed 50 "Epsilon" ) 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus#
+$Departure Cue: ( has-arrived-delay 0 "Ion" ) 
+$Ships: (		;! 2 total
+	"Ion 1"
+	"Ion 2"
+)
++Flags: ( "no-arrival-message" "no-dynamic" )
+
+$Name: Grail
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Grail 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 3500
+$Arrival Anchor: Theseus#
++Arrival delay: 15
+$Arrival Cue: ( or 
+   ( percent-ships-destroyed 
+      50 
+      "Fractal" 
+   )
+   ( percent-ships-departed 50 "Fractal" ) 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus#
+$Departure Cue: ( has-arrived-delay 0 "Grail" ) 
+$Ships: (		;! 2 total
+	"Grail 1"
+	"Grail 2"
+)
++Flags: ( "no-arrival-message" "no-dynamic" )
+
+$Name: X-Ray
+$Waves: 4
+$Wave Threshold: 1
+$Special Ship: 0		;! X-Ray 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 3200
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( is-event-true-delay "howlong" 16 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"X-Ray 1"
+	"X-Ray 2"
+)
+$AI Goals: ( goals ( ai-chase "Theseus#" 89 ) )
++Hotkey: 7
++Flags: ( "no-arrival-message" "no-dynamic" )
++Wave Delay Min: 6
++Wave Delay Max: 12
+
+$Name: Zenith
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Zenith 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 38 "Epsilon" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Zenith 1"
+	"Zenith 2"
+	"Zenith 3"
+	"Zenith 4"
+)
+$AI Goals: ( goals ( ai-chase "Theseus#" 50 ) )
++Flags: ( )
+
+$Name: Limbo
+$Waves: 6
+$Wave Threshold: 1
+$Special Ship: 0		;! Limbo 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( is-event-true-delay "tessiehurt" 80 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Limbo 1"
+	"Limbo 2"
+	"Limbo 3"
+)
+$AI Goals: ( goals ( ai-disarm-ship "Theseus#" 89 ) )
++Hotkey: 5
++Flags: ( "no-arrival-music" "no-arrival-message" "no-dynamic" )
+
+$Name: Optic
+$Waves: 5
+$Wave Threshold: 1
+$Special Ship: 0		;! Optic 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( has-arrived-delay 0 "Limbo" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Optic 1"
+	"Optic 2"
+	"Optic 3"
+	"Optic 4"
+)
+$AI Goals: ( goals ( ai-disarm-ship "Theseus#" 89 ) )
++Hotkey: 6
++Flags: ( "no-arrival-music" "no-arrival-message" "no-dynamic" )
+
+$Name: Jack
+$Waves: 3
+$Wave Threshold: 2
+$Special Ship: 0		;! Jack 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 1500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( has-arrived-delay 0 "Fractal" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Jack 1"
+	"Jack 2"
+	"Jack 3"
+)
+$AI Goals: ( goals ( ai-chase "Theseus#" 89 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Nebula
+$Waves: 4
+$Wave Threshold: 1
+$Special Ship: 0		;! Nebula 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 2500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( has-arrived-delay 12 "X-Ray" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Nebula 1"
+	"Nebula 2"
+	"Nebula 3"
+	"Nebula 4"
+)
+$AI Goals: ( goals ( ai-guard-wing "X-Ray" 89 ) ( ai-chase "Theseus#" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Victor
+$Waves: 3
+$Wave Threshold: 1
+$Special Ship: 0		;! Victor 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 1500
+$Arrival Anchor: Theseus#
+$Arrival Cue: ( has-arrived-delay 0 "X-Ray" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Victor 1"
+	"Victor 2"
+	"Victor 3"
+	"Victor 4"
+)
+$AI Goals: ( goals ( ai-chase-any 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+#Events		;! 183 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[Red 3]" 
+      "Red 3" 
+      1818 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar1[Red 3]" 
+      "Red 3#" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[Signal Strength]" 
+      "Signal Strength" 
+      1971 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[#Theseus Launch Officer]" 
+      "#Theseus Launch Officer" 
+      1882 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar4[#Hammer]" 
+      "#Hammer" 
+      1972 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar5[#Obit]" 
+      "#Obit" 
+      1973 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar6[#Theseus]" 
+      "#Theseus" 
+      1953 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar7[#Orange 2]" 
+      "#Orange 2" 
+      1974 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar8[#Hammmer]" 
+      "#Hammmer" 
+      1975 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar9[#Theseus Landing Signal Officer]" 
+      "#Theseus Landing Signal Officer" 
+      1883 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: =INTRO CUTSCENE=
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-out ) 
+   ( set-cutscene-bars ) 
+   ( set-camera-position 500 150 -1100 ) 
+   ( set-camera-facing 600 0 0 ) 
+   ( lock-primary-weapon "Orange 1" ) 
+   ( lock-secondary-weapon "Orange 1" ) 
+   ( ship-subsys-no-replace 
+      "Orange 1" 
+      ( true ) 
+      "Co_Pilota" 
+   )
+   ( player-use-ai ) 
+   ( add-goal 
+      "Orange 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( ignore-key -1 "C" ) 
+   ( remove-sun-bitmap 0 ) 
+   ( add-sun-bitmap 
+      "Stars_Sun_YHaze" 
+      185 
+      0 
+      210 
+      400 
+      @m3sun[0] 
+   )
+   ( deactivate-glow-maps "THE-172" ) 
+   ( deactivate-glow-points "THE-172" ) 
+)
++Name: setup
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-in 1000 ) 
+   ( set-camera-position 500 150 0 15000 ) 
+   ( set-camera-facing 600 0 0 15000 ) 
+)
++Name: introscene
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( has-time-elapsed 8 ) 
+      ( is-event-incomplete "skipintro" ) 
+   )
+   ( fade-out 1500 ) 
+)
++Name: endintro
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay "endintro" 2 ) 
+      ( is-event-true-delay "skipintro" 2 ) 
+   )
+   ( unset-cutscene-bars ) 
+   ( reset-camera ) 
+   ( reset-fov ) 
+   ( fade-in 1500 ) 
+   ( play-sound-from-file 
+      "Event_Raptor_Standby.ogg" 
+      1 
+   )
+)
++Name: endintro2
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "endintro2" 2 ) 
+   ( send-message-list 
+      "@autoGenVar3[#Theseus Launch Officer]" 
+      "High" 
+      "start" 
+      0 
+      "#Hammer" 
+      "High" 
+      "start2" 
+      15000 
+      "#Hammer" 
+      "High" 
+      "start3" 
+      5000 
+   )
+   ( add-goal 
+      "Orange 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( lock-secondary-weapon "Orange 1" ) 
+   ( lock-primary-weapon "Orange 1" ) 
+   ( repair-subsystem 
+      "Orange 1" 
+      "<all engines>" 
+      100 
+   )
+   ( modify-variable 
+      @red3location[0] 
+      ( rand 1 3 ) 
+   )
+)
++Name: start
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "start" 5 ) 
+      ( is-event-incomplete "launchdir" ) 
+   )
+   ( send-message 
+      "@autoGenVar3[#Theseus Launch Officer]" 
+      "High" 
+      "launch2" 
+   )
+)
++Name: start2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "start2" 5 ) 
+      ( is-event-incomplete "launchdir" ) 
+   )
+   ( send-message 
+      "@autoGenVar3[#Theseus Launch Officer]" 
+      "High" 
+      "launch3" 
+   )
+)
++Name: start3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "start" 1 ) 
+   ( key-reset-multiple "\" ) 
+)
++Name: launchok
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( key-pressed "\" ) 
+   ( ship-lat-maneuver 
+      "Orange 1" 
+      500 
+      50 
+      0 
+      0 
+      ( true ) 
+   )
+   ( key-reset-multiple "\" ) 
+   ( play-sound-from-file 
+      "Event_Raptor_Take_Off.ogg" 
+   )
+   ( set-mobile "Orange 1" ) 
+)
++Name: launchdir
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Launch", 460)
++Objective key:  XSTR("$\$", 628)
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "launchdir" 
+      750 
+   )
+   ( ship-lat-maneuver 
+      "Orange 1" 
+      2000 
+      0 
+      0 
+      100 
+      ( true ) 
+   )
+)
++Name: launch_forward
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( player-not-use-ai ) 
+   ( unlock-secondary-weapon "Orange 1" ) 
+   ( unlock-primary-weapon "Orange 1" ) 
+   ( clear-goals "Orange 1" ) 
+   ( ignore-key 0 "C" ) 
+)
++Name: launch2
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance "Orange 1" "Red 3#" ) 
+         2000 
+      )
+      ( is-event-incomplete "rescuescrewed" ) 
+   )
+   ( friendly-stealth-visible "Red 3#" ) 
+   ( send-message 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "obitdead" 
+   )
+   ( change-iff "Friendly" "Red 3#" ) 
+)
++Name: dir1
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Locate Red 3", 634)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( distance-ship-subsystem 
+            "Orange 1" 
+            "Theseus" 
+            "fighterbay01a" 
+         )
+         150 
+      )
+      ( > 
+         ( distance-ship-subsystem 
+            "Orange 1" 
+            "Theseus" 
+            "fighterbay02a" 
+         )
+         150 
+      )
+   )
+   ( key-reset "Alt-J" ) 
+)
++Name: clearfromtheseus
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( key-pressed "Alt-J" ) 
+   ( play-sound-from-file 
+      "FTL_Jump_3rd.ogg" 
+   )
+   ( modify-variable 
+      @fov[51] 
+      ( get-fov ) 
+   )
+   ( modify-variable 
+      @fovunedited[51] 
+      ( get-fov ) 
+   )
+   ( hud-display-gauge 5000 "warpout" ) 
+)
++Name: jumpdir
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Jump", 639)
++Objective key:  XSTR("$Alt-J$", 640)
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( set-fov @fov[51] ) 
+   ( modify-variable 
+      @fov[51] 
+      ( + @fov[51] 1 ) 
+   )
+)
++Name: jumpfov
++Repeat Count: 80
++Trigger Count: 80
++Interval: 0
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( = @fov[51] 100 ) 
+   ( fade-out 500 1 ) 
+   ( explosion-effect 
+      ( get-object-x "Orange 1" ) 
+      ( get-object-y "Orange 1" ) 
+      ( get-object-z "Orange 1" ) 
+      0 
+      0 
+      5 
+      10 
+      100 
+      0 
+      17 
+      0 
+   )
+   ( play-sound-from-file "FTL_Jump.ogg" ) 
+)
++Name: ftlflash
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-vanish 
+      "Theseus" 
+      "Red 1#" 
+      "Red 3#a" 
+      "Red 2#" 
+      "THE-172" 
+   )
+   ( remove-sun-bitmap 0 ) 
+   ( add-sun-bitmap 
+      "Stars_Sun_BHaze" 
+      50 
+      0 
+      325 
+      700 
+      @sunM2[0] 
+   )
+   ( remove-background-bitmap 0 ) 
+   ( add-background-bitmap 
+      "Stars_Neb_Red04" 
+      30 
+      0 
+      0 
+      800 
+      800 
+      1 
+      1 
+      @bgM2B[0] 
+   )
+   ( add-background-bitmap 
+      "Stars_Neb_Red03" 
+      20 
+      0 
+      30 
+      600 
+      600 
+      1 
+      1 
+      @bgM2c[0] 
+   )
+   ( set-ambient-light 120 120 120 ) 
+   ( remove-weapons ) 
+   ( add-background-bitmap 
+      "Stars_Neb_Red01" 
+      0 
+      0 
+      50 
+      800 
+      800 
+      1 
+      1 
+      @bgM2A[0] 
+   )
+   ( set-skybox-model 
+      "SkyBox_Starfield_01.pof" 
+   )
+   ( modify-variable @system[0] 1 ) 
+)
++Name: ftlevents
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 0
+
+$Formula: ( when ( true ) ( fade-in 500 ) ) 
++Name: ftlflashreset
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( set-fov @fov[51] ) 
+   ( modify-variable 
+      @fov[51] 
+      ( - @fov[51] 1 ) 
+   )
+)
++Name: fovreset
++Repeat Count: 80
++Trigger Count: 80
++Interval: 0
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "fovreset" 3 ) 
+   ( set-fov @fovunedited[51] ) 
+   ( send-message-list 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "jumpcomplete" 
+      0 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "constarrives" 
+      9000 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "jumpcomplete2" 
+      7000 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "jumpcomplete3" 
+      6000 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "jumpcomplete4" 
+      5000 
+   )
+   ( key-reset "Alt-J" ) 
+   ( ship-stealthy "Orange 1" ) 
+   ( modify-variable 
+      @secondaryammo[100] 
+      ( secondary-ammo-pct "Orange 1" 4 ) 
+   )
+   ( modify-variable 
+      @primaryammo[100] 
+      ( get-primary-ammo "Orange 1" 3 ) 
+   )
+)
++Name: jumpcomplete
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-goal-true-delay "stealth" 0 ) 
+   ( do-nothing ) 
+)
++Name: stealthdir
++Repeat Count: 1
++Interval: 1
++Chained: 25
++Objective:  XSTR("Maintain Stealth", 646)
++Team: 0
+
+$Formula: ( every-time 
+   ( and 
+      ( = @signalstrengthtoggle[0] 1 ) 
+      ( < 
+         ( + @missiontime[0] 0 ) 
+         ( mission-time ) 
+      )
+      ( false ) 
+   )
+   ( training-msg 
+      "signalstrength" 
+      "signalstrength" 
+      0 
+      1 
+   )
+   ( modify-variable 
+      @signalstrength[0] 
+      ( distance "Orange 1" "Red 3#" ) 
+   )
+   ( modify-variable 
+      @missiontime[0] 
+      ( mission-time ) 
+   )
+)
++Name: sensorstrength
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "launchdir" 26 ) 
+      ( is-event-incomplete "jumpdir" ) 
+   )
+   ( send-message 
+      "Red 3#a" 
+      "Normal" 
+      "startdialog" 
+   )
+)
++Name: startdialog
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-incomplete "jumpdir" ) 
+   ( send-message 
+      "Red 1#" 
+      "Low" 
+      "startdialog2" 
+   )
+)
++Name: startdialog2
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( is-event-incomplete "jumpdir" ) 
+   ( send-message 
+      "Red 3#a" 
+      "Low" 
+      "startdialog3" 
+   )
+)
++Name: startdialog3
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( is-event-incomplete "jumpdir" ) 
+   ( send-message 
+      "Red 1#" 
+      "Low" 
+      "startdialog4" 
+   )
+)
++Name: startdialog4
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( is-event-incomplete "jumpdir" ) 
+   ( send-message 
+      "Red 3#a" 
+      "Low" 
+      "startdialog5" 
+   )
+)
++Name: startdialog5
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( is-event-incomplete "jumpdir" ) 
+   ( send-message 
+      "Red 1#" 
+      "Low" 
+      "startdialog6" 
+   )
+)
++Name: startdialog6
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( is-event-incomplete "jumpdir" ) 
+   ( send-message 
+      "Red 3#a" 
+      "Low" 
+      "startdialog7" 
+   )
+)
++Name: startdialog7
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( is-event-incomplete "jumpdir" ) 
+   ( send-message 
+      "Red 1#" 
+      "Low" 
+      "startdialog8" 
+   )
+)
++Name: startdialog8
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( and 
+         ( is-event-true-delay "dir1" 0 ) 
+         ( is-event-true-delay 
+            "jumpcomplete" 
+            ( rand 360 420 ) 
+         )
+      )
+      ( skill-level-at-least "Very Easy" ) 
+   )
+   ( do-nothing ) 
+)
++Name: obitdeadeasy
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "dir1" 1 ) 
+      ( is-event-incomplete "obitisdead" ) 
+   )
+   ( send-message-list 
+      "@autoGenVar5[#Obit]" 
+      "High" 
+      "obitalive" 
+      0 
+      "#Hammer" 
+      "High" 
+      "obitalive2" 
+      5000 
+      "@autoGenVar5[#Obit]" 
+      "High" 
+      "obitalive3" 
+      5000 
+      "#Hammer" 
+      "High" 
+      "obitalive4" 
+      5000 
+   )
+   ( modify-variable 
+      @pilotvisiblestart[0] 
+      0 
+   )
+   ( ship-invisible "Red 3#" ) 
+)
++Name: obitalive
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Bravo" ) 
+   ( send-message 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "raiderjump" 
+   )
+)
++Name: raiderjump
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "jumpcomplete" 
+      65 
+   )
+   ( send-message-list 
+      "@autoGenVar6[#Theseus]" 
+      "High" 
+      "theseusattacked" 
+      0 
+      "#Hammer" 
+      "High" 
+      "theseusattacked2" 
+      5000 
+      "#Orange 2" 
+      "High" 
+      "theseusattacked3" 
+      5000 
+   )
+   ( key-reset "Alt-J" ) 
+)
++Name: theseusattacked
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( key-pressed "Alt-J" ) 
+   ( play-sound-from-file 
+      "FTL_Jump_3rd.ogg" 
+   )
+   ( modify-variable 
+      @fov[51] 
+      ( get-fov ) 
+   )
+   ( ship-unstealthy "Orange 1" ) 
+   ( hud-display-gauge 5000 "warpout" ) 
+)
++Name: jumpdir2
++Repeat Count: 1
++Interval: 1
++Chained: 16
++Objective:  XSTR("Jump", 639)
++Objective key:  XSTR("$Alt-J$", 640)
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( set-fov @fov[51] ) 
+   ( modify-variable 
+      @fov[51] 
+      ( + @fov[51] 1 ) 
+   )
+)
++Name: jumpfov2
++Repeat Count: 80
++Trigger Count: 80
++Interval: 0
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "jumpdir2" 0 ) 
+      ( = @fov[51] 100 ) 
+   )
+   ( fade-out 500 1 ) 
+   ( explosion-effect 
+      ( get-object-x "Orange 1" ) 
+      ( get-object-y "Orange 1" ) 
+      ( get-object-z "Orange 1" ) 
+      0 
+      0 
+      5 
+      10 
+      100 
+      0 
+      17 
+      0 
+   )
+   ( play-sound-from-file "FTL_Jump.ogg" ) 
+)
++Name: ftlflash2
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-vanish "Red 3#" "Bravo 1" ) 
+   ( set-ambient-light 0 0 0 ) 
+   ( remove-sun-bitmap 0 ) 
+   ( add-sun-bitmap 
+      "Stars_Sun_YHaze" 
+      185 
+      0 
+      210 
+      400 
+      @m3sun[0] 
+   )
+   ( remove-background-bitmap 0 ) 
+   ( remove-background-bitmap 1 ) 
+   ( remove-background-bitmap 2 ) 
+   ( validate-goal "defend" ) 
+   ( remove-weapons ) 
+   ( add-background-bitmap 
+      "Stars_Neb_Blue05" 
+      120 
+      0 
+      60 
+      1000 
+      1000 
+      1 
+      1 
+      @bgM3[0] 
+   )
+   ( set-skybox-model 
+      "SkyBox_Gas_02.pof" 
+   )
+   ( modify-variable @system[0] 0 ) 
+)
++Name: ftlevents2
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 0
+
+$Formula: ( when ( true ) ( fade-in 500 ) ) 
++Name: ftlflashreset2
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( set-fov @fov[51] ) 
+   ( modify-variable 
+      @fov[51] 
+      ( - @fov[51] 1 ) 
+   )
+)
++Name: fovreset2
++Repeat Count: 80
++Trigger Count: 80
++Interval: 0
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "fovreset2" 3 ) 
+   ( set-fov @fovunedited[51] ) 
+   ( key-reset "Alt-J" ) 
+)
++Name: jumpcomplete2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "jumpcomplete" 
+      14 
+   )
+   ( modify-variable 
+      @signalstrengthtoggle[0] 
+      1 
+   )
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( true ) 
+   )
+)
++Name: sensorstrengthvalid
++Repeat Count: 1
++Interval: 1
++Team: 1
+
+$Formula: ( when 
+   ( or 
+      ( or 
+         ( is-event-true-delay "dir1" 0 ) 
+         ( is-event-true-delay "jumpdir2" 0 ) 
+      )
+      ( is-event-true-delay 
+         "rescuescrewed" 
+         0 
+      )
+   )
+   ( modify-variable 
+      @signalstrengthtoggle[0] 
+      0 
+   )
+   ( hud-gauge-set-active 
+      "MiscSEXPBar" 
+      ( false ) 
+   )
+)
++Name: sensorstrengthinvalid
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( and 
+         ( is-event-true-delay "dir1" 0 ) 
+         ( is-event-true-delay 
+            "jumpcomplete" 
+            ( rand 260 320 ) 
+         )
+      )
+      ( skill-level-at-least "Medium" ) 
+   )
+   ( do-nothing ) 
+)
++Name: obitdeadmed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay "obitdeadmed" 0 ) 
+         ( or 
+            ( is-event-true-delay 
+               "obitdeadeasy" 
+               0 
+            )
+            ( is-event-true-delay 
+               "obitdeadhard" 
+               0 
+            )
+         )
+      )
+      ( is-event-incomplete "obitalive" ) 
+   )
+   ( send-message-list 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "obitdead2" 
+      0 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "obitdead3" 
+      5000 
+   )
+)
++Name: obitisdead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-unstealthy "Orange 1" "Red 3#" ) 
+   ( sabotage-subsystem 
+      "Red 3#" 
+      "Pilota" 
+      101 
+   )
+)
++Name: stealthdead
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "dir1" 0 ) 
+      ( and 
+         ( is-event-true-delay 
+            "jumpcomplete" 
+            ( rand 200 260 ) 
+         )
+         ( skill-level-at-least "Hard" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: obitdeadhard
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "dir1" 0 ) 
+      ( is-event-true-delay "ftlevents2" 0 ) 
+   )
+   ( sabotage-subsystem 
+      "Theseus" 
+      "Hull" 
+      5 
+   )
+   ( sabotage-subsystem 
+      "Red 3" 
+      "Hull" 
+      100 
+   )
+)
++Name: rescueattemptpenalty
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( false ) 
+   ( send-message 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "rescuingobit" 
+   )
+   ( key-reset "Backspace" ) 
+)
++Name: rescuingobitevents
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance "Orange 1" "Red 3#" ) 
+      100 
+   )
+   ( do-nothing ) 
+)
++Name: approach
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Objective:  XSTR("Close Within 100m", 655)
++Team: 0
+
+$Formula: ( when 
+   ( speed 1 ) 
+   ( player-use-ai ) 
+   ( add-goal 
+      "Orange 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( lock-perspective ( true ) 0 ) 
+)
++Name: cutengines
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Cut Engines", 659)
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "exitingmessages" 
+   )
+)
++Name: exitingmessages
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "sardone" 
+   )
+   ( player-not-use-ai ) 
+   ( lock-perspective ( false ) ) 
+)
++Name: headingback
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < 
+            ( distance "Constellation" "Red 3#" ) 
+            500 
+         )
+         ( < ( distance "Alpha" "Red 3#" ) 500 ) 
+      )
+      ( is-event-incomplete "orange2rescue" ) 
+   )
+   ( add-goal 
+      "Constellation" 
+      ( ai-chase "Red 3#" 89 ) 
+   )
+   ( ship-unstealthy "Red 3#" ) 
+   ( send-message 
+      "@autoGenVar8[#Hammmer]" 
+      "High" 
+      "attacking" 
+   )
+)
++Name: rescuescrewed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( or 
+            ( < 
+               ( distance "Orange 1" "Alpha" ) 
+               200 
+            )
+            ( < 
+               ( distance "Orange 1" "Constellation" ) 
+               200 
+            )
+         )
+         ( is-event-true-delay 
+            "stealthcheck" 
+            0 
+         )
+      )
+      ( is-event-true-delay 
+         "jumpcomplete" 
+         25 
+      )
+      ( is-event-incomplete "ftlevents2" ) 
+   )
+   ( ship-unstealthy "Orange 1" ) 
+   ( send-message 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "detected" 
+   )
+)
++Name: unstealth
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( = @alphapatrol[0] 1 ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-waypoints "Raiderpatrol2" 89 ) 
+   )
+)
++Name: alphapatrol1
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( = @alphapatrol[0] 2 ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-waypoints "Raiderpatrol2rand" 89 ) 
+   )
+)
++Name: alphapatrol2
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable 
+      @alphapatrol[0] 
+      ( rand 1 2 ) 
+   )
+)
++Name: alphapatrolrandom
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable 
+      @constellationpatrol[0] 
+      ( rand 1 2 ) 
+   )
+)
++Name: constellationpatrolrandom
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( = @constellationpatrol[0] 1 ) 
+   ( add-goal 
+      "Constellation" 
+      ( ai-waypoints "Raiderpatrol" 89 ) 
+   )
+)
++Name: constellationpatrol1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @constellationpatrol[0] 2 ) 
+   ( add-goal 
+      "Constellation" 
+      ( ai-waypoints "Raiderpatrolrand" 89 ) 
+   )
+)
++Name: constellationpatrol2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "ftlevents2" 0 ) 
+   ( sabotage-subsystem 
+      "Theseus" 
+      "Hull" 
+      8 
+   )
+)
++Name: theseusdamage
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "ftlevents2" 0 ) 
+   ( set-object-position 
+      "Orange 1" 
+      ( + ( get-object-x "Theseus#" ) 1000 ) 
+      ( + ( get-object-y "Theseus#" ) 1080 ) 
+      ( + ( get-object-z "Theseus#" ) 1200 ) 
+   )
+)
++Name: tessieproximity
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "jumpcomplete2" 
+      1 
+   )
+   ( send-message-list 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "tessiehurt" 
+      0 
+      "Theseus#" 
+      "High" 
+      "tessiehurt2" 
+      5000 
+      "Theseus#" 
+      "High" 
+      "tessiehurt3" 
+      5000 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "tessiehurt4" 
+      5000 
+      "Theseus#" 
+      "High" 
+      "tessiehurt5" 
+      5000 
+   )
+)
++Name: tessiehurt
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Theseus#" ) 
+   ( do-nothing ) 
+)
++Name: defendtheseus
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Defend Theseus", 466)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Delta" ) 
+   ( do-nothing ) 
+)
++Name: interceptdelta
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Delta", 501)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Halo" ) 
+   ( do-nothing ) 
+)
++Name: destroyhalo
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Halo", 671)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Kilo" ) 
+   ( do-nothing ) 
+)
++Name: destroykilo
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Kilo", 511)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Epsilon" ) 
+   ( do-nothing ) 
+)
++Name: interceptepsilon
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Epsilon", 673)
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Epsilon" ) 
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "heavyraiders" 
+   )
+)
++Name: heavyraiders
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( = @centurionsaboard[0] 5 ) 
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "centurions" 
+   )
+)
++Name: centurions
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Epsilon 1" 
+      "Epsilon 2" 
+      "Ion 1" 
+      "Ion 2" 
+      "Fractal 1" 
+      "Fractal 2" 
+      "Grail 1" 
+      "Grail 2" 
+   )
+   ( has-departed-delay 0 "<argument>" ) 
+   ( modify-variable 
+      @centurionsaboard[0] 
+      ( + @centurionsaboard[0] 5 ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: centurionsaboard
++Repeat Count: 8
++Trigger Count: 8
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Fractal" ) 
+   ( do-nothing ) 
+)
++Name: destroyfoxtrot
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Fractal", 518)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( skill-level-at-least "Very Easy" ) 
+      ( = @centurionsaboard[0] 30 ) 
+   )
+   ( do-nothing ) 
+)
++Name: tessiescrewedeasy
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( skill-level-at-least "Medium" ) 
+      ( = @centurionsaboard[0] 20 ) 
+   )
+   ( do-nothing ) 
+)
++Name: tessiescrewedmedium
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( skill-level-at-least "Hard" ) 
+      ( = @centurionsaboard[0] 10 ) 
+   )
+   ( do-nothing ) 
+)
++Name: tessiescrewedhard
++Repeat Count: 1
++Interval: 1
++Team: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "tessiescrewedeasy" 
+            0 
+         )
+         ( or 
+            ( is-event-true-delay 
+               "tessiescrewedmedium" 
+               0 
+            )
+            ( is-event-true-delay 
+               "tessiescrewedhard" 
+               0 
+            )
+         )
+      )
+      ( is-event-true-delay 
+         "anothercenturionaboard" 
+         8 
+      )
+   )
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "toomanycenturions" 
+   )
+)
++Name: tessiescrewed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( = @centurionsaboard[0] 10 ) 
+      ( is-event-true-delay "centurions" 6 ) 
+   )
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "anothercenturionaboard" 
+   )
+)
++Name: anothercenturionaboard
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Yellow" ) 
+   ( send-message 
+      "Yellow 1" 
+      "High" 
+      "yellowarrives" 
+   )
+)
++Name: yellowarrives
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "tessiescrewed" 
+      12 
+   )
+   ( send-message-list 
+      "Theseus#" 
+      "High" 
+      "tessiescrewed" 
+      0 
+      "Theseus#" 
+      "High" 
+      "tessiescrewed2" 
+      5000 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "tessiescrewed3" 
+      5000 
+   )
+)
++Name: tessiescrewedmessages
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Theseus#" ) 
+   ( send-message 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "theseusdead" 
+   )
+)
++Name: tessiedead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( destroyed-or-departed-delay 
+         0 
+         "Epsilon" 
+         "Fractal" 
+         "Grail" 
+         "Ion" 
+      )
+      ( is-event-incomplete "tessiescrewed" ) 
+   )
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "heavyraidersdead" 
+   )
+)
++Name: heavyraidersdead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "heavyraidersdead" 
+         25 
+      )
+      ( > @centurionsaboard[0] 5 ) 
+   )
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "beatenbackboarders" 
+   )
+)
++Name: beatenbackboardersbad
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "heavyraidersdead" 
+         25 
+      )
+      ( and 
+         ( or 
+            ( < @centurionsaboard[0] 5 ) 
+            ( = @centurionsaboard[0] 5 ) 
+         )
+         ( > @centurionsaboard[0] 1 ) 
+      )
+   )
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "beatenbackboardersgood" 
+   )
+)
++Name: beatenbackboardersgood
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance "Epsilon" "Theseus#" ) 
+         3000 
+      )
+      ( < 
+         ( distance "Fractal" "Theseus#" ) 
+         3000 
+      )
+   )
+   ( send-message-list 
+      "Theseus#" 
+      "High" 
+      "raidersareboarders" 
+      0 
+   )
+)
++Name: raidersareboarders
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "baseshiparrivesend" 
+      10 
+   )
+   ( do-nothing ) 
+)
++Name: missionend
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( or 
+            ( < 
+               ( distance-ship-subsystem 
+                  "Orange 1" 
+                  "Theseus#" 
+                  "fighterbay01a" 
+               )
+               35 
+            )
+            ( < 
+               ( distance-ship-subsystem 
+                  "Orange 1" 
+                  "Theseus#" 
+                  "fighterbay02a" 
+               )
+               35 
+            )
+         )
+         ( not 
+            ( skill-level-at-least "Medium" ) 
+         )
+      )
+      ( or 
+         ( and 
+            ( < ( current-speed "Orange 1" ) 5 ) 
+            ( is-in-box 
+               "Orange 1" 
+               120 
+               200 
+               -49 
+               -28 
+               -150 
+               315 
+               "Theseus#" 
+            )
+         )
+         ( and 
+            ( < ( current-speed "Orange 1" ) 5 ) 
+            ( is-in-box 
+               "Orange 1" 
+               -200 
+               -120 
+               -49 
+               -28 
+               -150 
+               315 
+               "Theseus#" 
+            )
+         )
+      )
+   )
+   ( send-message-list 
+      "@autoGenVar9[#Theseus Landing Signal Officer]" 
+      "High" 
+      "landed" 
+      0 
+      "@autoGenVar9[#Theseus Landing Signal Officer]" 
+      "High" 
+      "landed2" 
+      5000 
+   )
+   ( set-camera-shudder 1000 800 ) 
+   ( set-immobile "Orange 1" "Theseus#" ) 
+   ( play-sound-from-file 
+      "Landing_Mag_Lock.ogg" 
+   )
+   ( ship-guardian "Orange 1" ) 
+   ( clear-goals "Theseus" ) 
+)
++Name: landing
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Enter Flightpod", 438)
++Team: 0
+
+$Formula: ( when ( true ) ( fade-out 500 ) ) 
++Name: landingfade
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: endmission
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "missionend" 0 ) 
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file 
+      "TheseusDepartingLong.ogg" 
+   )
+)
++Name: countdowntimertrigger
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable 
+      @countdowntimer[60] 
+      ( - @countdowntimer[60] 1 ) 
+   )
+   ( training-msg "countdown-timer" ) 
+)
++Name: countdowntimer
++Repeat Count: 60
++Trigger Count: 60
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Theseus#" ) 
+   ( training-msg "theseusjumped" ) 
+)
++Name: theseusjumped
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "tessiescrewedmessages" 
+      22 
+   )
+   ( send-message-list 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "tessiedefinatelyscrewed" 
+      0 
+   )
+)
++Name: tessiedefinatelyscrewed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "tessiedefinatelyscrewed" 
+      22 
+   )
+   ( send-message-list 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "tessieturretslocked" 
+      0 
+   )
+   ( turret-lock-all "Theseus#" ) 
+)
++Name: tessieturretslocked
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 
+      0 
+      "Cylon Basestar#End1" 
+   )
+   ( send-message-list 
+      "Theseus#" 
+      "High" 
+      "baseshiparriveend" 
+      0 
+      "Theseus#" 
+      "High" 
+      "baseshiparriveend2" 
+      5000 
+      "@autoGenVar9[#Theseus Landing Signal Officer]" 
+      "High" 
+      "landing" 
+      5000 
+      "@autoGenVar9[#Theseus Landing Signal Officer]" 
+      "High" 
+      "landing2" 
+      5000 
+   )
+)
++Name: baseshiparrivesend
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( or 
+         ( is-event-true-delay 
+            "beatenbackboardersbad" 
+            8 
+         )
+         ( is-event-true-delay 
+            "beatenbackboardersgood" 
+            8 
+         )
+      )
+      ( is-event-true-delay "noboarders" 8 ) 
+   )
+   ( send-message-list 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "howlong" 
+      0 
+      "Theseus#" 
+      "High" 
+      "howlong2" 
+      5000 
+   )
+)
++Name: howlong
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "X-Ray" ) 
+   ( do-nothing ) 
+)
++Name: destroyxray
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept X-Ray", 685)
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "X-Ray" ) 
+   ( send-message-list 
+      "Red 3" 
+      "Normal" 
+      "x-ray" 
+      0 
+      "Theseus#" 
+      "Normal" 
+      "x-ray2" 
+      5000 
+   )
+)
++Name: xray
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "howlong" 140 ) 
+   ( send-message 
+      "Theseus#" 
+      "Normal" 
+      "FTLrepaired" 
+   )
+)
++Name: ftlrepaired
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( and 
+         ( is-destroyed-delay 0 "Red 3#" ) 
+         ( or 
+            ( is-event-true-delay "obitalive" 8 ) 
+            ( is-event-true-delay 
+               "rescuescrewed" 
+               8 
+            )
+         )
+      )
+      ( is-event-incomplete "sociopath" ) 
+   )
+   ( send-message-list 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "lostobit" 
+      0 
+   )
+)
++Name: obitdeadraiders
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( > 
+      ( get-damage-caused 
+         "Red 3#" 
+         "Orange 1" 
+      )
+      50 
+   )
+   ( send-message 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "sociopath" 
+   )
+)
++Name: sociopath
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when ( true ) ( fade-out 500 2 ) ) 
++Name: sociopath2
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Team: 0
+
+$Formula: ( when ( true ) ( fade-out 1000 ) ) 
++Name: sociopath3
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 0
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: sociopath4
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "heavyraidersdead" 
+         8 
+      )
+      ( = @centurionsaboard[0] 0 ) 
+   )
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "noboarders" 
+   )
+)
++Name: noboarders
++Repeat Count: 1
++Interval: 1
++Team: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-incomplete "endmission" ) 
+      ( has-departed-delay 0 "Theseus#" ) 
+   )
+   ( send-message-list 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "jumpedout" 
+      0 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "jumpedout2" 
+      5000 
+   )
+   ( unprotect-ship "Orange 1" ) 
+)
++Name: jumpedout
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( fade-out 1000 ) ) 
++Name: missionfail
++Repeat Count: 1
++Interval: 1
++Chained: 18
++Team: 1
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: missionfail2
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Limbo" ) 
+   ( do-nothing ) 
+)
++Name: limbo
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Limbo", 686)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Optic" ) 
+   ( do-nothing ) 
+)
++Name: optic
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Optic", 532)
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Limbo" ) 
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "disablersarrive" 
+   )
+)
++Name: disablersarrive
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Jack" ) 
+   ( do-nothing ) 
+)
++Name: destroyjack
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Jack", 687)
+
+$Formula: ( when 
+   ( true ) 
+   ( set-subsystem-strength 
+      "Theseus" 
+      "Hull" 
+      @theseushull2[70] 
+   )
+)
++Name: theseushull
++Repeat Count: 1
++Interval: 1
++Team: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "landing" 0 ) 
+   ( modify-variable 
+      @theseushull3[60] 
+      ( hits-left "Theseus#" ) 
+   )
+)
++Name: savetheseushull
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "ftlflash" 0 ) 
+   ( modify-variable 
+      @theseushull2[70] 
+      ( hits-left "Theseus" ) 
+   )
+)
++Name: transfertheseushull
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "obitalive" 28 ) 
+   ( ship-unstealthy "Orange 1" ) 
+   ( ship-visible "Orange 1" ) 
+   ( add-goal 
+      "Constellation" 
+      ( ai-chase "Orange 1" 89 ) 
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Orange 1" 89 ) 
+   )
+)
++Name: allcylonsalerted
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "jumpcomplete" 
+         25 
+      )
+      ( or 
+         ( < 
+            ( get-primary-ammo "Orange 1" 3 ) 
+            @primaryammo[100] 
+         )
+         ( < 
+            ( secondary-ammo-pct "Orange 1" 4 ) 
+            @secondaryammo[100] 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: stealthcheck
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Theseus#" ) 55 ) 
+      ( is-event-incomplete "tessiescrewed" ) 
+   )
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "theseusheavydamage" 
+   )
+)
++Name: theseusheavydamage
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Theseus#" ) 30 ) 
+      ( is-event-incomplete "tessiescrewed" ) 
+   )
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "theseuscriticaldamage" 
+   )
+)
++Name: theseuscriticaldamage
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Nebula" ) 
+   ( do-nothing ) 
+)
++Name: nebula
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Nebula", 688)
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable 
+      @centurionsaboard[0] 
+      0 
+   )
+)
++Name: missionstartcenturionvar
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable 
+      @heavyraiderprot[0] 
+      ( rand 1 8 ) 
+   )
+)
++Name: randheavyraider
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @heavyraiderprot[0] 1 ) 
+   ( protect-ship "Epsilon 1" ) 
+)
++Name: sneakyhraider1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @heavyraiderprot[0] 2 ) 
+   ( protect-ship "Epsilon 2" ) 
+)
++Name: sneakyhraider2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @heavyraiderprot[0] 3 ) 
+   ( protect-ship "Ion 1" ) 
+)
++Name: sneakyhraider3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @heavyraiderprot[0] 4 ) 
+   ( protect-ship "Ion 2" ) 
+)
++Name: sneakyhraider4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @heavyraiderprot[0] 5 ) 
+   ( protect-ship "Fractal 1" ) 
+)
++Name: sneakyhraider5
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @heavyraiderprot[0] 6 ) 
+   ( protect-ship "Fractal 2" ) 
+)
++Name: sneakyhraider6
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @heavyraiderprot[0] 7 ) 
+   ( protect-ship "Grail 1" ) 
+)
++Name: sneakyhraider7
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @heavyraiderprot[0] 8 ) 
+   ( protect-ship "Grail 2" ) 
+)
++Name: sneakyhraider8
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Orange 2" ) 
+   ( send-message 
+      "Orange 2" 
+      "High" 
+      "orange2rescue" 
+   )
+   ( protect-ship "Red 3#" ) 
+)
++Name: orange2rescue
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Orange 2" 
+      ( ai-dock 
+         "Red 3#" 
+         "Door Dock" 
+         "Seat_Dock_rear" 
+         89 
+      )
+   )
+   ( cap-waypoint-speed "Orange 2" 12 ) 
+)
++Name: orange2rescue2
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( < 
+      ( distance "Orange 2" "Red 3#" ) 
+      70 
+   )
+   ( rotating-subsys-set-turn-time 
+      "Orange 2" 
+      "Doora" 
+      -15000 
+   )
+   ( free-rotating-subsystem 
+      "Orange 2" 
+      "Doora" 
+   )
+)
++Name: orange2door
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( lock-rotating-subsystem 
+      "Orange 2" 
+      "Doora" 
+   )
+)
++Name: orange2doorstop
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance "Orange 2" "Red 3#" ) 
+         1 
+      )
+      ( has-docked-delay 
+         "Orange 2" 
+         "Red 3#" 
+         1 
+         0 
+      )
+   )
+   ( jettison-cargo-delay "Orange 2" 0 ) 
+   ( ship-vanish "Red 3#" ) 
+)
++Name: Red3rescued
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( rotating-subsys-set-turn-time 
+      "Orange 2" 
+      "Doora" 
+      15000 
+   )
+   ( free-rotating-subsystem 
+      "Orange 2" 
+      "Doora" 
+   )
+)
++Name: red3saveddoorclose
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( lock-rotating-subsystem 
+      "Orange 2" 
+      "Doora" 
+   )
+)
++Name: orange2doorstop2
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( is-event-true-delay "Red3rescued" 3 ) 
+   ( send-message-list 
+      "Orange 2" 
+      "High" 
+      "pilotsecure" 
+      0 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "safetoreturn" 
+      5000 
+   )
+)
++Name: orange2escape
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Orange 2" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: orange2escape2
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Orange 2 landed" 
+      0 
+   )
+   ( send-message 
+      "Theseus#" 
+      "High" 
+      "orange2aboard" 
+   )
+)
++Name: orange2aboard
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 0 "Orange 2" ) 
+      ( is-destroyed-delay 
+         0 
+         "Orange 2#Returntothes" 
+      )
+   )
+   ( send-message 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "orange2dead" 
+   )
+)
++Name: orange2dead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( skill-level-at-least "Very Easy" ) 
+   ( modify-variable 
+      @skillevelmodifier[0] 
+      20 
+   )
+)
++Name: sensorsdifficultyeasy
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( skill-level-at-least "Medium" ) 
+   ( modify-variable 
+      @skillevelmodifier[0] 
+      10 
+   )
+)
++Name: sensorsdifficultymedium
++Repeat Count: 1
++Interval: 1
++Team: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "jumpcomplete" 
+         32 
+      )
+      ( not ( skill-level-at-least "Hard" ) ) 
+   )
+   ( send-message 
+      "@autoGenVar4[#Hammer]" 
+      "High" 
+      "readingdirectioneasy" 
+   )
+   ( modify-variable 
+      @pilotvisiblestart[0] 
+      1 
+   )
+)
++Name: readingdirectioneasy
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( and 
+         ( = @pilotvisiblestart[0] 1 ) 
+         ( = @pilotvisible[0] 0 ) 
+      )
+      ( < 
+         ( + @missiontime2[0] ( rand 10 20 ) ) 
+         ( mission-time ) 
+      )
+   )
+   ( ship-unstealthy "Red 3#" ) 
+   ( modify-variable @pilotvisible[0] 1 ) 
+   ( modify-variable 
+      @missiontime2[0] 
+      ( mission-time ) 
+   )
+   ( ship-invisible "Red 3#" ) 
+)
++Name: pilotvisible
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( and 
+         ( = @pilotvisiblestart[0] 1 ) 
+         ( = @pilotvisible[0] 1 ) 
+      )
+      ( < 
+         ( + @missiontime2[0] ( rand 5 10 ) ) 
+         ( mission-time ) 
+      )
+   )
+   ( ship-stealthy "Red 3#" ) 
+   ( modify-variable @pilotvisible[0] 0 ) 
+   ( modify-variable 
+      @missiontime2[0] 
+      ( mission-time ) 
+   )
+   ( ship-visible "Red 3#" ) 
+)
++Name: pilotinvisible
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( are-waypoints-done-delay 
+      "Epsilon 1" 
+      "hvyraiderpath1" 
+      0 
+   )
+   ( add-goal 
+      "Epsilon 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( modify-variable 
+      @centurionsaboard[0] 
+      ( + @centurionsaboard[0] 5 ) 
+   )
+   ( protect-ship "Epsilon 1" ) 
+)
++Name: epsilon1land
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( are-waypoints-done-delay 
+      "Epsilon 2" 
+      "hvyraiderpath2" 
+      0 
+   )
+   ( add-goal 
+      "Epsilon 2" 
+      ( ai-play-dead 89 ) 
+   )
+   ( modify-variable 
+      @centurionsaboard[0] 
+      ( + @centurionsaboard[0] 5 ) 
+   )
+   ( protect-ship "Epsilon 2" ) 
+)
++Name: epsilon2land
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( are-waypoints-done-delay 
+      "Fractal 1" 
+      "hvyraiderpath3" 
+      0 
+   )
+   ( add-goal 
+      "Fractal 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( modify-variable 
+      @centurionsaboard[0] 
+      ( + @centurionsaboard[0] 5 ) 
+   )
+   ( protect-ship "Fractal 1" ) 
+)
++Name: fractal1land
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( are-waypoints-done-delay 
+      "Fractal 2" 
+      "hvyraiderpath4" 
+      0 
+   )
+   ( add-goal 
+      "Fractal 2" 
+      ( ai-play-dead 89 ) 
+   )
+   ( modify-variable 
+      @centurionsaboard[0] 
+      ( + @centurionsaboard[0] 5 ) 
+   )
+   ( protect-ship "Fractal 2" ) 
+)
++Name: fractal2land
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( are-waypoints-done-delay 
+      "Ion 1" 
+      "hvyraiderpath5" 
+      0 
+   )
+   ( add-goal 
+      "Ion 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( modify-variable 
+      @centurionsaboard[0] 
+      ( + @centurionsaboard[0] 5 ) 
+   )
+   ( protect-ship "Ion 1" ) 
+)
++Name: ion1land
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( are-waypoints-done-delay 
+      "Ion 2" 
+      "hvyraiderpath6" 
+      0 
+   )
+   ( add-goal 
+      "Ion 2" 
+      ( ai-play-dead 89 ) 
+   )
+   ( modify-variable 
+      @centurionsaboard[0] 
+      ( + @centurionsaboard[0] 5 ) 
+   )
+   ( protect-ship "Ion 2" ) 
+)
++Name: ion2land
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( are-waypoints-done-delay 
+      "Grail 1" 
+      "hvryraiderpath7" 
+      0 
+   )
+   ( add-goal 
+      "Grail 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( modify-variable 
+      @centurionsaboard[0] 
+      ( + @centurionsaboard[0] 5 ) 
+   )
+   ( protect-ship "Grail 1" ) 
+)
++Name: grail1land
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( are-waypoints-done-delay 
+      "Grail 2" 
+      "hvryraiderpath8" 
+      0 
+   )
+   ( add-goal 
+      "Grail 2" 
+      ( ai-play-dead 89 ) 
+   )
+   ( modify-variable 
+      @centurionsaboard[0] 
+      ( + @centurionsaboard[0] 5 ) 
+   )
+   ( protect-ship "Grail 2" ) 
+)
++Name: grail2land
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( key-pressed "Spacebar" ) 
+         ( key-pressed "Left Ctrl" ) 
+      )
+      ( is-event-incomplete "endintro" ) 
+   )
+   ( key-reset-multiple 
+      "Spacebar" 
+      "Left Ctrl" 
+   )
+   ( fade-out 1500 ) 
+)
++Name: skipintro
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( or 
+            ( is-event-true-delay "endintro" 2 ) 
+            ( is-event-true-delay "skipintro" 2 ) 
+         )
+      )
+      ( is-event-true-delay "setup" 1 ) 
+   )
+   ( when-argument 
+      ( in-sequence 
+         "B" 
+         "a" 
+         "t" 
+         "t" 
+         "l" 
+         "e" 
+         "s" 
+         "t" 
+         "a" 
+         "r" 
+         " " 
+         "T" 
+         "h" 
+         "e" 
+         "s" 
+         "e" 
+         "u" 
+         "s" 
+      )
+      ( = 
+         ( mod @IntroSubtitleCounter[0] 2 ) 
+         0 
+      )
+      ( string-concatenate 
+         "@IntroSubtitleLine1[ ]" 
+         "<argument>" 
+         "@IntroSubtitleLine1[ ]" 
+      )
+      ( invalidate-argument "<argument>" ) 
+   )
+   ( when 
+      ( < @IntroSubtitleCounter[0] 350 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage1" 
+         4 
+         74 
+         ( false ) 
+         ( false ) 
+         1 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "font02.vf" 
+      )
+      ( show-subtitle-text 
+         "AutoGeneratedMessage2" 
+         4 
+         76 
+         ( false ) 
+         ( false ) 
+         1 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "font02.vf" 
+      )
+   )
+   ( when-argument 
+      ( in-sequence 
+         "O" 
+         "p" 
+         "h" 
+         "i" 
+         "o" 
+         "n" 
+         " " 
+         "H" 
+         "i" 
+         "g" 
+         "h" 
+         " " 
+         "O" 
+         "r" 
+         "b" 
+         "i" 
+         "t" 
+      )
+      ( = 
+         ( mod @IntroSubtitleCounter[0] 2 ) 
+         0 
+      )
+      ( string-concatenate 
+         "@IntroSubtitleLine2[ ]" 
+         "<argument>" 
+         "@IntroSubtitleLine2[ ]" 
+      )
+      ( invalidate-argument "<argument>" ) 
+   )
+)
++Name: subtitle
++Repeat Count: 276447231
++Interval: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "setup" 1 ) 
+   ( play-sound-from-file 
+      "Interface_Text_Write" 
+   )
+)
++Name: subtitleaudio
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ===landings===
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of "Red 1" "Red 2" "Red 3" ) 
+   ( and 
+      ( < 
+         ( distance-ship-subsystem 
+            "<argument>" 
+            "Theseus#" 
+            "fighterbay02a" 
+         )
+         @Slow_distance_20[600] 
+      )
+      ( is-event-true-delay 
+         "countdowntimertrigger" 
+         0 
+      )
+   )
+   ( cap-waypoint-speed "<argument>" 45 ) 
+   ( invalidate-argument "<argument>" ) 
+   ( protect-ship "<argument>" ) 
+   ( modify-variable 
+      @Slow_distance_20[600] 
+      ( + @Slow_distance_20[600] 30 ) 
+   )
+)
++Name: Slow-20
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when-argument 
+   ( any-of "Red 1" "Red 2" "Red 3" ) 
+   ( and 
+      ( < 
+         ( distance-ship-subsystem 
+            "<argument>" 
+            "Theseus#" 
+            "fighterbay02a" 
+         )
+         @Land_distance_20[100] 
+      )
+      ( is-event-true-delay 
+         "countdowntimertrigger" 
+         0 
+      )
+   )
+   ( clear-goals "<argument>" ) 
+   ( add-goal 
+      "<argument>" 
+      ( ai-play-dead 89 ) 
+   )
+   ( ship-lat-maneuver 
+      "<argument>" 
+      10000 
+      -25 
+      0 
+      0 
+      ( true ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+   ( modify-variable 
+      @Land_distance_20[100] 
+      ( + @Land_distance_20[100] 30 ) 
+   )
+)
++Name: Land-20
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Orange 2#Returntothes" 
+      "Yellow 1" 
+      "Yellow 2" 
+   )
+   ( and 
+      ( < 
+         ( distance-ship-subsystem 
+            "<argument>" 
+            "Theseus#" 
+            "fighterbay02a" 
+         )
+         @Slow_distance_21[600] 
+      )
+      ( or 
+         ( is-event-true-delay 
+            "countdowntimertrigger" 
+            0 
+         )
+         ( string-equals 
+            "<argument>" 
+            "Orange 2#Returntothes" 
+         )
+      )
+   )
+   ( cap-waypoint-speed "<argument>" 15 ) 
+   ( invalidate-argument "<argument>" ) 
+   ( protect-ship "<argument>" ) 
+   ( modify-variable 
+      @Slow_distance_21[600] 
+      ( + @Slow_distance_21[600] 30 ) 
+   )
+)
++Name: Slow-21
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Orange 2#Returntothes" 
+      "Yellow 1" 
+      "Yellow 2" 
+   )
+   ( and 
+      ( < 
+         ( distance-ship-subsystem 
+            "<argument>" 
+            "Theseus#" 
+            "fighterbay02a" 
+         )
+         @Land_distance_21[140] 
+      )
+      ( or 
+         ( is-event-true-delay 
+            "countdowntimertrigger" 
+            0 
+         )
+         ( string-equals 
+            "<argument>" 
+            "Orange 2#Returntothes" 
+         )
+      )
+   )
+   ( clear-goals "<argument>" ) 
+   ( add-goal 
+      "<argument>" 
+      ( ai-play-dead 89 ) 
+   )
+   ( ship-lat-maneuver 
+      "<argument>" 
+      10000 
+      -25 
+      0 
+      0 
+      ( true ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+   ( modify-variable 
+      @Land_distance_21[140] 
+      ( + @Land_distance_21[140] 30 ) 
+   )
+)
++Name: Land-21
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when-argument 
+   ( any-of "Red 1" "Red 2" "Red 3" ) 
+   ( and 
+      ( or 
+         ( and 
+            ( < ( current-speed "<argument>" ) 5 ) 
+            ( is-in-box 
+               "<argument>" 
+               120 
+               200 
+               -47 
+               -30 
+               -150 
+               315 
+               "Theseus#" 
+            )
+         )
+         ( and 
+            ( < ( current-speed "<argument>" ) 5 ) 
+            ( is-in-box 
+               "<argument>" 
+               -200 
+               -120 
+               -47 
+               -30 
+               -150 
+               315 
+               "Theseus#" 
+            )
+         )
+      )
+      ( or 
+         ( is-event-true-delay 
+            "countdowntimertrigger" 
+            0 
+         )
+         ( string-equals 
+            "<argument>" 
+            "Orange 2#Returntothes" 
+         )
+      )
+   )
+   ( set-immobile "<argument>" ) 
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Post-land-immobilize
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Orange 2#Returntothes" 
+      "Yellow 1" 
+      "Yellow 2" 
+      "Epsilon 1" 
+      "Epsilon 2" 
+      "Ion 1" 
+      "Ion 2" 
+      "Fractal 1" 
+      "Fractal 2" 
+      "Grail 1" 
+      "Grail 2" 
+   )
+   ( and 
+      ( or 
+         ( and 
+            ( < ( current-speed "<argument>" ) 5 ) 
+            ( is-in-box 
+               "<argument>" 
+               120 
+               200 
+               -49 
+               -28 
+               -150 
+               315 
+               "Theseus#" 
+            )
+         )
+         ( and 
+            ( < ( current-speed "<argument>" ) 5 ) 
+            ( is-in-box 
+               "<argument>" 
+               -200 
+               -120 
+               -49 
+               -28 
+               -150 
+               315 
+               "Theseus#" 
+            )
+         )
+      )
+      ( or 
+         ( is-event-true-delay 
+            "countdowntimertrigger" 
+            0 
+         )
+         ( string-equals 
+            "<argument>" 
+            "Orange 2#Returntothes" 
+         )
+      )
+   )
+   ( set-immobile "<argument>" ) 
+   ( invalidate-argument "<argument>" ) 
+)
++Name: Post-land-immobilize-large
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( is-destroyed-delay 
+            0 
+            "Orange 2#Returntothes" 
+         )
+      )
+      ( or 
+         ( and 
+            ( < 
+               ( current-speed 
+                  "Orange 2#Returntothes" 
+               )
+               5 
+            )
+            ( is-in-box 
+               "Orange 2#Returntothes" 
+               120 
+               200 
+               -49 
+               -28 
+               -150 
+               315 
+               "Theseus#" 
+            )
+         )
+         ( and 
+            ( < 
+               ( current-speed 
+                  "Orange 2#Returntothes" 
+               )
+               5 
+            )
+            ( is-in-box 
+               "Orange 2#Returntothes" 
+               -200 
+               -120 
+               -49 
+               -28 
+               -150 
+               315 
+               "Theseus#" 
+            )
+         )
+      )
+   )
+   ( ship-invulnerable 
+      "Orange 2#Returntothes" 
+   )
+   ( add-remove-escort 
+      "Orange 2#Returntothes" 
+      0 
+   )
+)
++Name: Orange 2 landed
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Red 1" 
+      "Red 2" 
+      "Red 3" 
+      "Orange 2#Returntothes" 
+      "Yellow 1" 
+      "Yellow 2" 
+      "Epsilon 1" 
+      "Epsilon 2" 
+      "Ion 1" 
+      "Ion 2" 
+      "Fractal 1" 
+      "Fractal 2" 
+      "Grail 1" 
+      "Grail 2" 
+   )
+   ( and 
+      ( has-departed-delay 0 "Theseus#" ) 
+      ( or 
+         ( and 
+            ( < ( current-speed "<argument>" ) 20 ) 
+            ( is-in-box 
+               "<argument>" 
+               120 
+               200 
+               -47 
+               -30 
+               -150 
+               315 
+               "Theseus#" 
+            )
+         )
+         ( and 
+            ( < ( current-speed "<argument>" ) 20 ) 
+            ( is-in-box 
+               "<argument>" 
+               -200 
+               -120 
+               -47 
+               -30 
+               -150 
+               315 
+               "Theseus#" 
+            )
+         )
+      )
+   )
+   ( ship-vanish "<argument>" ) 
+)
++Name: Vanish landed fighters on jump
++Repeat Count: -1
++Trigger Count: 99999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance "Orange 1" "Theseus" ) 
+         500 
+      )
+      ( is-event-true-delay 
+         "countdowntimertrigger" 
+         0 
+      )
+   )
+   ( protect-ship "Orange 1" ) 
+)
++Name: Protect Player For Landing
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( distance "Orange 1" "Theseus" ) 
+         500 
+      )
+      ( is-event-true-delay 
+         "countdowntimertrigger" 
+         0 
+      )
+   )
+   ( unprotect-ship "Orange 1" ) 
+)
++Name: Unprotect player won't land
++Repeat Count: -1
++Trigger Count: 999
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ===End Landings===
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Theseus#" ) 
+   ( set-subsystem-strength 
+      "Theseus#" 
+      "Hull" 
+      @theseushull2[70] 
+   )
+)
++Name: theseus2savehull
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable @donem3[0] 1 ) 
+)
++Name: doneM3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( mission-time-msecs ) 
+         @nextPoll[0] 
+      )
+      ( = @signalstrengthtoggle[0] 1 ) 
+   )
+   ( modify-variable @sigA[0] 0 ) 
+   ( when 
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Red 3#" 
+         )
+      )
+      ( when 
+         ( is-facing "Orange 1" "Red 3#" 84 ) 
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing "Orange 1" "Red 3#" 78 ) 
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing "Orange 1" "Red 3#" 72 ) 
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing "Orange 1" "Red 3#" 66 ) 
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing "Orange 1" "Red 3#" 60 ) 
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing "Orange 1" "Red 3#" 54 ) 
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing "Orange 1" "Red 3#" 46 ) 
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing "Orange 1" "Red 3#" 36 ) 
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing "Orange 1" "Red 3#" 26 ) 
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing "Orange 1" "Red 3#" 8 ) 
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+   )
+)
++Name: Calculate Angle
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( mission-time-msecs ) 
+         @nextPoll[0] 
+      )
+      ( = @signalstrengthtoggle[0] 1 ) 
+   )
+   ( modify-variable @sigD[0] 0 ) 
+   ( when 
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Red 3#" 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            10000 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            7765 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            6838 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            5528 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            4524 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            3676 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            2930 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            2255 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            1634 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            1056 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            514 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+   )
+)
++Name: Calculate Distance
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( mission-time-msecs ) 
+         @nextPoll[0] 
+      )
+      ( = @signalstrengthtoggle[0] 1 ) 
+   )
+   ( modify-variable 
+      @nextPoll[0] 
+      ( + @nextPoll[0] 200 ) 
+   )
+   ( modify-variable 
+      @sigS[0] 
+      ( - @sigA[0] ( - 10 @sigD[0] ) ) 
+   )
+   ( when 
+      ( < @sigS[0] 0 ) 
+      ( modify-variable @sigS[0] 0 ) 
+   )
+   ( when 
+      ( > @sigS[0] 10 ) 
+      ( modify-variable @sigS[0] 10 ) 
+   )
+   ( hud-set-frame 
+      "MiscSEXPBar" 
+      @sigS[0] 
+   )
+   ( hud-set-text 
+      "MiscSEXPBar" 
+      "@autoGenVar2[Signal Strength]" 
+   )
+)
++Name: Calculate Signal
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Red 1#" 
+      "Red 2#" 
+      "Red 3#a" 
+      "Yellow 1" 
+   )
+   ( true ) 
+   ( ship-guardian-threshold 
+      ( rand-multiple 60 90 ) 
+      "<argument>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 40 80 ) 
+      "<argument>" 
+      "<all engines>" 
+   )
+)
++Name: guardian1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Red 1#" 
+      "Red 2#" 
+      "Red 3#a" 
+      "Yellow 1" 
+   )
+   ( is-event-true-delay 
+      "heavyraiders" 
+      0 
+   )
+   ( ship-no-guardian "<argument>" ) 
+   ( ship-guardian-threshold 
+      ( rand-multiple 5 30 ) 
+      "<argument>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 5 20 ) 
+      "<argument>" 
+      "<all engines>" 
+   )
+)
++Name: guardian2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Victor" ) 
+   ( do-nothing ) 
+)
++Name: destroyvic
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Victor", 694)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Zenith" ) 
+   ( do-nothing ) 
+)
++Name: zenith
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Neutralize Zenith", 521)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Grail" ) 
+   ( do-nothing ) 
+)
++Name: grail
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Grail", 498)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Ion" ) 
+   ( do-nothing ) 
+)
++Name: ion
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Ion", 509)
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "X-Ray" ) 
+   ( good-secondary-time 
+      "Hostile" 
+      100 
+      "MRT-N 2.3 Mangonel#Weak" 
+      "Theseus#" 
+   )
+)
++Name: xraynukage
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( skill-level-at-least "Medium" ) 
+   ( unlock-secondary-weapon 
+      "Victor 1" 
+      "Victor 2" 
+      "Victor 3" 
+      "Victor 4" 
+   )
+)
++Name: lockingvicmissileseasy
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 4 total
+
+$Type: Primary
++Name: rescue
+$MessageNew:  XSTR("Retrieve Red 3", 714)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "Orange 2 landed" 
+   0 
+)
++Score: 300
+
+$Type: Primary
++Name: defend
+$MessageNew:  XSTR("Defend Theseus", 466)
+$end_multi_text
+$Formula: ( or 
+   ( is-event-true-delay "landing" 0 ) 
+   ( has-departed-delay 0 "Theseus#" ) 
+)
++Invalid
++Score: 300
+
+$Type: Secondary
++Name: stealth
+$MessageNew:  XSTR("Maintain Stealth", 646)
+$end_multi_text
+$Formula: ( or 
+   ( and 
+      ( is-event-incomplete "unstealth" ) 
+      ( is-event-true-delay "ftlevents2" 0 ) 
+   )
+   ( and 
+      ( and 
+         ( < 
+            ( distance "Orange 1" "Red 3#" ) 
+            2000 
+         )
+         ( is-event-incomplete "rescuescrewed" ) 
+      )
+      ( is-event-incomplete "unstealth" ) 
+   )
+)
++Score: 300
+
+$Type: Bonus
++Name: noboarders
+$MessageNew:  XSTR("No Boarders", 721)
+$end_multi_text
+$Formula: ( is-event-true-delay "noboarders" 0 ) 
++Score: 300
+
+#Waypoints		;! 20 lists total
+
+$Name: RaptorLaunch
+$List: (		;! 1 points in list
+	( 0.000000, -29.000000, 411.399994 )
+)
+
+$Name: Red3Loc1
+$List: (		;! 1 points in list
+	( -2730.729248, 1404.037109, 3162.260742 )
+)
+
+$Name: Red3 Loc2
+$List: (		;! 1 points in list
+	( 4071.189941, -3381.069580, -4971.438965 )
+)
+
+$Name: Red3 Loc3
+$List: (		;! 1 points in list
+	( -4718.933105, 0.000000, -6944.383789 )
+)
+
+$Name: Raiderpatrol
+$List: (		;! 6 points in list
+	( -2998.969482, -0.000000, 7058.089844 )
+	( 4227.427246, 868.811523, 7156.305664 )
+	( 5087.450684, 1685.736572, 2023.465210 )
+	( -3134.968262, -0.000000, 1073.406372 )
+	( -2963.498291, -3299.024414, -6471.743164 )
+	( 6893.578613, -2246.288574, -5791.211914 )
+)
+
+$Name: Raiderpatrol2
+$List: (		;! 4 points in list
+	( 3180.896729, 0.000000, -8428.787109 )
+	( 1560.222412, 0.000000, 9861.894531 )
+	( -3282.456299, 620.566162, 7114.254395 )
+	( -1849.659302, 2876.345703, -8353.386719 )
+)
+
+$Name: Raiderpatrol2rand
+$List: (		;! 5 points in list
+	( -2388.447510, 1953.582520, -9127.139648 )
+	( -3491.517578, 1254.155762, 910.235168 )
+	( 5351.345703, -4491.200195, 1729.219727 )
+	( 4131.346191, -4035.672852, 7902.960449 )
+	( -4232.087402, -4024.241211, 7250.180176 )
+)
+
+$Name: Raiderpatrolrand
+$List: (		;! 6 points in list
+	( 4539.987305, -0.000000, 9053.339844 )
+	( -4050.363525, 2707.766357, 5841.514648 )
+	( 4973.986328, -0.000000, 1298.181519 )
+	( -2868.927490, -4743.482422, -1780.291382 )
+	( 6062.028809, 2251.901367, -5124.503906 )
+	( -3235.731445, -0.000000, -9642.260742 )
+)
+
+$Name: TessieProximity
+$List: (		;! 1 points in list
+	( 159.600006, 0.000000, 1159.666626 )
+)
+
+$Name: Waypoint path 10
+$List: (		;! 1 points in list
+	( -1000.000000, -500.000000, 100.000000 )
+)
+
+$Name: Orange2jump
+$List: (		;! 1 points in list
+	( 27.900000, -29.000000, 411.399994 )
+)
+
+$Name: hvyraiderpath1
+$List: (		;! 2 points in list
+	( 335.758636, -0.004268, 900.741638 )
+	( 330.634094, -0.004245, 1166.635864 )
+)
+
+$Name: hvyraiderpath2
+$List: (		;! 2 points in list
+	( 353.381256, -0.004286, 893.818787 )
+	( 352.680695, -0.004405, 1168.011963 )
+)
+
+$Name: hvyraiderpath3
+$List: (		;! 2 points in list
+	( 26.737438, -0.000220, 1546.238037 )
+	( 24.475407, -0.000491, 1378.554565 )
+)
+
+$Name: hvyraiderpath4
+$List: (		;! 2 points in list
+	( 9.172112, -0.000477, 1564.326660 )
+	( 8.037014, -0.000480, 1381.571777 )
+)
+
+$Name: hvyraiderpath5
+$List: (		;! 2 points in list
+	( 352.642273, -0.000240, 1618.037354 )
+	( 349.961823, -0.000275, 1324.753174 )
+)
+
+$Name: hvyraiderpath6
+$List: (		;! 1 points in list
+	( 328.187866, -0.000106, 1620.959717 )
+)
+
+$Name: hvryraiderpath7
+$List: (		;! 2 points in list
+	( 5.579610, -0.000409, 892.289063 )
+	( 8.237157, -0.000446, 1113.234741 )
+)
+
+$Name: hvryraiderpath8
+$List: (		;! 2 points in list
+	( 24.286469, -0.000424, 872.868835 )
+	( 24.767544, -0.000413, 1122.056396 )
+)
+
+$Name: Rescue Red
+$List: (		;! 1 points in list
+	( -3069.960205, -0.018496, 3276.359375 )
+)
+
+#Messages		;! 88 total
+
+
+$Name: start
+$Team: -1
+$MessageNew:  XSTR("Raptor 1-3-4-2$slashTheseus", 726)
+$end_multi_text
++Wave Name: SP-03-M-001.ogg
+
+$Name: signalstrength
+$Team: -1
+$MessageNew:  XSTR("<<< SIGNAL $signalstrength METERS >>>", 727)
+$end_multi_text
+
+$Name: startdialog
+$Team: -1
+$MessageNew:  XSTR("I can't believe it, Harridan's out of her fraking mind. We finally find a place to hide, and we're sending someone back? ", 739)
+$end_multi_text
++Wave Name: SP-03-M-002.ogg
+
+$Name: startdialog2
+$Team: -1
+$MessageNew:  XSTR("She said we're not leaving him behind.", 740)
+$end_multi_text
++Wave Name: SP-03-M-003.ogg
+
+$Name: startdialog3
+$Team: -1
+$MessageNew:  XSTR("The Colonies are probably destroyed, and we're wasting military assets to try to rescue a pilot in an area swarming with baseships!", 741)
+$end_multi_text
++Wave Name: SP-03-M-004.ogg
+
+$Name: startdialog4
+$Team: -1
+$MessageNew:  XSTR("The toasters probably left the area as soon as we jumped. Anyway, it's not our place to question her orders.", 742)
+$end_multi_text
++Wave Name: SP-03-M-005.ogg
+
+$Name: startdialog5
+$Team: -1
+$MessageNew:  XSTR("Yeah, well I'm glad I'm not the unlucky frakwit dumb enough to volunteer on this gods damn clusterfrak of a mission. No offense Orange lead.", 743)
+$end_multi_text
++Wave Name: SP-03-M-006.ogg
+
+$Name: start2
+$Team: -1
+$MessageNew:  XSTR("Long range DRADIS is a mess, no wonder the Cylons haven't found us yet. At least we'll be jumping out of here soon.", 749)
+$end_multi_text
++Wave Name: SP-03-M-007.ogg
+
+$Name: start3
+$Team: -1
+$MessageNew:  XSTR("I'll keep you updated on anything over wireless. Just do the flying.", 750)
+$end_multi_text
++Wave Name: SP-03-M-008.ogg
+
+$Name: jumpcomplete
+$Team: -1
+$MessageNew:  XSTR("Jump complete. I'm reading two DRADIS contacts, Cylon raiders. Might be a rear guard. They haven't detected our emissions yet. As long as we don't shoot or get too close we should be fine.", 757)
+$end_multi_text
++Wave Name: SP-03-M-009.ogg
+
+$Name: jumpcomplete2
+$Team: -1
+$MessageNew:  XSTR("I'm picking up a faint wireless signal. It is too weak for an exact fix, but we can try to trace it.", 758)
+$end_multi_text
++Wave Name: SP-03-M-010.ogg
+
+$Name: jumpcomplete3
+$Team: -1
+$MessageNew:  XSTR("I'm not reading anything on DRADIS other than the toasters. But if we can get within a klick or two of that signal I can get a lock. I don't think they've detected it yet.", 759)
+$end_multi_text
++Wave Name: SP-03-M-011.ogg
+
+$Name: obitdead
+$Team: -1
+$MessageNew:  XSTR("Found him!", 761)
+$end_multi_text
++Wave Name: SP-03-M-012.ogg
+
+$Name: obitdead2
+$Team: -1
+$MessageNew:  XSTR("He's... he's... Gods damn it... we're too late.", 763)
+$end_multi_text
++Wave Name: SP-03-M-013.ogg
+
+$Name: obitdead3
+$Team: -1
+$MessageNew:  XSTR("Incoming DRADIS contact! Cylon raider! Probably the fraker who finished Obit off right before we got here.", 770)
+$end_multi_text
++Wave Name: SP-03-M-014.ogg
+
+$Name: raiderjump
+$Team: -1
+$MessageNew:  XSTR("Cylon raider has jumped away!", 771)
+$end_multi_text
++Wave Name: SP-03-M-015.ogg
+
+$Name: theseusattacked
+$Team: -1
+$MessageNew:  XSTR("This is the Theseus... *static* explosion... venting tyliu... *static* Recalling all... *static*", 773)
+$end_multi_text
++Wave Name: SP-03-M-016.ogg
+
+$Name: theseusattacked2
+$Team: -1
+$MessageNew:  XSTR("I lost the transmission, it seems to be jammed at the source. Sir, if the Theseus is under attack we should abort mission.", 774)
+$end_multi_text
++Wave Name: SP-03-M-017.ogg
+
+$Name: obitalive
+$Team: -1
+$MessageNew:  XSTR("*Static* Is... that...", 775)
+$end_multi_text
++Wave Name: SP-03-M-018.ogg
+
+$Name: obitalive2
+$Team: -1
+$MessageNew:  XSTR("This is SAR Raptor 1342 to Red 3, we have received your wireless signal and are here to render assistance.", 777)
+$end_multi_text
++Wave Name: SP-03-M-019.ogg
+
+$Name: obitalive3
+$Team: -1
+$MessageNew:  XSTR("Thank the gods...", 778)
+$end_multi_text
++Wave Name: SP-03-M-020.ogg
+
+$Name: obitalive4
+$Team: -1
+$MessageNew:  XSTR("Stand by. Orange 2 will jump in to retrieve you.", 783)
+$end_multi_text
++Wave Name: SP-03-M-021.ogg
+
+$Name: rescuingobit
+$Team: -1
+$MessageNew:  XSTR("All right, we need to get within 100 meters and cut the throttle. You keep the Raptor steady while I open the hatch. Should take less than thirty seconds.", 784)
+$end_multi_text
++Wave Name: SP-03-M-022.ogg
+
+$Name: exitingmessages
+$Team: -1
+$MessageNew:  XSTR("Opening hatch now.", 785)
+$end_multi_text
++Wave Name: SP-03-M-023.ogg
+
+$Name: constarrives
+$Team: -1
+$MessageNew:  XSTR("Holy frak, comms traffic is a mess. I can't make heads or tails out of anything. I'm not sure if it's because civvie channels are flooded, the clankers are jamming everything, or both.", 787)
+$end_multi_text
++Wave Name: SP-03-M-024.ogg
+
+$Name: headingback
+$Team: -1
+$MessageNew:  XSTR("Obit is aboard. We're making our way back. Keep the door open for us.", 788)
+$end_multi_text
+
+$Name: sardone
+$Team: -1
+$MessageNew:  XSTR("He's aboard and secure. Get us the hell out of here.", 789)
+$end_multi_text
++Wave Name: SP-03-M-025.ogg
+
+$Name: attacking
+$Team: -1
+$MessageNew:  XSTR("I'm reading weapons fire. Gods damn it, they found our pilot! Obit... he's... as good as dead. Let's get back to the Theseus while we can.", 790)
+$end_multi_text
++Wave Name: SP-03-M-026.ogg
+
+$Name: detected
+$Team: -1
+$MessageNew:  XSTR("We've been detected. Looks like we'll have to fight our way out of this one.", 792)
+$end_multi_text
++Wave Name: SP-03-M-027.ogg
+
+$Name: startdialog6
+$Team: -1
+$MessageNew:  XSTR("I'm sure Orange lead has thicker skin that you. By the way, you have 164 to go before you beat the record.", 793)
+$end_multi_text
++Wave Name: SP-03-M-028.ogg
+
+$Name: startdialog7
+$Team: -1
+$MessageNew:  XSTR("What?", 794)
+$end_multi_text
++Wave Name: SP-03-M-029.ogg
+
+$Name: startdialog8
+$Team: -1
+$MessageNew:  XSTR("Saying frak the most over wireless in one op, moron.", 795)
+$end_multi_text
++Wave Name: SP-03-M-030.ogg
+
+$Name: tessiehurt
+$Team: -1
+$MessageNew:  XSTR("Multiple Cylon contacts. Long range DRADIS is still fraked up, how the hell did they find us?", 796)
+$end_multi_text
++Wave Name: SP-03-M-031.ogg
+
+$Name: tessiehurt2
+$Team: -1
+$MessageNew:  XSTR("Theseus to Orange lead. Thank the Lords our distress call was received. Our fuel lines were ruptured by an internal explosion which also damaged our FTL. The Cylons then jumped in.", 798)
+$end_multi_text
++Wave Name: SP-03-M-032.ogg
+
+$Name: tessiehurt3
+$Team: -1
+$MessageNew:  XSTR("Internal fires have blocked access to the hangar deck. We haven't been able to launch any birds, and long range wireless is being jammed.", 799)
+$end_multi_text
++Wave Name: SP-03-M-033.ogg
+
+$Name: tessiehurt4
+$Team: -1
+$MessageNew:  XSTR("Gods damn, with the fuel lines ruptured and those fires... they had to vent our tylium reserves. Frak me, the emergency reserves are barely enough for...", 800)
+$end_multi_text
++Wave Name: SP-03-M-034.ogg
+
+$Name: tessiehurt5
+$Team: -1
+$MessageNew:  XSTR("Pilots, you need to buy us time to get our FTL back online. DC crews are starting to contain the fires. We should be able to get more birds in the air shortly.", 803)
+$end_multi_text
++Wave Name: SP-03-M-035.ogg
+
+$Name: heavyraiders
+$Team: -1
+$MessageNew:  XSTR("New DRADIS contacts. Cylon heavy raiders, CBDR. Intercept and destroy. ", 805)
+$end_multi_text
++Wave Name: SP-03-M-036.ogg
+
+$Name: centurions
+$Team: -1
+$MessageNew:  XSTR("A Cylon heavy raider has landed in our hangar deck. We are being boarded! Fire teams have been assigned to contain the centurions currently aboard, but we can't hold off a full scale boarding action. Destroy those heavy raiders!", 806)
+$end_multi_text
++Wave Name: SP-03-M-037.ogg
+
+$Name: toomanycenturions
+$Team: -1
+$MessageNew:  XSTR("More centurions have boarded. Our fire teams are being overwhelmed. It's only a matter of time before they reach damage control.", 807)
+$end_multi_text
++Wave Name: SP-03-M-038.ogg
+
+$Name: anothercenturionaboard
+$Team: -1
+$MessageNew:  XSTR("A second heavy raider has reached the Theseus and is unloading centurions! We can't afford to let any more through!", 808)
+$end_multi_text
++Wave Name: SP-03-M-039.ogg
+
+$Name: yellowarrives
+$Team: -1
+$MessageNew:  XSTR("This is Yellow lead. Distress call was received, moving in to engage. Hold tight.", 812)
+$end_multi_text
++Wave Name: SP-03-M-040.ogg
+
+$Name: tessiescrewed
+$Team: -1
+$MessageNew:  XSTR("We've lost contact with our fire teams on C deck. We're receiving reports of depressurization events throughout the ship... we're... My gods... they've reached... *static*", 819)
+$end_multi_text
++Wave Name: SP-03-M-041.ogg
+
+$Name: tessiescrewed2
+$Team: -1
+$MessageNew:  XSTR("Lords, they reached CIC... It's only a... *TRANSMISSION TERMINATED*", 821)
+$end_multi_text
++Wave Name: SP-03-M-042.ogg
+
+$Name: heavyraidersdead
+$Team: -1
+$MessageNew:  XSTR("All heavy raiders have been neutralized.", 824)
+$end_multi_text
++Wave Name: SP-03-M-043.ogg
+
+$Name: beatenbackboarders
+$Team: -1
+$MessageNew:  XSTR("All centurions have been neutralized. Marine fire teams report heavy casualties.", 827)
+$end_multi_text
++Wave Name: SP-03-M-044.ogg
+
+$Name: beatenbackboardersgood
+$Team: -1
+$MessageNew:  XSTR("All centurions have been neutralized. Marine fire teams are reporting only light injuries.", 829)
+$end_multi_text
++Wave Name: SP-03-M-045.ogg
+
+$Name: raidersareboarders
+$Team: -1
+$MessageNew:  XSTR("Pilots, the Cylon heavy raiders are on an approach vector with our flight deck. We believe that the Cylons may be attempting a boarding action. Intercept them before they reach the Theseus!", 830)
+$end_multi_text
++Wave Name: SP-03-M-046.ogg
+
+$Name: theseusdead
+$Team: -1
+$MessageNew:  XSTR("Oh my gods... we've lost the Theseus!", 666)
+$end_multi_text
++Wave Name: SP-03-M-047.ogg
+
+$Name: countdown-timer
+$Team: -1
+$MessageNew:  XSTR("<<<THESEUS DEPARTING IN $countdowntimer SECONDS>>>", 833)
+$end_multi_text
+
+$Name: theseusjumped
+$Team: -1
+$MessageNew:  XSTR("<<<THESEUS DEPARTED>>>", 596)
+$end_multi_text
+
+$Name: tessiescrewed3
+$Team: -1
+$MessageNew:  XSTR("Gods damn, I've terminated the transmission. The toasters are sending that on all channels.", 837)
+$end_multi_text
++Wave Name: SP-03-M-048.ogg
+
+$Name: tessiedefinatelyscrewed
+$Team: -1
+$MessageNew:  XSTR("Two Cylon baseships have jumped in! They must have received that signal. I'm reading active nuclear warheads on both ships.", 838)
+$end_multi_text
++Wave Name: SP-03-M-049.ogg
+
+$Name: tessieturretslocked
+$Team: -1
+$MessageNew:  XSTR("Looks like the Theseus' fire control systems are offline...and... the gunners... I think... the frakers vented the atmosphere... Sir, there's no way in hell they're going to make it...", 847)
+$end_multi_text
++Wave Name: SP-03-M-050.ogg
+
+$Name: baseshiparriveend
+$Team: -1
+$MessageNew:  XSTR("Detecting two new DRADIS contacts. Cylon baseships.", 848)
+$end_multi_text
++Wave Name: SP-03-M-051.ogg
+
+$Name: baseshiparriveend2
+$Team: -1
+$MessageNew:  XSTR("All pilots, prepare for emergency combat landing procedures. We're getting the hell out of here.", 856)
+$end_multi_text
++Wave Name: SP-03-M-052.ogg
+
+$Name: FTLrepaired
+$Team: -1
+$MessageNew:  XSTR("DC crews have reported that FTL systems are back online. We are commencing FTL prep.", 857)
+$end_multi_text
++Wave Name: SP-03-M-053.ogg
+
+$Name: howlong
+$Team: -1
+$MessageNew:  XSTR("Theseus, how long until FTL is back online?", 867)
+$end_multi_text
++Wave Name: SP-03-M-054.ogg
+
+$Name: howlong2
+$Team: -1
+$MessageNew:  XSTR("Systems are nearly online, two minutes. Prepare for combat landing.", 868)
+$end_multi_text
++Wave Name: SP-03-M-055.ogg
+
+$Name: x-ray
+$Team: -1
+$MessageNew:  XSTR("Theseus, we're reading more Cylon raiders incoming. Designation X-Ray, they're armed with nukes.", 869)
+$end_multi_text
++Wave Name: SP-03-M-056.ogg
+
+$Name: x-ray2
+$Team: -1
+$MessageNew:  XSTR("Intercept and destroy. Just hold them off a little longer pilots...", 879)
+$end_multi_text
++Wave Name: SP-03-M-057.ogg
+
+$Name: lostobit
+$Team: -1
+$MessageNew:  XSTR("We've lost Obit. Gods damn it...", 880)
+$end_multi_text
++Wave Name: SP-03-M-058.ogg
+
+$Name: sociopath
+$Team: -1
+$MessageNew:  XSTR("You... you... killed Obit... What the hell are you? How could you even... No... no you're going to pay for this... you're going to pay... *gunshot*", 881)
+$end_multi_text
++Wave Name: SP-03-M-059.ogg
+
+$Name: noboarders
+$Team: -1
+$MessageNew:  XSTR("Thank the gods. All transports were intercepted before deploying boarders.", 886)
+$end_multi_text
++Wave Name: SP-03-M-060.ogg
+
+$Name: jumpedout
+$Team: -1
+$MessageNew:  XSTR("Damn it! The Theseus jumped out and we don't have rendezvous coordinates...", 887)
+$end_multi_text
++Wave Name: SP-03-M-061.ogg
+
+$Name: jumpedout2
+$Team: -1
+$MessageNew:  XSTR("I don't think there's a way out of this one, sir. Looks like we're on our own with half of the Cylon fleet... let's make damn sure they'll remember us...", 888)
+$end_multi_text
++Wave Name: SP-03-M-062.ogg
+
+$Name: disablersarrive
+$Team: -1
+$MessageNew:  XSTR("Two new wings of Cylon raiders have jumped in. They are armed with warheads. They're targeting our main batteries!", 889)
+$end_multi_text
++Wave Name: SP-03-M-063.ogg
+
+$Name: obitalive5
+$Team: -1
+$MessageNew:  XSTR("...keeping me alive... *static* trap... *Broad Frequency Signal*", 890)
+$end_multi_text
+
+$Name: obitalive6
+$Team: -1
+$MessageNew:  XSTR("I cut off the wireless. Whatever the hell that was, it's flooding all channels and has altered every toaster to our location. We... we have to get out of here... now.", 891)
+$end_multi_text
+
+$Name: jumpcomplete4
+$Team: -1
+$MessageNew:  XSTR("As long as we keep our distance from the Cylons and we don't fire our weapons this should go very smoothly.", 892)
+$end_multi_text
++Wave Name: SP-03-M-064.ogg
+
+$Name: theseusheavydamage
+$Team: -1
+$MessageNew:  XSTR("Pilots, we've sustained heavy damage. Keep the Cylons off us!", 893)
+$end_multi_text
++Wave Name: SP-03-M-065.ogg
+
+$Name: theseuscriticaldamage
+$Team: -1
+$MessageNew:  XSTR("Our hull is critical. Keep those bogeys off of us, pilots!", 894)
+$end_multi_text
++Wave Name: SP-03-M-066.ogg
+
+$Name: damnitleavemoron
+$Team: -1
+$MessageNew:  XSTR("Damn it sir, we can't do anything to help him. We have to get out of here, now!", 895)
+$end_multi_text
+
+$Name: orange2rescue
+$Team: -1
+$MessageNew:  XSTR("This is Orange 2. We are ready to retrieve Red 3.", 897)
+$end_multi_text
++Wave Name: SP-03-M-067.ogg
+
+$Name: pilotsecure
+$Team: -1
+$MessageNew:  XSTR("Red 3 is secure. Returning to Theseus Orange lead.", 900)
+$end_multi_text
++Wave Name: SP-03-M-068.ogg
+
+$Name: theseusattacked3
+$Team: -1
+$MessageNew:  XSTR("This is Orange 2 to Orange lead. Sir, for all we know it is a fake transmission from the toasters. I suggest we proceed with the mission as ordered. ", 906)
+$end_multi_text
++Wave Name: SP-03-M-069.ogg
+
+$Name: orange2aboard
+$Team: -1
+$MessageNew:  XSTR("Orange 2 has returned to the Theseus. SAR mission successful.", 907)
+$end_multi_text
++Wave Name: SP-03-M-070.ogg
+
+$Name: orange2dead
+$Team: -1
+$MessageNew:  XSTR("We've lost Orange 2!", 909)
+$end_multi_text
++Wave Name: SP-03-M-071.ogg
+
+$Name: safetoreturn
+$Team: -1
+$MessageNew:  XSTR("We should return to the Theseus immediately.", 910)
+$end_multi_text
++Wave Name: SP-03-M-072.ogg
+
+$Name: launch2
+$Team: -1
+$MessageNew:  XSTR("Clear forward, nav-con green, interval check.", 705)
+$end_multi_text
++Wave Name: SP-03-M-073.ogg
+
+$Name: launch3
+$Team: -1
+$MessageNew:  XSTR("Thrust positive and steady. You are cleared for launch.", 913)
+$end_multi_text
++Wave Name: SP-03-M-074.ogg
+
+$Name: landed
+$Team: -1
+$MessageNew:  XSTR("Raptor 1-3-4-2$slashTheseus. Skids down, mag-lock secure. ", 1970)
+$end_multi_text
++Wave Name: SP-03-M-080.ogg
+
+$Name: landed2
+$Team: -1
+$MessageNew:  XSTR("Welcome home.", 720)
+$end_multi_text
++Wave Name: SP-03-M-076.ogg
+
+$Name: landing
+$Team: -1
+$MessageNew:  XSTR("Raptor 1-3-4-2$slashTheseus. Approach dorsal port landing bay. ", 915)
+$end_multi_text
++Wave Name: SP-03-M-077.ogg
+
+$Name: landing2
+$Team: -1
+$MessageNew:  XSTR("Hands-on, speed six zero, checkers red, call the ball.", 925)
+$end_multi_text
++Wave Name: SP-03-M-078.ogg
+
+$Name: landing3
+$Team: -1
+$MessageNew:  XSTR("We have the ball.", 722)
+$end_multi_text
+
+$Name: readingdirectioneasy
+$Team: -1
+$MessageNew:  XSTR("I'm reading a faint DRADIS contact. Damn... just lost it.", 926)
+$end_multi_text
++Wave Name: SP-03-M-079.ogg
+
+$Name: prettysureitsacontact
+$Team: -1
+$MessageNew:  XSTR("I'm picking it up again, looks like it's from Red 3.", 927)
+$end_multi_text
+
+$Name: AutoGeneratedMessage1
+$Team: -1
+$MessageNew:  XSTR("@IntroSubtitleLine1[ ]", 1950)
+$end_multi_text
+
+$Name: AutoGeneratedMessage2
+$Team: -1
+$MessageNew:  XSTR("@IntroSubtitleLine2[ ]", 1951)
+$end_multi_text
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 1 total
+
+$Num stars: 0
+$Ambient light level: 65793
+
+$Bitmap List:
+$Sun: Stars_Sun_Yellow
++Angles: 3.228857 0.000000 3.665189
++Scale: 3.000000
+$Starbitmap: Stars_Neb_Blue05
++Angles: 2.076940 0.000000 1.047197
++ScaleX: 10.000000
++ScaleY: 10.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: 9: Defiance
+$Briefing Music: Brief1
+
+#End
+

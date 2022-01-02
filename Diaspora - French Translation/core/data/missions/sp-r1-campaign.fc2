@@ -1,0 +1,160 @@
+$Name: XSTR("Shattered Armistice", 1886)
+$Type: single
++Description:
+ XSTR("After 40 years of silence, the children of humanity have returned. The Battlestar Theseus, coming home after a long patrol, must survive their onslaught.", 256)
+$end_multi_text
+$Flags: 0
+
+
++Starting Ships: ( "Viper Mark VII"  "Viper Mark VIIe"  "Assault Raptor" )
+
++Starting Weapons: ( "MEC-A6"  "Training MEC-A6"  "GBK-6"  "HD-70 Lightning Javelin"  "TM-7 Pyro Javelin"  "HD-51 Arbalest"  "CTD-17 Jester"  "HS-24 Lance"  "HS-48 Spear"  "AGM-41 Whiplash"  "GBU-102 Tercio"  "TGB-102 Petardo"  "N4 Nessus" )
+
+
+$Mission: SP-R1-Tut-1.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   ( ( true ) ( next-mission "SP-R1-Tut-2.fs2" ) )
+)
+
++Level: 0
++Position: 0
+
+$Mission: SP-R1-Tut-2.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   ( ( true ) ( next-mission "SP-R1-M1.fs2" ) )
+)
+
++Level: 1
++Position: 0
+
+$Mission: SP-R1-M1.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "SP-R1-M1.fs2" 
+         "return" 
+      )
+      ( next-mission "SP-R1-M2.fs2" )
+   )
+   ( ( true ) ( next-mission "SP-R1-M1.fs2" ) )
+)
+
++Level: 2
++Position: 0
+
+$Mission: SP-R1-M2.fs2
++Flags: 4
++Main Hall: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "SP-R1-M2.fs2" 
+         "landing" 
+      )
+      ( next-mission "SP-R1-M4.fs2" )
+   )
+   ( ( true ) ( next-mission "SP-R1-M2.fs2" ) )
+)
+
++Mission Loop:
++Mission Loop Text:
+ XSTR("The CAG is mounting a volunteer rescue operation for our downed pilot. Do you choose to take this mission?", 257)
+$end_multi_text
++Mission Loop Brief Anim:
+ XSTR("2_colonial_def_cb0000.eff", 1887)
+$end_multi_text
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "SP-R1-M2.fs2" 
+         "landingfadeout" 
+      )
+      ( next-mission "SP-R1-M3.fs2" )
+   )
+)
+
++Level: 3
++Position: 0
+
+$Mission: SP-R1-M3.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "SP-R1-M3.fs2" 
+         "defend" 
+      )
+      ( next-mission "SP-R1-M4.fs2" )
+   )
+   ( ( true ) ( next-mission "SP-R1-M3.fs2" ) )
+)
+
++Level: 4
++Position: 0
+
+$Mission: SP-R1-M4.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "SP-R1-M4.fs2" 
+         "Fade out" 
+      )
+      ( next-mission "SP-R1-M5.fs2" )
+   )
+   ( ( true ) ( next-mission "SP-R1-M4.fs2" ) )
+)
+
++Level: 5
++Position: 0
+
+$Mission: SP-R1-M5.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "SP-R1-M5.fs2" 
+         "RTB" 
+      )
+      ( next-mission "SP-R1-M6.fs2" )
+   )
+   ( ( true ) ( next-mission "SP-R1-M5.fs2" ) )
+)
+
++Level: 6
++Position: 0
+
+$Mission: SP-R1-M6.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( or 
+         ( is-previous-event-true 
+            "SP-R1-M6.fs2" 
+            "landed" 
+         )
+         ( is-previous-event-true 
+            "SP-R1-M6.fs2" 
+            "endcutscene" 
+         )
+      )
+      ( end-of-campaign )
+   )
+   ( ( true ) ( next-mission "SP-R1-M6.fs2" ) )
+)
+
++Level: 7
++Position: 0
+
+#End
+

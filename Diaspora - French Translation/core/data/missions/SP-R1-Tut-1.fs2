@@ -1,0 +1,8209 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Gilding The Lily", 779)
+$Author: Sebastian"CooperHawkes"Sippach
+$Created: 12/22/09 at 16:38:40
+$Modified: 01/05/14 at 11:44:36
+$Notes:
+$End Notes:
+
+$Mission Desc:
+ XSTR("1st Tutorial Mission for Diaspora. Covers basic flight controls. 
+", 781)
+$end_multi_text
++Game Type Flags: 4
++Flags: 8650760
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 62.893311, 1043.041382, 34.564976
++Viewer orient:
+	-0.001965, -0.000002, -0.999998,
+	0.999998, 0.000442, -0.001965,
+	0.000442, -1.000000, 0.000001
++SquadReassignName: 72nd Thunderlords
++SquadReassignLogo: thunderlords.pcx
+
+$Starting wing names: ( "Red" "Green" "Blue" )
+$Squadron wing names: ( "Red" "Green" "Blue" "Purple" "Yellow" )
+$Team-versus-team wing names: ( "Red" "Green" )
+
+$Load Screen 640:	Y_No_1024x768.tga
+$Load Screen 1024:	Load_SP-R1-Tut-1.tga
+
+$Skybox Model: SkyBox_Starfield_01.pof
+
+$AI Profile: Diaspora_default
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"!DEBUG"		"0"		"number"
+		1		"!DEBUGInfoOnOff"		"0"		"number"
+		2		"!DEBUGRed1Bank"		"0"		"number"
+		3		"!DEBUGRed1Pitch"		"0"		"number"
+		4		"!DEBUGRed1Yaw"		"0"		"number"
+		5		"AddToEscortDrone1"		"0"		"number"
+		6		"AddToEscortDrone2"		"0"		"number"
+		7		"CheckAutoMatchSpeed"		"0"		"number"
+		8		"CheckGlideToggleEvent"		"0"		"number"
+		9		"CheckGlideToggleOn"		"0"		"number"
+		10		"Counter1"		"0"		"number"
+		11		"Counter2"		"0"		"number"
+		12		"D1LandingBank"		"0"		"number"
+		13		"D1LandingForward"		"0"		"number"
+		14		"D1LandingLateral"		"0"		"number"
+		15		"D1LandingPitch"		"0"		"number"
+		16		"D1LandingVertical"		"0"		"number"
+		17		"D1LandingYaw"		"0"		"number"
+		18		"directivecounter"		"0"		"number"
+		19		"HealthRed1Hull"		"0"		"number"
+		20		"InLaunchTube"		"1"		"number"
+		21		"InLaunchTubeSpeed"		"0"		"number"
+		22		"IntroSubtitleLine1"		" "		"string"
+		23		"IntroSubtitleLine2"		" "		"string"
+		24		"IntroSubtitleLine3"		" "		"string"
+		25		"LandingBank"		"0"		"number"
+		26		"LandingLateral"		"0"		"number"
+		27		"LandingPitch"		"0"		"number"
+		28		"LandingVertical"		"0"		"number"
+		29		"LandingYaw"		"0"		"number"
+		30		"MaxRadarRange"		"0"		"number"
+		31		"SunBitmap"		"-1"		"number"
+		32		"autoGenVar1"		"#Theseus Launch Officer"		"string"
+		33		"autoGenVar2"		"#Instructor"		"string"
+		34		"autoGenVar3"		"#Theseus Landing Signal Officer"		"string"
+		35		"autoGenVar4"		"#Theseus LSO"		"string"
+)
+
+#Cutscenes
+$Command Brief Cutscene: SP_R1_Background.ogg
++formula: ( true ) 
+$Briefing Cutscene: R1T1.ogg
++formula: ( true ) 
+#end
+
+#Command Briefing
+
+$Stage Text:
+ XSTR("COMMAND NETWORK PROGRAM TESTS
+Iunius 27 21353
+0900 Hours
+CO Anise 'Harridan' Zhou
+
+Welcome, pilots, we've been selected to participate in the Command Network Program trial runs. According to the brass, this is a new operating system that will be used in the central computers of our birds and tied to the navigation and comm systems of all our cap ships and stations.
+
+The CNP provides what they call a 'unified command and control framework' and is supposed to help increase efficiency throughout the fleet.", 782)
+$end_multi_text
+$Ani Filename: theseus_cb.eff
++Wave Filename: SP-01-CB-TRN-01.ogg
+
+$Stage Text:
+ XSTR("COMMAND NETWORK PROGRAM TESTS
+
+Of course, we've all heard the rumors. The CNP is supposed to turn a rook or nugget into an ace. We've been given the honor of putting that to the test over the next few weeks.
+
+You have been selected because you represent our top pilots. I'll address the rooks later. Your feedback on the auto-assist systems developed for the CNP will be critical in how it will be deployed in the fleet.", 801)
+$end_multi_text
+$Ani Filename: gc_foot.eff
++Wave Filename: SP-01-CB-TRN-02.ogg
+
+$Stage Text:
+ XSTR("COMMAND NETWORK PROGRAM TESTS
+
+For those of you volunteering for these tests, you'll be getting double pay. But I know that shore leave on Virgon is at the front of most of your minds before we ship out.
+
+I know a some of you, like Obit, owe a few too many cubits on Pallas, so I suggest you take this opportunity to move your finances out of the red and into the black.
+
+Those who have decided to take part in these tests, meet in the briefing room in ten minutes. That is all.", 802)
+$end_multi_text
+$Ani Filename: theseus_flyby.eff
++Wave Filename: SP-01-CB-TRN-03.ogg
+
+#Briefing
+$start_briefing
+$num_stages: 0
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 6
+
+$Formula: ( is-event-true-delay "DIR Landing" 0 ) 
+$Multi text
+    XSTR("Pilot, you passed the basic Command Network Program exercises in a satisfactory manner.
+
+Although some of the new CNP controls may be counterintuitive, it is good to see that our most skilled pilots are still able to perform well.
+", 835)
+$end_multi_text
+$Voice: SP-01-DB-TRN-01.ogg
+$Recommendation text:
+    XSTR("
+", 836)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "FRAK ShoutAtPlayer" 
+   0 
+)
+$Multi text
+    XSTR("Pilot, your performance during the basic Command Network Program exercises was less than satisfactory.
+
+You won't have much time to shape up and increase your performance with basic flight, as we're gonna be leaving Virgon shortly.", 843)
+$end_multi_text
+$Voice: SP-01-DB-TRN-02.ogg
+$Recommendation text:
+    XSTR(" ", 844)
+$end_multi_text
+
+$Formula: ( true ) 
+$Multi text
+    XSTR("Over the coming weeks, we will be involved in a series of combat exercises in the Pharsalus field. These exercises will put all of our flying skills to the test. 
+
+For now, get some shuteye, as we'll be departing Virgon with the CNP techs in a few hours. Dismissed.", 845)
+$end_multi_text
+$Voice: SP-01-DB-TRN-03.ogg
+$Recommendation text:
+    XSTR(" ", 844)
+$end_multi_text
+
+$Formula: ( is-event-true-delay "FRAK Time 1" 0 ) 
+$Multi text
+    XSTR("", 213)
+$end_multi_text
+$Voice: <none>
+$Recommendation text:
+    XSTR("Despite being told that you had several minutes to test new systems we are on a tight training schedule. Your decision to not land in a timely manner has delayed exercises. This is unacceptable behavior and you will be removed from these exercises if this continues.", 852)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "FRAK Distance 1" 
+   0 
+)
+$Multi text
+    XSTR("", 213)
+$end_multi_text
+$Voice: <none>
+$Recommendation text:
+    XSTR("Stay within the exercise area.", 854)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "FRAK Collision 1" 
+   0 
+)
+$Multi text
+    XSTR("", 213)
+$end_multi_text
+$Voice: <none>
+$Recommendation text:
+    XSTR("Do not ram your Viper into other craft. Continued gross negligence of proper flight protocols will lead to demerits on your record.", 859)
+$end_multi_text
+
+#Callsigns:
+$Callsign: XSTR("Obit", 1891)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Red 1
+$Ship Choices: (
+)
+
++Weaponry Pool: (
+	"MEC-A6"	0
+	"HD-70 Lightning Javelin"	0
+)
+
+#Objects		;! 8 total
+
+$Name: Red 1		;! Object #0
+$Display Name: XSTR("Red 1", 1816)
+$Class: Viper Mark VII
+$Team: Friendly
+$Location: 7.600000, -40.000000, 133.000000
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	-0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: None
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "" "" )
++Secondary Banks: ( "" "" )
++Sbank Ammo: ( 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "no-arrival-music" "no-dynamic" "don't-collide-invisible" )
++Flags2: ( "no-subspace-drive" "no-builtin-messages" "primaries-locked" "secondaries-locked" "no-death-scream" "afterburners-locked" "immobile" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Theseus		;! Object #1
+$Display Name: XSTR("Theseus", 1834)
+$Class: Battlestar Sobek Class
+$Team: Friendly
+$Location: 0.000000, 0.000000, 0.000000
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret-01a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-02a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-03a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-04a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-05a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-06a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-07a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-08a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-09a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-10a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-11a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-12a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-13a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-14a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-15a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-16a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-17a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-18a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-19a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-20a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-21a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-22a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-23a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-24a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-25a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: turret-26a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: gunturret_01a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: gunturret_02a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: gunturret_03a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: gunturret_04a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: gunturret_05a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: gunturret_06a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: gunturret_07a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: gunturret_08a
++AI Class: None
++Primary Banks: ( "" )
++Subsystem: CIWS_Turret-01a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-02a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-03a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-04a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-05a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-06a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-07a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-08a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-09a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-10a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-11a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-12a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-13a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-14a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-15a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-16a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-17a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-18a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-19a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-20a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-21a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-22a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-23a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-24a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-25a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-26a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-27a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-28a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-29a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-30a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-31a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-32a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-33a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-34a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-35a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-36a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-37a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-38a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-39a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-40a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-41a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-42a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-43a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-44a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-45a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-46a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-47a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-48a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-49a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-50a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-51a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-52a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-53a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: CIWS_Turret-54a
++AI Class: None
++Primary Banks: ( "" "" )
++Subsystem: VLS_turret-01a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-02a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-03a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-04a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-05a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-06a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-07a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-08a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-09a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-10a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-11a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-12a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-13a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-14a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-15a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-16a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-17a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-18a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-19a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-20a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-21a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-22a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-23a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
++Subsystem: VLS_turret-24a
++AI Class: None
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-music" "no-dynamic" "don't-collide-invisible" )
++Flags2: ( "no-subspace-drive" "no-builtin-messages" "no-death-scream" "immobile" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 2250
+$Texture Replace:
++old: col_bs_sobek_sob
++new: col_bs_sobek_the
++old: col_bs_sobek_sob-glow
++new: col_bs_sobek_the-glow
++old: col_bs_sobek_sob-normal
++new: col_bs_sobek_the-normal
++old: col_bs_sobek_sob-shine
++new: col_bs_sobek_the-shine
+
+$Name: Drone 1		;! Object #2
+$Display Name: XSTR("Drone 1", 2064)
+$Class: Cylotron Mark X Drone
+$Team: Hostile
+$Location: -105.000000, -60.000000, 215.000000
+$Orientation:
+	0.697454, 0.430189, -0.573145,
+	-0.421469, 0.893072, 0.157437,
+	0.579588, 0.131758, 0.804188
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-waypoints "Drone1Idle" 50 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 50
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "" )
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( = @InLaunchTube[1] 0 ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus
++Departure Paths: ( "$Bay14" )
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "no-arrival-warp" "no-dynamic" )
++Flags2: ( "no-subspace-drive" "no-builtin-messages" "primaries-locked" "secondaries-locked" "no-death-scream" "lock-all-turrets" "afterburners-locked" "no-ets" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 16384		;! note that this is a bitfield!!!
++Group: 0
++Score: 0
+
+$Name: Drone 2		;! Object #3
+$Display Name: XSTR("Drone 2", 2065)
+$Class: Cylotron Mark X Drone
+$Team: Hostile
+$Location: -160.399994, -20.000000, 195.699997
+$Orientation:
+	0.576709, -0.707341, -0.408749,
+	0.647436, 0.700861, -0.299365,
+	0.498230, -0.091992, 0.862151
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-waypoints "Drone2Idle" 50 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 45
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "" )
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( = @InLaunchTube[1] 0 ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus
++Departure Paths: ( "$Bay21" )
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "no-arrival-warp" "no-dynamic" )
++Flags2: ( "no-subspace-drive" "no-builtin-messages" "primaries-locked" "secondaries-locked" "no-death-scream" "lock-all-turrets" "afterburners-locked" "no-ets" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 0
+
+$Name: IntroOutroCamera		;! Object #4
+$Display Name: XSTR("IntroOutroCamera", 2066)
+$Class: Camera
+$Team: Friendly
+$Location: 210.615082, 222.001724, 260.678375
+$Orientation:
+	-0.955547, 0.148896, -0.254480,
+	0.251185, 0.863072, -0.438194,
+	0.154389, -0.482636, -0.862106
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "" "" )
++Secondary Banks: ( "" "" "" )
++Sbank Ammo: ( 0 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "invulnerable" "hidden-from-sensors" "no-dynamic" "stealth" "friendly-stealth-invisible" "don't-collide-invisible" )
++Flags2: ( "no-subspace-drive" "no-builtin-messages" "primaries-locked" "secondaries-locked" "no-death-scream" "lock-all-turrets" "afterburners-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: IntroCameraTarget		;! Object #5
+$Display Name: XSTR("IntroCameraTarget", 2067)
+$Class: Camera
+$Team: Friendly
+$Location: 305.000000, 52.000000, 0.000000
+$Orientation:
+	-0.270133, 0.000000, -0.962823,
+	-0.027028, 0.999606, 0.007583,
+	0.962444, 0.028072, -0.270027
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "" "" )
++Secondary Banks: ( "" "" "" )
++Sbank Ammo: ( 0 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "FLUSH Shooter:CheckList" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "invulnerable" "hidden-from-sensors" "no-dynamic" "stealth" "friendly-stealth-invisible" "don't-collide-invisible" )
++Flags2: ( "no-subspace-drive" "no-builtin-messages" "primaries-locked" "secondaries-locked" "no-death-scream" "lock-all-turrets" "afterburners-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Raptor 118		;! Object #6
+$Display Name: XSTR("Raptor 118", 2068)
+$Class: Raptor
+$Callsign: XSTR("Obit", 1891)
+
+$Team: Friendly
+$Location: -135.000000, 20.000000, 300.000000
+$Orientation:
+	-0.324606, 0.756654, 0.567544,
+	-0.204380, 0.529752, -0.823163,
+	-0.923505, -0.383200, -0.017316
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Velocity: 50
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "" )
++Secondary Banks: ( "" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "DIR Landing" 2 ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Theseus
++Departure Paths: ( "$Bay19" )
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "no-dynamic" "don't-collide-invisible" )
++Flags2: ( "no-builtin-messages" "no-death-scream" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
++Persona Index: 1
+
+$Name: OutroMk7		;! Object #7
+$Display Name: XSTR("OutroMk7", 2069)
+$Class: Viper Mark VII
+$Team: Friendly
+$Location: 78.000000, -29.000000, 150.000000
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-play-dead 89 ) )
+$Cargo 1:  XSTR("Nothing", 150)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "" "" )
++Secondary Banks: ( "" "" )
++Sbank Ammo: ( 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "OUTRO FadeOutToDeckLanding" 
+   1 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "no-arrival-warp" "no-departure-warp" "invulnerable" "hidden-from-sensors" "no-dynamic" "stealth" "friendly-stealth-invisible" "don't-collide-invisible" )
++Flags2: ( "no-builtin-messages" "no-death-scream" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+#Wings		;! 1 total
+
+$Name: Red
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Red 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Red 1"
+)
++Hotkey: 0
++Flags: ( "no-arrival-music" "no-arrival-message" "no-dynamic" )
+
+#Events		;! 170 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[#Theseus Launch Officer]" 
+      "#Theseus Launch Officer" 
+      1882 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[#Instructor]" 
+      "#Instructor" 
+      2164 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[#Theseus Landing Signal Officer]" 
+      "#Theseus Landing Signal Officer" 
+      1883 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar4[#Theseus LSO]" 
+      "#Theseus LSO" 
+      2165 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( player-use-ai ) 
+   ( add-goal 
+      "Red 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( script-eval "contrOver(true)" ) 
+   ( script-eval "lockContr('pi')" ) 
+   ( script-eval "lockContr('head')" ) 
+   ( script-eval "lockContr('bank')" ) 
+   ( script-eval "lockContr('vert')" ) 
+   ( script-eval "lockContr('side')" ) 
+   ( script-eval "lockContr('forw')" ) 
+   ( ship-subsys-untargetable 
+      "Theseus" 
+      "<all engines>" 
+      "<all turrets>" 
+      "navigationa" 
+      "communications1a" 
+      "communications2a" 
+      "weaponsa" 
+      "sensors1a" 
+      "sensors2a" 
+      "reactora" 
+      "bridgea" 
+      "emblema" 
+      "ttanka" 
+      "fighterbay01a" 
+      "fighterbay02a" 
+      "landingstrip_porta" 
+      "landingstrip_stbda" 
+   )
+   ( ship-subsys-untargetable 
+      "Drone 1" 
+      "<all engines>" 
+      "<all turrets>" 
+      "communication" 
+      "navigation" 
+      "weapons" 
+      "sensors" 
+      "engine1a" 
+      "engine2a" 
+      "Reactor" 
+   )
+   ( ship-subsys-untargetable 
+      "Drone 1" 
+      "<all engines>" 
+      "<all turrets>" 
+      "communication" 
+      "navigation" 
+      "weapons" 
+      "sensors" 
+      "engine1a" 
+      "engine2a" 
+      "Reactor" 
+   )
+   ( set-num-countermeasures "Red 1" 0 ) 
+   ( add-to-collision-group "Theseus" 1 ) 
+   ( add-to-collision-group "Red 1" 1 ) 
+   ( set-time-compression 100 ) 
+   ( never-warp "Red 1" ) 
+)
++Name: INIT
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( ignore-key 
+      -1 
+      "T" 
+      "Shift-T" 
+      "H" 
+      "Shift-H" 
+      "Alt-H" 
+      "F" 
+      "Shift-F" 
+      "Y" 
+      "G" 
+      "Alt-Y" 
+      "Alt-T" 
+      "V" 
+      "S" 
+      "Shift-S" 
+      "Alt-S" 
+      "M" 
+      "Alt-M" 
+      "Left Ctrl" 
+      "Spacebar" 
+      "." 
+      "," 
+      "/" 
+      "Shift-/" 
+      "X" 
+      "A" 
+      "Z" 
+      "Pad 7" 
+      "Pad 9" 
+      "Pad 8" 
+      "Pad 2" 
+      "Pad 4" 
+      "Pad 6" 
+      "Backspace" 
+      "\" 
+      "[" 
+      "]" 
+      "=" 
+      "-" 
+      "Shift-A" 
+      "Shift-Z" 
+      "Shift-D" 
+      "Shift-V" 
+      "Shift-X" 
+      "Shift-E" 
+      "Shift-W" 
+      "Shift-I" 
+      "Shift-P" 
+      "Shift-C" 
+      "Shift-J" 
+      "Shift-R" 
+      "R" 
+      "Pad *" 
+      "Pad ." 
+      "Pad Enter" 
+      "Pad 0" 
+      "Pad /" 
+      "Pad +" 
+      "Pad -" 
+      "Pad 5" 
+      "'" 
+      "C" 
+      "Alt-J" 
+      "J" 
+      "Tab" 
+      "Insert" 
+      "Delete" 
+      "Home" 
+      "End" 
+      "Page Up" 
+      "Page Down" 
+      "Alt-D" 
+      "Q" 
+      "Up Arrow" 
+      "Down Arrow" 
+      "Left Arrow" 
+      "Right Arrow" 
+      "Scroll Lock" 
+      "Shift-Scroll Lock" 
+      "Alt-E" 
+      "Alt-Shift-E" 
+      "E" 
+      "Alt-R" 
+      "U" 
+      "Shift-U" 
+      "N" 
+      "K" 
+      "Shift-K" 
+      "B" 
+      "Shift-B" 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+      "L" 
+      "Shift-N" 
+      "Shift-End" 
+      "Shift-O" 
+      "Shift-3" 
+      "Shift-1" 
+      "Shift-Pad +" 
+      "Shift-Pad Enter" 
+      "Alt-Shift-Q" 
+      "Alt-A" 
+      "Alt-N" 
+      "Alt-G" 
+      "W" 
+   )
+   ( when 
+      ( = @!DEBUG[0] 1 ) 
+      ( ignore-key 
+         0 
+         "Insert" 
+         "Delete" 
+         "Home" 
+         "End" 
+         "Page Up" 
+         "Page Down" 
+      )
+   )
+)
++Name: INIT DisableAllKeys
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-activate-gauge-type 
+      "Countermeasures" 
+      ( false ) 
+   )
+   ( hud-activate-gauge-type 
+      "Kills" 
+      ( false ) 
+   )
+   ( hud-activate-gauge-type 
+      "Hostile direction" 
+      ( false ) 
+   )
+)
++Name: INIT DisableCertainHudGauges
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: =========== INTRO ===========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-out 0 ) 
+   ( set-cutscene-bars ) 
+   ( set-camera-host "IntroOutroCamera" ) 
+   ( set-camera-target 
+      "IntroCameraTarget" 
+   )
+   ( set-camera-fov 42 ) 
+   ( fade-in 1000 ) 
+   ( ignore-key 0 "Left Ctrl" "Spacebar" ) 
+)
++Name: INTRO Init
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "INTRO End/Skip" 
+         1 
+      )
+   )
+   ( when 
+      ( is-event-true-delay "INTRO Init" 1 ) 
+      ( when-argument 
+         ( in-sequence 
+            "b" 
+            "a" 
+            "t" 
+            "t" 
+            "l" 
+            "e" 
+            "s" 
+            "t" 
+            "a" 
+            "r" 
+            " " 
+            "t" 
+            "h" 
+            "e" 
+            "s" 
+            "e" 
+            "u" 
+            "s" 
+         )
+         ( = ( mod @Counter1[0] 2 ) 0 ) 
+         ( string-concatenate 
+            "@IntroSubtitleLine1[ ]" 
+            "<argument>" 
+            "@IntroSubtitleLine1[ ]" 
+         )
+         ( invalidate-argument "<argument>" ) 
+      )
+      ( when-argument 
+         ( in-sequence 
+            "c" 
+            "n" 
+            "p" 
+            "-" 
+            "t" 
+            "e" 
+            "s" 
+            "t" 
+            " " 
+            "n" 
+            "e" 
+            "a" 
+            "r" 
+            " " 
+            "v" 
+            "i" 
+            "r" 
+            "g" 
+            "o" 
+            "n" 
+         )
+         ( = ( mod @Counter1[0] 2 ) 0 ) 
+         ( string-concatenate 
+            "@IntroSubtitleLine2[ ]" 
+            "<argument>" 
+            "@IntroSubtitleLine2[ ]" 
+         )
+         ( invalidate-argument "<argument>" ) 
+      )
+      ( when-argument 
+         ( in-sequence 
+            "1" 
+            "0" 
+            "7" 
+            " " 
+            "d" 
+            "a" 
+            "y" 
+            "s" 
+            " " 
+            "b" 
+            "e" 
+            "f" 
+            "o" 
+            "r" 
+            "e" 
+            " " 
+            "t" 
+            "h" 
+            "e" 
+            " " 
+            "f" 
+            "a" 
+            "l" 
+            "l" 
+         )
+         ( = ( mod @Counter1[0] 2 ) 0 ) 
+         ( string-concatenate 
+            "@IntroSubtitleLine3[ ]" 
+            "<argument>" 
+            "@IntroSubtitleLine3[ ]" 
+         )
+         ( invalidate-argument "<argument>" ) 
+      )
+      ( when 
+         ( > 
+            ( distance 
+               "IntroOutroCamera" 
+               "IntroCameraTarget" 
+            )
+            175 
+         )
+         ( show-subtitle-text 
+            "AutoGeneratedMessage1" 
+            -35 
+            16 
+            ( false ) 
+            ( false ) 
+            0 
+            0 
+            100 
+            255 
+            255 
+            255 
+            "2" 
+         )
+         ( show-subtitle-text 
+            "AutoGeneratedMessage2" 
+            -35 
+            18 
+            ( false ) 
+            ( false ) 
+            0 
+            0 
+            100 
+            255 
+            255 
+            255 
+            "2" 
+         )
+         ( show-subtitle-text 
+            "AutoGeneratedMessage3" 
+            -35 
+            22 
+            ( false ) 
+            ( false ) 
+            0 
+            0 
+            100 
+            255 
+            255 
+            255 
+            "2" 
+         )
+         ( modify-variable 
+            @Counter1[0] 
+            ( + @Counter1[0] 1 ) 
+         )
+      )
+      ( when 
+         ( and 
+            ( = @Counter1[0] 1 ) 
+            ( not 
+               ( is-event-true-delay 
+                  "INTRO End/Skip" 
+                  0 
+               )
+            )
+         )
+         ( play-sound-from-file 
+            "Interface_Text_Write.ogg" 
+         )
+      )
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage4" 
+      0 
+      92 
+      ( true ) 
+      ( false ) 
+      0 
+      0 
+      100 
+      255 
+      255 
+      255 
+      "1" 
+      ( false ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage5" 
+         20 
+         30 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         0 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+   ( ship-maneuver 
+      "IntroOutroCamera" 
+      100 
+      0 
+      0 
+      0 
+      ( true ) 
+      0 
+      0 
+      15 
+      ( true ) 
+   )
+)
++Name: INTRO AnimatedSubtitles
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( or 
+      ( key-pressed "Left Ctrl" ) 
+      ( key-pressed "Spacebar" ) 
+      ( < 
+         ( distance 
+            "IntroOutroCamera" 
+            "IntroCameraTarget" 
+         )
+         150 
+      )
+   )
+   ( fade-out 1000 ) 
+)
++Name: INTRO End/Skip
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "INTRO End/Skip" 
+      1 
+   )
+   ( reset-camera ) 
+   ( unset-cutscene-bars ) 
+   ( remove-sun-bitmap 0 ) 
+   ( fade-in 1000 ) 
+   ( ship-vanish "IntroCameraTarget" ) 
+   ( modify-variable @Counter1[0] 0 ) 
+   ( play-sound-from-file 
+      "Event_Launch_Standby.ogg" 
+      1 
+   )
+   ( lock-perspective ( true ) 0 ) 
+   ( set-object-position 
+      "IntroOutroCamera" 
+      10000 
+      10000 
+      10000 
+   )
+   ( reset-time-compression ) 
+)
++Name: INTRO RstCam/RmvSun/RstCntr
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: =========== FLUSH ===========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "INTRO RstCam/RmvSun/RstCntr" 
+      1 
+   )
+   ( send-message-list 
+      "@autoGenVar1[#Theseus Launch Officer]" 
+      "Normal" 
+      "FLUSH PreCheck1" 
+      250 
+      "@autoGenVar1[#Theseus Launch Officer]" 
+      "Normal" 
+      "FLUSH PreCheck2" 
+      2685 
+      "@autoGenVar1[#Theseus Launch Officer]" 
+      "Normal" 
+      "FLUSH PreCheck3" 
+      3845 
+      "@autoGenVar1[#Theseus Launch Officer]" 
+      "Normal" 
+      "FLUSH PreCheck4" 
+      2225 
+   )
+   ( training-msg 
+      "TRNG F2" 
+      "TRNG F2" 
+      0 
+      5 
+   )
+)
++Name: FLUSH Shooter:CheckList
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "TRNG LaunchKey" 
+      "TRNG LaunchKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "\" ) 
+   ( key-reset-multiple "\" ) 
+)
++Name: FLUSH DIRDelay/FreeKeyL/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( key-pressed "\" ) 
+   ( training-msg "BLANK" ) 
+)
++Name: FLUSH DirectiveDummy
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Launch", 460)
++Objective key:  XSTR("Press $\$", 461)
+
+$Formula: ( when 
+   ( > @InLaunchTube[1] 0 ) 
+   ( when 
+      ( = @InLaunchTube[1] 1 ) 
+      ( play-sound-from-file 
+         "Event_Launch_Tube_Start.ogg" 
+      )
+      ( set-camera-shudder 10000 2000 ) 
+      ( set-mobile "Red 1" ) 
+      ( modify-variable @InLaunchTube[1] 2 ) 
+   )
+   ( when 
+      ( = @InLaunchTube[1] 2 ) 
+      ( modify-variable 
+         @InLaunchTubeSpeed[0] 
+         ( + @InLaunchTubeSpeed[0] 1 ) 
+      )
+      ( set-object-speed-z 
+         "Red 1" 
+         @InLaunchTubeSpeed[0] 
+         ( true ) 
+      )
+   )
+   ( when 
+      ( and 
+         ( = @InLaunchTube[1] 2 ) 
+         ( < 
+            ( distance "Red 1" "LaunchPath:1" ) 
+            25 
+         )
+      )
+      ( add-sun-bitmap 
+         "Stars_Sun_YHaze" 
+         90 
+         0 
+         330 
+         500 
+         @SunBitmap[-1] 
+      )
+      ( play-sound-from-file 
+         "Event_Launch_Tube_Exit.ogg" 
+      )
+      ( set-camera-shudder 250 150 ) 
+      ( modify-variable 
+         @InLaunchTubeSpeed[0] 
+         110 
+      )
+      ( set-object-speed-z 
+         "Red 1" 
+         @InLaunchTubeSpeed[0] 
+         ( true ) 
+      )
+      ( remove-from-collision-group 
+         "Red 1" 
+         1 
+      )
+      ( modify-variable @InLaunchTube[1] 0 ) 
+      ( ignore-key 
+         0 
+         "Pad *" 
+         "Pad ." 
+         "Pad Enter" 
+         "Pad 0" 
+         "Pad /" 
+         "Pad +" 
+         "Pad -" 
+         "Pad 5" 
+      )
+      ( lock-perspective ( false ) ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage6" 
+         20 
+         31 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         0 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: FLUSH (UpUpAndAway! :p @ ACE)
++Repeat Count: 999999999
++Interval: 0
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-incomplete 
+         "FLUSH DirectiveDummy" 
+      )
+      ( has-time-elapsed 60 ) 
+      ( > @InLaunchTube[1] 0 ) 
+   )
+   ( send-message-list 
+      "@autoGenVar1[#Theseus Launch Officer]" 
+      "Low" 
+      "FLUSH AbortLaunch?" 
+      0 
+   )
+)
++Name: FLUSH Shooter:AbortLaunch?
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "FLUSH DirectiveDummy" 
+         0 
+      )
+      ( > @InLaunchTube[1] 0 ) 
+   )
+   ( send-message-list 
+      "@autoGenVar1[#Theseus Launch Officer]" 
+      "High" 
+      "FLUSH Goodbye" 
+      0 
+   )
+)
++Name: FLUSH Shooter:Goodbye
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ===== MAIN MISSION PATH =====
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @InLaunchTube[1] 0 ) 
+   ( change-soundtrack 
+      "11: Aerilon is Burning" 
+   )
+   ( modify-variable 
+      @HealthRed1Hull[0] 
+      ( hits-left "Red 1" ) 
+   )
+)
++Name: CHECK LaunchComplete
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "High" 
+      "INSTR ControlsLocked" 
+      710 
+      "@autoGenVar2[#Instructor]" 
+      "High" 
+      "INSTR ControlsLocked2" 
+      8235 
+      "@autoGenVar2[#Instructor]" 
+      "High" 
+      "INSTR BeginTest" 
+      6145 
+      "@autoGenVar2[#Instructor]" 
+      "High" 
+      "INSTR TargetAny" 
+      7625 
+   )
+)
++Name: ORDER TargetAny
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "TRNG TargetAnyKey" 
+      "TRNG TargetAnyKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "T" "Shift-T" ) 
+   ( key-reset-multiple "T" "Shift-T" ) 
+)
++Name: DELAY FreeKeyT/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 27
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( key-pressed "T" ) 
+         ( key-pressed "Shift-T" ) 
+      )
+      ( targeted "Drone 2" 1 ) 
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR TargetAny
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Target Drone 2", 929)
++Objective key:  XSTR("Press $T$", 930)
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable @MaxRadarRange[0] 1 ) 
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR TargetHostile" 
+      250 
+   )
+   ( change-iff 
+      "Hostile" 
+      "Drone 1" 
+      "Drone 2" 
+   )
+)
++Name: ORDER TargetHostile
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "TRNG HostileKey" 
+      "TRNG HostileKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "H" "Shift-H" ) 
+   ( key-reset-multiple "H" "Shift-H" ) 
+)
++Name: DELAY FreeKeyH/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( key-pressed "H" ) 
+         ( key-pressed "Shift-H" ) 
+      )
+      ( targeted "Drone 1" 1 ) 
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR TargetHostile
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Target Drone 1", 931)
++Objective key:  XSTR("Press $H$", 933)
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable @MaxRadarRange[0] 1 ) 
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedAutoTarget" 
+      850 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR AutoTarget" 
+      11750 
+   )
+)
++Name: ORDER AutoTarget
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "TRNG AutoTargetKey" 
+      "TRNG AutoTargetKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "Alt-H" ) 
+   ( key-reset-multiple "Alt-H" ) 
+)
++Name: DELAY FreeKeyALTH/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( key-pressed "Alt-H" ) 
+   ( training-msg "Blank" ) 
+   ( clear-goals "Drone 2" ) 
+   ( add-goal 
+      "Drone 2" 
+      ( ai-waypoints 
+         "Drone2TargetInReticle" 
+         89 
+      )
+   )
+)
++Name: DIR AutoTarget
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Use Auto-Targeting", 934)
++Objective key:  XSTR("Press $Alt-H$", 944)
+
+$Formula: ( when 
+   ( true ) 
+   ( change-iff 
+      "Friendly" 
+      "Drone 1" 
+      "Drone 2" 
+   )
+   ( modify-variable @MaxRadarRange[0] 1 ) 
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedTargetFriendly" 
+      55 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR TargetFriendly" 
+      7645 
+   )
+)
++Name: ORDER TargetFriendly
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "TRNG FriendlyKey" 
+      "TRNG FriendlyKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "F" "Shift-F" ) 
+)
++Name: DELAY FreeKeyF/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( key-pressed "F" ) 
+         ( key-pressed "Shift-F" ) 
+      )
+      ( targeted "Theseus" 1 ) 
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR TargetFriendly
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Target Theseus", 945)
++Objective key:  XSTR("Press $F$", 946)
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable @MaxRadarRange[0] 1 ) 
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedTargetInReticle" 
+      75 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR TargetInReticle" 
+      6675 
+   )
+)
++Name: ORDER TargetInReticle
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "TRNG TargetinReticleKey" 
+      "TRNG TargetinReticleKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "Y" ) 
+)
++Name: DELAY FreeKeyY/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "Y" ) 
+      ( targeted "Drone 2" 1 ) 
+   )
+   ( training-msg "Blank" ) 
+   ( clear-goals "Drone 1" ) 
+   ( add-goal 
+      "Drone 1" 
+      ( ai-waypoints "Drone1Idle2" 89 ) 
+   )
+   ( cap-waypoint-speed "Drone 1" -1 ) 
+   ( hud-set-max-targeting-range 0 ) 
+)
++Name: DIR TargetInReticle
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Target Drone 2", 929)
++Objective key:  XSTR("Press $Y$", 949)
+
+$Formula: ( when-argument 
+   ( random-of "100" "-100" ) 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedFlightControls1" 
+      500 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedFlightControls2" 
+      7500 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR Bank" 
+      5150 
+   )
+)
++Name: ORDER Bank
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "TRNG BankKeys" 
+      "TRNG BankKeys" 
+      0 
+      999999999 
+   )
+   ( script-eval "unlockContr('bank')" ) 
+   ( ignore-key 0 "Q" "E" ) 
+   ( player-not-use-ai ) 
+   ( modify-variable @Counter1[0] 0 ) 
+   ( modify-variable @Counter2[0] 0 ) 
+)
++Name: DELAY FreeKeysPadQE/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( >= 
+      @Counter2[0] 
+      ( + @Counter1[0] 1000 ) 
+   )
+   ( training-msg "Blank" ) 
+   ( change-iff "Friendly" "Drone 2" ) 
+)
++Name: DIR Bank
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Align with Drone 2", 950)
++Objective key:  XSTR("Bank your ship", 951)
+
+$Formula: ( when-argument 
+   ( random-multiple-of "50" "-50" ) 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR LatVertThrusters" 
+      500 
+   )
+   ( ship-maneuver 
+      "Drone 2" 
+      1000 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( string-to-int "<argument>" ) 
+      ( string-to-int "<argument>" ) 
+      0 
+      ( true ) 
+   )
+)
++Name: ORDER LateralThrusters
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "TRNG LatVertThrustersKeys" 
+      "TRNG LatVertThrustersKeys" 
+      0 
+      999999999 
+   )
+   ( script-eval "unlockContr('side')" ) 
+   ( script-eval "unlockContr('vert')" ) 
+   ( ignore-key 0 "A" "D" "Z" "X" ) 
+   ( modify-variable @Counter1[0] 0 ) 
+   ( modify-variable @Counter2[0] 0 ) 
+)
++Name: DELAY FreeKeysADZX/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+      ( >= 
+         @Counter2[0] 
+         ( + @Counter1[0] 1000 ) 
+      )
+      ( < ( current-speed "Red 1" ) 5 ) 
+   )
+   ( training-msg "Blank" ) 
+   ( change-iff "Friendly" "Drone 2" ) 
+)
++Name: DIR LateralThrusters
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Follow Drone 2", 954)
++Objective key:  XSTR("Use thrusters", 2070)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR PitchYaw" 
+      500 
+   )
+   ( clear-goals "Drone 2" ) 
+   ( add-goal 
+      "Drone 2" 
+      ( ai-waypoints-once 
+         "Drone2Follow6" 
+         89 
+      )
+   )
+)
++Name: ORDER YawPitch
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG PitchYawKeys1" 
+      "TRNG PitchYawKeys1" 
+      0 
+      999999999 
+   )
+   ( script-eval "unlockContr('pi')" ) 
+   ( script-eval "unlockContr('head')" ) 
+   ( ignore-key 
+      0 
+      "Up Arrow" 
+      "Down Arrow" 
+      "Left Arrow" 
+      "Right Arrow" 
+   )
+   ( modify-variable @Counter1[0] 0 ) 
+   ( modify-variable @Counter2[0] 0 ) 
+)
++Name: DELAY FreeKeysArrows/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+      ( >= 
+         @Counter2[0] 
+         ( + @Counter1[0] 1000 ) 
+      )
+   )
+   ( change-iff "Friendly" "Drone 1" ) 
+   ( training-msg "Blank" ) 
+)
++Name: DIR FaceDrone1
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Face Drone 1", 959)
++Objective key:  XSTR("Turn your ship", 960)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG PitchYawKeys2" 
+      "TRNG PitchYawKeys2" 
+      0 
+      999999999 
+   )
+   ( modify-variable @Counter1[0] 0 ) 
+   ( modify-variable @Counter2[0] 0 ) 
+)
++Name: DELAY FaceDrone2/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+      ( >= 
+         @Counter2[0] 
+         ( + @Counter1[0] 1000 ) 
+      )
+   )
+   ( change-iff "Friendly" "Drone 2" ) 
+   ( training-msg "Blank" ) 
+)
++Name: DIR FaceDrone2
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Objective:  XSTR("Face Drone 2", 962)
++Objective key:  XSTR("Turn your ship", 960)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedMatchSpeed" 
+      750 
+   )
+   ( cap-waypoint-speed "Drone 2" 45 ) 
+)
++Name: ORDER MatchSpeed
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR MatchSpeed" 
+      150 
+   )
+)
++Name: ORDER MatchSpeed 2
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG MatchSpeedKey" 
+      "TRNG MatchSpeedKey" 
+      0 
+      999999999 
+   )
+   ( script-eval "contrReset(true)" ) 
+   ( ignore-key 0 "M" ) 
+)
++Name: DELAY FreeKeyM/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( and 
+      ( targeted "Drone 2" ) 
+      ( key-pressed "M" ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR MatchSpeed
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Match speed with Drone 2", 963)
++Objective key:  XSTR("Press $M$", 971)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedAutoMatchSpeed" 
+      750 
+   )
+)
++Name: ORDER AutoMatchSpeeds
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR AutoMatchSpeed" 
+      500 
+   )
+)
++Name: ORDER AutoMatchSpeeds 2
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG AutoMatchKey" 
+      "TRNG AutoMatchKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "Alt-M" ) 
+)
++Name: DELAY FreeKeyALTM/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( and 
+      ( targeted "Drone 2" ) 
+      ( = @CheckAutoMatchSpeed[0] 1 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR EnableAMS
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Enable Auto-Match Speed", 972)
++Objective key:  XSTR("Press $Alt-M$", 973)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG AutoMatchTargetDrone1" 
+      "TRNG AutoMatchTargetDrone1" 
+      0 
+      999999999 
+   )
+)
++Name: DELAY TargetDrone1WithAMS
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( and 
+      ( = @CheckAutoMatchSpeed[0] 1 ) 
+      ( targeted "Drone 1" 1 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR TargetDrone1WithAMS
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Target Drone 1", 931)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG AutoMatchTargetDrone2" 
+      "TRNG AutoMatchTargetDrone2" 
+      0 
+      999999999 
+   )
+)
++Name: DELAY TargetDrone2WithAMS
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( and 
+      ( = @CheckAutoMatchSpeed[0] 1 ) 
+      ( targeted "Drone 2" 1 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR TargetDrone2WithAMS
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Target Drone 2", 929)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedAccelerate" 
+      350 
+   )
+)
++Name: ORDER AccelerateDecelerate
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR AccelDecel" 
+      600 
+   )
+)
++Name: ORDER AccelerateDecelerate 2
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG AccelKey" 
+      "TRNG AccelKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "W" "S" ) 
+   ( key-reset-multiple "W" ) 
+)
++Name: DELAY FreeKeyWS/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "W" ) 
+      ( <= 
+         ( distance "Red 1" "Drone 2" ) 
+         150 
+      )
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR Accelerate
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Get within 150m of Drone 2", 976)
++Objective key:  XSTR("Press $W$", 1019)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG DecelKey" 
+      "TRNG DecelKey" 
+      0 
+      999999999 
+   )
+   ( key-reset-multiple "S" ) 
+)
++Name: DELAY ResetKeyS/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "S" ) 
+      ( >= 
+         ( distance "Red 1" "Drone 2" ) 
+         250 
+      )
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR Decelerate
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Get more than 250m from Drone 2", 978)
++Objective key:  XSTR("Press $S$", 2071)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedAfterburner" 
+      0 
+   )
+   ( cap-waypoint-speed "Drone 2" 85 ) 
+)
++Name: ORDER Afterburner
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR Afterburner" 
+      500 
+   )
+)
++Name: ORDER Afterburner 2
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG TurboKey" 
+      "TRNG TurboKey" 
+      0 
+      999999999 
+   )
+   ( unlock-afterburner "Red 1" ) 
+   ( ignore-key 0 "Tab" ) 
+   ( key-reset-multiple "Tab" ) 
+)
++Name: DELAY FreeKeyTAB/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "Tab" ) 
+      ( < 
+         ( distance "Red 1" "Drone 2" ) 
+         150 
+      )
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+   ( cap-waypoint-speed "Drone 2" 25 ) 
+)
++Name: DIR Afterburners
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Use Afterburner", 983)
++Objective key:  XSTR("Press & hold $Tab$", 987)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR CompleteStop" 
+      0 
+   )
+   ( set-training-context-speed 0 0 ) 
+)
++Name: ORDER Stop
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG CompleteStop" 
+      "TRNG CompleteStop" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "Backspace" ) 
+   ( key-reset-multiple "Backspace" ) 
+)
++Name: DELAY FreeKeyBckspc/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "Backspace" ) 
+      ( speed 1 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR Stop
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Come to a complete stop", 988)
++Objective key:  XSTR("Press $Backspace$", 990)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ReFamiliarizeEscort" 
+      250 
+   )
+)
++Name: ORDER AddToEscortList
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( change-iff "Hostile" "Drone 1" ) 
+)
++Name: DELAY ChangeDrone1IFF
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR AddDronesToEscort" 
+      250 
+   )
+)
++Name: ORDER AddToEscortList2
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG AddToEscortKey" 
+      "TRNG AddToEscortKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "Alt-P" ) 
+   ( key-reset-multiple "Alt-P" ) 
+)
++Name: DELAY FreeKeyALTP/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( and 
+      ( = @AddToEscortDrone1[0] 1 ) 
+      ( = @AddToEscortDrone2[0] 1 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+      ( directive-value 
+         ( - 2 @directivecounter[0] ) 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR AddToEscortList
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Add both Drones to escort list", 991)
++Objective key:  XSTR("Target Drones and press $ALT-P$", 2072)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR CylceClearEscort" 
+      0 
+   )
+)
++Name: ORDER ClearEscortList
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG CycleClearEscortListKeys" 
+      "TRNG CycleClearEscortListKeys" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "P" "Alt-Shift-P" ) 
+   ( key-reset-multiple 
+      "P" 
+      "Alt-Shift-P" 
+   )
+)
++Name: DELAY FreeKeysPALTSHFTP/TrngMs
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( key-pressed "Alt-Shift-P" ) 
+         ( and 
+            ( = @AddToEscortDrone1[0] 0 ) 
+            ( = @AddToEscortDrone2[0] 0 ) 
+         )
+      )
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR ClearEscortList
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Clear Escort List", 1000)
++Objective key:  XSTR("Press $ALT-SHIFT-P$", 2073)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ComMenu" 
+      500 
+   )
+)
++Name: ORDER ComMenu
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( change-iff "Friendly" "Drone 1" ) 
+)
++Name: DELAY ChangeDrone1IFF2
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG ComMenuKey" 
+      "TRNG ComMenuKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "C" ) 
+   ( key-reset-multiple "C" ) 
+)
++Name: DELAY FreeKeyC/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( query-orders 
+            "<all fighters>" 
+            "Depart" 
+            0 
+         )
+         ( query-orders "Drone 1" "Depart" 0 ) 
+      )
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+   ( cap-waypoint-speed "Drone 1" 50 ) 
+)
++Name: DIR DepartDrone1
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Order Drone 1 to depart", 1003)
++Objective key:  XSTR("Press $C$, 1, 1, 0", 1004)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR NavPoints" 
+      850 
+   )
+)
++Name: ORDER NavPoints
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG NavPointsKey" 
+      "TRNG NavPointsKey" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "Alt-N" ) 
+   ( key-reset-multiple "Alt-N" ) 
+   ( add-nav-waypoint 
+      "NavPoint 1" 
+      "NavPoint" 
+      1 
+   )
+)
++Name: DELAY FreeKeyALTN/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "Alt-N" ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR EnableNavPoints
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Enable NavPoints", 1005)
++Objective key:  XSTR("Press $ALT-N$", 1007)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedCruiseSpeeds" 
+      600 
+   )
+)
++Name: ORDER CruiseSpeeds
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR CruiseSpeeds" 
+      800 
+   )
+)
++Name: ORDER CruiseSpeeds2
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG CruiseSpeed33%" 
+      "TRNG CruiseSpeed33%" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "[" ) 
+   ( key-reset-multiple "[" ) 
+)
++Name: DELAY FreeKey[/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "[" ) 
+      ( facing-waypoint "NavPoint" 10 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR Cruise33%
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Set Cruise Speed to 33%", 1008)
++Objective key:  XSTR("Press $[$", 1009)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG CruiseSpeed66%" 
+      "TRNG CruiseSpeed66%" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "]" ) 
+   ( key-reset-multiple "]" ) 
+)
++Name: DELAY FreeKey]/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "]" ) 
+      ( facing-waypoint "NavPoint" 10 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR Cruise66%
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Set Cruise Speed to 66%", 1010)
++Objective key:  XSTR("Press $]$", 1012)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG CruiseSpeed100%" 
+      "TRNG CruiseSpeed100%" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "\" ) 
+   ( key-reset-multiple "\" ) 
+)
++Name: DELAY FreeKey\/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "\" ) 
+      ( facing-waypoint "NavPoint" 10 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR CruiseSpeed100%
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Set Cruise Speed to 100%", 1013)
++Objective key:  XSTR("Press $\$", 461)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG -5%Key" 
+      "TRNG -5%Key" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "-" ) 
+)
++Name: DELAY FreeKey-/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "-" ) 
+      ( facing-waypoint "NavPoint" 10 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR -5%
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Decrease speed by 5%", 1014)
++Objective key:  XSTR("Press $-$", 1015)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG +5%Key" 
+      "TRNG +5%Key" 
+      0 
+      999999999 
+   )
+   ( ignore-key 0 "=" "-" ) 
+)
++Name: DELAY FreeKesy=-/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "=" ) 
+      ( facing-waypoint "NavPoint" 10 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+)
++Name: DIR +5%
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Increase speed by 5%", 1016)
++Objective key:  XSTR("Press $=$", 1017)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedGlide" 
+      750 
+   )
+)
++Name: ORDER Glide
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR ImprovedGlide2" 
+      0 
+   )
+)
++Name: ORDER Glide2
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR Glide" 
+      100 
+   )
+)
++Name: ORDER Glide3
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( training-msg 
+      "TRNG GlideKey" 
+      "TRNG GlideKey" 
+      0 
+      999999999 
+   )
+   ( force-glide "Red 1" ( false ) ) 
+   ( ignore-key 0 "Alt-G" ) 
+   ( key-reset-multiple "Alt-G" ) 
+   ( set-object-position 
+      "IntroOutroCamera" 
+      ( get-object-x "NavPoint:1" ) 
+      ( get-object-y "NavPoint:1" ) 
+      ( get-object-z "NavPoint:1" ) 
+   )
+   ( set-immobile "IntroOutroCamera" ) 
+   ( modify-variable @Counter1[0] 0 ) 
+   ( modify-variable @Counter2[0] 0 ) 
+)
++Name: DELAY FreeKeyALTG/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( and 
+      ( = @CheckGlideToggleEvent[0] 1 ) 
+      ( >= 
+         @Counter2[0] 
+         ( + @Counter1[0] 1000 ) 
+      )
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+   )
+   ( training-msg "Blank" ) 
+   ( change-iff "Friendly" "Theseus" ) 
+)
++Name: DIR Glide
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Use Glide", 1018)
++Objective key:  XSTR("Press $Alt-G$", 2074)
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR TestDone" 
+      0 
+   )
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file 
+      "Theseus_Ambient.ogg" 
+   )
+)
++Name: ORDER TestDone
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "Normal" 
+      "INSTR GetHome" 
+      300 
+   )
+)
++Name: ORDER TestDone2
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "FRAK ShoutAtPlayer" 
+   )
+   ( add-nav-waypoint 
+      "Landing" 
+      "LandingPath" 
+      1 
+   )
+   ( del-nav "NavPoint 1" ) 
+   ( unset-nav-visited "Landing" ) 
+   ( training-msg 
+      "TRNG InitiateLanding" 
+      "TRNG InitiateLanding" 
+      0 
+      999999999 
+   )
+   ( modify-variable @Counter1[0] 0 ) 
+   ( modify-variable @Counter2[0] 0 ) 
+)
++Name: DELAY Landing/TrngMsg
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Red 1" "LandingPath:1" ) 
+         100 
+      )
+      ( facing-waypoint "LandingPath2" 10 ) 
+      ( <= ( current-speed "Red 1" ) 40 ) 
+      ( is-event-incomplete 
+         "FRAK ShoutAtPlayer" 
+      )
+      ( = @CheckGlideToggleOn[0] 0 ) 
+   )
+   ( training-msg "Blank" ) 
+   ( player-use-ai ) 
+   ( ignore-key 
+      -1 
+      "T" 
+      "Shift-T" 
+      "H" 
+      "Shift-H" 
+      "Alt-H" 
+      "F" 
+      "Shift-F" 
+      "Y" 
+      "G" 
+      "Alt-Y" 
+      "Alt-T" 
+      "V" 
+      "S" 
+      "Shift-S" 
+      "Alt-S" 
+      "M" 
+      "Alt-M" 
+      "Left Ctrl" 
+      "Spacebar" 
+      "." 
+      "," 
+      "/" 
+      "Shift-/" 
+      "X" 
+      "A" 
+      "Z" 
+      "Pad 7" 
+      "Pad 9" 
+      "Pad 8" 
+      "Pad 2" 
+      "Pad 4" 
+      "Pad 6" 
+      "Backspace" 
+      "\" 
+      "[" 
+      "]" 
+      "=" 
+      "-" 
+      "Shift-A" 
+      "Shift-Z" 
+      "Shift-D" 
+      "Shift-V" 
+      "Shift-X" 
+      "Shift-E" 
+      "Shift-W" 
+      "Shift-I" 
+      "Shift-P" 
+      "Shift-C" 
+      "Shift-J" 
+      "Shift-R" 
+      "R" 
+      "Pad *" 
+      "Pad ." 
+      "Pad Enter" 
+      "Pad 0" 
+      "Pad /" 
+      "Pad +" 
+      "Pad -" 
+      "Pad 5" 
+      "'" 
+      "C" 
+      "Alt-J" 
+      "J" 
+      "Tab" 
+      "Insert" 
+      "Delete" 
+      "Home" 
+      "End" 
+      "Page Up" 
+      "Page Down" 
+      "Alt-D" 
+      "Q" 
+      "Up Arrow" 
+      "Down Arrow" 
+      "Left Arrow" 
+      "Right Arrow" 
+      "Scroll Lock" 
+      "Shift-Scroll Lock" 
+      "Alt-E" 
+      "Alt-Shift-E" 
+      "E" 
+      "Alt-R" 
+      "U" 
+      "Shift-U" 
+      "N" 
+      "K" 
+      "Shift-K" 
+      "B" 
+      "Shift-B" 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+      "Shift-." 
+      "Shift-," 
+      "L" 
+      "Shift-N" 
+      "Shift-End" 
+      "Shift-O" 
+      "Shift-3" 
+      "Shift-1" 
+      "Shift-Pad +" 
+      "Shift-Pad Enter" 
+      "Alt-Shift-Q" 
+      "Alt-A" 
+      "Alt-N" 
+      "Alt-G" 
+      "W" 
+   )
+   ( del-nav "Landing" ) 
+)
++Name: DIR Landing
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Initiate landing procedure", 1020)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "ORDER TestDone" 
+      118 
+   )
+   ( change-soundtrack 
+      "11: Aerilon is Burning" 
+   )
+)
++Name: MUSIC BackToSoundtrack
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ======== OBIT ARRIVAL ========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Raptor 118" ) 
+   ( send-message-list 
+      "Raptor 118" 
+      "High" 
+      "OBIT RequestLanding" 
+      0 
+      "@autoGenVar3[#Theseus Landing Signal Officer]" 
+      "High" 
+      "THELSO ObitAuthorized" 
+      5500 
+      "Raptor 118" 
+      "High" 
+      "OBIT Wilco" 
+      4500 
+   )
+)
++Name: OBIT Messages
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "OUTRO VanishOutroMk7" 
+   )
+   ( ship-maneuver 
+      "Raptor 118" 
+      100 
+      0 
+      0 
+      -2 
+      ( true ) 
+      0 
+      0 
+      25 
+      ( true ) 
+   )
+)
++Name: OBIT Move
++Repeat Count: 999999999
++Interval: 0
++Chained: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ======= PLAYER LANDING =======
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( and 
+            ( >= 
+               @Counter2[0] 
+               ( + @Counter1[0] 2000 ) 
+            )
+            ( >= ( current-speed "Red 1" ) 40 ) 
+            ( < ( current-speed "Red 1" ) 80 ) 
+         )
+         ( and 
+            ( >= 
+               @Counter2[0] 
+               ( + @Counter1[0] 1500 ) 
+            )
+            ( >= ( current-speed "Red 1" ) 80 ) 
+            ( < ( current-speed "Red 1" ) 120 ) 
+         )
+         ( and 
+            ( >= 
+               @Counter2[0] 
+               ( + @Counter1[0] 1000 ) 
+            )
+            ( >= ( current-speed "Red 1" ) 120 ) 
+         )
+      )
+      ( is-event-true-delay 
+         "DELAY Landing/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete "DIR Landing" ) 
+   )
+   ( send-message-list 
+      "@autoGenVar3[#Theseus Landing Signal Officer]" 
+      "Normal" 
+      "THELSO LandingTooFast" 
+      0 
+   )
+)
++Name: LANDING ApproachTooFast 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( and 
+            ( >= 
+               @Counter2[0] 
+               ( + @Counter1[0] 2000 ) 
+            )
+            ( >= ( current-speed "Red 1" ) 40 ) 
+            ( < ( current-speed "Red 1" ) 80 ) 
+         )
+         ( and 
+            ( >= 
+               @Counter2[0] 
+               ( + @Counter1[0] 1500 ) 
+            )
+            ( >= ( current-speed "Red 1" ) 80 ) 
+            ( < ( current-speed "Red 1" ) 120 ) 
+         )
+         ( and 
+            ( >= 
+               @Counter2[0] 
+               ( + @Counter1[0] 1000 ) 
+            )
+            ( >= ( current-speed "Red 1" ) 120 ) 
+         )
+      )
+      ( is-event-true-delay 
+         "DELAY Landing/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete "DIR Landing" ) 
+   )
+   ( send-message-list 
+      "@autoGenVar3[#Theseus Landing Signal Officer]" 
+      "Normal" 
+      "THELSO LandingTooFast2" 
+      0 
+   )
+)
++Name: LANDING ApproachTooFast 2
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "DIR Landing" 0 ) 
+      ( is-event-incomplete 
+         "OUTRO InitDeckLanding" 
+      )
+   )
+   ( if-then-else 
+      ( != ( get-object-bank "Red 1" ) 0 ) 
+      ( if-then-else 
+         ( and 
+            ( > ( get-object-bank "Red 1" ) 0 ) 
+            ( <= ( get-object-bank "Red 1" ) 180 ) 
+         )
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-bank "Red 1" ) 0 ) 
+               ( <= ( get-object-bank "Red 1" ) 25 ) 
+            )
+            ( modify-variable @LandingBank[0] -2 ) 
+            ( modify-variable @LandingBank[0] -50 ) 
+         )
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-bank "Red 1" ) 335 ) 
+               ( <= ( get-object-bank "Red 1" ) 360 ) 
+            )
+            ( modify-variable @LandingBank[0] 2 ) 
+            ( modify-variable @LandingBank[0] 50 ) 
+         )
+      )
+      ( modify-variable @LandingBank[0] 0 ) 
+   )
+   ( if-then-else 
+      ( != ( get-object-pitch "Red 1" ) 0 ) 
+      ( if-then-else 
+         ( and 
+            ( > ( get-object-pitch "Red 1" ) 0 ) 
+            ( <= ( get-object-pitch "Red 1" ) 180 ) 
+         )
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-pitch "Red 1" ) 0 ) 
+               ( <= ( get-object-pitch "Red 1" ) 10 ) 
+            )
+            ( modify-variable @LandingPitch[0] -2 ) 
+            ( modify-variable 
+               @LandingPitch[0] 
+               -25 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-pitch "Red 1" ) 350 ) 
+               ( <= ( get-object-pitch "Red 1" ) 360 ) 
+            )
+            ( modify-variable @LandingPitch[0] 2 ) 
+            ( modify-variable @LandingPitch[0] 25 ) 
+         )
+      )
+      ( modify-variable @LandingPitch[0] 0 ) 
+   )
+   ( if-then-else 
+      ( != 
+         ( get-object-heading "Red 1" ) 
+         90 
+      )
+      ( if-then-else 
+         ( and 
+            ( >= 
+               ( get-object-heading "Red 1" ) 
+               90 
+            )
+            ( <= 
+               ( get-object-heading "Red 1" ) 
+               270 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-heading "Red 1" ) 90 ) 
+               ( <= 
+                  ( get-object-heading "Red 1" ) 
+                  100 
+               )
+            )
+            ( modify-variable @LandingYaw[0] -2 ) 
+            ( modify-variable @LandingYaw[0] -25 ) 
+         )
+         ( if-then-else 
+            ( and 
+               ( < ( get-object-heading "Red 1" ) 90 ) 
+               ( >= 
+                  ( get-object-heading "Red 1" ) 
+                  80 
+               )
+            )
+            ( modify-variable @LandingYaw[0] 2 ) 
+            ( modify-variable @LandingYaw[0] 25 ) 
+         )
+      )
+      ( modify-variable @LandingYaw[0] 0 ) 
+   )
+   ( if-then-else 
+      ( and 
+         ( not 
+            ( and 
+               ( >= ( get-object-z "Red 1" ) 161 ) 
+               ( <= ( get-object-z "Red 1" ) 163 ) 
+            )
+         )
+         ( or 
+            ( and 
+               ( >= ( get-object-bank "Red 1" ) 0 ) 
+               ( <= ( get-object-bank "Red 1" ) 45 ) 
+            )
+            ( and 
+               ( <= ( get-object-bank "Red 1" ) 360 ) 
+               ( >= ( get-object-bank "Red 1" ) 315 ) 
+            )
+         )
+      )
+      ( if-then-else 
+         ( > ( get-object-z "Red 1" ) 163 ) 
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-z "Red 1" ) 163 ) 
+               ( <= ( get-object-z "Red 1" ) 168 ) 
+            )
+            ( modify-variable 
+               @LandingLateral[0] 
+               1 
+            )
+            ( modify-variable 
+               @LandingLateral[0] 
+               15 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( < ( get-object-z "Red 1" ) 161 ) 
+               ( >= ( get-object-z "Red 1" ) 176 ) 
+            )
+            ( modify-variable 
+               @LandingLateral[0] 
+               -1 
+            )
+            ( modify-variable 
+               @LandingLateral[0] 
+               -15 
+            )
+         )
+      )
+      ( modify-variable 
+         @LandingLateral[0] 
+         0 
+      )
+   )
+   ( if-then-else 
+      ( and 
+         ( not 
+            ( and 
+               ( <= ( get-object-y "Red 1" ) -27 ) 
+               ( >= ( get-object-y "Red 1" ) -29 ) 
+            )
+         )
+         ( or 
+            ( and 
+               ( >= ( get-object-bank "Red 1" ) 0 ) 
+               ( <= ( get-object-bank "Red 1" ) 45 ) 
+            )
+            ( and 
+               ( <= ( get-object-bank "Red 1" ) 360 ) 
+               ( >= ( get-object-bank "Red 1" ) 315 ) 
+            )
+         )
+      )
+      ( if-then-else 
+         ( > ( get-object-y "Red 1" ) -29 ) 
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-y "Red 1" ) -29 ) 
+               ( < ( get-object-y "Red 1" ) -24 ) 
+            )
+            ( modify-variable 
+               @LandingVertical[0] 
+               -1 
+            )
+            ( modify-variable 
+               @LandingVertical[0] 
+               -15 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( < ( get-object-y "Red 1" ) -29 ) 
+               ( > ( get-object-y "Red 1" ) -34 ) 
+            )
+            ( modify-variable 
+               @LandingVertical[0] 
+               1 
+            )
+            ( modify-variable 
+               @LandingVertical[0] 
+               15 
+            )
+         )
+      )
+      ( modify-variable 
+         @LandingVertical[0] 
+         0 
+      )
+   )
+   ( ship-maneuver 
+      "Red 1" 
+      100 
+      @LandingYaw[0] 
+      @LandingPitch[0] 
+      @LandingBank[0] 
+      ( true ) 
+      @LandingVertical[0] 
+      @LandingLateral[0] 
+      20 
+      ( true ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage7" 
+         20 
+         32 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         0 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: LANDING AutoPilot
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ============ OUTRO ============
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "DIR Landing" 
+         14 
+      )
+      ( is-event-true-delay 
+         "FRAK ShoutAtPlayer" 
+         10 
+      )
+   )
+   ( fade-out 1000 ) 
+)
++Name: OUTRO FadeOutToDeckLanding
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "OutroMk7" ) 
+   ( set-object-speed-x "Red 1" 0 ) 
+   ( set-object-speed-y "Red 1" 0 ) 
+   ( set-object-speed-z "Red 1" 0 ) 
+   ( set-object-position 
+      "Red 1" 
+      0 
+      5000 
+      0 
+   )
+   ( set-object-facing-object 
+      "Red 1" 
+      "LandingPath2:1" 
+   )
+   ( set-object-speed-x 
+      "IntroOutroCamera" 
+      0 
+   )
+   ( set-object-speed-y 
+      "IntroOutroCamera" 
+      0 
+   )
+   ( set-object-speed-z 
+      "IntroOutroCamera" 
+      0 
+   )
+   ( set-object-position 
+      "IntroOutroCamera" 
+      ( get-object-x "OutroCameraPoint:1" ) 
+      ( get-object-y "OutroCameraPoint:1" ) 
+      ( get-object-z "OutroCameraPoint:1" ) 
+   )
+   ( set-camera-host "IntroOutroCamera" ) 
+   ( set-camera-target "OutroMk7" ) 
+   ( set-cutscene-bars ) 
+   ( modify-variable @LandingBank[0] 0 ) 
+   ( modify-variable @LandingPitch[0] 0 ) 
+   ( modify-variable @LandingYaw[0] 0 ) 
+   ( set-time-compression 100 ) 
+   ( ignore-key 0 "Spacebar" "Left Ctrl" ) 
+   ( key-reset-multiple 
+      "Spacebar" 
+      "Left Ctrl" 
+   )
+   ( fade-in 1000 ) 
+   ( set-mobile "Red 1" ) 
+   ( modify-variable 
+      @LandingLateral[0] 
+      0 
+   )
+   ( modify-variable 
+      @LandingVertical[0] 
+      0 
+   )
+   ( set-object-position 
+      "Raptor 118" 
+      -250 
+      -35 
+      250 
+   )
+   ( set-object-facing-object 
+      "Raptor 118" 
+      "Drone2Follow3:1" 
+   )
+)
++Name: OUTRO InitDeckLanding
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-event-incomplete "END MISSION" ) 
+   ( if-then-else 
+      ( < 
+         ( get-object-heading "OutroMk7" ) 
+         270 
+      )
+      ( if-then-else 
+         ( and 
+            ( > 
+               ( get-object-heading "OutroMk7" ) 
+               260 
+            )
+            ( < 
+               ( get-object-heading "OutroMk7" ) 
+               270 
+            )
+         )
+         ( modify-variable @LandingYaw[0] 2 ) 
+         ( modify-variable @LandingYaw[0] 25 ) 
+      )
+      ( modify-variable @LandingYaw[0] 0 ) 
+   )
+   ( if-then-else 
+      ( != ( get-object-bank "OutroMk7" ) 0 ) 
+      ( if-then-else 
+         ( and 
+            ( > ( get-object-bank "OutroMk7" ) 0 ) 
+            ( <= 
+               ( get-object-bank "OutroMk7" ) 
+               180 
+            )
+         )
+         ( modify-variable @LandingBank[0] -5 ) 
+         ( modify-variable @LandingBank[0] 5 ) 
+      )
+      ( modify-variable @LandingBank[0] 0 ) 
+   )
+   ( if-then-else 
+      ( != 
+         ( get-object-pitch "OutroMk7" ) 
+         0 
+      )
+      ( if-then-else 
+         ( and 
+            ( > ( get-object-pitch "OutroMk7" ) 0 ) 
+            ( <= 
+               ( get-object-pitch "OutroMk7" ) 
+               180 
+            )
+         )
+         ( modify-variable @LandingPitch[0] -5 ) 
+         ( modify-variable @LandingPitch[0] 5 ) 
+      )
+      ( modify-variable @LandingPitch[0] 0 ) 
+   )
+   ( if-then-else 
+      ( != ( get-object-y "OutroMk7" ) -32 ) 
+      ( if-then-else 
+         ( > ( get-object-y "OutroMk7" ) -32 ) 
+         ( modify-variable 
+            @LandingVertical[0] 
+            -1 
+         )
+         ( modify-variable 
+            @LandingVertical[0] 
+            1 
+         )
+      )
+      ( modify-variable 
+         @LandingVertical[0] 
+         0 
+      )
+   )
+   ( when 
+      ( > 
+         ( get-object-heading "OutroMk7" ) 
+         135 
+      )
+      ( modify-variable 
+         @LandingLateral[0] 
+         -5 
+      )
+   )
+   ( when 
+      ( < 
+         ( get-object-heading "OutroMk7" ) 
+         180 
+      )
+      ( set-object-speed-z 
+         "OutroMk7" 
+         4 
+         ( true ) 
+      )
+   )
+   ( ship-maneuver 
+      "OutroMk7" 
+      100 
+      @LandingYaw[0] 
+      @LandingPitch[0] 
+      @LandingBank[0] 
+      ( true ) 
+      @LandingVertical[0] 
+      @LandingLateral[0] 
+      0 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage4" 
+      0 
+      92 
+      ( true ) 
+      ( false ) 
+      0 
+      0 
+      100 
+      255 
+      255 
+      255 
+      "1" 
+      ( false ) 
+   )
+)
++Name: OUTRO DeckLanding
++Repeat Count: 999999999
++Interval: 0
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < ( get-object-z "OutroMk7" ) 135 ) 
+         ( key-pressed "Spacebar" ) 
+         ( key-pressed "Left Ctrl" ) 
+      )
+      ( is-event-true-delay 
+         "OUTRO InitDeckLanding" 
+         0 
+      )
+   )
+   ( fade-out 1000 ) 
+)
++Name: OUTRO FinalFadeOut
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-vanish "OutroMk7" ) 
+)
++Name: OUTRO VanishOutroMk7
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file 
+      "Landing_Mag_Lock.ogg" 
+   )
+   ( send-message-list 
+      "@autoGenVar4[#Theseus LSO]" 
+      "Normal" 
+      "THELSO SkidsDown" 
+      500 
+   )
+)
++Name: OUTRO SkidsDown
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ========= END MISSION =========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "OUTRO FinalFadeOut" 
+         7 
+      )
+      ( and 
+         ( or 
+            ( key-pressed "Spacebar" ) 
+            ( key-pressed "Left Ctrl" ) 
+         )
+         ( is-event-true-delay 
+            "OUTRO FinalFadeOut" 
+            2 
+         )
+      )
+   )
+   ( end-mission ) 
+)
++Name: END MISSION
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ===============================
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ==== PLAYER FRAKS AROUND ====
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( hits-left "Red 1" ) 
+         @HealthRed1Hull[0] 
+      )
+      ( is-event-true-delay 
+         "DELAY FreeKeysADZX/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete "DIR Landing" ) 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "High" 
+      "INSTR WatchItNotCheap!" 
+      0 
+   )
+   ( modify-variable 
+      @HealthRed1Hull[0] 
+      ( hits-left "Red 1" ) 
+   )
+)
++Name: FRAK Collision 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-incomplete "DIR Landing" ) 
+   ( modify-variable 
+      @HealthRed1Hull[0] 
+      ( hits-left "Red 1" ) 
+   )
+)
++Name: FRAK CollisionDelay
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( hits-left "Red 1" ) 
+         @HealthRed1Hull[0] 
+      )
+      ( is-event-incomplete "DIR Landing" ) 
+   )
+   ( training-msg "BLANK" ) 
+   ( modify-variable 
+      @HealthRed1Hull[0] 
+      ( hits-left "Red 1" ) 
+   )
+)
++Name: FRAK Collision 2
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( distance "Theseus" "Red 1" ) 
+         7000 
+      )
+      ( is-event-true-delay 
+         "DELAY FreeKeysADZX/TrngMsg" 
+         0 
+      )
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "High" 
+      "INSTR ReturnToExerciseArea!" 
+      0 
+   )
+)
++Name: FRAK Distance 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( > 
+      ( distance "Theseus" "Red 1" ) 
+      7000 
+   )
+   ( training-msg "BLANK" ) 
+)
++Name: FRAK Distance 2
++Repeat Count: 1
++Interval: 1
++Chained: 30
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY Landing/TrngMsg" 
+         300 
+      )
+      ( is-event-incomplete "DIR Landing" ) 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "High" 
+      "INSTR EnoughForNow" 
+      0 
+   )
+)
++Name: FRAK Time 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-incomplete "DIR Landing" ) 
+   ( training-msg "BLANK" ) 
+)
++Name: FRAK Time 2
++Repeat Count: 1
++Interval: 1
++Chained: 300
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "FRAK Collision 2" 
+         2 
+      )
+      ( is-event-true-delay 
+         "FRAK Distance 2" 
+         2 
+      )
+      ( is-event-true-delay "FRAK Time 2" 2 ) 
+   )
+   ( send-message-list 
+      "@autoGenVar2[#Instructor]" 
+      "High" 
+      "INSTR StopFrakkingAround!" 
+      0 
+   )
+)
++Name: FRAK ShoutAtPlayer
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( player-use-ai ) 
+   ( clear-goals "Red 1" ) 
+   ( add-goal 
+      "Red 1" 
+      ( ai-play-dead 89 ) 
+   )
+)
++Name: FRAK LockControls
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ===== DRONE BEHAVIOUR =====
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 0 "Drone 1" ) 
+      ( has-arrived-delay 0 "Drone 2" ) 
+   )
+   ( cap-waypoint-speed "Drone 1" 50 ) 
+   ( cap-waypoint-speed "Drone 2" 50 ) 
+)
++Name: DRONE1&2 CapSpeed@Arrival
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance "Drone 1" "Drone1Idle:1" ) 
+      185 
+   )
+   ( cap-waypoint-speed "Drone 1" 5 ) 
+)
++Name: DRONE1 CapSpeed@WaypointsIdle
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DIR TargetInReticle" 
+         0 
+      )
+      ( < 
+         ( distance "Drone 1" "Drone1Idle2:1" ) 
+         150 
+      )
+   )
+   ( cap-waypoint-speed "Drone 1" 5 ) 
+)
++Name: DRONE1 CapSpeed@WaypointsIdle2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DIR DepartDrone1" 
+         0 
+      )
+      ( >= ( get-object-x "Drone 1" ) 700 ) 
+      ( <= ( get-object-x "Drone 1" ) 750 ) 
+      ( >= ( get-object-y "Drone 1" ) -130 ) 
+      ( <= ( get-object-y "Drone 1" ) 70 ) 
+      ( >= ( get-object-z "Drone 1" ) -250 ) 
+      ( <= ( get-object-z "Drone 1" ) -60 ) 
+   )
+   ( clear-goals "Drone 1" ) 
+   ( add-goal 
+      "Drone 1" 
+      ( ai-play-dead 89 ) 
+   )
+)
++Name: DRONE1 InitLanding
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "DRONE1 InitTurnToLift" 
+   )
+   ( if-then-else 
+      ( != ( get-object-bank "Drone 1" ) 0 ) 
+      ( if-then-else 
+         ( and 
+            ( > ( get-object-bank "Drone 1" ) 0 ) 
+            ( <= 
+               ( get-object-bank "Drone 1" ) 
+               180 
+            )
+         )
+         ( modify-variable 
+            @D1LandingBank[0] 
+            -2 
+         )
+         ( modify-variable @D1LandingBank[0] 2 ) 
+      )
+      ( modify-variable @D1LandingBank[0] 0 ) 
+   )
+   ( if-then-else 
+      ( != ( get-object-pitch "Drone 1" ) 0 ) 
+      ( if-then-else 
+         ( and 
+            ( > ( get-object-pitch "Drone 1" ) 0 ) 
+            ( <= 
+               ( get-object-pitch "Drone 1" ) 
+               180 
+            )
+         )
+         ( modify-variable 
+            @D1LandingPitch[0] 
+            -2 
+         )
+         ( modify-variable 
+            @D1LandingPitch[0] 
+            2 
+         )
+      )
+      ( modify-variable 
+         @D1LandingPitch[0] 
+         0 
+      )
+   )
+   ( if-then-else 
+      ( != 
+         ( get-object-heading "Drone 1" ) 
+         270 
+      )
+      ( if-then-else 
+         ( > 
+            ( get-object-heading "Drone 1" ) 
+            270 
+         )
+         ( modify-variable @D1LandingYaw[0] -2 ) 
+         ( modify-variable @D1LandingYaw[0] 2 ) 
+      )
+      ( modify-variable @D1LandingYaw[0] 0 ) 
+   )
+   ( if-then-else 
+      ( and 
+         ( != ( get-object-y "Drone 1" ) -26 ) 
+         ( or 
+            ( and 
+               ( >= ( get-object-bank "Drone 1" ) 0 ) 
+               ( <= ( get-object-bank "Drone 1" ) 45 ) 
+            )
+            ( and 
+               ( <= 
+                  ( get-object-bank "Drone 1" ) 
+                  360 
+               )
+               ( >= 
+                  ( get-object-bank "Drone 1" ) 
+                  315 
+               )
+            )
+         )
+      )
+      ( if-then-else 
+         ( > ( get-object-y "Drone 1" ) -26 ) 
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-y "Drone 1" ) -26 ) 
+               ( < ( get-object-y "Drone 1" ) -20 ) 
+            )
+            ( modify-variable 
+               @D1LandingVertical[0] 
+               -1 
+            )
+            ( modify-variable 
+               @D1LandingVertical[0] 
+               -8 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( < ( get-object-y "Drone 1" ) -26 ) 
+               ( > ( get-object-y "Drone 1" ) -32 ) 
+            )
+            ( modify-variable 
+               @D1LandingVertical[0] 
+               1 
+            )
+            ( modify-variable 
+               @D1LandingVertical[0] 
+               8 
+            )
+         )
+      )
+      ( modify-variable 
+         @D1LandingVertical[0] 
+         0 
+      )
+   )
+   ( if-then-else 
+      ( and 
+         ( != ( get-object-z "Drone 1" ) -163 ) 
+         ( or 
+            ( and 
+               ( >= ( get-object-bank "Drone 1" ) 0 ) 
+               ( <= ( get-object-bank "Drone 1" ) 45 ) 
+            )
+            ( and 
+               ( <= 
+                  ( get-object-bank "Drone 1" ) 
+                  360 
+               )
+               ( >= 
+                  ( get-object-bank "Drone 1" ) 
+                  315 
+               )
+            )
+         )
+      )
+      ( if-then-else 
+         ( > ( get-object-z "Drone 1" ) -163 ) 
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-z "Drone 1" ) -163 ) 
+               ( < ( get-object-z "Drone 1" ) -157 ) 
+            )
+            ( modify-variable 
+               @D1LandingLateral[0] 
+               -1 
+            )
+            ( modify-variable 
+               @D1LandingLateral[0] 
+               -8 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( < ( get-object-z "Drone 1" ) -163 ) 
+               ( > ( get-object-z "Drone 1" ) -169 ) 
+            )
+            ( modify-variable 
+               @D1LandingLateral[0] 
+               1 
+            )
+            ( modify-variable 
+               @D1LandingLateral[0] 
+               8 
+            )
+         )
+      )
+      ( modify-variable 
+         @D1LandingLateral[0] 
+         0 
+      )
+   )
+   ( if-then-else 
+      ( > 
+         ( distance 
+            "Drone 1" 
+            "Drone1TurnToLift:1" 
+         )
+         350 
+      )
+      ( modify-variable 
+         @D1LandingForward[0] 
+         25 
+      )
+      ( if-then-else 
+         ( > 
+            ( distance 
+               "Drone 1" 
+               "Drone1TurnToLift:1" 
+            )
+            250 
+         )
+         ( modify-variable 
+            @D1LandingForward[0] 
+            20 
+         )
+         ( if-then-else 
+            ( > 
+               ( distance 
+                  "Drone 1" 
+                  "Drone1TurnToLift:1" 
+               )
+               150 
+            )
+            ( modify-variable 
+               @D1LandingForward[0] 
+               15 
+            )
+            ( modify-variable 
+               @D1LandingForward[0] 
+               10 
+            )
+         )
+      )
+   )
+   ( ship-maneuver 
+      "Drone 1" 
+      100 
+      @D1LandingYaw[0] 
+      @D1LandingPitch[0] 
+      @D1LandingBank[0] 
+      ( true ) 
+      @D1LandingVertical[0] 
+      @D1LandingLateral[0] 
+      @D1LandingForward[0] 
+      ( true ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage8" 
+         20 
+         53 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: DRONE1 Landing
++Repeat Count: 999999999
++Interval: 0
++Chained: 0
+
+$Formula: ( when 
+   ( < 
+      ( distance 
+         "Drone 1" 
+         "Drone1TurnToLift:1" 
+      )
+      75 
+   )
+   ( modify-variable @D1LandingBank[0] 0 ) 
+   ( modify-variable 
+      @D1LandingPitch[0] 
+      0 
+   )
+   ( modify-variable @D1LandingYaw[0] 0 ) 
+   ( modify-variable 
+      @D1LandingForward[0] 
+      0 
+   )
+   ( modify-variable 
+      @D1LandingVertical[0] 
+      0 
+   )
+   ( modify-variable 
+      @D1LandingLateral[0] 
+      0 
+   )
+)
++Name: DRONE1 InitTurnToLift
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-incomplete 
+      "DRONE1 Touchdown" 
+   )
+   ( if-then-else 
+      ( != ( get-object-bank "Drone 1" ) 0 ) 
+      ( if-then-else 
+         ( and 
+            ( > ( get-object-bank "Drone 1" ) 0 ) 
+            ( <= 
+               ( get-object-bank "Drone 1" ) 
+               180 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-bank "Drone 1" ) 0 ) 
+               ( <= ( get-object-bank "Drone 1" ) 25 ) 
+            )
+            ( modify-variable 
+               @D1LandingBank[0] 
+               -2 
+            )
+            ( modify-variable 
+               @D1LandingBank[0] 
+               -50 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-bank "Drone 1" ) 335 ) 
+               ( <= 
+                  ( get-object-bank "Drone 1" ) 
+                  360 
+               )
+            )
+            ( modify-variable @D1LandingBank[0] 2 ) 
+            ( modify-variable 
+               @D1LandingBank[0] 
+               50 
+            )
+         )
+      )
+      ( modify-variable @D1LandingBank[0] 0 ) 
+   )
+   ( if-then-else 
+      ( != ( get-object-pitch "Drone 1" ) 0 ) 
+      ( if-then-else 
+         ( and 
+            ( > ( get-object-pitch "Drone 1" ) 0 ) 
+            ( <= 
+               ( get-object-pitch "Drone 1" ) 
+               180 
+            )
+         )
+         ( modify-variable 
+            @D1LandingPitch[0] 
+            -2 
+         )
+         ( modify-variable 
+            @D1LandingPitch[0] 
+            2 
+         )
+      )
+      ( modify-variable 
+         @D1LandingPitch[0] 
+         0 
+      )
+   )
+   ( if-then-else 
+      ( != 
+         ( get-object-heading "Drone 1" ) 
+         180 
+      )
+      ( if-then-else 
+         ( > 
+            ( get-object-heading "Drone 1" ) 
+            180 
+         )
+         ( modify-variable 
+            @D1LandingYaw[0] 
+            -15 
+         )
+         ( modify-variable @D1LandingYaw[0] 15 ) 
+      )
+      ( modify-variable @D1LandingYaw[0] 0 ) 
+   )
+   ( if-then-else 
+      ( and 
+         ( != ( get-object-x "Drone 1" ) 98 ) 
+         ( or 
+            ( and 
+               ( >= ( get-object-bank "Drone 1" ) 0 ) 
+               ( <= ( get-object-bank "Drone 1" ) 45 ) 
+            )
+            ( and 
+               ( <= 
+                  ( get-object-bank "Drone 1" ) 
+                  360 
+               )
+               ( >= 
+                  ( get-object-bank "Drone 1" ) 
+                  315 
+               )
+            )
+         )
+      )
+      ( if-then-else 
+         ( > ( get-object-x "Drone 1" ) 98 ) 
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-x "Drone 1" ) 98 ) 
+               ( < ( get-object-x "Drone 1" ) 104 ) 
+            )
+            ( modify-variable 
+               @D1LandingLateral[0] 
+               1 
+            )
+            ( modify-variable 
+               @D1LandingLateral[0] 
+               8 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( < ( get-object-x "Drone 1" ) 98 ) 
+               ( > ( get-object-x "Drone 1" ) 92 ) 
+            )
+            ( modify-variable 
+               @D1LandingLateral[0] 
+               -1 
+            )
+            ( modify-variable 
+               @D1LandingLateral[0] 
+               -8 
+            )
+         )
+      )
+      ( modify-variable 
+         @D1LandingLateral[0] 
+         0 
+      )
+   )
+   ( if-then-else 
+      ( and 
+         ( and 
+            ( != ( get-object-y "Drone 1" ) -29 ) 
+            ( > 
+               ( distance 
+                  "Drone 1" 
+                  "Drone1TurnToLift:1" 
+               )
+               4 
+            )
+         )
+         ( or 
+            ( and 
+               ( >= ( get-object-bank "Drone 1" ) 0 ) 
+               ( <= ( get-object-bank "Drone 1" ) 45 ) 
+            )
+            ( and 
+               ( <= 
+                  ( get-object-bank "Drone 1" ) 
+                  360 
+               )
+               ( >= 
+                  ( get-object-bank "Drone 1" ) 
+                  315 
+               )
+            )
+         )
+      )
+      ( if-then-else 
+         ( > ( get-object-y "Drone 1" ) -29 ) 
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-y "Drone 1" ) -29 ) 
+               ( < ( get-object-y "Drone 1" ) -23 ) 
+            )
+            ( modify-variable 
+               @D1LandingVertical[0] 
+               -1 
+            )
+            ( modify-variable 
+               @D1LandingVertical[0] 
+               -8 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( < ( get-object-y "Drone 1" ) -29 ) 
+               ( > ( get-object-y "Drone 1" ) -35 ) 
+            )
+            ( modify-variable 
+               @D1LandingVertical[0] 
+               1 
+            )
+            ( modify-variable 
+               @D1LandingVertical[0] 
+               8 
+            )
+         )
+      )
+      ( modify-variable 
+         @D1LandingVertical[0] 
+         0 
+      )
+   )
+   ( when 
+      ( and 
+         ( = ( get-object-x "Drone 1" ) 98 ) 
+         ( = ( get-object-y "Drone 1" ) -29 ) 
+         ( = ( get-object-pitch "Drone 1" ) 0 ) 
+         ( = ( get-object-bank "Drone 1" ) 0 ) 
+         ( = 
+            ( get-object-heading "Drone 1" ) 
+            180 
+         )
+      )
+      ( if-then-else 
+         ( > 
+            ( distance 
+               "Drone 1" 
+               "Drone1TurnToLift:1" 
+            )
+            5 
+         )
+         ( modify-variable 
+            @D1LandingForward[0] 
+            2 
+         )
+         ( modify-variable 
+            @D1LandingForward[0] 
+            0 
+         )
+      )
+   )
+   ( ship-maneuver 
+      "Drone 1" 
+      100 
+      @D1LandingYaw[0] 
+      @D1LandingPitch[0] 
+      @D1LandingBank[0] 
+      ( true ) 
+      @D1LandingVertical[0] 
+      @D1LandingLateral[0] 
+      @D1LandingForward[0] 
+      ( true ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage9" 
+         20 
+         54 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: DRONE1 TurnToLift
++Repeat Count: 999999999
++Interval: 0
++Chained: 0
+
+$Formula: ( when 
+   ( < 
+      ( distance 
+         "Drone 1" 
+         "Drone1TurnToLift:1" 
+      )
+      5 
+   )
+   ( ship-lat-maneuver 
+      "Drone 1" 
+      1000 
+      -5 
+      0 
+      0 
+      ( true ) 
+   )
+)
++Name: DRONE1 Touchdown
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance "Drone 2" "Drone2Idle:1" ) 
+      185 
+   )
+   ( cap-waypoint-speed "Drone 2" 5 ) 
+)
++Name: DRONE2 CapSpeed@WaypointsIdle
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance 
+            "Drone 2" 
+            "Drone2TargetInReticle:2" 
+         )
+         50 
+      )
+      ( is-event-true-delay 
+         "DIR AutoTarget" 
+         0 
+      )
+   )
+   ( clear-goals "Drone 2" ) 
+   ( add-goal 
+      "Drone 2" 
+      ( ai-stay-still "Red 1" 89 ) 
+   )
+)
++Name: DRONE2 AlignToRed1Trigger
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "ORDER TargetInReticle" 
+         8 
+      )
+   )
+   ( if-then-else 
+      ( != ( get-object-bank "Drone 2" ) 0 ) 
+      ( if-then-else 
+         ( and 
+            ( > ( get-object-bank "Drone 2" ) 0 ) 
+            ( <= 
+               ( get-object-bank "Drone 2" ) 
+               180 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-bank "Drone 2" ) 0 ) 
+               ( <= ( get-object-bank "Drone 2" ) 25 ) 
+            )
+            ( modify-variable @LandingBank[0] -50 ) 
+            ( modify-variable 
+               @LandingBank[0] 
+               -100 
+            )
+         )
+         ( if-then-else 
+            ( and 
+               ( > ( get-object-bank "Drone 2" ) 335 ) 
+               ( <= 
+                  ( get-object-bank "Drone 2" ) 
+                  360 
+               )
+            )
+            ( modify-variable @LandingBank[0] 50 ) 
+            ( modify-variable @LandingBank[0] 100 ) 
+         )
+      )
+      ( modify-variable @LandingBank[0] 0 ) 
+   )
+   ( when 
+      ( = @LandingBank[0] 0 ) 
+      ( if-then-else 
+         ( != ( get-object-x "Drone 2" ) 7 ) 
+         ( if-then-else 
+            ( > ( get-object-x "Drone 2" ) 7 ) 
+            ( modify-variable 
+               @LandingLateral[0] 
+               1 
+            )
+            ( modify-variable 
+               @LandingLateral[0] 
+               -1 
+            )
+         )
+         ( modify-variable 
+            @LandingLateral[0] 
+            0 
+         )
+      )
+      ( if-then-else 
+         ( != ( get-object-y "Drone 2" ) -40 ) 
+         ( if-then-else 
+            ( > ( get-object-y "Drone 2" ) -40 ) 
+            ( modify-variable 
+               @LandingVertical[0] 
+               -1 
+            )
+            ( modify-variable 
+               @LandingVertical[0] 
+               1 
+            )
+         )
+         ( modify-variable 
+            @LandingVertical[0] 
+            0 
+         )
+      )
+   )
+   ( ship-maneuver 
+      "Drone 2" 
+      100 
+      0 
+      0 
+      @LandingBank[0] 
+      ( true ) 
+      @LandingVertical[0] 
+      @LandingLateral[0] 
+      0 
+      ( true ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage10" 
+         20 
+         36 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: DRONE2 AlignToRed1
++Repeat Count: 999999999
++Interval: 0
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "ORDER YawPitch" 
+      0 
+   )
+   ( when 
+      ( < 
+         ( distance 
+            "Drone 2" 
+            "Drone2Follow1:1" 
+         )
+         200 
+      )
+      ( clear-goals "Drone 2" ) 
+      ( add-goal 
+         "Drone 2" 
+         ( ai-waypoints-once 
+            "Drone2Follow2" 
+            89 
+         )
+      )
+   )
+   ( when 
+      ( < 
+         ( distance 
+            "Drone 2" 
+            "Drone2Follow2:1" 
+         )
+         200 
+      )
+      ( clear-goals "Drone 2" ) 
+      ( add-goal 
+         "Drone 2" 
+         ( ai-waypoints-once 
+            "Drone2Follow3" 
+            89 
+         )
+      )
+   )
+   ( when 
+      ( < 
+         ( distance 
+            "Drone 2" 
+            "Drone2Follow3:1" 
+         )
+         200 
+      )
+      ( clear-goals "Drone 2" ) 
+      ( add-goal 
+         "Drone 2" 
+         ( ai-waypoints-once 
+            "Drone2Follow4" 
+            89 
+         )
+      )
+   )
+   ( when 
+      ( < 
+         ( distance 
+            "Drone 2" 
+            "Drone2Follow4:1" 
+         )
+         200 
+      )
+      ( clear-goals "Drone 2" ) 
+      ( add-goal 
+         "Drone 2" 
+         ( ai-waypoints-once 
+            "Drone2Follow5" 
+            89 
+         )
+      )
+   )
+   ( when 
+      ( < 
+         ( distance 
+            "Drone 2" 
+            "Drone2Follow5:1" 
+         )
+         200 
+      )
+      ( clear-goals "Drone 2" ) 
+      ( add-goal 
+         "Drone 2" 
+         ( ai-waypoints-once 
+            "Drone2Follow6" 
+            89 
+         )
+      )
+   )
+   ( when 
+      ( < 
+         ( distance 
+            "Drone 2" 
+            "Drone2Follow6:1" 
+         )
+         200 
+      )
+      ( clear-goals "Drone 2" ) 
+      ( add-goal 
+         "Drone 2" 
+         ( ai-waypoints-once 
+            "Drone2Follow7" 
+            89 
+         )
+      )
+   )
+   ( when 
+      ( < 
+         ( distance 
+            "Drone 2" 
+            "Drone2Follow7:1" 
+         )
+         200 
+      )
+      ( clear-goals "Drone 2" ) 
+      ( add-goal 
+         "Drone 2" 
+         ( ai-waypoints-once 
+            "Drone2Follow8" 
+            89 
+         )
+      )
+   )
+   ( when 
+      ( < 
+         ( distance 
+            "Drone 2" 
+            "Drone2Follow8:1" 
+         )
+         200 
+      )
+      ( clear-goals "Drone 2" ) 
+      ( add-goal 
+         "Drone 2" 
+         ( ai-waypoints-once 
+            "Drone2Follow1" 
+            89 
+         )
+      )
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage11" 
+         20 
+         37 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         0 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: DRONE2 Waypoints@MatchSpeed
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when-argument 
+   ( random-of "100" "-100" ) 
+   ( is-event-true-delay "ORDER Bank" 17 ) 
+   ( ship-rot-maneuver 
+      "Drone 2" 
+      1100 
+      0 
+      0 
+      ( string-to-int "<argument>" ) 
+      ( true ) 
+   )
+   ( modify-variable 
+      @LandingBank[0] 
+      ( string-to-int "<argument>" ) 
+   )
+)
++Name: DRONE2 BankManeuver
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( if-then-else 
+   ( = @LandingBank[0] 100 ) 
+   ( ship-rot-maneuver 
+      "Drone 2" 
+      250 
+      0 
+      0 
+      -50 
+      ( true ) 
+   )
+   ( ship-rot-maneuver 
+      "Drone 2" 
+      250 
+      0 
+      0 
+      50 
+      ( true ) 
+   )
+)
++Name: DRONE2 BankManeuver2
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: =========== RESET ==========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY FreeKeyT/TrngMsg" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "DIR TargetInReticle" 
+            0 
+         )
+      )
+   )
+   ( when 
+      ( and 
+         ( or 
+            ( key-pressed "F" ) 
+            ( key-pressed "Shift-F" ) 
+         )
+         ( not ( targeted "Theseus" ) ) 
+      )
+      ( key-reset-multiple "F" "Shift-F" ) 
+   )
+   ( when 
+      ( and 
+         ( or 
+            ( key-pressed "H" ) 
+            ( key-pressed "Shift-H" ) 
+         )
+         ( not ( targeted "Drone 1" ) ) 
+      )
+      ( key-reset-multiple "H" "Shift-H" ) 
+   )
+   ( when 
+      ( and 
+         ( or 
+            ( key-pressed "T" ) 
+            ( key-pressed "Shift-T" ) 
+         )
+         ( not ( targeted "Drone 2" ) ) 
+      )
+      ( key-reset-multiple "T" "Shift-T" ) 
+   )
+   ( when 
+      ( and 
+         ( key-pressed "Y" ) 
+         ( not ( targeted "Drone 2" ) ) 
+      )
+      ( key-reset-multiple "Y" ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage12" 
+         20 
+         38 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         0 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: RESET TargettingKeys
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( > @MaxRadarRange[0] 0 ) 
+   ( when 
+      ( = @MaxRadarRange[0] 2 ) 
+      ( modify-variable @MaxRadarRange[0] 0 ) 
+      ( hud-set-max-targeting-range 0 ) 
+   )
+   ( when 
+      ( = @MaxRadarRange[0] 1 ) 
+      ( hud-set-max-targeting-range 1 ) 
+      ( modify-variable 
+         @MaxRadarRange[0] 
+         ( + @MaxRadarRange[0] 1 ) 
+      )
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage13" 
+         20 
+         39 
+         ( false ) 
+         ( false ) 
+         250 
+         0 
+         0 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: RESET MaxTargetingRange
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY FreeKeyM/TrngMsg" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "DIR MatchSpeed" 
+            0 
+         )
+      )
+      ( key-pressed "M" ) 
+      ( not ( targeted "Drone 2" ) ) 
+   )
+   ( key-reset-multiple "M" ) 
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage14" 
+         20 
+         40 
+         ( false ) 
+         ( false ) 
+         1000 
+         0 
+         0 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: RESET MatchSpeedKey
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY FreeKey[/TrngMsg" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay "DIR Glide" 0 ) 
+      )
+   )
+   ( if-then-else 
+      ( facing-waypoint "NavPoint" 10 ) 
+      ( set-nav-visited "NavPoint 1" ) 
+      ( unset-nav-visited "NavPoint 1" ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage15" 
+         20 
+         41 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         0 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: RESET NavP@CruiseSpeeds/Glide
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY Landing/TrngMsg" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay "DIR Landing" 1 ) 
+      )
+   )
+   ( if-then-else 
+      ( <= 
+         ( distance "Red 1" "LandingPath:1" ) 
+         100 
+      )
+      ( set-nav-visited "Landing" ) 
+      ( unset-nav-visited "Landing" ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage16" 
+         20 
+         42 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         0 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: RESET NavPointLanding
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ========== CHECKS ==========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY FreeKeysPadQE/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete "DIR Bank" ) 
+   )
+   ( if-then-else 
+      ( and 
+         ( >= 
+            ( + 
+               ( get-object-bank "Red 1" ) 
+               ( get-object-bank "Drone 2" ) 
+            )
+            350 
+         )
+         ( <= 
+            ( + 
+               ( get-object-bank "Red 1" ) 
+               ( get-object-bank "Drone 2" ) 
+            )
+            370 
+         )
+      )
+      ( when 
+         ( true ) 
+         ( when 
+            ( = @Counter1[0] 0 ) 
+            ( modify-variable 
+               @Counter1[0] 
+               ( mission-time-msecs ) 
+            )
+         )
+         ( modify-variable 
+            @Counter2[0] 
+            ( mission-time-msecs ) 
+         )
+         ( change-iff "Object" "Drone 2" ) 
+      )
+      ( modify-variable @Counter1[0] 0 ) 
+      ( modify-variable @Counter2[0] 0 ) 
+      ( change-iff "Friendly" "Drone 2" ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage17" 
+         20 
+         46 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: CHECK BankAlignment
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY FreeKeysADZX/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete 
+         "DIR LateralThrusters" 
+      )
+   )
+   ( if-then-else 
+      ( is-facing "Red 1" "Drone 2" 7 ) 
+      ( when 
+         ( true ) 
+         ( when 
+            ( = @Counter1[0] 0 ) 
+            ( modify-variable 
+               @Counter1[0] 
+               ( mission-time-msecs ) 
+            )
+         )
+         ( modify-variable 
+            @Counter2[0] 
+            ( mission-time-msecs ) 
+         )
+         ( change-iff "Object" "Drone 2" ) 
+      )
+      ( modify-variable @Counter1[0] 0 ) 
+      ( modify-variable @Counter2[0] 0 ) 
+      ( change-iff "Friendly" "Drone 2" ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage18" 
+         20 
+         47 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: CHECK LateralFacing
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY FreeKeysArrows/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete 
+         "DIR FaceDrone1" 
+      )
+   )
+   ( if-then-else 
+      ( is-facing "Red 1" "Drone 1" 5 ) 
+      ( when 
+         ( true ) 
+         ( when 
+            ( = @Counter1[0] 0 ) 
+            ( modify-variable 
+               @Counter1[0] 
+               ( mission-time-msecs ) 
+            )
+         )
+         ( modify-variable 
+            @Counter2[0] 
+            ( mission-time-msecs ) 
+         )
+         ( change-iff "Object" "Drone 1" ) 
+      )
+      ( modify-variable @Counter1[0] 0 ) 
+      ( modify-variable @Counter2[0] 0 ) 
+      ( change-iff "Friendly" "Drone 1" ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage19" 
+         20 
+         49 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: CHECK FaceDrone1
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY FaceDrone2/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete 
+         "DIR FaceDrone2" 
+      )
+   )
+   ( if-then-else 
+      ( is-facing "Red 1" "Drone 2" 5 ) 
+      ( when 
+         ( true ) 
+         ( when 
+            ( = @Counter1[0] 0 ) 
+            ( modify-variable 
+               @Counter1[0] 
+               ( mission-time-msecs ) 
+            )
+         )
+         ( modify-variable 
+            @Counter2[0] 
+            ( mission-time-msecs ) 
+         )
+         ( change-iff "Object" "Drone 2" ) 
+      )
+      ( modify-variable @Counter1[0] 0 ) 
+      ( modify-variable @Counter2[0] 0 ) 
+      ( change-iff "Friendly" "Drone 2" ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage20" 
+         20 
+         50 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: CHECK FaceDrone2
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "Alt-M" ) 
+      ( is-event-true-delay 
+         "DELAY FreeKeyALTM/TrngMsg" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "DIR EnableAMS" 
+            0 
+         )
+      )
+   )
+   ( if-then-else 
+      ( = @CheckAutoMatchSpeed[0] 0 ) 
+      ( modify-variable 
+         @CheckAutoMatchSpeed[0] 
+         1 
+      )
+      ( modify-variable 
+         @CheckAutoMatchSpeed[0] 
+         0 
+      )
+   )
+   ( key-reset-multiple "Alt-M" ) 
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage21" 
+         20 
+         44 
+         ( false ) 
+         ( false ) 
+         250 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: CHECK AutoMatchSpeedOn
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( targeted "Drone 1" ) 
+      ( key-pressed "Alt-P" ) 
+      ( is-event-true-delay 
+         "DELAY FreeKeyALTP/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete 
+         "DIR ClearEscortList" 
+      )
+   )
+   ( key-reset-multiple "Alt-P" ) 
+   ( if-then-else 
+      ( = @AddToEscortDrone1[0] 0 ) 
+      ( modify-variable 
+         @AddToEscortDrone1[0] 
+         1 
+      )
+      ( modify-variable 
+         @AddToEscortDrone1[0] 
+         0 
+      )
+      ( modify-variable 
+         @directivecounter[0] 
+         ( + @directivecounter[0] 1 ) 
+      )
+   )
+   ( modify-variable 
+      @directivecounter[0] 
+      ( + @directivecounter[0] 1 ) 
+   )
+)
++Name: CHECK AddToEscortDrone1
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( targeted "Drone 2" ) 
+      ( key-pressed "Alt-P" ) 
+      ( is-event-true-delay 
+         "DELAY FreeKeyALTP/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete 
+         "DIR ClearEscortList" 
+      )
+   )
+   ( key-reset-multiple "Alt-P" ) 
+   ( if-then-else 
+      ( = @AddToEscortDrone2[0] 0 ) 
+      ( modify-variable 
+         @AddToEscortDrone2[0] 
+         1 
+      )
+      ( modify-variable 
+         @AddToEscortDrone2[0] 
+         0 
+      )
+   )
+   ( modify-variable 
+      @directivecounter[0] 
+      ( + @directivecounter[0] 1 ) 
+   )
+)
++Name: CHECK AddToEscortDrone2
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( key-pressed "Alt-G" ) 
+   ( if-then-else 
+      ( = @CheckGlideToggleOn[0] 0 ) 
+      ( modify-variable 
+         @CheckGlideToggleOn[0] 
+         1 
+      )
+      ( modify-variable 
+         @CheckGlideToggleOn[0] 
+         0 
+      )
+   )
+   ( when 
+      ( and 
+         ( is-event-true-delay 
+            "DELAY FreeKeyALTG/TrngMsg" 
+            0 
+         )
+         ( not 
+            ( is-event-true-delay "DIR Glide" 0 ) 
+         )
+      )
+      ( when 
+         ( and 
+            ( is-facing 
+               "Red 1" 
+               "IntroOutroCamera" 
+               15 
+            )
+            ( >= ( current-speed "Red 1" ) 80 ) 
+         )
+         ( modify-variable 
+            @CheckGlideToggleEvent[0] 
+            1 
+         )
+      )
+      ( when 
+         ( and 
+            ( = @CheckGlideToggleEvent[0] 1 ) 
+            ( = @CheckGlideToggleOn[0] 0 ) 
+         )
+         ( modify-variable 
+            @CheckGlideToggleEvent[0] 
+            0 
+         )
+      )
+   )
+   ( key-reset-multiple "Alt-G" ) 
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage22" 
+         20 
+         45 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         0 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: CHECK GlideToggleOn
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY FreeKeyALTG/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete "DIR Glide" ) 
+   )
+   ( if-then-else 
+      ( is-facing "Red 1" "Theseus" 15 ) 
+      ( when 
+         ( true ) 
+         ( when 
+            ( = @Counter1[0] 0 ) 
+            ( modify-variable 
+               @Counter1[0] 
+               ( mission-time-msecs ) 
+            )
+         )
+         ( modify-variable 
+            @Counter2[0] 
+            ( mission-time-msecs ) 
+         )
+         ( change-iff "Object" "Theseus" ) 
+      )
+      ( modify-variable @Counter1[0] 0 ) 
+      ( modify-variable @Counter2[0] 0 ) 
+      ( change-iff "Friendly" "Theseus" ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage23" 
+         20 
+         50 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: CHECK FaceTheseus
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "DELAY Landing/TrngMsg" 
+         0 
+      )
+      ( is-event-incomplete "DIR Landing" ) 
+   )
+   ( if-then-else 
+      ( and 
+         ( <= 
+            ( distance "Red 1" "LandingPath:1" ) 
+            100 
+         )
+         ( > ( current-speed "Red 1" ) 40 ) 
+         ( facing-waypoint "LandingPath2" 10 ) 
+      )
+      ( when 
+         ( true ) 
+         ( when 
+            ( = @Counter1[0] 0 ) 
+            ( modify-variable 
+               @Counter1[0] 
+               ( mission-time-msecs ) 
+            )
+         )
+         ( modify-variable 
+            @Counter2[0] 
+            ( mission-time-msecs ) 
+         )
+      )
+      ( modify-variable @Counter1[0] 0 ) 
+      ( modify-variable @Counter2[0] 0 ) 
+   )
+   ( when 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( show-subtitle-text 
+         "AutoGeneratedMessage24" 
+         20 
+         51 
+         ( false ) 
+         ( false ) 
+         0 
+         0 
+         100 
+         255 
+         255 
+         255 
+         "1" 
+         ( true ) 
+      )
+   )
+)
++Name: CHECK LandingApproachTooFast
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ========== DEBUG ===========
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @!DEBUG[0] 1 ) 
+   ( when 
+      ( and 
+         ( key-pressed "Insert" ) 
+         ( = @!DEBUGInfoOnOff[0] 1 ) 
+      )
+      ( modify-variable 
+         @!DEBUGInfoOnOff[0] 
+         0 
+      )
+      ( key-reset-multiple "Insert" ) 
+   )
+   ( when 
+      ( and 
+         ( key-pressed "Insert" ) 
+         ( = @!DEBUGInfoOnOff[0] 0 ) 
+      )
+      ( modify-variable 
+         @!DEBUGInfoOnOff[0] 
+         1 
+      )
+      ( key-reset-multiple "Insert" ) 
+   )
+)
++Name: DBG InfoOn/Off
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( = @!DEBUGInfoOnOff[0] 1 ) 
+   ( show-subtitle-text 
+      "AutoGeneratedMessage25" 
+      1 
+      10 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage26" 
+      1 
+      11 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage27" 
+      1 
+      12 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+)
++Name: DBG ShowKeys
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( = @!DEBUGInfoOnOff[0] 1 ) 
+   ( show-subtitle-text 
+      "AutoGeneratedMessage28" 
+      1 
+      14 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage29" 
+      1 
+      15 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage30" 
+      10 
+      15 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage31" 
+      1 
+      24 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage32" 
+      10 
+      24 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage33" 
+      1 
+      25 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage34" 
+      10 
+      25 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage35" 
+      1 
+      16 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage36" 
+      10 
+      16 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage37" 
+      1 
+      17 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage38" 
+      10 
+      17 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage39" 
+      1 
+      18 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage40" 
+      10 
+      18 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage41" 
+      1 
+      19 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage42" 
+      10 
+      19 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage43" 
+      1 
+      20 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage44" 
+      10 
+      20 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage45" 
+      1 
+      21 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage46" 
+      10 
+      21 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage47" 
+      1 
+      22 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage48" 
+      10 
+      22 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage49" 
+      1 
+      23 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage50" 
+      10 
+      23 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage51" 
+      1 
+      26 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage52" 
+      10 
+      26 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+)
++Name: DBG ShowVariables
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( = @!DEBUGInfoOnOff[0] 1 ) 
+   ( modify-variable 
+      @!DEBUGRed1Bank[0] 
+      ( get-object-bank "Red 1" ) 
+   )
+   ( modify-variable 
+      @!DEBUGRed1Pitch[0] 
+      ( get-object-pitch "Red 1" ) 
+   )
+   ( modify-variable 
+      @!DEBUGRed1Yaw[0] 
+      ( get-object-heading "Red 1" ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage53" 
+      20 
+      14 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage54" 
+      20 
+      15 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage55" 
+      30 
+      15 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage56" 
+      20 
+      16 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage57" 
+      30 
+      16 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage58" 
+      20 
+      17 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage59" 
+      30 
+      17 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage60" 
+      20 
+      18 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage61" 
+      30 
+      18 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage62" 
+      20 
+      19 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage63" 
+      30 
+      19 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage64" 
+      20 
+      20 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage65" 
+      30 
+      20 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage66" 
+      20 
+      21 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage67" 
+      30 
+      21 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage68" 
+      20 
+      22 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage69" 
+      30 
+      22 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage70" 
+      20 
+      23 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage71" 
+      30 
+      23 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage72" 
+      20 
+      24 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage73" 
+      30 
+      24 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage74" 
+      20 
+      25 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage75" 
+      30 
+      25 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage76" 
+      20 
+      26 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage77" 
+      30 
+      26 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage78" 
+      20 
+      27 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage79" 
+      30 
+      27 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage80" 
+      20 
+      28 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+   ( show-subtitle-text 
+      "AutoGeneratedMessage81" 
+      30 
+      28 
+      ( false ) 
+      ( false ) 
+      10 
+      0 
+      100 
+      255 
+      255 
+      0 
+      "1" 
+      ( true ) 
+   )
+)
++Name: DBG ShowOrientations
++Repeat Count: 999999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( = @!DEBUGInfoOnOff[0] 1 ) 
+      ( key-pressed "Page Up" ) 
+   )
+   ( player-not-use-ai ) 
+   ( unlock-afterburner "Red 1" ) 
+   ( unlock-primary-weapon "Red 1" ) 
+   ( script-eval "unlockContr('bank')" ) 
+   ( script-eval "unlockContr('side')" ) 
+   ( script-eval "unlockContr('vert')" ) 
+   ( script-eval "unlockContr('pi')" ) 
+   ( script-eval "unlockContr('head')" ) 
+   ( script-eval "contrReset(true)" ) 
+   ( set-mobile "Red 1" ) 
+   ( ignore-key 
+      0 
+      "T" 
+      "Shift-T" 
+      "H" 
+      "Shift-H" 
+      "Alt-H" 
+      "F" 
+      "Shift-F" 
+      "Y" 
+      "G" 
+      "Alt-Y" 
+      "Alt-T" 
+      "V" 
+      "S" 
+      "Shift-S" 
+      "Alt-S" 
+      "M" 
+      "Alt-M" 
+      "Left Ctrl" 
+      "Spacebar" 
+      "." 
+      "," 
+      "/" 
+      "Shift-/" 
+      "X" 
+      "A" 
+      "Z" 
+      "Pad 7" 
+      "Pad 9" 
+      "Pad 8" 
+      "Pad 2" 
+      "Pad 4" 
+      "Pad 6" 
+      "Backspace" 
+      "\" 
+      "[" 
+      "]" 
+      "=" 
+      "-" 
+      "Shift-A" 
+      "Shift-Z" 
+      "Shift-D" 
+      "Shift-V" 
+      "Shift-X" 
+      "Shift-E" 
+      "Shift-W" 
+      "Shift-I" 
+      "Shift-P" 
+      "Shift-C" 
+      "Shift-J" 
+      "Shift-R" 
+      "R" 
+      "Pad *" 
+      "Pad ." 
+      "Pad Enter" 
+      "Pad 0" 
+      "Pad /" 
+      "Pad +" 
+      "Pad -" 
+      "Pad 5" 
+      "'" 
+      "C" 
+      "Alt-J" 
+      "J" 
+      "Tab" 
+      "Insert" 
+      "Delete" 
+      "Home" 
+      "End" 
+      "Page Up" 
+      "Page Down" 
+      "Alt-D" 
+      "Q" 
+      "Up Arrow" 
+      "Down Arrow" 
+      "Left Arrow" 
+      "Right Arrow" 
+      "Scroll Lock" 
+      "Shift-Scroll Lock" 
+      "Alt-E" 
+      "Alt-Shift-E" 
+      "E" 
+      "Alt-R" 
+      "U" 
+      "Shift-U" 
+      "N" 
+      "K" 
+      "Shift-K" 
+      "B" 
+      "Shift-B" 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+      "Shift-." 
+      "Shift-," 
+      "L" 
+      "Shift-N" 
+      "Shift-End" 
+      "Shift-O" 
+      "Shift-3" 
+      "Shift-1" 
+      "Shift-Pad +" 
+      "Shift-Pad Enter" 
+      "Alt-Shift-Q" 
+      "Alt-A" 
+      "Alt-N" 
+      "Alt-G" 
+      "W" 
+   )
+)
++Name: DBG FullShipControl
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 2 total
+
+$Type: Primary
++Name: Exercises
+$MessageNew:  XSTR("Complete CNP Basic Flight Exercises", 1021)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "ORDER TestDone" 
+   3 
+)
++No music
++Score: 200
+
+$Type: Primary
++Name: InitiateLanding
+$MessageNew:  XSTR("Initiate the automated landing sequence", 1022)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "DIR Landing" 
+   40 
+)
++No music
+
+#Waypoints		;! 19 lists total
+
+$Name: LaunchPath
+$List: (		;! 1 points in list
+	( 7.600000, -40.000000, 245.000000 )
+)
+
+$Name: LandingPath
+$List: (		;! 1 points in list
+	( -550.000000, -28.000000, 162.000000 )
+)
+
+$Name: LandingPath2
+$List: (		;! 1 points in list
+	( 319.000031, -28.000000, 162.000000 )
+)
+
+$Name: NavPoint
+$List: (		;! 1 points in list
+	( 0.000000, 0.000000, 50000.000000 )
+)
+
+$Name: Drone1Idle
+$List: (		;! 2 points in list
+	( 30.000000, -25.000000, 480.000000 )
+	( 55.000000, -35.000000, 500.000000 )
+)
+
+$Name: Drone1Idle2
+$List: (		;! 2 points in list
+	( 550.000000, 0.000000, 300.000000 )
+	( 600.000000, -50.000000, 250.000000 )
+)
+
+$Name: Drone2Idle
+$List: (		;! 2 points in list
+	( -25.000000, -45.000000, 430.000000 )
+	( 0.000000, -30.000000, 435.000000 )
+)
+
+$Name: Drone2TargetInReticle
+$List: (		;! 2 points in list
+	( 7.600000, -40.000000, 410.000000 )
+	( 7.600000, -40.000000, 358.500000 )
+)
+
+$Name: Drone2Follow1
+$List: (		;! 1 points in list
+	( -2250.000000, -500.000000, -1500.000000 )
+)
+
+$Name: Drone2Follow2
+$List: (		;! 1 points in list
+	( -2500.000000, 0.000000, -2000.000000 )
+)
+
+$Name: Drone2Follow3
+$List: (		;! 1 points in list
+	( -2250.000000, 500.000000, -1500.000000 )
+)
+
+$Name: Drone2Follow4
+$List: (		;! 1 points in list
+	( -2000.000000, 1000.000000, -1000.000000 )
+)
+
+$Name: Drone2Follow5
+$List: (		;! 1 points in list
+	( -1750.000000, 500.000000, -500.000000 )
+)
+
+$Name: Drone2Follow6
+$List: (		;! 1 points in list
+	( -1500.000000, 0.000000, 0.000000 )
+)
+
+$Name: Drone2Follow7
+$List: (		;! 1 points in list
+	( -1750.000000, -500.000000, -500.000000 )
+)
+
+$Name: Drone2Follow8
+$List: (		;! 1 points in list
+	( -2000.000000, -1000.000000, -1000.000000 )
+)
+
+$Name: OutroCameraPoint
+$List: (		;! 1 points in list
+	( 115.000000, -30.000000, 145.000000 )
+)
+
+$Name: Drone1TurnToLift
+$List: (		;! 1 points in list
+	( 98.000000, -32.000000, -195.000000 )
+)
+
+$Name: Drone1LandingWindow(Dummies)
+$List: (		;! 5 points in list
+	( 700.000000, -130.000000, -60.000000 )
+	( 700.000000, 70.000000, -60.000000 )
+	( 700.000000, 70.000000, -250.000000 )
+	( 700.000000, -130.000000, -250.000000 )
+	( 750.000000, -130.000000, -250.000000 )
+)
+
+#Messages		;! 90 total
+
+$Command Sender: Battlestar Theseus
+
+$Name: BLANK
+$Team: -1
+$MessageNew:  XSTR(" ", 844)
+$end_multi_text
+
+$Name: ======SHOOTER=====
+$Team: -1
+$MessageNew:  XSTR(" ", 844)
+$end_multi_text
+
+$Name: FLUSH PreCheck1
+$Team: -1
+$MessageNew:  XSTR("Viper 8-1-4$slashTheseus.", 738)
+$end_multi_text
++Wave Name: SP-01-TRN-001.ogg
+
+$Name: FLUSH PreCheck2
+$Team: -1
+$MessageNew:  XSTR("Clear forward. Nav-con green. Interval check.", 1023)
+$end_multi_text
++Wave Name: SP-01-TRN-002.ogg
+
+$Name: FLUSH PreCheck3
+$Team: -1
+$MessageNew:  XSTR("Thrust positive and steady.", 1024)
+$end_multi_text
++Wave Name: SP-01-TRN-003.ogg
+
+$Name: FLUSH PreCheck4
+$Team: -1
+$MessageNew:  XSTR("I just need your thumbs up and you're out of here.", 1025)
+$end_multi_text
++Wave Name: SP-01-TRN-004.ogg
+
+$Name: FLUSH Goodbye
+$Team: -1
+$MessageNew:  XSTR("Good-bye.", 1026)
+$end_multi_text
++Wave Name: SP-01-TRN-005.ogg
+
+$Name: FLUSH AbortLaunch?
+$Team: -1
+$MessageNew:  XSTR("Are you experiencing difficulties, sir? Do you need to abort the launch?", 1027)
+$end_multi_text
++Wave Name: SP-02-TRN-039.ogg
+
+$Name: ======INSTRUCTOR=====
+$Team: -1
+$MessageNew:  XSTR(" ", 844)
+$end_multi_text
+
+$Name: INSTR ControlsLocked
+$Team: -1
+$MessageNew:  XSTR("Welcome, pilot. Lt. Manhardt here. You know me as callsign 'Shadow'. I will be serving as your instructor for the duration of these exercises.", 1028)
+$end_multi_text
++Wave Name: SP-01-TRN-006.ogg
+
+$Name: INSTR ControlsLocked2
+$Team: -1
+$MessageNew:  XSTR("For the time being, your flight controls have been locked. You will regain access to them one by one as we progress.", 1033)
+$end_multi_text
++Wave Name: SP-01-TRN-007.ogg
+
+$Name: INSTR BeginTest
+$Team: -1
+$MessageNew:  XSTR("We will begin with a test of your basic targeting controls. These should not differ much from the controls you are already familiar with on a non-CNP Viper.", 1034)
+$end_multi_text
++Wave Name: SP-01-TRN-008.ogg
+
+$Name: INSTR TargetAny
+$Team: -1
+$MessageNew:  XSTR("Cycle through all available ships in the area until you target Drone 2.", 1035)
+$end_multi_text
++Wave Name: SP-01-TRN-009.ogg
+
+$Name: INSTR TargetHostile
+$Team: -1
+$MessageNew:  XSTR("The two drones near you are marked as hostile. Cycle through hostile ships until you target Drone 1.", 1038)
+$end_multi_text
++Wave Name: SP-01-TRN-010.ogg
+
+$Name: INSTR ImprovedAutoTarget
+$Team: -1
+$MessageNew:  XSTR("Your viper's auto-targeting functions have also been improved by the CNP. As a refresher, auto-targeting selects the hostile nearest to you and also updates to a new target when your current target has been destroyed.", 1051)
+$end_multi_text
++Wave Name: SP-01-TRN-011.ogg
+
+$Name: INSTR AutoTarget
+$Team: -1
+$MessageNew:  XSTR("Enable auto-targeting now.", 1057)
+$end_multi_text
++Wave Name: SP-01-TRN-012.ogg
+
+$Name: INSTR ImprovedTargetFriendly
+$Team: -1
+$MessageNew:  XSTR("The CNP also has improved functionality for targeting friendly craft. For the next exercise, I have marked both drones as friendly.", 1058)
+$end_multi_text
++Wave Name: SP-01-TRN-013.ogg
+
+$Name: INSTR TargetFriendly
+$Team: -1
+$MessageNew:  XSTR("Cycle through all friendly ships in the area until you target the Theseus.", 1062)
+$end_multi_text
++Wave Name: SP-01-TRN-014.ogg
+
+$Name: INSTR ImprovedTargetInReticle
+$Team: -1
+$MessageNew:  XSTR("Your most basic targeting option, selecting whatever ship is under your targeting reticle, is also supported on a CNP enabled craft.", 1067)
+$end_multi_text
++Wave Name: SP-01-TRN-015.ogg
+
+$Name: INSTR TargetInReticle
+$Team: -1
+$MessageNew:  XSTR("Drone 2 should be under your reticle. Target it now.", 1075)
+$end_multi_text
++Wave Name: SP-01-TRN-016.ogg
+
+$Name: INSTR ImprovedFlightControls1
+$Team: -1
+$MessageNew:  XSTR("The CNP allows even quicker response to pilot movements and auto-compensates for maneuvers the pilot is incapable of withstanding.", 1084)
+$end_multi_text
++Wave Name: SP-01-TRN-017.ogg
+
+$Name: INSTR ImprovedFlightControls2
+$Team: -1
+$MessageNew:  XSTR("You should find that you can turn much more quickly and with less danger of black or red outs than before.", 1088)
+$end_multi_text
++Wave Name: SP-01-TRN-018.ogg
+
+$Name: INSTR Bank
+$Team: -1
+$MessageNew:  XSTR("Drone 2 is going to execute some basic maneuvers you are to mimic. First, you are to bank until you are aligned with the drone.", 1092)
+$end_multi_text
++Wave Name: SP-01-TRN-019.ogg
+
+$Name: INSTR LatVertThrusters
+$Team: -1
+$MessageNew:  XSTR("Good. Now use your thrusters for lateral and vertical movement to center the drone in your reticle.", 1096)
+$end_multi_text
++Wave Name: SP-01-TRN-020.ogg
+
+$Name: INSTR PitchYaw
+$Team: -1
+$MessageNew:  XSTR("Test your pitch and yaw controls by turning to first face Drone 1, then Drone 2.", 1101)
+$end_multi_text
++Wave Name: SP-01-TRN-021.ogg
+
+$Name: INSTR ImprovedMatchSpeed
+$Team: -1
+$MessageNew:  XSTR("With the CNP, a viper's automatic speed matching functions should now better predict the actions of enemy craft and react faster to any changes.", 1110)
+$end_multi_text
++Wave Name: SP-01-TRN-022.ogg
+
+$Name: INSTR MatchSpeed
+$Team: -1
+$MessageNew:  XSTR("Match speeds with and follow Drone 2.", 1111)
+$end_multi_text
++Wave Name: SP-01-TRN-023.ogg
+
+$Name: INSTR ImprovedAutoMatchSpeed
+$Team: -1
+$MessageNew:  XSTR("Match Speed only works for your currently selected target, unlike auto-match speed, which stays enabled if you switch targets or if your current target gets destroyed.", 1112)
+$end_multi_text
++Wave Name: SP-01-TRN-024.ogg
+
+$Name: INSTR AutoMatchSpeed
+$Team: -1
+$MessageNew:  XSTR("Now turn on auto-match speed and target Drone 1. You should notice that your speed changes. Then target Drone 2.", 1121)
+$end_multi_text
++Wave Name: SP-01-TRN-025.ogg
+
+$Name: INSTR ImprovedAccelerate
+$Team: -1
+$MessageNew:  XSTR("Despite some requests for it to do so, the CNP will not disengage cruise or match speed settings, even if you fire your engines or engage the afterburner.", 1127)
+$end_multi_text
++Wave Name: SP-01-TRN-026.ogg
+
+$Name: INSTR AccelDecel
+$Team: -1
+$MessageNew:  XSTR("This fault can be used to your advantage. Use your manual acceleration controls to first approach Drone 2, and then tail it at a distance.
+", 1132)
+$end_multi_text
++Wave Name: SP-01-TRN-027.ogg
+
+$Name: INSTR ImprovedAfterburner
+$Team: -1
+$MessageNew:  XSTR("Your afterburners are also more efficiently managed on a CNP-enabled viper, causing less wear and tear on your fighter and reducing maintenance costs.", 1133)
+$end_multi_text
++Wave Name: SP-01-TRN-028.ogg
+
+$Name: INSTR Afterburner
+$Team: -1
+$MessageNew:  XSTR("Engage your afterburner to close within 150 meters of Drone 2.", 1143)
+$end_multi_text
++Wave Name: SP-01-TRN-029.ogg
+
+$Name: INSTR CompleteStop
+$Team: -1
+$MessageNew:  XSTR("Now come to a complete stop.", 1145)
+$end_multi_text
++Wave Name: SP-01-TRN-030.ogg
+
+$Name: INSTR EList,Com,Nav
+$Team: -1
+$MessageNew:  XSTR("Next, we will test the escort list, communications menu and navpoint system.", 1146)
+$end_multi_text
++Wave Name: SP-01-TRN-031.ogg
+
+$Name: INSTR ReFamiliarizeEscort
+$Team: -1
+$MessageNew:  XSTR("We will now re-familiarize you with the escort list functions. Bear in mind that Drone 1 is marked as hostile.", 1036)
+$end_multi_text
++Wave Name: SP-01-TRN-032.ogg
+
+$Name: INSTR AddDronesToEscort
+$Team: -1
+$MessageNew:  XSTR("Now add both Drones to the escort list.", 1147)
+$end_multi_text
++Wave Name: SP-01-TRN-033.ogg
+
+$Name: INSTR CylceClearEscort
+$Team: -1
+$MessageNew:  XSTR("You can cylce between the ships on your list. Clear the escort list when you're done.", 1037)
+$end_multi_text
++Wave Name: SP-01-TRN-034.ogg
+
+$Name: INSTR ComMenu
+$Team: -1
+$MessageNew:  XSTR("Using the communications menu, order Drone 1 to return to the Theseus.", 1160)
+$end_multi_text
++Wave Name: SP-01-TRN-035.ogg
+
+$Name: INSTR NavPoints
+$Team: -1
+$MessageNew:  XSTR("Activate the navpoint system now. We will need it for the next exercise.", 1162)
+$end_multi_text
++Wave Name: SP-01-TRN-036.ogg
+
+$Name: INSTR ImprovedCruiseSpeeds
+$Team: -1
+$MessageNew:  XSTR("With the CNP active, you should also have greater computer control over cruising presets. Fuel efficiency in 1$slash3, 2$slash3 and full throttle modes is also higher.", 1166)
+$end_multi_text
++Wave Name: SP-01-TRN-037.ogg
+
+$Name: INSTR CruiseSpeeds
+$Team: -1
+$MessageNew:  XSTR("Travel towards navpoint 1 and try the cruise speed settings now.", 1169)
+$end_multi_text
++Wave Name: SP-01-TRN-038.ogg
+
+$Name: INSTR ImprovedGlide
+$Team: -1
+$MessageNew:  XSTR("Despite objections from CNP programmers, you still have the option to turn off all computer-aided flight assists and enter 'glide' mode.", 1174)
+$end_multi_text
++Wave Name: SP-01-TRN-039.ogg
+
+$Name: INSTR ImprovedGlide2
+$Team: -1
+$MessageNew:  XSTR("Glide mode enables many combat maneuvers, that are not possible in an atmosphere.", 1178)
+$end_multi_text
++Wave Name: SP-01-TRN-040.ogg
+
+$Name: INSTR Glide
+$Team: -1
+$MessageNew:  XSTR("Get some speed while still travelling towards navpoint 1. Then enter glide mode and turn to face the Theseus while gliding.", 1193)
+$end_multi_text
++Wave Name: SP-01-TRN-041.ogg
+
+$Name: INSTR TestDone
+$Team: -1
+$MessageNew:  XSTR("This concludes our basic CNP exercises. You may further familiarize yourself with the new systems over the next few minutes if you choose.", 1194)
+$end_multi_text
++Wave Name: SP-01-TRN-042.ogg
+
+$Name: INSTR GetHome
+$Team: -1
+$MessageNew:  XSTR("When you are finished, you are cleared for a CNP-enabled automatic landing sequence on the Theseus. Approach the port dorsal flight pod when ready.", 1195)
+$end_multi_text
++Wave Name: SP-01-TRN-043.ogg
+
+$Name: INSTR WatchItNotCheap!
+$Team: -1
+$MessageNew:  XSTR("Hey, watch it! You should know that equipment isn't cheap!", 1196)
+$end_multi_text
++Wave Name: SP-01-TRN-044.ogg
+
+$Name: INSTR ReturnToExerciseArea!
+$Team: -1
+$MessageNew:  XSTR("Return to the exercise area immediately!", 1197)
+$end_multi_text
++Wave Name: SP-01-TRN-045.ogg
+
+$Name: INSTR EnoughForNow
+$Team: -1
+$MessageNew:  XSTR("Alright, thats enough for now. I have more pilots to instruct and i can't wait all day. Return to the Theseus.", 1204)
+$end_multi_text
++Wave Name: SP-01-TRN-046.ogg
+
+$Name: INSTR StopFrakkingAround!
+$Team: -1
+$MessageNew:  XSTR("Stop frakking around! I'm locking your flight controls and initiating your automatic landing sequence.", 1205)
+$end_multi_text
++Wave Name: SP-01-TRN-047.ogg
+
+$Name: ======TRAINING=====
+$Team: -1
+$MessageNew:  XSTR(" ", 844)
+$end_multi_text
+
+$Name: TRNG F2
+$Team: -1
+$MessageNew:  XSTR("Press F2 in game and choose 'Control Config' to review or change your controls.", 1211)
+$end_multi_text
+
+$Name: TRNG LaunchKey
+$Team: -1
+$MessageNew:  XSTR("Press $$backslash$ to signal you are ready for launch.", 1060)
+$end_multi_text
+
+$Name: TRNG TargetAnyKey
+$Team: -1
+$MessageNew:  XSTR("Press $T$ to cycle through all available ships, no matter their IFF, until you target Drone 2.
+
+You can cycle targets in reverse with $SHIFT-T$. ", 1213)
+$end_multi_text
+
+$Name: TRNG HostileKey
+$Team: -1
+$MessageNew:  XSTR("Press $H$ to cycle through hostile targets until you target Drone 1.
+
+You can cycle targets in reverse with $SHIFT-H$.", 1214)
+$end_multi_text
+
+$Name: TRNG AutoTargetKey
+$Team: -1
+$MessageNew:  XSTR("Press $Alt-H$ to activate auto-targeting.", 1215)
+$end_multi_text
+
+$Name: TRNG FriendlyKey
+$Team: -1
+$MessageNew:  XSTR("Press $F$ to cycle through friendly ships until you target the Theseus.
+
+You can cycle targets in reverse with $SHIFT-F$.", 1216)
+$end_multi_text
+
+$Name: TRNG TargetinReticleKey
+$Team: -1
+$MessageNew:  XSTR("If Drone 2 is near your center reticle, press $Y$ to target it.", 1218)
+$end_multi_text
+
+$Name: TRNG BankKeys
+$Team: -1
+$MessageNew:  XSTR("Press $Q$, $E$ or use the corresponing mouse$slashjoystick-axis to bank your ship and align with Drone 2.
+
+Target brackets will turn yellow if you are at the right angle.", 2075)
+$end_multi_text
+
+$Name: TRNG LatVertThrustersKeys
+$Team: -1
+$MessageNew:  XSTR("Press $A$, $D$, $Z$ or $X$ to thrust left, right, up or down until Drone 2 is in your target reticle.", 2076)
+$end_multi_text
+
+$Name: TRNG PitchYawKeys1
+$Team: -1
+$MessageNew:  XSTR("Press $Up Arrow$, $Down Arrow$, $Left Arrow$, $Right Arrow$ or use the corresponding mouse or joystick-axis to yaw and pitch your ship and face Drone 1.", 2077)
+$end_multi_text
+
+$Name: TRNG PitchYawKeys2
+$Team: -1
+$MessageNew:  XSTR("Now turn to face Drone 2 again.", 1223)
+$end_multi_text
+
+$Name: TRNG MatchSpeedKey
+$Team: -1
+$MessageNew:  XSTR("Target Drone 2 and press $M$ to match speed with your current target.", 1224)
+$end_multi_text
+
+$Name: TRNG AutoMatchKey
+$Team: -1
+$MessageNew:  XSTR("Keep Drone 2 targeted and press $Alt-M$ to activate auto-match speed.", 1225)
+$end_multi_text
+
+$Name: TRNG AccelKey
+$Team: -1
+$MessageNew:  XSTR("Press and hold $W$ to accelerate and get within 150m of Drone 2.", 2078)
+$end_multi_text
+
+$Name: TRNG DecelKey
+$Team: -1
+$MessageNew:  XSTR("Press and hold $S$ to decelerate and fly in reverse until you are 250 meters behind Drone 2.", 2079)
+$end_multi_text
+
+$Name: TRNG TurboKey
+$Team: -1
+$MessageNew:  XSTR("Press and hold $Tab$ to use your afterburner and close to within 150 meters of Drone 2.", 1228)
+$end_multi_text
+
+$Name: TRNG CompleteStop
+$Team: -1
+$MessageNew:  XSTR("Press $Backspace$ to come to a complete stop.
+
+This will disable speed matching.", 1229)
+$end_multi_text
+
+$Name: TRNG AddToEscortKey
+$Team: -1
+$MessageNew:  XSTR("Target a ship and press $ALT+P$ to add it to your escort list or remove a ship already on your list. 
+
+
+Add both drones to your escort list now.", 2080)
+$end_multi_text
+
+$Name: TRNG CycleClearEscortListKeys
+$Team: -1
+$MessageNew:  XSTR("Cycle through ships on your escort list by pressing $P$.
+
+
+ Clear your escort list with $ALT-SHIFT-P$ when ready.", 2081)
+$end_multi_text
+
+$Name: TRNG ComMenuKey
+$Team: -1
+$MessageNew:  XSTR("Press $C$ to open the comm menu. 
+Press 1 to choose 'Ships'. 
+Press 1 to select 'Drone 1'.
+ Press 0 to order it to 'Depart'.", 2082)
+$end_multi_text
+
+$Name: TRNG NavPointsKey
+$Team: -1
+$MessageNew:  XSTR("Press $ALT-N$ to enable navpoints.", 1233)
+$end_multi_text
+
+$Name: TRNG CruiseSpeed33%
+$Team: -1
+$MessageNew:  XSTR("Face navpoint 1 and press $[$ to set cruise speed to 33%. 
+
+Cruise speed settings also disable auto-match speed.", 2083)
+$end_multi_text
+
+$Name: TRNG CruiseSpeed66%
+$Team: -1
+$MessageNew:  XSTR("Face navpoint 1 and press $]$ to set cruise speed to 66%. ", 1235)
+$end_multi_text
+
+$Name: TRNG CruiseSpeed100%
+$Team: -1
+$MessageNew:  XSTR("Face navpoint 1 and press $$backslash$ to set cruise speed to 100%. ", 1238)
+$end_multi_text
+
+$Name: TRNG -5%Key
+$Team: -1
+$MessageNew:  XSTR("Face navpoint 1 and press $-$ to decrease your speed in 5% increments.", 1239)
+$end_multi_text
+
+$Name: TRNG +5%Key
+$Team: -1
+$MessageNew:  XSTR("Face navpoint 1 and press $=$ to increase your speed in 5% steps.", 1240)
+$end_multi_text
+
+$Name: TRNG GlideKey
+$Team: -1
+$MessageNew:  XSTR("Face navpoint 1.
+Get faster than 80 m$slashs. 
+Press $Alt-G$ to toggle glide. 
+Turn around and face the Theseus.", 2084)
+$end_multi_text
+
+$Name: TRNG InitiateLanding
+$Team: -1
+$MessageNew:  XSTR("
+Turn off glide.
+Get near Navpoint 'Landing'.
+ Keep speed below 40 m$slashs. 
+Face flight pod.
+", 2085)
+$end_multi_text
+
+$Name: =====OBIT OUTTRO=====
+$Team: -1
+$MessageNew:  XSTR("", 213)
+$end_multi_text
+
+$Name: OBIT RequestLanding
+$Team: -1
+$MessageNew:  XSTR("This is Raptor 118. CNP techs are aboard. Requesting landing clearance.", 1248)
+$end_multi_text
++Wave Name: SP-01-TRN-048.ogg
+
+$Name: OBIT Wilco
+$Team: -1
+$MessageNew:  XSTR("Wilco, Theseus. ", 1249)
+$end_multi_text
++Wave Name: SP-01-TRN-049.ogg
+
+$Name: =====THESEUS LSO=====
+$Team: -1
+$MessageNew:  XSTR("", 213)
+$end_multi_text
+
+$Name: THELSO LandingTooFast
+$Team: -1
+$MessageNew:  XSTR("Sir, you are moving too fast for an automatic landing.", 1252)
+$end_multi_text
++Wave Name: SP-01-TRN-050.ogg
+
+$Name: THELSO ObitAuthorized
+$Team: -1
+$MessageNew:  XSTR("Obit, you are authorized to land in the starboard dorsal flight pod.", 1253)
+$end_multi_text
++Wave Name: SP-01-TRN-052.ogg
+
+$Name: THELSO SkidsDown
+$Team: -1
+$MessageNew:  XSTR("Viper 8-1-4$slashTheseus. Skids down, mag-lock secure. ", 1144)
+$end_multi_text
++Wave Name: SP-01-TRN-053.ogg
+
+$Name: TRNG AutoMatchTargetDrone1
+$Team: -1
+$MessageNew:  XSTR("Now target Drone 1 and notice how your speed automatically changes to match the Drones' speed.", 1255)
+$end_multi_text
+
+$Name: TRNG AutoMatchTargetDrone2
+$Team: -1
+$MessageNew:  XSTR("Target Drone 2 to continue.", 1256)
+$end_multi_text
+
+$Name: THELSO LandingTooFast2
+$Team: -1
+$MessageNew:  XSTR("Keep your speed below 40 meters per second.", 1257)
+$end_multi_text
++Wave Name: SP-01-TRN-051.ogg
+
+$Name: AutoGeneratedMessage1
+$Team: -1
+$MessageNew:  XSTR("@IntroSubtitleLine1[ ]", 1950)
+$end_multi_text
+
+$Name: AutoGeneratedMessage2
+$Team: -1
+$MessageNew:  XSTR("@IntroSubtitleLine2[ ]", 1951)
+$end_multi_text
+
+$Name: AutoGeneratedMessage3
+$Team: -1
+$MessageNew:  XSTR("@IntroSubtitleLine3[ ]", 1952)
+$end_multi_text
+
+$Name: AutoGeneratedMessage4
+$Team: -1
+$MessageNew:  XSTR("press FIRE to skip cutscene", 2086)
+$end_multi_text
+
+$Name: AutoGeneratedMessage5
+$Team: -1
+$MessageNew:  XSTR("AnimatedSubtitles running", 2087)
+$end_multi_text
+
+$Name: AutoGeneratedMessage6
+$Team: -1
+$MessageNew:  XSTR("Launch running", 2088)
+$end_multi_text
+
+$Name: AutoGeneratedMessage7
+$Team: -1
+$MessageNew:  XSTR("AutomatedLanding running", 2089)
+$end_multi_text
+
+$Name: AutoGeneratedMessage8
+$Team: -1
+$MessageNew:  XSTR("Drone1 Landing running", 2090)
+$end_multi_text
+
+$Name: AutoGeneratedMessage9
+$Team: -1
+$MessageNew:  XSTR("Drone1 TurnToLift running", 2091)
+$end_multi_text
+
+$Name: AutoGeneratedMessage10
+$Team: -1
+$MessageNew:  XSTR("Drone2Align2Red1 Running", 2092)
+$end_multi_text
+
+$Name: AutoGeneratedMessage11
+$Team: -1
+$MessageNew:  XSTR("Drone2Waypoints running", 2093)
+$end_multi_text
+
+$Name: AutoGeneratedMessage12
+$Team: -1
+$MessageNew:  XSTR("ResetTargettingKeys running", 2094)
+$end_multi_text
+
+$Name: AutoGeneratedMessage13
+$Team: -1
+$MessageNew:  XSTR("ResetTargetRange running", 2095)
+$end_multi_text
+
+$Name: AutoGeneratedMessage14
+$Team: -1
+$MessageNew:  XSTR("ResetSpeedMatchKeys running", 2096)
+$end_multi_text
+
+$Name: AutoGeneratedMessage15
+$Team: -1
+$MessageNew:  XSTR("ResetNavCruiseGlide Running", 2097)
+$end_multi_text
+
+$Name: AutoGeneratedMessage16
+$Team: -1
+$MessageNew:  XSTR("ResetNavLanding running", 2098)
+$end_multi_text
+
+$Name: AutoGeneratedMessage17
+$Team: -1
+$MessageNew:  XSTR("CheckBankAlignment Running", 2099)
+$end_multi_text
+
+$Name: AutoGeneratedMessage18
+$Team: -1
+$MessageNew:  XSTR("CheckLateralFacing Running", 2100)
+$end_multi_text
+
+$Name: AutoGeneratedMessage19
+$Team: -1
+$MessageNew:  XSTR("CheckFaceDrone1 Running", 2101)
+$end_multi_text
+
+$Name: AutoGeneratedMessage20
+$Team: -1
+$MessageNew:  XSTR("CheckFaceDrone2 Running", 2102)
+$end_multi_text
+
+$Name: AutoGeneratedMessage21
+$Team: -1
+$MessageNew:  XSTR("CheckAutoMatchSpeed running", 2103)
+$end_multi_text
+
+$Name: AutoGeneratedMessage22
+$Team: -1
+$MessageNew:  XSTR("CheckGlideOn running", 2104)
+$end_multi_text
+
+$Name: AutoGeneratedMessage23
+$Team: -1
+$MessageNew:  XSTR("CheckFaceTheseus Running", 2105)
+$end_multi_text
+
+$Name: AutoGeneratedMessage24
+$Team: -1
+$MessageNew:  XSTR("CheckLandingApproach", 2106)
+$end_multi_text
+
+$Name: AutoGeneratedMessage25
+$Team: -1
+$MessageNew:  XSTR("DEBUG KEYS:", 2107)
+$end_multi_text
+
+$Name: AutoGeneratedMessage26
+$Team: -1
+$MessageNew:  XSTR("INSERT = debuginfo on/off", 2108)
+$end_multi_text
+
+$Name: AutoGeneratedMessage27
+$Team: -1
+$MessageNew:  XSTR("PAGE UP = full ship control", 2109)
+$end_multi_text
+
+$Name: AutoGeneratedMessage28
+$Team: -1
+$MessageNew:  XSTR("VARS:", 2110)
+$end_multi_text
+
+$Name: AutoGeneratedMessage29
+$Team: -1
+$MessageNew:  XSTR("Counter1:", 2111)
+$end_multi_text
+
+$Name: AutoGeneratedMessage30
+$Team: -1
+$MessageNew:  XSTR("$Counter1", 2112)
+$end_multi_text
+
+$Name: AutoGeneratedMessage31
+$Team: -1
+$MessageNew:  XSTR("AddToEscortDrone1:", 2113)
+$end_multi_text
+
+$Name: AutoGeneratedMessage32
+$Team: -1
+$MessageNew:  XSTR("$AddToEscortDrone1", 2114)
+$end_multi_text
+
+$Name: AutoGeneratedMessage33
+$Team: -1
+$MessageNew:  XSTR("AddToEscortDrone2:", 2115)
+$end_multi_text
+
+$Name: AutoGeneratedMessage34
+$Team: -1
+$MessageNew:  XSTR("$AddToEscortDrone2", 2116)
+$end_multi_text
+
+$Name: AutoGeneratedMessage35
+$Team: -1
+$MessageNew:  XSTR("Counter2:", 2117)
+$end_multi_text
+
+$Name: AutoGeneratedMessage36
+$Team: -1
+$MessageNew:  XSTR("$Counter2", 2118)
+$end_multi_text
+
+$Name: AutoGeneratedMessage37
+$Team: -1
+$MessageNew:  XSTR("InLaunchTube:", 2119)
+$end_multi_text
+
+$Name: AutoGeneratedMessage38
+$Team: -1
+$MessageNew:  XSTR("$InLaunchTube", 2120)
+$end_multi_text
+
+$Name: AutoGeneratedMessage39
+$Team: -1
+$MessageNew:  XSTR("InLaunchTubeSpeed:", 2121)
+$end_multi_text
+
+$Name: AutoGeneratedMessage40
+$Team: -1
+$MessageNew:  XSTR("$InLaunchTubeSpeed", 2122)
+$end_multi_text
+
+$Name: AutoGeneratedMessage41
+$Team: -1
+$MessageNew:  XSTR("SunBitmap:", 2123)
+$end_multi_text
+
+$Name: AutoGeneratedMessage42
+$Team: -1
+$MessageNew:  XSTR("$SunBitmap", 2124)
+$end_multi_text
+
+$Name: AutoGeneratedMessage43
+$Team: -1
+$MessageNew:  XSTR("MaxRadarRange:", 2125)
+$end_multi_text
+
+$Name: AutoGeneratedMessage44
+$Team: -1
+$MessageNew:  XSTR("$MaxRadarRange", 2126)
+$end_multi_text
+
+$Name: AutoGeneratedMessage45
+$Team: -1
+$MessageNew:  XSTR("CheckAutoMatchSpeed:", 2127)
+$end_multi_text
+
+$Name: AutoGeneratedMessage46
+$Team: -1
+$MessageNew:  XSTR("$CheckAutoMatchSpeed", 2128)
+$end_multi_text
+
+$Name: AutoGeneratedMessage47
+$Team: -1
+$MessageNew:  XSTR("CheckGlideToggleOn:", 2129)
+$end_multi_text
+
+$Name: AutoGeneratedMessage48
+$Team: -1
+$MessageNew:  XSTR("$CheckGlideToggleOn", 2130)
+$end_multi_text
+
+$Name: AutoGeneratedMessage49
+$Team: -1
+$MessageNew:  XSTR("CheckGlideToggleEvent:", 2131)
+$end_multi_text
+
+$Name: AutoGeneratedMessage50
+$Team: -1
+$MessageNew:  XSTR("$CheckGlideToggleEvent", 2132)
+$end_multi_text
+
+$Name: AutoGeneratedMessage51
+$Team: -1
+$MessageNew:  XSTR("HealthRed1Hull:", 2133)
+$end_multi_text
+
+$Name: AutoGeneratedMessage52
+$Team: -1
+$MessageNew:  XSTR("$HealthRed1Hull", 2134)
+$end_multi_text
+
+$Name: AutoGeneratedMessage53
+$Team: -1
+$MessageNew:  XSTR("ORIENTATIONS:", 2135)
+$end_multi_text
+
+$Name: AutoGeneratedMessage54
+$Team: -1
+$MessageNew:  XSTR("Red1Bank:", 2136)
+$end_multi_text
+
+$Name: AutoGeneratedMessage55
+$Team: -1
+$MessageNew:  XSTR("$!DEBUGRed1Bank", 2137)
+$end_multi_text
+
+$Name: AutoGeneratedMessage56
+$Team: -1
+$MessageNew:  XSTR("Red1Pitch:", 2138)
+$end_multi_text
+
+$Name: AutoGeneratedMessage57
+$Team: -1
+$MessageNew:  XSTR("$!DEBUGRed1Pitch", 2139)
+$end_multi_text
+
+$Name: AutoGeneratedMessage58
+$Team: -1
+$MessageNew:  XSTR("Red1Yaw:", 2140)
+$end_multi_text
+
+$Name: AutoGeneratedMessage59
+$Team: -1
+$MessageNew:  XSTR("$!DEBUGRed1Yaw", 2141)
+$end_multi_text
+
+$Name: AutoGeneratedMessage60
+$Team: -1
+$MessageNew:  XSTR("LandingBank:", 2142)
+$end_multi_text
+
+$Name: AutoGeneratedMessage61
+$Team: -1
+$MessageNew:  XSTR("$LandingBank", 2143)
+$end_multi_text
+
+$Name: AutoGeneratedMessage62
+$Team: -1
+$MessageNew:  XSTR("LandingPitch:", 2144)
+$end_multi_text
+
+$Name: AutoGeneratedMessage63
+$Team: -1
+$MessageNew:  XSTR("$LandingPitch", 2145)
+$end_multi_text
+
+$Name: AutoGeneratedMessage64
+$Team: -1
+$MessageNew:  XSTR("LandingYaw:", 2146)
+$end_multi_text
+
+$Name: AutoGeneratedMessage65
+$Team: -1
+$MessageNew:  XSTR("$LandingYaw", 2147)
+$end_multi_text
+
+$Name: AutoGeneratedMessage66
+$Team: -1
+$MessageNew:  XSTR("LandingLateral:", 2148)
+$end_multi_text
+
+$Name: AutoGeneratedMessage67
+$Team: -1
+$MessageNew:  XSTR("$LandingLateral", 2149)
+$end_multi_text
+
+$Name: AutoGeneratedMessage68
+$Team: -1
+$MessageNew:  XSTR("LandingVertical:", 2150)
+$end_multi_text
+
+$Name: AutoGeneratedMessage69
+$Team: -1
+$MessageNew:  XSTR("$LandingVertical", 2151)
+$end_multi_text
+
+$Name: AutoGeneratedMessage70
+$Team: -1
+$MessageNew:  XSTR("D1LandingVertical:", 2152)
+$end_multi_text
+
+$Name: AutoGeneratedMessage71
+$Team: -1
+$MessageNew:  XSTR("$D1LandingVertical", 2153)
+$end_multi_text
+
+$Name: AutoGeneratedMessage72
+$Team: -1
+$MessageNew:  XSTR("D1LandingLateral:", 2154)
+$end_multi_text
+
+$Name: AutoGeneratedMessage73
+$Team: -1
+$MessageNew:  XSTR("$D1LandingLateral", 2155)
+$end_multi_text
+
+$Name: AutoGeneratedMessage74
+$Team: -1
+$MessageNew:  XSTR("D1LandingForward:", 2156)
+$end_multi_text
+
+$Name: AutoGeneratedMessage75
+$Team: -1
+$MessageNew:  XSTR("$D1LandingForward", 2157)
+$end_multi_text
+
+$Name: AutoGeneratedMessage76
+$Team: -1
+$MessageNew:  XSTR("D1LandingBank:", 2158)
+$end_multi_text
+
+$Name: AutoGeneratedMessage77
+$Team: -1
+$MessageNew:  XSTR("$D1LandingBank", 2159)
+$end_multi_text
+
+$Name: AutoGeneratedMessage78
+$Team: -1
+$MessageNew:  XSTR("D1LandingPitch:", 2160)
+$end_multi_text
+
+$Name: AutoGeneratedMessage79
+$Team: -1
+$MessageNew:  XSTR("$D1LandingPitch", 2161)
+$end_multi_text
+
+$Name: AutoGeneratedMessage80
+$Team: -1
+$MessageNew:  XSTR("D1LandingYaw:", 2162)
+$end_multi_text
+
+$Name: AutoGeneratedMessage81
+$Team: -1
+$MessageNew:  XSTR("$D1LandingYaw", 2163)
+$end_multi_text
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 14 total
+
+$Num stars: 0
+$Ambient light level: 65793
+
+$Bitmap List:
+$Sun: Stars_Sun_YHaze
++Angles: 1.570795 0.000000 5.759582
++Scale: 5.000000
+$Starbitmap: Stars_Cluster_02
++Angles: 0.575958 0.000000 0.000000
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_02
++Angles: 5.794488 0.000000 0.000000
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_03
++Angles: 5.270890 0.663225 0.000000
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_03
++Angles: 1.256636 0.855211 6.230820
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_03
++Angles: 0.000000 0.820304 0.436332
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_02
++Angles: 6.230820 0.069813 5.951568
++ScaleX: 5.000000
++ScaleY: 6.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_03
++Angles: 1.797688 2.303833 6.038835
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_01
++Angles: 0.000000 3.682642 2.827431
++ScaleX: 6.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_02
++Angles: 5.707222 2.949604 2.583085
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_03
++Angles: 0.506145 1.937314 3.054324
++ScaleX: 6.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_01
++Angles: 0.000000 5.445423 4.258600
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Cluster_03
++Angles: 0.925024 3.682642 4.258600
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Stars_Plnt_Desolate01
++Angles: 0.541052 1.954767 5.916661
++ScaleX: 1.000000
++ScaleY: 1.000000
++DivX: 1
++DivY: 1
+$Starbitmap: Skybox_Virgon_01
++Angles: 0.000000 0.069813 2.443459
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: 1: Animal Tenacity
+$Briefing Music: Brief1
+$Substitute Briefing Music: Brief1
+
+#End
+
