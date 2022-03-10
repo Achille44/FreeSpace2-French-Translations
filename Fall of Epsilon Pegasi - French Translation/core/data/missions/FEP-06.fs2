@@ -1,0 +1,2938 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Battlefield", 4863)
+$Author: Blaise Russel
+$Created: 01/04/05 at 16:13:03
+$Modified: 02/11/22 at 08:00:26
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 4553)
+$end_multi_text
++Game Type Flags: 1
++Flags: 131208
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 0.000000
+
++Viewer pos: -5540.695313, 1096.185913, -10397.197266
++Viewer orient:
+	0.295349, 0.000008, -0.955390,
+	0.119683, 0.992122, 0.037007,
+	0.947863, -0.125274, 0.293021
+
+
+$Skybox Model: skybox_EPegasi.pof
+
+$AI Profile: FS2 RETAIL
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"Search"		"0"		"number"
+		1		"autoGenVar1"		"GTFr Poseidon"		"string"
+		2		"autoGenVar2"		"GTFr Triton"		"string"
+		3		"autoGenVar3"		"NTCv Hawkwood"		"string"
+		4		"autoGenVar4"		"NTF Myrmidon"		"string"
+		5		"autoGenVar5"		"NTF Loki"		"string"
+		6		"autoGenVar6"		"NTC Fenris"		"string"
+		7		"autoGenVar7"		"NTF Hercules"		"string"
+		8		"autoGenVar8"		"#Providence"		"string"
+		9		"autoGenVar9"		"#Disciple"		"string"
+)
+
+#Command Briefing
+
+$Stage Text:
+ XSTR("Epsilon Pegasi 2367
+GTSC Jackson
+The NTF Incursion
+
+Welcome to everyone who made it here to the Jackson. I'm Captain Peters, commanding officer of the GTC Providence and the highest-ranking officer present. Our rallying call was heeded by several other ships in this area of Epsilon Pegasi - unfortunately, the turnout has been less than satisfactory.
+
+The Providence remains the heaviest ship present in our little fleet, and many of our vessels are civilian non-combatants - freighters and transports that are not suited for combat - who must be protected from vindictive NTF attack wings and invading cruisers.", 4864)
+$end_multi_text
+$Ani Filename: <default>
++Wave Filename: FOEP_M6_CB01.ogg
+
+$Stage Text:
+ XSTR("Koth's Invasion
+
+Yesterday, Rear Admiral Koth launched a massive invasion of the Epsilon Pegasi system. Our own forces, preoccupied with searching for the NTCv Rook - a corvette that had slipped past our lines a couple of days before - provided little to no resistance whatsoever, as Koth seized points of strategic worth without opposition.
+
+We are cut off from outside help - not only from our supplies and repair crews, but also from the rest of the GTVA and even the remainder of 6th Fleet. Not knowing their location has rendered us unable to contact them directly, and the NTF appears to have either captured or destroyed the Pegasi Communications Terminal - meaning that we cannot contact superior officers through there, either.", 4865)
+$end_multi_text
+$Ani Filename: <default>
++Wave Filename: FOEP_M6_CB02.ogg
+
+$Stage Text:
+ XSTR("A Way Out
+
+We cannot fight a war against Koth's fleet without significant backup - to be precise, the GTD Disciple. Hence, our priority is to re-establish communications with either Admiral Wilson or GTVA Command, whichever is closer. Once we have done that, we can turn our attention to turfing Bosch's traitors off our land and out of our system.
+
+Who knows? If we take Koth down now, that might just be the victory we need to push into Polaris and end this rebellion once and for all.
+
+A couple of us officers have clubbed together and come up with something that might get us back in touch with the Disciple. Fighter pilots from the engagement with the Rook will help us in implementing this plan... the rest of us will just have to sit still a while.", 4866)
+$end_multi_text
+$Ani Filename: cb_train-01_d.ani
++Wave Filename: FOEP_M6_CB03.ogg
+
+#Briefing
+$start_briefing
+$num_stages: 5
+$start_stage
+$multi_text
+ XSTR("Hello again, $f Alpha $f 1. We checked around and it appears that you're the longest-serving pilot present with us that has the greatest amount of combat experience, so we've decided to send you to link back up with $g Command.
+
+I know it's asking a lot of you, but if we don't connect with the $f Disciple soon, we're done for. We need you, $f Alpha $f 1. Don't let us down.", 4867)
+$end_multi_text
+$voice: FOEP_M6_B01.ogg
+$camera_pos: 5945.711914, 2248.071533, -5520.295410
+$camera_orient:
+	-0.000656, 0.000004, 1.000000,
+	-0.999997, 0.002397, -0.000656,
+	-0.002397, -0.999997, 0.000002
+$camera_time: 500
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Loki
+$pos: 5944.477539, 0.000064, -5553.348145
+$label:  XSTR("Alpha 1", 4570)
++id: 1
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: GTI Arcadia
+$pos: 4258.732910, -0.000100, -4484.519531
+$label:  XSTR("Hippocampus Station", 4868)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTF Ulysses
+$pos: 3849.257813, 0.000036, -5143.266602
+$label:  XSTR("Pegasus II", 4869)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("$b Epsilon $b Pegasi is home to two installations of note - $f Enif $f Station and $f Hippocampus $f Station. We suspect that any other $g 6th $g Fleeters that haven't already been killed by the $r NTF will be gathered at one of these two installations.
+
+$f Enif $f Station, regularly used by $g GTVA forces, will most likely be where the majority of the survivors are regrouping . However, that also means that Admiral Koth will probably have made it a priority target. The chances are that $f Enif $f Station will either have fallen or be the centre of such fighting as to make it unusable for our purposes.
+
+$f Hippocampus $f Station, on the other hand, suffers from no such troubles.", 4870)
+$end_multi_text
+$voice: FOEP_M6_B02.ogg
+$camera_pos: 4016.694580, 2252.701660, -4813.410645
+$camera_orient:
+	-0.000656, 0.000004, 1.000000,
+	-0.999997, 0.002397, -0.000656,
+	-0.002397, -0.999997, 0.000002
+$camera_time: 500
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Loki
+$pos: 5944.477539, 0.000064, -5553.348145
+$label:  XSTR("Alpha 1", 4570)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: GTI Arcadia
+$pos: 4258.732910, -0.000100, -4484.519531
+$label:  XSTR("Hippocampus Station", 4868)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTF Ulysses
+$pos: 3849.257813, 0.000036, -5143.266602
+$label:  XSTR("Pegasus II", 4869)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("$f Hippocampus $f Station is - was - primarily a civilian installation, although in recent times has been host to more and more $g GTVA soldiers, for obvious reasons. It is possible that there are $g Allied vessels stationed there right now, standing guard, ready to defend $f Hippocampus $f Station from Koth's ravening hordes.
+
+As the smaller and less important of $b Pegasi's two stations, we believe that Koth will forsake the civilian $f Hippocampus in favour of the $g GTVA stronghold of $f Enif. Thus, it is to $f Hippocampus $f Station that we shall send you, $f Alpha $f 1, in order to contact the Admiral and arrange a rendezvous for our forces - possibly at the installation itself.", 4871)
+$end_multi_text
+$voice: FOEP_M6_B03.ogg
+$camera_pos: 4359.604004, 1592.099609, -4457.143066
+$camera_orient:
+	-0.000656, 0.000004, 1.000000,
+	-0.999997, 0.002397, -0.000656,
+	-0.002397, -0.999997, 0.000002
+$camera_time: 500
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Loki
+$pos: 5944.477539, 0.000064, -5553.348145
+$label:  XSTR("Alpha 1", 4570)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: GTI Arcadia
+$pos: 4258.732910, -0.000100, -4484.519531
+$label:  XSTR("Hippocampus Station", 4868)
++id: 2
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTF Ulysses
+$pos: 3849.257813, 0.000036, -5143.266602
+$label:  XSTR("Pegasus II", 4869)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Obviously, we're not stupid. While $f Hippocampus $f Station may not be Koth's priority, he will have deployed troops to secure it. Should the $r NTF be laying siege to the installation, you will have to cross the battlefield by medium of stealth. A single fighter lacks the durability to survive the prolonged fire breaking through a blockade will require, and we can't risk civilian lives in this, which using our heavier vessels would entail.
+
+Hence, you are to fly a $b Loki, which, despite its failings, still has a very difficult-to-detect signature and should escape the notice of the $r NTF ships without too many problems. Remain at a distance from any patrolling hostile ships - say, 600 metres - and you should make it through alive.", 4872)
+$end_multi_text
+$voice: FOEP_M6_B04.ogg
+$camera_pos: 4359.604004, 1592.099609, -4457.143066
+$camera_orient:
+	-0.000656, 0.000004, 1.000000,
+	-0.999997, 0.002397, -0.000656,
+	-0.002397, -0.999997, 0.000002
+$camera_time: 500
+$num_lines: 0
+$num_icons: 7
+$Flags: 1
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Loki
+$pos: 5944.477539, 0.000064, -5553.348145
+$label:  XSTR("Alpha 1", 4570)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: GTI Arcadia
+$pos: 4258.732910, -0.000100, -4484.519531
+$label:  XSTR("Hippocampus Station", 4868)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTF Ulysses
+$pos: 3849.257813, 0.000036, -5143.266602
+$label:  XSTR("Pegasus II", 4869)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 28
+$team: Hostile
+$class: GTCv Deimos
+$pos: 4560.603027, 0.000038, -4474.560059
+$label:  XSTR("NTF", 4558)
++id: 8
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: GTF Hercules
+$pos: 4470.161621, 0.000057, -4843.317383
++id: 9
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: GTF Hercules
+$pos: 4473.221680, 0.000013, -5048.143555
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 19
+$team: Hostile
+$class: GTC Fenris
+$pos: 4475.471680, -0.000009, -4018.140869
++id: 11
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Once you arrive at $f Hippocampus $f Station, you'll need to open communications with the $f Disciple. Inform Admiral Wilson or the appropriate authorities of our location and status, and hopefully we can get a dialogue going.
+
+Don't worry, pilot. We'll be back with the Admiral and the rest of $g 6th $g Fleet in no time, and Koth and his $r NTF will be out of $b Epsilon $b Pegasi shortly after that.", 4873)
+$end_multi_text
+$voice: FOEP_M6_B05.ogg
+$camera_pos: 5368.591309, 1589.681641, -3287.188721
+$camera_orient:
+	-0.000656, 0.000004, 1.000000,
+	-0.999997, 0.002397, -0.000656,
+	-0.002397, -0.999997, 0.000002
+$camera_time: 500
+$num_lines: 0
+$num_icons: 8
+$Flags: 2
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Loki
+$pos: 5944.477539, 0.000064, -5553.348145
+$label:  XSTR("Alpha 1", 4570)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 15
+$team: Friendly
+$class: GTI Arcadia
+$pos: 4258.732910, -0.000100, -4484.519531
+$label:  XSTR("Hippocampus Station", 4868)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTF Ulysses
+$pos: 3849.257813, 0.000036, -5143.266602
+$label:  XSTR("Pegasus II", 4869)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 28
+$team: Hostile
+$class: GTCv Deimos
+$pos: 4560.603027, 0.000038, -4474.560059
+$label:  XSTR("NTF", 4558)
++id: 8
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: GTF Hercules
+$pos: 4470.161621, 0.000057, -4843.317383
++id: 9
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: GTF Hercules
+$pos: 4473.221680, 0.000013, -5048.143555
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 19
+$team: Hostile
+$class: GTC Fenris
+$pos: 4475.471680, -0.000009, -4018.140869
++id: 11
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 6
+$team: Friendly
+$class: GTD Hecate
+$pos: 5364.771484, 0.000808, -3272.574463
+$label:  XSTR("Disciple", 4874)
++id: 12
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 3
+
+$Formula: ( and 
+   ( is-event-false-delay "Allow" 0 ) 
+   ( is-event-false-delay 
+      "Discovered!" 
+      0 
+   )
+)
+$Multi text
+    XSTR("Your abandonment of this mission astounds me, pilot. You knew that we desperately needed to re-establish contact with GTVA Command, and although the destruction of Hippocampus Station changed the situation somewhat, nevertheless you failed to complete the mission objectives.
+
+Since you seem unable to cope under the pressure of current circumstances, you will not be assigned missions of importance in the future. And should we link back up with the Admiral, your conduct will be reported in full - although our chances are slimmer than ever, thanks to you.
+
+Dismissed.", 4875)
+$end_multi_text
+$Voice: FOEP_M6_DB01.ogg
+$Recommendation text:
+    XSTR("Do not depart until told to do so.", 4565)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay "Discovered!" 0 ) 
+   ( is-event-false-delay "Allow" 0 ) 
+)
+$Multi text
+    XSTR("Your incompetence might just have cost us all our lives, pilot. When you alerted the NTF to your presence, you not only stopped us from contacting Command, you also brought our existence to their attention. They are now aware of a group of GTVA craft trapped behind their lines and, if intercepted radio traffic is to be believed, have already begun scouring the system, searching for our base of operations.
+
+Suffice to say, pilot, that you screwed up big time.", 4876)
+$end_multi_text
+$Voice: FOEP_M6_DB02.ogg
+$Recommendation text:
+    XSTR("Remain at least 600 metres from the patrolling fighters. Firing weapons or getting too close will negate the stealth enhancements on your Loki, and if you are discovered, then you will not be able to contact any of the survivors hiding in the derelicts.", 4877)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay "Allow" 0 ) 
+   ( is-event-false-delay 
+      "Discovered!" 
+      0 
+   )
+)
+$Multi text
+    XSTR("Congratulations, pilot, and thank you. You did good out there.
+
+Now that we know where the Disciple is camping out, we can evacuate the station and all its guests to safety. Once the civilians are settled and the other military vessels rearmed and repaired, we can get to fighting Koth and the NTF. Vengeance for the Hippocampus will be extracted, that I can assure you.
+
+Speaking more personally... I know it's tough when we have to leave civilians behind. There was nothing you could have done to help the survivors on board that derelict, not alone, in a single light interceptor, and it would not have been possible to deploy a rescue team to save them. As soon as we get back in touch with the Admiral, I'll recommend- I'll make sure that we dispatch someone to help those people and get them out, if they're still alive. We can but hope that nothing happens to them.
+
+I'm going to need your help organising and controlling the evacuation of the Jackson in a few hours. It'll be a long and complicated process with a lot at stake and plenty that can go wrong. With someone of your calibre in the field, however, I'm sure it'll be just fine.", 4878)
+$end_multi_text
+$Voice: FOEP_M6_DB03.ogg
+$Recommendation text:
+    XSTR("", 3307)
+$end_multi_text
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+	"GTF Ulysses"	5
+	"GTF Hercules"	5
+	"GTF Hercules Mark II"	5
+	"GTF Ares"	5
+	"GTF Erinyes"	5
+	"GTF Loki"	5
+	"GTF Pegasus"	5
+	"GTF Perseus"	5
+	"GTF Myrmidon"	5
+	"SF Mara (terrans)"	5
+	"GTB Artemis"	5
+	"GTB Artemis D.H."	5
+	"GTB Medusa"	5
+	"GTB Ursa"	5
+	"GTB Zeus"	5
+	"GTB Boanerges"	5
+	"GVF Ptah"	5
+)
+
++Weaponry Pool: (
+	"Subach HL-7"	17
+	"Subach HL-D"	16
+	"Mekhu HL-7"	16
+	"Mekhu HL-7D"	16
+	"Akheton SDG"	16
+	"Morning Star"	16
+	"MorningStar D"	16
+	"Prometheus R"	17
+	"Prometheus S"	16
+	"Prometheus D"	16
+	"Maxim"	16
+	"Maxim D"	16
+	"UD-8 Kayser"	16
+	"UD-D Kayser"	16
+	"Circe"	16
+	"Lamprey"	16
+	"Rockeye"	500
+	"Rockeye D"	500
+	"Tempest"	500
+	"Tempest D"	500
+	"Hornet"	500
+	"Hornet D"	500
+	"Tornado"	500
+	"Tornado D"	500
+	"Harpoon"	508
+	"Harpoon D"	500
+	"Trebuchet"	500
+	"TAG-A"	500
+	"TAG-B"	500
+	"TAG-C"	500
+	"Piranha"	500
+	"Stiletto II"	500
+	"Infyrno"	500
+	"Infyrno D"	500
+	"Cyclops"	500
+	"Cyclops#short"	500
+	"Helios"	500
+	"EMP Adv."	500
+)
+
+#Objects		;! 32 total
+
+$Name: Alpha 1		;! Object #0
+$Display Name: XSTR("Alpha 1", 4570)
+$Class: GTF Loki
+$Team: Friendly
+$Location: -997.309937, 1532.857300, -10063.776367
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: Stay Near
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "player-start" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Hippocampus Station		;! Object #1
+$Display Name: XSTR("Hippocampus Station", 4868)
+$Class: GTI Arcadia
+$Team: Friendly
+$Location: -1451.593262, 1217.123657, -2116.057129
+$Orientation:
+	-0.942223, 0.000000, 0.334988,
+	0.000000, 1.000000, 0.000000,
+	-0.334988, 0.000000, -0.942223
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
+$Arrival Location: Hyperspace
++Arrival Delay: 1
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Destroy At: 60
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 800
+
+$Name: Crescendo		;! Object #2
+$Display Name: XSTR("Crescendo", 4879)
+$Class: GTC Leviathan
+$Team: Unknown
+$Location: 1869.675659, 615.272522, -2483.036133
+$Orientation:
+	0.460798, -0.883621, 0.082945,
+	-0.884351, -0.465023, -0.040956,
+	0.074760, -0.054480, -0.995712
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: turret09a-01-main
++Subsystem: engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 200
+
+$Name: Mule		;! Object #3
+$Display Name: XSTR("Mule", 4881)
+$Class: GTG Zephyrus
+$Team: Unknown
+$Location: -3224.120605, -1873.004883, -402.976746
+$Orientation:
+	0.527252, -0.615741, -0.585553,
+	-0.456310, 0.376145, -0.806412,
+	0.716792, 0.692375, -0.082646
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Dyrhi		;! Object #4
+$Display Name: XSTR("Dyrhi", 4882)
+$Class: GVFr Bes
+$Team: Unknown
+$Location: 2573.086914, 1818.020142, 1648.924805
+$Orientation:
+	0.196265, -0.582922, -0.788469,
+	-0.015522, -0.805854, 0.591911,
+	-0.980429, -0.103933, -0.167209
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: engine lt
+$Damage: 100
++Subsystem: engine rt
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: Isal		;! Object #5
+$Display Name: XSTR("Isal", 4883)
+$Class: GVFr Satis
+$Team: Unknown
+$Location: 2065.362793, -1446.291748, 1817.946411
+$Orientation:
+	0.108505, -0.083059, 0.990621,
+	0.745045, -0.652930, -0.136351,
+	0.658130, 0.752851, -0.008964
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01-main
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Carter		;! Object #6
+$Display Name: XSTR("Carter", 4884)
+$Class: GTT Argo
+$Team: Unknown
+$Location: -1228.633057, -1782.259888, 3217.093262
+$Orientation:
+	-0.292688, 0.911161, -0.290036,
+	0.367912, 0.387278, 0.845374,
+	0.882596, 0.140723, -0.448578
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: engine
+$Damage: 100
++Subsystem: communications
+$Damage: 44
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "invulnerable" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 40
+
+$Name: Mockingbird		;! Object #7
+$Display Name: XSTR("Mockingbird", 4885)
+$Class: GTM Hippocrates
+$Team: Unknown
+$Location: 1282.171143, 2409.173584, -31.319498
+$Orientation:
+	0.335028, 0.160033, -0.928518,
+	-0.656376, 0.746643, -0.108147,
+	0.675964, 0.645689, 0.355188
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
+
+$Name: Omicron 2		;! Object #8
+$Display Name: XSTR("Omicron 2", 4886)
+$Class: GTT Elysium
+$Team: Unknown
+$Location: -2774.657227, 2079.082031, 2649.402100
+$Orientation:
+	0.612644, -0.221019, -0.758827,
+	-0.635294, 0.433453, -0.639157,
+	0.470182, 0.873653, 0.125140
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: engine
+$Damage: 100
++Subsystem: communication
+$Damage: 48
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "invulnerable" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Omicron 3		;! Object #9
+$Display Name: XSTR("Omicron 3", 4887)
+$Class: GTT Elysium
+$Team: Unknown
+$Location: -2874.106445, 1672.672241, 2439.418701
+$Orientation:
+	0.183674, -0.982953, -0.008267,
+	0.632889, 0.124688, -0.764138,
+	0.752142, 0.135120, 0.645001
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: engine
+$Damage: 100
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Theta 3		;! Object #10
+$Display Name: XSTR("Theta 3", 4789)
+$Class: GTFR Poseidon
+
+$Team: Unknown
+$Location: 2919.581787, -630.596008, -1304.733398
+$Orientation:
+	0.609154, 0.409513, 0.679140,
+	0.780008, -0.154696, -0.606347,
+	-0.143246, 0.899093, -0.413657
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: communication
+$Damage: 52
++Subsystem: engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "invulnerable" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Hippocampus Support		;! Object #11
+$Display Name: XSTR("Hippocampus Support", 4888)
+$Class: GTS Hygeia
+$Team: Unknown
+$Location: -130.817200, -3610.201660, -449.494507
+$Orientation:
+	-0.183330, -0.982240, -0.039941,
+	0.139610, -0.066232, 0.987989,
+	-0.973087, 0.175552, 0.149272
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: communications
+$Damage: 47
++Subsystem: engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "invulnerable" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 15
+
+$Name: Die1		;! Object #12
+$Display Name: XSTR("Die1", 4889)
+$Class: GTCv Deimos
+$Team: Friendly
+$Location: 485.668243, -677.125732, -1622.735474
+$Orientation:
+	0.894668, -0.370221, -0.250015,
+	0.252614, 0.880842, -0.400380,
+	0.368452, 0.295050, 0.881584
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
++Subsystem: Turret19
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
++Subsystem: Turret25
++Subsystem: Turret26
+$Arrival Location: Hyperspace
++Arrival Delay: 1
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Destroy At: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 800
+
+$Name: Duffy		;! Object #13
+$Display Name: XSTR("Duffy", 4890)
+$Class: GTFR Triton
+
+$Team: Unknown
+$Location: -2428.673584, 2101.193848, -2506.855957
+$Orientation:
+	-0.424342, 0.574034, -0.700299,
+	0.780344, 0.624149, 0.038768,
+	0.459345, -0.530023, -0.712796
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Scanned", 4880)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Die2		;! Object #14
+$Display Name: XSTR("Die2", 4891)
+$Class: GVCv Sobek
+$Team: Friendly
+$Location: 2147.828857, -577.439209, 2777.842773
+$Orientation:
+	-0.098022, -0.474671, 0.874689,
+	-0.919924, 0.378513, 0.102318,
+	-0.379649, -0.794617, -0.473764
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
+$Arrival Location: Hyperspace
++Arrival Delay: 1
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Destroy At: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 400
+
+$Name: Hawkwood		;! Object #15
+$Display Name: XSTR("Hawkwood", 4892)
+$Class: GTCv Deimos
+
+$Team: Hostile
+$Location: -4.507695, 4444.864746, 1994.204834
+$Orientation:
+	-0.464829, 0.198523, 0.862857,
+	-0.184545, 0.931412, -0.313712,
+	-0.865955, -0.305059, -0.396311
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
++Subsystem: Turret19
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
++Subsystem: Turret25
++Subsystem: Turret26
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 800
+
+$Name: Scorpio 1		;! Object #16
+$Display Name: XSTR("Scorpio 1", 4598)
+$Class: GTF Myrmidon
+
+$Team: Hostile
+$Location: 530.293640, 4804.419922, 1439.376343
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Scorpio 2		;! Object #17
+$Display Name: XSTR("Scorpio 2", 4599)
+$Class: GTF Myrmidon
+
+$Team: Hostile
+$Location: 647.774658, 4804.419922, 1546.175659
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Scorpio 3		;! Object #18
+$Display Name: XSTR("Scorpio 3", 4600)
+$Class: GTF Myrmidon
+
+$Team: Hostile
+$Location: 652.948364, 4804.419922, 1309.706421
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Aquarius 1		;! Object #19
+$Display Name: XSTR("Aquarius 1", 4588)
+$Class: GTF Loki
+
+$Team: Hostile
+$Location: -2602.316162, 1709.522827, 2308.386230
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints "Aq1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 7
+
+$Name: Aquarius 2		;! Object #20
+$Display Name: XSTR("Aquarius 2", 4589)
+$Class: GTF Loki
+
+$Team: Hostile
+$Location: 1747.148682, 409.268097, -3109.902100
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints "Aq2" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 7
+
+$Name: Aquarius 3		;! Object #21
+$Display Name: XSTR("Aquarius 3", 4590)
+$Class: GTF Loki
+
+$Team: Hostile
+$Location: -3724.204834, -1841.254150, 487.303741
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints "Aq3" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 7
+
+$Name: Aquarius 4		;! Object #22
+$Display Name: XSTR("Aquarius 4", 4893)
+$Class: GTF Loki
+
+$Team: Hostile
+$Location: -943.331482, -4324.564453, -940.902100
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints "Aq4" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 7
+
+$Name: Holler		;! Object #23
+$Display Name: XSTR("Holler", 4894)
+$Class: GTC Fenris
+
+$Team: Hostile
+$Location: -1811.659546, -700.685303, -7532.820313
+$Orientation:
+	-0.049184, 0.000000, -0.998790,
+	0.000000, 1.000000, 0.000000,
+	0.998790, 0.000000, -0.049184
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09a-01-main
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
+$Texture Replace:
++old: nameplate
++new: ntcholler
++old: fenrismain
++new: ntffenris
+
+$Name: Cancer 1		;! Object #24
+$Display Name: XSTR("Cancer 1", 4575)
+$Class: GTF Hercules
+
+$Team: Hostile
+$Location: -2002.743408, -527.103394, -8001.208008
+$Orientation:
+	0.234792, -0.531186, -0.814073,
+	0.147203, 0.847255, -0.510383,
+	0.960835, 0.000000, 0.277121
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cancer 2		;! Object #25
+$Display Name: XSTR("Cancer 2", 4576)
+$Class: GTF Hercules
+
+$Team: Hostile
+$Location: -2072.574951, -581.156555, -8111.079102
+$Orientation:
+	0.234792, -0.531186, -0.814072,
+	0.147203, 0.847255, -0.510382,
+	0.960835, 0.000000, 0.277121
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cancer 3		;! Object #26
+$Display Name: XSTR("Cancer 3", 4577)
+$Class: GTF Hercules
+
+$Team: Hostile
+$Location: -2119.470459, -475.972107, -7949.994141
+$Orientation:
+	0.234792, -0.531186, -0.814072,
+	0.147203, 0.847255, -0.510382,
+	0.960835, 0.000000, 0.277121
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Mark		;! Object #27
+$Display Name: XSTR("Mark", 4895)
+$Class: GTF Pegasus
+$Team: Hostile
+$Location: 5044278.000000, -0.001173, 37793.011719
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "Got!" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-departure-warp" "invulnerable" "hidden-from-sensors" "stealth" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Libra 1		;! Object #28
+$Display Name: XSTR("Libra 1", 4591)
+$Class: GTF Myrmidon
+
+$Team: Hostile
+$Location: 4996.611328, 0.002399, -2698.373779
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Libra 2		;! Object #29
+$Display Name: XSTR("Libra 2", 4592)
+$Class: GTF Myrmidon
+
+$Team: Hostile
+$Location: 4893.607422, 0.002397, -2799.173828
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Libra 3		;! Object #30
+$Display Name: XSTR("Libra 3", 4593)
+$Class: GTF Myrmidon
+
+$Team: Hostile
+$Location: 5099.715332, 0.002501, -2798.915527
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Libra 4		;! Object #31
+$Display Name: XSTR("Libra 4", 4594)
+$Class: GTF Myrmidon
+
+$Team: Hostile
+$Location: 4999.543457, 0.002377, -2899.828369
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: General
+$Cargo 1:  XSTR("Nothing", 4571)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+#Wings		;! 4 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Alpha 1"
+)
++Hotkey: 0
++Flags: ( )
+
+$Name: Scorpio
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Scorpio 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Scorpio 1"
+	"Scorpio 2"
+	"Scorpio 3"
+)
+$AI Goals: ( goals ( ai-guard "Hawkwood" 50 ) )
++Flags: ( )
+
+$Name: Cancer
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Cancer 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Cancer 1"
+	"Cancer 2"
+	"Cancer 3"
+)
+$AI Goals: ( goals ( ai-guard "Holler" 50 ) )
++Flags: ( )
+
+$Name: Libra
+$Waves: 99
+$Wave Threshold: 0
+$Special Ship: 0		;! Libra 1
+$Arrival Location: Near Ship
++Arrival Distance: 1500
+$Arrival Anchor: Alpha 1
+$Arrival Cue: ( is-event-true-delay "Discovered!" 4 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Libra 1"
+	"Libra 2"
+	"Libra 3"
+	"Libra 4"
+)
+$AI Goals: ( goals ( ai-chase "Alpha 1" 50 ) )
++Flags: ( )
++Wave Delay Min: 4
++Wave Delay Max: 8
+
+#Events		;! 26 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[GTFr Poseidon]" 
+      "GTFr Poseidon" 
+      4931 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar1[GTFr Poseidon]" 
+      "Theta 3" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[GTFr Triton]" 
+      "GTFr Triton" 
+      4197 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar2[GTFr Triton]" 
+      "Duffy" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[NTCv Hawkwood]" 
+      "NTCv Hawkwood" 
+      4932 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar3[NTCv Hawkwood]" 
+      "Hawkwood" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar4[NTF Myrmidon]" 
+      "NTF Myrmidon" 
+      4653 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar4[NTF Myrmidon]" 
+      "Scorpio 1" 
+      "Scorpio 2" 
+      "Scorpio 3" 
+      "Libra 1" 
+      "Libra 2" 
+      "Libra 3" 
+      "Libra 4" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar5[NTF Loki]" 
+      "NTF Loki" 
+      4657 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar5[NTF Loki]" 
+      "Aquarius 1" 
+      "Aquarius 2" 
+      "Aquarius 3" 
+      "Aquarius 4" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar6[NTC Fenris]" 
+      "NTC Fenris" 
+      4655 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar6[NTC Fenris]" 
+      "Holler" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar7[NTF Hercules]" 
+      "NTF Hercules" 
+      4650 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar7[NTF Hercules]" 
+      "Cancer 1" 
+      "Cancer 2" 
+      "Cancer 3" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar8[#Providence]" 
+      "#Providence" 
+      4933 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar9[#Disciple]" 
+      "#Disciple" 
+      4658 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( protect-ship "Alpha 1" ) 
+   ( deactivate-glow-maps 
+      "Crescendo" 
+      "Mule" 
+      "Dyrhi" 
+      "Isal" 
+      "Carter" 
+      "Mockingbird" 
+      "Omicron 2" 
+      "Omicron 3" 
+      "Theta 3" 
+      "Hippocampus Support" 
+      "Duffy" 
+   )
+   ( send-message-list 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_01" 
+      0 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_02" 
+      4000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_03" 
+      14000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_04" 
+      11000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_05" 
+      14000 
+   )
+   ( ship-stealthy "Mark" ) 
+   ( friendly-stealth-invisible "Mark" ) 
+   ( subsys-set-random 
+      "Crescendo" 
+      0 
+      40 
+      "engine" 
+   )
+   ( subsys-set-random 
+      "Mule" 
+      0 
+      40 
+      "engine" 
+   )
+   ( subsys-set-random 
+      "Dyrhi" 
+      0 
+      40 
+      "engine lt" 
+      "engine rt" 
+   )
+   ( subsys-set-random 
+      "Isal" 
+      0 
+      40 
+      "engine" 
+   )
+   ( subsys-set-random 
+      "Mockingbird" 
+      0 
+      40 
+      "engine" 
+   )
+   ( subsys-set-random 
+      "Omicron 3" 
+      0 
+      40 
+      "engine" 
+   )
+   ( subsys-set-random 
+      "Duffy" 
+      0 
+      40 
+      "engine" 
+   )
+   ( subsys-set-random 
+      "Hippocampus Support" 
+      0 
+      40 
+      "engine" 
+      "communications" 
+   )
+   ( subsys-set-random 
+      "Omicron 2" 
+      0 
+      40 
+      "engine" 
+      "communication" 
+   )
+   ( subsys-set-random 
+      "Theta 3" 
+      0 
+      40 
+      "engine" 
+      "communication" 
+   )
+   ( subsys-set-random 
+      "Carter" 
+      0 
+      40 
+      "engine" 
+      "communications" 
+   )
+)
++Name: Setup
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( validate-goal "Search" ) 
+   ( modify-variable 
+      @Search[0] 
+      ( rand 1 0 ) 
+   )
+)
++Name: SearchSetup
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Mark" ) 
+   ( do-nothing ) 
+)
++Name: DirSearch
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Search for Survivors", 4896)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 0 "Crescendo" ) 
+      ( is-event-incomplete "Discovered!" ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_06" 
+   )
+)
++Name: CrescendoScanned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 0 "Duffy" ) 
+      ( is-event-incomplete "Discovered!" ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_07" 
+   )
+)
++Name: DuffyScanned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 0 "Mule" ) 
+      ( is-event-incomplete "Discovered!" ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_08" 
+   )
+)
++Name: MuleScanned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 
+         0 
+         "Mockingbird" 
+      )
+      ( is-event-incomplete "Discovered!" ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_09" 
+   )
+)
++Name: MockingbirdScanned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < 
+            ( distance "Alpha 1" "Dyrhi" ) 
+            1000 
+         )
+         ( < 
+            ( distance "Alpha 1" "Isal" ) 
+            1000 
+         )
+      )
+      ( is-event-incomplete "Discovered!" ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_10" 
+   )
+)
++Name: NearZods
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 0 "Dyrhi" ) 
+      ( is-event-incomplete "Discovered!" ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_11" 
+   )
+)
++Name: DyrhiScanned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 0 "Isal" ) 
+      ( is-event-incomplete "Discovered!" ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_12" 
+   )
+)
++Name: IsalScanned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 
+         0 
+         "Omicron 2" 
+         "Omicron 3" 
+      )
+      ( is-event-incomplete "Discovered!" ) 
+      ( not ( = @Search[0] 2 ) ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_13" 
+   )
+)
++Name: OmicronScanned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 0 "Carter" ) 
+      ( is-event-incomplete "Discovered!" ) 
+      ( not ( = @Search[0] 4 ) ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_14" 
+   )
+)
++Name: CarterScanned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 0 "Theta 3" ) 
+      ( is-event-incomplete "Discovered!" ) 
+      ( not ( = @Search[0] 3 ) ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_15" 
+   )
+)
++Name: ThetaScanned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 
+         0 
+         "Hippocampus Support" 
+      )
+      ( is-event-incomplete "Discovered!" ) 
+      ( not ( = @Search[0] 1 ) ) 
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_16" 
+   )
+)
++Name: SupportScanned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance "Alpha 1" "<any hostile>" ) 
+         800 
+      )
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_26" 
+   )
+)
++Name: Close!
++Repeat Count: 999
++Interval: 10
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < 
+            ( distance "Alpha 1" "<any hostile>" ) 
+            500 
+         )
+         ( key-pressed "Left Ctrl" ) 
+         ( key-pressed "Spacebar" ) 
+      )
+      ( is-event-incomplete "Got!" ) 
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( send-message 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_25" 
+   )
+)
++Name: Discovered!
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: DirRTBF
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return to Base", 4619)
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-cargo-known-delay 
+            0 
+            "Hippocampus Support" 
+         )
+         ( = @Search[0] 1 ) 
+         ( is-event-incomplete "Discovered!" ) 
+      )
+      ( and 
+         ( is-cargo-known-delay 0 "Omicron 2" ) 
+         ( = @Search[0] 2 ) 
+         ( is-event-incomplete "Discovered!" ) 
+      )
+      ( and 
+         ( is-cargo-known-delay 0 "Theta 3" ) 
+         ( = @Search[0] 3 ) 
+         ( is-event-incomplete "Discovered!" ) 
+      )
+      ( and 
+         ( is-cargo-known-delay 0 "Carter" ) 
+         ( = @Search[0] 4 ) 
+         ( is-event-incomplete "Discovered!" ) 
+      )
+   )
+   ( add-goal 
+      "Aquarius 1" 
+      ( ai-guard "Hawkwood" 89 ) 
+   )
+   ( add-goal 
+      "Aquarius 2" 
+      ( ai-guard "Hawkwood" 89 ) 
+   )
+   ( add-goal 
+      "Aquarius 3" 
+      ( ai-guard "Hawkwood" 89 ) 
+   )
+   ( add-goal 
+      "Aquarius 4" 
+      ( ai-guard "Hawkwood" 89 ) 
+   )
+   ( player-use-ai ) 
+)
++Name: Got!
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Alpha 1" 
+      ( ai-play-dead 89 ) 
+   )
+)
++Name: PlayerFix
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Team: 0
+
+$Formula: ( when ( true ) ( player-not-use-ai ) ) 
++Name: Allow
++Repeat Count: 1
++Interval: 1
++Chained: 120
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: DirRTBW
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Objective:  XSTR("Return to Base", 4619)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 
+         0 
+         "Hippocampus Support" 
+      )
+      ( is-event-incomplete "Discovered!" ) 
+      ( = @Search[0] 1 ) 
+   )
+   ( send-message-list 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_17" 
+      0 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_18" 
+      9000 
+      "Hippocampus Support" 
+      "High" 
+      "Survivor_01" 
+      9000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_19" 
+      3000 
+      "Hippocampus Support" 
+      "High" 
+      "Survivor_02" 
+      13000 
+      "Hippocampus Support" 
+      "High" 
+      "Survivor_03" 
+      15000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_20" 
+      17000 
+      "Hippocampus Support" 
+      "High" 
+      "Survivor_04" 
+      3000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_21" 
+      3000 
+      "#Disciple" 
+      "High" 
+      "Disciple_01" 
+      10000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_22" 
+      4000 
+      "#Disciple" 
+      "High" 
+      "Disciple_02" 
+      16000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_23" 
+      14000 
+      "Hippocampus Support" 
+      "High" 
+      "Survivor_05" 
+      5000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_24" 
+      6000 
+   )
+)
++Name: HSIt
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 0 "Omicron 2" ) 
+      ( is-event-incomplete "Discovered!" ) 
+      ( = @Search[0] 2 ) 
+   )
+   ( send-message-list 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_17" 
+      0 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_18" 
+      9000 
+      "Omicron 2" 
+      "High" 
+      "Survivor_01" 
+      9000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_19" 
+      3000 
+      "Omicron 2" 
+      "High" 
+      "Survivor_02" 
+      13000 
+      "Omicron 2" 
+      "High" 
+      "Survivor_03" 
+      15000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_20" 
+      17000 
+      "Omicron 2" 
+      "High" 
+      "Survivor_04" 
+      3000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_21" 
+      3000 
+      "#Disciple" 
+      "High" 
+      "Disciple_01" 
+      10000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_22" 
+      4000 
+      "#Disciple" 
+      "High" 
+      "Disciple_02" 
+      16000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_23" 
+      14000 
+      "Omicron 2" 
+      "High" 
+      "Survivor_05" 
+      5000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_24" 
+      6000 
+   )
+)
++Name: OmicronIt
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 0 "Theta 3" ) 
+      ( is-event-incomplete "Discovered!" ) 
+      ( = @Search[0] 3 ) 
+   )
+   ( send-message-list 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_17" 
+      0 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_18" 
+      9000 
+      "Theta 3" 
+      "High" 
+      "Survivor_01" 
+      9000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_19" 
+      3000 
+      "Theta 3" 
+      "High" 
+      "Survivor_02" 
+      13000 
+      "Theta 3" 
+      "High" 
+      "Survivor_03" 
+      15000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_20" 
+      17000 
+      "Theta 3" 
+      "High" 
+      "Survivor_04" 
+      3000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_21" 
+      3000 
+      "#Disciple" 
+      "High" 
+      "Disciple_01" 
+      10000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_22" 
+      4000 
+      "#Disciple" 
+      "High" 
+      "Disciple_02" 
+      16000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_23" 
+      14000 
+      "Theta 3" 
+      "High" 
+      "Survivor_05" 
+      5000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_24" 
+      6000 
+   )
+)
++Name: ThetaIt
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 0 "Carter" ) 
+      ( is-event-incomplete "Discovered!" ) 
+      ( = @Search[0] 4 ) 
+   )
+   ( send-message-list 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_17" 
+      0 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_18" 
+      9000 
+      "Carter" 
+      "High" 
+      "Survivor_01" 
+      9000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_19" 
+      3000 
+      "Carter" 
+      "High" 
+      "Survivor_02" 
+      13000 
+      "Carter" 
+      "High" 
+      "Survivor_03" 
+      15000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_20" 
+      17000 
+      "Carter" 
+      "High" 
+      "Survivor_04" 
+      3000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_21" 
+      3000 
+      "#Disciple" 
+      "High" 
+      "Disciple_01" 
+      10000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_22" 
+      4000 
+      "#Disciple" 
+      "High" 
+      "Disciple_02" 
+      16000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_23" 
+      14000 
+      "Carter" 
+      "High" 
+      "Survivor_05" 
+      5000 
+      "@autoGenVar8[#Providence]" 
+      "High" 
+      "Providence_24" 
+      6000 
+   )
+)
++Name: CarterIt
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "Got!" 122 ) 
+   ( unprotect-ship "Alpha 1" ) 
+)
++Name: End
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+#Goals		;! 2 total
+
+$Type: Primary
++Name: Reach Hippocampus
+$MessageNew:  XSTR("Get to Hippocampus Station", 4897)
+$end_multi_text
+$Formula: ( and 
+   ( not ( has-time-elapsed 2 ) ) 
+   ( is-destroyed-delay 0 "Hawkwood" ) 
+)
+
+$Type: Primary
++Name: Search
+$MessageNew:  XSTR("Search for Survivors", 4896)
+$end_multi_text
+$Formula: ( is-event-true-delay "Got!" 3 ) 
++Invalid
+
+#Waypoints		;! 4 lists total
+
+$Name: Aq1
+$List: (		;! 4 points in list
+	( -2824.899170, 1755.349121, 2625.138916 )
+	( 2351.892090, 2030.412598, 2707.547363 )
+	( 2337.394043, 2448.144775, -2810.115723 )
+	( -2763.498535, 2139.484375, -2815.505371 )
+)
+
+$Name: Aq2
+$List: (		;! 4 points in list
+	( 1782.217163, 440.238922, -2803.896973 )
+	( 2700.777100, -448.132660, -1701.593140 )
+	( 2368.002441, -1274.459229, 1828.755737 )
+	( 1363.996704, -582.038452, 575.951111 )
+)
+
+$Name: Aq3
+$List: (		;! 4 points in list
+	( -3978.678223, -1573.354004, 601.745422 )
+	( -2335.465088, -1922.220093, 3100.855469 )
+	( -299.017273, -1533.192505, 1871.852417 )
+	( -2112.344238, -1907.459106, -413.064026 )
+)
+
+$Name: Aq4
+$List: (		;! 9 points in list
+	( -717.706970, -4479.014160, -848.091919 )
+	( -104.515526, -3279.250977, 52.239670 )
+	( 170.245575, -2220.155273, -836.086670 )
+	( -756.951843, -1012.056213, -240.180969 )
+	( 241.135574, -51.049183, -100.995819 )
+	( -288.476501, 1375.309204, -889.870667 )
+	( -441.544708, 2501.371094, -32.012630 )
+	( 211.041061, 3476.697021, -442.382813 )
+	( -672.660583, 4722.839844, -856.106506 )
+)
+
+#Messages		;! 33 total
+
+
+$Name: Providence_01
+$Team: -1
+$MessageNew:  XSTR("Ah. It looks like we have a problem, Alpha 1.", 4898)
+$end_multi_text
++Wave Name: FOEP_M6_M01.ogg
+
+$Name: Providence_02
+$Team: -1
+$MessageNew:  XSTR("Alright, Alpha 1, change of plan. Seems the NTF got to Hippocampus before we did and wiped the place out. However, we're wondering whether there's a chance that one of the derelicts in the debris field might hold some survivors.", 4899)
+$end_multi_text
++Wave Name: FOEP_M6_M02.ogg
+
+$Name: Providence_03
+$Team: -1
+$MessageNew:  XSTR("If there are, then they're bound to know where the rest of the fleet is, and if they do know that, then we can open up a channel with the Admiral himself and hook up with the fleet again.", 4900)
+$end_multi_text
++Wave Name: FOEP_M6_M03.ogg
+
+$Name: Providence_04
+$Team: -1
+$MessageNew:  XSTR("Here's what you need to do - avoiding the patrols, get to each of the intact derelict hulks and scan them for signs of life. Hopefully, survivors will be lying low in one of them, and they'll be able to give us what we need.", 4901)
+$end_multi_text
++Wave Name: FOEP_M6_M04.ogg
+
+$Name: Providence_05
+$Team: -1
+$MessageNew:  XSTR("Remember - 600 metres! Any closer and they'll be sure to notice you. You stay alive out there, Alpha 1. We're depending on you.", 4902)
+$end_multi_text
++Wave Name: FOEP_M6_M05.ogg
+
+$Name: Providence_06
+$Team: -1
+$MessageNew:  XSTR("The Crescendo... nope, nothing here. Move on to the next one.", 4903)
+$end_multi_text
++Wave Name: FOEP_M6_M06.ogg
+
+$Name: Providence_07
+$Team: -1
+$MessageNew:  XSTR("The Duffy... no good, Alpha 1.", 4904)
+$end_multi_text
++Wave Name: FOEP_M6_M07.ogg
+
+$Name: Providence_08
+$Team: -1
+$MessageNew:  XSTR("A gas miner...? Well, it's worth a shot... ah, no. Nobody alive in there.", 4905)
+$end_multi_text
++Wave Name: FOEP_M6_M08.ogg
+
+$Name: Providence_09
+$Team: -1
+$MessageNew:  XSTR("A medical frigate... no survivors. Those cold-blooded...", 4906)
+$end_multi_text
++Wave Name: FOEP_M6_M09.ogg
+
+$Name: Providence_10
+$Team: -1
+$MessageNew:  XSTR("Vasudan vessels... yes, Ahmose's battlegroup was helping 6th Fleet out with logistics and things for a while, before he got called to Alpha Centauri... I'm surprised there's still anything left of them.", 4907)
+$end_multi_text
++Wave Name: FOEP_M6_M10.ogg
+
+$Name: Providence_11
+$Team: -1
+$MessageNew:  XSTR("Just as I feared... empty.", 4908)
+$end_multi_text
++Wave Name: FOEP_M6_M11.ogg
+
+$Name: Providence_12
+$Team: -1
+$MessageNew:  XSTR("Another lifeless derelict. This is just...", 4909)
+$end_multi_text
++Wave Name: FOEP_M6_M12.ogg
+
+$Name: Providence_13
+$Team: -1
+$MessageNew:  XSTR("Elysium transports... they never stood a chance.", 4910)
+$end_multi_text
++Wave Name: FOEP_M6_M13.ogg
+
+$Name: Providence_14
+$Team: -1
+$MessageNew:  XSTR("I know what the NTF are like, but this is too much... a defenceless transport, carrying refugees... dead, one and all...", 4911)
+$end_multi_text
++Wave Name: FOEP_M6_M14.ogg
+
+$Name: Providence_15
+$Team: -1
+$MessageNew:  XSTR("A freighter... no, this is no good. Another ship please, pilot.", 4912)
+$end_multi_text
++Wave Name: FOEP_M6_M15.ogg
+
+$Name: Providence_16
+$Team: -1
+$MessageNew:  XSTR("The station support ship... sorry, Alpha 1, no joy. As dead as the Hippocampus.", 4913)
+$end_multi_text
++Wave Name: FOEP_M6_M16.ogg
+
+$Name: Providence_17
+$Team: -1
+$MessageNew:  XSTR("I'm sorr- wait! I... I think I have something! Alpha, cut your engines and make like space junk! We need to maintain communications...", 4914)
+$end_multi_text
++Wave Name: FOEP_M6_M17.ogg
+
+$Name: Providence_18
+$Team: -1
+$MessageNew:  XSTR("GTVA vessel, this is the GTC Providence on a secure line - please respond! GTVA vessel, come in please!", 4915)
+$end_multi_text
++Wave Name: FOEP_M6_M18.ogg
+
+$Name: Survivor_01
+$Team: -1
+$MessageNew:  XSTR("H- ...hello? Hello? Is someone there?", 4916)
+$end_multi_text
++Wave Name: FOEP_M6_M19.ogg
+
+$Name: Providence_19
+$Team: -1
+$MessageNew:  XSTR("This is the GTC Providence of the Epsilon Pegasi 6th Fleet! We have been cut off from Allied Command by the NTF advance and are trying to re-establish contact with the Admiral - can you help us?", 4917)
+$end_multi_text
++Wave Name: FOEP_M6_M20.ogg
+
+$Name: Survivor_02
+$Team: -1
+$MessageNew:  XSTR("I... yeah, yeah, I can help! We were hiding out at the base, see, when the NTF attacked! Koth himself, on his destroyer, leading the charge... it was a massacre! Everyone, dead, no escape! No flight! No one got off the station alive!", 4918)
+$end_multi_text
++Wave Name: FOEP_M6_M21.ogg
+
+$Name: Survivor_03
+$Team: -1
+$MessageNew:  XSTR("We were trying to get away when we got caught in the crossfire and lost engines. We shut down to hide from the patrols... anyway, we were trying to get to the Admiral's rallying point! He told us where to go if the NTF attacked us... somewhere on the edge of Pegasi, I think.", 4919)
+$end_multi_text
++Wave Name: FOEP_M6_M22.ogg
+
+$Name: Providence_20
+$Team: -1
+$MessageNew:  XSTR("Can you tell us where, exactly?", 4920)
+$end_multi_text
++Wave Name: FOEP_M6_M23.ogg
+
+$Name: Survivor_04
+$Team: -1
+$MessageNew:  XSTR("Yeah, uh... transmitting co-ords now.", 4921)
+$end_multi_text
++Wave Name: FOEP_M6_M24.ogg
+
+$Name: Providence_21
+$Team: -1
+$MessageNew:  XSTR("Hold still, pilot...", 4922)
+$end_multi_text
++Wave Name: FOEP_M6_M25.ogg
+
+$Name: Disciple_01
+$Team: -1
+$MessageNew:  XSTR("...this is the Admiral speaking - who is this?", 4923)
+$end_multi_text
++AVI Name: Head-CM3
++Wave Name: FOEP_M6_M26.ogg
+
+$Name: Providence_22
+$Team: -1
+$MessageNew:  XSTR("Admiral, this is the Providence, head of a group of GTVA vessels that were involved in the operation to catch the Rook. We responded to the blockade distress signal, but by then Koth had already broken through... we're trying to link up with the rest of the fleet, sir.", 4924)
+$end_multi_text
++Wave Name: FOEP_M6_M27.ogg
+
+$Name: Disciple_02
+$Team: -1
+$MessageNew:  XSTR("Right, right... very good, captain. We're hiding out around the orbit of Pegasus Sextus - probably best if you get over here as quickly as possible. We've got to figure out a way to take this system back from the NTF. Admiral out.", 4925)
+$end_multi_text
++AVI Name: Head-CM3
++Wave Name: FOEP_M6_M28.ogg
+
+$Name: Providence_23
+$Team: -1
+$MessageNew:  XSTR("Okay, Alpha 1, mission accomplished. Get back to the Jackson pronto.", 4926)
+$end_multi_text
++Wave Name: FOEP_M6_M29.ogg
+
+$Name: Survivor_05
+$Team: -1
+$MessageNew:  XSTR("Wait! What about us? You- you can't just leave us here! Please!", 4927)
+$end_multi_text
++Wave Name: FOEP_M6_M30.ogg
+
+$Name: Providence_24
+$Team: -1
+$MessageNew:  XSTR("...you'd better go, pilot.", 4928)
+$end_multi_text
++Wave Name: FOEP_M6_M31.ogg
+
+$Name: Providence_25
+$Team: -1
+$MessageNew:  XSTR("Watch out, Alpha! They've detected your presence! You'd best get back to the Jackson on the double!", 4929)
+$end_multi_text
++Wave Name: FOEP_M6_M32.ogg
+
+$Name: Providence_26
+$Team: -1
+$MessageNew:  XSTR("Careful, pilot! The NTF fighters are dangerously close!", 4930)
+$end_multi_text
++Wave Name: FOEP_M6_M33.ogg
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 2 total
+
+$Num stars: 0
+$Ambient light level: 7895160
+
+$Bitmap List:
+$Sun: SunRed
++Angles: 6.195914 0.000000 0.174533
++Scale: 0.500000
+$Starbitmap: planetg
++Angles: 0.000000 0.000000 5.759582
++ScaleX: 6.000000
++ScaleY: 6.000000
++DivX: 1
++DivY: 1
+$Starbitmap: planetb
++Angles: 0.069813 3.141590 6.021381
++ScaleX: 0.800000
++ScaleY: 0.800000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+$Density: 120
++Field Type: 1
++Debris Genre: 1
++Field Debris Type: 3
++Field Debris Type: 4
++Field Debris Type: 5
+$Average Speed: 0.000000
+$Minimum: -4000.000000, -3000.000000, -4000.000000
+$Maximum: 4000.000000, 3000.000000, 4000.000000
+
+#Music
+
+$Event Music: 7: Revelation
+$Briefing Music: Brief1
+
+#End
+

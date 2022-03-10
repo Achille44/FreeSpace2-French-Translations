@@ -1,0 +1,208 @@
+$Name: XSTR("Fall of Epsilon Pegasi", 5184)
+$Type: single
++Description:
+ XSTR("While the Aquitane battles Shivans in the nebula beyond Gamma Draconis, the Epsilon Pegasi 6th Fleet must defend against the attacks of the Neo-Terran Front...", 5185)
+$end_multi_text
+$Flags: 0
+
+
++Starting Ships: ( "GTF Ulysses"  "GTF Hercules"  "GTF Hercules Mark II"  "GTF Loki"  "GTF Myrmidon"  "GTB Medusa"  "GTB Zeus" )
+
++Starting Weapons: ( "Subach HL-7"  "Akheton SDG"  "Morning Star"  "Prometheus R"  "Rockeye"  "Tempest"  "Hornet"  "Tornado"  "Harpoon"  "Stiletto II"  "Cyclops" )
+
+
+$Mission: FEP-01.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "FEP-01.fs2" 
+            "Clear" 
+         )
+         ( is-previous-event-false 
+            "FEP-01.fs2" 
+            "ProvDown" 
+         )
+      )
+      ( next-mission "FEP-02.fs2" )
+   )
+   ( ( true ) ( next-mission "FEP-01.fs2" ) )
+)
+
++Level: 0
++Position: 0
+
+$Mission: FEP-02.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "FEP-02.fs2" 
+         "AllDone" 
+      )
+      ( next-mission "FEP-03.fs2" )
+   )
+   ( ( true ) ( next-mission "FEP-02.fs2" ) )
+)
+
++Level: 1
++Position: 0
+
+$Mission: FEP-03.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "FEP-03.fs2" 
+            "Redir" 
+         )
+         ( is-previous-event-false 
+            "FEP-03.fs2" 
+            "DestroyPod" 
+         )
+      )
+      ( next-mission "FEP-04.fs2" )
+   )
+   ( ( true ) ( next-mission "FEP-03.fs2" ) )
+)
+
++Level: 2
++Position: 0
+
+$Mission: FEP-04.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "FEP-04.fs2" 
+            "RookDown" 
+         )
+         ( is-previous-event-false 
+            "FEP-04.fs2" 
+            "Argh" 
+         )
+      )
+      ( next-mission "FEP-05.fs2" )
+   )
+   ( ( true ) ( next-mission "FEP-04.fs2" ) )
+)
+
++Level: 3
++Position: 0
+
+$Mission: FEP-05.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   ( ( true ) ( next-mission "FEP-06.fs2" ) )
+)
+
++Level: 4
++Position: 0
+
+$Mission: FEP-06.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "FEP-06.fs2" 
+            "Allow" 
+         )
+         ( is-previous-event-false 
+            "FEP-06.fs2" 
+            "Discovered!" 
+         )
+      )
+      ( next-mission "FEP-07.fs2" )
+   )
+   ( ( true ) ( next-mission "FEP-06.fs2" ) )
+)
+
++Level: 5
++Position: 0
+
+$Mission: FEP-07.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "FEP-07.fs2" 
+         "RunAway!" 
+      )
+      ( next-mission "FEP-08.fs2" )
+   )
+   ( ( true ) ( next-mission "FEP-07.fs2" ) )
+)
+
++Level: 6
++Position: 0
+
+$Mission: FEP-08.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "FEP-08.fs2" 
+         "Conquest" 
+      )
+      ( next-mission "FEP-09.fs2" )
+   )
+   ( ( true ) ( next-mission "FEP-08.fs2" ) )
+)
+
++Level: 7
++Position: 0
+
+$Mission: FEP-09.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "FEP-09.fs2" 
+            "DirDesCruisers" 
+         )
+         ( is-previous-event-false 
+            "FEP-09.fs2" 
+            "DiscipleDown" 
+         )
+      )
+      ( next-mission "FEP-10.fs2" )
+   )
+   ( ( true ) ( next-mission "FEP-09.fs2" ) )
+)
+
++Level: 8
++Position: 0
+
+$Mission: FEP-10.fs2
++Flags: 0
++Main Hall: 0
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "FEP-10.fs2" 
+         "NTFPullOut" 
+      )
+      ( end-of-campaign )
+   )
+   ( ( true ) ( next-mission "FEP-10.fs2" ) )
+)
+
++Level: 9
++Position: 0
+
+#End
+
