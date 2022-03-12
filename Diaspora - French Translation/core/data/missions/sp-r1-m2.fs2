@@ -4,7 +4,7 @@ $Version: 0.10
 $Name:  XSTR("The Strike", 263)
 $Author: shiv
 $Created: 01/08/09 at 18:37:10
-$Modified: 12/19/13 at 18:42:34
+$Modified: 03/12/22 at 12:21:23
 $Notes:
 no notes... as always :D$End Notes:
 
@@ -12,25 +12,20 @@ $Mission Desc:
  XSTR("Basic strike mission. Theseus launches most of her Vipers against the opposing Basestar. The mission is on a timer, and if the player takes too long, other Basestars will catch up and the mission will be a failure.      
 The player is ordered to disable some of the stronger missile launchers on the Basestar, as Theseus needs to take as little damage as possible in order to remain combat-ready for future engagements - There's no knowing when they will get a chance to do  repairs. Once that is done, all that", 264)
 $end_multi_text
-
 +Game Type Flags: 1
-
 +Flags: 393216
 +Fog Near Mult: 1.000000
 
 +Fog Far Mult: 1.000000
 
-
 +Disallow Support: 1
-
 +Hull Repair Ceiling: 0.000000
-
 +Subsystem Repair Ceiling: 100.000000
 
 +Viewer pos: 1378.580566, 10212.914063, -812.592163
 +Viewer orient:
-	0.948110, 0.000002, -0.317942,
-	0.317076, 0.073782, 0.945526,
+	0.948112, 0.000002, -0.317936,
+	0.317069, 0.073782, 0.945528,
 	0.023460, -0.997274, 0.069953
 +SquadReassignName: 72nd Thunderlords
 +SquadReassignLogo: thunderlords.pcx
@@ -39,8 +34,8 @@ $Starting wing names: ( "Red" "Green" "Blue" )
 $Squadron wing names: ( "Red" "Green" "Blue" "Yellow" "Purple" )
 $Team-versus-team wing names: ( "Red" "Green" )
 
-$Load Screen 640:	Y_No_1024x768.tga
-$Load Screen 1024:	Load_SP-R1-M2.tga
+$Load Screen 640: Y_No_1024x768.tga
+$Load Screen 1024: Load_SP-R1-M2.tga
 
 $Skybox Model: SkyBox_Starfield_01.pof
 
@@ -52,33 +47,39 @@ $Variables:
 (
 		0		"ArriveTime"		"0"		"number"
 		1		"CountDownTimer"		"60"		"number"
-		2		"InLaunchTube"		"1"		"number"
-		3		"InLaunchTubeSpeed"		"0"		"number"
-		4		"IntroDialogueSet"		"0"		"number"
-		5		"IntroSubtitleCounter"		"0"		"number"
-		6		"IntroSubtitleLine1"		" "		"string"
-		7		"IntroSubtitleLine2"		" "		"string"
-		8		"IntroSubtitleLine3"		" "		"string"
-		9		"Land_distance_17"		"140"		"number"
-		10		"Land_distance_18"		"100"		"number"
-		11		"Land_distance_19"		"100"		"number"
-		12		"Land_distance_5"		"160"		"number"
-		13		"Land_distance_6"		"100"		"number"
-		14		"LaunchTubeSpd"		"0"		"number"
-		15		"M2sun"		"0"		"number"
-		16		"Slow_distance_17"		"600"		"number"
-		17		"Slow_distance_18"		"600"		"number"
-		18		"Slow_distance_19"		"600"		"number"
-		19		"Slow_distance_5"		"600"		"number"
-		20		"Slow_distance_6"		"600"		"number"
-		21		"theseushull"		"80"		"number"		"campaign-persistent"
-		22		"theseushull2"		"80"		"number"		"campaign-persistent"
-		23		"TurretsDestroyed"		"0"		"number"
-		24		"ViperLaunchTimer"		"0"		"number"
-		25		"autoGenVar1"		"#Theseus Launch Officer"		"string"
-		26		"autoGenVar2"		"#Theseus"		"string"
-		27		"autoGenVar3"		"#Theseus Landing Signal Officer"		"string"
-		28		"autoGenVar4"		"#Turbo"		"string"
+		2		"I18NIntroSubtitleLine1"		"NGD-8425"		"string"
+		3		"I18NIntroSubtitleLine2"		"above\north"		"string"
+		4		"I18NIntroSubtitleLine3"		"Four hours after the attack"		"string"
+		5		"InLaunchTube"		"1"		"number"
+		6		"InLaunchTubeSpeed"		"0"		"number"
+		7		"IntroDialogueSet"		"0"		"number"
+		8		"IntroSubtitleCounter"		"0"		"number"
+		9		"IntroSubtitleLine1"		" "		"string"
+		10		"IntroSubtitleLine2"		" "		"string"
+		11		"IntroSubtitleLine3"		" "		"string"
+		12		"IterationSubtitleLine1"		"0"		"number"
+		13		"IterationSubtitleLine2"		"0"		"number"
+		14		"IterationSubtitleLine3"		"0"		"number"
+		15		"Land_distance_17"		"140"		"number"
+		16		"Land_distance_18"		"100"		"number"
+		17		"Land_distance_19"		"100"		"number"
+		18		"Land_distance_5"		"160"		"number"
+		19		"Land_distance_6"		"100"		"number"
+		20		"LaunchTubeSpd"		"0"		"number"
+		21		"M2sun"		"0"		"number"
+		22		"Slow_distance_17"		"600"		"number"
+		23		"Slow_distance_18"		"600"		"number"
+		24		"Slow_distance_19"		"600"		"number"
+		25		"Slow_distance_5"		"600"		"number"
+		26		"Slow_distance_6"		"600"		"number"
+		27		"theseushull"		"80"		"number"		"save-on-mission-progress"
+		28		"theseushull2"		"80"		"number"		"save-on-mission-progress"
+		29		"TurretsDestroyed"		"0"		"number"
+		30		"ViperLaunchTimer"		"0"		"number"
+		31		"autoGenVar1"		"#Theseus Launch Officer"		"string"
+		32		"autoGenVar2"		"#Theseus"		"string"
+		33		"autoGenVar3"		"#Theseus Landing Signal Officer"		"string"
+		34		"autoGenVar4"		"#Turbo"		"string"
 )
 
 #Cutscenes
@@ -215,28 +216,28 @@ $Recommendation text:
 $end_multi_text
 
 #Callsigns:
-$Callsign: XSTR("Turbo", 1892)
-$Callsign: XSTR("Obit", 1891)
-$Callsign: XSTR("Chaser", 1930)
-$Callsign: XSTR("Harridan", 1888)
-$Callsign: XSTR("Washout", 1931)
-$Callsign: XSTR("Flask", 1932)
-$Callsign: XSTR("Courier", 1933)
-$Callsign: XSTR("Wizard", 1934)
-$Callsign: XSTR("Lizard", 1935)
-$Callsign: XSTR("Reptile", 1936)
-$Callsign: XSTR("Crispy", 1890)
-$Callsign: XSTR("Duke", 1937)
-$Callsign: XSTR("Shadow", 1938)
-$Callsign: XSTR("Veritgo", 1939)
-$Callsign: XSTR("Snider", 1940)
-$Callsign: XSTR("Orphan", 1889)
-$Callsign: XSTR("Hammer", 1941)
-$Callsign: XSTR("Thief", 1942)
-$Callsign: XSTR("Gladiator", 1943)
-$Callsign: XSTR("Glutton", 1944)
-$Callsign: XSTR("Joker", 1945)
-$Callsign: XSTR("Vertigo", 1946)
+$Callsign: XSTR("Turbo", 1912)
+$Callsign: XSTR("Obit", 1911)
+$Callsign: XSTR("Chaser", 1950)
+$Callsign: XSTR("Harridan", 1908)
+$Callsign: XSTR("Washout", 1951)
+$Callsign: XSTR("Flask", 1952)
+$Callsign: XSTR("Courier", 1953)
+$Callsign: XSTR("Wizard", 1954)
+$Callsign: XSTR("Lizard", 1955)
+$Callsign: XSTR("Reptile", 1956)
+$Callsign: XSTR("Crispy", 1910)
+$Callsign: XSTR("Duke", 1957)
+$Callsign: XSTR("Shadow", 1958)
+$Callsign: XSTR("Veritgo", 1959)
+$Callsign: XSTR("Snider", 1960)
+$Callsign: XSTR("Orphan", 1909)
+$Callsign: XSTR("Hammer", 1961)
+$Callsign: XSTR("Thief", 1962)
+$Callsign: XSTR("Gladiator", 1963)
+$Callsign: XSTR("Glutton", 1964)
+$Callsign: XSTR("Joker", 1965)
+$Callsign: XSTR("Vertigo", 1966)
 
 #end
 
@@ -262,7 +263,7 @@ $Ship Choices: (
 #Objects		;! 62 total
 
 $Name: Red 1		;! Object #0
-$Display Name: XSTR("Red 1", 1816)
+$Display Name: XSTR("Red 1", 1836)
 $Class: Viper Mark VIIe
 $Team: Friendly
 $Location: -366.000000, -39.500000, -22.400000
@@ -295,9 +296,9 @@ $Texture Replace:
 +new: col_viper_mk7e_th04-shine
 
 $Name: Red 2		;! Object #1
-$Display Name: XSTR("Red 2", 1817)
+$Display Name: XSTR("Red 2", 1837)
 $Class: Viper Mark VIIe
-$Callsign: XSTR("Turbo", 1892)
+$Callsign: XSTR("Turbo", 1912)
 
 $Team: Friendly
 $Location: 78.428375, -26.500008, -514.106567
@@ -333,9 +334,9 @@ $Texture Replace:
 +new: col_viper_mk7e_th05-shine
 
 $Name: Red 3		;! Object #2
-$Display Name: XSTR("Red 3", 1818)
+$Display Name: XSTR("Red 3", 1838)
 $Class: Viper Mark VIIe
-$Callsign: XSTR("Obit", 1891)
+$Callsign: XSTR("Obit", 1911)
 
 $Team: Friendly
 $Location: 76.889343, -26.500008, -499.272827
@@ -371,9 +372,9 @@ $Texture Replace:
 +new: col_viper_mk7e_th02-shine
 
 $Name: Red 4		;! Object #3
-$Display Name: XSTR("Red 4", 1819)
+$Display Name: XSTR("Red 4", 1839)
 $Class: Viper Mark VIIe
-$Callsign: XSTR("Chaser", 1930)
+$Callsign: XSTR("Chaser", 1950)
 
 $Team: Friendly
 $Location: 78.432739, -26.500008, -483.744843
@@ -409,7 +410,7 @@ $Texture Replace:
 +new: col_viper_mk7e_th03-shine
 
 $Name: Theseus		;! Object #4
-$Display Name: XSTR("Theseus", 1834)
+$Display Name: XSTR("Theseus", 1854)
 $Class: Battlestar Sobek Class
 $Team: Friendly
 $Location: -500.000000, 0.000000, 0.000000
@@ -571,9 +572,9 @@ $Texture Replace:
 +new: col_bs_sobek_the-shine
 
 $Name: Green 1		;! Object #5
-$Display Name: XSTR("Green 1", 1812)
+$Display Name: XSTR("Green 1", 1832)
 $Class: Viper Mark VII
-$Callsign: XSTR("Harridan", 1888)
+$Callsign: XSTR("Harridan", 1908)
 
 $Team: Friendly
 $Location: -900.000000, 300.000000, -300.000000
@@ -603,9 +604,9 @@ $Determination: 10
 +Persona Index: 6
 
 $Name: Green 2		;! Object #6
-$Display Name: XSTR("Green 2", 1813)
+$Display Name: XSTR("Green 2", 1833)
 $Class: Viper Mark VII
-$Callsign: XSTR("Washout", 1931)
+$Callsign: XSTR("Washout", 1951)
 
 $Team: Friendly
 $Location: -960.996887, 270.542206, -320.293365
@@ -635,9 +636,9 @@ $Determination: 10
 +Persona Index: 11
 
 $Name: Green 3		;! Object #7
-$Display Name: XSTR("Green 3", 1814)
+$Display Name: XSTR("Green 3", 1834)
 $Class: Viper Mark VII
-$Callsign: XSTR("Flask", 1932)
+$Callsign: XSTR("Flask", 1952)
 
 $Team: Friendly
 $Location: -892.967163, 329.457825, -363.898315
@@ -667,9 +668,9 @@ $Determination: 10
 +Persona Index: 4
 
 $Name: Green 4		;! Object #8
-$Display Name: XSTR("Green 4", 1815)
+$Display Name: XSTR("Green 4", 1835)
 $Class: Viper Mark VII
-$Callsign: XSTR("Courier", 1933)
+$Callsign: XSTR("Courier", 1953)
 
 $Team: Friendly
 $Location: -953.963928, 300.000000, -384.191589
@@ -699,9 +700,9 @@ $Determination: 10
 +Persona Index: 10
 
 $Name: Blue 1		;! Object #9
-$Display Name: XSTR("Blue 1", 1820)
+$Display Name: XSTR("Blue 1", 1840)
 $Class: Viper Mark VII
-$Callsign: XSTR("Crispy", 1890)
+$Callsign: XSTR("Crispy", 1910)
 
 $Team: Friendly
 $Location: 200.000000, 0.000000, 0.000000
@@ -731,9 +732,9 @@ $Determination: 10
 +Persona Index: 5
 
 $Name: Blue 2		;! Object #10
-$Display Name: XSTR("Blue 2", 1821)
+$Display Name: XSTR("Blue 2", 1841)
 $Class: Viper Mark VII
-$Callsign: XSTR("Reptile", 1936)
+$Callsign: XSTR("Reptile", 1956)
 
 $Team: Friendly
 $Location: 150.000000, 0.000000, -50.000000
@@ -763,9 +764,9 @@ $Determination: 10
 +Persona Index: 12
 
 $Name: Blue 3		;! Object #11
-$Display Name: XSTR("Blue 3", 1822)
+$Display Name: XSTR("Blue 3", 1842)
 $Class: Viper Mark VII
-$Callsign: XSTR("Wizard", 1934)
+$Callsign: XSTR("Wizard", 1954)
 
 $Team: Friendly
 $Location: 250.000000, 0.000000, -50.000000
@@ -795,9 +796,9 @@ $Determination: 10
 +Persona Index: 9
 
 $Name: Blue 4		;! Object #12
-$Display Name: XSTR("Blue 4", 1823)
+$Display Name: XSTR("Blue 4", 1843)
 $Class: Viper Mark VII
-$Callsign: XSTR("Shadow", 1938)
+$Callsign: XSTR("Shadow", 1958)
 
 $Team: Friendly
 $Location: 199.676849, 0.000000, -101.921577
@@ -827,9 +828,9 @@ $Determination: 10
 +Persona Index: 3
 
 $Name: Yellow 1		;! Object #13
-$Display Name: XSTR("Yellow 1", 1877)
+$Display Name: XSTR("Yellow 1", 1897)
 $Class: Viper Mark VII
-$Callsign: XSTR("Duke", 1937)
+$Callsign: XSTR("Duke", 1957)
 
 $Team: Friendly
 $Location: -100.000000, 0.000000, -400.000000
@@ -859,9 +860,9 @@ $Determination: 10
 +Persona Index: 10
 
 $Name: Yellow 2		;! Object #14
-$Display Name: XSTR("Yellow 2", 1878)
+$Display Name: XSTR("Yellow 2", 1898)
 $Class: Viper Mark VII
-$Callsign: XSTR("Vertigo", 1946)
+$Callsign: XSTR("Vertigo", 1966)
 
 $Team: Friendly
 $Location: -150.000000, 0.000000, -450.000000
@@ -891,9 +892,9 @@ $Determination: 10
 +Persona Index: 7
 
 $Name: Yellow 3		;! Object #15
-$Display Name: XSTR("Yellow 3", 1879)
+$Display Name: XSTR("Yellow 3", 1899)
 $Class: Viper Mark VII
-$Callsign: XSTR("Snider", 1940)
+$Callsign: XSTR("Snider", 1960)
 
 $Team: Friendly
 $Location: -50.000000, 0.000000, -450.000000
@@ -923,9 +924,9 @@ $Determination: 10
 +Persona Index: 9
 
 $Name: Yellow 4		;! Object #16
-$Display Name: XSTR("Yellow 4", 1880)
+$Display Name: XSTR("Yellow 4", 1900)
 $Class: Viper Mark VII
-$Callsign: XSTR("Orphan", 1889)
+$Callsign: XSTR("Orphan", 1909)
 
 $Team: Friendly
 $Location: -100.000000, 0.000000, -500.000000
@@ -955,7 +956,7 @@ $Determination: 10
 +Persona Index: 11
 
 $Name: Cylon Basestar#1		;! Object #17
-$Display Name: XSTR("Cylon Basestar", 1826)
+$Display Name: XSTR("Cylon Basestar", 1846)
 $Class: Basestar
 $Team: Hostile
 $Location: 8500.000000, 1500.000000, 10.500000
@@ -1127,7 +1128,7 @@ $Determination: 10
 +Score: 2500
 
 $Name: Bravo 1		;! Object #18
-$Display Name: XSTR("Bravo 1", 1835)
+$Display Name: XSTR("Bravo 1", 1855)
 $Class: Raider
 $Team: Hostile
 $Location: 3142.367920, 236.270416, 968.234131
@@ -1160,7 +1161,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Bravo 2		;! Object #19
-$Display Name: XSTR("Bravo 2", 1836)
+$Display Name: XSTR("Bravo 2", 1856)
 $Class: Raider
 $Team: Hostile
 $Location: 3134.098633, 218.613007, 901.643311
@@ -1194,7 +1195,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Bravo 3		;! Object #20
-$Display Name: XSTR("Bravo 3", 1837)
+$Display Name: XSTR("Bravo 3", 1857)
 $Class: Raider
 $Team: Hostile
 $Location: 3211.249268, 228.852707, 964.438904
@@ -1227,7 +1228,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Tango 1		;! Object #21
-$Display Name: XSTR("Tango 1", 1839)
+$Display Name: XSTR("Tango 1", 1859)
 $Class: Heavy Raider
 $Team: Hostile
 $Location: 1900.000000, 0.000000, 200.000000
@@ -1261,7 +1262,7 @@ $Determination: 10
 +Score: 20
 
 $Name: Tango 2		;! Object #22
-$Display Name: XSTR("Tango 2", 1840)
+$Display Name: XSTR("Tango 2", 1860)
 $Class: Heavy Raider
 $Team: Hostile
 $Location: 1850.000000, 0.000000, 150.000000
@@ -1295,7 +1296,7 @@ $Determination: 10
 +Score: 20
 
 $Name: Tango 3		;! Object #23
-$Display Name: XSTR("Tango 3", 1841)
+$Display Name: XSTR("Tango 3", 1861)
 $Class: Heavy Raider
 $Team: Hostile
 $Location: 1950.000000, 0.000000, 150.000000
@@ -1329,7 +1330,7 @@ $Determination: 10
 +Score: 20
 
 $Name: Tango 4		;! Object #24
-$Display Name: XSTR("Tango 4", 1842)
+$Display Name: XSTR("Tango 4", 1862)
 $Class: Heavy Raider
 $Team: Hostile
 $Location: 1900.000000, 0.000000, 100.000000
@@ -1363,7 +1364,7 @@ $Determination: 10
 +Score: 20
 
 $Name: Alpha 1		;! Object #25
-$Display Name: XSTR("Alpha 1", 1843)
+$Display Name: XSTR("Alpha 1", 1863)
 $Class: Heavy Raider
 $Team: Hostile
 $Location: 2100.000000, 0.000000, 200.000000
@@ -1397,7 +1398,7 @@ $Determination: 10
 +Score: 20
 
 $Name: Alpha 2		;! Object #26
-$Display Name: XSTR("Alpha 2", 1844)
+$Display Name: XSTR("Alpha 2", 1864)
 $Class: Heavy Raider
 $Team: Hostile
 $Location: 2050.000000, 0.000000, 150.000000
@@ -1431,7 +1432,7 @@ $Determination: 10
 +Score: 20
 
 $Name: Alpha 3		;! Object #27
-$Display Name: XSTR("Alpha 3", 1845)
+$Display Name: XSTR("Alpha 3", 1865)
 $Class: Heavy Raider
 $Team: Hostile
 $Location: 2150.000000, 0.000000, 150.000000
@@ -1465,7 +1466,7 @@ $Determination: 10
 +Score: 20
 
 $Name: Alpha 4		;! Object #28
-$Display Name: XSTR("Alpha 4", 1846)
+$Display Name: XSTR("Alpha 4", 1866)
 $Class: Heavy Raider
 $Team: Hostile
 $Location: 2100.000000, 0.000000, 100.000000
@@ -1499,9 +1500,9 @@ $Determination: 10
 +Score: 20
 
 $Name: Purple 1		;! Object #29
-$Display Name: XSTR("Purple 1", 1947)
+$Display Name: XSTR("Purple 1", 1967)
 $Class: Assault Raptor
-$Callsign: XSTR("Hammer", 1941)
+$Callsign: XSTR("Hammer", 1961)
 
 $Team: Friendly
 $Location: -700.000000, 0.000000, 700.000000
@@ -1533,9 +1534,9 @@ $Determination: 10
 +Persona Index: 2
 
 $Name: Purple 2		;! Object #30
-$Display Name: XSTR("Purple 2", 1948)
+$Display Name: XSTR("Purple 2", 1968)
 $Class: Assault Raptor
-$Callsign: XSTR("Thief", 1942)
+$Callsign: XSTR("Thief", 1962)
 
 $Team: Friendly
 $Location: -750.000000, 0.000000, 680.000000
@@ -1567,7 +1568,7 @@ $Determination: 10
 +Persona Index: 9
 
 $Name: Fractal 1		;! Object #31
-$Display Name: XSTR("Fractal 1", 1847)
+$Display Name: XSTR("Fractal 1", 1867)
 $Class: Raider
 $Team: Hostile
 $Location: 3950.000000, 0.000000, -50.000000
@@ -1600,7 +1601,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Fractal 2		;! Object #32
-$Display Name: XSTR("Fractal 2", 1848)
+$Display Name: XSTR("Fractal 2", 1868)
 $Class: Raider
 $Team: Hostile
 $Location: 3900.000000, 0.000000, 0.000000
@@ -1632,7 +1633,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Fractal 3		;! Object #33
-$Display Name: XSTR("Fractal 3", 1849)
+$Display Name: XSTR("Fractal 3", 1869)
 $Class: Raider
 $Team: Hostile
 $Location: 3850.000000, 0.000000, -50.000000
@@ -1664,7 +1665,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Constellation 1		;! Object #34
-$Display Name: XSTR("Constellation 1", 1851)
+$Display Name: XSTR("Constellation 1", 1871)
 $Class: Raider
 $Team: Hostile
 $Location: 2000.875854, 0.000012, -0.867327
@@ -1697,7 +1698,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Constellation 2		;! Object #35
-$Display Name: XSTR("Constellation 2", 1852)
+$Display Name: XSTR("Constellation 2", 1872)
 $Class: Raider
 $Team: Hostile
 $Location: 1948.842896, 0.000007, -48.858685
@@ -1731,7 +1732,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Constellation 3		;! Object #36
-$Display Name: XSTR("Constellation 3", 1853)
+$Display Name: XSTR("Constellation 3", 1873)
 $Class: Raider
 $Team: Hostile
 $Location: 2052.945557, -0.000045, -48.612576
@@ -1765,7 +1766,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Cylon Basestar#2		;! Object #37
-$Display Name: XSTR("Cylon Basestar", 1826)
+$Display Name: XSTR("Cylon Basestar", 1846)
 $Class: Basestar
 $Team: Hostile
 $Location: -4149.865723, 0.005384, 1269.677002
@@ -1928,7 +1929,7 @@ $Determination: 10
 +Score: 2500
 
 $Name: Cylon Basestar#3		;! Object #38
-$Display Name: XSTR("Cylon Basestar", 1826)
+$Display Name: XSTR("Cylon Basestar", 1846)
 $Class: Basestar
 $Team: Hostile
 $Location: 3000.000000, 2000.000000, 3000.000000
@@ -2055,7 +2056,7 @@ $Determination: 10
 +Score: 2500
 
 $Name: Delta 1		;! Object #39
-$Display Name: XSTR("Delta 1", 1855)
+$Display Name: XSTR("Delta 1", 1875)
 $Class: Raider
 $Team: Hostile
 $Location: 3065.519287, 0.000149, 927.314453
@@ -2068,6 +2069,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2076,7 +2078,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Special Hitpoints: 240
@@ -2086,7 +2088,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Delta 2		;! Object #40
-$Display Name: XSTR("Delta 2", 1856)
+$Display Name: XSTR("Delta 2", 1876)
 $Class: Raider
 $Team: Hostile
 $Location: 3054.876465, 0.000154, 920.495728
@@ -2099,6 +2101,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2107,7 +2110,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Special Hitpoints: 240
@@ -2117,7 +2120,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Halo 1		;! Object #41
-$Display Name: XSTR("Halo 1", 1859)
+$Display Name: XSTR("Halo 1", 1879)
 $Class: Raider
 $Team: Hostile
 $Location: 3151.985596, 0.000007, 839.096252
@@ -2130,6 +2133,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2138,7 +2142,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2147,7 +2151,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Halo 2		;! Object #42
-$Display Name: XSTR("Halo 2", 1860)
+$Display Name: XSTR("Halo 2", 1880)
 $Class: Raider
 $Team: Hostile
 $Location: 3132.493896, 0.000006, 837.787292
@@ -2160,6 +2164,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2168,7 +2173,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2177,7 +2182,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Halo 3		;! Object #43
-$Display Name: XSTR("Halo 3", 1861)
+$Display Name: XSTR("Halo 3", 1881)
 $Class: Raider
 $Team: Hostile
 $Location: 3138.738525, -0.000008, 818.513916
@@ -2190,6 +2195,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2198,7 +2204,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2207,7 +2213,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Halo 4		;! Object #44
-$Display Name: XSTR("Halo 4", 1862)
+$Display Name: XSTR("Halo 4", 1882)
 $Class: Raider
 $Team: Hostile
 $Location: 3160.241455, -0.000389, 815.967529
@@ -2220,6 +2226,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2228,7 +2235,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2237,7 +2244,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Ion 1		;! Object #45
-$Display Name: XSTR("Ion 1", 1863)
+$Display Name: XSTR("Ion 1", 1883)
 $Class: Raider
 $Team: Hostile
 $Location: 3068.735107, -0.000293, 836.197327
@@ -2250,6 +2257,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2259,7 +2267,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2268,7 +2276,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Ion 2		;! Object #46
-$Display Name: XSTR("Ion 2", 1864)
+$Display Name: XSTR("Ion 2", 1884)
 $Class: Raider
 $Team: Hostile
 $Location: 3056.260742, -0.000299, 828.700500
@@ -2281,6 +2289,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2289,7 +2298,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2298,7 +2307,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Ion 3		;! Object #47
-$Display Name: XSTR("Ion 3", 1865)
+$Display Name: XSTR("Ion 3", 1885)
 $Class: Raider
 $Team: Hostile
 $Location: 3048.663574, -0.000297, 803.826599
@@ -2311,6 +2320,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2319,7 +2329,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2328,7 +2338,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Bravo 4		;! Object #48
-$Display Name: XSTR("Bravo 4", 1838)
+$Display Name: XSTR("Bravo 4", 1858)
 $Class: Raider
 $Team: Hostile
 $Location: 3326.782227, -0.006460, 964.550354
@@ -2341,6 +2351,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2349,7 +2360,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2358,7 +2369,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Bravo 5		;! Object #49
-$Display Name: XSTR("Bravo 5", 1909)
+$Display Name: XSTR("Bravo 5", 1929)
 $Class: Raider
 $Team: Hostile
 $Location: 3368.314209, -0.006459, 925.891113
@@ -2371,6 +2382,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2379,7 +2391,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2388,7 +2400,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Bravo 6		;! Object #50
-$Display Name: XSTR("Bravo 6", 1949)
+$Display Name: XSTR("Bravo 6", 1969)
 $Class: Raider
 $Team: Hostile
 $Location: 3312.564941, -0.006456, 864.118042
@@ -2401,6 +2413,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2409,7 +2422,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2418,7 +2431,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Ion 4		;! Object #51
-$Display Name: XSTR("Ion 4", 1866)
+$Display Name: XSTR("Ion 4", 1886)
 $Class: Raider
 $Team: Hostile
 $Location: 3070.234375, -0.006477, 785.018311
@@ -2431,6 +2444,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2439,7 +2453,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2448,7 +2462,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Ion 5		;! Object #52
-$Display Name: XSTR("Ion 5", 1869)
+$Display Name: XSTR("Ion 5", 1889)
 $Class: Raider
 $Team: Hostile
 $Location: 3060.339844, -0.006469, 756.349426
@@ -2461,6 +2475,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2469,7 +2484,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2478,7 +2493,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Ion 6		;! Object #53
-$Display Name: XSTR("Ion 6", 1870)
+$Display Name: XSTR("Ion 6", 1890)
 $Class: Raider
 $Team: Hostile
 $Location: 3049.803711, -0.006470, 720.028870
@@ -2491,6 +2506,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2499,7 +2515,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2508,7 +2524,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Fractal 4		;! Object #54
-$Display Name: XSTR("Fractal 4", 1850)
+$Display Name: XSTR("Fractal 4", 1870)
 $Class: Raider
 $Team: Hostile
 $Location: 3911.752930, -0.006868, -86.822151
@@ -2521,6 +2537,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2529,7 +2546,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2538,7 +2555,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Fractal 5		;! Object #55
-$Display Name: XSTR("Fractal 5", 1873)
+$Display Name: XSTR("Fractal 5", 1893)
 $Class: Raider
 $Team: Hostile
 $Location: 3888.441895, -0.006883, -115.076653
@@ -2551,6 +2568,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2559,7 +2577,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2568,7 +2586,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Fractal 6		;! Object #56
-$Display Name: XSTR("Fractal 6", 1874)
+$Display Name: XSTR("Fractal 6", 1894)
 $Class: Raider
 $Team: Hostile
 $Location: 3923.447754, -0.006847, -133.895981
@@ -2581,6 +2599,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2589,7 +2608,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2598,7 +2617,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Constellation 4		;! Object #57
-$Display Name: XSTR("Constellation 4", 1854)
+$Display Name: XSTR("Constellation 4", 1874)
 $Class: Raider
 $Team: Hostile
 $Location: 2032.472412, -0.004099, -153.388138
@@ -2611,6 +2630,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2619,7 +2639,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2628,7 +2648,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Constellation 5		;! Object #58
-$Display Name: XSTR("Constellation 5", 1871)
+$Display Name: XSTR("Constellation 5", 1891)
 $Class: Raider
 $Team: Hostile
 $Location: 2000.417358, -0.004175, -191.327744
@@ -2641,6 +2661,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2649,7 +2670,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2658,7 +2679,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Constellation 6		;! Object #59
-$Display Name: XSTR("Constellation 6", 1872)
+$Display Name: XSTR("Constellation 6", 1892)
 $Class: Raider
 $Team: Hostile
 $Location: 2078.475098, -0.004158, -223.525650
@@ -2671,6 +2692,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2679,7 +2701,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2688,7 +2710,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Delta 3		;! Object #60
-$Display Name: XSTR("Delta 3", 1857)
+$Display Name: XSTR("Delta 3", 1877)
 $Class: Raider
 $Team: Hostile
 $Location: 3036.844482, -0.003427, 919.704651
@@ -2701,6 +2723,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2709,7 +2732,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -2718,7 +2741,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Delta 4		;! Object #61
-$Display Name: XSTR("Delta 4", 1858)
+$Display Name: XSTR("Delta 4", 1878)
 $Class: Raider
 $Team: Hostile
 $Location: 3019.232666, -0.003416, 900.420105
@@ -2731,6 +2754,7 @@ $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 150)
 +Initial Velocity: 33
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Primary Banks: ( "30mm 2.1#Weak" )
 +Secondary Banks: ( "" "" )
@@ -2739,7 +2763,7 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( )
++Flags: ( "no-shields" )
 +Flags2: ( "no-ets" )
 +Respawn priority: 0
 +Orders Accepted: 0		;! note that this is a bitfield!!!
@@ -3126,29 +3150,44 @@ $AI Goals: ( goals ( ai-guard "Cylon Basestar#1" 50 ) )
 +Wave Delay Min: 15
 +Wave Delay Max: 30
 
-#Events		;! 145 total
+#Events		;! 146 total
 
 $Formula: ( when 
    ( true ) 
    ( modify-variable-xstr 
+      "@I18NIntroSubtitleLine1[NGD-8425]" 
+      "NGD-8425" 
+      1970 
+   )
+   ( modify-variable-xstr 
+      "@I18NIntroSubtitleLine2[above\north]" 
+      "above$backslashnorth" 
+      1971 
+   )
+   ( modify-variable-xstr 
+      "@I18NIntroSubtitleLine3[Four hours after the attack]" 
+      "Four hours after the attack" 
+      1972 
+   )
+   ( modify-variable-xstr 
       "@autoGenVar1[#Theseus Launch Officer]" 
       "#Theseus Launch Officer" 
-      1882 
+      1902 
    )
    ( modify-variable-xstr 
       "@autoGenVar2[#Theseus]" 
       "#Theseus" 
-      1953 
+      1973 
    )
    ( modify-variable-xstr 
       "@autoGenVar3[#Theseus Landing Signal Officer]" 
       "#Theseus Landing Signal Officer" 
-      1883 
+      1903 
    )
    ( modify-variable-xstr 
       "@autoGenVar4[#Turbo]" 
       "#Turbo" 
-      1929 
+      1949 
    )
 )
 +Name: Manage translation variables
@@ -5019,32 +5058,64 @@ $Formula: ( when
       )
       ( is-event-true-delay "introscene" 1 ) 
    )
-   ( when-argument 
-      ( in-sequence 
-         "N" 
-         "G" 
-         "D" 
-         "-" 
-         "8" 
-         "4" 
-         "2" 
-         "5" 
+   ( when 
+      ( not 
+         ( string-equals 
+            "@I18NIntroSubtitleLine1[NGD-8425]" 
+            "@IntroSubtitleLine1[ ]" 
+         )
       )
-      ( = 
-         ( mod @IntroSubtitleCounter[0] 2 ) 
+      ( string-get-substring 
+         "@I18NIntroSubtitleLine1[NGD-8425]" 
          0 
-      )
-      ( string-concatenate 
-         "@IntroSubtitleLine1[ ]" 
-         "<argument>" 
+         @IterationSubtitleLine1[0] 
          "@IntroSubtitleLine1[ ]" 
       )
-      ( invalidate-argument "<argument>" ) 
+      ( modify-variable 
+         @IterationSubtitleLine1[0] 
+         ( + @IterationSubtitleLine1[0] 1 ) 
+      )
+   )
+   ( when 
+      ( not 
+         ( string-equals 
+            "@I18NIntroSubtitleLine2[above\north]" 
+            "@IntroSubtitleLine2[ ]" 
+         )
+      )
+      ( string-get-substring 
+         "@I18NIntroSubtitleLine2[above\north]" 
+         0 
+         @IterationSubtitleLine2[0] 
+         "@IntroSubtitleLine2[ ]" 
+      )
+      ( modify-variable 
+         @IterationSubtitleLine2[0] 
+         ( + @IterationSubtitleLine2[0] 1 ) 
+      )
+   )
+   ( when 
+      ( not 
+         ( string-equals 
+            "@I18NIntroSubtitleLine3[Four hours after the attack]" 
+            "@IntroSubtitleLine3[ ]" 
+         )
+      )
+      ( string-get-substring 
+         "@I18NIntroSubtitleLine3[Four hours after the attack]" 
+         0 
+         @IterationSubtitleLine3[0] 
+         "@IntroSubtitleLine3[ ]" 
+      )
+      ( modify-variable 
+         @IterationSubtitleLine3[0] 
+         ( + @IterationSubtitleLine3[0] 1 ) 
+      )
    )
    ( when 
       ( < @IntroSubtitleCounter[0] 350 ) 
       ( show-subtitle-text 
-         "AutoGeneratedMessage1" 
+         "@IntroSubtitleLine1[ ]" 
          4 
          74 
          ( false ) 
@@ -5055,10 +5126,10 @@ $Formula: ( when
          255 
          255 
          255 
-         "font02.vf" 
+         "2" 
       )
       ( show-subtitle-text 
-         "AutoGeneratedMessage2" 
+         "@IntroSubtitleLine2[ ]" 
          4 
          76 
          ( false ) 
@@ -5069,10 +5140,10 @@ $Formula: ( when
          255 
          255 
          255 
-         "font02.vf" 
+         "2" 
       )
       ( show-subtitle-text 
-         "AutoGeneratedMessage3" 
+         "@IntroSubtitleLine3[ ]" 
          4 
          80 
          ( false ) 
@@ -5083,74 +5154,8 @@ $Formula: ( when
          255 
          255 
          255 
-         "font02.vf" 
+         "2" 
       )
-   )
-   ( when-argument 
-      ( in-sequence 
-         "a" 
-         "b" 
-         "o" 
-         "v" 
-         "e" 
-         "\" 
-         "n" 
-         "o" 
-         "r" 
-         "t" 
-         "h" 
-      )
-      ( = 
-         ( mod @IntroSubtitleCounter[0] 2 ) 
-         0 
-      )
-      ( string-concatenate 
-         "@IntroSubtitleLine2[ ]" 
-         "<argument>" 
-         "@IntroSubtitleLine2[ ]" 
-      )
-      ( invalidate-argument "<argument>" ) 
-   )
-   ( when-argument 
-      ( in-sequence 
-         "F" 
-         "o" 
-         "u" 
-         "r" 
-         " " 
-         "h" 
-         "o" 
-         "u" 
-         "r" 
-         "s" 
-         " " 
-         "a" 
-         "f" 
-         "t" 
-         "e" 
-         "r" 
-         " " 
-         "t" 
-         "h" 
-         "e" 
-         " " 
-         "a" 
-         "t" 
-         "t" 
-         "a" 
-         "c" 
-         "k" 
-      )
-      ( = 
-         ( mod @IntroSubtitleCounter[0] 2 ) 
-         0 
-      )
-      ( string-concatenate 
-         "@IntroSubtitleLine3[ ]" 
-         "<argument>" 
-         "@IntroSubtitleLine3[ ]" 
-      )
-      ( invalidate-argument "<argument>" ) 
    )
 )
 +Name: subtitle
@@ -6880,21 +6885,6 @@ $Team: -1
 $MessageNew:  XSTR("The baseship is going down. All ships, stand clear of the blast.", 737)
 $end_multi_text
 +Wave Name: SP-02-M-057.ogg
-
-$Name: AutoGeneratedMessage1
-$Team: -1
-$MessageNew:  XSTR("@IntroSubtitleLine1[ ]", 1950)
-$end_multi_text
-
-$Name: AutoGeneratedMessage2
-$Team: -1
-$MessageNew:  XSTR("@IntroSubtitleLine2[ ]", 1951)
-$end_multi_text
-
-$Name: AutoGeneratedMessage3
-$Team: -1
-$MessageNew:  XSTR("@IntroSubtitleLine3[ ]", 1952)
-$end_multi_text
 
 #Reinforcements		;! 0 total
 
