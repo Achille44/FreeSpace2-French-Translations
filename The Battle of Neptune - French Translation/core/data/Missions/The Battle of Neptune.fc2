@@ -1,0 +1,74 @@
+$Name: XSTR("The Battle of Neptune", 17366)
+$Type: single
++Description:
+ XSTR("Fly as Ensign Callum Rahman, a rookie pilot aboard the GTD Meridian, as Admiral Cyrus Severanti leads the vanguard of the GTVA in an operation to seize Neptune.", 17428)
+$end_multi_text
+$Flags: 0
+
+
++Starting Ships: ( "GTF Hercules Mark II"  "GTF Erinyes"  "GTF Perseus" )
+
++Starting Weapons: ( "Subach HL-7"  "Akheton SDG"  "Prometheus S"  "Maxim"  "UD-8 Kayser"  "Rockeye"  "Tempest"  "Tornado"  "Harpoon"  "Trebuchet" )
+
+
+$Mission: BoN.fs2
++Flags: 0
++Main Hall: 
++Formula: ( cond
+   (
+      ( or 
+         ( is-previous-event-true 
+            "BoN.fs2" 
+            "End of Mission" 
+         )
+         ( and 
+            ( is-previous-event-false 
+               "BoN.fs2" 
+               "End of Mission" 
+            )
+            ( is-previous-event-true 
+               "BoN.fs2" 
+               "Grid 9" 
+            )
+         )
+      )
+      ( next-mission "Command Responsibility.fs2" )
+   )
+   ( ( true ) ( next-mission "BoN.fs2" ) )
+)
+
++Level: 0
++Position: 0
+
+$Mission: Command Responsibility.fs2
++Flags: 0
++Main Hall: 
++Formula: ( cond
+   (
+      ( or 
+         ( is-previous-event-true 
+            "Command Responsibility.fs2" 
+            "Fade to death" 
+         )
+         ( is-previous-event-true 
+            "Command Responsibility.fs2" 
+            "Setup Ending" 
+         )
+      )
+      ( next-mission "Credits.fs2" )
+   )
+   ( ( true ) ( next-mission "Command Responsibility.fs2" ) )
+)
+
++Level: 1
++Position: 0
+
+$Mission: Credits.fs2
++Flags: 0
++Main Hall: 
+
++Level: 2
++Position: 0
+
+#End
+
