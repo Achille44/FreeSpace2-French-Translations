@@ -4,7 +4,7 @@ $Version: 0.10
 $Name:  XSTR("The Romans Blunder", 617)
 $Author: James Agay- Volition
 $Created: 04/27/99 at 13:38:23
-$Modified: 11/22/10 at 14:57:00
+$Modified: 01/17/21 at 21:34:02
 $Notes:
 This was the first mission I created for Volition.  Originally this was designed to be the second half of a red alert pair, to follow Brad's SM1-02.  The difficulty was toned down several times to make it suitable for the beginning of the campaign.
 $End Notes:
@@ -12,11 +12,12 @@ $End Notes:
 $Mission Desc:
  XSTR("The 53rd pursue Admiral Aken Bosch to the Sirius jump node.", 618)
 $end_multi_text
-
 +Game Type Flags: 1
-+Flags: 0
-+Red Alert: 0
-+Scramble: 1
++Flags: 131072
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
 +Disallow Support: 0
 +Hull Repair Ceiling: 0.000000
 +Subsystem Repair Ceiling: 100.000000
@@ -29,21 +30,13 @@ $end_multi_text
 	-0.635554, -0.000001, -0.772057,
 	-0.066148, 0.996323, 0.054452,
 	0.769218, 0.085677, -0.633217
-
 +SquadReassignName: 53rd Hammerheads
 +SquadReassignLogo: hammer1.pcx
 
+
 $Skybox Model: Starfield.pof
+
 $AI Profile: FS2 RETAIL
-
-#Plot Info
-
-$Tour:  XSTR("Blah", 6)
-$Pre-Briefing Cutscene: Blah
-$Pre-Mission Cutscene: Blah
-$Next Mission Success: Blah
-$Next Mission Partial: Blah
-$Next Mission Failure: Blah
 
 #Sexp_variables
 
@@ -84,7 +77,7 @@ $type: 33
 $team: Friendly
 $class: GTNB Pharos
 $pos: 1077.864624, 0.000410, 9631.760742
-$label: XSTR("Sirius", 14687)
+$label:  XSTR("Sirius", 14617)
 +id: 1
 $hlight: 0
 $mirror: 0
@@ -96,7 +89,7 @@ $type: 28
 $team: Neutral
 $class: NTF Iceni
 $pos: 940.114990, 0.001783, 8312.737305
-$label: XSTR("NTF Iceni", 6101)
+$label:  XSTR("NTF Iceni", 6103)
 +id: 2
 $hlight: 1
 $mirror: 0
@@ -198,6 +191,7 @@ $Recommendation text:
     XSTR("Do not jump out until ordered to do so.", 625)
 $end_multi_text
 
+
 #Players		;! 1 total
 
 $Starting Shipname: Alpha 1
@@ -215,7 +209,7 @@ $Ship Choices: (
 #Objects		;! 31 total
 
 $Name: Alpha 1		;! Object #0
-$Display Name: XSTR("Alpha 1", 6244)
+$Display Name: XSTR("Alpha 1", 6243)
 $Class: GTF Myrmidon
 $Team: Friendly
 $Location: 1128.266479, 632.218628, 1650.454224
@@ -223,7 +217,6 @@ $Orientation:
 	0.999841, 0.000000, -0.017849,
 	0.000000, 1.000000, -0.000001,
 	0.017849, 0.000001, 0.999841
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 100
@@ -244,7 +237,7 @@ $Determination: 10
 +Score: 12
 
 $Name: Alpha 2		;! Object #1
-$Display Name: XSTR("Alpha 2", 6303)
+$Display Name: XSTR("Alpha 2", 6302)
 $Class: GTF Myrmidon
 $Team: Friendly
 $Location: 1070.165161, 622.563416, 1607.791626
@@ -252,7 +245,6 @@ $Orientation:
 	0.999663, 0.000000, -0.025955,
 	0.000000, 1.000000, -0.000001,
 	0.025955, 0.000001, 0.999663
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: General
 $AI Goals: ( goals ( ai-chase "Iceni" 80 ) ( ai-chase "Capricorn 1" 50 ) ( ai-guard "Alpha 1" 21 ) )
@@ -266,16 +258,17 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( "cargo-known" "locked" )
-+Flags2: ( )
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
 +Respawn priority: 0
 +Orders Accepted: 97		;! note that this is a bitfield!!!
 +Group: 0
++Use Table Score:
 +Score: 10
 +Persona Index: 3
 
 $Name: Alpha 3		;! Object #2
-$Display Name: XSTR("Alpha 3", 6304)
+$Display Name: XSTR("Alpha 3", 6303)
 $Class: GTF Myrmidon
 $Team: Friendly
 $Location: 1200.406250, 621.719543, 1600.798706
@@ -283,7 +276,6 @@ $Orientation:
 	0.999953, 0.000000, -0.009738,
 	0.000000, 1.000000, -0.000001,
 	0.009738, 0.000001, 0.999953
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: General
 $AI Goals: ( goals ( ai-chase "Iceni" 80 ) ( ai-chase "Capricorn 1" 50 ) ( ai-guard "Alpha 1" 21 ) )
@@ -297,29 +289,31 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( "cargo-known" "locked" )
-+Flags2: ( )
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
 +Respawn priority: 0
 +Orders Accepted: 97		;! note that this is a bitfield!!!
 +Group: 0
++Use Table Score:
 +Score: 10
 +Persona Index: 0
 
 $Name: Capricorn 1		;! Object #3
-$Display Name: XSTR("Capricorn 1", 7730)
-$Class: GTFr Triton
+$Display Name: XSTR("Capricorn 1", 7728)
+$Class: GTFR Triton
+
 $Team: Neutral
 $Location: -230.352158, 1.999622, 1484.969482
 $Orientation:
 	-1.000000, -0.000018, 0.000015,
 	0.000018, -0.999296, -0.037540,
 	0.000016, -0.037540, 0.999296
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "Jump Destination" 80 ) )
 $Cargo 1:  XSTR("Unscannable", 626)
 +Initial Velocity: 55
 +Initial Hull: 89
++Initial Shields: 100
 +Subsystem: Pilot
 +Subsystem: turret01
 +Primary Banks: ( "Morning Star" )
@@ -338,34 +332,35 @@ $Departure Cue: ( <
    666 
 )
 $Determination: 10
-+Flags: ( "escort" "scannable" )
++Flags: ( "no-shields" "escort" "scannable" )
 +Flags2: ( )
 +Respawn priority: 0
 +Escort priority: 3
 +Orders Accepted: 257		;! note that this is a bitfield!!!
 +Group: 0
++Use Table Score:
 +Score: 20
 
 $Name: TAC 1 47		;! Object #4
-$Display Name: XSTR("TAC 1 47", 14682)
+$Display Name: XSTR("TAC 1 47", 14612)
 $Class: TC-TRI
-$Team: Friendly
-$Location: -229.654617, -16.081800, 1675.384399
+$Team: Hostile
+$Location: -229.654678, -16.081770, 1675.384644
 $Orientation:
-	-1.000000, -0.000014, 0.000019,
-	0.000014, -0.999292, -0.037648,
+	-1.000000, -0.000012, 0.000019,
+	0.000012, -0.999292, -0.037648,
 	0.000020, -0.037648, 0.999292
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Fighter Parts", 573)
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 $Arrival Location: Hyperspace
 $Arrival Cue: ( false ) 
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( "cargo-known" )
++Flags: ( "cargo-known" "no-shields" )
 +Flags2: ( )
 +Respawn priority: 0
 +Docked With: Capricorn 1
@@ -375,20 +370,21 @@ $Dockee Point: Cargo Dockpoint
 +Score: 5
 
 $Name: Capricorn 2		;! Object #5
-$Display Name: XSTR("Capricorn 2", 7731)
-$Class: GTFr Poseidon
+$Display Name: XSTR("Capricorn 2", 7729)
+$Class: GTFR Poseidon
+
 $Team: Neutral
 $Location: -38.915779, -161.227676, 633.300598
 $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, -0.000003,
 	0.000000, 0.000003, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "Jump Destination" 80 ) )
 $Cargo 1:  XSTR("Unscannable", 626)
 +Initial Velocity: 33
 +Initial Hull: 93
++Initial Shields: 100
 +Subsystem: Pilot
 +Subsystem: turret01
 +Subsystem: turret02
@@ -410,7 +406,7 @@ $Departure Cue: ( <
    666 
 )
 $Determination: 10
-+Flags: ( "cargo-known" "protect-ship" "escort" )
++Flags: ( "cargo-known" "protect-ship" "no-shields" "escort" )
 +Flags2: ( )
 +Respawn priority: 0
 +Escort priority: 2
@@ -419,25 +415,25 @@ $Determination: 10
 +Score: 20
 
 $Name: TC 2 27		;! Object #6
-$Display Name: XSTR("TC 2 27", 14683)
+$Display Name: XSTR("TC 2 27", 14613)
 $Class: TC 2
-$Team: Friendly
+$Team: Hostile
 $Location: -38.919918, -178.609131, 628.379028
 $Orientation:
-	1.000000, -0.000000, 0.000000,
-	0.000000, 1.000000, -0.000000,
-	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, -0.000001,
+	0.000000, 0.000001, 1.000000
 $AI Behavior: None
 $Cargo 1:  XSTR("Munitions", 572)
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 $Arrival Location: Hyperspace
 $Arrival Cue: ( false ) 
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( "cargo-known" )
++Flags: ( "cargo-known" "no-shields" )
 +Flags2: ( )
 +Respawn priority: 0
 +Docked With: Capricorn 2
@@ -447,20 +443,21 @@ $Dockee Point: cargo dock
 +Score: 5
 
 $Name: Iceni		;! Object #7
-$Display Name: XSTR("Iceni", 12712)
+$Display Name: XSTR("Iceni", 12722)
 $Class: NTF Iceni
+
 $Team: Neutral
 $Location: 960.831604, 0.002121, 7629.563965
 $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints "Jump Destination" 80 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 100
 +Initial Hull: 69
++Initial Shields: 100
 +Subsystem: Pilot
 +Subsystem: turret01a
 +Subsystem: turret02
@@ -495,7 +492,7 @@ $Departure Cue: ( is-event-true-delay
    16 
 )
 $Determination: 10
-+Flags: ( "cargo-known" "escort" )
++Flags: ( "cargo-known" "no-shields" "escort" )
 +Flags2: ( )
 +Respawn priority: 0
 +Escort priority: 1
@@ -507,15 +504,15 @@ $Texture Replace:
 +new: NTF_Iceni
 
 $Name: Leo 1		;! Object #8
-$Display Name: XSTR("Leo 1", 7724)
+$Display Name: XSTR("Leo 1", 7722)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -912.009216, 0.002661, 1460.558594
 $Orientation:
 	0.789417, 0.000000, -0.613857,
 	-0.076602, 0.992183, -0.098510,
 	0.609059, 0.124788, 0.783247
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -535,15 +532,15 @@ $Determination: 10
 +Score: 10
 
 $Name: Leo 2		;! Object #9
-$Display Name: XSTR("Leo 2", 7725)
+$Display Name: XSTR("Leo 2", 7723)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -886.492676, -6.435194, 1451.154297
 $Orientation:
 	0.792577, 0.000000, -0.609772,
 	-0.076978, 0.992000, -0.100055,
 	0.604894, 0.126240, 0.786236
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: Lieutenant
 $Cargo 1:  XSTR("Nothing", 13)
@@ -564,15 +561,15 @@ $Determination: 10
 +Score: 10
 
 $Name: Leo 3		;! Object #10
-$Display Name: XSTR("Leo 3", 7726)
+$Display Name: XSTR("Leo 3", 7724)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -859.871033, -12.620980, 1441.587891
 $Orientation:
 	0.795843, 0.000000, -0.605503,
 	-0.077297, 0.991818, -0.101596,
 	0.600549, 0.127658, 0.789332
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -592,20 +589,21 @@ $Determination: 10
 +Score: 10
 
 $Name: Glorious		;! Object #11
-$Display Name: XSTR("Glorious", 14688)
+$Display Name: XSTR("Glorious", 14618)
 $Class: GTC Fenris
+
 $Team: Neutral
 $Location: -2766.786621, 199.154312, -749.295471
 $Orientation:
 	0.788732, 0.000000, -0.614738,
 	-0.012074, 0.999807, -0.015491,
 	0.614619, 0.019641, 0.788580
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "Rebel Path" 60 ) ( ai-waypoints-once "Jump Destination" 50 ) ( ai-chase "Psamtik" 88 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 40
 +Initial Hull: 78
++Initial Shields: 100
 +Subsystem: Pilot
 +Subsystem: turret01
 +Primary Banks: ( "Terran Turret Weak" )
@@ -640,31 +638,33 @@ $Departure Cue: ( <
    660 
 )
 $Determination: 10
-+Flags: ( "cargo-known" "escort" )
++Flags: ( "cargo-known" "no-shields" "escort" )
 +Flags2: ( )
 +Respawn priority: 0
 +Escort priority: 0
 +Orders Accepted: 1		;! note that this is a bitfield!!!
 +Group: 0
++Use Table Score:
 +Score: 100
 $Texture Replace:
 +old: nameplate
 +new: NTC_Glorious
 
 $Name: Impervious		;! Object #12
-$Display Name: XSTR("Impervious", 14689)
+$Display Name: XSTR("Impervious", 14619)
 $Class: GTC Leviathan
+
 $Team: Neutral
 $Location: -3157.318848, 0.000024, -687.480713
 $Orientation:
 	0.917816, 0.000000, -0.397005,
 	0.000000, 1.000000, 0.000000,
 	0.397005, 0.000000, 0.917816
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "Jump Destination" 80 ) ( ai-waypoints-once "Jump Destination" 60 ) ( ai-chase "Psamtik" 88 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 83
++Initial Shields: 100
 +Subsystem: Pilot
 +Subsystem: turret01
 +Subsystem: turret02
@@ -697,7 +697,7 @@ $Departure Cue: ( <
    660 
 )
 $Determination: 10
-+Flags: ( "cargo-known" "escort" )
++Flags: ( "cargo-known" "no-shields" "escort" )
 +Flags2: ( )
 +Respawn priority: 0
 +Escort priority: 0
@@ -709,7 +709,7 @@ $Texture Replace:
 +new: NTC_Impervious
 
 $Name: Psamtik		;! Object #13
-$Display Name: XSTR("Psamtik", 14666)
+$Display Name: XSTR("Psamtik", 14596)
 $Class: GVD Hatshepsut
 $Team: Friendly
 $Location: -2487.322021, 117.117165, -6715.838379
@@ -717,11 +717,11 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "Allied Path" 70 ) ( ai-waypoints-once "Jump Destination" 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 100
++Initial Shields: 100
 +Subsystem: Pilot
 +Subsystem: turret01
 +Primary Banks: ( "" )
@@ -771,7 +771,7 @@ $Arrival Cue: ( is-event-true-delay
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( "cargo-known" "escort" )
++Flags: ( "cargo-known" "no-shields" "escort" )
 +Flags2: ( )
 +Respawn priority: 0
 +Escort priority: 0
@@ -780,15 +780,15 @@ $Determination: 10
 +Score: 1000
 
 $Name: Gemini 1		;! Object #14
-$Display Name: XSTR("Gemini 1", 8376)
+$Display Name: XSTR("Gemini 1", 8393)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -8.035614, -0.000485, 1959.409546
 $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -809,15 +809,15 @@ $Determination: 10
 +Score: 10
 
 $Name: Gemini 2		;! Object #15
-$Display Name: XSTR("Gemini 2", 8377)
+$Display Name: XSTR("Gemini 2", 8394)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -295.225037, -0.000606, 1949.168335
 $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: Lieutenant
 $Cargo 1:  XSTR("Nothing", 13)
@@ -839,15 +839,15 @@ $Determination: 10
 +Score: 10
 
 $Name: Gemini 3		;! Object #16
-$Display Name: XSTR("Gemini 3", 8378)
+$Display Name: XSTR("Gemini 3", 8395)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -147.480438, -0.000449, 2022.853882
 $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -868,15 +868,15 @@ $Determination: 10
 +Score: 10
 
 $Name: Scorpio 1		;! Object #17
-$Display Name: XSTR("Scorpio 1", 7716)
+$Display Name: XSTR("Scorpio 1", 7714)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -2694.800049, 114.400002, -578.799988
 $Orientation:
 	0.925639, 0.000000, -0.378407,
 	0.004506, 0.999929, 0.011023,
 	0.378380, -0.011908, 0.925574
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: Lieutenant
 $Cargo 1:  XSTR("Nothing", 13)
@@ -899,15 +899,15 @@ $Determination: 10
 +Score: 10
 
 $Name: Scorpio 2		;! Object #18
-$Display Name: XSTR("Scorpio 2", 7717)
+$Display Name: XSTR("Scorpio 2", 7715)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -2660.819336, 114.400024, -615.130798
 $Orientation:
 	0.927951, 0.000000, -0.372702,
 	0.004438, 0.999929, 0.011050,
 	0.372676, -0.011908, 0.927885
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: Lieutenant
 $Cargo 1:  XSTR("Nothing", 13)
@@ -930,15 +930,15 @@ $Determination: 10
 +Score: 10
 
 $Name: Scorpio 3		;! Object #19
-$Display Name: XSTR("Scorpio 3", 7721)
+$Display Name: XSTR("Scorpio 3", 7719)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -2738.172607, 114.400223, -609.928528
 $Orientation:
 	0.925157, 0.000000, -0.379586,
 	0.004494, 0.999930, 0.010952,
 	0.379559, -0.011838, 0.925092
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: Lieutenant
 $Cargo 1:  XSTR("Nothing", 13)
@@ -961,15 +961,15 @@ $Determination: 10
 +Score: 10
 
 $Name: Aquarius 1		;! Object #20
-$Display Name: XSTR("Aquarius 1", 7727)
+$Display Name: XSTR("Aquarius 1", 7725)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -3026.032471, 0.004492, -425.763000
 $Orientation:
 	0.916312, 0.000000, -0.400465,
 	0.000000, 1.000000, 0.000000,
 	0.400465, 0.000000, 0.916312
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: Lieutenant
 $Cargo 1:  XSTR("Nothing", 13)
@@ -992,15 +992,15 @@ $Determination: 10
 +Score: 10
 
 $Name: Aquarius 2		;! Object #21
-$Display Name: XSTR("Aquarius 2", 7728)
+$Display Name: XSTR("Aquarius 2", 7726)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -3083.676758, 0.004524, -446.648041
 $Orientation:
 	0.917569, 0.000000, -0.397576,
 	0.000000, 1.000000, 0.000000,
 	0.397576, 0.000000, 0.917569
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: Lieutenant
 $Cargo 1:  XSTR("Nothing", 13)
@@ -1023,15 +1023,15 @@ $Determination: 10
 +Score: 10
 
 $Name: Aquarius 3		;! Object #22
-$Display Name: XSTR("Aquarius 3", 7729)
+$Display Name: XSTR("Aquarius 3", 7727)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -2999.402344, 0.004574, -487.540314
 $Orientation:
 	0.915731, 0.000000, -0.401792,
 	0.000000, 1.000000, 0.000000,
 	0.401792, 0.000000, 0.915731
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: Lieutenant
 $Cargo 1:  XSTR("Nothing", 13)
@@ -1054,7 +1054,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Beta 1		;! Object #23
-$Display Name: XSTR("Beta 1", 6792)
+$Display Name: XSTR("Beta 1", 6791)
 $Class: GTF Myrmidon
 $Team: Friendly
 $Location: 1245.201050, 516.500305, 1910.177124
@@ -1062,7 +1062,6 @@ $Orientation:
 	0.999908, 0.000000, 0.013597,
 	-0.000775, 0.998376, 0.056959,
 	-0.013575, -0.056964, 0.998284
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: General
 $Cargo 1:  XSTR("Nothing", 13)
@@ -1076,16 +1075,17 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( "cargo-known" "locked" )
-+Flags2: ( )
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
 +Respawn priority: 0
 +Orders Accepted: 97		;! note that this is a bitfield!!!
 +Group: 0
++Use Table Score:
 +Score: 10
 +Persona Index: 4
 
 $Name: Beta 2		;! Object #24
-$Display Name: XSTR("Beta 2", 6793)
+$Display Name: XSTR("Beta 2", 6792)
 $Class: GTF Myrmidon
 $Team: Friendly
 $Location: 1176.838867, 518.766052, 1845.566284
@@ -1093,7 +1093,6 @@ $Orientation:
 	0.999776, 0.000000, 0.021172,
 	-0.001212, 0.998361, 0.057215,
 	-0.021137, -0.057228, 0.998137
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: General
 $Cargo 1:  XSTR("Nothing", 13)
@@ -1107,16 +1106,17 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( "cargo-known" "locked" )
-+Flags2: ( )
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
 +Respawn priority: 0
 +Orders Accepted: 97		;! note that this is a bitfield!!!
 +Group: 0
++Use Table Score:
 +Score: 10
 +Persona Index: 4
 
 $Name: Beta 3		;! Object #25
-$Display Name: XSTR("Beta 3", 6794)
+$Display Name: XSTR("Beta 3", 6793)
 $Class: GTF Myrmidon
 $Team: Friendly
 $Location: 1329.729004, 552.437195, 1831.715454
@@ -1124,7 +1124,6 @@ $Orientation:
 	0.999838, 0.000000, 0.017976,
 	-0.001102, 0.998120, 0.061277,
 	-0.017942, -0.061287, 0.997959
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: General
 $Cargo 1:  XSTR("Nothing", 13)
@@ -1138,23 +1137,24 @@ $Arrival Cue: ( false )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( "cargo-known" "locked" )
-+Flags2: ( )
++Flags: ( "cargo-known" )
++Flags2: ( "ship-locked" "weapons-locked" )
 +Respawn priority: 0
 +Orders Accepted: 97		;! note that this is a bitfield!!!
 +Group: 0
++Use Table Score:
 +Score: 10
 
 $Name: Gemini 4		;! Object #26
-$Display Name: XSTR("Gemini 4", 8379)
+$Display Name: XSTR("Gemini 4", 8396)
 $Class: GTF Loki
+
 $Team: Neutral
 $Location: -91.501518, -0.000449, 2018.568726
 $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: Lieutenant
 $Cargo 1:  XSTR("Nothing", 13)
@@ -1176,7 +1176,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Delta 1		;! Object #27
-$Display Name: XSTR("Delta 1", 6307)
+$Display Name: XSTR("Delta 1", 6306)
 $Class: GVF Tauret
 $Team: Friendly
 $Location: -2567.007813, 0.000104, -2197.697510
@@ -1184,7 +1184,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: General
 $Cargo 1:  XSTR("Nothing", 13)
@@ -1193,8 +1192,7 @@ $Cargo 1:  XSTR("Nothing", 13)
 +Subsystem: Pilot
 $Arrival Location: Hyperspace
 $Arrival Cue: ( false ) 
-$Departure Location: Docking Bay
-$Departure Anchor: Psamtik
+$Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" )
@@ -1204,7 +1202,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Delta 2		;! Object #28
-$Display Name: XSTR("Delta 2", 6308)
+$Display Name: XSTR("Delta 2", 6307)
 $Class: GVF Tauret
 $Team: Friendly
 $Location: -2540.693848, 0.000100, -2200.510742
@@ -1212,7 +1210,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: General
 $Cargo 1:  XSTR("Nothing", 13)
@@ -1221,8 +1218,7 @@ $Cargo 1:  XSTR("Nothing", 13)
 +Subsystem: Pilot
 $Arrival Location: Hyperspace
 $Arrival Cue: ( false ) 
-$Departure Location: Docking Bay
-$Departure Anchor: Psamtik
+$Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" )
@@ -1232,7 +1228,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Delta 3		;! Object #29
-$Display Name: XSTR("Delta 3", 6876)
+$Display Name: XSTR("Delta 3", 6875)
 $Class: GVF Tauret
 $Team: Friendly
 $Location: -2549.562012, 0.000106, -2158.988281
@@ -1240,7 +1236,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: General
 $Cargo 1:  XSTR("Nothing", 13)
@@ -1249,8 +1244,7 @@ $Cargo 1:  XSTR("Nothing", 13)
 +Subsystem: Pilot
 $Arrival Location: Hyperspace
 $Arrival Cue: ( false ) 
-$Departure Location: Docking Bay
-$Departure Anchor: Psamtik
+$Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" )
@@ -1260,7 +1254,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Delta 4		;! Object #30
-$Display Name: XSTR("Delta 4", 8055)
+$Display Name: XSTR("Delta 4", 8052)
 $Class: GVF Tauret
 $Team: Friendly
 $Location: -2527.885742, 0.000101, -2160.253418
@@ -1268,7 +1262,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 +AI Class: General
 $Cargo 1:  XSTR("Nothing", 13)
@@ -1277,8 +1270,7 @@ $Cargo 1:  XSTR("Nothing", 13)
 +Subsystem: Pilot
 $Arrival Location: Hyperspace
 $Arrival Cue: ( false ) 
-$Departure Location: Docking Bay
-$Departure Anchor: Psamtik
+$Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" )
@@ -1293,7 +1285,6 @@ $Name: Alpha
 $Waves: 1
 $Wave Threshold: 0
 $Special Ship: 0		;! Alpha 1
-
 $Arrival Location: Hyperspace
 $Arrival Cue: ( true ) 
 $Departure Location: Hyperspace
@@ -1313,7 +1304,6 @@ $Name: Leo
 $Waves: 1
 $Wave Threshold: 0
 $Special Ship: 0		;! Leo 1
-
 $Arrival Location: Hyperspace
 $Arrival Cue: ( percent-ships-destroyed 33 "Gemini" ) 
 $Departure Location: Hyperspace
@@ -1330,7 +1320,6 @@ $Name: Gemini
 $Waves: 1
 $Wave Threshold: 0
 $Special Ship: 0		;! Gemini 1
-
 $Arrival Location: Hyperspace
 $Arrival Cue: ( has-arrived-delay 2 "Capricorn 1" ) 
 $Departure Location: Hyperspace
@@ -1348,7 +1337,6 @@ $Name: Scorpio
 $Waves: 1
 $Wave Threshold: 0
 $Special Ship: 0		;! Scorpio 1
-
 $Arrival Location: Hyperspace
 $Arrival Cue: ( has-arrived-delay 2 "Impervious" ) 
 $Departure Location: Hyperspace
@@ -1365,7 +1353,6 @@ $Name: Aquarius
 $Waves: 1
 $Wave Threshold: 0
 $Special Ship: 0		;! Aquarius 1
-
 $Arrival Location: Hyperspace
 $Arrival Cue: ( has-arrived-delay 2 "Glorious" ) 
 $Departure Location: Hyperspace
@@ -1382,7 +1369,6 @@ $Name: Beta
 $Waves: 1
 $Wave Threshold: 0
 $Special Ship: 0		;! Beta 1
-
 $Arrival Location: Hyperspace
 $Arrival Cue: ( true ) 
 $Departure Location: Hyperspace
@@ -1403,7 +1389,6 @@ $Name: Delta
 $Waves: 1
 $Wave Threshold: 0
 $Special Ship: 0		;! Delta 1
-
 $Arrival Location: Docking Bay
 +Arrival Distance: 0
 $Arrival Anchor: Psamtik
@@ -1433,7 +1418,7 @@ $Formula: ( when
    ( modify-variable-xstr 
       "@autoGenVar1[NTF Vessel]" 
       "NTF Vessel" 
-      14690 
+      14620 
    )
    ( ship-change-alt-name 
       "@autoGenVar1[NTF Vessel]" 
@@ -1442,7 +1427,7 @@ $Formula: ( when
    ( modify-variable-xstr 
       "@autoGenVar2[NTC Fenris]" 
       "NTC Fenris" 
-      14691 
+      14621 
    )
    ( ship-change-alt-name 
       "@autoGenVar2[NTC Fenris]" 
@@ -1451,7 +1436,7 @@ $Formula: ( when
    ( modify-variable-xstr 
       "@autoGenVar3[NTC Leviathan]" 
       "NTC Leviathan" 
-      14692 
+      14622 
    )
    ( ship-change-alt-name 
       "@autoGenVar3[NTC Leviathan]" 
@@ -1460,7 +1445,7 @@ $Formula: ( when
    ( modify-variable-xstr 
       "@autoGenVar4[NTF Loki]" 
       "NTF Loki" 
-      14571 
+      14500 
    )
    ( ship-change-alt-name 
       "@autoGenVar4[NTF Loki]" 
@@ -1481,7 +1466,7 @@ $Formula: ( when
    ( modify-variable-xstr 
       "@autoGenVar5[NTFr Poseidon]" 
       "NTFr Poseidon" 
-      14684 
+      14614 
    )
    ( ship-change-alt-name 
       "@autoGenVar5[NTFr Poseidon]" 
@@ -1490,7 +1475,7 @@ $Formula: ( when
    ( modify-variable-xstr 
       "@autoGenVar6[NTFr Triton]" 
       "NTFr Triton" 
-      14685 
+      14615 
    )
    ( ship-change-alt-name 
       "@autoGenVar6[NTFr Triton]" 
@@ -1499,7 +1484,7 @@ $Formula: ( when
    ( modify-variable-xstr 
       "@autoGenVar7[#Command]" 
       "#Command" 
-      7553 
+      7552 
    )
 )
 +Name: Manage translation variables
@@ -1534,6 +1519,7 @@ $Formula: ( when
 +Name: Intro Dialogue
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" "first repeat" "last repeat" "first trigger" "last trigger" )
 
 $Formula: ( when 
    ( < 
@@ -1605,6 +1591,7 @@ $Formula: ( when
 +Name: Icini Escapes Dialogue
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" "first repeat" "last repeat" "first trigger" "last trigger" )
 
 $Formula: ( when 
    ( and 
@@ -1623,6 +1610,7 @@ $Formula: ( when
 +Name: Capricorn Hurt- Rebel Trigger
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( has-arrived-delay 2 "Impervious" ) 
@@ -1648,6 +1636,7 @@ $Formula: ( when
 +Name: Rebel Arrival
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" "first repeat" "last repeat" "first trigger" "last trigger" )
 
 $Formula: ( when 
    ( has-arrived-delay 
@@ -1657,10 +1646,10 @@ $Formula: ( when
    )
    ( beam-free-all "Impervious" ) 
 )
-
 +Name: Rebels Armed
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( has-arrived-delay 
@@ -1684,6 +1673,7 @@ $Formula: ( when
 +Name: Incoming wing of Lokis
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( and 
@@ -1700,6 +1690,7 @@ $Formula: ( when
 +Name: Delta Launch
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( or 
@@ -1715,6 +1706,7 @@ $Formula: ( when
 +Name: 1 down 1 to go
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( is-destroyed-delay 4 "Glorious" ) 
@@ -1727,6 +1719,7 @@ $Formula: ( when
 +Name: Glorious Destroyed
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( is-destroyed-delay 4 "Impervious" ) 
@@ -1739,6 +1732,7 @@ $Formula: ( when
 +Name: Impervious Destroyed
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( has-arrived-delay 3 "Psamtik" ) 
@@ -1752,6 +1746,7 @@ $Formula: ( when
 +Name: Psamtik Arrives
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( destroyed-or-departed-delay 
@@ -1786,6 +1781,7 @@ $Formula: ( when
 +Name: Exit Approved
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( has-departed-delay 0 "Alpha 1" ) 
@@ -1796,6 +1792,7 @@ $Formula: ( when
 +Interval: 1
 +Chained: 4
 +Objective:  XSTR("Return to base", 66)
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( is-destroyed-delay 0 "Gemini" ) 
@@ -1805,6 +1802,7 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Objective:  XSTR("Destroy Gemini", 16)
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( is-destroyed-delay 0 "Iceni" ) 
@@ -1814,6 +1812,7 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Objective:  XSTR("Destroy the Iceni", 627)
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( is-destroyed-delay 0 "Aquarius" ) 
@@ -1823,6 +1822,7 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Objective:  XSTR("Destroy Aquarius", 103)
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( is-destroyed-delay 
@@ -1836,6 +1836,7 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Objective:  XSTR("Destroy freighters", 628)
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( is-destroyed-delay 0 "Leo" ) 
@@ -1845,6 +1846,7 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Objective:  XSTR("Destroy Leo", 15)
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( is-destroyed-delay 0 "Scorpio" ) 
@@ -1854,6 +1856,7 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Objective:  XSTR("Destroy Scorpio", 61)
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( and 
@@ -1871,6 +1874,7 @@ $Formula: ( when
 +Name: Fighters hurt
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( true ) 
@@ -1879,6 +1883,7 @@ $Formula: ( when
 +Name: A1 Beam protect
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( has-arrived-delay 0 "Glorious" ) 
@@ -1889,6 +1894,7 @@ $Formula: ( when
 +Name: Validate Glorious
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( has-arrived-delay 0 "Impervious" ) 
@@ -1899,6 +1905,7 @@ $Formula: ( when
 +Name: Validate Impervious
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( has-arrived-delay 5 "Capricorn 1" ) 
@@ -1907,6 +1914,7 @@ $Formula: ( when
 +Name: CAP Speed 1
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( has-arrived-delay 5 "Capricorn 2" ) 
@@ -1915,6 +1923,7 @@ $Formula: ( when
 +Name: CAP Speed 2
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( true ) 
@@ -1933,6 +1942,7 @@ $Formula: ( when
 +Name: Damage Icini
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( or 
@@ -1960,6 +1970,7 @@ $Formula: ( when
 +Name: Capricorn May Escape
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( and 
@@ -1988,6 +1999,7 @@ $Formula: ( when
 +Name: May Continue
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 $Formula: ( when 
    ( true ) 
@@ -2007,6 +2019,7 @@ $Formula: ( when
 +Name: New Weapons
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "true" "false" )
 
 #Goals		;! 5 total
 
@@ -2055,9 +2068,9 @@ $Formula: ( and
 
 #Waypoints		;! 4 lists total
 
-$Jump Node: 1077.864624, 0.000410, 9631.760742
-$Jump Node Name: XSTR("Sirius", 14687)
 
+$Jump Node: 1077.864624, 0.000410, 9631.760742
+$Jump Node Name: XSTR("Sirius", 14617)
 $Name: Jump Destination
 $List: (		;! 1 points in list
 	( 994.394409, 0.000176, 9663.798828 )
@@ -2085,6 +2098,7 @@ $List: (		;! 3 points in list
 )
 
 #Messages		;! 31 total
+
 
 $Name: Intro Comment
 $Team: -1
@@ -2612,7 +2626,6 @@ $Starbitmap: PlanetA1
 +DivY: 1
 
 #Asteroid Fields
-
 
 #Music
 
