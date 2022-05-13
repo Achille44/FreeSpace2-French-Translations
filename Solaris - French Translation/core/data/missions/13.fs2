@@ -1,0 +1,5411 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Rights of Man", 3377)
+$Author: Darius
+$Created: 10/11/19 at 22:47:10
+$Modified: 04/22/22 at 12:48:18
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 2629)
+$end_multi_text
++Game Type Flags: 1
++Flags: 786624
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 0
++Hull Repair Ceiling: 75.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 15.857270, -366.983978, 3765.662354
++Viewer orient:
+	-0.990452, 0.000010, 0.137856,
+	-0.025228, 0.983099, -0.181329,
+	-0.135528, -0.183075, -0.973712
+
+$Starting wing names: ( "Alfa" "Bravo" "Charlie" )
+$Squadron wing names: ( "Alfa" "Bravo" "Charlie" "Delta" "Echo" )
+$Team-versus-team wing names: ( "Alfa" "Zulu" )
+
+$Skybox Model: desertplanet.pof
++Skybox Orientation:
+	1.000000, 0.000000, -0.000000,
+	-0.000000, 0.342020, -0.939693,
+	0.000000, 0.939693, 0.342020
+
+$AI Profile: Solaris
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"dropoffstate"		"0"		"number"
+		1		"autoGenVar1"		"#"		"string"
+		2		"autoGenVar2"		"#Kaur"		"string"
+		3		"autoGenVar3"		"#Navo"		"string"
+		4		"autoGenVar4"		"#Erikson"		"string"
+		5		"autoGenVar5"		"Dropoff Point"		"string"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 0
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 2
+
+$Formula: ( is-event-true-delay 
+   "mission complete title" 
+   0 
+)
+$Multi text
+    XSTR("That was tougher than I expected.
+
+The Malikans were definitely behind the Korra mutiny. In fact, it's starting to look like they've been behind most of the uprisings in Sulsia.
+
+This is a worrying escalation. Those transports were carrying troops to secure their hold on Korra, which means that they aren't just aiming to disrupt Sulsian operations. They plan to occupy assets and territory.
+
+If I didn't know better, I'd say that Andri Gadaria is going beyond his goals of worker liberation. He's building an army.
+
+Energence Industries has paid a bonus to the Hoshikuzu's crew for taking care of the Malikan reinforcements and keeping Navo's men safe. I'm using the extra credits to source some new equipment for the gunships. I'll get Kaur to go through the new cannons with you later.", 3378)
+$end_multi_text
+$Voice: 13-db1
+$Recommendation text:
+    XSTR("", 2443)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "mission failed title" 
+   0 
+)
+$Multi text
+    XSTR("Mission failed debriefing", 3379)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 2443)
+$end_multi_text
+
+
+#Callsigns:
+$Callsign: XSTR("Lau", 2882)
+$Callsign: XSTR("Meiks", 3256)
+$Callsign: XSTR("Ross", 2635)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Bravo 1
+$Ship Choices: (
+)
+
++Weaponry Pool: (
+	"Huaqing"	4
+	"Sparrow"	32
+)
+
+#Objects		;! 81 total
+
+$Name: Korra		;! Object #0
+$Display Name: XSTR("Korra", 3380)
+$Class: Refinery
+$Team: Hostile
+$Location: 681.918701, 0.001953, 155.569000
+$Orientation:
+	-0.021993, -0.000000, 0.999758,
+	-0.000000, 1.000000, 0.000000,
+	-0.999758, -0.000000, -0.021993
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Docked With: Victor 2
+$Docker Point: Docking Point
+$Dockee Point: Docking Point 3
++Docked With: Victor 1
+$Docker Point: Docking Point
+$Dockee Point: Docking Point 2
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Victor 1		;! Object #1
+$Display Name: XSTR("Victor 1", 3263)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: 807.089478, -406.598053, 808.479675
+$Orientation:
+	0.021993, 0.000000, -0.999758,
+	0.000000, 1.000000, 0.000000,
+	0.999758, 0.000000, 0.021993
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Docked With: Korra
+$Docker Point: Docking Point 2
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Victor 2		;! Object #2
+$Display Name: XSTR("Victor 2", 3264)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: 835.680359, -406.598053, -491.205688
+$Orientation:
+	0.021993, 0.000000, -0.999758,
+	0.000000, 1.000000, 0.000000,
+	0.999758, 0.000000, 0.021993
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Docked With: Korra
+$Docker Point: Docking Point 3
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Transponder 152		;! Object #3
+$Display Name: XSTR("Transponder 152", 2884)
+$Class: Transponder
+$Team: Friendly
+$Location: 2201.147461, 0.010742, 9073.441406
+$Orientation:
+	-0.029416, 0.000000, -0.999567,
+	0.000000, 1.000000, 0.000000,
+	0.999567, 0.000000, -0.029416
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Hoshikuzu		;! Object #4
+$Display Name: XSTR("Hoshikuzu", 3192)
+$Class: Rasputin-class Corvette
+$Callsign: XSTR("Lau", 2882)
+
+$Team: Friendly
+$Location: 463.750397, 1200.000000, 10275.593750
+$Orientation:
+	-0.999995, 0.000000, 0.003143,
+	0.000000, 1.000000, 0.000000,
+	-0.003143, 0.000000, -0.999995
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 100
++Docked With: Alfa 1
+$Docker Point: Docking Point
+$Dockee Point: Starb Fighter Rail
++Docked With: Bravo 1
+$Docker Point: Docking Point
+$Dockee Point: Port Fighter Rail
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Bravo 1		;! Object #5
+$Display Name: XSTR("Bravo 1", 2885)
+$Class: Comet-class Gunship
+$Callsign: XSTR("Ross", 2635)
+
+$Team: Friendly
+$Location: 487.219299, 1197.300049, 10173.269531
+$Orientation:
+	-0.999995, 0.000000, 0.003143,
+	0.000000, 1.000000, 0.000000,
+	-0.003143, 0.000000, -0.999995
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Huaqing" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Docked With: EMP Mine
+$Docker Point: Docking Point
+$Dockee Point: Auxiliary Dock
++Docked With: Hoshikuzu
+$Docker Point: Port Fighter Rail
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: EMP Mine		;! Object #6
+$Display Name: XSTR("EMP Mine", 2435)
+$Class: EMP Mine
+
+$Team: Friendly
+$Location: 487.225586, 1194.800049, 10175.269531
+$Orientation:
+	0.999995, 0.000000, -0.003143,
+	-0.003143, 0.000000, -0.999995,
+	0.000000, 1.000000, 0.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Bravo 1
+$Docker Point: Auxiliary Dock
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Alfa 1		;! Object #7
+$Display Name: XSTR("Alfa 1", 3258)
+$Class: Comet-class Gunship
+$Callsign: XSTR("Meiks", 3256)
+
+$Team: Friendly
+$Location: 439.638763, 1197.300049, 10173.418945
+$Orientation:
+	-0.999995, 0.000000, 0.003143,
+	0.000000, 1.000000, 0.000000,
+	-0.003143, 0.000000, -0.999995
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Huaqing" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Docked With: Hoshikuzu
+$Docker Point: Starb Fighter Rail
+$Dockee Point: Docking Point
++Orders Accepted: 32833		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 17
+
+$Name: Pollux Arrow		;! Object #8
+$Display Name: XSTR("Pollux Arrow", 3381)
+$Class: Tortoise-class Transport
+$Team: Friendly
+$Location: -34.398315, 1032.400024, 9353.261719
+$Orientation:
+	-0.999999, 0.000000, -0.001374,
+	0.000000, 1.000000, 0.000000,
+	0.001374, 0.000000, -0.999999
+$AI Behavior: None
+$Cargo 1:  XSTR("Troops", 3382)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: neutraltransport
++new: neutraltransport2
+
+$Name: Open Sky		;! Object #9
+$Display Name: XSTR("Open Sky", 3383)
+$Class: Pompeii-class Gunboat
+$Team: Hostile
+$Location: 674.408203, 912.763672, 3481.409668
+$Orientation:
+	0.111721, 0.000000, -0.993740,
+	-0.000000, 1.000000, 0.000000,
+	0.993740, 0.000000, 0.111721
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Sbank Ammo: ( 0 )
++Subsystem: turret02
++Sbank Ammo: ( 0 )
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Zincali		;! Object #10
+$Display Name: XSTR("Zincali", 3384)
+$Class: Pompeii-class Gunboat
+$Team: Hostile
+$Location: -191.286987, -701.250916, 821.619873
+$Orientation:
+	0.964008, 0.000000, -0.265872,
+	-0.000000, 1.000000, 0.000000,
+	0.265872, 0.000000, 0.964008
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Sbank Ammo: ( 0 )
++Subsystem: turret02
++Sbank Ammo: ( 0 )
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Arktos		;! Object #11
+$Display Name: XSTR("Arktos", 3385)
+$Class: Stargazer-class Freighter
+$Team: Hostile
+$Location: -656.320740, -541.602539, 5065.814453
+$Orientation:
+	-0.054214, 0.000000, -0.998529,
+	0.000000, 1.000000, 0.000000,
+	0.998529, 0.000000, -0.054214
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Arktos pass" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "let's do this" 
+   200 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "stargazer retreats" 
+   120 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Construction Drone#12
+$Docker Point: Docking Point2
+$Dockee Point: FighterDock1
++Docked With: Construction Drone#11
+$Docker Point: Docking Point2
+$Dockee Point: FighterDock2
++Docked With: Construction Drone#10
+$Docker Point: Docking Point2
+$Dockee Point: FighterDock3
++Docked With: Construction Drone#9
+$Docker Point: Docking Point2
+$Dockee Point: FighterDock4
++Docked With: Construction Drone#13
+$Docker Point: Docking Point2
+$Dockee Point: FighterDock5
++Docked With: Construction Drone#14
+$Docker Point: Docking Point2
+$Dockee Point: FighterDock6
++Docked With: Construction Drone#15
+$Docker Point: Docking Point2
+$Dockee Point: FighterDock7
++Docked With: Construction Drone#16
+$Docker Point: Docking Point2
+$Dockee Point: FighterDock8
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Construction Drone#16		;! Object #12
+$Display Name: XSTR("Construction Drone", 2289)
+$Class: Construction Drone
+$Team: Hostile
+$Location: -718.450806, -530.502563, 5046.654785
+$Orientation:
+	0.054214, 0.000000, 0.998529,
+	0.000000, 1.000000, 0.000000,
+	-0.998529, 0.000000, 0.054214
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Kamikaze Damage: 100
++Hotkey: 5
++Docked With: Mine 24
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Docked With: Arktos
+$Docker Point: FighterDock8
+$Dockee Point: Docking Point2
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Mine 24		;! Object #13
+$Display Name: XSTR("Mine 24", 3386)
+$Class: Mine
+$Team: Hostile
+$Location: -735.525635, -532.152588, 5047.582031
+$Orientation:
+	-0.054214, -0.000000, -0.998529,
+	0.000000, 1.000000, 0.000000,
+	0.998529, 0.000000, -0.054214
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 3000
++Special Exp Blast: 100
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 200
++Special Hitpoints: 500
++Kamikaze Damage: 650
++Docked With: Construction Drone#16
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Construction Drone#15		;! Object #14
+$Display Name: XSTR("Construction Drone", 2289)
+$Class: Construction Drone
+$Team: Hostile
+$Location: -683.502258, -530.502563, 5044.756836
+$Orientation:
+	0.054214, 0.000000, 0.998529,
+	0.000000, 1.000000, 0.000000,
+	-0.998529, 0.000000, 0.054214
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Kamikaze Damage: 100
++Hotkey: 5
++Docked With: Mine 23
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Docked With: Arktos
+$Docker Point: FighterDock7
+$Dockee Point: Docking Point2
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Mine 23		;! Object #15
+$Display Name: XSTR("Mine 23", 3387)
+$Class: Mine
+$Team: Hostile
+$Location: -700.577087, -532.152588, 5045.684082
+$Orientation:
+	-0.054214, -0.000000, -0.998529,
+	0.000000, 1.000000, 0.000000,
+	0.998529, 0.000000, -0.054214
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 3000
++Special Exp Blast: 100
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 200
++Special Hitpoints: 500
++Kamikaze Damage: 650
++Docked With: Construction Drone#15
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Construction Drone#14		;! Object #16
+$Display Name: XSTR("Construction Drone", 2289)
+$Class: Construction Drone
+$Team: Hostile
+$Location: -648.054504, -530.502563, 5042.832520
+$Orientation:
+	0.054214, 0.000000, 0.998529,
+	0.000000, 1.000000, 0.000000,
+	-0.998529, 0.000000, 0.054214
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Kamikaze Damage: 100
++Hotkey: 5
++Docked With: Mine 22
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Docked With: Arktos
+$Docker Point: FighterDock6
+$Dockee Point: Docking Point2
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Mine 22		;! Object #17
+$Display Name: XSTR("Mine 22", 3388)
+$Class: Mine
+$Team: Hostile
+$Location: -665.129333, -532.152588, 5043.759766
+$Orientation:
+	-0.054214, -0.000000, -0.998529,
+	0.000000, 1.000000, 0.000000,
+	0.998529, 0.000000, -0.054214
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 3000
++Special Exp Blast: 100
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 200
++Special Hitpoints: 500
++Kamikaze Damage: 650
++Docked With: Construction Drone#14
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Construction Drone#13		;! Object #18
+$Display Name: XSTR("Construction Drone", 2289)
+$Class: Construction Drone
+$Team: Hostile
+$Location: -613.105957, -530.502563, 5040.935059
+$Orientation:
+	0.054214, 0.000000, 0.998529,
+	0.000000, 1.000000, 0.000000,
+	-0.998529, 0.000000, 0.054214
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Kamikaze Damage: 100
++Hotkey: 5
++Docked With: Mine 21
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Docked With: Arktos
+$Docker Point: FighterDock5
+$Dockee Point: Docking Point2
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Mine 21		;! Object #19
+$Display Name: XSTR("Mine 21", 3389)
+$Class: Mine
+$Team: Hostile
+$Location: -630.180786, -532.152588, 5041.862305
+$Orientation:
+	-0.054214, -0.000000, -0.998529,
+	0.000000, 1.000000, 0.000000,
+	0.998529, 0.000000, -0.054214
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 3000
++Special Exp Blast: 100
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 200
++Special Hitpoints: 500
++Kamikaze Damage: 650
++Docked With: Construction Drone#13
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Construction Drone#9		;! Object #20
+$Display Name: XSTR("Construction Drone", 2289)
+$Class: Construction Drone
+$Team: Hostile
+$Location: -716.011169, -530.502563, 5091.588379
+$Orientation:
+	0.054214, 0.000000, 0.998529,
+	0.000000, 1.000000, 0.000000,
+	-0.998529, 0.000000, 0.054214
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Kamikaze Damage: 100
++Hotkey: 5
++Docked With: Mine 20
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Docked With: Arktos
+$Docker Point: FighterDock4
+$Dockee Point: Docking Point2
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Mine 20		;! Object #21
+$Display Name: XSTR("Mine 20", 3390)
+$Class: Mine
+$Team: Hostile
+$Location: -733.085999, -532.152588, 5092.515625
+$Orientation:
+	-0.054214, -0.000000, -0.998529,
+	0.000000, 1.000000, 0.000000,
+	0.998529, 0.000000, -0.054214
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 3000
++Special Exp Blast: 100
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 200
++Special Hitpoints: 500
++Kamikaze Damage: 650
++Docked With: Construction Drone#9
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Construction Drone#10		;! Object #22
+$Display Name: XSTR("Construction Drone", 2289)
+$Class: Construction Drone
+$Team: Hostile
+$Location: -681.062683, -530.502563, 5089.690918
+$Orientation:
+	0.054214, 0.000000, 0.998529,
+	0.000000, 1.000000, 0.000000,
+	-0.998529, 0.000000, 0.054214
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Kamikaze Damage: 100
++Hotkey: 5
++Docked With: Mine 19
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Docked With: Arktos
+$Docker Point: FighterDock3
+$Dockee Point: Docking Point2
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Mine 19		;! Object #23
+$Display Name: XSTR("Mine 19", 3391)
+$Class: Mine
+$Team: Hostile
+$Location: -698.137512, -532.152588, 5090.618164
+$Orientation:
+	-0.054214, -0.000000, -0.998529,
+	0.000000, 1.000000, 0.000000,
+	0.998529, 0.000000, -0.054214
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 3000
++Special Exp Blast: 100
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 200
++Special Hitpoints: 500
++Kamikaze Damage: 650
++Docked With: Construction Drone#10
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Construction Drone#11		;! Object #24
+$Display Name: XSTR("Construction Drone", 2289)
+$Class: Construction Drone
+$Team: Hostile
+$Location: -645.614868, -530.502563, 5087.766113
+$Orientation:
+	0.054214, 0.000000, 0.998529,
+	0.000000, 1.000000, 0.000000,
+	-0.998529, 0.000000, 0.054214
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Kamikaze Damage: 100
++Hotkey: 5
++Docked With: Mine 18
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Docked With: Arktos
+$Docker Point: FighterDock2
+$Dockee Point: Docking Point2
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Mine 18		;! Object #25
+$Display Name: XSTR("Mine 18", 3392)
+$Class: Mine
+$Team: Hostile
+$Location: -662.689697, -532.152588, 5088.693359
+$Orientation:
+	-0.054214, -0.000000, -0.998529,
+	0.000000, 1.000000, 0.000000,
+	0.998529, 0.000000, -0.054214
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 3000
++Special Exp Blast: 100
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 200
++Special Hitpoints: 500
++Kamikaze Damage: 650
++Docked With: Construction Drone#11
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Construction Drone#12		;! Object #26
+$Display Name: XSTR("Construction Drone", 2289)
+$Class: Construction Drone
+$Team: Hostile
+$Location: -610.666382, -530.502563, 5085.868652
+$Orientation:
+	0.054214, 0.000000, 0.998529,
+	0.000000, 1.000000, 0.000000,
+	-0.998529, 0.000000, 0.054214
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Kamikaze Damage: 100
++Hotkey: 5
++Docked With: Mine 17
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Docked With: Arktos
+$Docker Point: FighterDock1
+$Dockee Point: Docking Point2
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Mine 17		;! Object #27
+$Display Name: XSTR("Mine 17", 3393)
+$Class: Mine
+$Team: Hostile
+$Location: -627.741211, -532.152588, 5086.795898
+$Orientation:
+	-0.054214, -0.000000, -0.998529,
+	0.000000, 1.000000, 0.000000,
+	0.998529, 0.000000, -0.054214
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "kamikaze" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
+$Special Explosion:
++Special Exp Damage: 3000
++Special Exp Blast: 100
++Special Exp Inner Radius: 50
++Special Exp Outer Radius: 100
++Special Exp Shockwave Speed: 200
++Special Hitpoints: 500
++Kamikaze Damage: 650
++Docked With: Construction Drone#12
+$Docker Point: Docking Point
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Rasputin-class Corvette 27		;! Object #28
+$Display Name: XSTR("Rasputin-class Corvette 27", 3394)
+$Class: Rasputin-class Corvette
+$Team: Friendly
+$Location: -7049.221191, 1200.000000, 14886.313477
+$Orientation:
+	-0.999995, 0.000000, 0.003143,
+	0.000000, 1.000000, 0.000000,
+	-0.003143, 0.000000, -0.999995
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-msecs-delay 
+   "fadein" 
+   2100 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Comet-class Gunship 29
+$Docker Point: Docking Point
+$Dockee Point: Starb Fighter Rail
++Docked With: Comet-class Gunship 28
+$Docker Point: Docking Point
+$Dockee Point: Port Fighter Rail
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Comet-class Gunship 28		;! Object #29
+$Display Name: XSTR("Comet-class Gunship 28", 3395)
+$Class: Comet-class Gunship
+$Team: Friendly
+$Location: -7025.752441, 1197.300049, 14783.989258
+$Orientation:
+	-0.999995, 0.000000, 0.003143,
+	0.000000, 1.000000, 0.000000,
+	-0.003143, 0.000000, -0.999995
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Huaqing" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Rasputin-class Corvette 27
+$Docker Point: Port Fighter Rail
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Comet-class Gunship 29		;! Object #30
+$Display Name: XSTR("Comet-class Gunship 29", 3396)
+$Class: Comet-class Gunship
+$Team: Friendly
+$Location: -7073.333008, 1197.300049, 14784.138672
+$Orientation:
+	-0.999995, 0.000000, 0.003143,
+	0.000000, 1.000000, 0.000000,
+	-0.003143, 0.000000, -0.999995
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Huaqing" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Rasputin-class Corvette 27
+$Docker Point: Starb Fighter Rail
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Tortoise-class Transport 31		;! Object #31
+$Display Name: XSTR("Tortoise-class Transport 31", 3397)
+$Class: Tortoise-class Transport
+$Team: Friendly
+$Location: -7547.370117, 1032.400024, 13963.981445
+$Orientation:
+	-0.999999, 0.000000, -0.001374,
+	0.000000, 1.000000, 0.000000,
+	0.001374, 0.000000, -0.999999
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-msecs-delay 
+   "fadein" 
+   1500 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: neutraltransport
++new: neutraltransport2
+
+$Name: Debris Chunk 14 36		;! Object #32
+$Display Name: XSTR("Debris Chunk 14 36", 2913)
+$Class: Debris Chunk 14
+$Team: Surrendered
+$Location: 1601.643555, -1046.709595, 3399.795898
+$Orientation:
+	0.600941, -0.698676, -0.388229,
+	-0.775589, -0.392301, -0.494532,
+	0.193215, 0.598291, -0.777635
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 7 43		;! Object #33
+$Display Name: XSTR("Debris Chunk 7 43", 2920)
+$Class: Debris Chunk 7
+$Team: Surrendered
+$Location: 4602.576172, 660.035156, 1208.503906
+$Orientation:
+	-0.199322, -0.184717, 0.962367,
+	0.036710, -0.982791, -0.181034,
+	0.979246, -0.000756, 0.202673
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 14 53		;! Object #34
+$Display Name: XSTR("Debris Chunk 14 53", 2930)
+$Class: Debris Chunk 14
+$Team: Surrendered
+$Location: 3356.064941, -2727.267090, 3174.772461
+$Orientation:
+	0.529278, 0.603805, 0.596058,
+	0.826156, -0.526752, -0.199998,
+	0.193215, 0.598291, -0.777635
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 7 50		;! Object #35
+$Display Name: XSTR("Debris Chunk 7 50", 2931)
+$Class: Debris Chunk 7
+$Team: Surrendered
+$Location: 59.751831, 2915.528320, 3214.367920
+$Orientation:
+	0.629657, 0.000000, -0.776873,
+	-0.000000, 1.000000, 0.000000,
+	0.776873, 0.000000, 0.629657
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 8 51		;! Object #36
+$Display Name: XSTR("Debris Chunk 8 51", 2932)
+$Class: Debris Chunk 8
+$Team: Surrendered
+$Location: 1648.901367, -684.416992, 3220.823975
+$Orientation:
+	0.629657, 0.000000, -0.776873,
+	-0.000000, 1.000000, 0.000000,
+	0.776873, 0.000000, 0.629657
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 10 53		;! Object #37
+$Display Name: XSTR("Debris Chunk 10 53", 2934)
+$Class: Debris Chunk 10
+$Team: Surrendered
+$Location: 174.453613, 2335.349121, 2240.373779
+$Orientation:
+	0.629657, 0.000000, -0.776873,
+	-0.000000, 1.000000, 0.000000,
+	0.776873, 0.000000, 0.629657
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 9 56		;! Object #38
+$Display Name: XSTR("Debris Chunk 9 56", 2937)
+$Class: Debris Chunk 9
+$Team: Surrendered
+$Location: 707.770874, 2144.737305, 2405.456787
+$Orientation:
+	-0.696904, -0.543445, -0.467967,
+	0.175485, 0.503467, -0.846006,
+	0.695364, -0.671706, -0.255502
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 10 57		;! Object #39
+$Display Name: XSTR("Debris Chunk 10 57", 2938)
+$Class: Debris Chunk 10
+$Team: Surrendered
+$Location: -400.892700, 2031.791992, 3356.475830
+$Orientation:
+	-0.696904, -0.543445, -0.467967,
+	0.175485, 0.503467, -0.846006,
+	0.695364, -0.671706, -0.255502
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 7 59		;! Object #40
+$Display Name: XSTR("Debris Chunk 7 59", 2940)
+$Class: Debris Chunk 7
+$Team: Surrendered
+$Location: 59.751831, 1952.259766, 3214.367920
+$Orientation:
+	0.228283, -0.904722, 0.359673,
+	-0.775589, -0.392301, -0.494532,
+	0.588514, -0.166065, -0.791248
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 9 61		;! Object #41
+$Display Name: XSTR("Debris Chunk 9 61", 2942)
+$Class: Debris Chunk 9
+$Team: Surrendered
+$Location: -1549.983765, 1629.646973, 2309.702637
+$Orientation:
+	0.228283, -0.904722, 0.359673,
+	-0.775589, -0.392301, -0.494532,
+	0.588514, -0.166065, -0.791248
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 10 62		;! Object #42
+$Display Name: XSTR("Debris Chunk 10 62", 2943)
+$Class: Debris Chunk 10
+$Team: Surrendered
+$Location: 407.022827, 436.207397, 3024.614258
+$Orientation:
+	0.228283, -0.904722, 0.359673,
+	-0.775589, -0.392301, -0.494532,
+	0.588514, -0.166065, -0.791248
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 14 64		;! Object #43
+$Display Name: XSTR("Debris Chunk 14 64", 2945)
+$Class: Debris Chunk 14
+$Team: Surrendered
+$Location: -962.368652, 2711.037354, 605.333496
+$Orientation:
+	0.228283, -0.904722, 0.359673,
+	-0.775589, -0.392301, -0.494532,
+	0.588514, -0.166065, -0.791248
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 10 67		;! Object #44
+$Display Name: XSTR("Debris Chunk 10 67", 2948)
+$Class: Debris Chunk 10
+$Team: Surrendered
+$Location: 1350.329712, 1298.859863, 598.471191
+$Orientation:
+	-0.211065, -0.593228, -0.776873,
+	0.942145, -0.335206, 0.000000,
+	-0.260413, -0.731927, 0.629657
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 8 69		;! Object #45
+$Display Name: XSTR("Debris Chunk 8 69", 2950)
+$Class: Debris Chunk 8
+$Team: Surrendered
+$Location: 1465.891846, 1139.222656, 895.633789
+$Orientation:
+	-0.886255, -0.115721, 0.448509,
+	0.036710, -0.982791, -0.181034,
+	0.461740, -0.143978, 0.875252
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 9 70		;! Object #46
+$Display Name: XSTR("Debris Chunk 9 70", 2951)
+$Class: Debris Chunk 9
+$Team: Surrendered
+$Location: 1969.765137, 1540.005371, 667.971680
+$Orientation:
+	-0.886255, -0.115721, 0.448509,
+	0.036710, -0.982791, -0.181034,
+	0.461740, -0.143978, 0.875252
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 8 71		;! Object #47
+$Display Name: XSTR("Debris Chunk 8 71", 2952)
+$Class: Debris Chunk 8
+$Team: Surrendered
+$Location: 556.665283, 2296.452148, 334.960449
+$Orientation:
+	0.183159, -0.084607, 0.979436,
+	0.826156, -0.526752, -0.199998,
+	0.532841, 0.845798, -0.026581
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 10 73		;! Object #48
+$Display Name: XSTR("Debris Chunk 10 73", 2954)
+$Class: Debris Chunk 10
+$Team: Surrendered
+$Location: 1208.140747, 2048.551270, 1798.799316
+$Orientation:
+	0.183159, -0.084607, 0.979436,
+	0.826156, -0.526752, -0.199998,
+	0.532841, 0.845798, -0.026581
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 14 74		;! Object #49
+$Display Name: XSTR("Debris Chunk 14 74", 2955)
+$Class: Debris Chunk 14
+$Team: Surrendered
+$Location: -1220.860107, 1030.462891, -772.523682
+$Orientation:
+	0.183159, -0.084607, 0.979436,
+	0.826156, -0.526752, -0.199998,
+	0.532841, 0.845798, -0.026581
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 4 88		;! Object #50
+$Display Name: XSTR("Debris Chunk 4 88", 2969)
+$Class: Debris Chunk 4
+$Team: Surrendered
+$Location: -1496.010498, 488.491943, -1326.168945
+$Orientation:
+	0.786678, -0.461644, -0.409907,
+	0.000000, 0.663963, -0.747765,
+	0.617364, 0.588250, 0.522325
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 2 89		;! Object #51
+$Display Name: XSTR("Debris Chunk 2 89", 2970)
+$Class: Debris Chunk 2
+$Team: Surrendered
+$Location: 2903.868164, 354.487061, -1494.587158
+$Orientation:
+	-0.537731, -0.083641, -0.838957,
+	-0.174513, 0.984560, 0.013697,
+	0.824858, 0.153774, -0.544025
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 7 93		;! Object #52
+$Display Name: XSTR("Debris Chunk 7 93", 2974)
+$Class: Debris Chunk 7
+$Team: Surrendered
+$Location: -1204.455078, -1356.544922, 1332.753906
+$Orientation:
+	0.786678, 0.000000, -0.617364,
+	-0.000000, 1.000000, 0.000000,
+	0.617364, 0.000000, 0.786678
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 8 94		;! Object #53
+$Display Name: XSTR("Debris Chunk 8 94", 2975)
+$Class: Debris Chunk 8
+$Team: Surrendered
+$Location: 114.215576, -1970.834717, 1972.467773
+$Orientation:
+	0.786678, 0.000000, -0.617364,
+	-0.000000, 1.000000, 0.000000,
+	0.617364, 0.000000, 0.786678
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 9 95		;! Object #54
+$Display Name: XSTR("Debris Chunk 9 95", 2976)
+$Class: Debris Chunk 9
+$Team: Surrendered
+$Location: -374.709229, -1708.637939, 2021.605469
+$Orientation:
+	0.786678, 0.000000, -0.617364,
+	-0.000000, 1.000000, 0.000000,
+	0.617364, 0.000000, 0.786678
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 10 96		;! Object #55
+$Display Name: XSTR("Debris Chunk 10 96", 2977)
+$Class: Debris Chunk 10
+$Team: Surrendered
+$Location: -808.068115, -1668.206055, 491.558594
+$Orientation:
+	0.786678, 0.000000, -0.617364,
+	-0.000000, 1.000000, 0.000000,
+	0.617364, 0.000000, 0.786678
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 11 97		;! Object #56
+$Display Name: XSTR("Debris Chunk 11 97", 2978)
+$Class: Debris Chunk 11
+$Team: Surrendered
+$Location: -1694.363525, -1012.872559, 2055.219727
+$Orientation:
+	0.786678, 0.000000, -0.617364,
+	-0.000000, 1.000000, 0.000000,
+	0.617364, 0.000000, 0.786678
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 14 99		;! Object #57
+$Display Name: XSTR("Debris Chunk 14 99", 2979)
+$Class: Debris Chunk 14
+$Team: Surrendered
+$Location: 845.576843, -2210.030518, 3171.278320
+$Orientation:
+	0.786678, 0.000000, -0.617364,
+	-0.000000, 1.000000, 0.000000,
+	0.617364, 0.000000, 0.786678
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 7 100		;! Object #58
+$Display Name: XSTR("Debris Chunk 7 100", 2980)
+$Class: Debris Chunk 7
+$Team: Surrendered
+$Location: -776.341675, -539.783447, 1234.518555
+$Orientation:
+	-0.524782, -0.679234, -0.513074,
+	0.175485, 0.503467, -0.846006,
+	0.832952, -0.534006, -0.145015
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 8 101		;! Object #59
+$Display Name: XSTR("Debris Chunk 8 101", 2981)
+$Class: Debris Chunk 8
+$Team: Surrendered
+$Location: -317.150879, -1901.717773, 556.365234
+$Orientation:
+	-0.524782, -0.679234, -0.513074,
+	0.175485, 0.503467, -0.846006,
+	0.832952, -0.534006, -0.145015
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 10 103		;! Object #60
+$Display Name: XSTR("Debris Chunk 10 103", 2983)
+$Class: Debris Chunk 10
+$Team: Surrendered
+$Location: -1677.034180, -877.017212, 1042.346680
+$Orientation:
+	-0.524782, -0.679234, -0.513074,
+	0.175485, 0.503467, -0.846006,
+	0.832952, -0.534006, -0.145015
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 11 104		;! Object #61
+$Display Name: XSTR("Debris Chunk 11 104", 2984)
+$Class: Debris Chunk 11
+$Team: Surrendered
+$Location: 17.631348, -102.856995, 1477.099609
+$Orientation:
+	-0.524782, -0.679234, -0.513074,
+	0.175485, 0.503467, -0.846006,
+	0.832952, -0.534006, -0.145015
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 7 106		;! Object #62
+$Display Name: XSTR("Debris Chunk 7 106", 2986)
+$Class: Debris Chunk 7
+$Team: Surrendered
+$Location: -1345.071045, -1624.831055, 1365.008789
+$Orientation:
+	0.353464, -0.918995, 0.174673,
+	-0.775588, -0.392302, -0.494532,
+	0.522997, 0.039325, -0.851427
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 10 109		;! Object #63
+$Display Name: XSTR("Debris Chunk 10 109", 2989)
+$Class: Debris Chunk 10
+$Team: Surrendered
+$Location: -1411.858643, -2601.438721, 1425.622070
+$Orientation:
+	0.353464, -0.918995, 0.174673,
+	-0.775588, -0.392302, -0.494532,
+	0.522997, 0.039325, -0.851427
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 11 110		;! Object #64
+$Display Name: XSTR("Debris Chunk 11 110", 2990)
+$Class: Debris Chunk 11
+$Team: Surrendered
+$Location: -1291.895020, -692.177002, 1451.762695
+$Orientation:
+	0.353464, -0.918995, 0.174673,
+	-0.775588, -0.392302, -0.494532,
+	0.522997, 0.039325, -0.851427
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 14 111		;! Object #65
+$Display Name: XSTR("Debris Chunk 14 111", 2991)
+$Class: Debris Chunk 14
+$Team: Surrendered
+$Location: -1072.119995, -1341.630371, -1491.109375
+$Orientation:
+	0.353464, -0.918995, 0.174673,
+	-0.775588, -0.392302, -0.494532,
+	0.522997, 0.039325, -0.851427
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 7 112		;! Object #66
+$Display Name: XSTR("Debris Chunk 7 112", 2992)
+$Class: Debris Chunk 7
+$Team: Surrendered
+$Location: 1327.626953, -2753.672119, -2738.328857
+$Orientation:
+	-0.263699, -0.741165, -0.617364,
+	0.942145, -0.335206, 0.000000,
+	-0.206944, -0.581646, 0.786678
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 8 113		;! Object #67
+$Display Name: XSTR("Debris Chunk 8 113", 2993)
+$Class: Debris Chunk 8
+$Team: Surrendered
+$Location: 870.881470, -3593.886719, 1191.986328
+$Orientation:
+	-0.263699, -0.741165, -0.617364,
+	0.942145, -0.335206, 0.000000,
+	-0.206944, -0.581646, 0.786678
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 10 115		;! Object #68
+$Display Name: XSTR("Debris Chunk 10 115", 2995)
+$Class: Debris Chunk 10
+$Team: Surrendered
+$Location: 331.817017, -3232.306641, -455.464844
+$Orientation:
+	-0.263699, -0.741165, -0.617364,
+	0.942145, -0.335206, 0.000000,
+	-0.206944, -0.581646, 0.786678
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 11 116		;! Object #69
+$Display Name: XSTR("Debris Chunk 11 116", 2996)
+$Class: Debris Chunk 11
+$Team: Surrendered
+$Location: 1882.806274, -2230.717529, 45.905273
+$Orientation:
+	-0.263699, -0.741165, -0.617364,
+	0.942145, -0.335206, 0.000000,
+	-0.206944, -0.581646, 0.786678
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 7 118		;! Object #70
+$Display Name: XSTR("Debris Chunk 7 118", 2998)
+$Class: Debris Chunk 7
+$Team: Surrendered
+$Location: 2993.638916, -902.863159, -762.205078
+$Orientation:
+	-0.761353, -0.144846, 0.631950,
+	0.036710, -0.982791, -0.181034,
+	0.647297, -0.114632, 0.753569
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 8 119		;! Object #71
+$Display Name: XSTR("Debris Chunk 8 119", 2999)
+$Class: Debris Chunk 8
+$Team: Surrendered
+$Location: 130.207520, -3588.275391, -91.640625
+$Orientation:
+	-0.761353, -0.144846, 0.631950,
+	0.036710, -0.982791, -0.181034,
+	0.647297, -0.114632, 0.753569
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 10 121		;! Object #72
+$Display Name: XSTR("Debris Chunk 10 121", 3001)
+$Class: Debris Chunk 10
+$Team: Surrendered
+$Location: 1385.661987, -2551.418457, -787.466797
+$Orientation:
+	-0.761353, -0.144846, 0.631950,
+	0.036710, -0.982791, -0.181034,
+	0.647297, -0.114632, 0.753569
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 14 122		;! Object #73
+$Display Name: XSTR("Debris Chunk 14 122", 3002)
+$Class: Debris Chunk 14
+$Team: Surrendered
+$Location: -870.176270, -4431.146973, 472.407227
+$Orientation:
+	-0.761353, -0.144846, 0.631950,
+	0.036710, -0.982791, -0.181034,
+	0.647297, -0.114632, 0.753569
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Debris Chunk 8 124		;! Object #74
+$Display Name: XSTR("Debris Chunk 8 124", 3004)
+$Class: Debris Chunk 8
+$Team: Surrendered
+$Location: -222.650146, -2951.823242, -1017.564453
+$Orientation:
+	0.297087, 0.105636, 0.948989,
+	0.826156, -0.526752, -0.199998,
+	0.478755, 0.843430, -0.243763
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Ekata		;! Object #75
+$Display Name: XSTR("Ekata", 3398)
+$Class: Barbican-class Transport
+$Team: Hostile
+$Location: -6993.732910, 0.000000, -6373.506836
+$Orientation:
+	0.780501, 0.000000, -0.625154,
+	-0.000000, 1.000000, 0.000000,
+	0.625154, 0.000000, 0.780501
+$AI Behavior: None
+$AI Goals: ( goals ( ai-dock "Korra" "Ventral Dock" "Docking Point 3" 50 ) )
+$Cargo 1:  XSTR("Troops", 3382)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
++Arrival Delay: 1
+$Arrival Cue: ( has-arrived-delay 0 "Sal" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Hotkey: 7
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Sal		;! Object #76
+$Display Name: XSTR("Sal", 3399)
+$Class: Barbican-class Transport
+$Team: Hostile
+$Location: -6633.578125, 0.000244, -5664.476074
+$Orientation:
+	0.780501, 0.000000, -0.625154,
+	-0.000000, 1.000000, 0.000000,
+	0.625154, 0.000000, 0.780501
+$AI Behavior: None
+$AI Goals: ( goals ( ai-dock "Korra" "Ventral Dock" "Docking Point 2" 50 ) )
+$Cargo 1:  XSTR("Troops", 3382)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "alternative" 4 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Hotkey: 7
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Grianstad		;! Object #77
+$Display Name: XSTR("Grianstad", 3400)
+$Class: Orleans-class Cutter
+$Team: Hostile
+$Location: -7261.500000, 300.007507, -5770.500488
+$Orientation:
+	0.851204, 0.000000, -0.524835,
+	-0.000000, 1.000000, 0.000000,
+	0.524835, 0.000000, 0.851204
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Hoshikuzu" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
++Arrival Delay: 1
+$Arrival Cue: ( has-arrived-delay 0 "Sal" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Docked With: Whiskey 3
+$Docker Point: Docking Point
+$Dockee Point: Docking Point 3
++Docked With: Whiskey 2
+$Docker Point: Docking Point
+$Dockee Point: Docking Point 2
++Docked With: Whiskey 1
+$Docker Point: Docking Point
+$Dockee Point: Docking Point 1
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Whiskey 1		;! Object #78
+$Display Name: XSTR("Whiskey 1", 3261)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -7222.662109, 321.607513, -5707.511230
+$Orientation:
+	-0.851204, 0.000000, 0.524835,
+	0.000000, -1.000000, 0.000000,
+	0.524835, 0.000000, 0.851204
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Grianstad
+$Docker Point: Docking Point 1
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Whiskey 2		;! Object #79
+$Display Name: XSTR("Whiskey 2", 3262)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -7276.336426, 327.607513, -5805.995117
+$Orientation:
+	-0.524835, 0.000000, -0.851204,
+	0.000000, -1.000000, 0.000000,
+	-0.851204, 0.000000, 0.524835
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Grianstad
+$Docker Point: Docking Point 2
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Whiskey 3		;! Object #80
+$Display Name: XSTR("Whiskey 3", 3265)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -7286.550781, 327.607513, -5799.697266
+$Orientation:
+	0.524835, 0.000000, 0.851204,
+	0.000000, -1.000000, 0.000000,
+	0.851204, 0.000000, -0.524835
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Grianstad
+$Docker Point: Docking Point 3
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+#Wings		;! 4 total
+
+$Name: Alfa
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alfa 1
+$Arrival Location: Hyperspace
++Arrival delay: 3
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Alfa 1"
+)
+$AI Goals: ( goals ( ai-play-dead 50 ) )
++Hotkey: 0
++Flags: ( )
+
+$Name: Bravo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Bravo 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Bravo 1"
+)
+$AI Goals: ( goals ( ai-play-dead 50 ) )
++Hotkey: 1
++Flags: ( )
+
+$Name: Victor
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Victor 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Victor 1"
+	"Victor 2"
+)
+$AI Goals: ( goals ( ai-play-dead 50 ) )
++Hotkey: 4
++Flags: ( )
+
+$Name: Whiskey
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Whiskey 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Whiskey 1"
+	"Whiskey 2"
+	"Whiskey 3"
+)
++Hotkey: 4
++Flags: ( )
+
+#Events		;! 133 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[#]" 
+      "#" 
+      3469 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar1[#]" 
+      "EMP Mine" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[#Kaur]" 
+      "#Kaur" 
+      3373 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[#Navo]" 
+      "#Navo" 
+      3470 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar4[#Erikson]" 
+      "#Erikson" 
+      3471 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar5[Dropoff Point]" 
+      "Dropoff Point" 
+      3472 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      0 
+   )
+   ( script-eval-block 
+      "Scroll:Write(" 
+      "'title1'," 
+      "15,12,0.05,2,2,true,2,false)" 
+   )
+)
++Name: title
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-out ) 
+   ( set-camera-position 
+      -7775 
+      1303 
+      13624 
+   )
+   ( set-camera-facing -7520 1056 14051 ) 
+   ( set-camera-rotation 
+      30 
+      35 
+      30 
+      30000 
+      2000 
+   )
+)
++Name: fadeout
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( fade-in 1000 ) ) 
++Name: fadein
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when ( true ) ( fade-out 1000 ) ) 
++Name: fadeout 2
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( reset-camera ( true ) ) 
+   ( ship-vanish 
+      "Tortoise-class Transport 31" 
+      "Comet-class Gunship 29" 
+      "Comet-class Gunship 28" 
+      "Rasputin-class Corvette 27" 
+   )
+)
++Name: reset camera
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-in 500 ) 
+   ( key-reset "Alt-D" ) 
+)
++Name: fadein 2
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( key-pressed "Alt-D" ) 
+   ( jettison-cargo 
+      "Hoshikuzu" 
+      100 
+      "Bravo 1" 
+   )
+   ( training-msg "detach" ) 
+)
++Name: dir undock
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Undock from Hoshikuzu", 3276)
++Objective key:  XSTR("$Alt-D$", 2786)
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "dir undock" 
+      350 
+   )
+   ( jettison-cargo 
+      "Hoshikuzu" 
+      100 
+      "Alfa 1" 
+   )
+)
++Name: alfa jetissons
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "dir undock" 
+      2500 
+   )
+   ( player-not-use-ai ) 
+   ( clear-goals "Alfa 1" ) 
+   ( add-goal 
+      "Alfa 1" 
+      ( ai-guard "Hoshikuzu" 89 ) 
+   )
+   ( add-goal 
+      "Alfa 1" 
+      ( ai-ignore-new "Open Sky" 89 ) 
+   )
+   ( add-goal 
+      "Alfa 1" 
+      ( ai-ignore-new "Zincali" 89 ) 
+   )
+)
++Name: player regain control
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-support-ship 
+      "Docking Bay" 
+      "Hoshikuzu" 
+      "Docking Bay" 
+      "Hoshikuzu" 
+      "Repair Drone#Neutral" 
+      -1 
+      1 
+   )
+   ( add-goal 
+      "Bravo 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( cap-waypoint-speed "Hoshikuzu" 50 ) 
+   ( cap-waypoint-speed 
+      "Pollux Arrow" 
+      50 
+   )
+   ( cap-waypoint-speed "Zincali" 40 ) 
+   ( lua-mark-ship "Meiks" "Alfa 1" ) 
+   ( lua-radaricon-activate 
+      "Friendly" 
+      "Hostile" 
+      "Neutral" 
+      "Unknown" 
+      "Surrendered" 
+      "Traitor" 
+   )
+)
++Name: mission setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( cap-waypoint-speed "Hoshikuzu" 55 ) 
+)
++Name: waypoint speed setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Alfa" ) 
+   ( ship-guardian-threshold 33 "Alfa 1" ) 
+   ( lock-secondary-weapon "Alfa 1" ) 
+)
++Name: alfa setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file 
+      "Music_Neu_Ambient4" 
+      99 
+   )
+)
++Name: music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance "Bravo 1" "<any hostile>" ) 
+      3000 
+   )
+   ( play-sound-from-file 
+      "Music_Neu_Battle3" 
+      99 
+   )
+)
++Name: combat music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "dir undock" 
+      250 
+   )
+   ( add-nav-waypoint 
+      "@autoGenVar5[Dropoff Point]" 
+      "dropoff point" 
+      0 
+   )
+   ( select-nav "@autoGenVar5[Dropoff Point]" ) 
+)
++Name: nav waypoint
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance 
+         "Bravo 1" 
+         "dropoff point:1" 
+      )
+      100 
+   )
+   ( modify-variable @dropoffstate[0] 1 ) 
+   ( key-reset-multiple "Alt-X" ) 
+)
++Name: ready to dropoff
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( >= 
+      ( distance 
+         "Bravo 1" 
+         "dropoff point:1" 
+      )
+      100 
+   )
+   ( modify-variable @dropoffstate[0] 0 ) 
+)
++Name: not ready dropoff
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @dropoffstate[0] 1 ) 
+      ( key-pressed "Alt-X" ) 
+   )
+   ( jettison-cargo 
+      "Bravo 1" 
+      10 
+      "EMP Mine" 
+   )
+   ( training-msg "mine detached" ) 
+   ( ship-visible "EMP Mine" ) 
+   ( ship-unstealthy "EMP Mine" ) 
+   ( del-nav "@autoGenVar5[Dropoff Point]" ) 
+)
++Name: detach mine
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @dropoffstate[0] 1 ) 
+      ( not 
+         ( is-event-true-delay "detach mine" 0 ) 
+      )
+   )
+   ( training-msg "detach mine" ) 
+)
++Name: msg detach mine
++Repeat Count: 999999
++Interval: 5
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "detach mine" 
+      10 
+   )
+   ( explosion-effect 
+      ( get-object-x "EMP Mine" ) 
+      ( get-object-y "EMP Mine" ) 
+      ( get-object-z "EMP Mine" ) 
+      10 
+      0 
+      0 
+      10 
+      3000 
+      500 
+      "Medium Explosion" 
+      7 
+      10 
+      2 
+   )
+   ( training-msg "detonation" ) 
+)
++Name: emp goes off
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( deactivate-glow-maps "Korra" ) 
+)
++Name: station disabled
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "player regain control" 
+      30 
+   )
+   ( add-goal 
+      "Pollux Arrow" 
+      ( ai-waypoints-once 
+         "transport approach" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Hoshikuzu" 
+      ( ai-waypoints-once 
+         "Hoshikuzu Approach" 
+         89 
+      )
+   )
+)
++Name: ships approach
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "emp goes off" 
+      10 
+   )
+   ( clear-goals "Pollux Arrow" ) 
+   ( add-goal 
+      "Pollux Arrow" 
+      ( ai-dock 
+         "Korra" 
+         "Front Dock" 
+         "Docking Point 1" 
+         89 
+      )
+   )
+)
++Name: transport docks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 10 "Arktos" ) 
+   ( jettison-cargo 
+      "Arktos" 
+      100 
+      "Construction Drone#16" 
+   )
+)
++Name: drones detach 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Construction Drone#16" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: drone attacks 1
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "drones detach 1" 
+      3500 
+   )
+   ( jettison-cargo 
+      "Arktos" 
+      100 
+      "Construction Drone#15" 
+   )
+)
++Name: drones detach 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Construction Drone#15" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: drone attacks 2
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "drones detach 2" 
+      3100 
+   )
+   ( jettison-cargo 
+      "Arktos" 
+      100 
+      "Construction Drone#14" 
+   )
+)
++Name: drones detach 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Construction Drone#14" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: drone attacks 3
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "drones detach 3" 
+      2700 
+   )
+   ( jettison-cargo 
+      "Arktos" 
+      100 
+      "Construction Drone#13" 
+   )
+)
++Name: drones detach 4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Construction Drone#13" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: drone attacks 4
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "drones detach 4" 
+      3500 
+   )
+   ( jettison-cargo 
+      "Arktos" 
+      100 
+      "Construction Drone#9" 
+   )
+)
++Name: drones detach 5
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Construction Drone#9" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: drone attacks 5
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "drones detach 5" 
+      2700 
+   )
+   ( jettison-cargo 
+      "Arktos" 
+      100 
+      "Construction Drone#10" 
+   )
+)
++Name: drones detach 6
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Construction Drone#10" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: drone attacks 6
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "drones detach 6" 
+      3030 
+   )
+   ( jettison-cargo 
+      "Arktos" 
+      100 
+      "Construction Drone#11" 
+   )
+)
++Name: drones detach 7
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Construction Drone#11" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: drone attacks 7
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "drones detach 7" 
+      1750 
+   )
+   ( jettison-cargo 
+      "Arktos" 
+      100 
+      "Construction Drone#12" 
+   )
+)
++Name: drones detach 8
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Construction Drone#12" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: drone attacks 8
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Arktos" 
+      ( ai-waypoints-once 
+         "stargazer retreats" 
+         89 
+      )
+   )
+)
++Name: stargazer retreats
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "let's do this" 
+      140 
+   )
+   ( add-goal 
+      "Zincali" 
+      ( ai-waypoints-once 
+         "Zincali moves" 
+         89 
+      )
+   )
+)
++Name: zincali moves
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay "dir undock" 0 ) 
+   ( do-nothing ) 
+)
++Name: dir dropoff trig
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( = @dropoffstate[0] 1 ) 
+      ( key-pressed "Alt-X" ) 
+   )
+   ( do-nothing ) 
+)
++Name: dir dropoff emp
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Drop off EMP", 3401)
++Objective key:  XSTR("Approach within <100m", 3402)
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "engaging open sky" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: dir destroy corvettes trig
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "open sky disabled" 
+         0 
+      )
+      ( is-event-true-delay 
+         "zincali disabled" 
+         0 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: dir destroy corvettes
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Neutralise Missile Corvettes", 3403)
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Arktos" ) 
+   ( do-nothing ) 
+)
++Name: dir destroy mines trig
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "Construction Drone#16" 
+      "Construction Drone#15" 
+      "Construction Drone#14" 
+      "Construction Drone#13" 
+      "Construction Drone#9" 
+      "Construction Drone#10" 
+      "Construction Drone#11" 
+      "Construction Drone#12" 
+   )
+   ( do-nothing ) 
+)
++Name: dir destroy mines
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy suicide drones", 3404)
++Objective key:  XSTR("F10", 2675)
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-destroyed-delay 0 "Arktos" ) 
+         ( is-disabled-delay 0 "Arktos" ) 
+      )
+      ( or 
+         ( is-destroyed-delay 0 "Open Sky" ) 
+         ( is-event-true-delay 
+            "open sky disabled" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 0 "Zincali" ) 
+         ( is-event-true-delay 
+            "zincali disabled" 
+            0 
+         )
+      )
+      ( is-destroyed-delay 
+         0 
+         "Victor" 
+         "Construction Drone#16" 
+         "Construction Drone#15" 
+         "Construction Drone#14" 
+         "Construction Drone#13" 
+         "Construction Drone#9" 
+         "Construction Drone#10" 
+         "Construction Drone#11" 
+         "Construction Drone#12" 
+      )
+   )
+   ( play-sound-from-file 
+      "Music_Neu_Ambient3" 
+      99 
+   )
+)
++Name: battle over 1
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 4 "Hoshikuzu" ) 
+      ( is-destroyed-delay 4 "Pollux Arrow" ) 
+      ( is-event-true-delay 
+         "transports have docked" 
+         6 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: failure criteria
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Bravo 1" ) 
+   )
+   ( fade-out 1500 ) 
+   ( ship-invulnerable "Bravo 1" ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      1500 
+   )
+)
++Name: fadeout bad
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file "dirtangelend" ) 
+   ( hud-disable 1 ) 
+)
++Name: mission failed title
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Bravo 1" ) 
+   )
+   ( end-mission ) 
+)
++Name: mission end bad
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-destroyed-delay 2 "Bravo 1" ) 
+   ( fade-out 1500 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      1500 
+   )
+)
++Name: player destroyed fadeout
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file "dirtangelend" ) 
+   ( hud-disable 1 ) 
+)
++Name: player destroyed title
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "open sky down" 
+      5 
+   )
+   ( ship-visible "Victor 1" "Victor 2" ) 
+   ( ship-unstealthy 
+      "Victor 1" 
+      "Victor 2" 
+   )
+)
++Name: mace fighters start up
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( jettison-cargo 
+      "Korra" 
+      100 
+      "Victor 1" 
+      "Victor 2" 
+   )
+)
++Name: mace fighters eject
++Repeat Count: 1
++Interval: 1
++Chained: 14
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Victor" ) 
+   ( add-goal 
+      "Victor" 
+      ( ai-guard "Korra" 89 ) 
+   )
+)
++Name: mace fighters engage
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Sal" ) 
+   ( play-sound-from-file 
+      "Music_Com_Battle2" 
+      99 
+   )
+)
++Name: transports arrived music
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( < 
+      ( distance 
+         "Grianstad" 
+         "Grianstad approach:1" 
+      )
+      200 
+   )
+   ( add-goal 
+      "Grianstad" 
+      ( ai-chase "Pollux Arrow" 89 ) 
+   )
+)
++Name: grianstad attacks
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Open Sky" 
+            "turret01" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Open Sky" 
+            "turret02" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Open Sky" 
+            "Engine" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Open Sky" 
+            "turret03" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Open Sky" 
+            "turret04" 
+            0 
+         )
+      )
+      ( < ( hits-left "Open Sky" ) 8 ) 
+      ( is-destroyed-delay 0 "Open Sky" ) 
+   )
+   ( change-iff "Surrendered" "Open Sky" ) 
+   ( protect-ship "Open Sky" ) 
+   ( add-remove-escort "Open Sky" 0 ) 
+   ( ship-stealthy "Open Sky" ) 
+   ( ship-rot-maneuver 
+      "Open Sky" 
+      0 
+      ( rand-multiple -5 5 ) 
+      ( rand-multiple -5 5 ) 
+      ( rand-multiple -5 5 ) 
+      ( true ) 
+   )
+   ( deactivate-glow-maps "Open Sky" ) 
+)
++Name: open sky disabled
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Zincali" 
+            "turret01" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Zincali" 
+            "turret02" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Zincali" 
+            "Engine" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Zincali" 
+            "turret03" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Zincali" 
+            "turret04" 
+            0 
+         )
+      )
+      ( < ( hits-left "Zincali" ) 8 ) 
+      ( is-destroyed-delay 0 "Zincali" ) 
+   )
+   ( change-iff "Surrendered" "Zincali" ) 
+   ( protect-ship "Zincali" ) 
+   ( add-remove-escort "Zincali" 0 ) 
+   ( ship-stealthy "Zincali" ) 
+   ( ship-rot-maneuver 
+      "Zincali" 
+      0 
+      ( rand-multiple -5 5 ) 
+      ( rand-multiple -5 5 ) 
+      ( rand-multiple -5 5 ) 
+      ( true ) 
+   )
+   ( deactivate-glow-maps "Zincali" ) 
+)
++Name: zincali disabled
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( is-subsystem-destroyed-delay 
+         "Arktos" 
+         "Engine" 
+         0 
+      )
+      ( < ( hits-left "Arktos" ) 4 ) 
+      ( is-destroyed-delay 0 "Arktos" ) 
+   )
+   ( change-iff "Surrendered" "Arktos" ) 
+   ( clear-goals "Arktos" ) 
+   ( add-goal 
+      "Arktos" 
+      ( ai-play-dead 89 ) 
+   )
+   ( protect-ship "Arktos" ) 
+   ( add-remove-escort "Arktos" 0 ) 
+   ( ship-rot-maneuver 
+      "Arktos" 
+      0 
+      ( rand-multiple -5 5 ) 
+      ( rand-multiple -5 5 ) 
+      ( rand-multiple -5 5 ) 
+      ( true ) 
+   )
+   ( ship-stealthy "Arktos" ) 
+   ( deactivate-glow-maps "Arktos" ) 
+)
++Name: arktos disabled
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( is-subsystem-destroyed-delay 
+         "Sal" 
+         "Engine" 
+         0 
+      )
+      ( < ( hits-left "Sal" ) 8 ) 
+      ( is-destroyed-delay 0 "Sal" ) 
+   )
+   ( change-iff "Surrendered" "Sal" ) 
+   ( clear-goals "Sal" ) 
+   ( add-goal "Sal" ( ai-play-dead 89 ) ) 
+   ( protect-ship "Sal" ) 
+   ( add-remove-escort "Sal" 0 ) 
+   ( ship-rot-maneuver 
+      "Sal" 
+      0 
+      ( rand-multiple -5 5 ) 
+      ( rand-multiple -5 5 ) 
+      ( rand-multiple -5 5 ) 
+      ( true ) 
+   )
+   ( ship-stealthy "Sal" ) 
+   ( deactivate-glow-maps "Sal" ) 
+)
++Name: Sal disabled
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( is-subsystem-destroyed-delay 
+         "Ekata" 
+         "Engine" 
+         0 
+      )
+      ( < ( hits-left "Ekata" ) 8 ) 
+      ( is-destroyed-delay 0 "Ekata" ) 
+   )
+   ( change-iff "Surrendered" "Ekata" ) 
+   ( clear-goals "Ekata" ) 
+   ( add-goal 
+      "Ekata" 
+      ( ai-play-dead 89 ) 
+   )
+   ( protect-ship "Ekata" ) 
+   ( add-remove-escort "Ekata" 0 ) 
+   ( ship-rot-maneuver 
+      "Ekata" 
+      0 
+      ( rand-multiple -5 5 ) 
+      ( rand-multiple -5 5 ) 
+      ( rand-multiple -5 5 ) 
+      ( true ) 
+   )
+   ( ship-stealthy "Ekata" ) 
+   ( deactivate-glow-maps "Ekata" ) 
+)
++Name: ekata disabled
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( is-subsystem-destroyed-delay 
+         "Grianstad" 
+         "Engine" 
+         0 
+      )
+      ( < ( hits-left "Grianstad" ) 8 ) 
+      ( is-destroyed-delay 0 "Grianstad" ) 
+   )
+   ( change-iff 
+      "Surrendered" 
+      "Grianstad" 
+   )
+   ( clear-goals "Grianstad" ) 
+   ( add-goal 
+      "Grianstad" 
+      ( ai-play-dead 89 ) 
+   )
+   ( protect-ship "Grianstad" ) 
+   ( add-remove-escort "Grianstad" 0 ) 
+   ( clear-goals "Grianstad" ) 
+   ( ship-stealthy "Grianstad" ) 
+   ( deactivate-glow-maps "Grianstad" ) 
+)
++Name: grianstad disabled
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "destroy transports" 
+      5 
+   )
+   ( clear-goals "Whiskey" ) 
+   ( add-goal 
+      "Whiskey" 
+      ( ai-guard "Grianstad" 89 ) 
+   )
+)
++Name: mace fighters 2 orders
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "destroy transports" 
+      3 
+   )
+   ( add-ai-goal-track-ship 
+      "Hoshikuzu" 
+      "Grianstad" 
+      "H attacks" 
+      100 
+      0 
+      400 
+   )
+)
++Name: hoshikuzu attacks
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( < 
+      ( distance "Grianstad" "Hoshikuzu" ) 
+      1500 
+   )
+   ( ship-rot-maneuver 
+      "Grianstad" 
+      0 
+      0 
+      0 
+      20 
+      ( true ) 
+   )
+)
++Name: cutter spins
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: >>>>MESSAGES<<<<
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "combat music" 
+      3 
+   )
+   ( training-msg 
+      "training countermeasures" 
+   )
+   ( flash-hud-gauge "CMEASURE_GAUGE" ) 
+)
++Name: training countermeasures
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay "gods sake" 5 ) 
+   ( training-msg 
+      "training countermeasures 2" 
+   )
+)
++Name: training countermeasures 2
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay "fadein 2" 1 ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "out of range" 
+   )
+)
++Name: out of range
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay "dir undock" 2 ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "dropoff point" 
+   )
+)
++Name: dropoff point
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "corporate police" 
+   )
+)
++Name: corporate police
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "better contracts" 
+   )
+)
++Name: better contracts
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "let's do this" 
+   )
+)
++Name: let's do this
++Repeat Count: 1
++Interval: 1
++Chained: 10
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "training countermeasures" 
+      9 
+   )
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "shoot down missiles" 
+   )
+)
++Name: shoot down missiles
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "god's sake" 
+   )
+)
++Name: gods sake
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay "detach mine" 1 ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "emp away" 
+   )
+)
++Name: emp away
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "emp goes off" 
+      2 
+   )
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "what the hell" 
+   )
+)
++Name: what the hell
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Kaur]" 
+      "High" 
+      "sorry ross" 
+   )
+)
++Name: sorry ross
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "you're forgiven" 
+   )
+)
++Name: you're forgiven
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar3[#Navo]" 
+      "High" 
+      "power out" 
+   )
+)
++Name: power out
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance "Hoshikuzu" "Open Sky" ) 
+         2000 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "open sky disabled" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "engaging open sky" 
+   )
+)
++Name: engaging open sky
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "open sky disabled" 
+         0 
+      )
+   )
+   ( send-message 
+      "@autoGenVar4[#Erikson]" 
+      "High" 
+      "you got it lau" 
+   )
+)
++Name: you got it lau
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "open sky disabled" 
+         0 
+      )
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "gunships add your firepower" 
+   )
+   ( add-goal 
+      "Alfa 1" 
+      ( ai-chase "Open Sky" 89 ) 
+   )
+)
++Name: gunships add your firepower
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "open sky disabled" 
+         0 
+      )
+   )
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "i've done my bit" 
+   )
+)
++Name: i've done my bit
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Arktos" ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "stargazer arrived" 
+   )
+   ( unlock-secondary-weapon "Alfa 1" ) 
+)
++Name: stargazer arrived
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir destroy mines" 
+         0 
+      )
+   )
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "they're carrying mines" 
+   )
+)
++Name: they're carrying mines
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir destroy mines" 
+         0 
+      )
+   )
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "aim for the mines" 
+   )
+)
++Name: aim for the mines
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "open sky disabled" 
+      2 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "open sky down" 
+   )
+)
++Name: open sky down
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mace fighters start up" 
+      2 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "mace fighters" 
+   )
+)
++Name: mace fighters
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Victor" ) 
+   ( do-nothing ) 
+)
++Name: dir destroy Victor
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Victor", 3277)
++Objective key:  XSTR("F9", 2673)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "dir destroy mines" 
+      4 
+   )
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "who are they" 
+   )
+)
++Name: who are they
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "bastards" 
+   )
+)
++Name: bastards
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( not 
+      ( or 
+         ( is-event-true-delay 
+            "arktos disabled" 
+            0 
+         )
+         ( is-destroyed-delay 0 "Arktos" ) 
+      )
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "finish the job" 
+   )
+)
++Name: finish the job
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( or 
+      ( is-subsystem-destroyed-delay 
+         "Arktos" 
+         "Engine" 
+         0 
+      )
+      ( < ( hits-left "Arktos" ) 4 ) 
+   )
+   ( do-nothing ) 
+)
++Name: dir disable freighter
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy or Disable Arktos", 3405)
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "battle over 1" 
+         3 
+      )
+      ( is-event-true-delay "bastards" 4 ) 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "area clear" 
+   )
+)
++Name: area clear
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "whoever they are" 
+   )
+)
++Name: whoever they are
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "died all the same" 
+   )
+)
++Name: died all the same
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Kaur]" 
+      "High" 
+      "some would disagree" 
+   )
+)
++Name: some would disagree
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "what's that mean" 
+   )
+)
++Name: what's that mean
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Kaur]" 
+      "High" 
+      "built on slavery" 
+   )
+)
++Name: built on slavery
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "status quo" 
+   )
+)
++Name: status quo
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "not fixable" 
+   )
+)
++Name: not fixable
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "malikans" 
+   )
+)
++Name: malikans
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Kaur]" 
+      "High" 
+      "alternative" 
+   )
+)
++Name: alternative
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Pollux Arrow" 
+      "Korra" 
+      1 
+      3 
+   )
+   ( send-message 
+      "Pollux Arrow" 
+      "High" 
+      "transport docked" 
+   )
+   ( change-iff "Surrendered" "Korra" ) 
+)
++Name: transport docked
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Sal" ) 
+   ( do-nothing ) 
+)
++Name: transport arrived
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "Normal" 
+      "hell we got visitors" 
+   )
+)
++Name: hell we got visitors
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Sal" 
+      "Normal" 
+      "transports arrive" 
+   )
+)
++Name: transports arrived
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Grianstad" 
+      "Normal" 
+      "something's wrong" 
+   )
+)
++Name: something's wrong
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar3[#Navo]" 
+      "High" 
+      "troop transports" 
+   )
+)
++Name: troop transports
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "destroy transports" 
+   )
+)
++Name: destroy transports
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "destroy transports" 
+      10 
+   )
+   ( send-message 
+      "Grianstad" 
+      "Normal" 
+      "oh shit" 
+   )
+   ( jettison-cargo "Grianstad" 100 ) 
+)
++Name: oh shit
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "take down transports" 
+   )
+)
++Name: take down transports
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 0 "Ekata" "Sal" ) 
+      ( and 
+         ( is-disabled-delay 0 "Ekata" ) 
+         ( is-disabled-delay 0 "Sal" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: dir destroy transports
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Disable Troop Transports", 3406)
++Objective key:  XSTR("F12", 3407)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "take down transports" 
+      7 
+   )
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "watch out for fighters" 
+   )
+)
++Name: watch out for fighters
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Whiskey" ) 
+   ( do-nothing ) 
+)
++Name: dir destroy whiskey
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Whiskey", 3278)
++Objective key:  XSTR("F9", 2673)
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "both transports disabled" 
+         0 
+      )
+      ( is-event-true-delay "cutter down" 7 ) 
+      ( is-destroyed-delay 2 "Whiskey" ) 
+      ( not 
+         ( is-event-true-delay 
+            "transports have docked" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar3[#Navo]" 
+      "High" 
+      "secured station" 
+   )
+   ( play-sound-from-file 
+      "standproud" 
+      99 
+   )
+)
++Name: secured station
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Pollux Arrow" 
+      "High" 
+      "thank you hoshikuzu" 
+   )
+)
++Name: thank you hoshikuzu
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "another day" 
+   )
+   ( clear-goals "Alfa 1" ) 
+)
++Name: another day
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "good work" 
+   )
+)
++Name: good work
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( < 
+      ( distance-center-to-subsystem 
+         "Bravo 1" 
+         "Hoshikuzu" 
+         "weapons" 
+      )
+      500 
+   )
+   ( fade-out 1500 ) 
+   ( ship-invulnerable "Bravo 1" ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      1500 
+   )
+)
++Name: mission complete fadeout
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Objective:  XSTR("Approach Hoshikuzu", 3283)
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission complete title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file "neuvictory" ) 
+   ( hud-disable 1 ) 
+   ( tech-add-ships 
+      "Pompeii-class Gunboat" 
+      "Barbican-class Transport" 
+   )
+)
++Name: mission complete title
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Bravo 1" ) 
+   )
+   ( end-mission ) 
+)
++Name: endimission good
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "grianstad disabled" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay "fadeout bad" 0 ) 
+      )
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "cutter down" 
+   )
+   ( clear-goals "Hoshikuzu" ) 
+   ( remove-ai-goal-track-ship 
+      "Hoshikuzu" 
+      "H attacks" 
+   )
+)
++Name: cutter down
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "Sal disabled" 
+            3 
+         )
+         ( is-event-true-delay 
+            "ekata disabled" 
+            3 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "transports have docked" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "one transport disabled" 
+   )
+)
++Name: one transport disabled
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Sal disabled" 
+         3 
+      )
+      ( is-event-true-delay 
+         "ekata disabled" 
+         3 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "transports have docked" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "both transports disabled" 
+   )
+)
++Name: both transports disabled
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "cutter down" 0 ) 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "help out against cutter" 
+   )
+)
++Name: help out against cutter
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( or 
+      ( has-docked-delay 
+         "Ekata" 
+         "Korra" 
+         1 
+         3 
+      )
+      ( has-docked-delay "Sal" "Korra" 1 3 ) 
+   )
+   ( send-message 
+      "@autoGenVar3[#Navo]" 
+      "High" 
+      "transports have docked" 
+   )
+)
++Name: transports have docked
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Hoshikuzu" ) 
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "hoshikuzu destroyed" 
+   )
+)
++Name: hoshikuzu destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "zincali disabled" 
+      2 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "zincali down" 
+   )
+)
++Name: zincali down
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 1 total
+
+$Type: Primary
++Name: Secure Korra
+$MessageNew:  XSTR("Secure Korra Station", 3408)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "secured station" 
+   2 
+)
+
+#Waypoints		;! 8 lists total
+
+$Name: transport approach
+$List: (		;! 1 points in list
+	( 24.500000, 1032.400024, 4539.337402 )
+)
+
+$Name: Hoshikuzu Approach
+$List: (		;! 1 points in list
+	( 449.299988, 1200.000000, 3529.013184 )
+)
+
+$Name: dropoff point
+$List: (		;! 1 points in list
+	( -258.275574, 3.620862, 158.642349 )
+)
+
+$Name: stargazer retreats
+$List: (		;! 1 points in list
+	( 6093.325195, -73.216537, 85200.875000 )
+)
+
+$Name: Zincali moves
+$List: (		;! 1 points in list
+	( 237.607483, -306.699707, 4730.416504 )
+)
+
+$Name: Arktos pass
+$List: (		;! 1 points in list
+	( 2346.051758, -511.406982, 4998.514160 )
+)
+
+$Name: Grianstad approach
+$List: (		;! 1 points in list
+	( -2267.699951, 2065.682617, -646.299988 )
+)
+
+$Name: H attacks
+$List: (		;! 1 points in list
+	( -7049.671875, 303.876465, -5357.378906 )
+)
+
+#Messages		;! 63 total
+
+
+$Name: title1
+$Team: -1
+$MessageNew:  XSTR("$quoteRights of Man$quote", 3409)
+$end_multi_text
+
+$Name: detach
+$Team: -1
+$MessageNew:  XSTR(" ", 2013)
+$end_multi_text
++Wave Name: dock.ogg
+
+$Name: detach mine
+$Team: -1
+$MessageNew:  XSTR("$Alt-X$ TO DETACH EMP MINE", 3410)
+$end_multi_text
+
+$Name: mine detached
+$Team: -1
+$MessageNew:  XSTR("EMP MINE DETACHED", 3411)
+$end_multi_text
++Wave Name: dock.ogg
+
+$Name: training countermeasures
+$Team: -1
+$MessageNew:  XSTR("Press $X$ to release countermeasure flares", 3412)
+$end_multi_text
+
+$Name: detonation
+$Team: -1
+$MessageNew:  XSTR("WARNING: EMP DETONATION CONFIRMED", 3413)
+$end_multi_text
++Wave Name: alarm5.ogg
+
+$Name: out of range
+$Team: -1
+$MessageNew:  XSTR("That was a smooth exit. We're ready when you are Ross.", 3414)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-01
+
+$Name: dropoff point
+$Team: -1
+$MessageNew:  XSTR("Your dropoff point has been marked on your HUD. Good luck.", 3415)
+$end_multi_text
++Wave Name: 13-02
+
+$Name: corporate police
+$Team: -1
+$MessageNew:  XSTR("Tell me something Lau. Why do all our contracts have us playing policemen for mega corporations?", 3416)
+$end_multi_text
++Wave Name: 13-03
+
+$Name: better contracts
+$Team: -1
+$MessageNew:  XSTR("The corporate contracts pay more. We need to make a name for ourselves out here, which means making friends with the big players.", 3417)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-04
+
+$Name: shoot down missiles
+$Team: -1
+$MessageNew:  XSTR("Don't forget - you can shoot down missiles if you can line them up right.", 3418)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 13-05
+
+$Name: god's sake
+$Team: -1
+$MessageNew:  XSTR("Oh for god's sake Meiks, I haven't forgotten everything in flight school.", 3419)
+$end_multi_text
++Wave Name: 13-06
+
+$Name: emp away
+$Team: -1
+$MessageNew:  XSTR("EMP away. Moving out of range.", 3420)
+$end_multi_text
++Wave Name: 13-07
+
+$Name: what the hell
+$Team: -1
+$MessageNew:  XSTR("What the hell? I thought this had a thirty second timer!", 3421)
+$end_multi_text
++Wave Name: 13-08
+
+$Name: sorry ross
+$Team: -1
+$MessageNew:  XSTR("Sorry Ross. That was me. I must have missed a step when arming the device.", 3422)
+$end_multi_text
++Wave Name: 13-09
+
+$Name: engaging open sky
+$Team: -1
+$MessageNew:  XSTR("Erikson, open up PDCs at the Open Sky. Ross has probably had enough of these missiles.", 3423)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-10
+
+$Name: let's do this
+$Team: -1
+$MessageNew:  XSTR("Picking up increased comms traffic from those corvettes. Let's get this done before more of their friends show up.", 3424)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-11
+
+$Name: you're forgiven
+$Team: -1
+$MessageNew:  XSTR("I'm only forgiving you because you're such a good friend Kaur.", 3425)
+$end_multi_text
++Wave Name: 13-12
+
+$Name: stargazer arrived
+$Team: -1
+$MessageNew:  XSTR("New contact! A Stargazer freighter just warped in. She's got a full cargo load of construction drones.", 3426)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-13
+
+$Name: gunships add your firepower
+$Team: -1
+$MessageNew:  XSTR("It also wouldn't hurt for you flyboys to contribute some firepower. ", 3427)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-14
+
+$Name: they're carrying mines
+$Team: -1
+$MessageNew:  XSTR("Those construction drones are carrying mines! They're on a collision course to the Hoshikuzu!", 3428)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 13-15
+
+$Name: power out
+$Team: -1
+$MessageNew:  XSTR("Navo here. We can confirm lights are out on the station. We're moving to assault now.", 3429)
+$end_multi_text
++Wave Name: 13-16
+
+$Name: aim for the mines
+$Team: -1
+$MessageNew:  XSTR("Try to aim for the mine cargo. They're more fragile than the drones.", 3430)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 13-17
+
+$Name: open sky down
+$Team: -1
+$MessageNew:  XSTR("That's one corvette down. Clear the Open Sky from the target list.", 3431)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-18
+
+$Name: i've done my bit
+$Team: -1
+$MessageNew:  XSTR("I've done my bit Meiks. Time for you to start pulling your weight.", 3432)
+$end_multi_text
++Wave Name: 13-19
+
+$Name: who are they
+$Team: -1
+$MessageNew:  XSTR("Suicide mine drones? Who the hell are these guys?", 3433)
+$end_multi_text
++Wave Name: 13-20
+
+$Name: bastards
+$Team: -1
+$MessageNew:  XSTR("A bunch of bastards.", 3434)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 13-21
+
+$Name: zincali down
+$Team: -1
+$MessageNew:  XSTR("Zincali corvette destroyed.", 3435)
+$end_multi_text
++Wave Name: 13-22
+
+$Name: finish the job
+$Team: -1
+$MessageNew:  XSTR("Time to finish the job. Take out that freighter.", 3436)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-23
+
+$Name: area clear
+$Team: -1
+$MessageNew:  XSTR("Looks like that's the last of them. Erikson, clear your targets. Good work.", 3437)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-24
+
+$Name: transport docked
+$Team: -1
+$MessageNew:  XSTR("We've docked at the refinery. Stand by breach charges.", 3438)
+$end_multi_text
++Wave Name: 13-25
+
+$Name: whoever they are
+$Team: -1
+$MessageNew:  XSTR("Whoever these guys are, they fought pretty hard for this station. ", 3439)
+$end_multi_text
++Wave Name: 13-26
+
+$Name: died all the same
+$Team: -1
+$MessageNew:  XSTR("They fought hard, and died all the same. Should've just surrendered.", 3440)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 13-27
+
+$Name: some would disagree
+$Team: -1
+$MessageNew:  XSTR("Some would disagree with you Meiks. Maybe they're fighting for something worth dying for.", 3441)
+$end_multi_text
++Wave Name: 13-28
+
+$Name: what's that mean
+$Team: -1
+$MessageNew:  XSTR("I feel bad for them.  They took over a dingy refinery in the arse end of nowhere. Can't be worth dying for that.", 3442)
+$end_multi_text
++Wave Name: 13-29
+
+$Name: built on slavery
+$Team: -1
+$MessageNew:  XSTR("The Sulsian Hegemony was built on modern slavery. This was always going to happen. You push a person too hard for too long, they get desperate.", 3443)
+$end_multi_text
++Wave Name: 13-30
+
+$Name: status quo
+$Team: -1
+$MessageNew:  XSTR("Aren't we part of the problem then? We're helping a mining corporation take back their property.", 3444)
+$end_multi_text
++Wave Name: 13-31
+
+$Name: secured station
+$Team: -1
+$MessageNew:  XSTR("This is Navo. The station control centre is secured. We've apprehended the leaders responsible for the mutiny.", 3445)
+$end_multi_text
++Wave Name: 13-32
+
+$Name: thank you hoshikuzu
+$Team: -1
+$MessageNew:  XSTR("Thank you for your assistance Hoshikuzu. You are free to depart.", 3446)
+$end_multi_text
++Wave Name: 13-33
+
+$Name: another day
+$Team: -1
+$MessageNew:  XSTR("Another day, another contract. Meiks, Ross, bring yourselves in.", 3447)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-34
+
+$Name: mission complete title
+$Team: -1
+$MessageNew:  XSTR("MISSION COMPLETE", 2727)
+$end_multi_text
+
+$Name: you got it lau
+$Team: -1
+$MessageNew:  XSTR("You got it, Lau.", 3448)
+$end_multi_text
++Wave Name: 13-35
+
+$Name: mission failed title
+$Team: -1
+$MessageNew:  XSTR("MISSION FAILED", 2726)
+$end_multi_text
+
+$Name: good work
+$Team: -1
+$MessageNew:  XSTR("Good work Meiks. We spent blood and sweat making sure another fringe corporation meets their bottom line.", 3449)
+$end_multi_text
++Wave Name: 13-36
+
+$Name: mace fighters
+$Team: -1
+$MessageNew:  XSTR("Meiks, Ross. Mace fighters are powering up on the station. Prepare to intercept hostile craft.", 3450)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-37
+
+$Name: training countermeasures 2
+$Team: -1
+$MessageNew:  XSTR("Flares create a radar copy of your craft to confuse incoming missiles", 3451)
+$end_multi_text
+
+$Name: transports arrive
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Korra refinery, this is Matador team. We have the reinforcements you were promised.", 3452)
+$end_multi_text
++Wave Name: 13-38
+
+$Name: something's wrong
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Something's wrong Taki. The station's silent and those ships do not have our transponders. Me penso maybe something gone wrong with the station.", 3453)
+$end_multi_text
++Wave Name: 13-39
+
+$Name: hell we got visitors
+$Team: -1
+$MessageNew:  XSTR("Hell, we've got visitors!", 3454)
+$end_multi_text
++Wave Name: 13-40
+
+$Name: troop transports
+$Team: -1
+$MessageNew:  XSTR("Captain Lau, listen very carefully. Those transports are full of armed troops. It is crucial that they do not reach the station or this mission's a bust.", 3455)
+$end_multi_text
++Wave Name: 13-41
+
+$Name: destroy transports
+$Team: -1
+$MessageNew:  XSTR("Message received. We'll do what we can. Gunships, we're moving to engage.", 3456)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-42
+
+$Name: cutter down
+$Team: -1
+$MessageNew:  XSTR("Cutter is down for the count.", 3457)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-43
+
+$Name: oh shit
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Oh puttana. I know that ship. Me pensa that's the Hoshikuzu, the one that beat up Feroz on the Equinox.", 3458)
+$end_multi_text
++Wave Name: 13-44
+
+$Name: take down transports
+$Team: -1
+$MessageNew:  XSTR("We'll keep that cutter busy. Meiks, Ross, disable those transports before they get to the station!", 3459)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-45
+
+$Name: not fixable
+$Team: -1
+$MessageNew:  XSTR("Sulsia's problems aren't going to be fixed overnight. We're not going to change how an entire nation runs its business.", 3460)
+$end_multi_text
++Wave Name: 13-46
+
+$Name: malikans
+$Team: -1
+$MessageNew:  XSTR("What's the alternative anyway? We got the Malikans claiming to represent the people but are attacking civilians anyway.", 3461)
+$end_multi_text
++Wave Name: 13-47
+
+$Name: alternative
+$Team: -1
+$MessageNew:  XSTR("You think these workers care whether the Malikans represent their cause or not? One boss is much like any other.", 3462)
+$end_multi_text
++Wave Name: 13-48
+
+$Name: one transport disabled
+$Team: -1
+$MessageNew:  XSTR("That's one transport out of commission.", 3463)
+$end_multi_text
++Wave Name: 13-49
+
+$Name: both transports disabled
+$Team: -1
+$MessageNew:  XSTR("Both transports are out of action Lau.", 3464)
+$end_multi_text
++Wave Name: 13-50
+
+$Name: help out against cutter
+$Team: -1
+$MessageNew:  XSTR("Nice work Ross. You can help us out against this cutter.", 3465)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 13-51
+
+$Name: transports have docked
+$Team: -1
+$MessageNew:  XSTR("A Malikan transport has docked with the station! We've got reports of hostile troops entering. Fall back to the Pollux Arrow!", 3466)
+$end_multi_text
++Wave Name: 13-52
+
+$Name: hoshikuzu destroyed
+$Team: -1
+$MessageNew:  XSTR("Ross! The Hoshikuzu's breaking apart!", 3467)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 14-29
+
+$Name: watch out for fighters
+$Team: -1
+$MessageNew:  XSTR("Watch out for those fighters! They just ejected from the cutter.", 3468)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 13-53
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 0
+$Ambient light level: 4408387
+
+$Bitmap List:
+$Sun: Stars_Sun_White
++Angles: 0.785398 5.305801 4.677482
++Scale: 1.000000
+$Sun: EarthBrown
++Angles: 5.061455 0.000000 0.000000
++Scale: 1.000000
+$Sun: JupiterLight
++Angles: 5.061455 0.000000 0.000000
++Scale: 1.000000
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: BriefingCW
+$Substitute Briefing Music: BriefingCW
+$Debriefing Success Music: Success4
+
+#End
+

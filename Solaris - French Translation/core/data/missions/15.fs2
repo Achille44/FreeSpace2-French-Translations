@@ -1,0 +1,6763 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Reunion", 3528)
+$Author: Darius
+$Created: 02/05/20 at 18:41:08
+$Modified: 04/30/22 at 21:44:43
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 2629)
+$end_multi_text
++Game Type Flags: 1
++Flags: 786624
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 0
++Hull Repair Ceiling: 75.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: -4113.812500, 3992.221924, -6824.568848
++Viewer orient:
+	-0.492044, 0.000001, 0.870570,
+	-0.062285, 0.997437, -0.035205,
+	-0.868339, -0.071546, -0.490783
+
+$Starting wing names: ( "Alfa" "Bravo" "Charlie" )
+$Squadron wing names: ( "Alfa" "Bravo" "Charlie" "Delta" "Echo" )
+$Team-versus-team wing names: ( "Alfa" "Zulu" )
+
+$Skybox Model: skybox_argus.pof
+
+$AI Profile: Solaris
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"dockavailable"		"0"		"number"
+		1		"m15checkpoint"		"0"		"number"
+		2		"nassPDCcount"		"0"		"number"
+		3		"saveexist"		"0"		"number"
+		4		"starbdockstate"		"0"		"number"
+		5		"autoGenVar1"		"#Courier"		"string"
+		6		"autoGenVar2"		"#Erikson"		"string"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 0
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 2
+
+$Formula: ( is-event-true-delay 
+   "mission complete title" 
+   0 
+)
+$Multi text
+    XSTR("We did it. Somehow, we did it.
+
+The Albans are on their way home. The Hoshikuzu has also left the system with the Nassau. Master Badami reports the Hopewell's tow is still secure.
+
+News reports aren't good. Malikan attack ships have swept through the system wiping out any Sulsian resistance they encounter. Kotus Anchorage has been occupied. The entire system is in lockdown.
+
+The newsfeeds are buzzing with this development and speculating what other governments are going to do. The Albans have already shown that they can't protect their own citizens outside of Commonwealth borders. I'm not holding my breath that they'll do anything, they were the ones that helped bring about this mess by winding back all of their trade lane patrols. The Federation and Combine are too busy at each others' throats to care about what's going on here. No one else has a stake in what goes on in Sulsia.
+
+I'm going to need a moment to process what just happened. Kendra and her crew are still held in remand under Colonel Navo and his soldiers. She was responsible for the deaths of dozens of Alban civilians when her ship destroyed the Elgin. By rights I should give her to the Commonwealth to answer for her crimes. I may end up doing that...but I need to talk to her first.
+
+I've put us on a course to Vicare Station. The Pollux Arrow, Hopewell and the Nassau will join us for repairs and resupply.
+
+We'll have a few days to rest up and get our collective heads together.", 3529)
+$end_multi_text
+$Voice: 15-db1
+$Recommendation text:
+    XSTR("", 2443)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "mission failed title" 
+   0 
+)
+$Multi text
+    XSTR("Mission failed debriefing", 3379)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 2443)
+$end_multi_text
+
+#Callsigns:
+$Callsign: XSTR("Lau", 2882)
+$Callsign: XSTR("Meiks", 3256)
+$Callsign: XSTR("Ross", 2635)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Bravo 1
+$Ship Choices: (
+)
+
++Weaponry Pool: (
+	"Maxim"	2
+	"Huaqing"	2
+	"Vulcan"	2
+	"Sparrow"	32
+)
+
+#Objects		;! 70 total
+
+$Name: Hoshikuzu		;! Object #0
+$Display Name: XSTR("Hoshikuzu", 3192)
+$Class: Rasputin-class Corvette
+$Callsign: XSTR("Lau", 2882)
+
+$Team: Friendly
+$Location: -5386.181152, 3888.000488, -5008.824219
+$Orientation:
+	0.801080, 0.000000, 0.598558,
+	-0.000000, 1.000000, 0.000000,
+	-0.598558, -0.000000, 0.801080
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "missile-protect-ship" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 100
++Docked With: Bravo 1
+$Docker Point: Docking Point
+$Dockee Point: Port Fighter Rail
++Docked With: Alfa 1
+$Docker Point: Docking Point
+$Dockee Point: Starb Fighter Rail
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Alfa 1		;! Object #1
+$Display Name: XSTR("Alfa 1", 3258)
+$Class: Comet-class Gunship
+$Callsign: XSTR("Meiks", 3256)
+
+$Team: Friendly
+$Location: -5428.325684, 3885.300293, -4912.673828
+$Orientation:
+	0.801080, 0.000000, 0.598558,
+	0.000000, 1.000000, 0.000000,
+	-0.598558, 0.000000, 0.801080
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Docked With: Hoshikuzu
+$Docker Point: Starb Fighter Rail
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 17
+
+$Name: Bravo 1		;! Object #2
+$Display Name: XSTR("Bravo 1", 2885)
+$Class: Comet-class Gunship
+$Callsign: XSTR("Ross", 2635)
+
+$Team: Friendly
+$Location: -5466.441895, 3885.300293, -4941.153809
+$Orientation:
+	0.801080, 0.000000, 0.598558,
+	0.000000, 1.000000, 0.000000,
+	-0.598558, 0.000000, 0.801080
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Docked With: Hoshikuzu
+$Docker Point: Port Fighter Rail
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Courier 2		;! Object #3
+$Display Name: XSTR("Courier 2", 3530)
+$Class: Aries-class Shuttle
+$Team: Friendly
+$Location: -7286.774902, 2509.816650, -3438.235596
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 99
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Dock Point		;! Object #4
+$Display Name: XSTR("Dock Point", 2414)
+$Class: Dock Point
+$Team: Friendly
+$Location: -7302.524902, 2491.816650, -3438.235596
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, -1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" "no_collide" )
++Respawn priority: 0
++Docked With: Courier 2
+$Docker Point: service Dock
+$Dockee Point: DockPoint
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Landscape 2		;! Object #5
+$Display Name: XSTR("Landscape 2", 2474)
+$Class: Landscape
+$Team: Neutral
+$Location: -8576.937500, 2187.980469, -11686.291992
+$Orientation:
+	0.996497, -0.000000, 0.083632,
+	0.000022, 1.000000, -0.000259,
+	-0.083632, 0.000260, 0.996497
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Landscape 7		;! Object #6
+$Display Name: XSTR("Landscape 7", 3531)
+$Class: Landscape
+$Team: Neutral
+$Location: -3121.118652, 2132.452148, 97383.429688
+$Orientation:
+	-0.999974, 0.000000, -0.007264,
+	0.000000, 1.000000, 0.000000,
+	0.007264, 0.000000, -0.999974
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Landscape 8		;! Object #7
+$Display Name: XSTR("Landscape 8", 3532)
+$Class: Landscape
+$Team: Neutral
+$Location: -99210.109375, 2132.450195, 95899.015625
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Landscape 9		;! Object #8
+$Display Name: XSTR("Landscape 9", 3533)
+$Class: Landscape
+$Team: Neutral
+$Location: -92454.695313, 2132.449219, -1287.708496
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Landscape 10		;! Object #9
+$Display Name: XSTR("Landscape 10", 3534)
+$Class: Landscape
+$Team: Neutral
+$Location: -92181.125000, 2132.442383, -101279.390625
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Landscape 11		;! Object #10
+$Display Name: XSTR("Landscape 11", 3535)
+$Class: Landscape
+$Team: Neutral
+$Location: -482.292236, 2132.438477, -96076.671875
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Landscape 12		;! Object #11
+$Display Name: XSTR("Landscape 12", 3536)
+$Class: Landscape
+$Team: Neutral
+$Location: 92130.804688, 2132.429688, -89267.906250
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Landscape 13		;! Object #12
+$Display Name: XSTR("Landscape 13", 3537)
+$Class: Landscape
+$Team: Neutral
+$Location: 97978.468750, 2132.432617, 5585.242188
+$Orientation:
+	-0.019367, 0.000000, 0.999812,
+	0.000000, 1.000000, 0.000000,
+	-0.999812, 0.000000, -0.019367
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Landscape 14		;! Object #13
+$Display Name: XSTR("Landscape 14", 3538)
+$Class: Landscape
+$Team: Neutral
+$Location: 95601.789063, 2132.432617, 96736.250000
+$Orientation:
+	-0.019367, 0.000000, 0.999812,
+	0.000000, 1.000000, 0.000000,
+	-0.999812, 0.000000, -0.019367
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Kotus Control		;! Object #14
+$Display Name: XSTR("Kotus Control", 3539)
+$Class: Ground Tower
+$Team: Friendly
+$Location: -6988.740723, 2495.640137, -3486.977051
+$Orientation:
+	0.999200, 0.000000, -0.039989,
+	0.000000, 1.000000, 0.000000,
+	0.039989, 0.000000, 0.999200
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: City Layer		;! Object #15
+$Display Name: XSTR("City Layer", 2476)
+$Class: City Layer
+$Team: Surrendered
+$Location: -5605.159180, 2351.973145, -3883.225098
+$Orientation:
+	0.999627, 0.000001, -0.027328,
+	-0.000001, 1.000000, -0.000002,
+	0.027328, 0.000002, 0.999627
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Ground Hangar		;! Object #16
+$Display Name: XSTR("Ground Hangar", 2427)
+$Class: Ground Hangar
+$Team: Friendly
+$Location: -6327.780762, 2495.640137, -3694.303223
+$Orientation:
+	0.999800, 0.000000, -0.019999,
+	0.000000, 1.000000, 0.000000,
+	0.019999, 0.000000, 0.999800
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Courier 1		;! Object #17
+$Display Name: XSTR("Courier 1", 3540)
+$Class: Aries-class Shuttle
+$Team: Friendly
+$Location: -6258.299316, 2634.640137, -3711.696289
+$Orientation:
+	-0.999800, 0.000000, 0.019999,
+	0.000000, 1.000000, -0.000000,
+	-0.019999, 0.000000, -0.999800
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 99
++Docked With: Ground Hangar
+$Docker Point: Docking Point
+$Dockee Point: service Dock
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Ground Hangar 17		;! Object #18
+$Display Name: XSTR("Ground Hangar 17", 3541)
+$Class: Ground Warehouse
+$Team: Friendly
+$Location: -6336.948242, 2495.640137, -3048.011963
+$Orientation:
+	0.999200, 0.000000, -0.039989,
+	0.000000, 1.000000, 0.000000,
+	0.039989, 0.000000, 0.999200
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Ground Warehouse 18		;! Object #19
+$Display Name: XSTR("Ground Warehouse 18", 3542)
+$Class: Ground Warehouse
+$Team: Friendly
+$Location: -6325.082520, 2495.640137, -2649.516602
+$Orientation:
+	0.999570, 0.000000, -0.029361,
+	0.000000, 1.000000, 0.000000,
+	0.029361, 0.000000, 0.999570
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Ground Warehouse 19		;! Object #20
+$Display Name: XSTR("Ground Warehouse 19", 3543)
+$Class: Ground Panel
+$Team: Friendly
+$Location: -5931.716309, 2495.640137, -3165.511719
+$Orientation:
+	-0.999970, -0.000000, 0.007772,
+	0.000000, 1.000000, 0.000000,
+	-0.007772, 0.000000, -0.999970
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Light Turret Tower 1		;! Object #21
+$Display Name: XSTR("Light Turret Tower 1", 3544)
+$Class: Light Turret Tower
+$Team: Friendly
+$Location: -6140.719238, 2547.107178, -4347.860840
+$Orientation:
+	-0.999970, 0.000000, 0.007772,
+	0.000000, 1.000000, 0.000000,
+	-0.007772, 0.000000, -0.999970
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Light Turret Tower 21		;! Object #22
+$Display Name: XSTR("Light Turret Tower 21", 3545)
+$Class: Light Turret Tower
+$Team: Friendly
+$Location: -5985.484375, 2485.235352, -2836.212891
+$Orientation:
+	-0.999970, -0.000000, 0.007772,
+	-0.000000, 1.000000, 0.000000,
+	-0.007772, -0.000000, -0.999970
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Ground Panel 25		;! Object #23
+$Display Name: XSTR("Ground Panel 25", 3546)
+$Class: Ground Panel
+$Team: Friendly
+$Location: -6692.628906, 2492.042725, -4265.112305
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Antennae 26		;! Object #24
+$Display Name: XSTR("Antennae 26", 3547)
+$Class: Antennae
+$Team: Friendly
+$Location: -6947.780273, 2447.622070, -4082.208984
+$Orientation:
+	0.999583, 0.000000, -0.028864,
+	-0.000000, 1.000000, 0.000000,
+	0.028864, 0.000000, 0.999583
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Antennae 27		;! Object #25
+$Display Name: XSTR("Antennae 27", 3548)
+$Class: Antennae
+$Team: Friendly
+$Location: -6939.609863, 2447.622070, -3905.065430
+$Orientation:
+	0.999583, 0.000000, -0.028864,
+	-0.000000, 1.000000, 0.000000,
+	0.028864, 0.000000, 0.999583
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Ground Panel 28		;! Object #26
+$Display Name: XSTR("Ground Panel 28", 3549)
+$Class: Ground Panel
+$Team: Friendly
+$Location: -6696.285156, 2493.228516, -4511.062500
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Londinium		;! Object #27
+$Display Name: XSTR("Londinium", 3550)
+$Class: Orleans-class Cutter
+$Team: Hostile
+$Location: -8301.799805, 15000.000000, -5272.399902
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, -0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "arrival trig 1" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Nubia 1		;! Object #28
+$Display Name: XSTR("Nubia 1", 3551)
+$Class: Barbican-class Transport
+$Team: Hostile
+$Location: -7582.974609, 15442.634766, -5590.078125
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Unknown", 2441)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "arrival trig 2" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Nubia 2		;! Object #29
+$Display Name: XSTR("Nubia 2", 3552)
+$Class: Barbican-class Transport
+$Team: Hostile
+$Location: -7934.100586, 14683.285156, -5447.678711
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Unknown", 2441)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "arrival trig 3" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Rasputin-class Corvette 52		;! Object #30
+$Display Name: XSTR("Rasputin-class Corvette 52", 3553)
+$Class: Rasputin-class Corvette
+$Team: Friendly
+$Location: -5432.399902, 3862.300049, -7460.399902
+$Orientation:
+	0.999053, 0.000000, 0.043501,
+	0.041192, 0.321437, -0.946035,
+	-0.013983, 0.946931, 0.321132
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "hoshi 2" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-msecs-delay 
+   "hoshikuzu moves 2" 
+   7000 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "exit camera move" 
+   1 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" "invulnerable" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Comet-class Gunship 54
+$Docker Point: Docking Point
+$Dockee Point: Starb Fighter Rail
++Docked With: Comet-class Gunship 53
+$Docker Point: Docking Point
+$Dockee Point: Port Fighter Rail
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Comet-class Gunship 53		;! Object #31
+$Display Name: XSTR("Comet-class Gunship 53", 3554)
+$Class: Comet-class Gunship
+$Team: Friendly
+$Location: -5457.708496, 3958.255859, -7426.044922
+$Orientation:
+	0.999053, 0.000000, 0.043501,
+	0.041192, 0.321437, -0.946035,
+	-0.013983, 0.946931, 0.321132
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "invulnerable" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Rasputin-class Corvette 52
+$Docker Point: Port Fighter Rail
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Comet-class Gunship 54		;! Object #32
+$Display Name: XSTR("Comet-class Gunship 54", 3555)
+$Class: Comet-class Gunship
+$Team: Friendly
+$Location: -5410.172852, 3958.255859, -7423.975098
+$Orientation:
+	0.999053, 0.000000, 0.043501,
+	0.041192, 0.321437, -0.946035,
+	-0.013983, 0.946931, 0.321132
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "invulnerable" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Rasputin-class Corvette 52
+$Docker Point: Starb Fighter Rail
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Minnow-class Shuttle 55		;! Object #33
+$Display Name: XSTR("Minnow-class Shuttle 55", 3556)
+$Class: Aries-class Shuttle
+$Team: Friendly
+$Location: -5039.124512, 3817.594971, -7498.543945
+$Orientation:
+	0.997693, 0.000000, 0.067883,
+	0.064261, 0.322245, -0.944473,
+	-0.021875, 0.946656, 0.321501
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "hoshi 2" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 
+   0 
+   "Rasputin-class Corvette 52" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-msecs-delay 
+   "exit camera" 
+   3250 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Minnow-class Shuttle 56		;! Object #34
+$Display Name: XSTR("Minnow-class Shuttle 56", 3557)
+$Class: Aries-class Shuttle
+$Team: Friendly
+$Location: -5835.483887, 3889.646973, -7433.001953
+$Orientation:
+	0.999833, 0.000000, 0.018295,
+	0.017328, 0.320884, -0.946960,
+	-0.005871, 0.947118, 0.320831
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "hoshi 2" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 
+   0 
+   "Rasputin-class Corvette 52" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-msecs-delay 
+   "exit camera" 
+   3600 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Nassau		;! Object #35
+$Display Name: XSTR("Nassau", 3558)
+$Class: Horizon-class Destroyer
+$Team: Unknown
+$Location: 1303.258179, 4266.049805, -1464.587769
+$Orientation:
+	-0.204823, -0.000000, 0.978799,
+	-0.000000, 1.000000, -0.000000,
+	-0.978799, -0.000000, -0.204823
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Primary Banks: ( "Point Defense Turret#Para" )
++Subsystem: turret02
++Primary Banks: ( "Point Defense Turret#Para" )
++Subsystem: turret03
++Primary Banks: ( "Point Defense Turret#Para" )
++Subsystem: turret04
++Primary Banks: ( "Point Defense Turret#Para" )
++Subsystem: turret05
++Primary Banks: ( "Point Defense Turret#Para" )
++Subsystem: turret06
++Primary Banks: ( "Point Defense Turret#Para" )
++Subsystem: mturret01
++Subsystem: mturret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay "no reply" 12 ) 
+   ( and 
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+      ( is-event-true-delay 
+         "fadein new scene" 
+         4 
+      )
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Docked With: Sierra 2
+$Docker Point: Docking Point
+$Dockee Point: FighterDockL2
++Docked With: Sierra 1
+$Docker Point: Docking Point
+$Dockee Point: FighterDockL1
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Sierra 1		;! Object #36
+$Display Name: XSTR("Sierra 1", 3559)
+$Class: Warden-class Defender
+$Team: Unknown
+$Location: 1374.599487, 4275.456543, -1519.897949
+$Orientation:
+	0.204823, 0.000000, -0.978799,
+	0.000000, -1.000000, 0.000000,
+	-0.978799, 0.000000, -0.204823
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Docked With: Nassau
+$Docker Point: FighterDockL1
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sierra 2		;! Object #37
+$Display Name: XSTR("Sierra 2", 3560)
+$Class: Warden-class Defender
+$Team: Unknown
+$Location: 1374.599487, 4237.268066, -1519.897949
+$Orientation:
+	-0.204823, 0.000000, 0.978799,
+	0.000000, 1.000000, 0.000000,
+	-0.978799, 0.000000, -0.204823
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Docked With: Nassau
+$Docker Point: FighterDockL2
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Pollux Arrow		;! Object #38
+$Display Name: XSTR("Pollux Arrow", 3381)
+$Class: Tortoise-class Transport
+$Team: Friendly
+$Location: -13074.702148, 4719.895996, -6749.945313
+$Orientation:
+	0.415435, 0.000000, -0.909623,
+	-0.000000, 1.000000, 0.000000,
+	0.909623, -0.000000, 0.415435
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "told you" 8 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: neutraltransport
++new: neutraltransport2
++old: neutraltransport-reflect
++new: neutraltransport2-reflect
+
+$Name: Fusillade		;! Object #39
+$Display Name: XSTR("Fusillade", 3561)
+$Class: Orleans-class Cutter
+$Team: Hostile
+$Location: -7413.080566, 14814.562500, -4974.612793
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "arrival trig 4" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Ivory Dagger		;! Object #40
+$Display Name: XSTR("Ivory Dagger", 3562)
+$Class: Orleans-class Cutter
+$Team: Hostile
+$Location: -6850.784180, 15153.639648, -5318.510742
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, -0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "arrival trig 5" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Stargazer 2		;! Object #41
+$Display Name: XSTR("Stargazer 2", 3563)
+$Class: Stargazer-class Freighter
+$Team: Hostile
+$Location: -6672.378418, 15000.000000, -4624.012695
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "arrival trig 6" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Victor 1
+$Docker Point: Docking Point
+$Dockee Point: FighterDock1
++Docked With: Victor 2
+$Docker Point: Docking Point
+$Dockee Point: FighterDock2
++Docked With: Victor 3
+$Docker Point: Docking Point
+$Dockee Point: FighterDock3
++Docked With: Whiskey 1
+$Docker Point: Docking Point
+$Dockee Point: FighterDock5
++Docked With: Whiskey 2
+$Docker Point: Docking Point
+$Dockee Point: FighterDock6
++Docked With: Whiskey 3
+$Docker Point: Docking Point
+$Dockee Point: FighterDock7
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Whiskey 3		;! Object #42
+$Display Name: XSTR("Whiskey 3", 3265)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -6649.878418, 15006.099609, -4650.012695
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 2
+$Docker Point: FighterDock7
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Whiskey 2		;! Object #43
+$Display Name: XSTR("Whiskey 2", 3262)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -6649.878418, 15006.099609, -4614.512695
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 2
+$Docker Point: FighterDock6
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Whiskey 1		;! Object #44
+$Display Name: XSTR("Whiskey 1", 3261)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -6649.878418, 15006.099609, -4579.512695
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 2
+$Docker Point: FighterDock5
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Victor 3		;! Object #45
+$Display Name: XSTR("Victor 3", 3477)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -6694.878418, 15006.099609, -4650.012695
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 2
+$Docker Point: FighterDock3
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Victor 2		;! Object #46
+$Display Name: XSTR("Victor 2", 3264)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -6694.878418, 15006.099609, -4614.512695
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 2
+$Docker Point: FighterDock2
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Victor 1		;! Object #47
+$Display Name: XSTR("Victor 1", 3263)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -6694.878418, 15006.099609, -4579.512695
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 2
+$Docker Point: FighterDock1
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Stargazer 1		;! Object #48
+$Display Name: XSTR("Stargazer 1", 3564)
+$Class: Stargazer-class Freighter
+$Team: Hostile
+$Location: -9042.190430, 15000.000000, -5445.914551
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "arrival trig 7" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Tango 1
+$Docker Point: Docking Point
+$Dockee Point: FighterDock1
++Docked With: Tango 2
+$Docker Point: Docking Point
+$Dockee Point: FighterDock2
++Docked With: Tango 3
+$Docker Point: Docking Point
+$Dockee Point: FighterDock3
++Docked With: Uniform 1
+$Docker Point: Docking Point
+$Dockee Point: FighterDock5
++Docked With: Uniform 2
+$Docker Point: Docking Point
+$Dockee Point: FighterDock6
++Docked With: Uniform 3
+$Docker Point: Docking Point
+$Dockee Point: FighterDock7
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Uniform 3		;! Object #49
+$Display Name: XSTR("Uniform 3", 3565)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -9019.690430, 15006.099609, -5471.914551
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 1
+$Docker Point: FighterDock7
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Uniform 2		;! Object #50
+$Display Name: XSTR("Uniform 2", 3482)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -9019.690430, 15006.099609, -5436.414551
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 1
+$Docker Point: FighterDock6
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Uniform 1		;! Object #51
+$Display Name: XSTR("Uniform 1", 3481)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -9019.690430, 15006.099609, -5401.414551
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 1
+$Docker Point: FighterDock5
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Tango 3		;! Object #52
+$Display Name: XSTR("Tango 3", 3566)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -9064.690430, 15006.099609, -5471.914551
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 1
+$Docker Point: FighterDock3
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Tango 2		;! Object #53
+$Display Name: XSTR("Tango 2", 3480)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -9064.690430, 15006.099609, -5436.414551
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 1
+$Docker Point: FighterDock2
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Tango 1		;! Object #54
+$Display Name: XSTR("Tango 1", 3479)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -9064.690430, 15006.099609, -5401.414551
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 1
+$Docker Point: FighterDock1
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Stargazer 4		;! Object #55
+$Display Name: XSTR("Stargazer 4", 3567)
+$Class: Stargazer-class Freighter
+$Team: Hostile
+$Location: -3549.871582, 8567.958984, -5903.180664
+$Orientation:
+	1.000000, -0.000000, -0.000000,
+	0.000000, 1.000000, -0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( is-event-true-delay 
+      "we gotta go" 
+      60 
+   )
+   ( not 
+      ( is-event-true-delay "exit camera" 0 ) 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Zulu 1
+$Docker Point: Docking Point
+$Dockee Point: FighterDock1
++Docked With: Zulu 2
+$Docker Point: Docking Point
+$Dockee Point: FighterDock2
++Docked With: Zulu 3
+$Docker Point: Docking Point
+$Dockee Point: FighterDock3
++Docked With: Zulu 4
+$Docker Point: Docking Point
+$Dockee Point: FighterDock4
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Zulu 4		;! Object #56
+$Display Name: XSTR("Zulu 4", 3568)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -3572.371582, 8574.058594, -5964.180664
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 4
+$Docker Point: FighterDock4
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Zulu 3		;! Object #57
+$Display Name: XSTR("Zulu 3", 3569)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -3572.371582, 8574.058594, -5929.180664
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 4
+$Docker Point: FighterDock3
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Zulu 2		;! Object #58
+$Display Name: XSTR("Zulu 2", 3271)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -3572.371582, 8574.058594, -5893.680664
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 4
+$Docker Point: FighterDock2
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Zulu 1		;! Object #59
+$Display Name: XSTR("Zulu 1", 3270)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -3572.371582, 8574.058594, -5858.680664
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 4
+$Docker Point: FighterDock1
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Stargazer 3		;! Object #60
+$Display Name: XSTR("Stargazer 3", 3570)
+$Class: Stargazer-class Freighter
+$Team: Hostile
+$Location: -3881.011719, 8567.958984, -5313.367676
+$Orientation:
+	1.000000, -0.000000, -0.000000,
+	0.000000, 1.000000, -0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Stargazer 4" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Yankee 1
+$Docker Point: Docking Point
+$Dockee Point: FighterDock1
++Docked With: Yankee 2
+$Docker Point: Docking Point
+$Dockee Point: FighterDock2
++Docked With: Yankee 3
+$Docker Point: Docking Point
+$Dockee Point: FighterDock3
++Docked With: Yankee 4
+$Docker Point: Docking Point
+$Dockee Point: FighterDock4
++Docked With: Xray 1
+$Docker Point: Docking Point
+$Dockee Point: FighterDock5
++Docked With: Xray 2
+$Docker Point: Docking Point
+$Dockee Point: FighterDock6
++Docked With: Xray 3
+$Docker Point: Docking Point
+$Dockee Point: FighterDock7
++Docked With: Xray 4
+$Docker Point: Docking Point
+$Dockee Point: FighterDock8
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Xray 4		;! Object #61
+$Display Name: XSTR("Xray 4", 3571)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -3858.511719, 8574.058594, -5374.367676
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 3
+$Docker Point: FighterDock8
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Xray 3		;! Object #62
+$Display Name: XSTR("Xray 3", 3572)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -3858.511719, 8574.058594, -5339.367676
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 3
+$Docker Point: FighterDock7
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Xray 2		;! Object #63
+$Display Name: XSTR("Xray 2", 3274)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -3858.511719, 8574.058594, -5303.867676
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 3
+$Docker Point: FighterDock6
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Xray 1		;! Object #64
+$Display Name: XSTR("Xray 1", 3273)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: -3858.511719, 8574.058594, -5268.867676
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 3
+$Docker Point: FighterDock5
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Yankee 4		;! Object #65
+$Display Name: XSTR("Yankee 4", 3573)
+$Class: Jackal-class Gunship
+$Team: Hostile
+$Location: -3903.511719, 8574.559570, -5379.367676
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 3
+$Docker Point: FighterDock4
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Yankee 3		;! Object #66
+$Display Name: XSTR("Yankee 3", 3269)
+$Class: Jackal-class Gunship
+$Team: Hostile
+$Location: -3903.511719, 8574.559570, -5344.367676
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 3
+$Docker Point: FighterDock3
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Yankee 2		;! Object #67
+$Display Name: XSTR("Yankee 2", 3268)
+$Class: Jackal-class Gunship
+$Team: Hostile
+$Location: -3903.511719, 8574.559570, -5308.867676
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 3
+$Docker Point: FighterDock2
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Yankee 1		;! Object #68
+$Display Name: XSTR("Yankee 1", 3267)
+$Class: Jackal-class Gunship
+$Team: Hostile
+$Location: -3903.511719, 8574.559570, -5273.867676
+$Orientation:
+	-1.000000, 0.000000, 0.000000,
+	0.000000, -1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Stargazer 3
+$Docker Point: FighterDock1
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Landscape 81		;! Object #69
+$Display Name: XSTR("Landscape 81", 3574)
+$Class: Landscape 1
+$Team: Neutral
+$Location: -3908.695068, -316.315887, 23701.523438
+$Orientation:
+	-0.999974, -0.000000, -0.007264,
+	-0.000001, 1.000000, 0.000097,
+	0.007264, 0.000097, -0.999974
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-subspace-drive" "immobile" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+#Wings		;! 10 total
+
+$Name: Bravo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Bravo 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Bravo 1"
+)
+$AI Goals: ( goals ( ai-play-dead 50 ) )
++Flags: ( "no-dynamic" )
+
+$Name: Alfa
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alfa 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Alfa 1"
+)
+$AI Goals: ( goals ( ai-play-dead 50 ) )
++Flags: ( )
+
+$Name: Tango
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Tango 1
+$Arrival Location: Hyperspace
++Arrival delay: 10
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "blackout" 0 ) 
+$Ships: (		;! 3 total
+	"Tango 1"
+	"Tango 2"
+	"Tango 3"
+)
++Hotkey: 4
++Flags: ( "no-arrival-message" "no-departure-warp" )
+
+$Name: Uniform
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Uniform 1
+$Arrival Location: Hyperspace
++Arrival delay: 14
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "blackout" 0 ) 
+$Ships: (		;! 3 total
+	"Uniform 1"
+	"Uniform 2"
+	"Uniform 3"
+)
++Hotkey: 4
++Flags: ( "no-arrival-message" "no-departure-warp" )
+
+$Name: Victor
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Victor 1
+$Arrival Location: Hyperspace
++Arrival delay: 18
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "blackout" 0 ) 
+$Ships: (		;! 3 total
+	"Victor 1"
+	"Victor 2"
+	"Victor 3"
+)
++Hotkey: 4
++Flags: ( "no-arrival-message" "no-departure-warp" )
+
+$Name: Whiskey
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Whiskey 1
+$Arrival Location: Hyperspace
++Arrival delay: 22
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "blackout" 0 ) 
+$Ships: (		;! 3 total
+	"Whiskey 1"
+	"Whiskey 2"
+	"Whiskey 3"
+)
++Hotkey: 4
++Flags: ( "no-arrival-message" "no-departure-warp" )
+
+$Name: Yankee
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Yankee 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "blackout" 0 ) 
+$Ships: (		;! 4 total
+	"Yankee 1"
+	"Yankee 2"
+	"Yankee 3"
+	"Yankee 4"
+)
++Hotkey: 4
++Flags: ( "no-departure-warp" )
+
+$Name: Xray
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Xray 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "blackout" 0 ) 
+$Ships: (		;! 4 total
+	"Xray 1"
+	"Xray 2"
+	"Xray 3"
+	"Xray 4"
+)
++Hotkey: 4
++Flags: ( "no-departure-warp" )
+
+$Name: Zulu
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Zulu 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "blackout" 0 ) 
+$Ships: (		;! 4 total
+	"Zulu 1"
+	"Zulu 2"
+	"Zulu 3"
+	"Zulu 4"
+)
++Hotkey: 4
++Flags: ( "no-departure-warp" )
+
+$Name: Sierra
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Sierra 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Sierra 1"
+	"Sierra 2"
+)
++Flags: ( )
+
+#Events		;! 186 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[#Courier]" 
+      "#Courier" 
+      3687 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[#Erikson]" 
+      "#Erikson" 
+      3471 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      0 
+   )
+   ( script-eval-block 
+      "Scroll:Write(" 
+      "'title1'," 
+      "15,12,0.05,2,2,true,2,false)" 
+   )
+)
++Name: title
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( script-eval "g_sGr('Landscape 2')" ) 
+   ( script-eval "g_enable()" ) 
+   ( script-eval "g_sGr('Landscape 7')" ) 
+   ( script-eval "g_sGr('Landscape 8')" ) 
+   ( script-eval "g_sGr('Landscape 9')" ) 
+   ( script-eval "g_sGr('Landscape 10')" ) 
+   ( script-eval "g_sGr('Landscape 11')" ) 
+   ( script-eval "g_sGr('Landscape 12')" ) 
+   ( script-eval "g_sGr('Landscape 13')" ) 
+   ( script-eval "g_sGr('Landscape 14')" ) 
+   ( script-eval "g_setG(10.0)" ) 
+)
++Name: gravity script
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay "blackout" 0 ) 
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+   )
+   ( script-eval "g_disable()" ) 
+)
++Name: gravity disable
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "courier 1 undocks" 
+      30 
+   )
+   ( add-ai-goal-track-ship 
+      "Courier 1" 
+      "Hoshikuzu" 
+      "shuttle 1 escort" 
+      100 
+      400 
+      0 
+      0 
+   )
+   ( add-ai-goal-track-ship 
+      "Courier 2" 
+      "Hoshikuzu" 
+      "shuttle 2 escort" 
+      100 
+      -400 
+      0 
+      0 
+   )
+)
++Name: shuttle escort positions
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "get out of here" 
+      5 
+   )
+   ( add-goal 
+      "Hoshikuzu" 
+      ( ai-waypoints-once 
+         "shuttles retreat" 
+         89 
+      )
+   )
+)
++Name: hoshi retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( cap-waypoint-speed "Hoshikuzu" 35 ) 
+)
++Name: waypoint speed
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "breaking off" 
+      5 
+   )
+   ( remove-ai-goal-track-ship 
+      "Courier 2" 
+      "shuttle 2 escort" 
+   )
+   ( remove-ai-goal-track-ship 
+      "Courier 1" 
+      "shuttle 1 escort" 
+   )
+   ( add-ai-goal-track-ship 
+      "Courier 1" 
+      "Courier 2" 
+      "shuttle 1 escort" 
+      100 
+      100 
+      -500 
+      0 
+   )
+   ( add-goal 
+      "Courier 2" 
+      ( ai-waypoints-once 
+         "shuttles retreat" 
+         200 
+      )
+   )
+)
++Name: shuttle retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Bravo 1" ) 
+   ( add-goal 
+      "Bravo 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( add-goal 
+      "Alfa 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( cap-waypoint-speed "Hoshikuzu" 40 ) 
+   ( ship-subsys-guardian-threshold 
+      70 
+      "Hoshikuzu" 
+      "<all turrets>" 
+      "Weapons" 
+      "Communication" 
+      "Navigation" 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Courier 2" 
+      "<all engines>" 
+      "Navigation" 
+      "Communication" 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Courier 1" 
+      "<all engines>" 
+      "Navigation" 
+      "Communication" 
+   )
+   ( ship-guardian-threshold 35 "Alfa 1" ) 
+   ( set-support-ship 
+      "Docking Bay" 
+      "Hoshikuzu" 
+      "Docking Bay" 
+      "Hoshikuzu" 
+      "<species support ship class>" 
+      0 
+      0 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Hoshikuzu" 
+      "<all engines>" 
+   )
+   ( ship-guardian-threshold 
+      55 
+      "Hoshikuzu" 
+   )
+   ( lua-mark-ship "Meiks" "Alfa 1" ) 
+   ( lua-radaricon-activate 
+      "Friendly" 
+      "Hostile" 
+      "Neutral" 
+      "Unknown" 
+      "Surrendered" 
+      "Traitor" 
+   )
+)
++Name: mission setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Londinium" ) 
+   ( ship-subsys-guardian-threshold 
+      70 
+      "Londinium" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      70 
+      "Nubia 1" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      70 
+      "Nubia 2" 
+      "<all engines>" 
+   )
+)
++Name: malikan ships setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( key-pressed "Alt-D" ) 
+   ( jettison-cargo 
+      "Hoshikuzu" 
+      100 
+      "Bravo 1" 
+   )
+   ( training-msg "detach" ) 
+)
++Name: dir undock
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Undock from Hoshikuzu", 3276)
++Objective key:  XSTR("$Alt-D$", 2786)
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "dir undock" 
+      200 
+   )
+   ( jettison-cargo 
+      "Hoshikuzu" 
+      100 
+      "Alfa 1" 
+   )
+)
++Name: alfa undocks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "dir undock" 
+      2500 
+   )
+   ( player-not-use-ai ) 
+   ( clear-goals "Alfa 1" ) 
+)
++Name: player regain control
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: hoshi moves
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "player regain control" 
+      5 
+   )
+   ( add-goal 
+      "Alfa 1" 
+      ( ai-guard "Hoshikuzu" 89 ) 
+   )
+)
++Name: alfa guards
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( lua-save-file-exists ) 
+      ( is-event-true-msecs-delay 
+         "dir undock" 
+         2550 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "observe rules" 
+            0 
+         )
+      )
+   )
+   ( lua-call-prompt 
+      "LoadData" 
+      "Checkpoint Save" 
+      ( true ) 
+      "Start from beginning" 
+      ( true ) 
+      "Start from checkpoint" 
+      ( lua-save-file-exists ) 
+   )
+)
++Name: load data prompt
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = 
+      ( lua-get-prompt-response "LoadData" ) 
+      2 
+   )
+   ( lua-load-init ) 
+   ( lua-load-ship 
+      3 
+      "Hoshikuzu" 
+      "Alfa 1" 
+      "Bravo 1" 
+      "Courier 2" 
+      "Courier 1" 
+   )
+)
++Name: checkpoint load
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file 
+      "Music_CW_Ambient1" 
+      99 
+   )
+)
++Name: music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay "liftoff" 10 ) 
+      ( is-event-true-delay "blackout" 0 ) 
+   )
+   ( add-goal 
+      "Courier 2" 
+      ( ai-undock 89 ) 
+   )
+)
++Name: courier 2 undocks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Courier 1" 
+      ( ai-undock 89 ) 
+   )
+)
++Name: courier 1 undocks
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+   )
+   ( move-to-orientation 
+      "Hoshikuzu" 
+      0 
+      0 
+      0 
+      0 
+      -1 
+      -1 
+   )
+)
++Name: hoshikuzu aligns
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Londinium" ) 
+   ( play-sound-from-file 
+      "Music_CW_Battle1" 
+      99 
+   )
+)
++Name: battle music 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 15 "Londinium" ) 
+   ( ship-maneuver 
+      "Londinium" 
+      160000 
+      0 
+      0 
+      0 
+      ( true ) 
+      -70 
+      0 
+      0 
+      ( true ) 
+      2 
+   )
+   ( ship-maneuver 
+      "Nubia 1" 
+      160000 
+      0 
+      0 
+      0 
+      ( true ) 
+      -70 
+      0 
+      0 
+      ( true ) 
+   )
+   ( ship-maneuver 
+      "Nubia 2" 
+      160000 
+      0 
+      0 
+      0 
+      ( true ) 
+      -70 
+      0 
+      0 
+      ( true ) 
+   )
+   ( ship-maneuver 
+      "Fusillade" 
+      160000 
+      0 
+      0 
+      0 
+      ( true ) 
+      -70 
+      0 
+      0 
+      ( true ) 
+      2 
+   )
+   ( ship-maneuver 
+      "Ivory Dagger" 
+      160000 
+      0 
+      0 
+      0 
+      ( true ) 
+      -70 
+      0 
+      0 
+      ( true ) 
+      2 
+   )
+)
++Name: malikan ships descend
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( jettison-cargo "Stargazer 1" 100 ) 
+   ( jettison-cargo "Stargazer 2" 100 ) 
+)
++Name: eject fighters
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Tango" 
+      ( ai-chase "Courier 2" 89 ) 
+   )
+   ( add-goal 
+      "Uniform" 
+      ( ai-chase "Courier 1" 89 ) 
+   )
+   ( add-goal 
+      "Victor" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+   ( add-goal 
+      "Whiskey" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: malikan fighters attack
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "dock fighters" 
+      5 
+   )
+   ( clear-goals "Alfa 1" ) 
+   ( add-goal 
+      "Alfa 1" 
+      ( ai-dock 
+         "Hoshikuzu" 
+         "Docking Point" 
+         "Starb Fighter Rail" 
+         200 
+      )
+   )
+)
++Name: meiks docks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-docked-delay 
+         "Bravo 1" 
+         "Hoshikuzu" 
+         1 
+         4 
+      )
+      ( has-docked-delay 
+         "Alfa 1" 
+         "Hoshikuzu" 
+         1 
+         1 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load" 
+            0 
+         )
+      )
+   )
+   ( clear-goals "Hoshikuzu" ) 
+   ( add-goal 
+      "Hoshikuzu" 
+      ( ai-waypoints-once "hoshi 2" 89 ) 
+   )
+   ( cap-waypoint-speed "Hoshikuzu" 45 ) 
+   ( clear-goals "Bravo 1" ) 
+   ( add-goal 
+      "Bravo 1" 
+      ( ai-play-dead 89 ) 
+   )
+)
++Name: hoshikuzu moves 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "hoshikuzu moves 2" 
+      7100 
+   )
+   ( set-camera-position 
+      ( get-object-x "exit camera 1:1" ) 
+      ( get-object-y "exit camera 1:1" ) 
+      ( get-object-z "exit camera 1:1" ) 
+   )
+   ( set-camera-target 
+      "Rasputin-class Corvette 52" 
+   )
+   ( ship-invulnerable 
+      "Hoshikuzu" 
+      "Bravo 1" 
+   )
+   ( set-object-position 
+      "Hoshikuzu" 
+      ( get-object-x "hoshi 2:1" ) 
+      ( get-object-y "hoshi 2:1" ) 
+      ( get-object-z "hoshi 2:1" ) 
+   )
+   ( set-object-orientation 
+      "Hoshikuzu" 
+      0 
+      0 
+      0 
+   )
+   ( set-object-position 
+      "Courier 1" 
+      ( + ( get-object-x "hoshi 2:1" ) 400 ) 
+      ( get-object-y "hoshi 2:1" ) 
+      ( get-object-z "hoshi 2:1" ) 
+   )
+   ( set-object-position 
+      "Courier 2" 
+      ( - ( get-object-x "hoshi 2:1" ) 400 ) 
+      ( get-object-y "hoshi 2:1" ) 
+      ( get-object-z "hoshi 2:1" ) 
+   )
+   ( set-object-orientation 
+      "Courier 2" 
+      0 
+      0 
+      0 
+   )
+   ( set-object-orientation 
+      "Courier 1" 
+      0 
+      0 
+      0 
+   )
+)
++Name: exit camera
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "exit camera 1:1" ) 
+      ( get-object-y "exit camera 1:1" ) 
+      ( get-object-z "exit camera 1:1" ) 
+      35000 
+   )
+)
++Name: exit camera move
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( or 
+      ( has-departed-delay 
+         0 
+         "Rasputin-class Corvette 52" 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+   )
+   ( fade-out ) 
+   ( close-sound-from-file ( false ) ) 
+   ( adjust-audio-volume "Effects" 0 100 ) 
+   ( set-time-compression 1000 ) 
+)
++Name: blackout
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( reset-camera ( true ) ) 
+   ( ship-vanish 
+      "Dock Point" 
+      "Landscape 2" 
+      "Landscape 7" 
+      "Landscape 8" 
+      "Landscape 9" 
+      "Landscape 10" 
+      "Landscape 11" 
+      "Landscape 12" 
+      "Landscape 13" 
+      "Landscape 14" 
+      "Kotus Control" 
+      "City Layer" 
+      "Ground Hangar" 
+      "Ground Hangar 17" 
+      "Ground Warehouse 18" 
+      "Ground Warehouse 19" 
+      "Light Turret Tower 1" 
+      "Light Turret Tower 21" 
+      "Ground Panel 25" 
+      "Antennae 26" 
+      "Antennae 27" 
+      "Ground Panel 28" 
+      "Londinium" 
+      "Nubia 1" 
+      "Nubia 2" 
+      "Zulu 1" 
+      "Zulu 2" 
+      "Zulu 3" 
+      "Zulu 4" 
+      "Xray 1" 
+      "Xray 2" 
+      "Xray 3" 
+      "Xray 4" 
+      "Yankee 1" 
+      "Yankee 2" 
+      "Yankee 3" 
+      "Yankee 4" 
+      "Stargazer 3" 
+      "Stargazer 4" 
+      "Fusillade" 
+      "Ivory Dagger" 
+      "Stargazer 2" 
+      "Stargazer 1" 
+      "Landscape 81" 
+   )
+   ( set-object-position 
+      "Hoshikuzu" 
+      ( get-object-x "Hoshikuzu approach:1" ) 
+      ( get-object-y "Hoshikuzu approach:1" ) 
+      ( get-object-z "Hoshikuzu approach:1" ) 
+   )
+   ( set-object-position 
+      "Courier 1" 
+      ( + 
+         ( get-object-x "Hoshikuzu approach:1" ) 
+         400 
+      )
+      ( get-object-y "Hoshikuzu approach:1" ) 
+      ( get-object-z "Hoshikuzu approach:1" ) 
+   )
+   ( set-object-position 
+      "Courier 2" 
+      ( - 
+         ( get-object-x "Hoshikuzu approach:1" ) 
+         400 
+      )
+      ( get-object-y "Hoshikuzu approach:1" ) 
+      ( get-object-z "Hoshikuzu approach:1" ) 
+   )
+   ( hud-disable 0 ) 
+)
++Name: reset camera
++Repeat Count: 1
++Interval: 1
++Chained: 35
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-in 1500 ) 
+   ( key-reset "Alt-D" ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      100 
+      100 
+   )
+   ( set-time-compression 100 ) 
+)
++Name: fadein new scene
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "fadein new scene" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: trig dir undock 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( key-pressed "Alt-D" ) 
+   ( jettison-cargo 
+      "Hoshikuzu" 
+      100 
+      "Bravo 1" 
+   )
+   ( training-msg "detach" ) 
+)
++Name: dir undock 2
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Undock from Hoshikuzu", 3276)
++Objective key:  XSTR("$Alt-D$", 2786)
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "dir undock 2" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+   )
+   ( set-support-ship 
+      "Docking Bay" 
+      "Hoshikuzu" 
+      "Docking Bay" 
+      "Hoshikuzu" 
+      "<species support ship class>" 
+      -1 
+      1 
+   )
+)
++Name: support ship allow
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "dir undock 2" 
+      200 
+   )
+   ( jettison-cargo 
+      "Hoshikuzu" 
+      100 
+      "Alfa 1" 
+   )
+)
++Name: alfa undocks 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "dir undock 2" 
+      2500 
+   )
+   ( player-not-use-ai ) 
+   ( clear-goals "Alfa 1" ) 
+)
++Name: player regain control 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "player regain control 2" 
+      5 
+   )
+   ( add-goal 
+      "Alfa 1" 
+      ( ai-guard "Hoshikuzu" 89 ) 
+   )
+)
++Name: alfa guards 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance "<any friendly>" "Nassau" ) 
+         4500 
+      )
+      ( is-event-true-delay 
+         "couldn't resist" 
+         6 
+      )
+   )
+   ( change-iff 
+      "Hostile" 
+      "Nassau" 
+      "Sierra 1" 
+      "Sierra 2" 
+   )
+   ( ship-unstealthy 
+      "Sierra 1" 
+      "Sierra 2" 
+   )
+   ( ship-guardian-threshold 5 "Nassau" ) 
+   ( ship-guardian-threshold 
+      0 
+      "Hoshikuzu" 
+   )
+)
++Name: nassau goes hostile
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( jettison-cargo "Nassau" 100 ) 
+)
++Name: eject sierra
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Sierra" 
+      ( ai-guard "Nassau" 89 ) 
+   )
+)
++Name: sierra orders
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Nassau" 
+      ( ai-waypoints-once 
+         "shuttles retreat" 
+         89 
+      )
+   )
+   ( turret-free-all "Nassau" ) 
+)
++Name: nassau attacks
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "nassau goes hostile" 
+      1 
+   )
+   ( play-sound-from-file 
+      "stormshadow2" 
+      99 
+   )
+)
++Name: nassau combat music
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "breaking off" 
+      10 
+   )
+   ( clear-goals "Hoshikuzu" ) 
+   ( add-ai-goal-track-ship 
+      "Hoshikuzu" 
+      "Nassau" 
+      "hoshi 2" 
+      0 
+      0 
+      -300 
+      -500 
+   )
+   ( cap-waypoint-speed "Hoshikuzu" -1 ) 
+)
++Name: hoshi moves behind N
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Hoshikuzu" ) 
+   ( add-ai-goal-track-ship 
+      "Hoshikuzu" 
+      "Nassau" 
+      "hoshi 2" 
+      0 
+      0 
+      0 
+      -500 
+   )
+)
++Name: hoshi moves behind N 2
++Repeat Count: 1
++Interval: 1
++Chained: 50
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "then turn around" 
+      2 
+   )
+   ( clear-goals "Nassau" ) 
+   ( add-goal 
+      "Nassau" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: N attacks H
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "in blind spot" 
+      0 
+   )
+   ( turret-lock 
+      "Nassau" 
+      "mturret01" 
+      "mturret02" 
+   )
+   ( protect-ship 
+      "Courier 1" 
+      "Courier 2" 
+   )
+   ( turret-unprotect-ship 
+      "missile" 
+      "Hoshikuzu" 
+   )
+)
++Name: pause N missiles
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "Nassau" 
+      "turret01" 
+      0 
+   )
+   ( modify-variable 
+      @nassPDCcount[0] 
+      ( + @nassPDCcount[0] 1 ) 
+   )
+)
++Name: turrets variables 1
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "Nassau" 
+      "turret02" 
+      0 
+   )
+   ( modify-variable 
+      @nassPDCcount[0] 
+      ( + @nassPDCcount[0] 1 ) 
+   )
+)
++Name: turret variables 2
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "Nassau" 
+      "turret03" 
+      0 
+   )
+   ( modify-variable 
+      @nassPDCcount[0] 
+      ( + @nassPDCcount[0] 1 ) 
+   )
+)
++Name: turret variables 3
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "Nassau" 
+      "turret04" 
+      0 
+   )
+   ( modify-variable 
+      @nassPDCcount[0] 
+      ( + @nassPDCcount[0] 1 ) 
+   )
+)
++Name: turret variables 4
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "Nassau" 
+      "turret05" 
+      0 
+   )
+   ( modify-variable 
+      @nassPDCcount[0] 
+      ( + @nassPDCcount[0] 1 ) 
+   )
+)
++Name: turret variables 5
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "Nassau" 
+      "turret06" 
+      0 
+   )
+   ( modify-variable 
+      @nassPDCcount[0] 
+      ( + @nassPDCcount[0] 1 ) 
+   )
+)
++Name: turret variables 6
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "do it now" 8 ) 
+      ( not 
+         ( and 
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret01" 
+               0 
+            )
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret02" 
+               0 
+            )
+         )
+      )
+   )
+   ( turret-free-all "Nassau" ) 
+)
++Name: restart asms
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "restart asms" 
+         0 
+      )
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "mturret01" 
+            0 
+         )
+      )
+      ( false ) 
+   )
+   ( weapon-create 
+      "Nassau" 
+      "Kai III" 
+      ( get-object-x "Nassau" "mturret01" ) 
+      ( get-object-y "Nassau" "mturret01" ) 
+      ( get-object-z "Nassau" "mturret01" ) 
+      ( get-object-pitch "Nassau" ) 
+      ( get-object-bank "Nassau" ) 
+      ( get-object-heading "Nassau" ) 
+      "Hoshikuzu" 
+   )
+   ( weapon-create 
+      "Nassau" 
+      "Kai III" 
+      ( get-object-x "Nassau" "mturret01" ) 
+      ( get-object-y "Nassau" "mturret01" ) 
+      ( get-object-z "Nassau" "mturret01" ) 
+      ( get-object-pitch "Nassau" ) 
+      ( get-object-bank "Nassau" ) 
+      ( get-object-heading "Nassau" ) 
+      "Hoshikuzu" 
+   )
+   ( weapon-create 
+      "Nassau" 
+      "Kai III" 
+      ( get-object-x "Nassau" "mturret01" ) 
+      ( get-object-y "Nassau" "mturret01" ) 
+      ( get-object-z "Nassau" "mturret01" ) 
+      ( get-object-pitch "Nassau" ) 
+      ( get-object-bank "Nassau" ) 
+      ( get-object-heading "Nassau" ) 
+      "Hoshikuzu" 
+   )
+   ( weapon-create 
+      "Nassau" 
+      "Kai III" 
+      ( get-object-x "Nassau" "mturret01" ) 
+      ( get-object-y "Nassau" "mturret01" ) 
+      ( get-object-z "Nassau" "mturret01" ) 
+      ( get-object-pitch "Nassau" ) 
+      ( get-object-bank "Nassau" ) 
+      ( get-object-heading "Nassau" ) 
+      "Hoshikuzu" 
+   )
+)
++Name: fire mturret01
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "restart asms" 
+         0 
+      )
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "mturret02" 
+            0 
+         )
+      )
+      ( false ) 
+   )
+   ( weapon-create 
+      "Nassau" 
+      "Kai III" 
+      ( get-object-x "Nassau" "mturret02" ) 
+      ( get-object-y "Nassau" "mturret02" ) 
+      ( get-object-z "Nassau" "mturret02" ) 
+      ( get-object-pitch "Nassau" ) 
+      ( get-object-bank "Nassau" ) 
+      ( get-object-heading "Nassau" ) 
+      "Hoshikuzu" 
+   )
+   ( weapon-create 
+      "Nassau" 
+      "Kai III" 
+      ( get-object-x "Nassau" "mturret02" ) 
+      ( get-object-y "Nassau" "mturret02" ) 
+      ( get-object-z "Nassau" "mturret02" ) 
+      ( get-object-pitch "Nassau" ) 
+      ( get-object-bank "Nassau" ) 
+      ( get-object-heading "Nassau" ) 
+      "Hoshikuzu" 
+   )
+   ( weapon-create 
+      "Nassau" 
+      "Kai III" 
+      ( get-object-x "Nassau" "mturret02" ) 
+      ( get-object-y "Nassau" "mturret02" ) 
+      ( get-object-z "Nassau" "mturret02" ) 
+      ( get-object-pitch "Nassau" ) 
+      ( get-object-bank "Nassau" ) 
+      ( get-object-heading "Nassau" ) 
+      "Hoshikuzu" 
+   )
+   ( weapon-create 
+      "Nassau" 
+      "Kai III" 
+      ( get-object-x "Nassau" "mturret02" ) 
+      ( get-object-y "Nassau" "mturret02" ) 
+      ( get-object-z "Nassau" "mturret02" ) 
+      ( get-object-pitch "Nassau" ) 
+      ( get-object-bank "Nassau" ) 
+      ( get-object-heading "Nassau" ) 
+      "Hoshikuzu" 
+   )
+)
++Name: fire mturret02
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( >= @nassPDCcount[0] 3 ) 
+   ( do-nothing ) 
+)
++Name: losing turrets trig
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( < ( hits-left "Nassau" ) 8 ) 
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "turret01" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "turret02" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "turret03" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "turret04" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "turret05" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "turret06" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "mturret01" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "mturret02" 
+            0 
+         )
+      )
+   )
+   ( change-iff "Surrendered" "Nassau" ) 
+   ( clear-goals "Nassau" ) 
+   ( add-goal 
+      "Nassau" 
+      ( ai-play-dead 89 ) 
+   )
+   ( remove-ai-goal-track-ship 
+      "Hoshikuzu" 
+      "hoshi 2" 
+   )
+   ( remove-ai-goal-track-ship 
+      "Nassau" 
+      "nassau chases H" 
+   )
+   ( close-sound-from-file ) 
+   ( ship-stealthy "Nassau" ) 
+   ( protect-ship "Nassau" ) 
+   ( add-remove-escort "Nassau" 0 ) 
+   ( deactivate-glow-maps "Nassau" ) 
+   ( clear-goals "Alfa 1" ) 
+)
++Name: nassau crippled
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Hoshikuzu" ) 
+   ( do-nothing ) 
+)
++Name: hoshi destroyed
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 4 "Hoshikuzu" ) 
+      ( is-destroyed-delay 4 "Courier 1" ) 
+      ( is-destroyed-delay 4 "Courier 2" ) 
+   )
+   ( fade-out 1500 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      2000 
+   )
+)
++Name: fadeout bad
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file "dirtangelend" ) 
+   ( self-destruct "Bravo 1" ) 
+   ( hud-disable 1 ) 
+)
++Name: mission failed title
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 3 "Bravo 1" ) 
+      ( not 
+         ( is-event-true-delay "fadeout bad" 0 ) 
+      )
+   )
+   ( fade-out 1500 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      2000 
+   )
+   ( ship-invulnerable 
+      "Hoshikuzu" 
+      "Courier 1" 
+      "Courier 2" 
+   )
+)
++Name: player dead fadeout
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file 
+      "stormshadowend" 
+   )
+   ( hud-disable 1 ) 
+)
++Name: player dead title
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( distance "Courier 1" "Nassau" ) 
+         11080 
+      )
+      ( is-event-true-delay 
+         "it's working" 
+         0 
+      )
+   )
+   ( clear-goals "Courier 2" ) 
+)
++Name: transports pause
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 10 "Stargazer 3" ) 
+   ( jettison-cargo "Stargazer 4" 100 ) 
+   ( jettison-cargo "Stargazer 3" 100 ) 
+)
++Name: new fighters eject
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Zulu" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+   ( add-goal 
+      "Xray" 
+      ( ai-guard "Yankee" 89 ) 
+   )
+   ( add-goal 
+      "Yankee" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: new fighter orders
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "time to work" 
+      10 
+   )
+   ( do-nothing ) 
+)
++Name: arrival trig 1
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "arrival trig 1" 
+      ( rand-multiple 500 3000 ) 
+   )
+   ( do-nothing ) 
+)
++Name: arrival trig 2
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "arrival trig 1" 
+      ( rand-multiple 500 3000 ) 
+   )
+   ( do-nothing ) 
+)
++Name: arrival trig 3
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "arrival trig 1" 
+      ( rand-multiple 500 3000 ) 
+   )
+   ( do-nothing ) 
+)
++Name: arrival trig 4
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "arrival trig 1" 
+      ( rand-multiple 500 3000 ) 
+   )
+   ( do-nothing ) 
+)
++Name: arrival trig 5
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "arrival trig 1" 
+      ( rand-multiple 500 3000 ) 
+   )
+   ( do-nothing ) 
+)
++Name: arrival trig 6
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "arrival trig 1" 
+      ( rand-multiple 500 3000 ) 
+   )
+   ( do-nothing ) 
+)
++Name: arrival trig 7
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "arrival trig 1" 
+      ( rand-multiple 500 3000 ) 
+   )
+   ( do-nothing ) 
+)
++Name: arrival trig 8
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: >>>>MESSAGES<<<<
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "player regain control" 
+         3 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Kotus Control" 
+      "High" 
+      "observe rules" 
+   )
+)
++Name: observe rules
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Courier 2" 
+      "High" 
+      "transports finalising" 
+   )
+)
++Name: transports finalising
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "hoshi standing by" 
+   )
+)
++Name: hoshi standing by
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "ok stay close" 
+   )
+)
++Name: ok stay close
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "still working for CW" 
+   )
+)
++Name: still working for CW
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "wouldn't have to" 
+   )
+)
++Name: not on half pay
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "too preoccupied" 
+   )
+)
++Name: too preoccupied
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "doesn't mean you withdraw" 
+   )
+)
++Name: doesn't mean you withdraw
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "things going on" 
+   )
+)
++Name: things going on
++Repeat Count: 1
++Interval: 1
++Chained: 10
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Courier 2" 
+      "High" 
+      "ready to depart" 
+   )
+)
++Name: ready to depart
++Repeat Count: 1
++Interval: 1
++Chained: 10
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "are you ok" 
+   )
+)
++Name: are you ok
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Courier 2" 
+      "High" 
+      "security issues" 
+   )
+)
++Name: security issues
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "serious time" 
+   )
+)
++Name: serious time
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "time to work" 
+   )
+)
++Name: time to work
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 4 "Londinium" ) 
+   ( send-message 
+      "Kotus Control" 
+      "High" 
+      "cruiser here" 
+   )
+)
++Name: cruiser here
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "size of that bastard" 
+   )
+)
++Name: size of that bastard
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "carrier descending" 
+      9 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "hurry up transports" 
+   )
+)
++Name: hurry up transports
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Courier 2" 
+      "High" 
+      "give us time" 
+   )
+)
++Name: give us time
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "incoming fighters" 
+   )
+)
++Name: incoming fighters
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "Tango" 
+      "Uniform" 
+      "Victor" 
+      "Whiskey" 
+   )
+   ( do-nothing ) 
+)
++Name: dir destroy fighters
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy fighters", 3575)
++Objective key:  XSTR("F9", 2673)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "incoming fighters" 
+      6 
+   )
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "look at them all" 
+   )
+)
++Name: look at them all
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "attacking civilians" 
+   )
+)
++Name: attacking civilians
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "give us time" 
+         50 
+      )
+      ( not 
+         ( or 
+            ( is-destroyed-delay 0 "Courier 2" ) 
+            ( is-destroyed-delay 0 "Courier 1" ) 
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Courier]" 
+      "High" 
+      "liftoff" 
+   )
+)
++Name: liftoff
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-undocked-delay 
+         "Courier 1" 
+         "Ground Hangar" 
+         1 
+         5 
+      )
+      ( not 
+         ( or 
+            ( is-destroyed-delay 0 "Courier 2" ) 
+            ( is-destroyed-delay 0 "Courier 1" ) 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Courier]" 
+      "High" 
+      "finally" 
+   )
+)
++Name: finally
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( or 
+         ( is-destroyed-delay 0 "Courier 2" ) 
+         ( is-destroyed-delay 0 "Courier 1" ) 
+      )
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "dock fighters" 
+   )
+   ( key-reset "Alt-D" ) 
+   ( protect-ship "Hoshikuzu" ) 
+)
++Name: dock fighters
++Repeat Count: 1
++Interval: 1
++Chained: 30
+
+$Formula: ( when 
+   ( key-pressed "Alt-D" ) 
+   ( player-use-ai ) 
+   ( clear-goals "Bravo 1" ) 
+   ( add-goal 
+      "Bravo 1" 
+      ( ai-dock 
+         "Hoshikuzu" 
+         "Docking Point" 
+         "Port Fighter Rail" 
+         89 
+      )
+   )
+   ( training-msg "docking comp on" ) 
+)
++Name: dir dock hoshikuzu
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Engage auto-dock", 3576)
++Objective key:  XSTR("$Alt-D$", 2786)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "dock fighters" 
+      5 
+   )
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "we gotta go" 
+   )
+)
++Name: we gotta go
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Bravo 1" 
+      "Hoshikuzu" 
+      1 
+      1 
+   )
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "i'm secure" 
+   )
+)
++Name: i'm secure
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Alfa 1" 
+      "Hoshikuzu" 
+      1 
+      1 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "moving to vector" 
+   )
+)
++Name: moving to vector
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-event-true-delay "we gotta go" 0 ) 
+   ( do-nothing ) 
+)
++Name: trig meiks secure
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Alfa 1" 
+      "Hoshikuzu" 
+      1 
+      1 
+   )
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "meiks secure" 
+   )
+)
++Name: meiks secure
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "moving to vector" 
+      7 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "hyperspace jump in" 
+   )
+)
++Name: hyperspace jump in
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "malikan ships descend" 
+      5 
+   )
+   ( send-message 
+      "Kotus Control" 
+      "High" 
+      "carrier descending" 
+   )
+)
++Name: carrier descending
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "fadein new scene" 
+         3 
+      )
+      ( is-event-true-delay 
+         "observe rules" 
+         0 
+      )
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "that was rough" 
+   )
+)
++Name: that was rough
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Courier 1" 
+      "Normal" 
+      "got casualties" 
+   )
+)
++Name: got casualties
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Courier 2" 
+      "Normal" 
+      "got casualties 2" 
+   )
+)
++Name: got casualties 2
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "Normal" 
+      "where is transport" 
+   )
+)
++Name: where is the transport
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "trying to contact" 
+   )
+)
++Name: trying to contact
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "don't like this" 
+   )
+)
++Name: don't like this
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "Normal" 
+      "cw is coming" 
+   )
+)
++Name: cw is coming
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "no reply" 
+   )
+)
++Name: no reply
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Nassau" ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "new contact" 
+   )
+   ( play-sound-from-file 
+      "Music_CW_Ambient4" 
+      99 
+   )
+   ( ship-vulnerable "Bravo 1" ) 
+)
++Name: new contact
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+   )
+   ( lua-save-init ) 
+   ( lua-save-ship 
+      "Hoshikuzu" 
+      "Alfa 1" 
+      "Bravo 1" 
+      "Courier 2" 
+      "Courier 1" 
+   )
+   ( lua-save-done ) 
+)
++Name: CHECKPOINT SAVE
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( is-event-true-delay 
+            "nassau goes hostile" 
+            0 
+         )
+      )
+      ( is-event-true-delay "new contact" 5 ) 
+   )
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "not the elgin" 
+   )
+   ( ship-vulnerable 
+      "Hoshikuzu" 
+      "Courier 2" 
+      "Courier 1" 
+      "Alfa 1" 
+   )
+   ( ship-guardian-threshold 
+      0 
+      "Hoshikuzu" 
+   )
+)
++Name: not the elgin
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "nassau goes hostile" 
+         0 
+      )
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "not her" 
+   )
+)
++Name: not her
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "nassau goes hostile" 
+         0 
+      )
+   )
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "hello kat" 
+   )
+)
++Name: hello kat
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "nassau goes hostile" 
+         0 
+      )
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "kendra" 
+   )
+)
++Name: kendra
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "nassau goes hostile" 
+         0 
+      )
+   )
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "you never called" 
+   )
+)
++Name: you never called
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "nassau goes hostile" 
+         0 
+      )
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "why not" 
+   )
+)
++Name: why not
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "before pleasure" 
+   )
+)
++Name: before pleasure
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "hard to believe" 
+   )
+)
++Name: hard to believe
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "couldn't resist" 
+   )
+)
++Name: couldn't resist
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "nassau attacks" 
+      0 
+   )
+   ( training-msg "asm warning" ) 
+)
++Name: asm warning
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "mturret01" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "mturret02" 
+            0 
+         )
+      )
+   )
+   ( training-msg "asm warning" ) 
+)
++Name: asm warning 2
++Repeat Count: 1
++Interval: 1
++Chained: 60
+
+$Formula: ( when 
+   ( not 
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "mturret01" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "mturret02" 
+            0 
+         )
+      )
+   )
+   ( training-msg "asm warning" ) 
+)
++Name: asm warning 3
++Repeat Count: 1
++Interval: 1
++Chained: 60
+
+$Formula: ( when 
+   ( not 
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "mturret01" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Nassau" 
+            "mturret02" 
+            0 
+         )
+      )
+   )
+   ( training-msg "asm warning" ) 
+)
++Name: asm warning 4
++Repeat Count: 1
++Interval: 1
++Chained: 60
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( and 
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret01" 
+               0 
+            )
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret02" 
+               0 
+            )
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "pause N missiles" 
+            0 
+         )
+      )
+   )
+   ( training-msg "asm warning" ) 
+)
++Name: asm warning 5
++Repeat Count: 1
++Interval: 1
++Chained: 60
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( and 
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret01" 
+               0 
+            )
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret02" 
+               0 
+            )
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "pause N missiles" 
+            0 
+         )
+      )
+   )
+   ( training-msg "asm warning" ) 
+)
++Name: asm warning 6
++Repeat Count: 1
++Interval: 1
++Chained: 60
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( and 
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret01" 
+               0 
+            )
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret02" 
+               0 
+            )
+         )
+      )
+      ( is-event-true-delay 
+         "restart asms" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "nassau crippled" 
+            0 
+         )
+      )
+   )
+   ( training-msg "asm warning" ) 
+)
++Name: asm warning 7
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( and 
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret01" 
+               0 
+            )
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret02" 
+               0 
+            )
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "nassau crippled" 
+            0 
+         )
+      )
+   )
+   ( training-msg "asm warning" ) 
+)
++Name: asm warning 8
++Repeat Count: 1
++Interval: 1
++Chained: 60
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( and 
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret01" 
+               0 
+            )
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret02" 
+               0 
+            )
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "nassau crippled" 
+            0 
+         )
+      )
+   )
+   ( training-msg "asm warning" ) 
+)
++Name: asm warning 9
++Repeat Count: 1
++Interval: 1
++Chained: 60
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "nassau goes hostile" 
+      5 
+   )
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "who the hell" 
+   )
+)
++Name: who the hell
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "get out of here" 
+   )
+)
++Name: get out of here
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Courier 1" 
+      "Normal" 
+      "destroyer too fast" 
+   )
+)
++Name: destroyer too fast
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "you'll buy time" 
+   )
+)
++Name: you'll buy time
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "no one's coming" 
+   )
+)
++Name: no one's coming
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "you destroyed the elgin" 
+   )
+)
++Name: you destroyed the elgin
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "you're faster" 
+   )
+)
++Name: you're faster
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "how much charge" 
+   )
+)
++Name: how much charge
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Courier 1" 
+      "Normal" 
+      "need ten minutes" 
+   )
+)
++Name: need ten minutes
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "not much option" 
+   )
+)
++Name: not much option
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "lau are you considering" 
+   )
+)
++Name: lau are you considering
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "of course not" 
+   )
+)
++Name: of course not
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "getting closer" 
+   )
+)
++Name: getting closer
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "finally beaten" 
+   )
+)
++Name: finally beaten
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "may have ruined" 
+   )
+)
++Name: may have ruined
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "High" 
+      "what the hell" 
+   )
+)
++Name: what the hell
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "not over yet" 
+   )
+)
++Name: not over yet
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "breaking off" 
+   )
+)
++Name: breaking off
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "hoshi moves behind N" 
+      7 
+   )
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "lau what" 
+   )
+)
++Name: lau what
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "lau what" 
+      2700 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "stay with transports" 
+   )
+)
++Name: stay with transports
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "Normal" 
+      "you're no match" 
+   )
+)
++Name: you're no match
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "don't worry" 
+   )
+)
++Name: don't worry
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "futile" 
+   )
+)
++Name: futile
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "take out transports" 
+   )
+)
++Name: take out transports
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "target nassau" 
+   )
+)
++Name: target nassau
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "hoshi moves behind N 2" 
+      20 
+   )
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "what do you mean" 
+   )
+)
++Name: what do you mean
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Hoshikuzu" ) 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "in blind spot" 
+   )
+)
++Name: in blind spot
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Hoshikuzu" ) 
+   )
+   ( send-message 
+      "Nassau" 
+      "High" 
+      "then turn around" 
+   )
+)
++Name: then turn around
++Repeat Count: 1
++Interval: 1
++Chained: 18
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Hoshikuzu" ) 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "it's working" 
+   )
+)
++Name: it's working
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Hoshikuzu" ) 
+   )
+   ( lua-mark-subsystem 
+      "Nassau" 
+      "CIWS" 
+      "turret01" 
+      "turret02" 
+      "turret03" 
+      "turret04" 
+      "turret05" 
+      "turret06" 
+   )
+)
++Name: flag turrets
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Hoshikuzu" ) 
+   )
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "shoot that damn ship" 
+   )
+)
++Name: shoot that damn ship
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "losing turrets trig" 
+         4 
+      )
+      ( not 
+         ( is-event-true-delay "losing hull" 0 ) 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Hoshikuzu" ) 
+      )
+      ( not 
+         ( and 
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret01" 
+               0 
+            )
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret02" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "losing turrets" 
+   )
+)
++Name: losing turrets
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "losing turrets" 
+            12 
+         )
+         ( is-event-true-delay 
+            "losing hull" 
+            12 
+         )
+      )
+      ( not 
+         ( and 
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret01" 
+               0 
+            )
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret02" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "do it now" 
+   )
+   ( turret-unprotect-ship 
+      "missile" 
+      "Hoshikuzu" 
+   )
+   ( add-goal 
+      "Nassau" 
+      ( ai-chase "Hoshikuzu" 89 ) 
+   )
+)
++Name: do it now
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "restart asms" 
+         7 
+      )
+      ( not 
+         ( and 
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret01" 
+               0 
+            )
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret02" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "incoming missiles" 
+   )
+)
++Name: incoming missiles
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Nassau" ) 28 ) 
+      ( not 
+         ( is-event-true-delay 
+            "losing turrets" 
+            0 
+         )
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Hoshikuzu" ) 
+      )
+      ( not 
+         ( and 
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret01" 
+               0 
+            )
+            ( is-subsystem-destroyed-delay 
+               "Nassau" 
+               "mturret02" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "Nassau" 
+      "High" 
+      "losing hull" 
+   )
+)
++Name: losing hull
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "nassau crippled" 
+      3 
+   )
+   ( send-message 
+      "@autoGenVar2[#Erikson]" 
+      "High" 
+      "nassau disabled" 
+   )
+)
++Name: nassau disabled
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "good work" 
+   )
+)
++Name: good work
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "kendra surrender" 
+   )
+)
++Name: kendra surrender
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "typical" 
+   )
+)
++Name: typical
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Nassau" 
+      "Normal" 
+      "fine" 
+   )
+   ( play-sound-from-file 
+      "standproud" 
+      99 
+   )
+)
++Name: fine
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
+      "Normal" 
+      "i'll be damned" 
+   )
+)
++Name: i'll be damned
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "told you" 
+   )
+)
++Name: told you
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( has-arrived-delay 3 "Pollux Arrow" ) 
+   ( send-message 
+      "Pollux Arrow" 
+      "High" 
+      "pollux arrow arrives" 
+   )
+)
++Name: pollux arrow arrives
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "good to see you" 
+   )
+)
++Name: good to see you
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "High" 
+      "need help with nassau" 
+   )
+)
++Name: need help with nassau
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Pollux Arrow" 
+      "High" 
+      "it's a warzone" 
+   )
+)
++Name: it's a warzone
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-out 1500 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      2000 
+   )
+)
++Name: fadeout good
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission complete title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file "neuvictory" ) 
+   ( hud-disable 1 ) 
+)
++Name: mission complete title
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not 
+      ( is-destroyed-delay 0 "Bravo 1" ) 
+   )
+   ( end-mission ) 
+)
++Name: endmission good
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( < ( hits-left "Hoshikuzu" ) 35 ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "corvette critical damage" 
+   )
+)
++Name: corvette critical damage
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 2 "Hoshikuzu" ) 
+   ( send-message 
+      "Alfa 1" 
+      "High" 
+      "hoshikuzu destroyed" 
+   )
+)
++Name: hoshikuzu destroyed
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 2 total
+
+$Type: Primary
++Name: Protect transports
+$MessageNew:  XSTR("Oversee evacuation", 3577)
+$end_multi_text
+$Formula: ( or 
+   ( is-event-true-delay 
+      "fadein new scene" 
+      0 
+   )
+   ( is-event-true-delay 
+      "checkpoint load" 
+      0 
+   )
+)
+
+$Type: Primary
++Name: await elgin
+$MessageNew:  XSTR("Await Elgin transport", 3578)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "good to see you" 
+   2 
+)
+
+#Waypoints		;! 8 lists total
+
+$Name: shuttle 1 escort
+$List: (		;! 1 points in list
+	( -4412.266602, 6621.641602, -2654.435059 )
+)
+
+$Name: shuttle 2 escort
+$List: (		;! 1 points in list
+	( -4634.282715, 6621.641602, -2683.613281 )
+)
+
+$Name: Hoshikuzu approach
+$List: (		;! 1 points in list
+	( -5383.061523, 3887.999512, -5014.603516 )
+)
+
+$Name: hoshi 2
+$List: (		;! 1 points in list
+	( -6126.799805, 50888.000000, 8487.405273 )
+)
+
+$Name: exit camera 1
+$List: (		;! 1 points in list
+	( -5698.902832, 4011.259277, -7721.231445 )
+)
+
+$Name: exit camera 2
+$List: (		;! 1 points in list
+	( -5441.215820, 3755.089355, -7625.737305 )
+)
+
+$Name: shuttles retreat
+$List: (		;! 1 points in list
+	( -81718.640625, 6220.650391, -58440.078125 )
+)
+
+$Name: nassau chases H
+$List: (		;! 1 points in list
+	( 1638.211426, 4163.120117, 112.156250 )
+)
+
+#Messages		;! 117 total
+
+
+$Name: title1
+$Team: -1
+$MessageNew:  XSTR("$quoteReunion$quote", 3579)
+$end_multi_text
+
+$Name: Checkpoint Save
+$Team: -1
+$MessageNew:  XSTR("Checkpoint Save Detected", 2728)
+$end_multi_text
+
+$Name: Start from beginning
+$Team: -1
+$MessageNew:  XSTR("Start from beginning", 2729)
+$end_multi_text
+
+$Name: Start from checkpoint
+$Team: -1
+$MessageNew:  XSTR("Start from checkpoint", 2730)
+$end_multi_text
+
+$Name: title1
+$Team: -1
+$MessageNew:  XSTR("Mission Title", 3286)
+$end_multi_text
+
+$Name: detach
+$Team: -1
+$MessageNew:  XSTR(" ", 2013)
+$end_multi_text
++Wave Name: dock.ogg
+
+$Name: observe rules
+$Team: -1
+$MessageNew:  XSTR("Hoshikuzu, Kotus control. We have your approach vector. Please observe local maritime rules.", 3580)
+$end_multi_text
++Wave Name: 15-01
+
+$Name: still working for CW
+$Team: -1
+$MessageNew:  XSTR("Funny...never thought I'd still be working for his Majesty's Government all the way out here.", 3581)
+$end_multi_text
++Wave Name: 15-02
+
+$Name: wouldn't have to
+$Team: -1
+$MessageNew:  XSTR("We wouldn't have to if Fleet did its job properly.", 3582)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-03
+
+$Name: too preoccupied
+$Team: -1
+$MessageNew:  XSTR("The government's too preoccupied with preparing for war with the Sinarus Combine. To be honest, I don't blame them.", 3583)
+$end_multi_text
++Wave Name: 15-04
+
+$Name: doesn't mean you withdraw
+$Team: -1
+$MessageNew:  XSTR("Doesn't mean you withdraw an entire escort division from a critical trade lane. Not a good look not being able to protect your own embassy staff.", 3584)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-05
+
+$Name: things going on
+$Team: -1
+$MessageNew:  XSTR("There's a lot going on in the background Meiks. I wouldn't pass judgement until I'm sure about what's going on.", 3585)
+$end_multi_text
++Wave Name: 15-06
+
+$Name: light on details
+$Team: -1
+$MessageNew:  XSTR("Your explanation as I recall, was light on details back then.", 3586)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-07
+
+$Name: long story
+$Team: -1
+$MessageNew:  XSTR("Look it's a long story. I don't want to go into it now.", 3587)
+$end_multi_text
++Wave Name: 15-08
+
+$Name: transports finalising
+$Team: -1
+$MessageNew:  XSTR("Hoshikuzu, this is Ambassador Hayburn. Our transport is finalising departure plans, but there's been some security issues.", 3588)
+$end_multi_text
++Wave Name: 15-09
+
+$Name: hoshi standing by
+$Team: -1
+$MessageNew:  XSTR("Acknowledged, Ambassador. Hoshikuzu standing by for your departure confirmation.", 3589)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-10
+
+$Name: ok stay close
+$Team: -1
+$MessageNew:  XSTR("Okay you two, don't stray too far. You're merc pilots, not tourists.", 3590)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-11
+
+$Name: what is this
+$Team: -1
+$MessageNew:  XSTR("What is this, chit chat hour?", 3591)
+$end_multi_text
++Wave Name: 15-12
+
+$Name: you've been quiet
+$Team: -1
+$MessageNew:  XSTR("For someone who 'speaks his mind in the cockpit' you've been tight-lipped with me for a while now.", 3592)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-13
+
+$Name: come on ross
+$Team: -1
+$MessageNew:  XSTR("Come on Ross. Don't leave us hanging like this. Tell us about your family.", 3593)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-14
+
+$Name: we hardly know you
+$Team: -1
+$MessageNew:  XSTR("We hardly know you Ross. It'll be nice for us to find out more about you.", 3594)
+$end_multi_text
++Wave Name: 15-15
+
+$Name: is that mai
+$Team: -1
+$MessageNew:  XSTR("What the hell? Is that Mai Lan? What is she doing on the comms?", 3595)
+$end_multi_text
++Wave Name: 15-16
+
+$Name: sorry not sorry
+$Team: -1
+$MessageNew:  XSTR("Sorry Ross. I couldn't resist. Lau has your comms traffic on broadcast.", 3596)
+$end_multi_text
++Wave Name: 15-17
+
+$Name: all invested
+$Team: -1
+$MessageNew:  XSTR("We are all invested in your conversation now.", 3597)
+$end_multi_text
++Wave Name: 15-18
+
+$Name: go to hell
+$Team: -1
+$MessageNew:  XSTR("All of you can go to hell. Just for that Lau, you get nothing.", 3598)
+$end_multi_text
++Wave Name: 15-19
+
+$Name: for what it's worth
+$Team: -1
+$MessageNew:  XSTR("For what it's worth Ross, I think I know what you're going through.", 3599)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-20
+
+$Name: my family
+$Team: -1
+$MessageNew:  XSTR("I've had rocky relationships with some of my family. I decided that it wasn't worth the stress being around them.", 3600)
+$end_multi_text
++Wave Name: 15-21
+
+$Name: ready to depart
+$Team: -1
+$MessageNew:  XSTR("This is transport Courier 2. We're spooling up drives for liftoff. Sorry for the delay Hoshikuzu.", 3601)
+$end_multi_text
++Wave Name: 15-22
+
+$Name: are you ok
+$Team: -1
+$MessageNew:  XSTR("Understood. Is everything okay down there?", 3602)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-23
+
+$Name: security issues
+$Team: -1
+$MessageNew:  XSTR("We've had a large crowd try to force their way on our transport. The threat of attack is making people desperate.", 3603)
+$end_multi_text
++Wave Name: 15-24
+
+$Name: serious time
+$Team: -1
+$MessageNew:  XSTR("All right Meiks. Fleet may not be coming to help, but just means we need to fill the gap.", 3604)
+$end_multi_text
++Wave Name: 15-25
+
+$Name: time to work
+$Team: -1
+$MessageNew:  XSTR("All right, chit-chat's over. We've got a job to do.", 3605)
+$end_multi_text
++Wave Name: 15-26
+
+$Name: cruiser here
+$Team: -1
+$MessageNew:  XSTR("Alert, alert! Malikan warships in close proximity. All stations, brace for air attack!", 3606)
+$end_multi_text
++Wave Name: 15-27
+
+$Name: hurry up transports
+$Team: -1
+$MessageNew:  XSTR("Transports, what's taking so long? The Malikans  have begun their attack. Get yourselves clear!", 3607)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-28
+
+$Name: give us time
+$Team: -1
+$MessageNew:  XSTR("We're sealing up now. Give us a minute or so.", 3608)
+$end_multi_text
++Wave Name: 15-29
+
+$Name: incoming fighters
+$Team: -1
+$MessageNew:  XSTR("The Malikans have launched fighters. Meiks, Ross, those transports are defenseless against them.", 3609)
+$end_multi_text
++Wave Name: 15-30
+
+$Name: look at them all
+$Team: -1
+$MessageNew:  XSTR("Look at all the buggers. We've got a bit of a job ahead of us lad.", 3610)
+$end_multi_text
++Wave Name: 15-31
+
+$Name: liftoff
+$Team: -1
+$MessageNew:  XSTR("Cabin, secure the cabin for liftoff. This is going to be rough.", 3611)
+$end_multi_text
++Wave Name: 15-32
+
+$Name: finally
+$Team: -1
+$MessageNew:  XSTR("We're away Hoshikuzu. Forming up on your position now.", 3612)
+$end_multi_text
++Wave Name: 15-33
+
+$Name: dock fighters
+$Team: -1
+$MessageNew:  XSTR("Gunships, bring yourselves in. We're spooling impellers.", 3613)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-34
+
+$Name: docking comp on
+$Team: -1
+$MessageNew:  XSTR("Autopilot Active", 3614)
+$end_multi_text
+
+$Name: we gotta go
+$Team: -1
+$MessageNew:  XSTR("Hurry up Stuart lad. Those Malikan buggers are getting closer.", 3615)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-35
+
+$Name: i'm secure
+$Team: -1
+$MessageNew:  XSTR("I'm secure. Hit it Lau!", 3616)
+$end_multi_text
++Wave Name: 15-36
+
+$Name: moving to vector
+$Team: -1
+$MessageNew:  XSTR("Turning to escape vector. Hang tight!", 3617)
+$end_multi_text
++Wave Name: 15-37
+
+$Name: size of that bastard
+$Team: -1
+$MessageNew:  XSTR("Oh shit. Look at them all.", 3618)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-38
+
+$Name: meiks secure
+$Team: -1
+$MessageNew:  XSTR("Gunship docked Lau.", 3619)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-39
+
+$Name: hyperspace jump in
+$Team: -1
+$MessageNew:  XSTR("Hyperspace jump in 3, 2, 1...", 3620)
+$end_multi_text
++Wave Name: 15-40
+
+$Name: carrier descending
+$Team: -1
+$MessageNew:  XSTR("The Malikan warships are descending! Hoshikuzu, you've run out of time. Get out of here.", 3621)
+$end_multi_text
++Wave Name: 15-41
+
+$Name: attacking civilians
+$Team: -1
+$MessageNew:  XSTR("They're terrorist scum attacking civilians. Don't worry Meiks. I'll get the job done.", 3622)
+$end_multi_text
++Wave Name: 15-42
+
+$Name: that was rough
+$Team: -1
+$MessageNew:  XSTR("Looks like we made it out. That was a close one. Transports, what's your status?", 3623)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-43
+
+$Name: got casualties
+$Team: -1
+$MessageNew:  XSTR("Hoshikuzu, Courier 1. Hostile rounds penetrated the cabin during the attack. We've got several injured in here. We've managed to stabilise them with first aid.", 3624)
+$end_multi_text
++Wave Name: 15-44
+
+$Name: got casualties 2
+$Team: -1
+$MessageNew:  XSTR("Courier 2. Situation much the same. We need to get our injured into a sickbay as soon as possible.", 3625)
+$end_multi_text
++Wave Name: 15-45
+
+$Name: where is transport
+$Team: -1
+$MessageNew:  XSTR("Where's the Elgin? She was supposed to be here already.", 3626)
+$end_multi_text
++Wave Name: 15-46
+
+$Name: trying to contact
+$Team: -1
+$MessageNew:  XSTR("Trying to establish contact with the transport. Stand by.", 3627)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-47
+
+$Name: no reply
+$Team: -1
+$MessageNew:  XSTR("No reply. What the hell is happening here? Did they cancel our rendezvous?", 3628)
+$end_multi_text
++Wave Name: 15-48
+
+$Name: don't like this
+$Team: -1
+$MessageNew:  XSTR("I don't like this. We're out in the open in the middle of a battleground.", 3629)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-49
+
+$Name: cw is coming
+$Team: -1
+$MessageNew:  XSTR("Fleet is on the way Meiks. The government's not going to abandon its citizens out here.", 3630)
+$end_multi_text
++Wave Name: 15-50
+
+$Name: new contact
+$Team: -1
+$MessageNew:  XSTR("New ship in proxmity! Getting an identification on her.", 3631)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-51
+
+$Name: not the elgin
+$Team: -1
+$MessageNew:  XSTR("That doesn't look like the Elgin.", 3632)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-52
+
+$Name: not her
+$Team: -1
+$MessageNew:  XSTR("No, it's not the Elgin. It's...bad...news.", 3633)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-53
+
+$Name: hello kat
+$Team: -1
+$MessageNew:  XSTR("Hello Katherine.", 3634)
+$end_multi_text
++Wave Name: 15-54
+
+$Name: kendra
+$Team: -1
+$MessageNew:  XSTR("Kendra.", 3635)
+$end_multi_text
++Wave Name: 15-55
+
+$Name: you never called
+$Team: -1
+$MessageNew:  XSTR("You never called. I was starting to think you didn't want to see me again.", 3636)
+$end_multi_text
++Wave Name: 15-56
+
+$Name: why not
+$Team: -1
+$MessageNew:  XSTR("After the last time? What gave you that idea?", 3637)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-57
+
+$Name: couldn't resist
+$Team: -1
+$MessageNew:  XSTR("Well, someone with a lot of money wanted your Alban civilians dead. Who was I to refuse? Killing you's a bonus.", 3638)
+$end_multi_text
++Wave Name: 15-58
+
+$Name: asm warning
+$Team: -1
+$MessageNew:  XSTR("WARNING: HOSTILE ASM LAUNCH DETECTED", 3341)
+$end_multi_text
++Wave Name: warning2
+
+$Name: before pleasure
+$Team: -1
+$MessageNew:  XSTR("Before it was pleasure. This time, it's business. Nothing personal, okay?", 3639)
+$end_multi_text
++Wave Name: 15-59
+
+$Name: hard to believe
+$Team: -1
+$MessageNew:  XSTR("Kendra, you've always been a psychopathic bitch. I find it hard to believe it's entirely business this time.", 3640)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-60
+
+$Name: who the hell
+$Team: -1
+$MessageNew:  XSTR("Who the hell is that, Lau? She a nemesis of yours?", 3641)
+$end_multi_text
++Wave Name: 15-61
+
+$Name: get out of here
+$Team: -1
+$MessageNew:  XSTR("No, just my cousin. Transports, form up. We need to move, now!", 3642)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-62
+
+$Name: destroyer too fast
+$Team: -1
+$MessageNew:  XSTR("Hoshikuzu, even at top speed we won't be able to outrun that destroyer.", 3643)
+$end_multi_text
++Wave Name: 15-63
+
+$Name: you'll buy time
+$Team: -1
+$MessageNew:  XSTR("No, but you'll buy time which is the best we're getting right now.", 3644)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-64
+
+$Name: you're faster
+$Team: -1
+$MessageNew:  XSTR("Your ship is faster than they are Katherine. You should leave them and save yourself. My employer only wants the Albans dead, not you.", 3645)
+$end_multi_text
++Wave Name: 15-65
+
+$Name: how much charge
+$Team: -1
+$MessageNew:  XSTR("Transports, how much time until you can make another jump?", 3646)
+$end_multi_text
++AVI Name: Head-CM5
++Wave Name: 15-66
+
+$Name: need ten minutes
+$Team: -1
+$MessageNew:  XSTR("We need at least ten minutes. We're trying to make best speed with our fusion drives and can't divert any more power to the impeller.", 3647)
+$end_multi_text
++Wave Name: 15-67
+
+$Name: not much option
+$Team: -1
+$MessageNew:  XSTR("I see. We don't have any other options, do we?", 3648)
+$end_multi_text
++Wave Name: 15-68
+
+$Name: getting closer
+$Team: -1
+$MessageNew:  XSTR("Lau I hope you realise that destroyer's gaining on us. She's nearly in PDC range.", 3649)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-69
+
+$Name: lau are you considering
+$Team: -1
+$MessageNew:  XSTR("Lau, you're not seriously considering abandoning these civilians?", 3650)
+$end_multi_text
++Wave Name: 15-70
+
+$Name: of course not
+$Team: -1
+$MessageNew:  XSTR("My cousin's the monster, not me Ross.", 3651)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-71
+
+$Name: breaking off
+$Team: -1
+$MessageNew:  XSTR("Transports, continue your course. I'm breaking the Hoshikuzu off to engage the Nassau. This is the only way we'll get out of this.", 3652)
+$end_multi_text
++Wave Name: 15-72
+
+$Name: finally beaten
+$Team: -1
+$MessageNew:  XSTR("You have no idea how long I've waited for this Katherine. A chance to finally prove that I was better than you.", 3653)
+$end_multi_text
++Wave Name: 15-73
+
+$Name: may have ruined
+$Team: -1
+$MessageNew:  XSTR("You may have ruined my family, but I'll be the one who ruined you in the end.", 3654)
+$end_multi_text
++Wave Name: 15-74
+
+$Name: not over yet
+$Team: -1
+$MessageNew:  XSTR("This contest is not over yet, Kendra.", 3655)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-75
+
+$Name: lau what
+$Team: -1
+$MessageNew:  XSTR("Lau, what the hell are you doing?", 3656)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 15-76
+
+$Name: stay with transports
+$Team: -1
+$MessageNew:  XSTR("We'll never be able to outrun the Nassau. I'm going to occupy Kendra while the transports warm up their drives.", 3657)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-77
+
+$Name: you're no match
+$Team: -1
+$MessageNew:  XSTR("Are you crazy? That ship is twice your size Lau!", 3658)
+$end_multi_text
++Wave Name: 15-78
+
+$Name: don't worry
+$Team: -1
+$MessageNew:  XSTR("Don't worry about me Ross! I know my cousin. I've got a few tricks up my sleeve.", 3659)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-79
+
+$Name: futile
+$Team: -1
+$MessageNew:  XSTR("This isn't going to save your charges Katherine. I'll just cripple your ship and then destroy the transports anyway.", 3660)
+$end_multi_text
++Wave Name: 15-80
+
+$Name: take out transports
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Gunnery, target the Hoshikuzu with the point defense cannons. Continue missile strikes at the transports.", 3661)
+$end_multi_text
++Wave Name: 15-81
+
+$Name: target nassau
+$Team: -1
+$MessageNew:  XSTR("Erikson, I want PDCs at the Nassau. Single strafing pass only.", 3662)
+$end_multi_text
++Wave Name: 15-82
+
+$Name: no one's coming
+$Team: -1
+$MessageNew:  XSTR("No one's coming to save your civilians. We already made sure of that. You're fighting a hopeless battle.", 3663)
+$end_multi_text
++Wave Name: 15-83
+
+$Name: what do you mean
+$Team: -1
+$MessageNew:  XSTR("<intercepted> What do you mean you can't fire at the Hoshikuzu? She's right there! Get a firing solution you idiot.", 3664)
+$end_multi_text
++Wave Name: 15-84
+
+$Name: then turn around
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Then turn the goddamned ship around! Ignore the transports if you have to!", 3665)
+$end_multi_text
++Wave Name: 15-85
+
+$Name: in blind spot
+$Team: -1
+$MessageNew:  XSTR("We're in her blind spot. Continue PDC fire at maximum rate.", 3666)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-86
+
+$Name: it's working
+$Team: -1
+$MessageNew:  XSTR("It's working! She's breaking off from the transports. Gunships, this is your chance to take out her point defense cannons!", 3667)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-87
+
+$Name: shoot that damn ship
+$Team: -1
+$MessageNew:  XSTR("<intercepted> What are you doing? Shoot that damned ship!", 3668)
+$end_multi_text
++Wave Name: 15-88
+
+$Name: you destroyed the elgin
+$Team: -1
+$MessageNew:  XSTR("You destroyed the Elgin? Why would you do that?", 3669)
+$end_multi_text
++Wave Name: 15-89
+
+$Name: losing turrets
+$Team: -1
+$MessageNew:  XSTR("<intercepted> We're losing PDCs! Target the Hoshikuzu with our ASMs!", 3670)
+$end_multi_text
++Wave Name: 15-90
+
+$Name: do it now
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Fire the missiles you halfwit! I don't fucking care about the proximity danger!", 3671)
+$end_multi_text
++Wave Name: 15-91
+
+$Name: losing hull
+$Team: -1
+$MessageNew:  XSTR("<intercepted> That corvette is tearing up my ship. Target the Hoshikuzu with our ASMs!", 3672)
+$end_multi_text
++Wave Name: 15-93
+
+$Name: mission failed title
+$Team: -1
+$MessageNew:  XSTR("MISSION FAILED", 2726)
+$end_multi_text
+
+$Name: nassau disabled
+$Team: -1
+$MessageNew:  XSTR("Lau, energy levels dropping all over the Nassau. Looks like her reactor's hit. Her weapons are powering down!", 3673)
+$end_multi_text
++Wave Name: 15-94
+
+$Name: good work
+$Team: -1
+$MessageNew:  XSTR("Good work Erikson. Stand down PDCs. I want to talk to Kendra.", 3674)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-95
+
+$Name: kendra surrender
+$Team: -1
+$MessageNew:  XSTR("Kendra. It's over. Stand down and save your crew. I can call for assistance to help your injured.", 3675)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-96
+
+$Name: typical
+$Team: -1
+$MessageNew:  XSTR("Typical self-righteous bitch. Spare me the false altruism. You just want to get to me and gloat.", 3676)
+$end_multi_text
++Wave Name: 15-97
+
+$Name: fine
+$Team: -1
+$MessageNew:  XSTR(" Fine, you've got me. My crew are laying down arms.", 3677)
+$end_multi_text
++Wave Name: 15-98
+
+$Name: pollux arrow arrives
+$Team: -1
+$MessageNew:  XSTR("Captain Lau, it's good to see you. We were sent to assist with the Commonwealth evacuation once word got out about the Elgin.", 3678)
+$end_multi_text
++Wave Name: 15-99
+
+$Name: good to see you
+$Team: -1
+$MessageNew:  XSTR("Good to see you too Navo. The Albans are safe now, but we could still use your help. Stand by to receive passengers from two short-ranged transports.", 3679)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-100
+
+$Name: what the hell
+$Team: -1
+$MessageNew:  XSTR("Oh my god Lau, what the hell is going on between you two?", 3680)
+$end_multi_text
++Wave Name: 15-101
+
+$Name: mission complete title
+$Team: -1
+$MessageNew:  XSTR("MISSION COMPLETE", 2727)
+$end_multi_text
+
+$Name: need help with nassau
+$Team: -1
+$MessageNew:  XSTR("We're also going to need help with this destroyer. I don't suppose you know any auxiliary ships available on short notice?", 3681)
+$end_multi_text
++Wave Name: 15-102
+
+$Name: it's a warzone
+$Team: -1
+$MessageNew:  XSTR("As it so happens, the master of the Hopewell owes me a favour. I'll give him a call. I guess you owe me one too.", 3682)
+$end_multi_text
++Wave Name: 15-103
+
+$Name: hoshikuzu destroyed
+$Team: -1
+$MessageNew:  XSTR("Ross! The Hoshikuzu's breaking apart!", 3467)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 14-29
+
+$Name: corvette critical damage
+$Team: -1
+$MessageNew:  XSTR("Lau here. She's getting torn up bad. We're losing power.", 3683)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 12-64
+
+$Name: i'll be damned
+$Team: -1
+$MessageNew:  XSTR("I'll be damned Lau. You managed to pull it off.", 3684)
+$end_multi_text
++Wave Name: 15-104
+
+$Name: told you
+$Team: -1
+$MessageNew:  XSTR("I told you Ross. Though to be honest I probably couldn't have done it without you and Meiks. So thank you.", 3685)
+$end_multi_text
++AVI Name: head-f3a
++Wave Name: 15-105
+
+$Name: incoming missiles
+$Team: -1
+$MessageNew:  XSTR("Inbound missiles! Strap in!", 3686)
+$end_multi_text
++Wave Name: 15-106
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 0
+$Ambient light level: 1118737
+
+$Bitmap List:
+$Sun: Stars_Sun_Aerilon
++Angles: 0.331613 0.925025 0.000000
++Scale: 1.000000
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: None
+$Debriefing Success Music: Success4
+
+#End
+

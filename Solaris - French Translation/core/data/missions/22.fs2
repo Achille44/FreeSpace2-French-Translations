@@ -1,0 +1,5069 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Promised Land", 4341)
+$Author: Dan
+$Created: 01/31/21 at 22:02:27
+$Modified: 02/20/22 at 20:55:52
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 2629)
+$end_multi_text
++Game Type Flags: 1
++Flags: 794816
++Fog Near Mult: 5.000000
+
++Fog Far Mult: 7.000000
+
++Disallow Support: 0
++Hull Repair Ceiling: 75.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 40235.210938, 8211.113281, 3961.549561
++Viewer orient:
+	0.946690, 0.000004, 0.322145,
+	-0.194721, 0.796649, 0.572218,
+	-0.256634, -0.604442, 0.754181
+
+$Starting wing names: ( "Alfa" "Bravo" "Charlie" )
+$Squadron wing names: ( "Alfa" "Bravo" "Charlie" "Delta" "Echo" )
+$Team-versus-team wing names: ( "Alfa" "Zulu" )
+
+$Skybox Model: skybox_blackhole.pof
+
+$AI Profile: Solaris
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"autoGenVar1"		"Angel Company"		"string"
+		1		"autoGenVar2"		"Outpost"		"string"
+		2		"autoGenVar3"		"Support Drone"		"string"
+		3		"autoGenVar4"		"Unknown"		"string"
+		4		"autoGenVar5"		"#Aria Tactical"		"string"
+		5		"autoGenVar6"		"#Aria Tac"		"string"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 0
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 1
+
+$Formula: ( is-event-true-delay 
+   "mission complete title" 
+   0 
+)
+$Multi text
+    XSTR("That was a trip and a half. I'm glad we all managed to get out of there in one piece.
+
+I think I understand Reverend Lightowler now. His Promised Land wasn't just a mythical land sustaining his religion, but a real place and a source of real power. He has something no one else in the galaxy has - a way to harness this alien technology. I don't know how he did what he did to those Malikan and Combine strike craft but it's chilling how one man can wield such power.
+
+I don't know what happened to Covenant. I don't know if Kakotchka and Gadaria got to Lightowler or if he was able to make it out. I guess we'll never know.
+
+Anyway, I want to thank you and Meiks for everything you've done for us. For the Hoshikuzu, for the Nassau and Hopewell, for Sulsia. I know this really wasn't what you signed up for, I never wanted to drag you guys through this. Sulsia's been my home for a long time now. I thought I owed it to this place to make things better.
+
+I don't know what happened to you before you came out here Ross. I just want you to know that you've done good out here and made a difference. I'm forwarding your share of Lightowler's final payment. You guys earned it.
+
+", 4342)
+$end_multi_text
+$Voice: 22-db1
+$Recommendation text:
+    XSTR("", 2443)
+$end_multi_text
+
+
+#Callsigns:
+$Callsign: XSTR("Navo", 3851)
+$Callsign: XSTR("Meiks", 3256)
+$Callsign: XSTR("Lau", 2882)
+$Callsign: XSTR("Cameron", 4144)
+$Callsign: XSTR("Ross", 2635)
+$Callsign: XSTR("Gadaria", 3257)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alfa 1
+$Ship Choices: (
+	"Vulture-class Striker"	2
+	"Warden-class Defender"	2
+	"Tor-class Bomber"	2
+)
+
++Weaponry Pool: (
+	"Maxim"	2
+	"Vulcan"	4
+	"Gattler"	2
+	"Huaqing"	2
+	"Limonka"	2
+	"Sparrow"	48
+	"Stiletto"	16
+	"Jackhammer"	8
+)
+
+#Objects		;! 48 total
+
+$Name: Alfa 1		;! Object #0
+$Display Name: XSTR("Alfa 1", 3258)
+$Class: Comet-class Gunship
+$Callsign: XSTR("Ross", 2635)
+
+$Team: Friendly
+$Location: 20427.632813, -1764.545410, 15984.497070
+$Orientation:
+	-0.157347, 0.036046, -0.986885,
+	-0.308769, 0.947435, 0.083835,
+	0.938032, 0.317911, -0.137946
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Monument		;! Object #1
+$Display Name: XSTR("Monument", 2444)
+$Class: Monument
+$Team: Hostile
+$Location: 45454.003906, 1.644531, 10442.645508
+$Orientation:
+	0.738156, -0.000006, 0.674631,
+	-0.629380, -0.360074, 0.688642,
+	0.242913, -0.932924, -0.265794
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10000
+
+$Name: No Transponder		;! Object #2
+$Display Name: XSTR("No Transponder", 3188)
+$Class: Research Station
+
+$Team: Unknown
+$Location: 35140.378906, 1499.608398, 11599.582031
+$Orientation:
+	0.494184, 0.242214, -0.834935,
+	-0.186956, 0.967543, 0.170029,
+	0.849016, 0.072070, 0.523427
+$AI Behavior: None
+$Cargo 1:  XSTR("ERROR - No Signal", 4343)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Uplink
++Cargo Name: XSTR("Scanned", 2778)
++Subsystem: Communication
++Cargo Name: XSTR("Scanned", 2778)
++Subsystem: Operations
++Cargo Name: XSTR("Scanned", 2778)
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" "stealth" )
++Flags2: ( "hide-ship-name" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Alfa 2		;! Object #3
+$Display Name: XSTR("Alfa 2", 3852)
+$Class: Comet-class Gunship
+$Callsign: XSTR("Meiks", 3256)
+
+$Team: Friendly
+$Location: 20382.066406, -1764.545410, 16107.329102
+$Orientation:
+	-0.157347, 0.036046, -0.986885,
+	-0.308769, 0.947435, 0.083835,
+	0.938032, 0.317911, -0.137946
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 17
+
+$Name: Covenant		;! Object #4
+$Display Name: XSTR("Covenant", 3966)
+$Class: Revelation-class Explorer
+$Team: Friendly
+$Location: 21684.134766, -0.000249, 15498.289063
+$Orientation:
+	1.000000, -0.000000, 0.000008,
+	0.000000, 1.000000, 0.000000,
+	-0.000008, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "covenant approach" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 1" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Hopewell		;! Object #5
+$Display Name: XSTR("Hopewell", 3769)
+$Class: Argus-class Carrier
+$Team: Friendly
+$Location: 22450.751953, 724.869080, 18429.097656
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Nassau		;! Object #6
+$Display Name: XSTR("Nassau", 3558)
+$Class: Horizon-class Destroyer
+$Callsign: XSTR("Navo", 3851)
+
+$Team: Friendly
+$Location: 22925.789063, 271.619080, 16623.589844
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: mturret01
++Subsystem: mturret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 2" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "time to leave" 
+   6 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Hoshikuzu		;! Object #7
+$Display Name: XSTR("Hoshikuzu", 3192)
+$Class: Hoshikuzu-class Corvette
+$Callsign: XSTR("Lau", 2882)
+
+$Team: Friendly
+$Location: 23077.808594, 100.000000, 16600.000000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Hoshi arrive" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: mturret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 5" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Pollux Arrow		;! Object #8
+$Display Name: XSTR("Pollux Arrow", 3381)
+$Class: Tortoise-class Transport
+$Team: Friendly
+$Location: 20695.027344, 335.736816, 16363.496094
+$Orientation:
+	1.000000, -0.000000, 0.000000,
+	-0.000000, 1.000000, 0.000551,
+	-0.000000, -0.000551, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 4" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "time to leave" 
+   6 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: neutraltransport
++new: neutraltransport2
++old: neutraltransport-reflect
++new: neutraltransport2-reflect
+
+$Name: Andalucia		;! Object #9
+$Display Name: XSTR("Andalucia", 3975)
+$Class: Magellan-class Explorer
+
+$Team: Friendly
+$Location: 19527.824219, -972.638428, 16116.816406
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 3" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "that's done it" 
+   7 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Angel 3
+$Docker Point: Docking Point
+$Dockee Point: Starb Ringdock
++Docked With: Angel 2
+$Docker Point: Docking Point
+$Dockee Point: Port Ringdock
++Docked With: Angel 1
+$Docker Point: Docking Point
+$Dockee Point: Dorsal Ringdock
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Angel 1		;! Object #10
+$Display Name: XSTR("Angel 1", 3977)
+$Class: Cobra-class Fighter
+
+$Team: Friendly
+$Location: 19527.824219, -785.318420, 16044.066406
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	-0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Andalucia
+$Docker Point: Dorsal Ringdock
+$Dockee Point: Docking Point
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+$Texture Replace:
++old: neutralceptor
++new: neutralceptor2
++old: neutralceptor-reflect
++new: neutralceptor2-reflect
+
+$Name: Angel 2		;! Object #11
+$Display Name: XSTR("Angel 2", 3978)
+$Class: Cobra-class Fighter
+
+$Team: Friendly
+$Location: 19360.919922, -1055.911987, 16044.066406
+$Orientation:
+	-0.447214, 0.894427, 0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.894427, 0.447214, 0.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Andalucia
+$Docker Point: Port Ringdock
+$Dockee Point: Docking Point
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+$Texture Replace:
++old: neutralceptor
++new: neutralceptor2
++old: neutralceptor-reflect
++new: neutralceptor2-reflect
+
+$Name: Angel 3		;! Object #12
+$Display Name: XSTR("Angel 3", 3979)
+$Class: Cobra-class Fighter
+
+$Team: Friendly
+$Location: 19694.728516, -1055.911987, 16044.066406
+$Orientation:
+	-0.447214, -0.894427, 0.000000,
+	0.000000, 0.000000, 1.000000,
+	-0.894427, 0.447214, 0.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Andalucia
+$Docker Point: Starb Ringdock
+$Dockee Point: Docking Point
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+$Texture Replace:
++old: neutralceptor
++new: neutralceptor2
++old: neutralceptor-reflect
++new: neutralceptor2-reflect
+
+$Name: Aria		;! Object #13
+$Display Name: XSTR("Aria", 3982)
+$Class: Arrowhead-class Corvette
+$Callsign: XSTR("Cameron", 4144)
+
+$Team: Friendly
+$Location: 23078.029297, -320.515747, 17557.349609
+$Orientation:
+	0.999995, 0.000002, -0.003067,
+	0.000004, 0.999998, 0.002045,
+	0.003067, -0.002045, 0.999993
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
+$Arrival Location: Hyperspace
++Arrival Delay: 1
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 1" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Remembering Gogoltha		;! Object #14
+$Display Name: XSTR("Remembering Gogoltha", 3782)
+$Class: Lugus-class Freighter
+$Team: Friendly
+$Location: 23932.708984, -358.710785, 15669.917969
+$Orientation:
+	1.000000, -0.000000, -0.000007,
+	0.000000, 1.000000, -0.000380,
+	0.000007, 0.000380, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 6" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Frontier Ordinance		;! Object #15
+$Display Name: XSTR("Frontier Ordinance", 3970)
+$Class: Lugus-class Freighter
+$Team: Friendly
+$Location: 19197.664063, -25.298613, 15025.683594
+$Orientation:
+	1.000000, -0.000000, -0.000007,
+	0.000000, 1.000000, -0.000380,
+	0.000007, 0.000380, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 9" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Great Awakening		;! Object #16
+$Display Name: XSTR("Great Awakening", 3969)
+$Class: Lugus-class Freighter
+$Team: Friendly
+$Location: 19732.158203, -358.712891, 17122.318359
+$Orientation:
+	1.000000, -0.000000, -0.000007,
+	0.000000, 1.000000, -0.000380,
+	0.000007, 0.000380, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 7" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: St Guerin		;! Object #17
+$Display Name: XSTR("St Guerin", 3968)
+$Class: Lugus-class Freighter
+$Team: Friendly
+$Location: 19659.130859, 972.428711, 15213.095703
+$Orientation:
+	1.000000, -0.000000, -0.000007,
+	0.000000, 1.000000, -0.000380,
+	0.000007, 0.000380, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 8" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Artifact		;! Object #18
+$Display Name: XSTR("Artifact", 2442)
+$Class: Artifact
+$Team: Hostile
+$Location: 30851.996094, 7055.886719, 33557.335938
+$Orientation:
+	-0.991100, 0.000000, 0.133117,
+	0.000000, 1.000000, 0.000000,
+	-0.133117, 0.000000, -0.991100
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "hide-ship-name" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10000
+
+$Name: Drone Able 1		;! Object #19
+$Display Name: XSTR("Drone Able 1", 4344)
+$Class: Goshawk-class Attack Drone
+
+$Team: Friendly
+$Location: 34620.042969, 0.000000, 10982.405273
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: SLRS-Captain
+$AI Goals: ( goals ( ai-stay-near-ship "No Transponder" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Aria
+$Arrival Cue: ( is-event-true-delay "need eyes" 12 ) 
+$Departure Location: Docking Bay
+$Departure Anchor: No Transponder
++Departure delay: 12
+$Departure Cue: ( true ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Score: 50
+
+$Name: Pillar of Fire		;! Object #20
+$Display Name: XSTR("Pillar of Fire", 3692)
+$Class: Moshe-Class Explorer
+$Team: Hostile
+$Location: 38160.507813, 2203.713623, 16518.476563
+$Orientation:
+	0.315323, 0.000000, 0.948985,
+	0.000000, 1.000000, 0.000000,
+	-0.948985, 0.000000, 0.315323
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 2-2" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Tower of Dawn		;! Object #21
+$Display Name: XSTR("Tower of Dawn", 4225)
+$Class: Polaris-class Carrier
+$Callsign: XSTR("Gadaria", 3257)
+
+$Team: Hostile
+$Location: 39131.398438, 4000.000000, 16227.900391
+$Orientation:
+	0.315322, -0.000000, 0.948985,
+	0.000000, 1.000000, 0.000000,
+	-0.948985, 0.000000, 0.315322
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: mturret1
++Sbank Ammo: ( 0 )
++Subsystem: mturret2
++Sbank Ammo: ( 0 )
++Subsystem: mturret3
++Sbank Ammo: ( 0 )
++Subsystem: mturret4
++Sbank Ammo: ( 0 )
++Subsystem: mturret5
++Subsystem: mturret6
++Sbank Ammo: ( 0 )
++Subsystem: mturret7
++Sbank Ammo: ( 0 )
++Subsystem: mturret8
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 2-1" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Vykhid 1		;! Object #22
+$Display Name: XSTR("Vykhid 1", 4345)
+$Class: Barbican-class Transport
+$Team: Hostile
+$Location: 39662.593750, 2789.522461, 19094.804688
+$Orientation:
+	0.315322, -0.000000, 0.948985,
+	0.000000, 1.000000, 0.000000,
+	-0.948985, 0.000000, 0.315322
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Vykhid 2		;! Object #23
+$Display Name: XSTR("Vykhid 2", 4346)
+$Class: Barbican-class Transport
+$Team: Hostile
+$Location: 41144.984375, 3259.461670, 18312.480469
+$Orientation:
+	0.315322, -0.000000, 0.948985,
+	0.000000, 1.000000, 0.000000,
+	-0.948985, 0.000000, 0.315322
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Vykhid 3		;! Object #24
+$Display Name: XSTR("Vykhid 3", 4347)
+$Class: Barbican-class Transport
+$Team: Hostile
+$Location: 39982.894531, 2184.376709, 18069.277344
+$Orientation:
+	0.315322, -0.000000, 0.948985,
+	0.000000, 1.000000, 0.000000,
+	-0.948985, 0.000000, 0.315322
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Vykhid 4		;! Object #25
+$Display Name: XSTR("Vykhid 4", 4348)
+$Class: Barbican-class Transport
+$Team: Hostile
+$Location: 41378.710938, 3259.462158, 17246.195313
+$Orientation:
+	0.315322, -0.000000, 0.948985,
+	0.000000, 1.000000, 0.000000,
+	-0.948985, 0.000000, 0.315322
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Vykhid 5		;! Object #26
+$Display Name: XSTR("Vykhid 5", 4349)
+$Class: Barbican-class Transport
+$Team: Hostile
+$Location: 40183.210938, 2789.522461, 17074.808594
+$Orientation:
+	0.315322, -0.000000, 0.948985,
+	0.000000, 1.000000, 0.000000,
+	-0.948985, 0.000000, 0.315322
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Zaragoza		;! Object #27
+$Display Name: XSTR("Zaragoza", 3868)
+$Class: Astral-class Battlecruiser
+$Team: Hostile
+$Location: 43378.222656, 5034.574219, 11029.715820
+$Orientation:
+	0.731689, -0.000000, 0.681639,
+	0.000000, 1.000000, 0.000000,
+	-0.681639, 0.000000, 0.731689
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: mturret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 3-1" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 1
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Unknown		;! Object #28
+$Display Name: XSTR("Unknown", 2441)
+$Class: Suppressor-class Gravity Ship
+
+$Team: Hostile
+$Location: 46975.976563, 4021.490723, 9348.457031
+$Orientation:
+	0.731689, -0.000000, 0.681639,
+	0.000000, 1.000000, 0.000000,
+	-0.681639, 0.000000, 0.731689
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 3-2" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "gravity ship retreats" 
+   20 
+)
+$Determination: 10
++Flags: ( "no-shields" "invulnerable" "stealth" )
++Flags2: ( "hide-ship-name" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Kerebin		;! Object #29
+$Display Name: XSTR("Kerebin", 4350)
+$Class: Praetor-class Cruiser
+$Team: Hostile
+$Location: 44891.433594, 3860.258789, 8940.028320
+$Orientation:
+	0.731689, -0.000000, 0.681639,
+	0.000000, 1.000000, 0.000000,
+	-0.681639, 0.000000, 0.731689
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: mturret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 3-3" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Ariadne		;! Object #30
+$Display Name: XSTR("Ariadne", 3866)
+$Class: Torrent-class Cruiser
+$Team: Hostile
+$Location: 42206.796875, 5034.574219, 9433.864258
+$Orientation:
+	0.731689, -0.000000, 0.681639,
+	0.000000, 1.000000, 0.000000,
+	-0.681639, 0.000000, 0.731689
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 3-4" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Thresher		;! Object #31
+$Display Name: XSTR("Thresher", 3867)
+$Class: Torrent-class Cruiser
+$Team: Hostile
+$Location: 45522.257813, 5034.574219, 12516.462891
+$Orientation:
+	0.731689, -0.000000, 0.681639,
+	0.000000, 1.000000, 0.000000,
+	-0.681639, 0.000000, 0.731689
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 3-4" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "don't-collide-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Xray 1		;! Object #32
+$Display Name: XSTR("Xray 1", 3273)
+$Class: Dawn-class Bomber
+$Team: Hostile
+$Location: 40267.175781, -0.003906, 16522.841797
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Xray 2		;! Object #33
+$Display Name: XSTR("Xray 2", 3274)
+$Class: Dawn-class Bomber
+$Team: Hostile
+$Location: 40093.445313, -0.003906, 16405.923828
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Xray 3		;! Object #34
+$Display Name: XSTR("Xray 3", 3572)
+$Class: Dawn-class Bomber
+$Team: Hostile
+$Location: 40279.164063, -0.003906, 16283.545898
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Xray 4		;! Object #35
+$Display Name: XSTR("Xray 4", 3571)
+$Class: Dawn-class Bomber
+$Team: Hostile
+$Location: 40470.566406, -0.003906, 16402.046875
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Yankee 1		;! Object #36
+$Display Name: XSTR("Yankee 1", 3267)
+$Class: Dawn-class Bomber
+$Team: Hostile
+$Location: 40976.195313, -0.003906, 16471.158203
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Yankee 2		;! Object #37
+$Display Name: XSTR("Yankee 2", 3268)
+$Class: Dawn-class Bomber
+$Team: Hostile
+$Location: 40802.464844, -0.003906, 16354.240234
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Yankee 3		;! Object #38
+$Display Name: XSTR("Yankee 3", 3269)
+$Class: Dawn-class Bomber
+$Team: Hostile
+$Location: 40988.183594, -0.003906, 16231.862305
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Yankee 4		;! Object #39
+$Display Name: XSTR("Yankee 4", 3573)
+$Class: Dawn-class Bomber
+$Team: Hostile
+$Location: 41179.585938, -0.003906, 16350.363281
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sierra 1		;! Object #40
+$Display Name: XSTR("Sierra 1", 3559)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 42198.984375, -0.002930, 12613.577148
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sierra 2		;! Object #41
+$Display Name: XSTR("Sierra 2", 3560)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 42112.136719, -0.002930, 12490.667969
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sierra 3		;! Object #42
+$Display Name: XSTR("Sierra 3", 4155)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 42309.082031, -0.002930, 12492.333008
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sierra 4		;! Object #43
+$Display Name: XSTR("Sierra 4", 4231)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 42242.441406, -0.002930, 12366.406250
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Tango 1		;! Object #44
+$Display Name: XSTR("Tango 1", 3479)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 42482.644531, -0.002808, 12640.606445
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Tango 2		;! Object #45
+$Display Name: XSTR("Tango 2", 3480)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 42395.796875, -0.002807, 12517.697266
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Tango 3		;! Object #46
+$Display Name: XSTR("Tango 3", 3566)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 42592.742188, -0.002807, 12519.362305
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Tango 4		;! Object #47
+$Display Name: XSTR("Tango 4", 3702)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 42526.101563, -0.002807, 12393.435547
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+#Wings		;! 7 total
+
+$Name: Alfa
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alfa 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Hopewell
+$Arrival Cue: ( true ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Hopewell
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Alfa 1"
+	"Alfa 2"
+)
+$AI Goals: ( goals ( ai-play-dead 50 ) )
++Hotkey: 0
++Flags: ( )
+
+$Name: Angel
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Angel 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Angel 1"
+	"Angel 2"
+	"Angel 3"
+)
+$AI Goals: ( goals ( ai-play-dead 50 ) )
++Flags: ( )
+
+$Name: Vykhid
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Vykhid 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "warpin trigger 2-3" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 5 total
+	"Vykhid 1"
+	"Vykhid 2"
+	"Vykhid 3"
+	"Vykhid 4"
+	"Vykhid 5"
+)
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+$Name: Xray
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Xray 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Tower of Dawn
+$Arrival Cue: ( is-event-true-delay "no time" 6 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Xray 1"
+	"Xray 2"
+	"Xray 3"
+	"Xray 4"
+)
+$AI Goals: ( goals ( ai-chase "Covenant" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-dynamic" )
+
+$Name: Yankee
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Yankee 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Tower of Dawn
++Arrival delay: 10
+$Arrival Cue: ( has-arrived-delay 0 "Xray" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Yankee 1"
+	"Yankee 2"
+	"Yankee 3"
+	"Yankee 4"
+)
+$AI Goals: ( goals ( ai-chase "Covenant" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-dynamic" )
+
+$Name: Sierra
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Sierra 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kerebin
+$Arrival Cue: ( is-event-true-delay 
+   "gadaria destroy convoy" 
+   8 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Sierra 1"
+	"Sierra 2"
+	"Sierra 3"
+	"Sierra 4"
+)
+$AI Goals: ( goals ( ai-guard "Tower of Dawn" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-dynamic" )
+
+$Name: Tango
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Tango 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Kerebin
++Arrival delay: 6
+$Arrival Cue: ( has-arrived-delay 0 "Sierra" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Tango 1"
+	"Tango 2"
+	"Tango 3"
+	"Tango 4"
+)
+$AI Goals: ( goals ( ai-guard "Tower of Dawn" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-dynamic" )
+
+#Events		;! 148 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[Angel Company]" 
+      "Angel Company" 
+      4070 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar1[Angel Company]" 
+      "Andalucia" 
+      "Angel 1" 
+      "Angel 2" 
+      "Angel 3" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[Outpost]" 
+      "Outpost" 
+      2393 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar2[Outpost]" 
+      "No Transponder" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[Support Drone]" 
+      "Support Drone" 
+      4429 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar3[Support Drone]" 
+      "Drone Able 1" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar4[Unknown]" 
+      "Unknown" 
+      2441 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar4[Unknown]" 
+      "Unknown" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar5[#Aria Tactical]" 
+      "#Aria Tactical" 
+      4072 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar6[#Aria Tac]" 
+      "#Aria Tac" 
+      4430 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      0 
+   )
+   ( script-eval-block 
+      "Scroll:Write(" 
+      "'title1'," 
+      "15,12,0.05,2,2,true,2,false)" 
+   )
+)
++Name: title
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( lua-save-file-exists ) 
+      ( not 
+         ( is-event-true-delay "rejoice" 0 ) 
+      )
+      ( is-event-true-delay 
+         "fadein to player" 
+         1 
+      )
+   )
+   ( lua-call-prompt 
+      "LoadData" 
+      "Checkpoint Save" 
+      ( true ) 
+      "Start from beginning" 
+      ( true ) 
+      "Start from checkpoint" 
+      ( lua-save-file-exists ) 
+   )
+)
++Name: load data prompt
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = 
+      ( lua-get-prompt-response "LoadData" ) 
+      2 
+   )
+   ( lua-load-init ) 
+   ( lua-load-ship 
+      3 
+      "Alfa 1" 
+      "Alfa 2" 
+      "Covenant" 
+      "Hoshikuzu" 
+      "Aria" 
+      "Remembering Gogoltha" 
+      "Frontier Ordinance" 
+      "Great Awakening" 
+      "St Guerin" 
+   )
+)
++Name: checkpoint load
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Alfa 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( deactivate-glow-maps 
+      "Artifact" 
+      "Monument" 
+   )
+   ( ship-subsys-untargetable 
+      "No Transponder" 
+      "Uplink" 
+      "Communication" 
+      "Operations" 
+   )
+   ( lua-radaricon-activate 
+      "Friendly" 
+      "Hostile" 
+      "Unknown" 
+   )
+   ( ship-guardian-threshold 33 "Alfa 2" ) 
+   ( ship-subsys-guardian-threshold 
+      55 
+      "Alfa 2" 
+      "<all engines>" 
+      "Communication" 
+      "Weapons" 
+   )
+   ( set-support-ship 
+      "Docking Bay" 
+      "Hopewell" 
+      "Docking Bay" 
+      "Hopewell" 
+      "<species support ship class>" 
+      -1 
+   )
+   ( cap-waypoint-speed "Aria" 80 ) 
+)
++Name: mission setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+   )
+   ( alter-ship-flag 
+      "toggle-subsystem-scanning" 
+      ( true ) 
+      ( true ) 
+      "No Transponder" 
+   )
+)
++Name: setup station
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file 
+      "Music_Alien_Ambient1" 
+      99 
+   )
+   ( lua-mark-ship "Meiks" "Alfa 2" ) 
+)
++Name: music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "mission setup" 
+      ( rand-multiple 1800 2000 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 1" 
+      ( rand-multiple 750 1250 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 1" 
+      ( rand-multiple 950 1550 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 1" 
+      ( rand-multiple 1250 1850 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 1" 
+      ( rand-multiple 1550 2080 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 5
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 1" 
+      ( rand-multiple 1250 1850 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 6
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 1" 
+      ( rand-multiple 1250 1850 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 7
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 1" 
+      ( rand-multiple 1250 1850 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 8
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 1" 
+      ( rand-multiple 1250 1850 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 9
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "well that's comforting" 
+         5 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         5 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 2-1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 2-1" 
+      ( rand-multiple 500 1200 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 2-2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 2-1" 
+      ( rand-multiple 500 1200 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 2-3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "need more to go on" 
+      8 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 3-1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 3-1" 
+      ( rand-multiple 500 1200 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 3-2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 3-1" 
+      ( rand-multiple 500 1200 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 3-3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "warpin trigger 3-1" 
+      ( rand-multiple 500 1200 ) 
+   )
+   ( do-nothing ) 
+)
++Name: warpin trigger 3-4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( fade-out ) ) 
++Name: fadeout
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( reset-camera ( true ) ) 
+   ( set-camera-position 
+      ( get-object-x "initial camera 1:1" ) 
+      ( get-object-y "initial camera 1:1" ) 
+      ( get-object-z "initial camera 1:1" ) 
+   )
+   ( set-camera-facing-object 
+      "initial camera pointing:1" 
+   )
+   ( set-camera-rotation 0 15 10 16000 ) 
+)
++Name: initial camera setup
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "initial camera setup" 
+      1500 
+   )
+   ( fade-in 750 ) 
+)
++Name: fadein
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( fade-out 2500 ) ) 
++Name: fadeout to player
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( reset-camera ( true ) ) 
+)
++Name: reset camera
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( player-not-use-ai ) 
+   ( add-goal 
+      "Alfa" 
+      ( ai-guard "Alfa 1" 89 ) 
+   )
+   ( hud-disable 0 ) 
+)
++Name: player reset
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when ( true ) ( fade-in 750 ) ) 
++Name: fadein to player
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "fadeout to player" 
+         5 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         5 
+      )
+   )
+   ( clear-goals 
+      "Great Awakening" 
+      "Frontier Ordinance" 
+      "St Guerin" 
+      "Remembering Gogoltha" 
+   )
+   ( add-ai-goal-track-ship 
+      "Great Awakening" 
+      "Covenant" 
+      "awakening waypoint" 
+      100 
+      -1800 
+      -350 
+      500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Frontier Ordinance" 
+      "Covenant" 
+      "ordinance waypoint" 
+      100 
+      -2200 
+      0 
+      0 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "St Guerin" 
+      "Covenant" 
+      "guerin waypoint" 
+      100 
+      -2000 
+      970 
+      0 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Remembering Gogoltha" 
+      "Covenant" 
+      "gogoltha waypoint" 
+      100 
+      1800 
+      -350 
+      0 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+)
++Name: ships escort cov
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "you'll be informed" 
+            4 
+         )
+         ( < 
+            ( distance-to-center 
+               "Alfa 1" 
+               "No Transponder" 
+            )
+            6000 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load" 
+            0 
+         )
+      )
+   )
+   ( add-remove-escort 
+      "No Transponder" 
+      1 
+   )
+)
++Name: mark station
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 
+      0 
+      "No Transponder" 
+   )
+   ( do-nothing ) 
+)
++Name: dir scan station
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Scan Station", 4351)
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < 
+            ( distance-to-center 
+               "Alfa 1" 
+               "No Transponder" 
+            )
+            5500 
+         )
+         ( is-event-true-delay 
+            "mark station" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load" 
+            0 
+         )
+      )
+   )
+   ( ship-unstealthy "No Transponder" ) 
+)
++Name: station visible
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "similar structure" 
+      4 
+   )
+   ( add-goal 
+      "Aria" 
+      ( ai-waypoints-once "Aria patrol" 89 ) 
+   )
+   ( add-ai-goal-track-ship 
+      "Hoshikuzu" 
+      "Aria" 
+      "Hoshi arrive" 
+      100 
+      550 
+      250 
+      -500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+)
++Name: aria patrols
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "scan operations" 
+      2 
+   )
+   ( alter-ship-flag 
+      "toggle-subsystem-scanning" 
+      ( false ) 
+      ( true ) 
+      "No Transponder" 
+   )
+   ( ship-subsys-targetable 
+      "No Transponder" 
+      "Uplink" 
+      "Communication" 
+      "Operations" 
+   )
+)
++Name: station subsystems visible
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( cap-subsys-cargo-known-delay 
+      0 
+      "No Transponder" 
+      "Uplink" 
+      "Communication" 
+      "Operations" 
+   )
+   ( add-remove-escort 
+      "No Transponder" 
+      0 
+   )
+)
++Name: dir scan subsystems
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Scan Station Systems", 4352)
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Tower of Dawn" ) 
+   ( play-sound-from-file 
+      "Music_Com_Battle4" 
+      99 
+   )
+)
++Name: malikans music change
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Tower of Dawn" 
+      ( ai-waypoints-once 
+         "tower attacks" 
+         89 
+      )
+   )
+)
++Name: tower moves
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "can't navigate" 
+      4 
+   )
+   ( turret-free-all "Tower of Dawn" ) 
+)
++Name: unlock hostile missiles
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "lock hostile missile turrets" 
+         0 
+      )
+   )
+   ( training-msg "javelin warning" ) 
+)
++Name: javelin warning
++Repeat Count: 999
++Interval: 60
++Chained: 0
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "unlock hostile missiles" 
+      40 
+   )
+   ( turret-lock 
+      "Tower of Dawn" 
+      "mturret1" 
+      "mturret2" 
+      "mturret3" 
+      "mturret4" 
+      "mturret5" 
+      "mturret6" 
+      "mturret7" 
+      "mturret8" 
+   )
+)
++Name: lock hostile missile turrets
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "all ships form up" 
+      4 
+   )
+   ( add-ai-goal-track-ship 
+      "Nassau" 
+      "Hopewell" 
+      "nassau waypoint" 
+      100 
+      -500 
+      550 
+      0 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Aria" 
+      "Hopewell" 
+      "aria guards" 
+      100 
+      500 
+      -550 
+      0 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Pollux Arrow" 
+      "Hopewell" 
+      "pollux waypoint" 
+      100 
+      -1000 
+      -550 
+      0 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+)
++Name: ships move to escort
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Yankee" ) 
+   ( clear-goals "Sierra" "Tango" ) 
+   ( add-goal 
+      "Sierra" 
+      ( ai-guard "Xray" 89 ) 
+   )
+   ( add-goal 
+      "Tango" 
+      ( ai-guard "Yankee" 89 ) 
+   )
+)
++Name: combine fighters escort bombers
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "malikan bombers" 
+      50 
+   )
+   ( activate-glow-maps "Artifact" ) 
+   ( training-msg "progenitor 1" ) 
+   ( close-sound-from-file ) 
+   ( play-sound-from-file 
+      "progenitoramb" 
+      99 
+   )
+)
++Name: gate power up
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay "no time" 2 ) 
+   ( add-goal 
+      "Hopewell" 
+      ( ai-waypoints-once 
+         "Hopewell moves out" 
+         89 
+      )
+   )
+)
++Name: Hopewell moves out
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "progenitor 2" 
+      8 
+   )
+   ( fade-out 1500 1 ) 
+)
++Name: fadeout white
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals 
+      "Xray" 
+      "Yankee" 
+      "Sierra" 
+      "Tango" 
+   )
+   ( add-goal 
+      "Xray" 
+      ( ai-play-dead-persistent 200 ) 
+   )
+   ( add-goal 
+      "Yankee" 
+      ( ai-play-dead-persistent 200 ) 
+   )
+   ( add-goal 
+      "Sierra" 
+      ( ai-play-dead-persistent 200 ) 
+   )
+   ( add-goal 
+      "Tango" 
+      ( ai-play-dead-persistent 200 ) 
+   )
+   ( add-remove-escort "Tower of Dawn" 0 ) 
+   ( add-remove-escort "Zaragoza" 0 ) 
+)
++Name: disable bombers
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( > 
+      ( distance-to-center 
+         "Alfa 1" 
+         "Artifact" 
+      )
+      15000 
+   )
+   ( fade-in 1500 ) 
+)
++Name: fade back in
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "fadeout white" 
+         0 
+      )
+      ( <= 
+         ( distance-to-center 
+            "Alfa 1" 
+            "Artifact" 
+         )
+         15000 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "fade back in" 
+            0 
+         )
+      )
+   )
+   ( adjust-audio-volume "Music" 0 ) 
+   ( adjust-audio-volume "Voice" 0 ) 
+   ( adjust-audio-volume "Effects" 0 ) 
+   ( self-destruct "Alfa 1" ) 
+)
++Name: player in gateway blast
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "already done" 
+      1 
+   )
+   ( ship-unstealthy "Unknown" ) 
+   ( ship-vulnerable "Unknown" ) 
+   ( add-remove-escort "Unknown" 2 ) 
+)
++Name: gravity ship visible
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Unknown" ) 
+   ( do-nothing ) 
+)
++Name: dir destroy gravity ship
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Unknown Ship", 4353)
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "checkpoint load" 
+      0 
+   )
+   ( clear-goals "Covenant" ) 
+   ( add-goal 
+      "Covenant" 
+      ( ai-waypoints-once 
+         "covenant approach" 
+         89 
+      )
+   )
+   ( add-remove-escort 
+      "No Transponder" 
+      0 
+   )
+)
++Name: checkpoint load setup
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "already done" 
+      8 
+   )
+   ( play-sound-from-file 
+      "stormshadow2" 
+      99 
+   )
+)
++Name: final battle music
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( < ( hits-left "Unknown" ) 50 ) 
+   ( clear-goals "Unknown" ) 
+   ( add-goal 
+      "Unknown" 
+      ( ai-waypoints-once 
+         "gravity ship escapes" 
+         89 
+      )
+   )
+)
++Name: gravity ship retreats
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 15 "Zaragoza" ) 
+   ( add-ai-goal-track-ship 
+      "Zaragoza" 
+      "Tower of Dawn" 
+      "zaragoza waypoint" 
+      100 
+      0 
+      550 
+      -1500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Thresher" 
+      "Tower of Dawn" 
+      "thresher waypoint" 
+      100 
+      1500 
+      550 
+      -500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Ariadne" 
+      "Tower of Dawn" 
+      "ariadne waypoint" 
+      100 
+      -1500 
+      550 
+      -500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Kerebin" 
+      "Tower of Dawn" 
+      "kerebin waypoint" 
+      100 
+      0 
+      -200 
+      -3500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Unknown" 
+      "Tower of Dawn" 
+      "gravity waypoint" 
+      100 
+      0 
+      -500 
+      -4000 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Pillar of Fire" 
+      "Tower of Dawn" 
+      "pillar waypoint" 
+      100 
+      0 
+      -1500 
+      -2000 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+)
++Name: combine ships escort
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "already done" 
+      8 
+   )
+   ( clear-goals "Alfa 2" ) 
+   ( add-goal 
+      "Alfa 2" 
+      ( ai-guard "Alfa 1" 89 ) 
+   )
+   ( add-goal 
+      "Alfa 2" 
+      ( ai-ignore-new "Tower of Dawn" 89 ) 
+   )
+   ( add-goal 
+      "Alfa 2" 
+      ( ai-ignore-new "Pillar of Fire" 89 ) 
+   )
+   ( add-goal 
+      "Alfa 2" 
+      ( ai-ignore-new "Kerebin" 89 ) 
+   )
+   ( add-goal 
+      "Alfa 2" 
+      ( ai-ignore-new "Ariadne" 89 ) 
+   )
+   ( add-goal 
+      "Alfa 2" 
+      ( ai-ignore-new "Thresher" 89 ) 
+   )
+)
++Name: meiks covers ross
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( < 
+      ( distance-to-center 
+         "Tower of Dawn" 
+         "tower attacks:1" 
+      )
+      1200 
+   )
+   ( training-msg "progenitor 3" ) 
+)
++Name: progenitor 3
++Repeat Count: 999
++Interval: 30
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "going nowhere" 
+      7 
+   )
+   ( turret-free-all 
+      "Tower of Dawn" 
+      "Zaragoza" 
+      "Kerebin" 
+   )
+)
++Name: reunlock hostile ASMs
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "that's done it" 
+      3 
+   )
+   ( play-sound-from-file "danjon" 99 ) 
+)
++Name: final music
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 4 "Aria" ) 
+      ( is-destroyed-delay 4 "Hopewell" ) 
+      ( is-destroyed-delay 4 "Hoshikuzu" ) 
+   )
+   ( do-nothing ) 
+)
++Name: failure conditions
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "player dies" 0 ) 
+   )
+   ( fade-out 1800 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      1500 
+   )
+   ( adjust-audio-volume "Voice" 0 1500 ) 
+)
++Name: fadeout bad
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file "dirtangelend" ) 
+   ( self-destruct "Alfa 1" ) 
+   ( hud-disable 1 ) 
+)
++Name: mission failed title
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-destroyed-delay 1 "Alfa 1" ) 
+   ( do-nothing ) 
+)
++Name: player dies
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "fadeout bad" 0 ) 
+   )
+   ( fade-out 1800 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      1500 
+   )
+   ( adjust-audio-volume "Voice" 0 1500 ) 
+)
++Name: fadeout player dies
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file "dirtangelend" ) 
+   ( hud-disable 1 ) 
+)
++Name: mission failed death
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "already done" 
+      60 
+   )
+   ( clear-goals 
+      "Zaragoza" 
+      "Ariadne" 
+      "Thresher" 
+   )
+   ( add-ai-goal-track-ship 
+      "Zaragoza" 
+      "Hopewell" 
+      "zaragoza waypoint" 
+      100 
+      0 
+      550 
+      -1500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Ariadne" 
+      "Hopewell" 
+      "zaragoza waypoint" 
+      100 
+      -500 
+      550 
+      -1500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Thresher" 
+      "Hopewell" 
+      "zaragoza waypoint" 
+      100 
+      500 
+      550 
+      -1500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Kerebin" 
+      "Hopewell" 
+      "zaragoza waypoint" 
+      100 
+      0 
+      -550 
+      -1500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+)
++Name: combine attack
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "checkpoint load" 
+      0 
+   )
+   ( add-ai-goal-track-ship 
+      "Hoshikuzu" 
+      "Aria" 
+      "Hoshi arrive" 
+      100 
+      550 
+      250 
+      -500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+)
++Name: hoshi stays near aria
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance-to-center 
+            "Thresher" 
+            "Hopewell" 
+         )
+         9000 
+      )
+      ( < 
+         ( distance-to-center 
+            "Ariadne" 
+            "Hopewell" 
+         )
+         9000 
+      )
+   )
+   ( turret-free-all 
+      "Ariadne" 
+      "Thresher" 
+   )
+)
++Name: unlock arsenal ships
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg "javelin warning" ) 
+)
++Name: javelin warning 2
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: >>>>>>MESSAGES<<<<<<
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "fadein to player" 
+         2 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Covenant" 
+      "Normal" 
+      "rejoice" 
+   )
+)
++Name: rejoice
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 2" 
+      "Normal" 
+      "wtf" 
+   )
+)
++Name: wtf
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "where are we" 
+   )
+)
++Name: where are we
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Covenant" 
+      "Normal" 
+      "promised land" 
+   )
+)
++Name: promised land
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "blue alien shit" 
+   )
+)
++Name: blue alien shit
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "seen gateway before" 
+   )
+)
++Name: seen gateway before
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir scan station" 
+         0 
+      )
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "you should have" 
+   )
+)
++Name: you should have
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir scan station" 
+         0 
+      )
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "similar structure" 
+   )
+)
++Name: similar structure
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir scan station" 
+         0 
+      )
+   )
+   ( send-message 
+      "Alfa 2" 
+      "Normal" 
+      "what do you mean" 
+   )
+)
++Name: what do you mean
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir scan station" 
+         0 
+      )
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "commendable infosec" 
+   )
+)
++Name: commendable infosec
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir scan station" 
+         0 
+      )
+   )
+   ( send-message 
+      "Alfa 2" 
+      "Normal" 
+      "what's that supposed" 
+   )
+)
++Name: what's that supposed
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir scan station" 
+         0 
+      )
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "should understand classified" 
+   )
+)
++Name: should understand classified
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir scan station" 
+         0 
+      )
+   )
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "are you with ANI" 
+   )
+)
++Name: are you with ANI
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir scan station" 
+         0 
+      )
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "you'll be informed" 
+   )
+)
++Name: you'll be informed
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir scan station" 
+         0 
+      )
+   )
+   ( send-message 
+      "Covenant" 
+      "Normal" 
+      "andalucia keep up" 
+   )
+)
++Name: andalucia keep up
++Repeat Count: 1
++Interval: 1
++Chained: 15
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "dir scan station" 
+         0 
+      )
+   )
+   ( send-message 
+      "Andalucia" 
+      "Normal" 
+      "not coming" 
+   )
+)
++Name: not coming
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-cargo-known-delay 
+         1 
+         "No Transponder" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "read on station" 
+   )
+)
++Name: read on station
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "curious" 
+   )
+)
++Name: curious
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "scan operations" 
+   )
+)
++Name: scan operations
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( cap-subsys-cargo-known-delay 
+      ( rand-multiple 1 2 ) 
+      "No Transponder" 
+      "Operations" 
+   )
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "operations scanned" 
+   )
+)
++Name: operations scanned
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( cap-subsys-cargo-known-delay 
+      ( rand-multiple 1 2 ) 
+      "No Transponder" 
+      "Uplink" 
+   )
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "uplink scanned" 
+   )
+)
++Name: uplink scanned
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( cap-subsys-cargo-known-delay 
+      ( rand-multiple 1 2 ) 
+      "No Transponder" 
+      "Communication" 
+   )
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "comms scanned" 
+   )
+)
++Name: comms scanned
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "dir scan subsystems" 
+      8 
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "need eyes" 
+   )
+)
++Name: need eyes
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Drone Able 1" ) 
+   ( send-message 
+      "@autoGenVar5[#Aria Tactical]" 
+      "Normal" 
+      "drone away" 
+   )
+)
++Name: drone away
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-departed-delay 2 "Drone Able 1" ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "camera feed" 
+   )
+)
++Name: camera feed
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "this feels wrong" 
+   )
+)
++Name: this feels wrong
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 2" 
+      "Normal" 
+      "renewal aren't bothered" 
+   )
+)
++Name: renewal aren't bothered
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "not supposed to be here" 
+   )
+)
++Name: not supposed to be here
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 2" 
+      "Normal" 
+      "this is what nuked morik" 
+   )
+)
++Name: this is what nuked morik
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "not sure if this" 
+   )
+)
++Name: not sure if this
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "camera back" 
+   )
+)
++Name: camera back
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "biological remains" 
+   )
+)
++Name: biological remains
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "well that's comforting" 
+   )
+)
++Name: well that's comforting
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( lua-save-init ) 
+   ( lua-save-ship 
+      "Alfa 1" 
+      "Alfa 2" 
+      "Covenant" 
+      "Hoshikuzu" 
+      "Aria" 
+      "Remembering Gogoltha" 
+      "Frontier Ordinance" 
+      "Great Awakening" 
+      "St Guerin" 
+   )
+   ( lua-save-done ) 
+)
++Name: CHECKPOINT SAVE
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "malikans music change" 
+      2 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "gadaria is here" 
+   )
+)
++Name: gadaria is here
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Tower of Dawn" 
+      "Normal" 
+      "gadaria claims planet" 
+   )
+)
++Name: gadaria claims planet
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Tower of Dawn" 
+      "Normal" 
+      "pack up and leave" 
+   )
+)
++Name: pack up and leave
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "pillar of fire" 
+   )
+)
++Name: pillar of fire
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Covenant" 
+      "Normal" 
+      "yes stuart ross" 
+   )
+)
++Name: yes stuart ross
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Tower of Dawn" 
+      "Normal" 
+      "repeat warning" 
+   )
+)
++Name: repeat warning
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "better leave" 
+   )
+)
++Name: better leave
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Covenant" 
+      "Normal" 
+      "can intend whatever" 
+   )
+)
++Name: can intend whatever
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alfa 1" 
+      "Normal" 
+      "need more to go on" 
+   )
+)
++Name: need more to go on
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( has-arrived-delay 3 "Zaragoza" ) 
+   ( send-message 
+      "Zaragoza" 
+      "Normal" 
+      "gadaria destroy convoy" 
+   )
+)
++Name: gadaria destroy convoy
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Tower of Dawn" 
+      "Normal" 
+      "stay out of our business" 
+   )
+)
++Name: stay out of our business
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Zaragoza" 
+      "Normal" 
+      "200 missiles" 
+   )
+)
++Name: 200 missiles
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "running out of time" 
+   )
+)
++Name: running out of time
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "all ships form up" 
+   )
+   ( add-remove-escort "Aria" 100 ) 
+   ( add-remove-escort "Hoshikuzu" 99 ) 
+)
++Name: all ships form up
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andalucia" 
+      "Normal" 
+      "angel says no" 
+   )
+   ( clear-goals "Andalucia" ) 
+   ( add-goal 
+      "Andalucia" 
+      ( ai-waypoints-once 
+         "angel retreat" 
+         89 
+      )
+   )
+)
++Name: angel says no
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Covenant" 
+      "Normal" 
+      "suggest stay away" 
+   )
+)
++Name: suggest stay away
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andalucia" 
+      "Normal" 
+      "can't navigate" 
+   )
+)
++Name: can't navigate
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "gravity ship" 
+   )
+)
++Name: gravity ship
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "no time" 
+   )
+)
++Name: no time
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Pillar of Fire" 
+      "Normal" 
+      "gadaria you promised" 
+   )
+)
++Name: gadaria you promised
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Tower of Dawn" 
+      "Normal" 
+      "promised us home" 
+   )
+)
++Name: promised us home
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Xray" ) 
+   ( send-message 
+      "@autoGenVar6[#Aria Tac]" 
+      "Normal" 
+      "malikan bombers" 
+   )
+)
++Name: malikan bombers
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "gate power up" 
+      1 
+   )
+   ( send-message 
+      "@autoGenVar6[#Aria Tac]" 
+      "Normal" 
+      "gate powering up" 
+   )
+)
++Name: gate powering up
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "all ships get clear" 
+   )
+)
++Name: all ships get clear
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg "progenitor 2" ) 
+)
++Name: progenitor 2
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "fade back in" 
+      6 
+   )
+   ( send-message 
+      "@autoGenVar6[#Aria Tac]" 
+      "Normal" 
+      "bombers powering down" 
+   )
+)
++Name: bombers powering down
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "analysis" 
+   )
+)
++Name: analysis
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar6[#Aria Tac]" 
+      "Normal" 
+      "analysis confirmed" 
+   )
+)
++Name: analysis confirmed
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "did you do that" 
+   )
+)
++Name: did you do that
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Covenant" 
+      "Normal" 
+      "can't claim credit" 
+   )
+)
++Name: can't claim credit
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Covenant" 
+      "Normal" 
+      "you should leave" 
+   )
+)
++Name: you should leave
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "going nowhere" 
+   )
+)
++Name: going nowhere
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "already done" 
+   )
+   ( protect-ship "Aria" ) 
+)
++Name: already done
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( destroyed-or-departed-delay 
+      2 
+      "Unknown" 
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "that's done it" 
+   )
+)
++Name: that's done it
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "time to leave" 
+   )
+   ( clear-goals "Alfa 2" ) 
+   ( add-goal 
+      "Alfa 2" 
+      ( ai-guard "Hopewell" 89 ) 
+   )
+   ( add-remove-escort "Aria" 0 ) 
+   ( add-remove-escort "Hopewell" 100 ) 
+   ( add-remove-escort "Hoshikuzu" 0 ) 
+)
++Name: time to leave
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance-center-to-subsystem 
+            "Alfa 1" 
+            "Hopewell" 
+            "fighterbay1" 
+         )
+         200 
+      )
+      ( < 
+         ( distance-center-to-subsystem 
+            "Alfa 1" 
+            "Hopewell" 
+            "fighterbay2" 
+         )
+         200 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: dir rtb
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Dock with Hopewell", 4354)
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-out 1500 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      1500 
+   )
+   ( adjust-audio-volume "Voice" 0 1500 ) 
+)
++Name: fadeout good
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission complete title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      4000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( close-sound-from-file ) 
+   ( hud-disable 1 ) 
+)
++Name: mission complete title
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: mission end good
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "gadaria is here" 
+      1 
+   )
+   ( do-nothing ) 
+)
++Name: dir escort Aria trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Aria" ) 
+   ( do-nothing ) 
+)
++Name: dir protect Aria
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Cover Aria and Hoshikuzu", 4355)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "suggest stay away" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: dir avoid gate trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Aria" ) 
+   ( do-nothing ) 
+)
++Name: dir avoid gate
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Stay at distance from Gateway", 4356)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "unlock arsenal ships" 
+      0 
+   )
+   ( send-message 
+      "Hoshikuzu" 
+      "Normal" 
+      "missiles warming up" 
+   )
+)
++Name: missiles warming up
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 2 total
+
+$Type: Primary
++Name: Accompany children
+$MessageNew:  XSTR("Accompany the Children of Renewal", 4357)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "that's done it" 
+   0 
+)
+
+$Type: Primary
++Name: find promised land
+$MessageNew:  XSTR("Find the Children's Promised Land", 4358)
+$end_multi_text
+$Formula: ( is-event-true-delay "dir rtb" 0 ) 
+
+#Waypoints		;! 24 lists total
+
+$Name: initial camera 1
+$List: (		;! 1 points in list
+	( 23239.900391, 154.948242, 16746.148438 )
+)
+
+$Name: initial camera pointing
+$List: (		;! 1 points in list
+	( 20902.214844, 0.000122, 14920.270508 )
+)
+
+$Name: Hoshi arrive
+$List: (		;! 1 points in list
+	( 22800.000000, 100.000000, 18000.000000 )
+)
+
+$Name: covenant approach
+$List: (		;! 1 points in list
+	( 21536.593750, 0.000000, 41058.820313 )
+)
+
+$Name: gogoltha waypoint
+$List: (		;! 1 points in list
+	( 23543.589844, -0.001465, 19534.347656 )
+)
+
+$Name: awakening waypoint
+$List: (		;! 1 points in list
+	( 19698.818359, -0.000977, 20044.398438 )
+)
+
+$Name: guerin waypoint
+$List: (		;! 1 points in list
+	( 18730.568359, -0.000977, 19724.169922 )
+)
+
+$Name: ordinance waypoint
+$List: (		;! 1 points in list
+	( 17209.425781, 725.002930, 20388.970703 )
+)
+
+$Name: Aria patrol
+$List: (		;! 3 points in list
+	( 26751.183594, -328.744141, 18443.513672 )
+	( 31701.773438, 520.334961, 16127.037109 )
+	( 33687.398438, 1314.036133, 12326.839844 )
+)
+
+$Name: aria guards
+$List: (		;! 1 points in list
+	( 37382.207031, 0.000000, -270.171875 )
+)
+
+$Name: nassau waypoint
+$List: (		;! 1 points in list
+	( 38678.851563, 0.000000, -4553.695313 )
+)
+
+$Name: hopewell waypoint
+$List: (		;! 1 points in list
+	( 41735.503906, 0.001953, -4565.242188 )
+)
+
+$Name: pollux waypoint
+$List: (		;! 1 points in list
+	( 34549.980469, -0.027344, -2977.332031 )
+)
+
+$Name: Hopewell moves out
+$List: (		;! 4 points in list
+	( 12732.296875, 725.001953, 21964.589844 )
+	( 7623.610352, 725.001953, 24449.294922 )
+	( 3615.196289, 725.001953, 25038.294922 )
+	( -2127.398438, 725.001953, 24532.458984 )
+)
+
+$Name: tower attacks
+$List: (		;! 3 points in list
+	( 30114.378906, 3999.998047, 19749.800781 )
+	( 20455.599609, 2000.000000, 24916.099609 )
+	( 16882.273438, 0.000977, 40683.117188 )
+)
+
+$Name: gravity ship escapes
+$List: (		;! 1 points in list
+	( 81325.625000, 999.557068, 16012.603516 )
+)
+
+$Name: zaragoza waypoint
+$List: (		;! 1 points in list
+	( 42768.769531, 0.007813, 15043.640625 )
+)
+
+$Name: ariadne waypoint
+$List: (		;! 1 points in list
+	( 44385.160156, 0.007813, 16878.445313 )
+)
+
+$Name: kerebin waypoint
+$List: (		;! 1 points in list
+	( 43193.156250, 0.007813, 17143.621094 )
+)
+
+$Name: thresher waypoint
+$List: (		;! 1 points in list
+	( 44190.046875, 0.007813, 14781.336914 )
+)
+
+$Name: gravity waypoint
+$List: (		;! 1 points in list
+	( 44201.082031, 0.000977, 13585.178711 )
+)
+
+$Name: pillar waypoint
+$List: (		;! 1 points in list
+	( 35594.054688, 0.000977, 17546.626953 )
+)
+
+$Name: custodian waypoint
+$List: (		;! 1 points in list
+	( 30681.544922, 3619.325928, 20669.289063 )
+)
+
+$Name: angel retreat
+$List: (		;! 1 points in list
+	( -14091.230469, -0.001953, 24160.814453 )
+)
+
+#Messages		;! 79 total
+
+
+$Name: title1
+$Team: -1
+$MessageNew:  XSTR("$quotePromised Land$quote", 4359)
+$end_multi_text
+
+$Name: Checkpoint Save
+$Team: -1
+$MessageNew:  XSTR("Checkpoint Save Detected", 2728)
+$end_multi_text
+
+$Name: Start from beginning
+$Team: -1
+$MessageNew:  XSTR("Start from beginning", 2729)
+$end_multi_text
+
+$Name: Start from checkpoint
+$Team: -1
+$MessageNew:  XSTR("Start from checkpoint", 2730)
+$end_multi_text
+
+$Name: mission failed title
+$Team: -1
+$MessageNew:  XSTR("MISSION FAILED", 2726)
+$end_multi_text
+
+$Name: mission complete title
+$Team: -1
+$MessageNew:  XSTR("MISSION COMPLETE", 2727)
+$end_multi_text
+
+$Name: javelin warning
+$Team: -1
+$MessageNew:  XSTR("WARNING: HOSTILE ASM LAUNCH DETECTED", 3341)
+$end_multi_text
++Wave Name: warning
+
+$Name: progenitor 1
+$Team: -1
+$MessageNew:  XSTR(" ", 2013)
+$end_multi_text
++Wave Name: progenitor
+
+$Name: progenitor 2
+$Team: -1
+$MessageNew:  XSTR(" ", 2013)
+$end_multi_text
++Wave Name: progenitor2.ogg
+
+$Name: progenitor 3
+$Team: -1
+$MessageNew:  XSTR(" ", 2013)
+$end_multi_text
++Wave Name: progenitor3.ogg
+
+$Name: rejoice
+$Team: -1
+$MessageNew:  XSTR("Rejoice, brothers and sisters! Rejoice. We have crossed the Veil and arrived at our salvation.", 4360)
+$end_multi_text
++Wave Name: 22-01
+
+$Name: wtf
+$Team: -1
+$MessageNew:  XSTR("What the fuck?", 4361)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 22-02
+
+$Name: where are we
+$Team: -1
+$MessageNew:  XSTR("Where the hell are we? What is going on with that blue planet?", 4362)
+$end_multi_text
++AVI Name: Head-f5a
++Wave Name: 22-03
+
+$Name: promised land
+$Team: -1
+$MessageNew:  XSTR("This is our Eden, Katherine Lau. The land our Lord had promised to His people.", 4363)
+$end_multi_text
++Wave Name: 22-04
+
+$Name: blue alien shit
+$Team: -1
+$MessageNew:  XSTR("Your Lord promised you a black hole, and a planet covered in blue shit?", 4364)
+$end_multi_text
++Wave Name: 22-05
+
+$Name: seen gateway before
+$Team: -1
+$MessageNew:  XSTR("Wait, that structure next to the planet. I've seen it before.", 4365)
+$end_multi_text
++Wave Name: 22-06
+
+$Name: you should have
+$Team: -1
+$MessageNew:  XSTR("And well you should Lieutenant. This is the same as the artifact in Mira that the Federation and Combine have been thrashing each other over.", 4366)
+$end_multi_text
++Wave Name: 22-07
+
+$Name: similar structure
+$Team: -1
+$MessageNew:  XSTR("There's a similar structure pointed at the black hole. No energy readings from either artifact.", 4367)
+$end_multi_text
++Wave Name: 22-08
+
+$Name: what do you mean
+$Team: -1
+$MessageNew:  XSTR("What do you mean you've seen it before lad? What the hell happened to you in Morik?", 4368)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 22-09
+
+$Name: commendable infosec
+$Team: -1
+$MessageNew:  XSTR("Very good Lieutenant Ross. Your ability to maintain information security is commendable.", 4369)
+$end_multi_text
++Wave Name: 22-10
+
+$Name: what's that supposed
+$Team: -1
+$MessageNew:  XSTR("What the hell's that supposed to mean? Have you been holding out crucial information on me lad?", 4370)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 22-11
+
+$Name: should understand classified
+$Team: -1
+$MessageNew:  XSTR("Commonwealth officers should know the importance of protected information, Lieutenant Commander Meiks.", 4371)
+$end_multi_text
++Wave Name: 22-12
+
+$Name: are you with ANI
+$Team: -1
+$MessageNew:  XSTR("Commander Cameron, are you with ANI or something?", 4372)
+$end_multi_text
++Wave Name: 22-13
+
+$Name: you'll be informed
+$Team: -1
+$MessageNew:  XSTR("That's for me to know, and you to be informed when deemed necessary. We've got a sensor bounce off a large station in the area. I need you to approach and fire off active sensors.", 4373)
+$end_multi_text
++Wave Name: 22-14
+
+$Name: read on station
+$Team: -1
+$MessageNew:  XSTR("Getting a read on the station. Her reactor's running but her transponder's offline. No signal traffic out.", 4374)
+$end_multi_text
++Wave Name: 22-15
+
+$Name: curious
+$Team: -1
+$MessageNew:  XSTR("That doesn't make sense. At the least there's got to be some automated internal data traffic from the station's systems.", 4375)
+$end_multi_text
++Wave Name: 22-16
+
+$Name: scan operations
+$Team: -1
+$MessageNew:  XSTR("We need targeted scans of the station's Operations, Communications and Data Uplink systems. Can you facilitate this, Lieutenant?", 4376)
+$end_multi_text
++Wave Name: 22-17
+
+$Name: operations scanned
+$Team: -1
+$MessageNew:  XSTR("Operations is powered but all tactical systems are offline. Emergency life support is active though.", 4377)
+$end_multi_text
++Wave Name: 22-18
+
+$Name: uplink scanned
+$Team: -1
+$MessageNew:  XSTR("There's power going to the data uplink but the computers are blank.", 4378)
+$end_multi_text
++Wave Name: 22-19
+
+$Name: comms scanned
+$Team: -1
+$MessageNew:  XSTR("Communications are silent. There aren't even any automated emergency beacons.", 4379)
+$end_multi_text
++Wave Name: 22-20
+
+$Name: need eyes
+$Team: -1
+$MessageNew:  XSTR("We need eyes inside that station. Prepare a drone mission. Fit for sensors and optics.", 4380)
+$end_multi_text
++Wave Name: 22-21
+
+$Name: andalucia keep up
+$Team: -1
+$MessageNew:  XSTR("Andalucia, you're falling behind. Keep up with the formation.", 4381)
+$end_multi_text
++Wave Name: 22-22
+
+$Name: not coming
+$Team: -1
+$MessageNew:  XSTR("Negative, Covenant. This contract doesn't contain enough hazard cover. We'll monitor the situation from our current position.", 4382)
+$end_multi_text
++Wave Name: 22-23
+
+$Name: drone away
+$Team: -1
+$MessageNew:  XSTR("Drone away, Commander.", 4383)
+$end_multi_text
++Wave Name: 22-24
+
+$Name: camera feed
+$Team: -1
+$MessageNew:  XSTR("Bring up the cam feed. Thermal overlay to start, then work through EM spectrum.", 4384)
+$end_multi_text
++Wave Name: 22-25
+
+$Name: this feels wrong
+$Team: -1
+$MessageNew:  XSTR("This entire place feels wrong. What are those structures? And what the hell is this ghost station doing out here?", 4385)
+$end_multi_text
++Wave Name: 22-26
+
+$Name: renewal aren't bothered
+$Team: -1
+$MessageNew:  XSTR("Your Reverend Lightowler doesn't seem too fussed about it. Look at him out there like a kid in a playground.", 4386)
+$end_multi_text
++Wave Name: 22-27
+
+$Name: not supposed to be here
+$Team: -1
+$MessageNew:  XSTR("I know what you mean Lau. I felt something similar the last time I saw one of these things. Like we're not supposed to be here.", 4387)
+$end_multi_text
++Wave Name: 22-28
+
+$Name: this is what nuked morik
+$Team: -1
+$MessageNew:  XSTR("So you're saying this place is linked to Romanowska's super weapon that nuked Morik?", 4388)
+$end_multi_text
++Wave Name: 22-29
+
+$Name: not sure if this
+$Team: -1
+$MessageNew:  XSTR("Not sure about this particular place Meiks. But those structures are definitely the same. And I definitely saw the Solaris weapon there.", 4389)
+$end_multi_text
++Wave Name: 22-30
+
+$Name: camera back
+$Team: -1
+$MessageNew:  XSTR("Alfa wing. Be advised we have reviewed the first drone images. No life signs seen so far, and no weapons damage.", 4390)
+$end_multi_text
++Wave Name: 22-31
+
+$Name: biological remains
+$Team: -1
+$MessageNew:  XSTR("We do have isolated biological signatures. Looks like the remains of the station's crew. Causes of their deaths are not immediately apparent.", 4391)
+$end_multi_text
++Wave Name: 22-32
+
+$Name: well that's comforting
+$Team: -1
+$MessageNew:  XSTR("Well that's not comforting at all.", 4392)
+$end_multi_text
++Wave Name: 22-33
+
+$Name: gadaria is here
+$Team: -1
+$MessageNew:  XSTR("Gadaria is here!", 4393)
+$end_multi_text
++Wave Name: 22-34
+
+$Name: pillar of fire
+$Team: -1
+$MessageNew:  XSTR("That's the Pillar of Fire!", 4394)
+$end_multi_text
++Wave Name: 22-35
+
+$Name: yes stuart ross
+$Team: -1
+$MessageNew:  XSTR("Yes, Stuart Ross. The Malikans have plundered the Pillar's data banks to guide them to the Promised Land. They come with rapacious intent.", 4395)
+$end_multi_text
++Wave Name: 22-36
+
+$Name: gadaria claims planet
+$Team: -1
+$MessageNew:  XSTR("I am Andri Gadaria. The Malikan people claim this planet as the capital of the new Malikan nation. We will carve our own destiny through the stars. Sem escravidao. Sem opressao.", 4396)
+$end_multi_text
++Wave Name: 22-37
+
+$Name: pack up and leave
+$Team: -1
+$MessageNew:  XSTR("Gather your ships and saia deste lugar. If you do not, we will cast you out ourselves.", 4397)
+$end_multi_text
++Wave Name: 22-38
+
+$Name: repeat warning
+$Team: -1
+$MessageNew:  XSTR("Renewal ships. You have five minutes to leave the area before we attack. This is my final gift of warning.", 4398)
+$end_multi_text
++Wave Name: 22-39
+
+$Name: better leave
+$Team: -1
+$MessageNew:  XSTR("Reverend Lightowler, we're vulnerable out here. If Gadaria follows through with his threat, we won't be able to protect you.", 4399)
+$end_multi_text
++AVI Name: Head-f5a
++Wave Name: 22-40
+
+$Name: can intend whatever
+$Team: -1
+$MessageNew:  XSTR("Gadaria can intend whatever he wants, Katherine Lau. It won't avail him. He isn't the Lord's Chosen.", 4400)
+$end_multi_text
++Wave Name: 22-41
+
+$Name: need more to go on
+$Team: -1
+$MessageNew:  XSTR("Lightowler, we're going to need more assurances than that. That carrier has enough firepower to destroy this convoy.", 4401)
+$end_multi_text
++Wave Name: 22-42
+
+$Name: gadaria destroy convoy
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Andri Gadaria, this is Admiral Kakotchka. This is a quarantined system and no Renewal ships are allowed to leave. You are ordered to destroy the convoy without delay.", 4402)
+$end_multi_text
++Wave Name: 22-43
+
+$Name: stay out of our business
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Stay out of our business, Sinarussian. The Malikans won't trade one whip hand for another. We are our own masters now.", 4403)
+$end_multi_text
++Wave Name: 22-44
+
+$Name: 200 missiles
+$Team: -1
+$MessageNew:  XSTR("<intercepted>This planet is not yours to claim. My ships have missile lock on your carrier. Maybe you will find two hundred anti-ship missiles convincing enough?", 4404)
+$end_multi_text
++Wave Name: 22-45
+
+$Name: running out of time
+$Team: -1
+$MessageNew:  XSTR("Lightowler, we're running out of time! We won't be able to counter that much firepower!", 4405)
+$end_multi_text
++AVI Name: Head-f5a
++Wave Name: 22-46
+
+$Name: all ships form up
+$Team: -1
+$MessageNew:  XSTR("All ships, form up around the Covenant. We need to concentrate our defensive fire. Angel Company, we will need your guns to aid our defense.", 4406)
+$end_multi_text
++Wave Name: 22-47
+
+$Name: angel says no
+$Team: -1
+$MessageNew:  XSTR("We will not comply, Aria. Angel Company has declared this contract void. We're spooling our impellers.", 4407)
+$end_multi_text
++Wave Name: 22-48
+
+$Name: suggest stay away
+$Team: -1
+$MessageNew:  XSTR("We appreciate your concern Commander Cameron, but we do not require assistance. I ask that all of your ships stand clear of the planetary gateway. This is for your safety, and the safety of your crews.", 4408)
+$end_multi_text
++Wave Name: 22-49
+
+$Name: malikan bombers
+$Team: -1
+$MessageNew:  XSTR("Commander, Malikan bombers have launched!", 4409)
+$end_multi_text
++Wave Name: 22-50
+
+$Name: gate powering up
+$Team: -1
+$MessageNew:  XSTR("Commander, picking up an energy surge from that artifact!", 4410)
+$end_multi_text
++Wave Name: 22-51
+
+$Name: all ships get clear
+$Team: -1
+$MessageNew:  XSTR("All ships, get clear of that gateway!", 4411)
+$end_multi_text
++Wave Name: 22-52
+
+$Name: bombers powering down
+$Team: -1
+$MessageNew:  XSTR("Enemy strike craft have terminated their attack runs! The bombers are coming to a stop.", 4412)
+$end_multi_text
++Wave Name: 22-53
+
+$Name: analysis
+$Team: -1
+$MessageNew:  XSTR("Tactical, analysis! Did that energy discharge come from the artifact?", 4413)
+$end_multi_text
++Wave Name: 22-54
+
+$Name: analysis confirmed
+$Team: -1
+$MessageNew:  XSTR("Confirmed. That surge originated from the artifact. Detecting ongoing low level emissions from that location.", 4414)
+$end_multi_text
++Wave Name: 22-55
+
+$Name: can't navigate
+$Team: -1
+$MessageNew:  XSTR("There's a problem with our navigation! We can't calculate a hyperspace exit vector from the system!", 4415)
+$end_multi_text
++Wave Name: 22-56
+
+$Name: did you do that
+$Team: -1
+$MessageNew:  XSTR("Reverend Lightowler. Was this your handiwork?", 4416)
+$end_multi_text
++AVI Name: Head-f5a
++Wave Name: 22-57
+
+$Name: can't claim credit
+$Team: -1
+$MessageNew:  XSTR("No, Katherine Lau. I am but the disciple for the Lord, and He has plans for His Chosen People.", 4417)
+$end_multi_text
++Wave Name: 22-58
+
+$Name: you should leave
+$Team: -1
+$MessageNew:  XSTR("Everyone on Covenant thanks you for helping us realise our dream. You should gather your forces and leave promptly. This is not a welcoming place for those who aren't the Lord's Chosen.", 4418)
+$end_multi_text
++Wave Name: 22-59
+
+$Name: gravity ship
+$Team: -1
+$MessageNew:  XSTR("Confirmed. It's the same as when Gadaria attacked us in the Veil. There has to be an interdictor ship nearby.", 4419)
+$end_multi_text
++AVI Name: Head-f5a
++Wave Name: 22-60
+
+$Name: no time
+$Team: -1
+$MessageNew:  XSTR("No time for that now. Intercept those ASMs!", 4420)
+$end_multi_text
++Wave Name: 22-61
+
+$Name: going nowhere
+$Team: -1
+$MessageNew:  XSTR("We're going nowhere until that interdictor ship is destroyed. Can anyone get a lock on that signal?", 4421)
+$end_multi_text
++AVI Name: Head-f5a
++Wave Name: 22-62
+
+$Name: already done
+$Team: -1
+$MessageNew:  XSTR("Already ahead of you, Lau. Lieutenant Ross, your target is highlighted. Combine pulse generator of unknown class. Bring it down.", 4422)
+$end_multi_text
++Wave Name: 22-63
+
+$Name: won't get in time
+$Team: -1
+$MessageNew:  XSTR("We won't have time to take up position before those nuclear bombers reach Covenant!", 4423)
+$end_multi_text
++Wave Name: 22-64
+
+$Name: that's done it
+$Team: -1
+$MessageNew:  XSTR("That's done it. The gravity pulses are weakening. Calculating an exit vector.", 4424)
+$end_multi_text
++Wave Name: 22-65
+
+$Name: time to leave
+$Team: -1
+$MessageNew:  XSTR("Ross, Meiks. Return to the Hopewell now! It's time to leave. Gadaria and Kakotchka's ships are approaching weapons range!", 4425)
+$end_multi_text
++AVI Name: Head-f5a
++Wave Name: 22-66
+
+$Name: promised us home
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Because, Feroz, they promised us a home.", 4426)
+$end_multi_text
++Wave Name: 22-67
+
+$Name: gadaria you promised
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Gadaria! You promised us we would no longer be slaves. Why are we still doing the bidding of this fascista de merda?", 4427)
+$end_multi_text
++Wave Name: 22-68
+
+$Name: missiles warming up
+$Team: -1
+$MessageNew:  XSTR("Ross, we're running out of time! Those arsenal ships are warming up their missile silos.", 4428)
+$end_multi_text
++AVI Name: Head-f5a
++Wave Name: 22-69
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 1 total
+
+$Num stars: 0
+$Ambient light level: 8280666
+
+$Bitmap List:
+$Sun: NeptuneBlue
++Angles: 6.003932 0.000000 3.892084
++Scale: 1.000000
+$Sun: SunSiriusB
++Angles: 5.689773 0.000000 4.433136
++Scale: 1.000000
+$Starbitmap: blackholeplanet
++Angles: 0.000000 5.881760 5.637414
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: BriefingXeno
+$Substitute Briefing Music: BriefingXeno
+$Debriefing Success Music: Success4
+$Debriefing Average Music: Success4
+
+#End
+

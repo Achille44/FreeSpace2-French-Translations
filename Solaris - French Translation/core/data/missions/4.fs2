@@ -1,0 +1,2617 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Proschemata", 4508)
+$Author: Darius
+$Created: 03/19/18 at 18:38:22
+$Modified: 04/29/22 at 18:00:34
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 2629)
+$end_multi_text
++Game Type Flags: 1
++Flags: 262210
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 0
++Hull Repair Ceiling: 75.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 4245.129395, 7507.875488, 8644.839844
++Viewer orient:
+	-0.965938, -0.000001, 0.258774,
+	-0.150745, 0.812807, -0.562691,
+	-0.210333, -0.582533, -0.785121
+
+
+$Load Screen 1024: 2_LoadingBGM00
+
+$Skybox Model: skybox_kepler.pof
+
+$AI Profile: Solaris
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"playerview"		"1"		"number"		"save-on-mission-progress"
+		1		"VNdone"		"0"		"number"
+		2		"autoGenVar1"		"#Artemis Tactical"		"string"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 0
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 1
+
+$Formula: ( is-event-true-delay 
+   "mission complete title" 
+   0 
+)
+$Multi text
+    XSTR("All right. Settle down, pilots! From the noise, I gather you've heard the news. Shortly after you touched down the Sinarus Combine announced their withdrawal from the Miranda Accords and declared hostilities on the Federation.
+
+Your performance today was commendable. Despite running into half the Combine fleet, we managed to secure a data cache from their research base. Analysts are already at work decoding the contents and I'm told the revelations will be shared on a need-to-know basis.
+
+I'm placing the Artemis on extended condition two in accordance with orders by Rear Admiral Akrami, and returning us to Durius. Jump Five shift rotations will be posted out over the next hour.
+
+Now that we know the Combine are using Mira as a staging area, we expect the Combine to move against our forces in Elam space shortly.
+
+I've been advised that most of the Sycorax's marine company was still on board the station when the Sycorax was forced to withdraw. We shall remember their sacrifice.", 4509)
+$end_multi_text
+$Voice: 04-db1
+$Recommendation text:
+    XSTR("", 2443)
+$end_multi_text
+
+#Callsigns:
+$Callsign: XSTR("Ahab", 2631)
+$Callsign: XSTR("Raptor", 2632)
+$Callsign: XSTR("Cook", 2633)
+$Callsign: XSTR("Razor", 4510)
+$Callsign: XSTR("Punchy", 2634)
+$Callsign: XSTR("Soap", 4511)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 2
+$Ship Choices: (
+)
+
++Weaponry Pool: (
+	"Maxim"	4
+	"Gattler"	2
+)
+
+#Objects		;! 24 total
+
+$Name: Alpha 1		;! Object #0
+$Display Name: XSTR("Alpha 1", 2636)
+$Class: Hornet-class Striker
+$Callsign: XSTR("Ahab", 2631)
+
+$Team: Friendly
+$Location: -7.226633, -0.000061, 1288.355835
+$Orientation:
+	-0.991725, 0.000000, 0.128379,
+	0.000000, 1.000000, 0.000000,
+	-0.128379, 0.000000, -0.991725
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 50
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-subspace-drive" "no-builtin-messages" "no-ets" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 32855		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Alpha 2		;! Object #1
+$Display Name: XSTR("Alpha 2", 2640)
+$Class: Hornet-class Striker
+$Callsign: XSTR("Razor", 4510)
+
+$Team: Friendly
+$Location: -60.000839, -0.000061, 1358.187744
+$Orientation:
+	-0.991725, 0.000000, 0.128379,
+	0.000000, 1.000000, 0.000000,
+	-0.128379, 0.000000, -0.991725
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 50
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" )
++Flags2: ( "no-subspace-drive" "no-ets" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 32855		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Combine Base		;! Object #2
+$Display Name: XSTR("Combine Base", 4512)
+$Class: Hangar
+$Team: Friendly
+$Location: -162.729492, 24.316406, -2628.847900
+$Orientation:
+	0.634855, 0.000000, -0.772632,
+	-0.000000, 1.000000, 0.000000,
+	0.772632, 0.000000, 0.634855
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Artemis		;! Object #3
+$Display Name: XSTR("Artemis", 2645)
+$Class: Leander-class Cruiser
+$Team: Friendly
+$Location: -2390.319092, 223.700851, 5907.119141
+$Orientation:
+	-0.999852, 0.000000, -0.017208,
+	0.000989, 0.998349, -0.057436,
+	0.017180, -0.057445, -0.998201
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "ending cutscene" 
+      3 
+   )
+   ( and 
+      ( is-event-true-delay 
+         "destroyer wolfpack" 
+         10 
+      )
+      ( not 
+         ( is-event-true-delay "rtb (good)" 0 ) 
+      )
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Semper Victoria		;! Object #4
+$Display Name: XSTR("Semper Victoria", 4513)
+$Class: Praetor-class Cruiser
+$Team: Hostile
+$Location: 930.253967, -405.874512, -2613.920410
+$Orientation:
+	0.799419, -0.000000, 0.600773,
+	0.000000, 1.000000, 0.000000,
+	-0.600773, 0.000000, 0.799419
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: mturret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
++Departure delay: 20
+$Departure Cue: ( is-event-true-delay 
+   "spooling drives" 
+   0 
+)
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Beta 1		;! Object #5
+$Display Name: XSTR("Beta 1", 2661)
+$Class: Viper-class Fighter
+$Callsign: XSTR("Raptor", 2632)
+
+$Team: Friendly
+$Location: 63.845657, -0.000031, 1397.912598
+$Orientation:
+	-0.991725, 0.000000, 0.128379,
+	0.000000, 1.000000, 0.000000,
+	-0.128379, 0.000000, -0.991725
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 50
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-subspace-drive" "no-ets" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 32847		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 12
+
+$Name: Beta 2		;! Object #6
+$Display Name: XSTR("Beta 2", 2662)
+$Class: Viper-class Fighter
+$Callsign: XSTR("Cook", 2633)
+
+$Team: Friendly
+$Location: 11.071449, -0.000031, 1467.744507
+$Orientation:
+	-0.991725, 0.000000, 0.128379,
+	0.000000, 1.000000, 0.000000,
+	-0.128379, 0.000000, -0.991725
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 50
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-subspace-drive" "no-ets" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 32847		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 8
+
+$Name: Taurus 1		;! Object #7
+$Display Name: XSTR("Taurus 1", 2648)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 776.928101, 975.991150, -4262.051270
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.999997, 0.002578,
+	0.000000, -0.002578, 0.999997
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Taurus 2		;! Object #8
+$Display Name: XSTR("Taurus 2", 2649)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 840.322021, 975.990967, -4317.491699
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.999997, 0.002578,
+	0.000000, -0.002578, 0.999997
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cancer 1		;! Object #9
+$Display Name: XSTR("Cancer 1", 2768)
+$Class: Interdictor-class Striker
+$Team: Hostile
+$Location: 643.991394, 975.991150, -4488.202148
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.999997, 0.002578,
+	0.000000, -0.002578, 0.999997
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cancer 2		;! Object #10
+$Display Name: XSTR("Cancer 2", 2769)
+$Class: Interdictor-class Striker
+$Team: Hostile
+$Location: 707.385315, 975.990967, -4543.642578
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.999997, 0.002578,
+	0.000000, -0.002578, 0.999997
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sycorax		;! Object #11
+$Display Name: XSTR("Sycorax", 4514)
+$Class: Miranda-class Transport
+$Team: Friendly
+$Location: -1603.694580, 0.000854, -3191.550781
+$Orientation:
+	-0.113817, 0.003009, -0.993497,
+	0.000055, 0.999996, 0.003022,
+	0.993502, 0.000289, -0.113817
+$AI Behavior: None
+$AI Goals: ( goals ( ai-dock "Combine Base" "Docking Point" "Ship Dock" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "calling in sycorax" 
+   10 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "battlecruiser inbound" 
+   44 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Galaxia		;! Object #12
+$Display Name: XSTR("Galaxia", 4515)
+$Class: Archon-class Battlecruiser
+$Team: Hostile
+$Location: 5573.583008, 503.645844, -5800.211426
+$Orientation:
+	0.483838, 0.000000, 0.875158,
+	-0.063829, 0.997337, 0.035288,
+	-0.872827, -0.072934, 0.482549
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: mturret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "looks like a research" 
+   15 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( "lock-all-turrets" "no-ets" )
++Respawn priority: 0
++Escort priority: 100
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Sanctus		;! Object #13
+$Display Name: XSTR("Sanctus", 4516)
+$Class: Khopesh-class Frigate
+$Team: Hostile
+$Location: 1637.469849, 554.727051, -5159.833008
+$Orientation:
+	0.633870, -0.000000, 0.773440,
+	0.000000, 1.000000, 0.000000,
+	-0.773440, 0.000000, 0.633870
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "conversation 4" 
+   8 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Leo 1		;! Object #14
+$Display Name: XSTR("Leo 1", 2665)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -395.814697, 500.202240, -4232.115723
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Leo 2		;! Object #15
+$Display Name: XSTR("Leo 2", 2666)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -311.937256, 500.202240, -4149.082520
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Leo 3		;! Object #16
+$Display Name: XSTR("Leo 3", 4455)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -489.001221, 500.202240, -4024.391113
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Discord		;! Object #17
+$Display Name: XSTR("Discord", 4517)
+$Class: Glory-class Destroyer
+$Team: Hostile
+$Location: -3446.664795, 458.266113, 6128.286621
+$Orientation:
+	0.177156, 0.382073, -0.906993,
+	-0.073243, 0.924132, 0.374987,
+	0.981454, 0.000000, 0.191700
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Artemis" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret06
++Subsystem: turret07
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "combat landing" 
+   60 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Nemesis		;! Object #18
+$Display Name: XSTR("Nemesis", 4518)
+$Class: Glory-class Destroyer
+$Team: Hostile
+$Location: -4263.602051, 89.173515, 6213.046387
+$Orientation:
+	0.177156, 0.382073, -0.906993,
+	-0.073243, 0.924132, 0.374987,
+	0.981454, 0.000000, 0.191700
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Artemis" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret06
++Subsystem: turret07
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "combat landing" 
+   60 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Impervious		;! Object #19
+$Display Name: XSTR("Impervious", 4519)
+$Class: Glory-class Destroyer
+$Team: Hostile
+$Location: -4307.395020, 303.205902, 5438.866699
+$Orientation:
+	0.177156, 0.382073, -0.906993,
+	-0.073243, 0.924132, 0.374987,
+	0.981454, 0.000000, 0.191700
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase "Artemis" 50 ) )
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret06
++Subsystem: turret07
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "combat landing" 
+   60 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Gamma 1		;! Object #20
+$Display Name: XSTR("Gamma 1", 4520)
+$Class: Viper-class Fighter
+$Callsign: XSTR("Punchy", 2634)
+
+$Team: Friendly
+$Location: -1.732819, 0.001343, 2467.343262
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 13
+
+$Name: Gamma 2		;! Object #21
+$Display Name: XSTR("Gamma 2", 4521)
+$Class: Viper-class Fighter
+$Callsign: XSTR("Soap", 4511)
+
+$Team: Friendly
+$Location: 25.678062, 0.001343, 2509.526367
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 14
+
+$Name: Draco 1		;! Object #22
+$Display Name: XSTR("Draco 1", 2654)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 918.550659, 975.991089, -4489.304199
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.999997, 0.002578,
+	0.000000, -0.002578, 0.999997
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Draco 2		;! Object #23
+$Display Name: XSTR("Draco 2", 2663)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: 981.944580, 975.990906, -4544.744629
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.999997, 0.002578,
+	0.000000, -0.002578, 0.999997
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 2637)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+#Wings		;! 7 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Artemis
++Arrival Paths: ( "$Bay01" "$Bay04" )
+$Arrival Cue: ( true ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Artemis
++Departure delay: 3
+$Departure Cue: ( is-event-true-delay 
+   "combat landing" 
+   0 
+)
+$Ships: (		;! 2 total
+	"Alpha 1"
+	"Alpha 2"
+)
+$AI Goals: ( goals ( ai-guard "Artemis" 50 ) )
++Hotkey: 0
++Flags: ( )
+
+$Name: Taurus
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Taurus 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Semper Victoria
++Arrival delay: 20
+$Arrival Cue: ( is-event-true-delay 
+   "mission setup" 
+   0 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Semper Victoria
+$Departure Cue: ( < 
+   ( hits-left "Semper Victoria" ) 
+   30 
+)
+$Ships: (		;! 2 total
+	"Taurus 1"
+	"Taurus 2"
+)
+$AI Goals: ( goals ( ai-guard "Semper Victoria" 50 ) )
++Hotkey: 4
++Flags: ( )
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Artemis
++Arrival Paths: ( "$Bay01" "$Bay04" )
++Arrival delay: 8
+$Arrival Cue: ( is-event-true-delay 
+   "mission setup" 
+   0 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Artemis
++Departure delay: 3
+$Departure Cue: ( is-event-true-delay 
+   "combat landing" 
+   0 
+)
+$Ships: (		;! 2 total
+	"Beta 1"
+	"Beta 2"
+)
+$AI Goals: ( goals ( ai-guard "Artemis" 50 ) )
++Hotkey: 1
++Flags: ( "no-arrival-music" )
+
+$Name: Cancer
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Cancer 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Semper Victoria
++Arrival delay: 23
+$Arrival Cue: ( is-event-true-delay 
+   "mission setup" 
+   0 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Semper Victoria
+$Departure Cue: ( < 
+   ( hits-left "Semper Victoria" ) 
+   30 
+)
+$Ships: (		;! 2 total
+	"Cancer 1"
+	"Cancer 2"
+)
+$AI Goals: ( goals ( ai-destroy-subsystem "Artemis" "turret01" 50 ) ( ai-destroy-subsystem "Artemis" "turret02" 50 ) ( ai-destroy-subsystem "Artemis" "turret07" 50 ) ( ai-destroy-subsystem "Artemis" "turret08" 50 ) )
++Hotkey: 4
++Flags: ( )
+
+$Name: Leo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Leo 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Sanctus
++Arrival delay: 10
+$Arrival Cue: ( has-arrived-delay 0 "Sanctus" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Leo 1"
+	"Leo 2"
+	"Leo 3"
+)
++Flags: ( )
+
+$Name: Gamma
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Gamma 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Artemis
+$Arrival Cue: ( has-arrived-delay 10 "Beta" ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Artemis
++Departure delay: 2
+$Departure Cue: ( is-event-true-delay 
+   "combat landing" 
+   0 
+)
+$Ships: (		;! 2 total
+	"Gamma 1"
+	"Gamma 2"
+)
+$AI Goals: ( goals ( ai-guard "Artemis" 50 ) )
++Hotkey: 2
++Flags: ( )
+
+$Name: Draco
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Draco 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Semper Victoria
+$Arrival Cue: ( has-arrived-delay 7 "Taurus" ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Semper Victoria
+$Departure Cue: ( < 
+   ( hits-left "Semper Victoria" ) 
+   30 
+)
+$Ships: (		;! 2 total
+	"Draco 1"
+	"Draco 2"
+)
+$AI Goals: ( goals ( ai-guard "Semper Victoria" 50 ) )
++Hotkey: 4
++Flags: ( "no-arrival-music" "no-arrival-message" )
+
+#Events		;! 69 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[#Artemis Tactical]" 
+      "#Artemis Tactical" 
+      4562 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      0 
+   )
+   ( script-eval-block 
+      "Scroll:Write(" 
+      "'title1'," 
+      "15,12,0.05,2,2,true,2,false)" 
+   )
+)
++Name: title
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( set-support-ship 
+      "Docking Bay" 
+      "Artemis" 
+      "Docking Bay" 
+      "Artemis" 
+      "Repair Drone#Federation" 
+      3 
+   )
+   ( ship-subsys-guardian-threshold 
+      90 
+      "Artemis" 
+      "<all engines>" 
+      "<all turrets>" 
+      "Weapons" 
+      "fighterbay" 
+      "Navigation" 
+   )
+   ( lua-mark-subsystem 
+      "Semper Victoria" 
+      "ASM Launcher" 
+      "mturret01" 
+   )
+   ( unlock-primary-weapon "Alpha 2" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Artemis" 89 ) 
+   )
+   ( add-goal 
+      "Artemis" 
+      ( ai-waypoints-once 
+         "artemis approach" 
+         89 
+      )
+   )
+   ( lua-radaricon-activate 
+      "Friendly" 
+      "Hostile" 
+   )
+   ( lua-radaricon-activate 
+      "Friendly" 
+      "Hostile" 
+   )
+)
++Name: mission setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Gamma" ) 
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 30 ) 
+      "Alpha 1" 
+      "Beta 1" 
+      "Beta 2" 
+      "Gamma 1" 
+   )
+   ( ship-subsys-guardian-threshold 
+      30 
+      "Alpha 1" 
+      "<all engines>" 
+      "Weapons" 
+   )
+   ( ship-subsys-guardian-threshold 
+      30 
+      "Beta 1" 
+      "<all engines>" 
+      "Weapons" 
+   )
+   ( ship-subsys-guardian-threshold 
+      30 
+      "Beta 2" 
+      "<all engines>" 
+      "Weapons" 
+   )
+   ( ship-subsys-guardian-threshold 
+      30 
+      "Gamma 1" 
+      "<all engines>" 
+      "Weapons" 
+   )
+)
++Name: wingmen setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      0 
+   )
+   ( play-sound-from-file 
+      "Music_Fed_Battle4" 
+      99 
+   )
+)
++Name: music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      5 
+   )
+   ( add-ai-goal-track-ship 
+      "Semper Victoria" 
+      "Artemis" 
+      "Victoria attack" 
+      100 
+      -1000 
+      -1000 
+      0 
+      0 
+      0 
+      0 
+   )
+)
++Name: victoria moves
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( turret-free-all "Semper Victoria" ) 
+)
++Name: free vic turrets
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      90 
+   )
+   ( ship-rot-maneuver 
+      "Semper Victoria" 
+      30000 
+      0 
+      0 
+      100 
+      ( true ) 
+   )
+)
++Name: vic rotates
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( hits-left "Semper Victoria" ) 
+      15 
+   )
+   ( do-nothing ) 
+)
++Name: victoria damaged
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( < 
+            ( hits-left "Semper Victoria" ) 
+            50 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Semper Victoria" 
+            "mturret01" 
+            0 
+         )
+         ( > 
+            ( hits-left "Artemis" ) 
+            ( hits-left "Semper Victoria" ) 
+         )
+      )
+      ( < 
+         ( hits-left "Semper Victoria" ) 
+         20 
+      )
+   )
+   ( clear-goals "Semper Victoria" ) 
+   ( add-goal 
+      "Semper Victoria" 
+      ( ai-waypoints-once 
+         "Victoria retreats" 
+         89 
+      )
+   )
+)
++Name: victoria retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( destroyed-or-departed-delay 
+      3 
+      "Semper Victoria" 
+      "Taurus" 
+      "Cancer" 
+      "Draco" 
+   )
+   ( play-sound-from-file 
+      "Music_Fed_Ambient2" 
+      99 
+   )
+   ( clear-goals "Beta" ) 
+   ( add-goal 
+      "Beta" 
+      ( ai-guard "Artemis" 89 ) 
+   )
+)
++Name: enemies destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Sanctus" ) 
+   ( play-sound-from-file 
+      "Music_Fed_Battle4" 
+      99 
+   )
+   ( turret-protect-ship 
+      "laser" 
+      "Artemis" 
+      "Sycorax" 
+   )
+)
++Name: sanctus arrives music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "sycorax undocking" 
+      2 
+   )
+   ( jettison-cargo "Combine Base" 40 ) 
+)
++Name: sycorax gets out
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Sycorax" 
+      ( ai-waypoints-once 
+         "Sycorax retreats" 
+         89 
+      )
+   )
+)
++Name: sycorax retreats
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( has-arrived-delay 7 "Galaxia" ) 
+   ( add-goal 
+      "Artemis" 
+      ( ai-waypoints-once 
+         "artemis retreats" 
+         89 
+      )
+   )
+)
++Name: artemis retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 5 "Galaxia" ) 
+   ( turret-free-all "Galaxia" ) 
+)
++Name: free G weapons
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 5 "Combine Base" ) 
+   ( add-goal 
+      "Galaxia" 
+      ( ai-chase "Artemis" 89 ) 
+   )
+)
++Name: Galaxia attacks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 0 "Artemis" ) 
+      ( is-destroyed-delay 0 "Sycorax" ) 
+   )
+   ( do-nothing ) 
+)
++Name: artemis destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 6 "Artemis" ) 
+      ( and 
+         ( has-departed-delay 0 "Artemis" ) 
+         ( not 
+            ( is-event-true-delay "rtb (good)" 0 ) 
+         )
+      )
+      ( is-destroyed-delay 6 "Sycorax" ) 
+   )
+   ( protect-ship "Alpha 2" ) 
+   ( ship-invulnerable "Alpha 2" ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      2000 
+   )
+   ( fade-out 2000 ) 
+   ( adjust-audio-volume "Voice" 0 2000 ) 
+)
++Name: fadeout bad
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "fadeout bad" 
+      2000 
+   )
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      4000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file 
+      "stormshadowend" 
+   )
+   ( self-destruct "Alpha 2" ) 
+   ( hud-disable 1 ) 
+)
++Name: mission failed title
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 0 "Draco" ) 
+      ( is-destroyed-delay 
+         0 
+         "Taurus" 
+         "Cancer" 
+         "Draco" 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: dir destroy fighters
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Hostile Fighters", 4522)
++Objective key:  XSTR("F9", 2673)
+
+$Formula: ( when 
+   ( true ) 
+   ( Add-Object-Role 
+      "Alpha" 
+      "Heavy Strike" 
+   )
+)
++Name: alpha role
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Beta" ) 
+   ( Add-Object-Role 
+      "Beta" 
+      "Space Superiority" 
+   )
+)
++Name: beta role
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Gamma" ) 
+   ( Add-Object-Role 
+      "Gamma" 
+      "Space Superiority" 
+   )
+)
++Name: gamma role
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 10 "Sanctus" ) 
+      ( > ( hits-left "Artemis" ) 25 ) 
+   )
+   ( add-goal 
+      "Artemis" 
+      ( ai-waypoints-once 
+         "Artemis attacks" 
+         89 
+      )
+   )
+)
++Name: artemis attacks sanctus
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 3 "Alpha 2" ) 
+      ( not 
+         ( is-event-true-delay "fadeout bad" 0 ) 
+      )
+   )
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      2000 
+   )
+   ( fade-out 2000 ) 
+   ( adjust-audio-volume "Voice" 0 2000 ) 
+)
++Name: player dead fadeout
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "player dead fadeout" 
+      1500 
+   )
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      4000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file 
+      "stormshadowend" 
+   )
+   ( hud-disable 1 ) 
+)
++Name: mission failed dead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "battlecruiser inbound" 
+      43 
+   )
+   ( ship-guardian-threshold 
+      30 
+      "Sycorax" 
+   )
+)
++Name: guardian transport
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "taking out heavy guns" 
+      2 
+   )
+   ( lua-mark-subsystem 
+      "Semper Victoria" 
+      "Mass Driver" 
+      "turret01" 
+   )
+   ( lua-mark-subsystem 
+      "Semper Victoria" 
+      "Mass Driver" 
+      "turret02" 
+   )
+)
++Name: highlight heavy turrets
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: >>> MESSAGES <<<
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "music" 2 ) 
+   ( send-message 
+      "Artemis" 
+      "Normal" 
+      "action stations" 
+   )
+)
++Name: action stations
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      11 
+   )
+   ( send-message 
+      "Artemis" 
+      "Normal" 
+      "destroy javelins" 
+   )
+)
++Name: disable missile turret
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "Semper Victoria" 
+      "mturret01" 
+      2 
+   )
+   ( send-message 
+      "Artemis" 
+      "Normal" 
+      "vic missiles down" 
+   )
+   ( turret-set-rate-of-fire 
+      "Artemis" 
+      200 
+      "turret09" 
+      "turret10" 
+      "turret11" 
+      "turret12" 
+   )
+)
++Name: dir disable mturret
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Cruiser Missile Silo", 4523)
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "Normal" 
+      "taking out heavy guns" 
+   )
+)
++Name: taking out heavy guns
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "enemies destroyed" 
+      1 
+   )
+   ( send-message 
+      "Artemis" 
+      "Normal" 
+      "area secure" 
+   )
+)
++Name: area secure
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Artemis" 
+      "Normal" 
+      "calling in sycorax" 
+   )
+)
++Name: calling in sycorax
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( has-arrived-delay 5 "Sycorax" ) 
+   ( send-message 
+      "Sycorax" 
+      "Normal" 
+      "sycorax arrived" 
+   )
+   ( add-remove-escort "Sycorax" 1 ) 
+)
++Name: sycorax arrived
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-subsystem-strength 
+      "Alpha 1" 
+      "Hull" 
+      95 
+   )
+)
++Name: repair alpha 1
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "Normal" 
+      "repair if you need to" 
+   )
+)
++Name: repair if you need to
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( set-subsystem-strength 
+      "Beta 1" 
+      "Hull" 
+      95 
+   )
+)
++Name: repair beta 1
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Beta 1" 
+      "Normal" 
+      "what's up with" 
+   )
+)
++Name: what's up with
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "Normal" 
+      "it's huge" 
+   )
+)
++Name: it's huge
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 2" 
+      "Normal" 
+      "that's big" 
+   )
+)
++Name: that's big
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "Normal" 
+      "not quite" 
+   )
+)
++Name: not quite
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Sycorax" 
+      "Combine Base" 
+      1 
+      2 
+   )
+   ( send-message 
+      "Sycorax" 
+      "Normal" 
+      "sycorax docked" 
+   )
+)
++Name: sycorax docked
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Gamma 1" 
+      "Normal" 
+      "conversation 1" 
+   )
+)
++Name: conversation 1
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "Normal" 
+      "conversation 2" 
+   )
+)
++Name: conversation 2
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Gamma 1" 
+      "Normal" 
+      "conversation 3" 
+   )
+)
++Name: conversation 3
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Beta 1" 
+      "Normal" 
+      "conversation 4" 
+   )
+)
++Name: conversation 4
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Sanctus" ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "sanctus" 
+   )
+)
++Name: sanctus arrives
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 4 "Leo" ) 
+   ( send-message 
+      "Beta 1" 
+      "High" 
+      "incoming fighters" 
+   )
+)
++Name: incoming fighters
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Sycorax" 
+      "Normal" 
+      "marines in" 
+   )
+   ( change-iff 
+      "Friendly" 
+      "Combine Base" 
+   )
+   ( unprotect-ship "Combine Base" ) 
+   ( ship-vulnerable "Combine Base" ) 
+)
++Name: marines in
++Repeat Count: 1
++Interval: 1
++Chained: 45
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Sycorax" 
+      "Normal" 
+      "looks like a research" 
+   )
+)
++Name: looks like a research
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Galaxia" ) 
+   ( send-message 
+      "Artemis" 
+      "Normal" 
+      "battlecruiser inbound" 
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-ignore-new "Galaxia" 89 ) 
+   )
+   ( add-goal 
+      "Beta" 
+      ( ai-ignore-new "Galaxia" 89 ) 
+   )
+   ( protect-ship "Sycorax" ) 
+)
++Name: battlecruiser inbound
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Sycorax" 
+      "Normal" 
+      "sycorax undocking" 
+   )
+)
++Name: sycorax undocking
++Repeat Count: 1
++Interval: 1
++Chained: 12
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Sycorax" ) 
+   ( do-nothing ) 
+)
++Name: sycorax dir trig
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-departed-delay 2 "Sycorax" ) 
+   ( send-message 
+      "Artemis" 
+      "Normal" 
+      "sycorax gone" 
+   )
+)
++Name: sycorax gone
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Protect Sycorax", 4524)
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Artemis" 
+      "Normal" 
+      "combat landing" 
+   )
+)
++Name: combat landing
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance-center-to-subsystem 
+            "Alpha 2" 
+            "Artemis" 
+            "fighterbay" 
+         )
+         100 
+      )
+      ( < ( current-speed "Alpha 2" ) 80 ) 
+   )
+   ( do-nothing ) 
+)
++Name: rtb (good)
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Enter Artemis Fighterbay", 4525)
++Objective key:  XSTR("80m/s", 4526)
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( set-object-position 
+      "Alpha 1" 
+      0 
+      500000 
+      0 
+   )
+   ( set-object-position 
+      "Alpha 2" 
+      100 
+      500000 
+      0 
+   )
+   ( set-object-position 
+      "Beta 1" 
+      200 
+      500000 
+      0 
+   )
+   ( set-object-position 
+      "Beta 2" 
+      300 
+      500000 
+      0 
+   )
+   ( disable-builtin-messages ) 
+   ( reset-camera ( true ) ) 
+   ( set-camera-target "Artemis" ) 
+   ( set-object-position 
+      "cutscene camera:1" 
+      ( - ( get-object-x "Artemis" ) 200 ) 
+      ( + ( get-object-y "Artemis" ) 50 ) 
+      ( + ( get-object-z "Artemis" ) 750 ) 
+   )
+   ( hud-disable 1 ) 
+   ( set-camera-position 
+      ( get-object-x "cutscene camera:1" ) 
+      ( get-object-y "cutscene camera:1" ) 
+      ( get-object-z "cutscene camera:1" ) 
+   )
+)
++Name: ending cutscene
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-msecs-delay 
+         "ending cutscene" 
+         5000 
+      )
+      ( false ) 
+   )
+   ( reset-camera ( true ) ) 
+   ( set-camera-position 
+      ( get-object-x "cutscene camera:1" ) 
+      ( get-object-y "cutscene camera:1" ) 
+      ( get-object-z "cutscene camera:1" ) 
+   )
+   ( set-camera-facing-object "Artemis" ) 
+)
++Name: set camera looking
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( has-departed-delay 0 "Artemis" ) 
+      ( is-event-true-delay 
+         "ending cutscene" 
+         0 
+      )
+   )
+   ( protect-ship "Alpha 2" ) 
+   ( ship-invulnerable "Alpha 2" ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      2000 
+   )
+   ( fade-out 0 500 ) 
+   ( adjust-audio-volume "Voice" 0 2000 ) 
+)
++Name: fadeout good
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "fadeout good" 
+      1500 
+   )
+   ( show-subtitle-text 
+      "mission complete title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      4000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "font02.vf" 
+      ( true ) 
+   )
+   ( play-sound-from-file 
+      "midnightairend" 
+   )
+   ( hud-disable 1 ) 
+)
++Name: mission complete title
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: end mission
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "victoria retreats" 
+      4 
+   )
+   ( send-message 
+      "Artemis" 
+      "High" 
+      "spooling drives" 
+   )
+   ( clear-goals "Semper Victoria" ) 
+)
++Name: spooling drives
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Artemis" ) 35 ) 
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Semper Victoria" 
+         )
+      )
+   )
+   ( send-message 
+      "Artemis" 
+      "High" 
+      "artemis damaged" 
+   )
+)
++Name: artemis damaged
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Impervious" ) 
+   ( send-message 
+      "Artemis" 
+      "High" 
+      "destroyer wolfpack" 
+   )
+   ( unprotect-ship "Artemis" ) 
+)
++Name: destroyer wolfpack
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Artemis" ) 
+   ( send-message 
+      "@autoGenVar1[#Artemis Tactical]" 
+      "High" 
+      "artemis down" 
+   )
+)
++Name: artemis down
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "disable missile turret" 
+      8 
+   )
+   ( training-msg "training comms 1" ) 
+)
++Name: training comms 1
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg "training comms 2" ) 
+)
++Name: training comms 2
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+#Goals		;! 3 total
+
+$Type: Primary
++Name: eliminate cruiser
+$MessageNew:  XSTR("Neutralise Semper Victoria", 4527)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "enemies destroyed" 
+      0 
+   )
+   ( not 
+      ( is-destroyed-delay 0 "Artemis" ) 
+   )
+)
+
+$Type: Primary
++Name: Secure station
+$MessageNew:  XSTR("Secure Combine Station", 4528)
+$end_multi_text
+$Formula: ( and 
+   ( has-departed-delay 0 "Sycorax" ) 
+   ( not 
+      ( is-destroyed-delay 0 "Artemis" ) 
+   )
+)
+
+$Type: Bonus
++Name: Destroy Combine ships
+$MessageNew:  XSTR("Combine light units destroyed", 4529)
+$end_multi_text
+$Formula: ( is-destroyed-delay 
+   0 
+   "Semper Victoria" 
+   "Sanctus" 
+   "Draco" 
+   "Leo" 
+   "Cancer" 
+   "Taurus" 
+)
+
+#Waypoints		;! 10 lists total
+
+$Name: sycorax approach
+$List: (		;! 1 points in list
+	( 118.681274, 388.680786, -2447.766602 )
+)
+
+$Name: artemis approach
+$List: (		;! 1 points in list
+	( -2292.310303, -104.019882, 212.372559 )
+)
+
+$Name: Euphrates attack
+$List: (		;! 4 points in list
+	( -735.713196, 563.136963, -126.384155 )
+	( -149.770996, 563.136230, -791.248779 )
+	( -471.604248, 563.136475, -1381.289917 )
+	( -1371.856689, 557.374023, -795.049927 )
+)
+
+$Name: Victoria attack
+$List: (		;! 1 points in list
+	( 1111.446777, 281.421631, -700.645569 )
+)
+
+$Name: Sycorax retreats
+$List: (		;! 1 points in list
+	( -2380.190918, 0.000000, -3975.097168 )
+)
+
+$Name: artemis retreats
+$List: (		;! 1 points in list
+	( -4013.296875, -545.259827, 5529.099609 )
+)
+
+$Name: Euphrates retreats
+$List: (		;! 1 points in list
+	( -3772.963623, -259.080627, 5375.125977 )
+)
+
+$Name: cutscene camera
+$List: (		;! 1 points in list
+	( -1454.825195, 277.556030, 2103.523193 )
+)
+
+$Name: Victoria retreats
+$List: (		;! 1 points in list
+	( 6448.593750, 3555.398438, 7644.028320 )
+)
+
+$Name: Artemis attacks
+$List: (		;! 2 points in list
+	( -1253.655762, -387.125977, -876.481323 )
+	( -2446.357422, -387.126465, -1608.210327 )
+)
+
+#Messages		;! 36 total
+
+
+$Name: javelin warning
+$Team: -1
+$MessageNew:  XSTR("WARNING: HOSTILE ASM LAUNCH DETECTED", 3341)
+$end_multi_text
++Wave Name: warning
+
+$Name: action stations
+$Team: -1
+$MessageNew:  XSTR("Action stations. All stations confirm combat readiness.", 4530)
+$end_multi_text
++AVI Name: head-cm15a
++Wave Name: 04-01
+
+$Name: vic missiles down
+$Team: -1
+$MessageNew:  XSTR("Semper Victoria Javelin silo disabled.", 4531)
+$end_multi_text
++AVI Name: head-cm15b
++Wave Name: 04-02
+
+$Name: area secure
+$Team: -1
+$MessageNew:  XSTR("Cruiser neutralised. The area is secure. Good work.", 4532)
+$end_multi_text
++AVI Name: head-cm15c
++Wave Name: 04-03
+
+$Name: destroy javelins
+$Team: -1
+$MessageNew:  XSTR("Strike wings, intercept incoming Javelins. Disable Semper Victoria's missile silo at first opportunity.", 4533)
+$end_multi_text
++AVI Name: head-cm15a
++Wave Name: 04-04
+
+$Name: calling in sycorax
+$Team: -1
+$MessageNew:  XSTR("Sycorax, this is Artemis control. Hostiles neutralised. Your approach is clear.", 4534)
+$end_multi_text
++AVI Name: head-cm15b
++Wave Name: 04-05
+
+$Name: sycorax arrived
+$Team: -1
+$MessageNew:  XSTR("Sycorax on station. Your assistance is appreciated, Artemis.", 4535)
+$end_multi_text
++AVI Name: head-f1a
++Wave Name: 04-06
+
+$Name: repair if you need to
+$Team: -1
+$MessageNew:  XSTR("Forty years later and the Combine still can't match us in a fight.", 4536)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 04-07
+
+$Name: what's up with
+$Team: -1
+$MessageNew:  XSTR("Hey Ahab. There's talk going round of the big op at Morik. Something about an impending Combine invasion.", 4537)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: 04-08
+
+$Name: it's huge
+$Team: -1
+$MessageNew:  XSTR("It's huge, Raptor. Most of Fifth Fleet is there. It's the largest mustering of ships since the Great War.", 4538)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 04-09
+
+$Name: that's big
+$Team: -1
+$MessageNew:  XSTR("Shit. So it's big then. Like, $quoteall or nothing$quote big.", 4539)
+$end_multi_text
++Wave Name: 04-10
+
+$Name: sycorax docked
+$Team: -1
+$MessageNew:  XSTR("Docking clamps secure. Preparing breaching charges.", 4540)
+$end_multi_text
++AVI Name: head-f1a
++Wave Name: 04-11
+
+$Name: conversation 1
+$Team: -1
+$MessageNew:  XSTR("If the Combine want a fight, we'll oblige the bastards. We'll give them another hammering like last time. ", 4541)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: 04-12
+
+$Name: conversation 2
+$Team: -1
+$MessageNew:  XSTR("Damn, I'd give anything to be there when shit finally goes down. It's going to make the entire Elam war look like a skirmish in comparison.", 4542)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 04-13
+
+$Name: marines in
+$Team: -1
+$MessageNew:  XSTR("Artemis control, our marines have secured station CnC. Mostly noncombatants encountered. No casualties.", 4543)
+$end_multi_text
++AVI Name: head-f1a
++Wave Name: 04-14
+
+$Name: looks like a research
+$Team: -1
+$MessageNew:  XSTR("Lots of lab equipment. This looks like a research facility. We're transferring all data from their computer banks. Stand by.", 4544)
+$end_multi_text
++Wave Name: 04-15
+
+$Name: battlecruiser inbound
+$Team: -1
+$MessageNew:  XSTR("Alert! Combine battlecruiser on station!", 4545)
+$end_multi_text
++AVI Name: head-cm15c
++Wave Name: 04-16
+
+$Name: sycorax undocking
+$Team: -1
+$MessageNew:  XSTR("Sycorax undergoing emergency unclamping procedure.", 4546)
+$end_multi_text
++AVI Name: head-f1a
++Wave Name: 04-18
+
+$Name: combat landing
+$Team: -1
+$MessageNew:  XSTR("Pilots, bring your birds in for landing. We're spooling our jump impeller.", 4547)
+$end_multi_text
++AVI Name: head-cm15a
++Wave Name: 04-19
+
+$Name: sycorax gone
+$Team: -1
+$MessageNew:  XSTR("Sycorax transport has jumped. We don't have the firepower to challenge that warship. Moving to disengage.", 4548)
+$end_multi_text
++AVI Name: head-cm15b
++Wave Name: 04-20
+
+$Name: spooling drives
+$Team: -1
+$MessageNew:  XSTR("Energy build up detected on Semper Victoria. She's spooling her drives.", 4549)
+$end_multi_text
++AVI Name: head-cm15a
++Wave Name: 04-21
+
+$Name: title1
+$Team: -1
+$MessageNew:  XSTR("$quoteProschemata$quote", 4550)
+$end_multi_text
+
+$Name: artemis damaged
+$Team: -1
+$MessageNew:  XSTR("We're taking significant damage from the Semper Victoria's guns. Target her heavy weapons!", 4551)
+$end_multi_text
++AVI Name: head-cm15a
++Wave Name: 04-22
+
+$Name: mission failed title
+$Team: -1
+$MessageNew:  XSTR("MISSION FAILED", 2726)
+$end_multi_text
+
+$Name: mission complete title
+$Team: -1
+$MessageNew:  XSTR("MISSION COMPLETE", 2727)
+$end_multi_text
+
+$Name: sanctus
+$Team: -1
+$MessageNew:  XSTR("Combine light carrier on station! Looks like there's still plenty of action for us.", 4552)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 04-23
+
+$Name: incoming fighters
+$Team: -1
+$MessageNew:  XSTR("More fighters to deal with. Keep them off Sycorax.", 4553)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: 04-24
+
+$Name: javelin launch
+$Team: -1
+$MessageNew:  XSTR("Javelin launch from the Sanctus!", 4554)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: 04-25
+
+$Name: destroyer wolfpack
+$Team: -1
+$MessageNew:  XSTR("Destroyer wolfpack on station! Prep engines for emergency jump!", 4555)
+$end_multi_text
++AVI Name: head-cm15b
++Wave Name: 04-26
+
+$Name: artemis down
+$Team: -1
+$MessageNew:  XSTR("All hands, abandon -", 4128)
+$end_multi_text
++Wave Name: 06-26
+
+$Name: not quite
+$Team: -1
+$MessageNew:  XSTR("All or nothing for the Combine. Not for us. Our navy outnumbers them three ships to one.", 4556)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: 04-27
+
+$Name: conversation 3
+$Team: -1
+$MessageNew:  XSTR("That Combine Archon is out of his mind. Fifth Fleet'll grind them up like meat.", 4557)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: 04-28
+
+$Name: conversation 4
+$Team: -1
+$MessageNew:  XSTR("Don't underestimate him Punchy. He obviously thinks he can defeat your fleet somehow.", 4558)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: 04-29
+
+$Name: training comms 2
+$Team: -1
+$MessageNew:  XSTR("Press $C$ to give orders to your wingmen", 4559)
+$end_multi_text
+
+$Name: training comms 1
+$Team: -1
+$MessageNew:  XSTR("You can direct your wingmen to perform various tasks.", 4560)
+$end_multi_text
+
+$Name: taking out heavy guns
+$Team: -1
+$MessageNew:  XSTR("Locking up heavy guns on the Semper Victoria. Razor, help me out.", 4561)
+$end_multi_text
++Wave Name: 04-30
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 0
+$Ambient light level: 4737610
+
+$Bitmap List:
+$Sun: EarthSpecular
++Angles: 3.141593 0.000000 0.017453
++Scale: 1.000000
+$Sun: EarthWhite
++Angles: 3.141593 0.000000 0.017453
++Scale: 1.000000
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: None
+$Substitute Briefing Music: Brief4
+$Debriefing Success Music: Average
+
+#End
+
