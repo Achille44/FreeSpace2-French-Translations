@@ -44,6 +44,7 @@ $Variables:
 (
 		0		"bigBeamsTime"		"0"		"number"
 		1		"autoGenVar1"		"#Command"		"string"
+		2		"autoGenVar2"		"Beam Cannon"		"string"
 )
 
 #Command Briefing
@@ -55,7 +56,7 @@ $start_stage
 $multi_text
  XSTR("The $h Sathanas entered the $b Capella system and obliterated the line of defense we had established to intercept it. We now have no choice but to send in the $f Colossus$|. With its beam cannons still operational, the $h Sathanas has sufficient firepower to win this engagement.
 
-Your wing will be scrambled immediately. There is no time to select your ship or armaments. Your mission is to neutralize these remaining beam cannons as quickly as possible. If you fail, we risk losing the $f Colossus and the $b Capella system.", 14796)
+Your wing will be scrambled immediately. There is no time to select your ship or armaments. Your mission is to neutralize these remaining beam cannons as quickly as possible. If you fail, we risk losing the $f Colossus and the $b Capella system.", 14805)
 $end_multi_text
 $voice: sm302_mb_01.wav
 $camera_pos: 36143.382813, 8628.259766, 14244.781250
@@ -145,7 +146,7 @@ $type: 31
 $team: Friendly
 $class: GTVA Colossus
 $pos: -188032.171875, 3992.035156, -39814.222656
-$label: XSTR("Colossus", 14663)
+$label: XSTR("Colossus", 14672)
 +id: 3
 $hlight: 0
 $mirror: 0
@@ -473,7 +474,7 @@ $Determination: 10
 +Score: 10000
 
 $Name: Colossus		;! Object #5
-$Display Name: XSTR("Colossus", 14663)
+$Display Name: XSTR("Colossus", 14672)
 $Class: GTVA Colossus
 $Team: Friendly
 $Location: 3905.276855, 3992.035400, 31358.669922
@@ -850,7 +851,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Capricorn 1		;! Object #16
-$Display Name: XSTR("Capricorn 1", 7728)
+$Display Name: XSTR("Capricorn 1", 7729)
 $Class: SF Mara
 $Team: Hostile
 $Location: 4937.626953, 0.000610, 25845.716797
@@ -877,7 +878,7 @@ $Determination: 10
 +Score: 12
 
 $Name: Capricorn 2		;! Object #17
-$Display Name: XSTR("Capricorn 2", 7729)
+$Display Name: XSTR("Capricorn 2", 7730)
 $Class: SF Mara
 $Team: Hostile
 $Location: 4844.490234, 0.000610, 25942.539063
@@ -904,7 +905,7 @@ $Determination: 10
 +Score: 12
 
 $Name: Capricorn 3		;! Object #18
-$Display Name: XSTR("Capricorn 3", 7857)
+$Display Name: XSTR("Capricorn 3", 7858)
 $Class: SF Mara
 $Team: Hostile
 $Location: 4965.850098, 0.000610, 25950.359375
@@ -931,7 +932,7 @@ $Determination: 10
 +Score: 12
 
 $Name: Leo 1		;! Object #19
-$Display Name: XSTR("Leo 1", 7722)
+$Display Name: XSTR("Leo 1", 7723)
 $Class: SF Astaroth
 $Team: Hostile
 $Location: 4606.729492, 0.000732, 25832.753906
@@ -957,7 +958,7 @@ $Determination: 10
 +Score: 13
 
 $Name: Leo 2		;! Object #20
-$Display Name: XSTR("Leo 2", 7723)
+$Display Name: XSTR("Leo 2", 7724)
 $Class: SF Astaroth
 $Team: Hostile
 $Location: 4631.304199, 0.000732, 25920.703125
@@ -983,7 +984,7 @@ $Determination: 10
 +Score: 13
 
 $Name: Leo 3		;! Object #21
-$Display Name: XSTR("Leo 3", 7724)
+$Display Name: XSTR("Leo 3", 7725)
 $Class: SF Astaroth
 $Team: Hostile
 $Location: 4527.825684, 0.000732, 25930.048828
@@ -1145,6 +1146,11 @@ $Formula: ( when
       "#Command" 
       7552 
    )
+   ( modify-variable-xstr 
+      "@autoGenVar2[Beam Cannon]" 
+      "Beam Cannon" 
+      4082 
+   )
 )
 +Name: Manage translation variables
 +Repeat Count: 1
@@ -1177,7 +1183,7 @@ $Formula: ( when
 +Name: Destroy Cancer
 +Repeat Count: 1
 +Interval: 1
-+Objective:  XSTR("Destroy Fighters", 14797)
++Objective:  XSTR("Destroy Fighters", 14806)
 
 $Formula: ( when 
    ( and 
@@ -2315,7 +2321,7 @@ $Formula: ( when
       ( true ) 
       ( change-subsystem-name 
          "Sathanas" 
-         "Beam Cannon" 
+         "@autoGenVar2[Beam Cannon]" 
          "<argument>" 
       )
       ( fire-beam 
@@ -2446,7 +2452,7 @@ $Formula: ( and
 
 
 $Jump Node: 4744.500000, 0.000000, 9450.900391
-$Jump Node Name: XSTR("Gamma Draconis", 14714)
+$Jump Node Name: XSTR("Gamma Draconis", 14723)
 
 $Jump Node: -3137.150391, -11088.758789, -21666.789063
 $Jump Node Name: XSTR("Vega", 7193)
@@ -2609,7 +2615,7 @@ $end_multi_text
 
 $Name: COM Cancer
 $Team: -1
-$MessageNew:  XSTR("The Shivans have scrambled a wing of fighters. Do not let them impede your mission, Alpha.", 14798)
+$MessageNew:  XSTR("The Shivans have scrambled a wing of fighters. Do not let them impede your mission, Alpha.", 14807)
 $end_multi_text
 +Persona: Terran Command
 +AVI Name: Head-CM2
