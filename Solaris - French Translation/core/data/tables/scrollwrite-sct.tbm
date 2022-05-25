@@ -1,0 +1,130 @@
+#Conditional Hooks
+$Application: FS2_Open
+$On Game Init:
+[
+
+Scroll = {}
+
+function Scroll:Init()
+
+	self.Enabled = false
+	self.Lines = {}
+	self.Unicode = cf.fileExists("unicodeEnable.cfg", "data/config", true)
+
+end
+
+function Scroll:Write(text, x, y, speed, visibletime, fadeout, sound, font, center, r, g, b)
+
+	if not self.Enabled then
+		self.Enabled = true
+	end
+
+	local t = {}
+	
+	if not text then
+		return
+	end
+		
+	if mn.Messages[text]:isValid() then
+		t.Text = mn.Messages[text]:getMessage(true)
+	else
+		t.Text = text
+	end
+	
+	t.X = x or 50
+	t.X = gr.getScreenWidth() * (t.X/100)
+	t.Y = y or 50
+	t.Y = gr.getScreenHeight() * (t.Y/100)
+	t.Speed = speed or 0.03
+	t.Timestamp = mn.getMissionTime()
+	t.Time = visibletime or 5
+	t.FadeOut = fadeout or 0
+	t.Font = font or 1
+	if sound == false then
+		t.Sound = false
+	else
+		t.Sound = true
+	end
+	if center == false then
+		t.Center = false
+	else
+		t.Center = true
+	end
+	t.Color = {r or 255, g or 255, b or 255}
+	t.Alpha = 255
+	
+	self.Lines[#self.Lines+1] = t	
+
+end
+
+function Scroll:Draw()
+	
+	if #self.Lines > 0 then
+		local numLines = #self.Lines
+		for i = 1, numLines do
+			if self.Lines[i] then
+			local line = self.Lines[i]
+			if mn.getMissionTime() < (line.Timestamp + line.Time + line.FadeOut) then
+				if line.Sound then
+					ad.playInterfaceSound(20)
+					line.Sound = nil
+				end
+				local toDraw = (mn.getMissionTime() - line.Timestamp) / line.Speed
+				if toDraw > 0 then
+					local displayString
+					
+					if self.Unicode then
+						displayString = utf8.sub(line.Text, 1, toDraw)
+					else
+						displayString = line.Text:sub(1, toDraw)
+					end
+					
+					local x, y = line.X, line.Y
+					
+					gr.CurrentFont = gr.Fonts[line.Font]
+					
+					if mn.getMissionTime() > (line.Timestamp + line.Time) then
+						local t = mn.getMissionTime() - (line.Timestamp + line.Time)				
+						line.Alpha = self:Ease(t,255,-255,line.FadeOut)
+					end
+					
+					gr.setColor(line.Color[1], line.Color[2], line.Color[3], line.Alpha)
+					
+					if line.Center then
+						x = line.X - (gr.getStringWidth(line.Text)/2)
+					end
+					
+					gr.drawString(displayString,x,y)
+					
+				end
+			end
+			else
+				table.remove(self.Lines,i)
+				numLines = numLines - 1
+			end
+		end
+	end
+
+end
+
+function Scroll:Ease(t,b,c,d)
+  t = t / d
+  return -c * t * (t - 2) + b
+end
+
+]
+
+$State: GS_STATE_GAME_PLAY
+$On Gameplay Start: 
+[
+	Scroll:Init()
+]
+
+$On Frame:
+[
+	if Scroll.Enabled then
+		Scroll:Draw()
+	end
+]
+
+#End
