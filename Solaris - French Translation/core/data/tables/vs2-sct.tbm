@@ -1131,13 +1131,14 @@ function VS2:ShowIcon2(t)
 	local scale = VS2:FindParam("scale", t)
 	local xstrid = VS2:FindParam("xstrid", t)
 
-	local message = text
+	local passedLine = {}
 
 	if xstrid then
-		message = {text, xstrid}
+		local message = {text, xstrid}
+		passedLine = {"SHOWICON",id,filename,xstr(message),color,x_pct,x_flip,y_pct,y_flip,layer, scale}
+	else
+		passedLine = {"SHOWICON",id,filename,text,color,x_pct,x_flip,y_pct,y_flip,layer, scale}
 	end
-	
-	local passedLine = {"SHOWICON",id,filename,xstr(message),color,x_pct,x_flip,y_pct,y_flip,layer, scale}
 	
 	VS2:ShowIcon(passedLine)
 	
