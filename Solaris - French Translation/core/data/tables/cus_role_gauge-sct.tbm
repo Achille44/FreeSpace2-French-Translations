@@ -50,7 +50,7 @@ $On Game Init: [
 
 
 	--local variables for translation
-	local missionRoles = {"Mission Roles", 6000}
+	local localizedMissionRoles = ba.XSTR("Mission Roles", 6000)
 
 	Object_Info_Help.object_role_list = {}
 	
@@ -167,7 +167,7 @@ $On Game Init: [
 			--draw bottom line
 			gr.drawLine(headerbottom_line.x1, headerbottom_line.y1, headerbottom_line.x2, headerbottom_line.y2)
 			--draw title
-			gr.drawString(xstr(missionRoles), whole_rect.x1 + buf, whole_rect.y1 + buf)
+			gr.drawString(localizedMissionRoles, whole_rect.x1 + buf, whole_rect.y1 + buf)
 			--draw main frame
 			gr.setLineWidth(rect_linewidth)
 			gr.drawRectangle(whole_rect.x1, whole_rect.y1, whole_rect.x2, whole_rect.y2, false)	
@@ -181,16 +181,6 @@ $On Game Init: [
 		end
 		
 	end
-
-	function xstr(message)
-	  if type(message) == 'string' then
-	    ba.print('Got string with missing XSTR index: ' .. message .. "\n")
-	    return message
-	  else
-	    return ba.XSTR(message[1], message[2])
-	  end
-	end
-
 
 	--sexp API for Object_Info_Help:InsertObjectRole(object_name)
 	mn.LuaSEXPs["Add-Object-Role"].Action = function(objectname, objectdescription) 
