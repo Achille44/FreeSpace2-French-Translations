@@ -1,17 +1,17 @@
 #Mission Info
 
 $Version: 0.10
-$Name:  XSTR("Briefing 8", 4958)
+$Name:  XSTR("Briefing 8", 5493)
 $Author: Darius
 $Created: 07/24/18 at 22:27:42
-$Modified: 07/24/18 at 22:37:04
+$Modified: 07/08/22 at 22:13:11
 $Notes:
 This is a FRED2_OPEN created mission.
 $End Notes:
 
 $Mission Desc:
  XSTR("Put mission description here
-", 2646)
+", 3168)
 $end_multi_text
 +Game Type Flags: 1
 +Flags: 789512
@@ -30,6 +30,8 @@ $end_multi_text
 	0.000000, -0.500000, 0.866025
 
 
+$Load Screen 1024: Act1Preload.png
+
 $AI Profile: Solaris
 
 #Command Briefing
@@ -47,18 +49,16 @@ $Num stages: 0
 
 $Starting Shipname: Alpha 1
 $Ship Choices: (
-
 )
 
 +Weaponry Pool: (
-
+	"Maxim"	2
 )
-
 
 #Objects		;! 1 total
 
 $Name: Alpha 1		;! Object #0
-$Display Name: XSTR("Alpha 1", 2653)
+$Display Name: XSTR("Alpha 1", 3175)
 $Class: Viper-class Fighter
 $Team: Friendly
 $Location: 0.000000, 10000.000000, 0.000000
@@ -67,7 +67,7 @@ $Orientation:
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
 $AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 2654)
+$Cargo 1:  XSTR("Nothing", 3176)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -90,7 +90,6 @@ $Name: Alpha
 $Waves: 1
 $Wave Threshold: 0
 $Special Ship: 0		;! Alpha 1
-
 $Arrival Location: Hyperspace
 $Arrival Cue: ( true ) 
 $Departure Location: Hyperspace
@@ -105,12 +104,13 @@ $Ships: (		;! 1 total
 
 $Formula: ( when 
    ( > ( mission-time-msecs ) 10 ) 
-   ( script-eval "VS2:L('m8_vn')" )
+   ( script-eval "VS2:L('m8_vn')" ) 
    ( adjust-audio-volume "Effects" 0 ) 
 )
 +Name: start VN
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "last repeat" )
 
 #Goals		;! 0 total
 
@@ -135,6 +135,7 @@ $Ambient light level: 14455632
 +Heading: 259
 
 $Bitmap List:
++Flags: ( "corrected angles" )
 
 #Asteroid Fields
 
