@@ -1,0 +1,226 @@
+$Name: XSTR("Sol 2340", 8182)
+$Type: single
++Description:
+ XSTR("Five years ago, the planets of the Sol system rose up against the Galactic Terran Alliance and declared independence in the most violent and bloody way possible. At the end of the war, both sides were exhausted, and so the GTA was allowed to continue to exist - but only on Earth and the immediate area of space. Now, in 2340, you have been selected by Command to participate in a special high-risk operation that risks - or intends - open war...", 8183)
+$end_multi_text
+$Flags: 0
+
+
++Starting Ships: ( "GTF Ulysses"  "GTF Valkyrie"  "GTF Hercules"  "GTB Medusa"  "GTB Ursa" )
+
++Starting Weapons: ( "Prometheus"  "Adv Disruptor"  "Avenger II"  "Fury"  "Interceptor"  "Hornet"  "Phoenix V"  "Stiletto"  "Tsunami"  "Harbinger" )
+
+
+$Mission: EAC2-A1.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 20
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "EAC2-A1.fs2" 
+         "AllDead" 
+      )
+      ( next-mission "EAC2-A2.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC2-A1.fs2" ) )
+)
+
++Level: 0
++Position: 0
+
+$Mission: EAC2-A2.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 20
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "EAC2-A2.fs2" 
+            "CruisersDestroyed" 
+         )
+         ( is-previous-event-false 
+            "EAC2-A2.fs2" 
+            "CruisersFlee" 
+         )
+      )
+      ( next-mission "EAC2-A3.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC2-A2.fs2" ) )
+)
+
++Level: 1
++Position: 0
+
+$Mission: EAC2-A3.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 20
++Formula: ( cond
+   (
+      ( and 
+         ( or 
+            ( is-previous-event-true 
+               "EAC2-A3.fs2" 
+               "IndomitableEnd" 
+            )
+            ( is-previous-event-true 
+               "EAC2-A3.fs2" 
+               "GloriousEnd" 
+            )
+         )
+         ( is-previous-event-false 
+            "EAC2-A3.fs2" 
+            "BothDisDes" 
+         )
+      )
+      ( next-mission "EAC2-A4.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC2-A3.fs2" ) )
+)
+
++Level: 2
++Position: 0
+
+$Mission: EAC2-A4.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 20
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "EAC2-A4.fs2" 
+         "BothDestroyed" 
+      )
+      ( next-mission "EAC2-A5.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC2-A4.fs2" ) )
+)
+
++Level: 3
++Position: 0
+
+$Mission: EAC2-A5.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 20
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "EAC2-A5.fs2" 
+            "AllDead" 
+         )
+         ( is-previous-event-false 
+            "EAC2-A5.fs2" 
+            "TereusDies" 
+         )
+      )
+      ( next-mission "EAC2-A6.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC2-A5.fs2" ) )
+)
+
++Level: 4
++Position: 0
+
+$Mission: EAC2-A6.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 20
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "EAC2-A6.fs2" 
+            "AllDestroyed" 
+         )
+         ( is-previous-event-false 
+            "EAC2-A6.fs2" 
+            "EclipseDies" 
+         )
+         ( is-previous-event-false 
+            "EAC2-A6.fs2" 
+            "AgilityDies" 
+         )
+      )
+      ( next-mission "EAC2-A7.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC2-A6.fs2" ) )
+)
+
++Level: 5
++Position: 0
+
+$Mission: EAC2-A7.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 20
++Formula: ( cond
+   (
+      ( and 
+         ( or 
+            ( is-previous-event-true 
+               "EAC2-A7.fs2" 
+               "FleetDesDarkness" 
+            )
+            ( is-previous-event-true 
+               "EAC2-A7.fs2" 
+               "FleetDesNoDarkness" 
+            )
+         )
+         ( is-previous-event-false 
+            "EAC2-A7.fs2" 
+            "DarknessDiesNotYet" 
+         )
+         ( is-previous-event-false 
+            "EAC2-A7.fs2" 
+            "TereusDies" 
+         )
+      )
+      ( next-mission "EAC2-A8.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC2-A7.fs2" ) )
+)
+
++Level: 6
++Position: 0
+
+$Mission: EAC2-A8.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 20
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "EAC2-A8.fs2" 
+            "AllDead" 
+         )
+         ( is-previous-event-false 
+            "EAC2-A8.fs2" 
+            "TereusDies" 
+         )
+      )
+      ( next-mission "EAC2-FIN.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC2-A8.fs2" ) )
+)
+
++Level: 7
++Position: 0
+
+$Mission: EAC2-FIN.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 20
++Formula: ( cond
+   ( ( true ) ( end-of-campaign ) )
+)
+
++Level: 8
++Position: 0
+
+#End
+

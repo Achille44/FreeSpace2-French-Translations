@@ -1,0 +1,225 @@
+$Name: XSTR("Sol 2335", 8180)
+$Type: single
++Description:
+ XSTR("Things are not looking good for the Alliance... The Shivan Lucifer evaded the Bastion in Sirius, and is even now preparing to make the jump from Delta-Serpentis to Sol. As a pilot of the Galactic Terran Alliance's finest, a wing leader for Sol's 1st Fleet, you must engage the Lucifer when it arrives in Sol and buy time for the evacuations, with your life if necessary. This is the Sol system, 2335.", 8181)
+$end_multi_text
+$Flags: 0
+
+
++Starting Ships: ( "GTF Ulysses"  "GTF Valkyrie"  "GTF Hercules"  "GTB Medusa"  "GTB Ursa" )
+
++Starting Weapons: ( "Avenger"  "Prometheus"  "Adv Disruptor"  "Fury"  "Interceptor"  "Hornet"  "Phoenix V"  "Stiletto"  "Tsunami"  "Harbinger" )
+
+
+$Mission: EAC1-A1.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 10
++Formula: ( cond
+   ( ( true ) ( next-mission "EAC1-A2.fs2" ) )
+)
+
++Level: 0
++Position: 0
+
+$Mission: EAC1-A2.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 10
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "EAC1-A2.fs2" 
+            "IotaDocked" 
+         )
+         ( is-previous-event-false 
+            "EAC1-A2.fs2" 
+            "TalosDies" 
+         )
+      )
+      ( next-mission "EAC1-A3.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC1-A2.fs2" ) )
+)
+
++Level: 1
++Position: 0
+
+$Mission: EAC1-A3.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 10
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "EAC1-A3.fs2" 
+            "FreightersDeparted" 
+         )
+         ( is-previous-event-false 
+            "EAC1-A3.fs2" 
+            "AllDestroyed" 
+         )
+      )
+      ( next-mission "EAC1-A4.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC1-A3.fs2" ) )
+)
+
++Level: 2
++Position: 0
+
+$Mission: EAC1-A4.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 10
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "EAC1-A4.fs2" 
+         "DivinityArrives" 
+      )
+      ( next-mission "EAC1-A5.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC1-A4.fs2" ) )
+)
+
++Level: 3
++Position: 0
+
+$Mission: EAC1-A5.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 10
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "EAC1-A5.fs2" 
+            "AllDeparted" 
+         )
+         ( is-previous-event-false 
+            "EAC1-A5.fs2" 
+            "AllDead" 
+         )
+      )
+      ( next-mission "EAC1-A6.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC1-A5.fs2" ) )
+)
+
++Level: 4
++Position: 0
+
+$Mission: EAC1-A6.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 10
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "EAC1-A6.fs2" 
+            "StaunchArrives" 
+         )
+         ( is-previous-event-false 
+            "EAC1-A6.fs2" 
+            "TerraDestroyed" 
+         )
+         ( is-previous-event-false 
+            "EAC1-A6.fs2" 
+            "TerraCaptured" 
+         )
+      )
+      ( next-mission "EAC1-A7.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC1-A6.fs2" ) )
+)
+
++Level: 5
++Position: 0
+
+$Mission: EAC1-A7.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 10
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-true 
+            "EAC1-A7.fs2" 
+            "CruisersDestroyed" 
+         )
+         ( is-previous-event-false 
+            "EAC1-A7.fs2" 
+            "BenedictionDies" 
+         )
+         ( is-previous-event-false 
+            "EAC1-A7.fs2" 
+            "CiviliansDie" 
+         )
+      )
+      ( next-mission "EAC1-A8.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC1-A7.fs2" ) )
+)
+
++Level: 6
++Position: 0
+
+$Mission: EAC1-A8.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 10
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "EAC1-A8.fs2" 
+         "EveryoneDead" 
+      )
+      ( next-mission "EAC1-A9.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC1-A8.fs2" ) )
+)
+
++Level: 7
++Position: 0
+
+$Mission: EAC1-A9.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 10
++Formula: ( cond
+   (
+      ( and 
+         ( is-previous-event-false 
+            "EAC1-A9.fs2" 
+            "TerraDown" 
+         )
+         ( is-previous-event-true 
+            "EAC1-A9.fs2" 
+            "AllRebelsDown" 
+         )
+      )
+      ( next-mission "EAC1-FIN.fs2" )
+   )
+   ( ( true ) ( next-mission "EAC1-A9.fs2" ) )
+)
+
++Level: 8
++Position: 0
+
+$Mission: EAC1-FIN.fs2
++Flags: 0
++Main Hall: 0
++Debriefing Persona Index: 10
++Formula: ( cond
+   ( ( true ) ( end-of-campaign ) )
+)
+
++Level: 9
++Position: 0
+
+#End
+

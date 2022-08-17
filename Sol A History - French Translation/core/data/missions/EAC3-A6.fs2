@@ -1,0 +1,2998 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Escalating Engagement", 7317)
+$Author: Blaise Russel
+$Created: 09/28/03 at 18:14:16
+$Modified: 07/04/22 at 08:16:27
+$Notes:
+This is a FRED created mission
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 5721)
+$end_multi_text
++Game Type Flags: 1
++Flags: 131072
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 0
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
++All Teams Attack
+
++Player Entry Delay:
+1.000000
+
++Viewer pos: 1057.671509, 984.070618, 5527.166016
++Viewer orient:
+	-0.419569, -0.000005, 0.907723,
+	-0.256588, 0.959217, -0.118595,
+	-0.870703, -0.282670, -0.402459
+
+
+$Skybox Model: Abelt_sky.pof
++Skybox Orientation:
+	-0.998630, 0.000000, 0.052336,
+	0.051946, 0.121869, 0.991186,
+	-0.006378, 0.992546, -0.121702
+
+$AI Profile: INFERNO
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"autoGenVar1"		"UND Tempest"		"string"
+		1		"autoGenVar2"		"JCC Soter"		"string"
+		2		"autoGenVar3"		"IPC Ethon"		"string"
+		3		"autoGenVar4"		"#Command"		"string"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 2
+$start_stage
+$multi_text
+ XSTR("$r RED $r ALERT! Some fool pilot on patrol in the $b Asteroid $b Belt got involved in a firefight with his $r Jovian counterpart late last night, and now the $g EA and the $r Jovian $r Coalition are on the brink of war. The $r Jovian destroyer, the $r JCD $r Majesty, is already marching across the $b Asteroid $b Belt towards $g Mars.", 7318)
+$end_multi_text
+$voice: EAC3M6br_01.ogg
+$camera_pos: 1057.671509, 984.070618, 5527.166016
+$camera_orient:
+	0.453315, -0.000004, 0.891350,
+	-0.891350, -0.001076, 0.453315,
+	0.000957, -0.999999, -0.000492
+$camera_time: 500
+$num_lines: 0
+$num_icons: 2
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 7
+$team: Friendly
+$class: SD Lucifer
+$pos: 864.289490, -0.000043, 5264.287598
+$label:  XSTR("Earth Alliance", 7319)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 7
+$team: Hostile
+$class: SD Lucifer
+$pos: 1267.393188, 0.000111, 5769.598633
+$label:  XSTR("Jovian Coalition", 7320)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("$g High $g Command has specifically requested some $g EAI crack troops to give us the edge, and I'm sending you in. You will reinforce the $g Tereus as she confronts the $r Jovian flagship, the $r Majesty. Your objectives are to defend our fleet until reinforcements can arrive, and destroy the enemy's fleet.
+
+This war has come at a most inconvenient time, and we would rather it not happen at all. However, sometimes our hand is forced by outside events... just as our hand forces outside events. Force this event to our favour, pilot. Go.", 7321)
+$end_multi_text
+$voice: EAC3M6br_02.ogg
+$camera_pos: 1057.671509, 984.070618, 5527.166016
+$camera_orient:
+	0.000347, -0.000005, 1.000000,
+	-0.999999, -0.001076, 0.000347,
+	0.001076, -0.999999, -0.000005
+$camera_time: 500
+$num_lines: 0
+$num_icons: 2
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 6
+$team: Friendly
+$class: EAD Tereus
+$pos: 1096.190308, 0.000122, 5285.856934
+$label:  XSTR("Tereus", 6611)
++id: 3
+$hlight: 1
+$mirror: 1
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 6
+$team: Hostile
+$class: JCD Majesty
+$pos: 1110.358521, 0.000061, 5700.002441
+$label:  XSTR("Majesty", 6905)
++id: 4
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 3
+
+$Formula: ( and 
+   ( is-event-false-delay 
+      "TempestBlowsIt" 
+      0 
+   )
+   ( is-event-false-delay 
+      "FleetDestroyed" 
+      0 
+   )
+)
+$Multi text
+    XSTR("Your cowardice cost us our fleet today, pilot. A pilot for Earth Alliance Intelligence needs to be strong, brave, unflinching. With your desertion today, you showed yourself to possess none of those characteristics.
+
+I'm almost sorry to inform you that regulations in EAI are a lot stricter than in the rest of the Alliance. You will be executed at 0600 hours tomorrow morning for treachery and endangering the security of the Alliance. Dismissed, pilot.", 7322)
+$end_multi_text
+$Voice: EAC3_AWOL_sch.ogg
+$Recommendation text:
+    XSTR("Wait for authorisation before returning to base.", 5831)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "FleetDestroyed" 
+   0 
+)
+$Multi text
+    XSTR("The Jovians managed to destroy our fleet before our reinforcements could arrive, pilot, and all thanks to you. The EA fleet is regrouping around Mars in preparation for another war, one which may drag on for years to come.
+
+Consider yourself lucky, pilot, that you won't be around to see it happen. The events of today's battle have cast doubt on your ability as a pilot and a member of EAI. Your usefulness to EAI is being re-evaluated as we speak - I don't think I have to spell out what exactly happens to you if you don't make the grade. Dismissed, pilot.", 7323)
+$end_multi_text
+$Voice: EAC3M6DBR_01.ogg
+$Recommendation text:
+    XSTR("The Martians are trying to destroy the cruisers. Go after Leo, Virgo, Scorpio and Taurus wings first and foremost, but removing a few turrets from the Jovian cruisers may help as well.", 7324)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "TempestBlowsIt" 
+   0 
+)
+$Multi text
+    XSTR("Our work with Pluto and the UNU has finally paid off - in both the most convenient and inconvenient of times.
+
+After tolerating the brutal attacks of the 'Plutonians' on its ships for long enough, the UNU deployed their destroyer, the UND Tempest, to Tartarus station, and finally showed to the world the most impressive and well hidden weapon ever known to man. Flux beam weaponry.
+
+The IPP has been annihilated. Pluto is, once again, a lifeless, uninhabited planet. The Tempest's new weapons gave the weakling Plutonians no chance at all.
+
+This sudden development has halted the war we were about to have with the Jovians, thankfully. I was hoping to have my black operations pilots ready and waiting for this situation, but the way things have turned out... a war with the Jovians is not in our best interests right now, the balance of power not shifted enough in our favour.
+
+Both the Alliance and the Jovians are marshalling their forces for a potential attack on Neptune, but I have other plans which will render such preparations useless. You have an hour, two at most, whereupon I want you to return for briefing immediately. Dismissed.", 7325)
+$end_multi_text
+$Voice: EAC3M6DBR_02.ogg
+$Recommendation text:
+    XSTR("", 5833)
+$end_multi_text
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+	"EAF Claymore"	5
+)
+
++Weaponry Pool: (
+	"Avenger II"	24
+	"Prometheus"	32
+	"Peltast"	500
+	"Warrior"	692
+	"Shrieker"	24
+	"Hunter"	144
+)
+
+#Objects		;! 49 total
+
+$Name: Alpha 1		;! Object #0
+$Display Name: XSTR("Alpha 1", 5737)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: 927.924622, 1608.210205, -1776.896729
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Alpha 2		;! Object #1
+$Display Name: XSTR("Alpha 2", 5739)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: 827.893127, 1608.208374, -1875.769775
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 11
+
+$Name: Alpha 3		;! Object #2
+$Display Name: XSTR("Alpha 3", 5740)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: 1027.689209, 1608.208374, -1876.068604
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Colonel
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 4
+
+$Name: Beta 1		;! Object #3
+$Display Name: XSTR("Beta 1", 5742)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: 495.814453, 1608.210327, -1549.079712
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 5
+
+$Name: Beta 2		;! Object #4
+$Display Name: XSTR("Beta 2", 5743)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: 396.375000, 1608.210327, -1649.371582
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 12
+
+$Name: Beta 3		;! Object #5
+$Display Name: XSTR("Beta 3", 5744)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: 596.004883, 1608.210327, -1650.092773
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 8
+
+$Name: Tereus		;! Object #6
+$Display Name: XSTR("Tereus", 6611)
+$Class: EAD Tereus
+$Team: Friendly
+$Location: 0.000000, 1500.000000, -1883.062622
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "TempestBlowsIt" 
+      13 
+   )
+   ( is-event-true-delay 
+      "FleetDestroyed" 
+      3 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 1000
+
+$Name: Majesty		;! Object #7
+$Display Name: XSTR("Majesty", 6905)
+$Class: JCD Majesty
+$Team: Hostile
+$Location: 0.000000, 500.000000, 5301.993164
+$Orientation:
+	-0.999933, 0.000000, 0.011593,
+	0.000000, 1.000000, 0.000000,
+	-0.011593, 0.000000, -0.999933
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06a
++Subsystem: turret07b
++Subsystem: turret08b
++Subsystem: turret09b
++Subsystem: turret10b
++Subsystem: turret11b
++Subsystem: turret12a
++Subsystem: turret13b
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 1000
+$Texture Replace:
++old: capital01-05
++new: majesty
+
+$Name: Tempest		;! Object #8
+$Display Name: XSTR("Tempest", 5316)
+$Class: UND Megaera
+
+$Team: Hostile
+$Location: -5258.200195, 11000.000000, 52005.199219
+$Orientation:
+	-0.003313, 0.000000, -0.999995,
+	0.303596, 0.952800, -0.001006,
+	0.952795, -0.303598, -0.003157
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "hidden-from-sensors" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 1750
+
+$Name: Styx		;! Object #9
+$Display Name: XSTR("Styx", 7285)
+$Class: GTC Ethon
+
+$Team: IPP
+$Location: -2119.851074, 10000.000000, 51994.800781
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "hidden-from-sensors" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 100
+$Texture Replace:
++old: nameplate
++new: styx
+
+$Name: Justice		;! Object #10
+$Display Name: XSTR("Justice", 6906)
+$Class: EACv Skotas
+$Team: Friendly
+$Location: 7089.799805, 1250.000000, 1718.400024
+$Orientation:
+	0.284646, 0.000000, 0.958633,
+	-0.040441, 0.999110, 0.012008,
+	-0.957779, -0.042186, 0.284393
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "JusticeW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: vlsturret1
++Subsystem: vlsturret2
++Subsystem: vlsturret3
++Subsystem: vlsturret4
++Subsystem: vlsturret5
++Subsystem: vlsturret6
++Subsystem: vlsturret7
++Subsystem: vlsturret8
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( has-time-elapsed 352 ) 
+   ( is-event-incomplete 
+      "FleetDestroyed" 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "TempestBlowsIt" 
+      13 
+   )
+   ( is-event-true-delay 
+      "FleetDestroyed" 
+      3 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: nameplate
++new: eacvjustice
+
+$Name: Kane		;! Object #11
+$Display Name: XSTR("Kane", 7326)
+$Class: EACv Skotas
+$Team: Friendly
+$Location: -8168.399902, 0.000000, 2675.000000
+$Orientation:
+	0.021961, 0.000000, -0.999759,
+	-0.069691, 0.997567, -0.001531,
+	0.997327, 0.069708, 0.021908
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "KaneW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: vlsturret1
++Subsystem: vlsturret2
++Subsystem: vlsturret3
++Subsystem: vlsturret4
++Subsystem: vlsturret5
++Subsystem: vlsturret6
++Subsystem: vlsturret7
++Subsystem: vlsturret8
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( has-time-elapsed 352 ) 
+   ( is-event-incomplete 
+      "FleetDestroyed" 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "TempestBlowsIt" 
+      13 
+   )
+   ( is-event-true-delay 
+      "FleetDestroyed" 
+      3 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: nameplate
++new: eacvkane
+
+$Name: Impervious		;! Object #12
+$Display Name: XSTR("Impervious", 7327)
+$Class: EAC Eclipse
+$Team: Friendly
+$Location: 1003.517578, 402.949982, -375.699738
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "ImpervW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Primary Banks: ( "EA-AW-Rail-A" )
++Subsystem: turret04
++Sbank Ammo: ( 0 )
++Subsystem: turret05
++Sbank Ammo: ( 0 )
++Subsystem: turret06
++Subsystem: turret07
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret08
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret09
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "TempestBlowsIt" 
+      13 
+   )
+   ( is-event-true-delay 
+      "FleetDestroyed" 
+      3 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 79
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: nameplate
++new: eacimpervious
+
+$Name: Noble		;! Object #13
+$Display Name: XSTR("Noble", 7328)
+$Class: EAC Eclipse
+$Team: Friendly
+$Location: 1307.061646, 1756.655396, 97.121193
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "NobleW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Primary Banks: ( "EA-AW-Rail-A" )
++Subsystem: turret04
++Sbank Ammo: ( 0 )
++Subsystem: turret05
++Sbank Ammo: ( 0 )
++Subsystem: turret06
++Subsystem: turret07
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret08
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret09
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "TempestBlowsIt" 
+      13 
+   )
+   ( is-event-true-delay 
+      "FleetDestroyed" 
+      3 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 78
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: nameplate
++new: eacnoble
+
+$Name: Purity		;! Object #14
+$Display Name: XSTR("Purity", 7329)
+$Class: EAC Eclipse
+$Team: Friendly
+$Location: -1001.944580, 2273.134521, 1052.458252
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "PurityW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Primary Banks: ( "EA-AW-Rail-A" )
++Subsystem: turret04
++Sbank Ammo: ( 0 )
++Subsystem: turret05
++Sbank Ammo: ( 0 )
++Subsystem: turret06
++Subsystem: turret07
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret08
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret09
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "TempestBlowsIt" 
+      13 
+   )
+   ( is-event-true-delay 
+      "FleetDestroyed" 
+      3 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 77
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: nameplate
++new: eacpurity
+
+$Name: Immaculate		;! Object #15
+$Display Name: XSTR("Immaculate", 7330)
+$Class: EAC Eclipse
+$Team: Friendly
+$Location: -1324.450073, 1306.694946, -256.738861
+$Orientation:
+	0.999950, 0.000000, -0.009999,
+	0.000000, 1.000000, 0.000000,
+	0.009999, 0.000000, 0.999950
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "ImmW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Primary Banks: ( "EA-AW-Rail-A" )
++Subsystem: turret04
++Sbank Ammo: ( 0 )
++Subsystem: turret05
++Sbank Ammo: ( 0 )
++Subsystem: turret06
++Subsystem: turret07
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret08
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret09
++Primary Banks: ( "EA-AF-Flak-B" )
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "TempestBlowsIt" 
+      13 
+   )
+   ( is-event-true-delay 
+      "FleetDestroyed" 
+      3 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 76
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+$Texture Replace:
++old: nameplate
++new: eacimmaculate
+
+$Name: Kaiser		;! Object #16
+$Display Name: XSTR("Kaiser", 7331)
+$Class: EAC Soter
+
+$Team: Hostile
+$Location: 999.299988, 500.000000, 3177.496338
+$Orientation:
+	-0.999597, 0.000000, -0.028403,
+	0.000000, 1.000000, 0.000000,
+	0.028403, 0.000000, -0.999597
+$AI Behavior: None
++AI Class: Captain
+$AI Goals: ( goals ( ai-waypoints-once "KaiserW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret03
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret04
++Sbank Ammo: ( 0 )
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 59
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Score: 300
+
+$Name: Tsar		;! Object #17
+$Display Name: XSTR("Tsar", 7332)
+$Class: EAC Soter
+
+$Team: Hostile
+$Location: 1999.500000, 400.000000, 2589.874756
+$Orientation:
+	-0.999597, 0.000000, -0.028403,
+	0.000000, 1.000000, 0.000000,
+	0.028403, 0.000000, -0.999597
+$AI Behavior: None
++AI Class: Captain
+$AI Goals: ( goals ( ai-waypoints-once "TsarW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret03
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 58
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Score: 300
+
+$Name: King		;! Object #18
+$Display Name: XSTR("King", 7333)
+$Class: EAC Soter
+
+$Team: Hostile
+$Location: -999.299988, 500.000000, 3189.621094
+$Orientation:
+	-0.999597, 0.000000, -0.028403,
+	0.000000, 1.000000, 0.000000,
+	0.028403, 0.000000, -0.999597
+$AI Behavior: None
++AI Class: Captain
+$AI Goals: ( goals ( ai-waypoints-once "KingW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret03
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret04
++Sbank Ammo: ( 0 )
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 57
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Score: 300
+
+$Name: Baron		;! Object #19
+$Display Name: XSTR("Baron", 7334)
+$Class: EAC Soter
+
+$Team: Hostile
+$Location: -1999.400024, 400.000000, 2638.210205
+$Orientation:
+	-0.999597, 0.000000, -0.028404,
+	0.000000, 1.000000, 0.000000,
+	0.028404, 0.000000, -0.999597
+$AI Behavior: None
++AI Class: Captain
+$AI Goals: ( goals ( ai-waypoints-once "BaronW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret03
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 56
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Score: 300
+
+$Name: Duke		;! Object #20
+$Display Name: XSTR("Duke", 7335)
+$Class: EAC Soter
+
+$Team: Hostile
+$Location: -1011.500000, 800.000000, 4650.096680
+$Orientation:
+	-0.999597, 0.000000, -0.028403,
+	0.000000, 1.000000, 0.000000,
+	0.028403, 0.000000, -0.999597
+$AI Behavior: None
++AI Class: Captain
+$AI Goals: ( goals ( ai-waypoints-once "DukeW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret03
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( has-time-elapsed 239 ) 
+   ( is-event-incomplete 
+      "FleetDestroyed" 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 55
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Score: 100
+
+$Name: Earl		;! Object #21
+$Display Name: XSTR("Earl", 7336)
+$Class: EAC Soter
+
+$Team: Hostile
+$Location: 1001.599976, 800.000000, 4642.853027
+$Orientation:
+	-0.999597, 0.000000, -0.028403,
+	0.000000, 1.000000, 0.000000,
+	0.028403, 0.000000, -0.999597
+$AI Behavior: None
++AI Class: Captain
+$AI Goals: ( goals ( ai-waypoints-once "EarlW" 50 ) )
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret03
++Secondary Banks: ( "EA-Geodess-D" "EA-Geodess-D" "EA-Geodess-D" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( has-time-elapsed 239 ) 
+   ( is-event-incomplete 
+      "FleetDestroyed" 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 54
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Score: 100
+
+$Name: Aries 1		;! Object #22
+$Display Name: XSTR("Aries 1", 5987)
+$Class: JCF Antaeus
+$Team: Hostile
+$Location: -2901.922607, 0.001513, 4300.290039
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Aries 2		;! Object #23
+$Display Name: XSTR("Aries 2", 5988)
+$Class: JCF Antaeus
+$Team: Hostile
+$Location: -3002.981445, 0.001505, 4202.007813
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Aries 3		;! Object #24
+$Display Name: XSTR("Aries 3", 5989)
+$Class: JCF Antaeus
+$Team: Hostile
+$Location: -2801.667480, 0.001519, 4200.695801
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Cancer 1		;! Object #25
+$Display Name: XSTR("Cancer 1", 5979)
+$Class: JCF Antaeus
+$Team: Hostile
+$Location: -2498.597900, 0.001482, 4301.756836
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Cancer 2		;! Object #26
+$Display Name: XSTR("Cancer 2", 5980)
+$Class: JCF Antaeus
+$Team: Hostile
+$Location: -2600.404297, 0.001510, 4200.750488
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Cancer 3		;! Object #27
+$Display Name: XSTR("Cancer 3", 5981)
+$Class: JCF Antaeus
+$Team: Hostile
+$Location: -2399.147461, 0.001423, 4202.171387
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Leo 1		;! Object #28
+$Display Name: XSTR("Leo 1", 5844)
+$Class: JCB Apollyon
+$Team: Hostile
+$Location: -2900.119385, 0.001494, 3902.503174
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 17
+
+$Name: Leo 2		;! Object #29
+$Display Name: XSTR("Leo 2", 5845)
+$Class: JCB Apollyon
+$Team: Hostile
+$Location: -3001.701904, 0.001439, 3802.939453
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 17
+
+$Name: Leo 3		;! Object #30
+$Display Name: XSTR("Leo 3", 5846)
+$Class: JCB Apollyon
+$Team: Hostile
+$Location: -2801.409912, 0.001472, 3801.897461
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 17
+
+$Name: Virgo 1		;! Object #31
+$Display Name: XSTR("Virgo 1", 5849)
+$Class: JCB Callisto
+$Team: Hostile
+$Location: -2498.507568, 0.001447, 3899.126709
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Phoenix V" "Tsunami" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 17
+
+$Name: Virgo 2		;! Object #32
+$Display Name: XSTR("Virgo 2", 5850)
+$Class: JCB Callisto
+$Team: Hostile
+$Location: -2599.946777, 0.001443, 3802.092041
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Phoenix V" "Tsunami" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 17
+
+$Name: Virgo 3		;! Object #33
+$Display Name: XSTR("Virgo 3", 5978)
+$Class: JCB Callisto
+$Team: Hostile
+$Location: -2398.537598, 0.001463, 3801.059082
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Phoenix V" "Tsunami" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 17
+
+$Name: Scorpio 1		;! Object #34
+$Display Name: XSTR("Scorpio 1", 5962)
+$Class: JCB Hera
+$Team: Hostile
+$Location: -2901.440430, 0.001485, 3503.721436
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Phoenix V" "Tsunami" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 20
+
+$Name: Scorpio 2		;! Object #35
+$Display Name: XSTR("Scorpio 2", 5963)
+$Class: JCB Hera
+$Team: Hostile
+$Location: -2999.883301, 0.001491, 3401.854736
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Phoenix V" "Tsunami" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 20
+
+$Name: Scorpio 3		;! Object #36
+$Display Name: XSTR("Scorpio 3", 5964)
+$Class: JCB Hera
+$Team: Hostile
+$Location: -2798.390137, 0.001488, 3400.763428
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Phoenix V" "Tsunami" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 20
+
+$Name: Taurus 1		;! Object #37
+$Display Name: XSTR("Taurus 1", 5864)
+$Class: JCB Hera
+$Team: Hostile
+$Location: -2499.948975, 0.001480, 3504.012695
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Phoenix V" "Tsunami" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 20
+
+$Name: Taurus 2		;! Object #38
+$Display Name: XSTR("Taurus 2", 5865)
+$Class: JCB Hera
+$Team: Hostile
+$Location: -2599.455566, 0.001523, 3402.168213
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Phoenix V" "Tsunami" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 20
+
+$Name: Taurus 3		;! Object #39
+$Display Name: XSTR("Taurus 3", 5866)
+$Class: JCB Hera
+$Team: Hostile
+$Location: -2399.285645, 0.001470, 3402.324951
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Phoenix V" "Tsunami" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 20
+
+$Name: Pisces 1		;! Object #40
+$Display Name: XSTR("Pisces 1", 5867)
+$Class: JCF Antaeus
+$Team: Hostile
+$Location: -2700.315674, 0.001481, 3300.242676
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Pisces 2		;! Object #41
+$Display Name: XSTR("Pisces 2", 5868)
+$Class: JCF Antaeus
+$Team: Hostile
+$Location: -2801.261963, 0.001409, 3203.179688
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Pisces 3		;! Object #42
+$Display Name: XSTR("Pisces 3", 5991)
+$Class: JCF Antaeus
+$Team: Hostile
+$Location: -2599.641846, 0.001520, 3202.147217
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Gamma 1		;! Object #43
+$Display Name: XSTR("Gamma 1", 5746)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: -799.894592, 1393.765381, -1696.827148
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 10
+
+$Name: Gamma 2		;! Object #44
+$Display Name: XSTR("Gamma 2", 5747)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: -901.153320, 1393.765381, -1798.078125
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 11
+
+$Name: Gamma 3		;! Object #45
+$Display Name: XSTR("Gamma 3", 5748)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: -700.150085, 1393.765381, -1798.136963
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 12
+
+$Name: Beta 4		;! Object #46
+$Display Name: XSTR("Beta 4", 5745)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: 503.784576, 1608.000000, -1735.905396
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 8
+
+$Name: Gamma 4		;! Object #47
+$Display Name: XSTR("Gamma 4", 5749)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: -799.110657, 1400.000000, -1894.556396
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 9
+
+$Name: Alpha 4		;! Object #48
+$Display Name: XSTR("Alpha 4", 5741)
+$Class: EAF Claymore
+$Team: Friendly
+$Location: 931.882080, 1608.000000, -1961.533447
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 5738)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
++Persona Index: 10
+
+#Wings		;! 10 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "TempestBlowsIt" 
+      13 
+   )
+   ( is-event-true-delay 
+      "FleetDestroyed" 
+      3 
+   )
+)
+$Ships: (		;! 4 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+	"Alpha 4"
+)
++Hotkey: 0
++Flags: ( )
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "TempestBlowsIt" 
+      13 
+   )
+   ( is-event-true-delay 
+      "FleetDestroyed" 
+      3 
+   )
+)
+$Ships: (		;! 4 total
+	"Beta 1"
+	"Beta 2"
+	"Beta 3"
+	"Beta 4"
+)
++Hotkey: 1
++Flags: ( )
+
+$Name: Aries
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Aries 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Majesty
+$Arrival Cue: ( has-time-elapsed 11 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Aries 1"
+	"Aries 2"
+	"Aries 3"
+)
+$AI Goals: ( goals ( ai-chase-any 50 ) )
++Flags: ( )
++Wave Delay Min: 8
++Wave Delay Max: 16
+
+$Name: Cancer
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Cancer 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Majesty
+$Arrival Cue: ( has-time-elapsed 8 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Cancer 1"
+	"Cancer 2"
+	"Cancer 3"
+)
+$AI Goals: ( goals ( ai-chase-any 50 ) )
++Flags: ( )
++Wave Delay Min: 8
++Wave Delay Max: 16
+
+$Name: Leo
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Leo 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Majesty
+$Arrival Cue: ( has-time-elapsed 14 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Leo 1"
+	"Leo 2"
+	"Leo 3"
+)
+$AI Goals: ( goals ( ai-chase "Impervious" 50 ) ( ai-chase "Noble" 50 ) )
++Flags: ( )
++Wave Delay Min: 8
++Wave Delay Max: 16
+
+$Name: Virgo
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Virgo 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Majesty
+$Arrival Cue: ( has-time-elapsed 26 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Virgo 1"
+	"Virgo 2"
+	"Virgo 3"
+)
+$AI Goals: ( goals ( ai-chase "Purity" 50 ) ( ai-chase "Immaculate" 50 ) )
++Flags: ( )
++Wave Delay Min: 8
++Wave Delay Max: 16
+
+$Name: Scorpio
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Scorpio 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Majesty
+$Arrival Cue: ( is-destroyed-delay 8 "Leo" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Scorpio 1"
+	"Scorpio 2"
+	"Scorpio 3"
+)
+$AI Goals: ( goals ( ai-chase "Impervious" 50 ) ( ai-chase "Noble" 50 ) )
++Flags: ( )
++Wave Delay Min: 8
++Wave Delay Max: 16
+
+$Name: Taurus
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Taurus 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Majesty
+$Arrival Cue: ( is-destroyed-delay 16 "Virgo" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Taurus 1"
+	"Taurus 2"
+	"Taurus 3"
+)
+$AI Goals: ( goals ( ai-chase "Immaculate" 50 ) ( ai-chase "Purity" 50 ) )
++Flags: ( )
++Wave Delay Min: 8
++Wave Delay Max: 16
+
+$Name: Pisces
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Pisces 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Majesty
+$Arrival Cue: ( is-destroyed-delay 12 "Cancer" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Pisces 1"
+	"Pisces 2"
+	"Pisces 3"
+)
+$AI Goals: ( goals ( ai-chase-any 50 ) )
++Flags: ( )
++Wave Delay Min: 8
++Wave Delay Max: 16
+
+$Name: Gamma
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Gamma 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "TempestBlowsIt" 
+      13 
+   )
+   ( is-event-true-delay 
+      "FleetDestroyed" 
+      3 
+   )
+)
+$Ships: (		;! 4 total
+	"Gamma 1"
+	"Gamma 2"
+	"Gamma 3"
+	"Gamma 4"
+)
++Hotkey: 2
++Flags: ( )
+
+#Events		;! 22 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[UND Tempest]" 
+      "UND Tempest" 
+      7359 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar1[UND Tempest]" 
+      "Tempest" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[JCC Soter]" 
+      "JCC Soter" 
+      7360 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar2[JCC Soter]" 
+      "Kaiser" 
+      "Tsar" 
+      "King" 
+      "Baron" 
+      "Duke" 
+      "Earl" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[IPC Ethon]" 
+      "IPC Ethon" 
+      7315 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar3[IPC Ethon]" 
+      "Styx" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar4[#Command]" 
+      "#Command" 
+      5821 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-time-elapsed 3 ) 
+   ( send-message-list 
+      "Impervious" 
+      "High" 
+      "Impervious_00" 
+      0 
+      "Purity" 
+      "High" 
+      "Purity_01" 
+      8000 
+      "@autoGenVar4[#Command]" 
+      "High" 
+      "Command_01" 
+      3000 
+      "Tereus" 
+      "High" 
+      "Tereus_01" 
+      6000 
+   )
+   ( turret-lock-all "Tereus" ) 
+   ( tech-add-ships 
+      "JCD Majesty" 
+      "EAF Claymore Mark II" 
+   )
+   ( tech-add-weapons 
+      "Trantor" 
+      "Penetrator" 
+   )
+   ( ship-subsys-guardian-threshold 
+      45 
+      "Tereus" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      45 
+      "Justice" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      45 
+      "Kane" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      45 
+      "Impervious" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      45 
+      "Noble" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      45 
+      "Purity" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      45 
+      "Immaculate" 
+      "<all engines>" 
+   )
+)
++Name: Start
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Justice" ) 
+   ( do-nothing ) 
+)
++Name: DirDefFleet
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Defend Fleet", 7337)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Aries" ) 
+   ( do-nothing ) 
+)
++Name: DirDesAries
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Aries", 6178)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Cancer" ) 
+   ( do-nothing ) 
+)
++Name: DirDesCancer
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Cancer", 6175)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Leo" ) 
+   ( do-nothing ) 
+)
++Name: DirDesLeo
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Leo", 6059)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Virgo" ) 
+   ( do-nothing ) 
+)
++Name: DirDesVirgo
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Virgo", 6176)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Scorpio" ) 
+   ( do-nothing ) 
+)
++Name: DirDesScorpio
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Scorpio", 6183)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Taurus" ) 
+   ( do-nothing ) 
+)
++Name: DirDesTaurus
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Taurus", 6320)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Pisces" ) 
+   ( do-nothing ) 
+)
++Name: DirDesPisces
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Pisces", 6321)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( are-waypoints-done-delay 
+         "Impervious" 
+         "ImpervW" 
+         0 
+      )
+      ( are-waypoints-done-delay 
+         "Tsar" 
+         "TsarW" 
+         0 
+      )
+      ( are-waypoints-done-delay 
+         "Baron" 
+         "BaronW" 
+         0 
+      )
+      ( not 
+         ( or 
+            ( is-destroyed-delay 0 "Impervious" ) 
+            ( is-destroyed-delay 0 "Tsar" ) 
+            ( is-destroyed-delay 0 "Baron" ) 
+         )
+      )
+   )
+   ( send-message 
+      "Impervious" 
+      "High" 
+      "Impervious_01" 
+   )
+)
++Name: ImpervPinned
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Impervious" ) 
+   ( send-message 
+      "@autoGenVar4[#Command]" 
+      "High" 
+      "Command_02" 
+   )
+)
++Name: ImpervDestroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Purity" ) 
+   ( send-message 
+      "@autoGenVar4[#Command]" 
+      "High" 
+      "Command_03" 
+   )
+)
++Name: PurityDestroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Immaculate" ) 
+   ( send-message 
+      "@autoGenVar4[#Command]" 
+      "High" 
+      "Command_04" 
+   )
+)
++Name: ImmacDestroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Noble" ) 
+   ( send-message 
+      "@autoGenVar4[#Command]" 
+      "High" 
+      "Command_05" 
+   )
+)
++Name: NobleDestroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( percent-ships-destroyed 
+      50 
+      "Impervious" 
+      "Noble" 
+      "Purity" 
+      "Immaculate" 
+   )
+   ( send-message-list 
+      "Tereus" 
+      "High" 
+      "Tereus_02" 
+      0 
+      "@autoGenVar4[#Command]" 
+      "High" 
+      "Command_06" 
+      3000 
+   )
+)
++Name: HalfDown
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Duke" "Earl" ) 
+   ( send-message 
+      "@autoGenVar4[#Command]" 
+      "High" 
+      "Command_08" 
+   )
+)
++Name: DukeEarlArrive
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Justice" ) 
+   ( send-message-list 
+      "Justice" 
+      "High" 
+      "Justice_01" 
+      0 
+      "Kane" 
+      "High" 
+      "Kane_01" 
+      2000 
+   )
+   ( ship-invulnerable 
+      "Impervious" 
+      "Noble" 
+      "Purity" 
+      "Immaculate" 
+   )
+)
++Name: JusticeArrives
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 12 "Justice" ) 
+   ( send-message-list 
+      "Tereus" 
+      "High" 
+      "Tereus_03" 
+      0 
+      "@autoGenVar4[#Command]" 
+      "High" 
+      "Command_09" 
+      3000 
+      "Tereus" 
+      "High" 
+      "Tereus_04" 
+      2000 
+      "@autoGenVar4[#Command]" 
+      "High" 
+      "Command_10" 
+      2000 
+      "Tereus" 
+      "High" 
+      "Tereus_05" 
+      4000 
+   )
+   ( beam-free-all "Tempest" ) 
+   ( fire-beam 
+      "Tempest" 
+      "turret07" 
+      "Styx" 
+   )
+   ( allow-ship "EAF Claymore Mark II" ) 
+   ( allow-weapon "Trantor" ) 
+   ( allow-weapon "Penetrator" ) 
+   ( tech-add-ships 
+      "EAF Claymore Mark II" 
+      "UND Megaera" 
+      "JCF Antaeus" 
+      "JCB Apollyon" 
+      "JCB Callisto" 
+      "JCB Hera" 
+      "EAC Soter" 
+   )
+   ( tech-add-weapons 
+      "Trantor" 
+      "Penetrator" 
+   )
+)
++Name: TempestBlowsIt
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: DirRTBWin
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Objective:  XSTR("Depart", 5781)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "Impervious" 
+      "Noble" 
+      "Purity" 
+      "Immaculate" 
+   )
+   ( send-message 
+      "@autoGenVar4[#Command]" 
+      "High" 
+      "Command_07" 
+   )
+)
++Name: FleetDestroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: DirRTBFail
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Depart", 5781)
++Team: 0
+
+$Formula: ( when 
+   ( < ( hits-left "Majesty" ) 10 ) 
+   ( ship-invulnerable "Majesty" ) 
+)
++Name: SaveMajesty
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+#Goals		;! 1 total
+
+$Type: Primary
++Name: Defend the Fleet
+$MessageNew:  XSTR("Defend the Fleet", 7338)
+$end_multi_text
+$Formula: ( has-arrived-delay 0 "Justice" ) 
+
+#Waypoints		;! 12 lists total
+
+$Name: ImpervW
+$List: (		;! 1 points in list
+	( 1005.599976, 400.000000, 575.839661 )
+)
+
+$Name: TsarW
+$List: (		;! 1 points in list
+	( 1375.800293, 375.000000, 1582.139893 )
+)
+
+$Name: BaronW
+$List: (		;! 1 points in list
+	( 481.099976, 450.000000, 1262.039551 )
+)
+
+$Name: PurityW
+$List: (		;! 1 points in list
+	( -6.599998, 1750.000000, 3588.940186 )
+)
+
+$Name: DukeW
+$List: (		;! 1 points in list
+	( -483.200012, 1500.000000, 4116.737793 )
+)
+
+$Name: NobleW
+$List: (		;! 1 points in list
+	( -1011.599976, 1500.000000, 1589.039795 )
+)
+
+$Name: KaiserW
+$List: (		;! 1 points in list
+	( -609.099976, 1250.000000, 2130.340088 )
+)
+
+$Name: ImmW
+$List: (		;! 1 points in list
+	( -1015.099731, -500.000000, 980.539490 )
+)
+
+$Name: KingW
+$List: (		;! 1 points in list
+	( -1379.399902, -250.000000, 1255.639648 )
+)
+
+$Name: EarlW
+$List: (		;! 1 points in list
+	( -449.299988, 750.090881, 259.939636 )
+)
+
+$Name: JusticeW
+$List: (		;! 1 points in list
+	( 1413.900146, 1000.000000, 3403.739502 )
+)
+
+$Name: KaneW
+$List: (		;! 1 points in list
+	( -1014.799927, 500.000000, 2832.139893 )
+)
+
+#Messages		;! 20 total
+
+$Command Persona: C3 Command
+
+$Name: Impervious_00
+$Team: -1
+$MessageNew:  XSTR("Well well, if it isn't the boys in black. Come to help us out, have you?", 7339)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: EAC3M6Impervious_00.ogg
+
+$Name: Purity_01
+$Team: -1
+$MessageNew:  XSTR("Jovian cruisers are on the attack. Moving to engage, sir.", 7340)
+$end_multi_text
++AVI Name: FtShermanComms
++Wave Name: EAC3M6Purity_01.ogg
+
+$Name: Command_01
+$Team: -1
+$MessageNew:  XSTR("Pilots, the Majesty is launching bombers. While our cruisers take care of their capital ships, we need you to cover our ships and shoot those bombs down!", 7341)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: EAC3M6Command_01.ogg
+
+$Name: Tereus_01
+$Team: -1
+$MessageNew:  XSTR("Maintaining distance from firezone, Command. Majesty is doing the same.", 7342)
+$end_multi_text
++AVI Name: PukovCaptain
++Wave Name: EAC3M6Tereus_01.ogg
+
+$Name: Impervious_01
+$Team: -1
+$MessageNew:  XSTR("We've been pinned down by the Tsar and the Baron! We need bomber support, pronto!", 7343)
+$end_multi_text
++AVI Name: FtBaxterComms
++Wave Name: EAC3M6Impervious_01.ogg
+
+$Name: Command_02
+$Team: -1
+$MessageNew:  XSTR("We've lost the Impervious!", 7344)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: EAC3M6Command_02.ogg
+
+$Name: Command_03
+$Team: -1
+$MessageNew:  XSTR("They've destroyed the Purity!", 7345)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: EAC3M6Command_03.ogg
+
+$Name: Command_04
+$Team: -1
+$MessageNew:  XSTR("That was the Immaculate!", 7346)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: EAC3M6Command_04.ogg
+
+$Name: Command_05
+$Team: -1
+$MessageNew:  XSTR("The Noble has been destroyed!", 7347)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: EAC3M6Command_05.ogg
+
+$Name: Tereus_02
+$Team: -1
+$MessageNew:  XSTR("Command, our fleet is collapsing out there! Where's our support?", 7348)
+$end_multi_text
++AVI Name: PukovCaptain
++Wave Name: EAC3M6Tereus_02.ogg
+
+$Name: Command_06
+$Team: -1
+$MessageNew:  XSTR("Reinforcements are on their way, we just need more time!", 7349)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: EAC3M6Command_06.ogg
+
+$Name: Command_07
+$Team: -1
+$MessageNew:  XSTR("Our fleet has collapsed! Everybody pull back! This is a rout, pilots! A fully blown rout!", 7350)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: EAC3M6Command_07.ogg
+
+$Name: Command_08
+$Team: -1
+$MessageNew:  XSTR("Two more Jovian cruisers have just jumped in!", 7351)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: EAC3M6Command_08.ogg
+
+$Name: Justice_01
+$Team: -1
+$MessageNew:  XSTR("This is the Justice, beginning run on the Jovians.", 7352)
+$end_multi_text
++AVI Name: MitchellBridgeOff
++Wave Name: EAC3M6Justice_01.ogg
+
+$Name: Kane_01
+$Team: -1
+$MessageNew:  XSTR("Kane here. Flank attack has begun.", 7353)
+$end_multi_text
++AVI Name: FtCarterComms
++Wave Name: EAC3M6Kane_01.ogg
+
+$Name: Tereus_03
+$Team: -1
+$MessageNew:  XSTR("Command... I'm getting strange readings from... Neptune... dear god! What the hell is that?!", 7354)
+$end_multi_text
++AVI Name: PukovCaptain
++Wave Name: EAC3M6Tereus_03.ogg
+
+$Name: Command_09
+$Team: -1
+$MessageNew:  XSTR("All ships, pull out! We're withdrawing the fleet!", 7355)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: EAC3M6Command_09.ogg
+
+$Name: Tereus_04
+$Team: -1
+$MessageNew:  XSTR("But Command, the Jovians-", 7356)
+$end_multi_text
++AVI Name: PukovCaptain
++Wave Name: EAC3M6Tereus_04.ogg
+
+$Name: Command_10
+$Team: -1
+$MessageNew:  XSTR("I have explicit orders from EAI DEMANDING the return of the fleet to Mars! Do YOU want to explain to the Commissar why you didn't turn up for roll call?", 7357)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: EAC3M6Command_10.ogg
+
+$Name: Tereus_05
+$Team: -1
+$MessageNew:  XSTR("Departing now, Command.", 7358)
+$end_multi_text
++AVI Name: PukovCaptain
++Wave Name: EAC3M6Tereus_05.ogg
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 15 total
+
+$Num stars: 0
+$Ambient light level: 7895160
+
+$Bitmap List:
+$Sun: SunSol
++Angles: 0.000000 0.000000 2.076942
++Scale: 1.000000
+$Starbitmap: RSAsteroids-01C
++Angles: 6.248279 3.141593 0.000000
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-01C
++Angles: 0.000000 3.141593 0.000000
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-05C
++Angles: 0.000000 0.000000 1.064651
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-05B
++Angles: 0.000000 0.000000 1.588250
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-05C
++Angles: 6.021386 3.141593 2.809980
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-05C
++Angles: 0.000000 3.141593 3.124139
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-03B
++Angles: 0.000000 3.141593 4.834562
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-01F
++Angles: 0.104720 0.000000 0.296706
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-01A
++Angles: 0.000000 0.000000 0.767945
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-04C
++Angles: 0.418879 0.680678 2.216568
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-04C
++Angles: 5.986479 3.141593 2.146755
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-04A
++Angles: 0.000000 0.000000 3.595378
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-01H
++Angles: 0.000000 0.000000 4.118977
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-01G
++Angles: 6.161012 3.141593 5.794493
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: RSAsteroids-01A
++Angles: 0.000000 3.141593 5.305801
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+$Density: 100
++Field Type: 1
++Debris Genre: 0
++Field Debris Type: 0
+$Average Speed: 0.000000
+$Minimum: -5000.000000, -2000.000000, -5000.000000
+$Maximum: 5000.000000, -1000.000000, 10000.000000
+
+#Music
+
+$Event Music: 15: Frantic
+$Briefing Music: Brief_climax
+$Debriefing Success Music: SAHU_Success
+$Debriefing Average Music: SAHU_Average
+$Debriefing Fail Music: SAHU_Failure
+
+#End
+
