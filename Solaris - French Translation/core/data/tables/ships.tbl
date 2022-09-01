@@ -3930,7 +3930,7 @@ $Shield Regeneration Rate:		0.5
 $Weapon Regeneration Rate:		0.03
 $Max Oclk Speed:				40.0
 $Max Weapon Eng:				100.0
-$Hitpoints:                     1250000
+$Hitpoints:                     1000000
 $Armor Type: 					Heavy Armour 100
 $Flags: 					( "capital"   "in tech database" "no ets" )
 $AI Class:                      SLRS-Captain
@@ -8120,11 +8120,11 @@ $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	+relative_angle:	70,180,0
 
 
-$Name:						Unity-class Superdreadnought
-$Alt Name: XSTR("Unity-class Superdreadnought", 2668)
+$Name:						Unity-class Supercarrier
+$Alt Name: XSTR("Unity-class Supercarrier", 2668)
 $Short name:					titan3
 $Species:						Combine
-	+Tech Description:		XSTR("Combine supercapital ship. The will of the Archon made manifest, the Unity superdreadnought carries more firepower than an entire battlefleet. Unrivalled in direct combat. 
+	+Tech Description:		XSTR("Combine supercapital ship. The will of the Archon made manifest, the Unity supercarrier carries more firepower than an entire battlefleet.
 
 -General Characteristics:
 ---Primary Function: Anti-capital ship
@@ -8132,7 +8132,7 @@ $Species:						Combine
 ---Armament: 12x4 Heavy Kinetic Launcher, 12x2 Kinetic Launcher
 ---9x CIWS Turret, 1x Nuclear Silo", 2669)
 $end_multi_text
-$POF file:						superdreadnought.pof
+$POF file:						cmsupercarr.pof
 
 $Detail distance:			(0)
  
@@ -8191,7 +8191,7 @@ $Shield Regeneration Rate:		0.5
 $Weapon Regeneration Rate:		0.03
 $Max Oclk Speed:			40.0
 $Max Weapon Eng:			100.0
-$Hitpoints:                     	1500000
+$Hitpoints:                     	1600000
 $Armor Type: 				Heavy Armour 100
 $Flags: 				( "capital"   "in tech database" "no ets" )
 $AI Class:                      	SLRS-Captain
@@ -8200,27 +8200,35 @@ $EngineSnd:						75
 $Closeup_pos:				0.0, 0.0, -2000
 $Closeup_zoom:				0.5
 $Score:					0
-$Subsystem: 	Weapons, 			20, 0.0
-$Alt Subsystem Name: XSTR("Weapons", 2549)
-$Alt Damage Popup Subsystem Name: XSTR("Weapons", 2549)
+$Subsystem: nturret01,0.5, 1.0
+	$Alt Subsystem Name: 		XSTR("Nuclear Silo", 2612)
+$Alt Damage Popup Subsystem Name: XSTR("Nuclear Silo", 2612)
 	$Armor Type: Medium Armour 100
-$Subsystem: 	Communication,			10, 0.0
-$Alt Subsystem Name: XSTR("Communication", 2548)
-$Alt Damage Popup Subsystem Name: XSTR("Communication", 2548)
-	$Armor Type: Medium Armour 100
-$Subsystem: 	Sensors, 			10, 0.0
-$Alt Subsystem Name: XSTR("Sensors", 2547)
-$Alt Damage Popup Subsystem Name: XSTR("Sensors", 2547)
-	$Armor Type: Medium Armour 100
-$Subsystem: 	Navigation, 			10, 0.0
-	$Alt Subsystem Name: XSTR("Astrogation", 2579)
-$Alt Damage Popup Subsystem Name: XSTR("Astrogation", 2579)
-	$Armor Type: Medium Armour 100
-$Subsystem: Engine, 20, 0.0
-$Alt Subsystem Name: XSTR("Engine", 2550)
-$Alt Damage Popup Subsystem Name: XSTR("Engine", 2550)
-	$Armor Type: Medium Armour 100
-	$Engine Wash:			Capital_Large
+	$Default SBanks:		( "Eos" )
+
+	$Flags:			 	( "fire down normals" "carry no damage" "carry shockwave" "starts locked"   "wait for animation" )
+$Subsystem:		door01-1, 		0, 2.0
+	$Flags:						( "untargetable" )
+	$animation:					triggered
+	$type:						turret-firing
+		+sub_type:			56
+		+delay:				0
+		+reverse_delay:		12000
+		+relative_angle:	0, 0, 90
+		+velocity:			30, 30, 30
+		+acceleration:		40, 40, 40
+		+time:				100
+$Subsystem:		door01-2, 		0, 2.0
+	$Flags:						( "untargetable" )
+	$animation:					triggered
+	$type:						turret-firing
+		+sub_type:			56
+		+delay:				0
+		+reverse_delay:		12000
+		+relative_angle:	0, 0, -90
+		+velocity:			30, 30, 30
+		+acceleration:		40, 40, 40
+		+time:				100
 $Subsystem: turret01,5, 30.0
 	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
 $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
@@ -8262,7 +8270,7 @@ $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
 	$animation: triggered
 	$type: initial
-	+relative_angle:	90,0,0
+	+relative_angle:	90,-90,0
 $Subsystem: turret04,5, 30.0
 	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
 $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
@@ -8276,36 +8284,9 @@ $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
 	$animation: triggered
 	$type: initial
-	+relative_angle:	90,0,0
-$Subsystem: turret05,5, 30.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Large" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	90,180,0
-$Subsystem: turret06,5, 30.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Large" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	90,0,0
-$Subsystem: turret07,2.5, 16.0
+	+relative_angle:	90,-90,0
+
+$Subsystem: turret05,2, 8.0
 	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
 $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Armor Type: Medium Armour 100
@@ -8318,8 +8299,9 @@ $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
 	$animation: triggered
 	$type: initial
-	+relative_angle:	85,90,0
-$Subsystem: turret08,2.5, 16.0
+	+relative_angle:	85,0,0
+
+$Subsystem: turret06,2, 8.0
 	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
 $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Armor Type: Medium Armour 100
@@ -8332,8 +8314,9 @@ $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
 	$animation: triggered
 	$type: initial
-	+relative_angle:	85,90,0
-$Subsystem: turret09,2.5, 16.0
+	+relative_angle:	85,0,0
+
+$Subsystem: turret07,2, 8.0
 	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
 $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Armor Type: Medium Armour 100
@@ -8346,8 +8329,23 @@ $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
 	$animation: triggered
 	$type: initial
-	+relative_angle:	85,-90,0
-$Subsystem: turret10,2.5, 16.0
+	+relative_angle:	85,180,0
+$Subsystem: turret08,2, 8.0
+	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
+$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
+	$Armor Type: Medium Armour 100
+	$Default PBanks:			( "Mass Driver#Medium" )
+	$Turret Base RotationSnd: 	252
+	$Turret Gun RotationSnd: 	253
+	$Turret BaseSnd Volume: 	1.0
+	$Turret GunSnd Volume: 		1.0
+	$Turret Reset Delay:		5000
+	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
+	$animation: triggered
+	$type: initial
+	+relative_angle:	85,180,0
+
+$Subsystem: turret09,2, 8.0
 	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
 $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Armor Type: Medium Armour 100
@@ -8361,7 +8359,7 @@ $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$animation: triggered
 	$type: initial
 	+relative_angle:	85,-90,0
-$Subsystem: turret11,2.5, 16.0
+$Subsystem: turret10,2, 8.0
 	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
 $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Armor Type: Medium Armour 100
@@ -8375,35 +8373,7 @@ $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$animation: triggered
 	$type: initial
 	+relative_angle:	85,-90,0
-$Subsystem: turret12,2.5, 16.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Medium" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	85,-90,0
-$Subsystem: turret13,2.5, 16.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Medium" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	85,-90,0
-$Subsystem: turret14,2.5, 16.0
+$Subsystem: turret11,2, 8.0
 	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
 $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Armor Type: Medium Armour 100
@@ -8417,7 +8387,7 @@ $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$animation: triggered
 	$type: initial
 	+relative_angle:	85,90,0
-$Subsystem: turret15,2.5, 16.0
+$Subsystem: turret12,2, 8.0
 	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
 $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$Armor Type: Medium Armour 100
@@ -8431,48 +8401,90 @@ $Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
 	$animation: triggered
 	$type: initial
 	+relative_angle:	85,90,0
-$Subsystem: turret16,2.5, 16.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
+$Subsystem: turret13,0.16, 2.0
+	$Alt Subsystem Name: XSTR("CIWS", 2583)
+$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Medium" )
+	$Default PBanks:			( "Point Defense Turret#Combine" )
 	$Turret Base RotationSnd: 	252
 	$Turret Gun RotationSnd: 	253
 	$Turret BaseSnd Volume: 	1.0
 	$Turret GunSnd Volume: 		1.0
 	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
+	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
 	$animation: triggered
 	$type: initial
-	+relative_angle:	85,90,0
-$Subsystem: turret17,2.5, 16.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
+	+relative_angle:	70,0,0
+$Subsystem: turret14,0.16, 2.0
+	$Alt Subsystem Name: XSTR("CIWS", 2583)
+$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Medium" )
+	$Default PBanks:			( "Point Defense Turret#Combine" )
 	$Turret Base RotationSnd: 	252
 	$Turret Gun RotationSnd: 	253
 	$Turret BaseSnd Volume: 	1.0
 	$Turret GunSnd Volume: 		1.0
 	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
+	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
 	$animation: triggered
 	$type: initial
-	+relative_angle:	85,90,0
-$Subsystem: turret18,2.5, 16.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
+	+relative_angle:	70,180,0
+$Subsystem: turret15,0.16, 2.0
+	$Alt Subsystem Name: XSTR("CIWS", 2583)
+$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Medium" )
+	$Default PBanks:			( "Point Defense Turret#Combine" )
 	$Turret Base RotationSnd: 	252
 	$Turret Gun RotationSnd: 	253
 	$Turret BaseSnd Volume: 	1.0
 	$Turret GunSnd Volume: 		1.0
 	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
+	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
 	$animation: triggered
 	$type: initial
-	+relative_angle:	85,-90,0
+	+relative_angle:	70,0,0
+$Subsystem: turret16,0.16, 2.0
+	$Alt Subsystem Name: XSTR("CIWS", 2583)
+$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
+	$Armor Type: Medium Armour 100
+	$Default PBanks:			( "Point Defense Turret#Combine" )
+	$Turret Base RotationSnd: 	252
+	$Turret Gun RotationSnd: 	253
+	$Turret BaseSnd Volume: 	1.0
+	$Turret GunSnd Volume: 		1.0
+	$Turret Reset Delay:		5000
+	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
+	$animation: triggered
+	$type: initial
+	+relative_angle:	70,0,0
+$Subsystem: turret17,0.16, 2.0
+	$Alt Subsystem Name: XSTR("CIWS", 2583)
+$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
+	$Armor Type: Medium Armour 100
+	$Default PBanks:			( "Point Defense Turret#Combine" )
+	$Turret Base RotationSnd: 	252
+	$Turret Gun RotationSnd: 	253
+	$Turret BaseSnd Volume: 	1.0
+	$Turret GunSnd Volume: 		1.0
+	$Turret Reset Delay:		5000
+	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
+	$animation: triggered
+	$type: initial
+	+relative_angle:	70,0,0
+$Subsystem: turret18,0.16, 2.0
+	$Alt Subsystem Name: XSTR("CIWS", 2583)
+$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
+	$Armor Type: Medium Armour 100
+	$Default PBanks:			( "Point Defense Turret#Combine" )
+	$Turret Base RotationSnd: 	252
+	$Turret Gun RotationSnd: 	253
+	$Turret BaseSnd Volume: 	1.0
+	$Turret GunSnd Volume: 		1.0
+	$Turret Reset Delay:		5000
+	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
+	$animation: triggered
+	$type: initial
+	+relative_angle:	70,180,0
 $Subsystem: turret19,0.16, 2.0
 	$Alt Subsystem Name: XSTR("CIWS", 2583)
 $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
@@ -8487,7 +8499,62 @@ $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$animation: triggered
 	$type: initial
 	+relative_angle:	70,0,0
-
+$Subsystem: turret20,0.16, 2.0
+	$Alt Subsystem Name: XSTR("CIWS", 2583)
+$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
+	$Armor Type: Medium Armour 100
+	$Default PBanks:			( "Point Defense Turret#Combine" )
+	$Turret Base RotationSnd: 	252
+	$Turret Gun RotationSnd: 	253
+	$Turret BaseSnd Volume: 	1.0
+	$Turret GunSnd Volume: 		1.0
+	$Turret Reset Delay:		5000
+	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
+	$animation: triggered
+	$type: initial
+	+relative_angle:	70,0,0
+$Subsystem: turret21,0.16, 2.0
+	$Alt Subsystem Name: XSTR("CIWS", 2583)
+$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
+	$Armor Type: Medium Armour 100
+	$Default PBanks:			( "Point Defense Turret#Combine" )
+	$Turret Base RotationSnd: 	252
+	$Turret Gun RotationSnd: 	253
+	$Turret BaseSnd Volume: 	1.0
+	$Turret GunSnd Volume: 		1.0
+	$Turret Reset Delay:		5000
+	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
+	$animation: triggered
+	$type: initial
+	+relative_angle:	70,180,0
+$Subsystem: turret22,0.16, 2.0
+	$Alt Subsystem Name: XSTR("CIWS", 2583)
+$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
+	$Armor Type: Medium Armour 100
+	$Default PBanks:			( "Point Defense Turret#Combine" )
+	$Turret Base RotationSnd: 	252
+	$Turret Gun RotationSnd: 	253
+	$Turret BaseSnd Volume: 	1.0
+	$Turret GunSnd Volume: 		1.0
+	$Turret Reset Delay:		5000
+	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
+	$animation: triggered
+	$type: initial
+	+relative_angle:	70,180,0
+$Subsystem: turret23,0.16, 2.0
+	$Alt Subsystem Name: XSTR("CIWS", 2583)
+$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
+	$Armor Type: Medium Armour 100
+	$Default PBanks:			( "Point Defense Turret#Combine" )
+	$Turret Base RotationSnd: 	252
+	$Turret Gun RotationSnd: 	253
+	$Turret BaseSnd Volume: 	1.0
+	$Turret GunSnd Volume: 		1.0
+	$Turret Reset Delay:		5000
+	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
+	$animation: triggered
+	$type: initial
+	+relative_angle:	70,0,0
 $Subsystem: turret24,0.16, 2.0
 	$Alt Subsystem Name: XSTR("CIWS", 2583)
 $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
@@ -8515,9 +8582,8 @@ $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
 	$animation: triggered
 	$type: initial
-	+relative_angle:	70,0,0
-
-$Subsystem: turret30,0.16, 2.0
+	+relative_angle:	70,180,0
+$Subsystem: turret26,0.16, 2.0
 	$Alt Subsystem Name: XSTR("CIWS", 2583)
 $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$Armor Type: Medium Armour 100
@@ -8531,50 +8597,7 @@ $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$animation: triggered
 	$type: initial
 	+relative_angle:	70,180,0
-$Subsystem: turret31,0.16, 2.0
-	$Alt Subsystem Name: XSTR("CIWS", 2583)
-$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Point Defense Turret#Combine" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	70,180,0
-
-$Subsystem: turret35,0.16, 2.0
-	$Alt Subsystem Name: XSTR("CIWS", 2583)
-$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Point Defense Turret#Combine" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	70,180,0
-$Subsystem: turret36,0.16, 2.0
-	$Alt Subsystem Name: XSTR("CIWS", 2583)
-$Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Point Defense Turret#Combine" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	70,180,0
-$Subsystem: turret37,0.16, 2.0
+$Subsystem: turret27,0.16, 2.0
 	$Alt Subsystem Name: XSTR("CIWS", 2583)
 $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$Armor Type: Medium Armour 100
@@ -8588,7 +8611,7 @@ $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$animation: triggered
 	$type: initial
 	+relative_angle:	70,0,0
-$Subsystem: turret38,0.16, 2.0
+$Subsystem: turret28,0.16, 2.0
 	$Alt Subsystem Name: XSTR("CIWS", 2583)
 $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$Armor Type: Medium Armour 100
@@ -8601,149 +8624,19 @@ $Alt Damage Popup Subsystem Name: XSTR("CIWS", 2583)
 	$Flags:			 	( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" )
 	$animation: triggered
 	$type: initial
-	+relative_angle:	70,0,0
-$Subsystem: turret39,2.5, 8.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
+	+relative_angle:	70,180,0
+$Subsystem: mturret01,1, 1.0
+	$Alt Subsystem Name: 		XSTR("Missile Silo", 2607)
+$Alt Damage Popup Subsystem Name: XSTR("Missile Silo", 2607)
 	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Medium" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	85,0,0
-$Subsystem: turret40,2.5, 8.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
+	$Default SBanks:		( "Javelin" )
+	$Flags:			 	( "fire down normals" "carry no damage" "carry shockwave" "starts locked"   )
+$Subsystem: mturret02,1, 1.0
+	$Alt Subsystem Name: 		XSTR("Missile Silo", 2607)
+$Alt Damage Popup Subsystem Name: XSTR("Missile Silo", 2607)
 	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Medium" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	85,0,0
-$Subsystem: turret41,5, 30.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Large" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	90,180,0
-$Subsystem: turret42,5, 30.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Large" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	90,180,0
-$Subsystem: turret43,5, 30.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Large" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	90,90,0
-$Subsystem: turret44,5, 30.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Large" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	90,-90,0
-$Subsystem: turret45,5, 30.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Large" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	90,0,0
-$Subsystem: turret46,5, 30.0
-	$Alt Subsystem Name: XSTR("Mass Driver", 2588)
-$Alt Damage Popup Subsystem Name: XSTR("Mass Driver", 2588)
-	$Armor Type: Medium Armour 100
-	$Default PBanks:			( "Mass Driver#Large" )
-	$Turret Base RotationSnd: 	252
-	$Turret Gun RotationSnd: 	253
-	$Turret BaseSnd Volume: 	1.0
-	$Turret GunSnd Volume: 		1.0
-	$Turret Reset Delay:		5000
-	$Flags:			 			( "check hull" "reset when idle" "carry no damage" "carry shockwave" "fire on target" "only target if can fire" "target requires fov" "salvo mode" )
-	$animation: triggered
-	$type: initial
-	+relative_angle:	90,0,0
-
-$Subsystem: nturret01,1, 1.0
-	$Alt Subsystem Name: 		XSTR("Nuclear Silo", 2612)
-$Alt Damage Popup Subsystem Name: XSTR("Nuclear Silo", 2612)
-	$Armor Type: Medium Armour 100
-	$Default SBanks:		( "Eos" )
-
-	$Flags:			 	( "fire down normals" "carry no damage" "carry shockwave" "starts locked"   "wait for animation" )
-$Subsystem:		door01-1, 		0, 2.0
-	$Flags:						( "untargetable" )
-	$animation:					triggered
-	$type:						turret-firing
-		+sub_type:			56
-		+delay:				0
-		+reverse_delay:		12000
-		+relative_angle:	0, 0, 90
-		+velocity:			30, 30, 30
-		+acceleration:		40, 40, 40
-		+time:				100
-$Subsystem:		door01-2, 		0, 2.0
-	$Flags:						( "untargetable" )
-	$animation:					triggered
-	$type:						turret-firing
-		+sub_type:			56
-		+delay:				0
-		+reverse_delay:		12000
-		+relative_angle:	0, 0, -90
-		+velocity:			30, 30, 30
-		+acceleration:		40, 40, 40
-		+time:				100
+	$Default SBanks:		( "Javelin" )
+	$Flags:			 	( "fire down normals" "carry no damage" "carry shockwave" "starts locked"   )
 
 
 $Name: 		Repair Drone#Combine
@@ -28286,8 +28179,55 @@ $Closeup_pos: 0.0, 0.0, -15000
 $Closeup_zoom: 0.5 
 $Score: 10000 
 
+
+$Name: Scar Asteroid B
+$Alt Name: XSTR("Scar Asteroid B", 2982)
+$Short name: Scarroidb 
+$Species: Neutral
++Tech Description: 
+XSTR("Giant Asteroid.", 2981) 
+$end_multi_text 
+$POF file: astscarb.pof 
+$Detail distance: (0) 
+  
+$Density: 1
+$Damp: 80.0 
+$Rotdamp: 80.5 
+$Max Velocity: 0.0, 0.0, 0.0 
+$Rotation time: 200.0, 200.0, 200.0 
+$Rear Velocity: 0.0 
+$Forward accel: 0.0 
+$Forward decel: 0.0 
+$Slide accel: 0.0 
+$Slide decel: 0.0 
+$Expl inner rad: 500.0 
+$Expl outer rad: 7400.0 
+$Expl damage: 800.0 
+$Expl blast: 8500.0 
+$Expl Propagates: YES ;; If set to Yes, then when the ship dies, the explosion propagates through it. 
+$Shockwave Speed: 600.0 ;; speed shockwave expands at, 0 means no shockwave 
+$Shockwave Count: 2 
+$Default PBanks: () 
+$Default SBanks: () 
+$SBank Capacity: () 
+$Shields: 0 
+$Power Output: 100.0 
+$Max Oclk Speed: 8.0 
+$Max Weapon Eng: 100.0 
+$Hitpoints: 999999999999999 
+$Flags: ( "supercap" "big damage" ) 
+$AI Class: SLRS-Captain 
+$Afterburner: NO 
+$Countermeasures: 0 
+$Scan time: 6000 
+$EngineSnd: -1 ;; Engine sound of ship 
+$Closeup_pos: 0.0, 0.0, -15000
+$Closeup_zoom: 0.5 
+$Score: 10000 
+
+
 $Name: Scar Asteroid C 
-$Alt Name: XSTR("Scar Asteroid C", 2982)
+$Alt Name: XSTR("Scar Asteroid C", 2983)
 $Short name: Scarroid_C 
 $Species: Neutral
 +Tech Description: 
@@ -28330,12 +28270,103 @@ $Closeup_pos: 0.0, 0.0, -15000
 $Closeup_zoom: 0.5 
 $Score: 10000 
 
+$Name: Scar Asteroid C Large
+$Alt Name: XSTR("Scar Asteroid C Large", 2984)
+$Short name: Scarroidlarge 
+$Species: Neutral
++Tech Description: 
+XSTR("Giant Asteroid.", 2981) 
+$end_multi_text 
+$POF file: AstScarClarge.pof 
+$Detail distance: (0) 
+  
+$Density: 1
+$Damp: 80.0 
+$Rotdamp: 80.5 
+$Max Velocity: 0.0, 0.0, 0.0 
+$Rotation time: 200.0, 200.0, 200.0 
+$Rear Velocity: 0.0 
+$Forward accel: 0.0 
+$Forward decel: 0.0 
+$Slide accel: 0.0 
+$Slide decel: 0.0 
+$Expl inner rad: 500.0 
+$Expl outer rad: 7400.0 
+$Expl damage: 800.0 
+$Expl blast: 8500.0 
+$Expl Propagates: YES ;; If set to Yes, then when the ship dies, the explosion propagates through it. 
+$Shockwave Speed: 600.0 ;; speed shockwave expands at, 0 means no shockwave 
+$Shockwave Count: 2 
+$Default PBanks: () 
+$Default SBanks: () 
+$SBank Capacity: () 
+$Shields: 0 
+$Power Output: 100.0 
+$Max Oclk Speed: 8.0 
+$Max Weapon Eng: 100.0 
+$Hitpoints: 999999999999999 
+$Flags: ( "supercap" "big damage" ) 
+$AI Class: SLRS-Captain 
+$Afterburner: NO 
+$Countermeasures: 0 
+$Scan time: 6000 
+$EngineSnd: -1 ;; Engine sound of ship 
+$Closeup_pos: 0.0, 0.0, -15000
+$Closeup_zoom: 0.5 
+$Score: 10000 
+
+$Name: Scar Asteroid D
+$Alt Name: XSTR("Scar Asteroid D", 2985)
+$Short name: Scarroidd 
+$Species: Neutral
++Tech Description: 
+XSTR("Giant Asteroid.", 2981) 
+$end_multi_text 
+$POF file: astscard.pof 
+$Detail distance: (0) 
+  
+$Density: 1
+$Damp: 80.0 
+$Rotdamp: 80.5 
+$Max Velocity: 0.0, 0.0, 0.0 
+$Rotation time: 200.0, 200.0, 200.0 
+$Rear Velocity: 0.0 
+$Forward accel: 0.0 
+$Forward decel: 0.0 
+$Slide accel: 0.0 
+$Slide decel: 0.0 
+$Expl inner rad: 500.0 
+$Expl outer rad: 7400.0 
+$Expl damage: 800.0 
+$Expl blast: 8500.0 
+$Expl Propagates: YES ;; If set to Yes, then when the ship dies, the explosion propagates through it. 
+$Shockwave Speed: 600.0 ;; speed shockwave expands at, 0 means no shockwave 
+$Shockwave Count: 2 
+$Default PBanks: () 
+$Default SBanks: () 
+$SBank Capacity: () 
+$Shields: 0 
+$Power Output: 100.0 
+$Max Oclk Speed: 8.0 
+$Max Weapon Eng: 100.0 
+$Hitpoints: 999999999999999 
+$Flags: ( "supercap" "big damage" ) 
+$AI Class: SLRS-Captain 
+$Afterburner: NO 
+$Countermeasures: 0 
+$Scan time: 6000 
+$EngineSnd: -1 ;; Engine sound of ship 
+$Closeup_pos: 0.0, 0.0, -15000
+$Closeup_zoom: 0.5 
+$Score: 10000 
+
+
 $Name: Asteroid Field 1#3D 
-$Alt Name: XSTR("Asteroid Field 1", 2983)
+$Alt Name: XSTR("Asteroid Field 1", 2986)
 $Short name: field1-3D
 $Species: Neutral
 +Tech Description: 
-XSTR("Asteroid Field.", 2984) 
+XSTR("Asteroid Field.", 2987) 
 $end_multi_text 
 $POF file: AsteroidField1-3D.pof 
 $Detail distance: (0,5000,10000,20000) 
@@ -28376,11 +28407,11 @@ $Score: 10000
 
 
 $Name: Asteroid Field 1#Flat 
-$Alt Name: XSTR("Asteroid Field 1", 2983)
+$Alt Name: XSTR("Asteroid Field 1", 2986)
 $Short name: field1-Flat
 $Species: Neutral
 +Tech Description: 
-XSTR("Asteroid Field.", 2984) 
+XSTR("Asteroid Field.", 2987) 
 $end_multi_text 
 $POF file: AsteroidField1-Flat.pof 
 $Detail distance: (0,5000,10000,20000) 
@@ -28420,11 +28451,11 @@ $Closeup_zoom: 0.5
 $Score: 10000 
 
 $Name: Asteroid Field 2#3D 
-$Alt Name: XSTR("Asteroid Field 2", 2985)
+$Alt Name: XSTR("Asteroid Field 2", 2988)
 $Short name: field2-3D
 $Species: Neutral
 +Tech Description: 
-XSTR("Asteroid Field.", 2984) 
+XSTR("Asteroid Field.", 2987) 
 $end_multi_text 
 $POF file: AsteroidField2-3D.pof 
 $Detail distance: (0,5000,10000,20000) 
@@ -28465,11 +28496,11 @@ $Score: 10000
 
 
 $Name: Asteroid Field 2#Flat 
-$Alt Name: XSTR("Asteroid Field 2", 2985)
+$Alt Name: XSTR("Asteroid Field 2", 2988)
 $Short name: field2-Flat
 $Species: Neutral
 +Tech Description: 
-XSTR("Asteroid Field.", 2984) 
+XSTR("Asteroid Field.", 2987) 
 $end_multi_text 
 $POF file: AsteroidField2-Flat.pof 
 $Detail distance: (0,5000,10000,20000) 
@@ -28509,11 +28540,11 @@ $Closeup_zoom: 0.5
 $Score: 10000 
 
 $Name: Asteroid Field 3#3D 
-$Alt Name: XSTR("Asteroid Field 3", 2986)
+$Alt Name: XSTR("Asteroid Field 3", 2989)
 $Short name: field3-3D
 $Species: Neutral
 +Tech Description: 
-XSTR("Asteroid Field.", 2984) 
+XSTR("Asteroid Field.", 2987) 
 $end_multi_text 
 $POF file: AsteroidField3-3D.pof 
 $Detail distance: (0,5000,10000,20000) 
@@ -28554,11 +28585,11 @@ $Score: 10000
 
 
 $Name: Asteroid Field 3#Flat 
-$Alt Name: XSTR("Asteroid Field 3", 2986)
+$Alt Name: XSTR("Asteroid Field 3", 2989)
 $Short name: field3-Flat
 $Species: Neutral
 +Tech Description: 
-XSTR("Asteroid Field.", 2984) 
+XSTR("Asteroid Field.", 2987) 
 $end_multi_text 
 $POF file: AsteroidField3-Flat.pof 
 $Detail distance: (0,5000,10000,20000) 
@@ -28598,11 +28629,11 @@ $Closeup_zoom: 0.5
 $Score: 10000 
 
 $Name: Derelict 1
-$Alt Name: XSTR("Derelict 1", 2987)
+$Alt Name: XSTR("Derelict 1", 2990)
 $Short name: derelict1
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: derelict1.pof 
 $Detail distance: (0,5000,10000) 
@@ -28642,11 +28673,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Derelict 2
-$Alt Name: XSTR("Derelict 2", 2989)
+$Alt Name: XSTR("Derelict 2", 2992)
 $Short name: derelict2
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: derelict2.pof 
 $Detail distance: (0,5000,10000) 
@@ -28686,11 +28717,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 1
-$Alt Name: XSTR("Debris Chunk 1", 2990)
+$Alt Name: XSTR("Debris Chunk 1", 2993)
 $Short name: debrischunk1
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk1.pof 
 $Detail distance: (0,5000,10000) 
@@ -28730,11 +28761,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 2
-$Alt Name: XSTR("Debris Chunk 2", 2991)
+$Alt Name: XSTR("Debris Chunk 2", 2994)
 $Short name: debrischunk2
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk2.pof 
 $Detail distance: (0,5000,10000) 
@@ -28774,11 +28805,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 3
-$Alt Name: XSTR("Debris Chunk 3", 2992)
+$Alt Name: XSTR("Debris Chunk 3", 2995)
 $Short name: debrischunk3
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk3.pof 
 $Detail distance: (0,5000,10000) 
@@ -28818,11 +28849,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 4
-$Alt Name: XSTR("Debris Chunk 4", 2993)
+$Alt Name: XSTR("Debris Chunk 4", 2996)
 $Short name: debrischunk4
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk4.pof 
 $Detail distance: (0,5000) 
@@ -28862,11 +28893,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 5
-$Alt Name: XSTR("Debris Chunk 5", 2994)
+$Alt Name: XSTR("Debris Chunk 5", 2997)
 $Short name: debrischunk5
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk5.pof 
 $Detail distance: (0,5000,10000) 
@@ -28906,11 +28937,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 6
-$Alt Name: XSTR("Debris Chunk 6", 2995)
+$Alt Name: XSTR("Debris Chunk 6", 2998)
 $Short name: debrischunk6
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk6.pof 
 $Detail distance: (0,5000,10000) 
@@ -28950,11 +28981,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 7
-$Alt Name: XSTR("Debris Chunk 7", 2996)
+$Alt Name: XSTR("Debris Chunk 7", 2999)
 $Short name: debrischunk7
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk7.pof 
 $Detail distance: (0,5000,10000) 
@@ -28994,11 +29025,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 8
-$Alt Name: XSTR("Debris Chunk 8", 2997)
+$Alt Name: XSTR("Debris Chunk 8", 3000)
 $Short name: debrischunk8
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk8.pof 
 $Detail distance: (0,5000,10000) 
@@ -29038,11 +29069,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 9
-$Alt Name: XSTR("Debris Chunk 9", 2998)
+$Alt Name: XSTR("Debris Chunk 9", 3001)
 $Short name: debrischunk9
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk9.pof 
 $Detail distance: (0,5000,10000) 
@@ -29082,11 +29113,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 10
-$Alt Name: XSTR("Debris Chunk 10", 2999)
+$Alt Name: XSTR("Debris Chunk 10", 3002)
 $Short name: debrischunk10
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk10.pof 
 $Detail distance: (0,5000,10000) 
@@ -29126,11 +29157,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 11
-$Alt Name: XSTR("Debris Chunk 11", 3000)
+$Alt Name: XSTR("Debris Chunk 11", 3003)
 $Short name: debrischunk11
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk11.pof 
 $Detail distance: (0,5000,10000) 
@@ -29170,11 +29201,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 13
-$Alt Name: XSTR("Debris Chunk 13", 3001)
+$Alt Name: XSTR("Debris Chunk 13", 3004)
 $Short name: debrischunk13
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk13.pof 
 $Detail distance: (0,5000,10000) 
@@ -29214,11 +29245,11 @@ $Closeup_zoom: 0.5
 $Score: 1 
 
 $Name: Debris Chunk 14
-$Alt Name: XSTR("Debris Chunk 14", 3002)
+$Alt Name: XSTR("Debris Chunk 14", 3005)
 $Short name: debrischunk14
 $Species: Neutral
 +Tech Description: 
-XSTR("Debris Chunk.", 2988) 
+XSTR("Debris Chunk.", 2991) 
 $end_multi_text 
 $POF file: debrischunk14.pof 
 $Detail distance: (0,5000,10000) 
@@ -29259,7 +29290,7 @@ $Score: 1
 
 
 $Name: 		Landscape
-$Alt Name: XSTR("Landscape", 3003)
+$Alt Name: XSTR("Landscape", 3006)
 $Short name: 				landscape
 $Species: 					Unknown
 $POF file: 					landscape.pof
@@ -29298,7 +29329,7 @@ $Closeup_pos: 				0.0, 1.0, -50
 $Closeup_zoom: 				0.5
 
 $Name: 		Landscape 1
-$Alt Name: XSTR("Landscape 1", 3004)
+$Alt Name: XSTR("Landscape 1", 3007)
 $Short name: 				landscape
 $Species: 					Unknown
 $POF file: 					landscape1.pof
@@ -29338,7 +29369,7 @@ $Closeup_zoom: 				0.5
 
 
 $Name: 		Landscape 2
-$Alt Name: XSTR("Landscape 2", 3005)
+$Alt Name: XSTR("Landscape 2", 3008)
 $Short name: 				landscape2
 $Species: 					Unknown
 $POF file: 					landscape2.pof
@@ -29377,7 +29408,7 @@ $Closeup_pos: 				0.0, 1.0, -50
 $Closeup_zoom: 				0.5
 
 $Name: 		Landscape 3
-$Alt Name: XSTR("Landscape 3", 3006)
+$Alt Name: XSTR("Landscape 3", 3009)
 $Short name: 				landscape3
 $Species: 					Unknown
 $POF file: 					landscape3.pof
@@ -29416,11 +29447,11 @@ $Closeup_pos: 				0.0, 1.0, -50
 $Closeup_zoom: 				0.5
 
 $Name:                              City Layer
-$Alt Name: XSTR("City Layer", 3007)
+$Alt Name: XSTR("City Layer", 3010)
 $Short name:                        cor_layer1
 $Species:                           Neutral
    +Tech Description:
-XSTR("Whoa dude.", 3008)
+XSTR("Whoa dude.", 3011)
 $end_multi_text
 $POF file:                          cor_layer1.pof
 $Detail distance:                   (0)
@@ -29463,7 +29494,7 @@ $Score:                             0
 
 
 $Name: Asteroid#Violet
-$Alt Name: XSTR("Asteroid", 3009)
+$Alt Name: XSTR("Asteroid", 3012)
 $Short name: Asteroid
 $Species: Neutral
 $POF file: Asteroid-Violet.pof
@@ -29508,7 +29539,7 @@ $Closeup_zoom: 0.5
 $Radar Image 2D: radar-asteroid
 
 $Name: Asteroid#IceParticle
-$Alt Name: XSTR("Asteroid", 3009)
+$Alt Name: XSTR("Asteroid", 3012)
 $Short name: Asteroid
 $Species: Neutral
 $POF file: Asteroid-Ice_Particle.pof
@@ -29553,7 +29584,7 @@ $Closeup_zoom: 0.5
 $Radar Image 2D: radar-asteroid
 
 $Name: Asteroid#DeepFreeze
-$Alt Name: XSTR("Asteroid", 3009)
+$Alt Name: XSTR("Asteroid", 3012)
 $Short name: Asteroid
 $Species: Neutral
 $POF file: Asteroid-Deep_Freeze.pof
@@ -29598,7 +29629,7 @@ $Closeup_zoom: 0.5
 $Radar Image 2D: radar-asteroid
 
 $Name: Asteroid#IceLarge
-$Alt Name: XSTR("Asteroid", 3009)
+$Alt Name: XSTR("Asteroid", 3012)
 $Short name: Asteroid
 $Species: Neutral
 $POF file: Asteroid-Ice_Large.pof
@@ -29643,7 +29674,7 @@ $Closeup_zoom: 0.5
 $Radar Image 2D: radar-asteroid
 
 $Name: Asteroid#IceCylinder
-$Alt Name: XSTR("Asteroid", 3009)
+$Alt Name: XSTR("Asteroid", 3012)
 $Short name: Asteroid
 $Species: Neutral
 $POF file: Asteroid-Ice_Cylinder.pof
@@ -29688,7 +29719,7 @@ $Closeup_zoom: 0.5
 $Radar Image 2D: radar-asteroid
 
 $Name: Asteroid#Brown
-$Alt Name: XSTR("Asteroid", 3009)
+$Alt Name: XSTR("Asteroid", 3012)
 $Short name: Asteroid
 $Species: Neutral
 $POF file: Asteroid-Brown.pof
