@@ -4,6 +4,20 @@ $Name:			GTF Ulysses
 +nocreate
 $Detail distance:	( 0, 65, 206 )
 
+$Name:			GTF Hercules
++nocreate
+$POF File: Hercules.pof
+$Detail distance:	( 0, 200, 800, 1200 )
+$Thruster Normal Flame:            thruster01
+$Thruster Afterburner Flame:    thruster01a
+
+$Name:			GTF Loki
++nocreate
+$POF File: Loki.pof
+$Detail distance:	( 0, 200, 800, 1200 )
+$Thruster Normal Flame:            thruster01
+$Thruster Afterburner Flame:    thruster01a
+
 $Name:		GTF Myrmidon
 +nocreate
 $POF file:                      Myrmidon.pof
@@ -11,10 +25,11 @@ $POF file:                      Myrmidon.pof
 $Name:		GTF Perseus
 +nocreate
 $POF file:                      Perseus.pof
+$Animations: ( "mv_perseus_ab" )
 
 $Name:			SF Mara (Terrans)
 +nocreate
-$Alt Name: XSTR("SF Mara (Terrans)", 5922)
+$Alt Name: XSTR("SF Mara (Terrans)", 6454)
 $POF file:			Mara.pof
 $Closeup_pos:		0.0, 0.0, -25
 $Closeup_zoom:		0.55
@@ -50,44 +65,13 @@ $Name:			GTB Medusa
 $POF File:			Medusa.pof
 $Thruster Normal Flame:			thruster01
 $Thruster Afterburner Flame:	thruster01a
+$Animations: ( "mv_medusa_ab" )
 $Subsystem:			turret01a, 5, 1.0
 	$Turret Reset Delay:	1500
 	$Flags:					( "reset when idle" )
 	$animation:				triggered
 	$type:					initial
 		+relative_angle:	90, 180, 0
-$Subsystem:		FlapTopPort, 0, 1.0
-	$animation:				triggered
-	$type:					afterburner
-		+delay:				0
-		+relative_angle:	-35, 0, 0
-		+velocity:			100, 0, 0
-		+acceleration:		250, 0, 0
-		+time:				500
-$Subsystem:		FlapBtmPort, 0, 0.0
-	$animation:				triggered
-	$type:					afterburner
-		+delay:				0
-		+relative_angle:	25, -25, 0
-		+velocity:			100, 100, 0
-		+acceleration:		250, 250, 0
-		+time:				500
-$Subsystem:		FlapTopStarboard, 0, 1.0
-	$animation:				triggered
-	$type:					afterburner
-		+delay:				0
-		+relative_angle:	-35, 0, 0
-		+velocity:			100, 0, 0
-		+acceleration:		250, 0, 0
-		+time:				500
-$Subsystem:		FlapBtmStarboard, 0, 0.0
-	$animation:				triggered
-	$type:					afterburner
-		+delay:				0
-		+relative_angle:	25, 25, 0
-		+velocity:			100, 100, 0
-		+acceleration:		250, 250, 0
-		+time:				500
 
 
 $Name:			GTB Ursa
@@ -99,6 +83,12 @@ $Subsystem:		b05-turreta, 1, 1.0
 	$type:					initial
 		+relative_angle:	90, 180, 0
 
+$Name:			GTB Zeus
++nocreate
+$POF File: Zeus.pof
+$Detail distance:	( 0, 200, 800, 1200 )
+$Thruster Normal Flame:            thruster01
+$Thruster Afterburner Flame:    thruster01a
 
 $Name:			GTB Boanerges
 +nocreate
@@ -112,18 +102,19 @@ $Detail distance:	( 0, 765, 2749, 6762 )
 
 $Name:			GTFr Triton
 +nocreate
-$Alt Name: XSTR("GTFr Triton", 5923)
+$Alt Name: XSTR("GTFr Triton", 6455)
+$POF File: Triton.pof
 $Subsystem:		turret01, 1, 1.0
-$Alt Subsystem Name: XSTR("Turret", 4162)
-$Alt Damage Popup Subsystem Name: XSTR("Turret", 4162)
+$Alt Subsystem Name: XSTR("Turret", 4936)
+$Alt Damage Popup Subsystem Name: XSTR("Turret", 4936)
 	$Turret Reset Delay:	15000
 	$Flags:					( "reset when idle" )
 	$animation:				triggered
 	$type:					initial
 		+relative_angle:	60, 0, 0
 $Subsystem:		turret02, 1, 1.0
-$Alt Subsystem Name: XSTR("Turret", 4162)
-$Alt Damage Popup Subsystem Name: XSTR("Turret", 4162)
+$Alt Subsystem Name: XSTR("Turret", 4936)
+$Alt Damage Popup Subsystem Name: XSTR("Turret", 4936)
 	$Turret Reset Delay:	15000
 	$Flags:					( "reset when idle" )
 	$animation:				triggered
@@ -132,8 +123,12 @@ $Alt Damage Popup Subsystem Name: XSTR("Turret", 4162)
 		
 $Name:			TC-TRI
 +nocreate
-$Detail distance:	( 0, 475, 955 )
-		
+$POF File: TC-Tri.pof
+	
+$Name:			TC-Meson Bomb
++nocreate
+$POF File: TC-Meson.pof
+	
 $Name:                          @TC 2
 +nocreate
 $POF file: tc2.pof
@@ -146,6 +141,13 @@ $Name:							TTC 1
 +nocreate
 $POF file:	ttc1.pof
 
+$Name:			GTSC Faustus
++nocreate
+$POF File: Faustus.pof
+$Animations: ( "mv_faustus_fb" )
+$Subsystem: 	Fighterbay, 		0.0, 0.0
+	$Alt Subsystem Name: Escape Pod Bay
+	$Flags:	( "untargetable" )
 
 $Name:			@GTC Fenris
 +nocreate
@@ -282,23 +284,23 @@ $Subsystem: turret04,2.0,1.0	;;fvec and uvec for life
 	$type:					initial
 		+relative_angle:	70, 0, 0
 $Subsystem: rotator, 10, 0.0 	;;DahBlount named this thing "rotator", so it rotates
- $Alt Subsystem Name: XSTR("Sensor Array", 5924)
-$Alt Damage Popup Subsystem Name: XSTR("Sensor Array", 5924)
+ $Alt Subsystem Name: XSTR("Sensor Array", 6456)
+$Alt Damage Popup Subsystem Name: XSTR("Sensor Array", 6456)
 
 $Name: GTDr Amazon Advanced
 +nocreate
-$Alt Name: XSTR("GTDr Amazon Advanced", 5925)
+$Alt Name: XSTR("GTDr Amazon Advanced", 6457)
 $POF file:AmazonAdv.pof
 
 
 $Name: TAC 1
 +nocreate
-$Alt Name: XSTR("TAC 1", 5926)
+$Alt Name: XSTR("TAC 1", 4941)
 $POF file:TAC1.pof
 
 $Name: GTT Elysium
 +nocreate
-$Alt Name: XSTR("GTT Elysium", 5927)
+$Alt Name: XSTR("GTT Elysium", 4988)
 $POF file:  Elysium.pof
 
 
@@ -319,26 +321,32 @@ $Subsystem:                     armour06a,			1, 0.0
 $Flags:				( "collide submodel" "untargetable" )
 $Subsystem:                     armour07a,			1, 0.0
 $Flags:				( "collide submodel" "untargetable" )
+$Subsystem:		turret09a-01-main, 3, 9.0
+	$Turret Reset Delay:	15000
+	$Flags:					( "reset when idle" )
+	$animation:				triggered
+	$type:					initial
+		+relative_angle:	90, 180, 0
 
 
 $Name:			GTA Charybdis
 +nocreate
 $POF file:			Charybdis.pof
 $Subsystem:		rad_forward, 0.0, 1.0
-	$Alt Subsystem Name:	XSTR("Dome Sensor", 5928)
-$Alt Damage Popup Subsystem Name: XSTR("Dome Sensor", 5928)
+	$Alt Subsystem Name:	XSTR("Dome Sensor", 6458)
+$Alt Damage Popup Subsystem Name: XSTR("Dome Sensor", 6458)
 	;$AliveSnd:				
 	;$RotationSnd:			
 	$Flags:					( "carry no damage" "ignore if dead" "damage as hull" "no aggregate" )
 $Subsystem:		rad_backleft, 0.0, 1.0
-	$Alt Subsystem Name:	XSTR("Dome Sensor", 5928)
-$Alt Damage Popup Subsystem Name: XSTR("Dome Sensor", 5928)
+	$Alt Subsystem Name:	XSTR("Dome Sensor", 6458)
+$Alt Damage Popup Subsystem Name: XSTR("Dome Sensor", 6458)
 	;$AliveSnd:				
 	;$RotationSnd:			
 	$Flags:					( "carry no damage" "ignore if dead" "damage as hull" "no aggregate" )
 $Subsystem:		rad_backright, 0.0, 1.0
-	$Alt Subsystem Name:	XSTR("Dome Sensor", 5928)
-$Alt Damage Popup Subsystem Name: XSTR("Dome Sensor", 5928)
+	$Alt Subsystem Name:	XSTR("Dome Sensor", 6458)
+$Alt Damage Popup Subsystem Name: XSTR("Dome Sensor", 6458)
 	;$AliveSnd:				
 	;$RotationSnd:			
 	$Flags:					( "carry no damage" "ignore if dead" "damage as hull" "no aggregate" )
@@ -522,23 +530,23 @@ $Subsystem: turret18, 1.0, 12
 	$type:				initial
 		+relative_angle: 	90, 0, 0
 $Subsystem: engine, 8.0, 0.0 
-	$Alt Subsystem Name:	XSTR("Main Engine", 5929)
+	$Alt Subsystem Name:	XSTR("Main Engine", 6459)
     $Engine Wash: Default1500 
 $Subsystem: enginesupleft, 4.0, 0.0 
-	$Alt Subsystem Name:	XSTR("Engine 1", 5930)
-$Alt Damage Popup Subsystem Name: XSTR("Engine 1", 5930)
+	$Alt Subsystem Name:	XSTR("Engine 1", 6460)
+$Alt Damage Popup Subsystem Name: XSTR("Engine 1", 6460)
     $Engine Wash: Default1000 
 $Subsystem: enginesupright, 4.0, 0.0 
-	$Alt Subsystem Name:	XSTR("Engine 2", 5931)
-$Alt Damage Popup Subsystem Name: XSTR("Engine 2", 5931)
+	$Alt Subsystem Name:	XSTR("Engine 2", 6461)
+$Alt Damage Popup Subsystem Name: XSTR("Engine 2", 6461)
     $Engine Wash: Default1000 
 $Subsystem: enginesdownleft, 4.0, 0.0 
-	$Alt Subsystem Name:	XSTR("Engine 3", 5932)
-$Alt Damage Popup Subsystem Name: XSTR("Engine 3", 5932)
+	$Alt Subsystem Name:	XSTR("Engine 3", 6462)
+$Alt Damage Popup Subsystem Name: XSTR("Engine 3", 6462)
     $Engine Wash: Default1000 
 $Subsystem: Enginesdownright, 4.0, 0.0 
-	$Alt Subsystem Name:	XSTR("Engine 4", 5933)
-$Alt Damage Popup Subsystem Name: XSTR("Engine 4", 5933)
+	$Alt Subsystem Name:	XSTR("Engine 4", 6463)
+$Alt Damage Popup Subsystem Name: XSTR("Engine 4", 6463)
     $Engine Wash: Default1000
 
 
@@ -633,7 +641,7 @@ $Subsystem:		turret04, 0.833, 1.0
 	$Flags:					( "reset when idle" )
 	$animation:				triggered
 	$type:					initial
-		+relative_angle:	45, 180, 0
+		+relative_angle:	45, 0, 0
 
 
 $Name:			NTF Iceni
@@ -929,7 +937,7 @@ $POF file:  Ganymede.pof
 
 $Name: 							@GTS Centaur
 +nocreate
-$Alt Name: XSTR("GTS Centaur", 5934)
+$Alt Name: XSTR("GTS Centaur", 6464)
 $POF File: 						Centaur.pof
 $Detail distance: (0, 130, 250, 800)
 
@@ -949,7 +957,7 @@ $POF file:					Mjolnir.pof
 ;---------------------------------------------------------------------------------------------
 $Name: GTF Apollo
 +nocreate
-$Alt Name: XSTR("GTF Apollo", 5935)
+$Alt Name: XSTR("GTF Apollo", 6465)
 $POF file: Apollo.pof
 $Detail distance: (0, 70, 300, 1000)
 $Thruster Normal Flame:			thruster01
@@ -996,7 +1004,7 @@ $Thruster:
 	+Used for:			( "pitch down" "slide down" "bank left")
 	+Position:			(-0.5 2.3 5.7)
 	+Normal:			(0.0 1.0 0.)
-	+Texture:			Thruster_Jets
+	;;+Texture:			Thruster_Jets
 	+Radius:			0.5
 	+Length: 3.0
 
@@ -1005,7 +1013,7 @@ $Thruster:
 	+Used for:			( "pitch down" "slide down" "bank right")
 	+Position:			(0.5 2.3 5.7)
 	+Normal:			(0.0 1.0 0.0)
-	+Texture:			Thruster_Jets
+	;;+Texture:			Thruster_Jets
 	+Radius:			0.5
 	+Length: 3.0
 	
@@ -1014,7 +1022,7 @@ $Thruster:
 	+Used for:			( "pitch up" "slide down" "bank left")
 	+Position:			(-2.5 4.1 -6.6)
 	+Normal:			(0.0 1.0 0.0)
-	+Texture:			Thruster_Jets
+	;;+Texture:			Thruster_Jets
 	+Radius:			0.5
 	+Length: 3.0
 	
@@ -1023,7 +1031,7 @@ $Thruster:
 	+Used for:			( "pitch up" "slide down" "bank right")
 	+Position:			(2.5 4.1 -6.6)
 	+Normal:			(0.0 1.0 0.0)
-	+Texture:			Thruster_Jets
+	;;+Texture:			Thruster_Jets
 	+Radius:			0.5
 	+Length: 3.0
 	
@@ -1032,7 +1040,7 @@ $Thruster:
 	+Used for:			( "pitch up" "slide up" "bank right")
 	+Position:			(-0.7 0.9 6.6)
 	+Normal:			(0.0 -1.0 0.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.5
 	+Length: 3.0
 	
@@ -1041,7 +1049,7 @@ $Thruster:
 	+Used for:			( "pitch up" "slide up" "bank left")
 	+Position:			(0.7 0.9 6.6)
 	+Normal:			(0.0 -1.0 0.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.5
 	+Length: 3.0
 	
@@ -1050,7 +1058,7 @@ $Thruster:
 	+Used for:			( "pitch down" "slide up" "bank right")
 	+Position:			(-2.5 0.7 -6.6)
 	+Normal:			(0.0 -1.0 0.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.5
 	+Length: 3.0
 	
@@ -1059,7 +1067,7 @@ $Thruster:
 	+Used for:			( "pitch down" "slide up" "bank left")
 	+Position:			(2.5 0.7 -6.6)
 	+Normal:			(0.0 -1.0 0.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.5
 	+Length: 3.0
 
@@ -1068,7 +1076,7 @@ $Thruster:
 	+Used for:			( "roll left" "slide right" )
 	+Position:			(-0.9 2.0 5.9)
 	+Normal:			(-1.0 0.0 0.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.7
 	+Length: 4.0
 
@@ -1077,14 +1085,14 @@ $Thruster:
 	+Used for:			( "roll right" "slide right" )
 	+Position:			(-4.2 1.7 -2.1)
 	+Normal:			(-1.0 0.0 0.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.7
 	+Length: 4.0
 $Thruster:
 	+Used for:			( "roll right" "slide right" )
 	+Position:			(-4.4 1.7 -3.1)
 	+Normal:			(-1.0 0.0 0.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.7
 	+Length: 4.0	
 
@@ -1093,7 +1101,7 @@ $Thruster:
 	+Used for:			( "roll right" "slide left")
 	+Position:			(0.9 2.0 5.9)
 	+Normal:			(1.0 0.0 0.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.7
 	+Length: 4.0
 	
@@ -1102,14 +1110,14 @@ $Thruster:
 	+Used for:			( "roll left" "slide left" )
 	+Position:			(4.2 1.7 -2.1)
 	+Normal:			(1.0 0.0 0.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.7
 	+Length: 4.0
 $Thruster:
 	+Used for:			( "roll left" "slide left" )
 	+Position:			(4.4 1.7 -3.1)
 	+Normal:			(1.0 0.0 0.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.7
 	+Length: 4.0	
 	
@@ -1118,14 +1126,14 @@ $Thruster:
 	+Used for:			( "reverse")
 	+Position:			(-6.5 -0.1 -0.6)
 	+Normal:			(0.0 0.0 1.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.9
 	+Length: 6.0
 $Thruster:
 	+Used for:			( "reverse")
 	+Position:			(-6.3 -0.1 -0.6)
 	+Normal:			(0.0 0.0 1.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.9
 	+Length: 6.0
 	
@@ -1134,21 +1142,21 @@ $Thruster:
 	+Used for:			( "reverse")
 	+Position:			(6.5 -0.1 -0.6)
 	+Normal:			(0.0 0.0 1.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.9
 	+Length: 6.0
 $Thruster:
 	+Used for:			( "reverse")
 	+Position:			(6.3 -0.1 -0.6)
 	+Normal:			(0.0 0.0 1.0)
-	+Texture:			Thruster_Jets
+	;+Texture:			Thruster_Jets
 	+Radius:			0.9
 	+Length: 6.0	
 
 ;---------------------------------------------------------------------------------------------
 $Name: GTF Valkyrie
 +nocreate
-$Alt Name: XSTR("GTF Valkyrie", 5936)
+$Alt Name: XSTR("GTF Valkyrie", 6466)
 $POF file: Valkyrie.pof
 $Detail distance: (0, 130, 300, 1000)
 $Trail:
@@ -1191,7 +1199,7 @@ $Trail:
 ;---------------------------------------------------------------------------------------------
 $Name: GTB Athena
 +nocreate
-$Alt Name: XSTR("GTB Athena", 5937)
+$Alt Name: XSTR("GTB Athena", 6467)
 $POF file: Athena.pof
 $Detail distance: (0, 180, 300, 1100)
 $Trail:
@@ -1225,14 +1233,14 @@ $Trail:
 ;---------------------------------------------------------------------------------------------
 $Name: GTFr Chronos
 +nocreate
-$Alt Name: XSTR("GTFr Chronos", 5938)
+$Alt Name: XSTR("GTFr Chronos", 6468)
 $POF file: chronos.pof
 $Detail distance: (0, 400, 600, 3000)
 
 ;---------------------------------------------------------------------------------------------
 $Name: Terran NavBuoy
 +nocreate
-$Alt Name: XSTR("Terran NavBuoy", 5939)
+$Alt Name: XSTR("Terran NavBuoy", 6469)
 $POF file: navbuoy-terran.pof
 $Detail distance: (0)
 

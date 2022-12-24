@@ -6,6 +6,33 @@ $On Game Init:
 
 TDefense = {}
 
+--variables for translation
+local localizedUnused = ba.XSTR("[UNUSED]", 6552)
+local localizedDeploying = ba.XSTR("[DEPLOYING]", 6553)
+local localizedSelectPlatform = ba.XSTR("SELECT PLATFORM", 6554)
+local localizedSelected = ba.XSTR("SELECTED:", 6555)
+local localizedActive = ba.XSTR("Active: ", 6556)
+local localizedAvail = ba.XSTR("Avail: ", 6557)
+local localizedNoneAvailable = ba.XSTR("None available", 6558)
+local localizedChannel25 = ba.XSTR("CHANNEL 25", 6559)
+local localizedOrigin = ba.XSTR("ORIGIN: ", 6560)
+local localizedIntegrity = ba.XSTR("INTEGRITY: ", 6561)
+local localizedTracking = ba.XSTR("\nTRACKING:\n ", 6562)
+local localizedDist = ba.XSTR("DIST: ", 6563)
+local localizedActiveTanks = ba.XSTR("ACTIVE TANKS:", 6564)
+local localizedMonitoring = ba.XSTR("MONITORING:", 6565)
+local localizedStatusUnused = ba.XSTR("Status: [UNUSED]", 6566)
+local localizedStatusDeploying = ba.XSTR("Status: Deploying", 6567)
+local localizedStatusActive = ba.XSTR("Status: Active", 6568)
+local localizedStatusInactive = ba.XSTR("Status: Inactive", 6569)
+local localizedType = ba.XSTR("Type: ", 6570)
+local localizedIntegrityLowerCase = ba.XSTR("Integrity: ", 6571)
+local localizedTarget = ba.XSTR("Target: ", 6572)
+local localizedClass = ba.XSTR("Class: ", 6573)
+local localizedTargetNone = ba.XSTR("Target: None", 6574)
+local localizedClickToSelect = ba.XSTR("\n\nClick to Select", 6575)
+local localizedSelectPackage = ba.XSTR("Select package:", 6576)
+
 function TDefense:Init()
 
 	AXUI:Init()
@@ -145,10 +172,10 @@ function TDefense:ControlPlayer(control)
 		--ba.setButtonControlMode(NORMAL_BUTTON_CONTROLS)
 	end
 	
-	mn.runSEXP("(alter-ship-flag !primaries-locked! " .. tostring(status) .. " true !" .. Player .. "!)")
-	mn.runSEXP("(alter-ship-flag !secondaries-locked! " .. tostring(status) .. " true !" .. Player .. "!)")
-	mn.runSEXP("(alter-ship-flag !afterburner-locked! " .. tostring(status) .. " true !" .. Player .. "!)")
-	mn.runSEXP("(alter-ship-flag !no-ets! " .. tostring(status) .. " true !" .. Player .. "!)")
+	mn.runSEXP("(alter-ship-flag !primaries-locked! (" .. tostring(status) .. ") (true) !" .. Player .. "!)")
+	mn.runSEXP("(alter-ship-flag !secondaries-locked! (" .. tostring(status) .. ") (true) !" .. Player .. "!)")
+	mn.runSEXP("(alter-ship-flag !afterburner-locked! (" .. tostring(status) .. ") (true) !" .. Player .. "!)")
+	mn.runSEXP("(alter-ship-flag !no-ets! (" .. tostring(status) .. ") (true) !" .. Player .. "!)")
 
 end
 
@@ -198,13 +225,13 @@ function TDefense:UpdateDButtonInfo()
 
 	for i, v in ipairs(self.Buttons.Platforms) do
 	
-		local text = "[INUTILISÉE]"
+		local text = localizedUnused
 		local thisButton = v
 		local thisPlatform = self.Platforms[thisButton.HostSig]
 	
 		if thisPlatform.Type then
 			if thisPlatform.Status == 1 then
-				text = "[DÉPLOIEMENT]"
+				text = localizedUnused
 			elseif thisPlatform.Status == 2 then
 				text = "[" .. string.upper(thisPlatform.Type.Name) .. "]"
 			end
@@ -444,10 +471,10 @@ function TDefense:Draw()
 						
 		--Right Box
 		if self.SelectMode == 0 then
-			gr.drawString("CHOIX PLATEFORME", AXUI.Screen.x+AXUI.Screen.w-150, 215)
+			gr.drawString(localizedSelectPlatform, AXUI.Screen.x+AXUI.Screen.w-150, 215)
 					
 		elseif self.SelectMode == 1 then
-			gr.drawString("SÉLECTIONNÉE :", AXUI.Screen.x+AXUI.Screen.w-150, 215)
+			gr.drawString(localizedSelected, AXUI.Screen.x+AXUI.Screen.w-150, 215)
 			
 			if self.Buttons.Deploy then
 			
@@ -462,14 +489,14 @@ function TDefense:Draw()
 						if self.Buttons.Deploy[i]:Draw() then
 							highlightedTank = i
 						end
-						gr.drawString("Actif : " .. self.TankTypes[i].Deployed, self.Buttons.Deploy[i].X+72, self.Buttons.Deploy[i].Y+25)
-						gr.drawString("Dispo : " .. self.TankTypes[i].Available, self.Buttons.Deploy[i].X+72, self.Buttons.Deploy[i].Y+45)
+						gr.drawString(localizedActive .. self.TankTypes[i].Deployed, self.Buttons.Deploy[i].X+72, self.Buttons.Deploy[i].Y+25)
+						gr.drawString(localizedAvail .. self.TankTypes[i].Available, self.Buttons.Deploy[i].X+72, self.Buttons.Deploy[i].Y+45)
 						
 					end
 				end
 				
 			else
-				gr.drawString("Indisponible", AXUI.Screen.x+AXUI.Screen.w-150, 215)
+				gr.drawString(localizedNoneAvailable, AXUI.Screen.x+AXUI.Screen.w-150, 215)
 			end
 						
 			self.Buttons.Cancel:Draw()
@@ -500,12 +527,17 @@ function TDefense:Draw()
 			local thisHost = mn.getObjectFromSignature(self.Host)
 			local hostHealth =  math.floor((thisHost.HitpointsLeft / thisHost.Class.HitpointsMax) * 100)
 			local thisTarget = mn.getObjectFromSignature(self.Target)
+			local targetName = thisTarget.DisplayName
+
+			if targetName == '' then
+				targetName = thisTarget.Name
+			end
 			
-			gr.drawString("CANAL 25", 5, 215)
-			gr.drawString("ORIGINE : " .. thisHost.Name)
-			gr.drawString("INTÉGRITÉ : " .. hostHealth .. "%")
-			gr.drawString("\nSUIVI :\n " .. thisTarget.Name)
-			gr.drawString("DIST : " .. math.floor(thisHost.Position:getDistance(thisTarget.Position)) .. "m")
+			gr.drawString(localizedChannel25, 5, 215)
+			gr.drawString(localizedOrigin .. thisHost.Name)
+			gr.drawString(localizedIntegrity .. hostHealth .. "%")
+			gr.drawString(localizedTracking .. targetName)
+			gr.drawString(localizedDist .. math.floor(thisHost.Position:getDistance(thisTarget.Position)) .. "m")
 			--gr.drawString("\n\nPress ENTER to revert\nto normal view")
 		
 		end
@@ -513,14 +545,20 @@ function TDefense:Draw()
 		--Left Box
 			if #self.Platforms > 0 then
 			
-				gr.drawString("CHARS ACTIFS :", 5, 450)
+				gr.drawString(localizedActiveTanks, 5, 450)
 				
 				for i = 1, #self.Platforms do
 					local thisPlatform = self.Platforms[i]
 					local thisObject = mn.getObjectFromSignature(thisPlatform.Sig)
 					
 					if thisPlatform.Status == 2 then
-						gr.drawString(thisObject.Name .. " - " .. thisPlatform.Type.Name)
+						local objectName = thisObject.DisplayName
+
+						if objectName == '' then
+							objectName = thisObject.Name
+						end
+
+						gr.drawString(objectName .. " - " .. thisPlatform.Type.Name)
 					end
 				end
 			end
@@ -528,15 +566,21 @@ function TDefense:Draw()
 		if deployButtonsDrawn == false then
 		
 		--Right Box
-			gr.drawString("SURVEILLANCE :", AXUI.Screen.x+AXUI.Screen.w-150, 450)
+			gr.drawString(localizedMonitoring, AXUI.Screen.x+AXUI.Screen.w-150, 450)
 			
 			for i = 1, #mn.EscortShips do
 				local thisEscort = mn.EscortShips[i]
 				local thisEscortHealth = math.floor((thisEscort.HitpointsLeft / thisEscort.Class.HitpointsMax) * 100)
 				if thisEscortHealth >= 0 then
 					local r,g,b = thisEscort.Team:getColor()
+					local escortName = thisEscort.DisplayName
+
+					if escortName == '' then
+						escortName = thisEscort.Name
+					end
+
 					gr.setColor(r,g,b)
-					gr.drawString(thisEscort.Name, AXUI.Screen.x+AXUI.Screen.w-150, 450 + (gr.CurrentFont.Height * i) + 2)
+					gr.drawString(thisEscort.DisplayName, AXUI.Screen.x+AXUI.Screen.w-150, 450 + (gr.CurrentFont.Height * i) + 2)
 					gr.drawString(thisEscortHealth, AXUI.Screen.x+AXUI.Screen.w-40, 450 + (gr.CurrentFont.Height * i) + 2)
 				end
 			end
@@ -565,48 +609,54 @@ function TDefense:DrawPlatformInfo(platform)
 	if thisPlatform.Status ~= -1 and thisObject:isValid() then
 	
 		AXUI:SetColor("ui_green")
+
+		local objectName = thisObject.DisplayName
+
+		if objectName == '' then
+			objectName = thisObject.Name
+		end
 		
-		gr.drawString(thisObject.Name, AXUI.Screen.x+AXUI.Screen.w-150, 235)
+		gr.drawString(objectName, AXUI.Screen.x+AXUI.Screen.w-150, 235)
 		
 		if thisPlatform.Status == 0 then
-			gr.drawString("Statut : [INUTILISÉE]")
+			gr.drawString(localizedStatusUnused)
 		elseif thisPlatform.Status == 1 then
-			gr.drawString("Statut : Déploiement")
+			gr.drawString(localizedStatusDeploying)
 		elseif thisPlatform.Status == 2 then
 			if self.Active == true then
-				gr.drawString("Statut : Actif")
+				gr.drawString(localizedStatusActive)
 			else
-				gr.drawString("Statut : Inactif")
+				gr.drawString(localizedStatusInactive)
 			end
 			
-			gr.drawString("Type : " .. thisPlatform.Type.Name)
+			gr.drawString(localizedType .. thisPlatform.Type.Name)
 					
 			local objectHealth = math.floor((thisObject.HitpointsLeft / thisObject.Class.HitpointsMax) * 100)
 			
-			gr.drawString("Intégrité : " .. objectHealth .. "%")
+			gr.drawString(localizedIntegrityLowerCase .. objectHealth .. "%")
 			gr.drawString("\n======\n")
 			
 			if thisObject.Target and thisObject.Target:isValid() then
 				local thisTarget = thisObject.Target
-				gr.drawString("Cible : " .. thisTarget.Name)
-				gr.drawString("Classe : " .. thisTarget.Class.Name)
+				gr.drawString(localizedTarget .. thisTarget.Name)
+				gr.drawString(localizedClass .. thisTarget.Class.Name)
 				
 				local targetHealth = math.floor((thisTarget.HitpointsLeft / thisTarget.Class.HitpointsMax) * 100)
 				
-				gr.drawString("Intégrité : " ..targetHealth .. "%")
-				gr.drawString("Dist : " .. math.floor(thisObject.Position:getDistance(thisTarget.Position)) .. "m")
+				gr.drawString(localizedIntegrityLowerCase ..targetHealth .. "%")
+				gr.drawString(localizedDist .. math.floor(thisObject.Position:getDistance(thisTarget.Position)) .. "m")
 
 			else
-				gr.drawString("Cible : Aucune")
+				gr.drawString(localizedTargetNone)
 			end
 		end
 		
 		if self.SelectMode == 0 then
-			gr.drawString("\n\nCliquer pour Sélectionner")
+			gr.drawString(localizedClickToSelect)
 		end
 		
 		if thisPlatform.Status == 0 and self.SelectMode == 1 then
-			gr.drawString("Sélectionner cargaison :")
+			gr.drawString(localizedSelectPackage)
 		end
 	else
 	
@@ -699,9 +749,9 @@ function TDefense:DebugDrops()
 				
 				gr.drawString(i .. ": Drop sig: " .. thisEntry.weapon .. " Platform Sig: " .. thisEntry.platform, 600, (100 + ((i-1)*120)))
 				if not thisPlatform or not thisPlatform:isValid() then
-					gr.drawString("PLATEFORME INVALIDE(???)")
+					gr.drawString("PLATFORM INVALID(???)")
 				else
-					gr.drawString("Cible Prévue : " .. thisPlatform.Name)
+					gr.drawString("Expected Target: " .. thisPlatform.Name)
 					gr.drawString("P Pos (x,y,z):\t\t\t" .. string.format("%6d", thisPlatform.Position.x) .. ", " .. string.format("%6d", thisPlatform.Position.y) .. ", " .. string.format("%6d", thisPlatform.Position.z))
 				end
 				--[[if not thisDrop.Target or not thisDrop.Target:isValid() then
@@ -712,21 +762,21 @@ function TDefense:DebugDrops()
 					gr.drawString("Actual Target Pos (x,y,z):\t\t\t" .. string.format("%6d", target.Position.x) .. ", " .. string.format("%6d", target.Position.y) .. ", " .. string.format("%6d", target.Position.z))
 				end]]--
 				if not homingObj:isValid() then
-					gr.drawString("OBJET DE GUIDAGE NON VALIDE !!!")
+					gr.drawString("HOMING OBJECT INVALID!!!")
 				else
 					gr.drawString("H Pos (x,y,z):\t\t\t" .. string.format("%6d", homingPos.x) .. ", " .. string.format("%6d", homingPos.y) .. ", " .. string.format("%6d", homingPos.z))
-					gr.drawString("Objet de guidage :   " .. homingObj.Name)
+					gr.drawString("Homing Object:   " .. homingObj.Name)
 				end
 								
 				if homingPos:getDistance(thisPlatform.Position) < 5 then
 					gr.drawString("Weapon is on target\n")
 				else
 					gr.setColor(255,0,0,255)
-					gr.drawString("L'ARME EST HORS CIBLE !!\n")
+					gr.drawString("WEAPON IS OFF TARGET!!\n")
 					gr.setColor(255,255,255,255)
 				end
 				
-				gr.drawString("Corrections apportées au parcours : " .. thisEntry.corrections)
+				gr.drawString("Course corrections made: " .. thisEntry.corrections)
 				
 				--[[gr.drawString("Drop Pos (x,y,z):\t\t\t" .. string.format("%6d", wepPos.x) .. ", " .. string.format("%6d", wepPos.y) .. ", " .. string.format("%6d", wepPos.z))
 				gr.drawString("Drop Ori (p,b,h):\t\t\t" .. string.format("%6d", wepOri.p * (180/math.pi)) .. ", " .. string.format("%6d", wepOri.b * (180/math.pi)) .. ", " .. string.format("%6d", wepOri.h * (180/math.pi)))]]--

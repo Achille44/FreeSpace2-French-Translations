@@ -4,7 +4,7 @@ $Version: 0.10
 $Name:  XSTR("Training 3", 2250)
 $Author: Brad Johnson
 $Created: 08/06/99 at 11:31:21
-$Modified: 11/22/10 at 14:57:00
+$Modified: 06/19/22 at 19:02:32
 $Notes:
 This is a FRED created mission
 $End Notes:
@@ -12,11 +12,12 @@ $End Notes:
 $Mission Desc:
  XSTR("Standard Training module TSM-103a", 2251)
 $end_multi_text
-
 +Game Type Flags: 4
 +Flags: 0
-+Red Alert: 0
-+Scramble: 0
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
 +Disallow Support: 1
 +Hull Repair Ceiling: 0.000000
 +Subsystem Repair Ceiling: 0.000000
@@ -26,24 +27,16 @@ $end_multi_text
 
 +Viewer pos: 0.000000, 266.414459, -99.515190
 +Viewer orient:
-	1.000000, 0.000000, 0.000000,
+	1.000000, 0.000000, -0.000000,
 	0.000000, 0.349920, 0.936780,
 	0.000000, -0.936780, 0.349920
-
 +SquadReassignName: 53rd Hammerheads
 +SquadReassignLogo: hammer1.pcx
 
+
 $Skybox Model: Starfield.pof
+
 $AI Profile: FS2 RETAIL
-
-#Plot Info
-
-$Tour:  XSTR("Blah", 6)
-$Pre-Briefing Cutscene: Blah
-$Pre-Mission Cutscene: Blah
-$Next Mission Success: Blah
-$Next Mission Partial: Blah
-$Next Mission Failure: Blah
 
 #Command Briefing
 
@@ -70,9 +63,10 @@ $type: 0
 $team: Friendly
 $class: GTF Perseus
 $pos: -48.208927, 0.000000, 102.453842
-$label: XSTR("Instructor", 14997)
+$label:  XSTR("Instructor", 15354)
 +id: 1
 $hlight: 0
+$mirror: 0
 $multi_text
 $end_multi_text
 $end_icon
@@ -81,9 +75,10 @@ $type: 22
 $team: Friendly
 $class: GTF Myrmidon
 $pos: 0.000000, 0.000000, 0.000000
-$label: XSTR("Alpha 1", 6243)
+$label:  XSTR("Alpha 1", 6581)
 +id: 2
 $hlight: 0
+$mirror: 0
 $multi_text
 $end_multi_text
 $end_icon
@@ -108,9 +103,10 @@ $type: 0
 $team: Friendly
 $class: GTF Perseus
 $pos: -48.208927, 0.000000, 102.453842
-$label: XSTR("Instructor", 14997)
+$label:  XSTR("Instructor", 15354)
 +id: 1
 $hlight: 0
+$mirror: 0
 $multi_text
 $end_multi_text
 $end_icon
@@ -119,9 +115,10 @@ $type: 22
 $team: Friendly
 $class: GTF Myrmidon
 $pos: 0.000000, 0.000000, 0.000000
-$label: XSTR("Alpha 1", 6243)
+$label:  XSTR("Alpha 1", 6581)
 +id: 2
 $hlight: 0
+$mirror: 0
 $multi_text
 $end_multi_text
 $end_icon
@@ -209,7 +206,7 @@ $Ship Choices: (
 #Objects		;! 19 total
 
 $Name: Alpha 1		;! Object #0
-$Display Name: XSTR("Alpha 1", 6243)
+$Display Name: XSTR("Alpha 1", 6581)
 $Class: GTF Myrmidon
 $Team: Friendly
 $Location: 0.000000, 0.000000, 0.000000
@@ -217,7 +214,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 100
@@ -230,12 +226,13 @@ $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" "player-start" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
 +Score: 0
 
 $Name: Instructor		;! Object #1
-$Display Name: XSTR("Instructor", 14997)
+$Display Name: XSTR("Instructor", 15354)
 $Class: GTF Perseus
 $Team: Friendly
 $Location: -48.208927, 0.000000, 102.453842
@@ -243,7 +240,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -265,14 +261,15 @@ $Departure Cue: ( or
 )
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" "invulnerable" )
++Flags2: ( )
 +Respawn priority: 0
-+Orders Accepted: 0		;! note that this is a bitfield!!!
++Orders Accepted List: ( )
 +Group: 0
 +Score: 0
 +Persona Index: 0
 
 $Name: Drone 01		;! Object #2
-$Display Name: XSTR("Drone 01", 14998)
+$Display Name: XSTR("Drone 01", 15355)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -68.385414, 0.000020, 555.713501
@@ -280,7 +277,6 @@ $Orientation:
 	-0.998739, 0.000000, -0.050207,
 	0.000000, 1.000000, 0.000000,
 	0.050207, 0.000000, -0.998739
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-play-dead 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
@@ -297,13 +293,15 @@ $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
-+Orders Accepted: 0		;! note that this is a bitfield!!!
++Orders Accepted List: ( )
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 02		;! Object #3
-$Display Name: XSTR("Drone 02", 15000)
+$Display Name: XSTR("Drone 02", 15357)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -103.608429, -21.698776, 800.300171
@@ -311,7 +309,6 @@ $Orientation:
 	-0.996864, 0.000000, -0.079137,
 	0.000000, 1.000000, 0.000000,
 	0.079137, 0.000000, -0.996864
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -327,12 +324,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 03		;! Object #4
-$Display Name: XSTR("Drone 03", 14999)
+$Display Name: XSTR("Drone 03", 15356)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: 101.128555, 25.989563, 811.525391
@@ -340,7 +339,6 @@ $Orientation:
 	-0.999738, 0.000000, -0.022901,
 	0.000000, 1.000000, 0.000000,
 	0.022901, 0.000000, -0.999738
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -356,12 +354,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 04		;! Object #5
-$Display Name: XSTR("Drone 04", 15001)
+$Display Name: XSTR("Drone 04", 15358)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -194.598267, 29.464540, 921.839294
@@ -369,7 +369,6 @@ $Orientation:
 	-0.998295, 0.000000, -0.058374,
 	0.000000, 1.000000, 0.000000,
 	0.058374, 0.000000, -0.998295
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-evade-ship "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
@@ -382,12 +381,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( < ( hits-left "Alpha 1" ) 40 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 05		;! Object #6
-$Display Name: XSTR("Drone 05", 15007)
+$Display Name: XSTR("Drone 05", 15364)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -97.946487, -18.823296, 1020.838196
@@ -395,7 +396,6 @@ $Orientation:
 	-0.999999, 0.000000, 0.001593,
 	0.000000, 1.000000, 0.000000,
 	-0.001593, 0.000000, -0.999999
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
@@ -414,12 +414,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 06		;! Object #7
-$Display Name: XSTR("Drone 06", 15008)
+$Display Name: XSTR("Drone 06", 15365)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: 4.233900, 21.116474, 1006.115417
@@ -427,7 +429,6 @@ $Orientation:
 	-0.999767, 0.000000, 0.021591,
 	0.000000, 1.000000, 0.000000,
 	-0.021591, 0.000000, -0.999767
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
@@ -446,12 +447,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 07		;! Object #8
-$Display Name: XSTR("Drone 07", 15009)
+$Display Name: XSTR("Drone 07", 15366)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -105.249031, 28.886772, 1110.227295
@@ -459,7 +462,6 @@ $Orientation:
 	-0.999831, 0.000000, -0.018406,
 	0.000000, 1.000000, 0.000000,
 	0.018406, 0.000000, -0.999831
-$IFF: IFF 1
 $AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -481,12 +483,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 08		;! Object #9
-$Display Name: XSTR("Drone 08", 15010)
+$Display Name: XSTR("Drone 08", 15367)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -401.231140, -0.000012, 810.075684
@@ -494,7 +498,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
@@ -509,12 +512,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 09		;! Object #10
-$Display Name: XSTR("Drone 09", 15011)
+$Display Name: XSTR("Drone 09", 15368)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -303.826569, -0.000004, 798.463684
@@ -522,7 +527,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
@@ -537,12 +541,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 11		;! Object #11
-$Display Name: XSTR("Drone 11", 15012)
+$Display Name: XSTR("Drone 11", 15369)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -305.019623, 0.000002, 700.811340
@@ -550,7 +556,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
@@ -569,12 +574,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 10		;! Object #12
-$Display Name: XSTR("Drone 10", 15013)
+$Display Name: XSTR("Drone 10", 15370)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -401.722504, 0.000009, 705.932983
@@ -582,7 +589,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
@@ -601,12 +607,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 12		;! Object #13
-$Display Name: XSTR("Drone 12", 15014)
+$Display Name: XSTR("Drone 12", 15371)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -398.462372, -13.313734, 600.515198
@@ -614,9 +622,8 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
-+AI Class: Captain
+;+ai class Captain
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -634,12 +641,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 13		;! Object #14
-$Display Name: XSTR("Drone 13", 15015)
+$Display Name: XSTR("Drone 13", 15372)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -304.201019, -0.000022, 604.997253
@@ -647,9 +656,8 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
-+AI Class: Captain
+;+ai class Captain
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -667,12 +675,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 14		;! Object #15
-$Display Name: XSTR("Drone 14", 15016)
+$Display Name: XSTR("Drone 14", 15373)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -396.752319, 0.000024, 512.360535
@@ -680,9 +690,8 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
-+AI Class: Major
+;+ai class Major
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -700,12 +709,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 15		;! Object #16
-$Display Name: XSTR("Drone 15", 15017)
+$Display Name: XSTR("Drone 15", 15374)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -305.670776, -0.000019, 496.765442
@@ -713,9 +724,8 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
-+AI Class: Major
+;+ai class Major
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -733,12 +743,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 16		;! Object #17
-$Display Name: XSTR("Drone 16", 15018)
+$Display Name: XSTR("Drone 16", 15375)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -409.197144, -0.000017, 406.814209
@@ -746,9 +758,8 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
-+AI Class: Colonel
+;+ai class Captain
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -766,12 +777,14 @@ $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 $Name: Drone 17		;! Object #18
-$Display Name: XSTR("Drone 17", 15019)
+$Display Name: XSTR("Drone 17", 15376)
 $Class: GTDR Amazon
 $Team: Hostile
 $Location: -301.910553, -0.000025, 396.817627
@@ -779,9 +792,8 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$IFF: IFF 1
 $AI Behavior: None
-+AI Class: Colonel
+;+ai class Captain
 $AI Goals: ( goals ( ai-chase "Alpha 1" 89 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -799,8 +811,10 @@ $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "Had Enough" 0 ) 
 $Determination: 10
 +Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
 +Respawn priority: 0
 +Group: 0
++Use Table Score:
 +Score: 0
 
 #Wings		;! 1 total
@@ -809,7 +823,6 @@ $Name: Alpha
 $Waves: 1
 $Wave Threshold: 0
 $Special Ship: 0		;! Alpha 1
-
 $Arrival Location: Hyperspace
 $Arrival Cue: ( true ) 
 $Departure Location: Hyperspace
@@ -1253,7 +1266,6 @@ $Formula: ( when
       ( > ( hits-left "Alpha 1" ) 90 ) 
    )
    ( training-msg "Qualified" ) 
-   ( grant-medal "Wings" ) 
 )
 +Name: Qualified
 +Repeat Count: 1
@@ -1280,7 +1292,6 @@ $Formula: ( when
       ( < ( hits-left "Alpha 1" ) 91 ) 
    )
    ( training-msg "Qualified 2" ) 
-   ( grant-medal "Wings" ) 
 )
 +Name: Qualified 2
 +Repeat Count: 1
@@ -1452,6 +1463,7 @@ $List: (		;! 1 points in list
 
 #Messages		;! 26 total
 
+
 $Name: Welcome
 $Team: -1
 $MessageNew:  XSTR("Welcome to module TSM-103a, pilot. Don't touch the controls until you are told to do so. You will fail this session if you do not follow instructions carefully.", 2278)
@@ -1617,113 +1629,114 @@ $Num stars: 2000
 $Ambient light level: 7895160
 
 $Bitmap List:
++Flags: ( "corrected angles" )
 $Sun: SunVega
-+Angles: 1.151916 0.000000 0.000000
++Angles: 5.131269 0.000000 0.000000
 +Scale: 2.000000
 $Starbitmap: NebulC5-Whisp
-+Angles: 0.000000 0.000000 0.575958
++Angles: 0.000000 0.000000 5.707227
 +ScaleX: 3.000000
 +ScaleY: 3.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulC12-Whisp
-+Angles: 0.383972 0.000000 0.575958
++Angles: 5.963602 0.216596 5.672186
 +ScaleX: 5.000000
 +ScaleY: 5.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulC1-Main
-+Angles: 0.000000 0.000000 0.558505
++Angles: 0.000000 0.000000 5.724680
 +ScaleX: 1.000000
 +ScaleY: 1.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulH8-Whisp
-+Angles: 0.052360 0.000000 0.558505
++Angles: 6.238787 0.027765 5.724064
 +ScaleX: 1.000000
 +ScaleY: 1.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulH5-Whisp
-+Angles: 6.213367 0.000000 0.593412
++Angles: 0.057867 6.244100 5.688642
 +ScaleX: 1.000000
 +ScaleY: 1.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulH3-Main
-+Angles: 6.248274 0.000000 0.506145
++Angles: 0.030533 6.266255 5.776782
 +ScaleX: 1.000000
 +ScaleY: 1.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulH7-Whisp
-+Angles: 6.213367 0.296706 0.488692
++Angles: 0.061635 5.953660 5.793482
 +ScaleX: 2.000000
 +ScaleY: 2.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulH14-Whisp
-+Angles: 0.000000 0.000000 0.244346
++Angles: 0.000000 0.000000 6.038839
 +ScaleX: 3.000000
 +ScaleY: 3.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulC12-Whisp
-+Angles: 6.003928 1.535889 0.261799
++Angles: 0.269500 4.673216 6.011339
 +ScaleX: 3.000000
 +ScaleY: 3.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulC14-Whisp
-+Angles: 6.038835 0.000000 0.296706
++Angles: 0.233470 6.210416 5.977942
 +ScaleX: 1.000000
 +ScaleY: 1.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulH13-Whisp
-+Angles: 6.038835 0.000000 0.296706
++Angles: 0.233470 6.210416 5.977942
 +ScaleX: 2.000000
 +ScaleY: 2.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulH1-Main
-+Angles: 5.742129 3.874628 6.195914
++Angles: 0.538771 2.460882 0.101721
 +ScaleX: 5.000000
 +ScaleY: 5.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulC1-Main
-+Angles: 5.689769 1.535889 6.230821
++Angles: 0.592492 4.782586 0.063137
 +ScaleX: 2.000000
 +ScaleY: 2.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulC11-Whisp
-+Angles: 5.445423 0.000000 6.003928
++Angles: 0.795707 0.297074 0.404868
 +ScaleX: 3.000000
 +ScaleY: 3.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulC2-Main
-+Angles: 5.550143 0.000000 6.108648
++Angles: 0.719445 0.155103 0.232970
 +ScaleX: 3.000000
 +ScaleY: 3.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulH2-Main
-+Angles: 5.550143 3.141590 6.108648
++Angles: 0.719445 3.296698 0.232970
 +ScaleX: 2.000000
 +ScaleY: 2.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulH3-Main
-+Angles: 5.619956 0.575958 6.161007
++Angles: 0.657418 5.802161 0.154580
 +ScaleX: 2.000000
 +ScaleY: 2.000000
 +DivX: 1
 +DivY: 1
 $Starbitmap: NebulC5-Whisp
-+Angles: 5.619956 0.000000 6.161007
++Angles: 0.657418 0.094934 0.154580
 +ScaleX: 5.000000
 +ScaleY: 5.000000
 +DivX: 1

@@ -18,6 +18,24 @@ $On Game Init:
 	ui_keyToggleFunctions["Right Arrow"] = function(val) InputStates.right = val end
 	ui_keyToggleFunctions["0"] = function(val) InputStates.zero = val end
 
+	--variables for translation
+	local localizedNone = ba.XSTR("None", 5400)
+	local localizedMassDrivers = ba.XSTR("Mass drivers: ", 6139)
+	local localizedGaussCannons = ba.XSTR("Gauss Cannons: ", 6140)
+	local localizedApocalypseTorpedoes = ba.XSTR("Apocalypse Torpedoes: ", 6141)
+	local localizedInvalid = ba.XSTR("Invalid", 6142)
+	local localizedCurrentTarget = ba.XSTR("Current Target: ", 6143)
+	local localizedClass = ba.XSTR(" Class: ", 6144)
+	local localizedRange = ba.XSTR("Range:", 6145)
+	local localized2Dots = ba.XSTR(": ", 6146)
+	local localizedPointDefenseTurrets = ba.XSTR("Point Defense turrets: ", 6147)
+	local localizedPDTurret = ba.XSTR("  PD Turret: ", 6148)
+	local localizedMissileLaunchers = ba.XSTR("Missile Launchers: ", 6149)
+	local localizedAutomatic = ba.XSTR("Automatic", 6150)
+	local localizedTrack = ba.XSTR("Track", 6151)
+	local localizedLock = ba.XSTR("Lock", 6152)
+	local localizedOffline = ba.XSTR("Offline", 6153)
+
 	function getTargetName(target)
 		local targetname
 		if target then
@@ -26,14 +44,18 @@ $On Game Init:
 				local targetship = mn.getObjectFromSignature(sig)
 				if targetship:isValid() then
 					if targetship:getBreedName() == "Ship" then
-						targetname = targetship.Name
+						targetname = targetship.DisplayName
+
+						if targetname == '' then
+							targetname = targetship.Name
+						end
 					end
 				else
-					targetname = "Aucun"
+					targetname = localizedNone
 				end
 			end
 		else
-			targetname = "Aucun"
+			targetname = localizedNone
 		end
 		return targetname
 	end
@@ -49,11 +71,11 @@ $On Game Init:
 						targetname = targetship.Class.Type.Name
 					end
 				else
-					targetname = "Aucun"
+					targetname = localizedNone
 				end
 			end
 		else
-			targetname = "Aucun"
+			targetname = localizedNone
 		end
 		return targetname
 	end
@@ -65,12 +87,12 @@ $On Game Init:
 		else
 			gr.setColor(255, 93, 48)
 		end
-		gr.drawString("Catapultes électromagnétiques : " .. csc.mdmode[csc.mdstatus], gr.getScreenWidth() * 0.67, gr.getScreenHeight() * 0.75)
+		gr.drawString(localizedMassDrivers .. csc.mdmode[csc.mdstatus], gr.getScreenWidth() * 0.67, gr.getScreenHeight() * 0.75)
 		gr.setColor(255, 93, 48)
 		for i = 1, #csc.mdguns, 1 do
 			local targetname = getTargetName(csc.mdguns[i].Target)
-			if not targetname then targetname = "Aucun" end
-			gr.drawString("  " .. csc.mdguns[i].Name .. ": " .. targetname)
+			if not targetname then targetname = localizedNone end
+			gr.drawString("  " .. csc.mdguns[i].Name .. localized2Dots .. targetname)
 		end
 
 		--Gauss cannons
@@ -79,12 +101,12 @@ $On Game Init:
 		else
 			gr.setColor(255, 187, 53)
 		end
-		gr.drawString("Canons de Gauss : " .. csc.railgunmode[csc.rgstatus])
+		gr.drawString(localizedGaussCannons .. csc.railgunmode[csc.rgstatus])
 		gr.setColor(255, 187, 53)
 		for i = 1, #csc.railguns, 1 do
 			local targetname = getTargetName(csc.railguns[i].Target)
-			if not targetname then targetname = "Aucun" end
-			gr.drawString("  " .. csc.railguns[i].Name .. ": " .. targetname)
+			if not targetname then targetname = localizedNone end
+			gr.drawString("  " .. csc.railguns[i].Name .. localized2Dots .. targetname)
 		end
 
 		--Apocalypse
@@ -93,20 +115,20 @@ $On Game Init:
 		else
 			gr.setColor(255, 255, 53)
 		end
-		gr.drawString("Torpilles Apocalypse : " .. csc.apocalypsemode[csc.apostatus])
+		gr.drawString(localizedApocalypseTorpedoes .. csc.apocalypsemode[csc.apostatus])
 		gr.setColor(255, 255, 53)
 		for i = 1, #csc.apocalypse, 1 do
 			local targetname = getTargetName(csc.apocalypse[i].Target)
-			if not targetname then targetname = "Aucun" end
-			gr.drawString("  " .. csc.apocalypse[i].Name .. ": " .. targetname)
+			if not targetname then targetname = localizedNone end
+			gr.drawString("  " .. csc.apocalypse[i].Name .. localized2Dots .. targetname)
 		end
 
 		gr.setColor(255, 255, 255)
 		local targetname = getTargetName(csc.CurrentTarget)
 		local classname = getTargetClass(csc.CurrentTarget)
-		if not classname then classname = "Aucun" end
-		if not targetname then targetname = "Invalide" end
-		gr.drawString("Cible Actuelle : " .. targetname .. " Classe : " .. classname)
+		if not classname then classname = localizedNone end
+		if not targetname then targetname = localizedInvalid end
+		gr.drawString(localizedCurrentTarget .. targetname .. localizedClass .. classname)
 	end
 
 	function fillturretlist(ship)
@@ -414,22 +436,25 @@ $On Game Init:
 					local temprange2 = math.sqrt( (temp[1] - turpos2[1])^2 + (temp[2] - turpos2[2])^2 + (temp[3] - turpos2[3])^2 )
 					local temprange3 = math.sqrt( (temp[1] - turpos3[1])^2 + (temp[2] - turpos3[2])^2 + (temp[3] - turpos3[3])^2 )
 					local temprange4 = math.sqrt( (temp[1] - turpos4[1])^2 + (temp[2] - turpos4[2])^2 + (temp[3] - turpos4[3])^2 )
-					csc.range.Shipname[items] = tempship.Name
+					csc.range.Shipname[items] = tempship.DisplayName
+					if csc.range.Shipname[items] == '' then
+						csc.range.Shipname[items] = tempship.Name
+					end
 					csc.range.Range[items] = math.floor( (temprange1 + temprange2 + temprange3 + temprange4) / 4 )
 					items = items + 1
 				end
 			end
 		end
 		gr.setColor(255,255,255)
-		gr.drawString("Portée :", gr.getScreenWidth() * 0.16, gr.getScreenHeight() * 0.85)
+		gr.drawString(localizedRange, gr.getScreenWidth() * 0.16, gr.getScreenHeight() * 0.85)
 		for i = 1, #csc.range.Shipname do
 			if csc.range.Range[i] < 1000 then
 				local c = math.floor((csc.range.Range[i] / 4)) + 5
 				gr.setColor(255, c, c)
-				gr.drawString("  " .. csc.range.Shipname[i] .. " : " .. csc.range.Range[i])
+				gr.drawString("  " .. csc.range.Shipname[i] .. localized2Dots .. csc.range.Range[i])
 				gr.setColor(255, 255, 255)
 			else
-				gr.drawString("  " .. csc.range.Shipname[i] .. " : " .. csc.range.Range[i])
+				gr.drawString("  " .. csc.range.Shipname[i] .. localized2Dots .. csc.range.Range[i])
 			end
 		end
 	end
@@ -444,12 +469,12 @@ $On Game Init:
 		else
 			gr.setColor(61, 93, 255)
 		end
-		gr.drawString("Tourelles Défense Rapprochée : " .. csc.pdmode[csc.pdstatus], gr.getScreenWidth() * 0.67, gr.getScreenHeight() * 0.85)
+		gr.drawString(localizedPointDefenseTurrets .. csc.pdmode[csc.pdstatus], 5, gr.getScreenHeight() * 0.6)
 		gr.setColor(61, 93, 255)
 		for i = 1, #csc.pdTurrets, 1 do
 			local targetname = getTargetName(csc.pdTurrets[i].Target)
-			if not targetname then targetname = "Aucun" end
-			gr.drawString("  tourelle DR : " .. targetname)
+			if not targetname then targetname = localizedNone end
+			gr.drawString(localizedPDTurret .. targetname)
 		end
 
 		--Missiles
@@ -458,20 +483,20 @@ $On Game Init:
 		else
 			gr.setColor(255, 255, 53)
 		end
-		gr.drawString("Lance-Missiles : " .. csc.missilemode[csc.missilestatus])
+		gr.drawString(localizedMissileLaunchers .. csc.missilemode[csc.missilestatus])
 		gr.setColor(255, 255, 53)
 		for i = 1, #csc.missile, 1 do
 			local targetname = getTargetName(csc.missile[i].Target)
-			if not targetname then targetname = "Aucun" end
-			gr.drawString("  " .. csc.missile[i].Name .. ": " .. targetname)
+			if not targetname then targetname = localizedNone end
+			gr.drawString("  " .. csc.missile[i].Name .. localized2Dots .. targetname)
 		end
 
 		gr.setColor(255, 255, 255)
 		local targetname = getTargetName(csc.CurrentTarget)
 		local classname = getTargetClass(csc.CurrentTarget)
-		if not classname then classname = "Aucun" end
-		if not targetname then targetname = "Invalide" end
-		gr.drawString("Cible Actuelle : " .. targetname .. " Classe : " .. classname)
+		if not classname then classname = localizedNone end
+		if not targetname then targetname = localizedInvalid end
+		gr.drawString(localizedCurrentTarget .. targetname .. localizedClass .. classname)
 	end
 
 	function doTurretModeCustos()
@@ -545,29 +570,29 @@ $On Game Init:
 				if not csc.disable then
 					if not csc.turrets then
 						csc.pdTurrets = {}
-						csc.pdmode = {"Automatique", "Suivi", "Verrouillage", "Hors ligne"}
+						csc.pdmode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
 						csc.pdstatus = 1
 
 						csc.flakTurrets = {}
 
 						csc.railguns = {}
-						csc.railgunmode = {"Automatique", "Suivi", "Verrouillage", "Hors ligne"}
+						csc.railgunmode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
 						csc.rgstatus = 1
 
 						csc.mdguns = {}
-						csc.mdmode = {"Automatique", "Suivi", "Verrouillage", "Hors ligne"}
+						csc.mdmode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
 						csc.mdstatus = 1
 
 						csc.apocalypse = {}
-						csc.apocalypsemode = {"Automatique", "Suivi", "Verrouillage", "Hors ligne"}
+						csc.apocalypsemode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
 						csc.apostatus = 1
 
 						csc.gattler = {}
-						csc.gattlermode = {"Automatique", "Suivi", "Verrouillage", "Hors ligne"}
+						csc.gattlermode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
 						csc.gattlerstatus = 1
 
 						csc.missile = {}
-						csc.missilemode = {"Automatique", "Suivi", "Verrouillage", "Hors ligne"}
+						csc.missilemode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
 						csc.missilestatus = 1
 
 						csc.active = {"*", " ", " "}

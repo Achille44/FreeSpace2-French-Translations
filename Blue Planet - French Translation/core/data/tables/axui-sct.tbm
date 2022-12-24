@@ -6,6 +6,9 @@ $On Game Init:
 
 AXUI = {}
 
+--variables for translation
+local localizedMore = ba.XSTR("More", 5241)
+
 function AXUI:Init()
 
 	--Please don't mind the many commented debug lines!
@@ -893,7 +896,7 @@ function AXUI:UpdateList(offset)
 		
 		for i = 1, self.ItemLines do
 			--ba.print("Going to make a button " .. i .. "\n")
-			self.Item[i] = AXUI:CreateButton(self.List[i + offset], self.ListX, (self.ListY + (i)*self.FontHeight -10), 0, 0, self.Color, self.Color_H, self.Color_C, nil, nil, nil, nil, nil, "font", self.Level, self.Font)
+			self.Item[i] = AXUI:CreateButton(self.List[i + offset], self.ListX, (self.ListY + (i)*self.FontHeight - 10), 0, 0, self.Color, self.Color_H, self.Color_C, nil, nil, nil, nil, nil, "font", self.Level, self.Font)
 			
 			self.Group:AddToGroup(self.Item[i])
 			
@@ -1165,7 +1168,7 @@ function AXUI:Draw()
 				
 				if textBlockHeight > self.TextHeight and self.Offset > (self.TextHeight - textBlockHeight) then
 					AXUI:SetColor("red")
-					gr.drawString("Plus", (self.TextX + (self.TextWidth) / 2) - (gr.getStringWidth("Plus") / 2), self.TextY + self.TextHeight + 20)
+					gr.drawString(localizedMore, (self.TextX + (self.TextWidth) / 2) - (gr.getStringWidth(localizedMore) / 2), self.TextY + self.TextHeight + 20)
 				end
 			end
 		
@@ -1196,7 +1199,7 @@ function AXUI:DrawList()
 		
 		if (#self.List > self.MaxLines) and (self.ItemOffset < (#self.List - self.MaxLines)) then
 			AXUI:SetColor("red")
-			gr.drawString("Plus", self.ListX + (self.ListWidth / 2) - (gr.getStringWidth("Plus") / 2), self.ListY + self.ListHeight - 55)
+			gr.drawString(localizedMore, self.ListX + (self.ListWidth / 2) - (gr.getStringWidth(localizedMore) / 2), self.ListY + self.ListHeight - 45)
 		end
 		
 	end

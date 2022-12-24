@@ -6,6 +6,11 @@ $On Game Init:
 
 Journal = {}
 
+--variables for translation
+local localizedExit = ba.XSTR("Exit", 6420)
+local localizedNew = ba.XSTR("new", 6421)
+local localizedNewExclamation = ba.XSTR("New!", 6422)
+
 --INITIALIZE
 function Journal:Init()
 
@@ -66,7 +71,7 @@ function Journal:Init()
 
 	ba.print("About to make...\n")
 	ba.print("Exit button\n")
-	self.Buttons.Exit = AXUI:CreateButton("Quitter", 940, 694, 0, -30, "white", "ui_light_pink", "ui_pink", nil, -20, 0, "2_CAB_050001", "2_CAB_050002", true, 0, self.Fonts.ButtonFont)
+	self.Buttons.Exit = AXUI:CreateButton(localizedExit, 940, 694, 0, -30, "white", "ui_light_pink", "ui_pink", nil, -20, 0, "2_CAB_050001", "2_CAB_050002", true, 0, self.Fonts.ButtonFont)
 	
 	ba.print("Text up down buttons\n")
 	self.Buttons.TextUp = AXUI:CreateButton(nil, 3, 181, nil, nil, nil, nil, nil, nil, 0, 0, "2_CAB_000001", "2_CAB_000002", true, 0, self.Fonts.ButtonFont)
@@ -468,7 +473,7 @@ function Journal:Draw()
 			for i = 1, self.ListBox.ItemLines do
 				if self.TabEntry[i + self.ListBox.ItemOffset].Read ~= true then
 					AXUI:SetColor("red")
-					gr.drawString("nouveau", self.ListBox.Item[i].TextX - gr.getStringWidth("nouveau") - 5, self.ListBox.Item[i].TextY)
+					gr.drawString(localizedNew, self.ListBox.Item[i].TextX - gr.getStringWidth(localizedNew) - 5, self.ListBox.Item[i].TextY)
 				end
 			end
 		end
@@ -481,7 +486,7 @@ function Journal:Draw()
 		for i = 1, #self.Thumbnails.Buttons do
 			if self.Thumbnails.Items[i+self.Thumbnails.Offset].Read ~= true then
 				AXUI:SetColor("red")
-				gr.drawString("Nouveau !", self.Thumbnails.Buttons[i].BitmapX, self.Thumbnails.Buttons[i].BitmapY-11)
+				gr.drawString(localizedNewExclamation, self.Thumbnails.Buttons[i].BitmapX, self.Thumbnails.Buttons[i].BitmapY-11)
 			end
 		end
 	end
@@ -856,14 +861,14 @@ end
 function Journal:DrawNew()
 
 	AXUI:SetColor("red")
-	gr.drawString("Nouveau !", Monitor.Buttons.Journal.BitmapX - gr.getStringWidth("Nouveau !") - 20, Monitor.Buttons.Journal.TextY)
+	gr.drawString(localizedNew, Monitor.Buttons.Journal.BitmapX - gr.getStringWidth(localizedNew) - 20, Monitor.Buttons.Journal.TextY)
 
 end
 
 function Journal:DrawNew2()
 
 	AXUI:SetColor("red")
-	gr.drawString("Nouveau !", CMap.Buttons.Journal.BitmapX - gr.getStringWidth("Nouveau !") - 20, CMap.Buttons.Journal.TextY)
+	gr.drawString(localizedNew, CMap.Buttons.Journal.BitmapX - gr.getStringWidth(localizedNew) - 20, CMap.Buttons.Journal.TextY)
 
 end
 
