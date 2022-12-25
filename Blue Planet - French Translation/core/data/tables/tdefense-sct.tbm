@@ -125,8 +125,14 @@ end
 
 function TDefense:InitTanks()
 
+	local configname = "tdefense_" .. ba.getCurrentLanguageExtension() .. ".cfg"
+
+	if not cf.fileExists(configname, "data/config", true) then
+		configname = "tdefense.cfg"
+	end
+
 	self.Tanks = {}
-	self.TankTypes = axemParse:ToTable("tdefense.cfg")
+	self.TankTypes = axemParse:ToTable(configname)
 	
 	for i=1, #self.TankTypes do
 		self.TankTypes[i].Available = 0

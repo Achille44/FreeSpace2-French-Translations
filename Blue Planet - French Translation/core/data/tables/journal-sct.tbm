@@ -44,10 +44,14 @@ function Journal:Init()
 	self.TabOffsets = {}
 	
 	--All the config data we need is here
-	local configname = "journal_" .. player:getCampaignFilename() .. "_config.cfg"
+	local configname = "journal_" .. player:getCampaignFilename() .. "_config_" .. ba.getCurrentLanguageExtension() .. ".cfg"
+
+	if not cf.fileExists(configname, "data/config", true) then
+		configname = "journal_" .. player:getCampaignFilename() .. "_config.cfg"
+	end
 	
 	if cf.fileExists(configname, "data/config", true) then
-		self.JournalConfig = axemParse:ToTable("journal_" .. player:getCampaignFilename() .. "_config.cfg", true)
+		self.JournalConfig = axemParse:ToTable(configname, true)
 	end
 	
 	if self.JournalConfig then
@@ -716,8 +720,14 @@ end
 function Journal:Unlock(tab,title,evenNoCampaign)
 
 	if evenNoCampaign or mn.isInCampaign() then
+
+		local configname = "journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config_" .. ba.getCurrentLanguageExtension() .. ".cfg"
+
+		if not cf.fileExists(configname, "data/config", true) then
+			configname = "journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config.cfg"
+		end
 	
-		local journalConfig = axemParse:ToTable("journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config.cfg", true)
+		local journalConfig = axemParse:ToTable(configname, true)
 		local tabEntry
 		local fileName
 			
@@ -766,7 +776,13 @@ function Journal:Hide(tab,title)
 
 	if mn.isInCampaign() then
 
-		local journalConfig = axemParse:ToTable("journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config.cfg", true)
+		local configname = "journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config_" .. ba.getCurrentLanguageExtension() .. ".cfg"
+
+		if not cf.fileExists(configname, "data/config", true) then
+			configname = "journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config.cfg"
+		end
+	
+		local journalConfig = axemParse:ToTable(configname, true)
 		local tabEntry
 		local index
 		
@@ -811,7 +827,13 @@ function Journal:ResetProgress()
 
 	if mn.isInCampaign() then
 
-		local journalConfig = axemParse:ToTable("journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config.cfg", true)
+		local configname = "journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config_" .. ba.getCurrentLanguageExtension() .. ".cfg"
+
+		if not cf.fileExists(configname, "data/config", true) then
+			configname = "journal_" .. ba.getCurrentPlayer():getCampaignFilename() .. "_config.cfg"
+		end
+	
+		local journalConfig = axemParse:ToTable(configname, true)
 		local fileName = nil
 		
 		for i = 1, #journalConfig do

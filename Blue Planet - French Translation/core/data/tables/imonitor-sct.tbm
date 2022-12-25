@@ -1,0 +1,169 @@
+#Conditional Hooks
+$Application: FS2_Open
+$On Game Init:
+[
+
+Monitor = {}
+
+function Monitor:Init()
+	
+	local campaign = ba.getCurrentPlayer():getCampaignFilename()
+	
+	if cf.fileExists("imonitor_" .. campaign .. "_" .. ba.getCurrentLanguageExtension() ..".cfg", "data/config", true) then
+		self.ConfigFilename = "imonitor_" .. campaign .. "_" .. ba.getCurrentLanguageExtension() ..".cfg"
+		self.Config = axemParse:ReadJSON(self.ConfigFilename, nil)
+	elseif cf.fileExists("imonitor_" .. ba.getCurrentLanguageExtension() ..".cfg", "data/config", true) then
+		self.ConfigFilename = "imonitor_" .. ba.getCurrentLanguageExtension() ..".cfg"
+		self.Config = axemParse:ReadJSON(self.ConfigFilename, nil)
+	elseif cf.fileExists("imonitor_" .. campaign .. ".cfg", "data/config", true) then
+		self.ConfigFilename = "imonitor_" .. campaign .. ".cfg"
+		self.Config = axemParse:ReadJSON(self.ConfigFilename, nil)
+	elseif cf.fileExists("imonitor.cfg", "data/config", true) then
+		self.ConfigFilename = "imonitor.cfg"
+		self.Config = axemParse:ReadJSON(self.ConfigFilename, nil)
+	else
+		self.Config = nil
+	end
+	
+	if self.Config then
+		self.Enabled = true
+	else
+		self.Enabled = false
+	end
+	
+	self.Buttons = {}
+
+end
+
+function Monitor:GoToState(state)
+
+	local event
+
+	if state.Name == "GS_STATE_BRIEFING" then
+		event = "GS_EVENT_START_BRIEFING"
+	else
+		event = string.gsub(state.Name, "STATE", "EVENT")
+	end
+
+	ba.postGameEvent(ba.GameEvents[event])
+
+end
+
+function Monitor:LoadBrief()
+
+	local campaign = ba.getCurrentPlayer():getCampaignFilename()
+	
+
+	AXUI.InGame = false
+	AXUI:ScreenInit()
+	AXUI:SetFocus(0)
+	
+	for k,v in pairs(self.Config.Brief) do
+		local show = false
+		
+		if v.UseWith then
+			for i=1, #v.UseWith do
+				if campaign == v.UseWith[i] then
+					show = true
+				end
+			end
+		end
+		
+		if (v.Required == nil) or (cf.fileExists(v.Required, "data/tables", true)) then
+			if show and (v.Visible == true) then
+				self.Buttons[k] = AXUI:CreateButton(v.Caption, v.Position.X, v.Position.Y, 52, 18, "white", "ui_light_green", "ui_green", "cb_sidetab", 0, 0, "cb_sidetab_h", "cb_sidetab_c", true, 0)
+				self.Buttons[k].Info = v
+				self.Buttons[k].Info.State = ba.GameStates[v.GameState]
+			end
+		end
+	end	
+
+end
+
+function Monitor:Draw()
+
+	for k,v in pairs(self.Buttons) do
+	
+		v:Draw()
+	
+	end
+
+end
+
+function Monitor:Actions()
+
+	for k,v in pairs(self.Buttons) do
+		if v:Clicked() then
+		
+			if v.Info.Hijack == false then
+				self.ShouldHijack = false
+			end
+			ad.playInterfaceSound(7)
+			self.Substate = v.Info.Substate
+			self:GoToState(v.Info.State)
+			
+		end
+	end
+
+end
+
+function Monitor:GoTo(screen)
+
+	self.Substate = screen
+	ba.postGameEvent(ba.GameEvents["GS_EVENT_SCRIPTING"])
+
+end
+
+]
+
+$On State Start:
+[
+	Monitor.CurrentState = ba.getCurrentGameState()
+	Monitor.Buttons = {}
+]
+
+$On State End:
+[
+	Monitor.LastState = Monitor.CurrentState
+]
+
+$State: GS_STATE_GAME_PLAY
+$On Gameplay Start:
+[
+	Monitor.Gameplay = true
+]
+
+$On State End:
+[
+	Monitor.Gameplay = nil
+]
+
+$State: GS_STATE_INITIAL_PLAYER_SELECT
+$On State Start:
+[
+	Monitor:Init()
+]
+
+$State: GS_STATE_BRIEFING
+$On State Start:
+[
+	if Monitor.Enabled and mn.isInCampaign() then
+		Monitor:LoadBrief()
+	end
+]
+
+$On Frame:
+[
+	if Monitor.Enabled and mn.isInCampaign() then
+		Monitor:Draw()
+	end
+]
+
+$On Mouse Released:
+[
+	if Monitor.Enabled and mn.isInCampaign() then
+		Monitor:Actions()
+	end
+]
+
+#End
