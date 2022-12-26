@@ -200,12 +200,32 @@ function TDefense:CreateDeploymentButtons()
 		index = index + 1
 	
 	end
+
+	local cancel = "cancel"
+	local cancel_h = "cancel"
+	local cancel_c = "cancel"
+
+	if cf.fileExists("cancel-" .. ba.getCurrentLanguageExtension() .. ".png", "data/hud", true) then
+		cancel = "cancel-" .. ba.getCurrentLanguageExtension()
+		cancel_h = "cancel_h-" .. ba.getCurrentLanguageExtension()
+		cancel_c = "cancel_c-" .. ba.getCurrentLanguageExtension()
+	end
 	
 	
-	self.Buttons.Cancel = AXUI:CreateButton(nil, AXUI.Screen.x+AXUI.Screen.w-125, 660, 0, 0, "white", "red", "bright_red", "cancel", 0, 0, "cancel_h", "cancel_c", false, 0)
+	self.Buttons.Cancel = AXUI:CreateButton(nil, AXUI.Screen.x+AXUI.Screen.w-125, 660, 0, 0, "white", "red", "bright_red", cancel, 0, 0, cancel_h, cancel_c, false, 0)
 	
+	local activate = "activate"
+	local activate_h = "activate"
+	local activate_c = "activate"
+
+	if cf.fileExists("activate-" .. ba.getCurrentLanguageExtension() .. ".png", "data/hud", true) then
+		activate = "activate-" .. ba.getCurrentLanguageExtension()
+		activate_h = "activate_h-" .. ba.getCurrentLanguageExtension()
+		activate_c = "activate_c-" .. ba.getCurrentLanguageExtension()
+	end
+
 	--if self.Active == false then
-		self.Buttons.Activate = AXUI:CreateButton(nil, 25, 660, 0, 0, "white", "green", "bright_green", "activate", 0, 0, "activate_h", "activate_c", false, 0)
+		self.Buttons.Activate = AXUI:CreateButton(nil, 25, 660, 0, 0, "white", "green", "bright_green", activate, 0, 0, activate_h, activate_c, false, 0)
 	--end
 	
 	
@@ -514,7 +534,13 @@ function TDefense:Draw()
 		end
 		
 		if self.Active == true then
-			gr.drawImage("activated", 25, 660)
+			local activated = "activated"
+
+			if cf.fileExists("activated-" .. ba.getCurrentLanguageExtension() .. ".png", "data/hud", true) then
+				activated = "activated-" .. ba.getCurrentLanguageExtension()
+			end
+
+			gr.drawImage(activated, 25, 660)
 		else
 			self.Buttons.Activate:Draw()
 		end
@@ -599,9 +625,20 @@ function TDefense:Draw()
 			local name = hv.Player.Name
 			gr.drawString(name,x,y-10)
 		end
+
+		local tankcontrols = "tankcontrols"
+		local tankcontrols2 = "tankcontrols2"
+
+		if cf.fileExists("tankcontrols-" .. ba.getCurrentLanguageExtension() .. ".png", "data/hud", true) then
+			tankcontrols = "tankcontrols-" .. ba.getCurrentLanguageExtension()
+		end
+
+		if cf.fileExists("tankcontrols2-" .. ba.getCurrentLanguageExtension() .. ".png", "data/hud", true) then
+			tankcontrols2 = "tankcontrols2-" .. ba.getCurrentLanguageExtension()
+		end
 		
-		gr.drawImage("tankcontrols", 0, 0)
-		gr.drawImage("tankcontrols2", AXUI.Screen.x+AXUI.Screen.w-320, 0)
+		gr.drawImage(tankcontrols, 0, 0)
+		gr.drawImage(tankcontrols2, AXUI.Screen.x+AXUI.Screen.w-320, 0)
 					
 	end
 
