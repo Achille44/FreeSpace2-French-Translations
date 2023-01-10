@@ -1,0 +1,5682 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Clarity", 6146)
+$Author: Colt
+$Created: 10/26/19 at 00:30:09
+$Modified: 02/20/22 at 18:25:14
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Alpha 1 is sent to slip past Shivan positions at the Gamma Draconis node and see what awaits the Memphis' fleet on the other side.
+", 6147)
+$end_multi_text
++Game Type Flags: 1
++Flags: 262284
++NebAwacs: 5000.000000
+
++Storm: s_standard
+
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: -1414.607300, 1103.004639, 28786.652344
++Viewer orient:
+	0.740193, -0.000005, -0.672394,
+	0.386943, 0.817826, 0.425954,
+	0.549899, -0.575466, 0.605351
+
+
+$Load Screen 1024: Shepherds_5.png
+
+$AI Profile: Olym
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"Distance_AlphaAquarius"		"0"		"number"
+		1		"Distance_AlphaSagi"		"0"		"number"
+		2		"Distance_AlphaScorpio"		"0"		"number"
+		3		"Distance_AlphaVirgo"		"0"		"number"
+		4		"ShipOnSensor"		"0"		"number"
+		5		"autoGenVar1"		"#Memphis"		"string"
+		6		"autoGenVar2"		"#Command"		"string"
+		7		"autoGenVar3"		"Gamma Draconis"		"string"
+		8		"autoGenVar4"		"Nebula"		"string"
+		9		"autoGenVar5"		"Scan Subsystem"		"string"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 6
+$start_stage
+$multi_text
+ XSTR("Greetings, $g Alpha $g 1$|. While your wingmates are sortied to escort the $f GVCv $f Sopedu to our current position, Admiral Nekba has selected you to undertake an important mission. Success in this mission is crucial for ensuring our successful reunion with the $f GTVA$|.
+
+For this operation, you will be flying a $y Pegasus$| -class stealth fighter. The pilot of this craft has been admitted to our medical bay due to combat injuries, but the fighter remains intact. This is a fortunate occurrence as the $f Memphis has yet to receive a complement of our own $y Ptah stealth fighters.", 6148)
+$end_multi_text
+$voice: none.wav
+$camera_pos: -6787.955078, 2813.269043, 21254.552734
+$camera_orient:
+	-0.999990, -0.000004, -0.004407,
+	0.000297, 0.997668, -0.068259,
+	0.004397, -0.068260, -0.997658
+$camera_time: 500
+$num_lines: 0
+$num_icons: 1
+$Flags: 1
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Pegasus
+$pos: -6401.913086, 138.722168, -13576.587891
+$label:  XSTR("Alpha 1", 4974)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("We need you to scout $h Shivan fortifications on the far side of the $b Gamma $b Draconis node. Reconnaissance has detected heavy subspace activity in the area, so it may be possible the Shivans have either reinforced their positions or deployed further expeditionary forces through the node. Detection during this operation will almost guarantee a hardening of Shivan defences, $W so $W maintaining $W stealth $W is $W imperative$|.", 6149)
+$end_multi_text
+$voice: none.wav
+$camera_pos: -7283.184570, 15032.124023, 22027.457031
+$camera_orient:
+	0.000168, -0.000004, -1.000000,
+	0.997628, 0.068831, 0.000167,
+	0.068831, -0.997628, 0.000016
+$camera_time: 500
+$num_lines: 0
+$num_icons: 4
+$Flags: 2
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Pegasus
+$pos: -6401.913086, 138.722168, -13576.587891
+$label:  XSTR("Alpha 1", 4974)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 33
+$team: Unknown
+$class: GVCv Sobek
+$pos: -6631.931152, 758.920898, 21841.804688
+$label:  XSTR("Gamma Draconis", 5105)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 20
+$team: Hostile
+$class: GVCv Sobek
+$pos: -6773.947754, 758.920898, 18203.445313
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 20
+$team: Hostile
+$class: GVCv Sobek
+$pos: -6846.366699, 758.920898, 25233.089844
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("At 2531 Vasudan Standard Time a scouting wing from the 33rd discovered a  $y Lilith$| -class cruiser, designated the $h SC $h Hypnus$|, moving along a known route towards the jump node. We believe in about twenty minutes it will arrive at the node and depart through it. Departing through the node as the $h Hypnus enters subspace should mask your jump signature, allowing you to slip into $b Gamma $b Draconis undetected.
+
+It is estimated that you will have approximately three minutes to scout the area around the node before the Hypnus reaches it. Scan any Shivan warships you uncover, as this will assist with our breakout plans. This in turn will minimize damage sustained to our ships, which will undoubtedly help us in further operations.", 6150)
+$end_multi_text
+$voice: none.wav
+$camera_pos: -7031.122559, 8144.974609, 20025.230469
+$camera_orient:
+	0.000168, -0.000004, -1.000000,
+	0.997628, 0.068831, 0.000167,
+	0.068831, -0.997628, 0.000016
+$camera_time: 500
+$num_lines: 0
+$num_icons: 4
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Pegasus
+$pos: -6401.913086, 138.722168, -13576.587891
+$label:  XSTR("Alpha 1", 4974)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 33
+$team: Unknown
+$class: GVCv Sobek
+$pos: -6631.931152, 758.920898, 21841.804688
+$label:  XSTR("Gamma Draconis", 5105)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 18
+$team: Hostile
+$class: SC Lilith
+$pos: -6773.947754, 758.920898, 18203.445313
+$label:  XSTR("Hypnus", 6151)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Pegasus
+$pos: -5215.435547, -2123.000977, 17558.355469
+$label:  XSTR("Alpha 1", 4974)
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Fortunately, the stabilization of the node has reduced the time it will take to traverse it. Whereas once it had taken over ten Terran standard hours to travel through the portal, it will now take approximately 73 minutes to reach $b Gamma $b Draconis$|.
+
+Upon arriving in-system, you will be tasked with determining the strength of enemy forces. Scan any hostile warships present while avoiding detection.", 6152)
+$end_multi_text
+$voice: none.wav
+$camera_pos: -7031.819336, 8144.974609, 24167.890625
+$camera_orient:
+	0.000168, -0.000004, -1.000000,
+	0.997628, 0.068831, 0.000167,
+	0.068831, -0.997628, 0.000016
+$camera_time: 500
+$num_lines: 0
+$num_icons: 5
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Pegasus
+$pos: -6401.913086, 138.722168, -13576.587891
+$label:  XSTR("Alpha 1", 4974)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 33
+$team: Unknown
+$class: GVCv Sobek
+$pos: -6631.931152, 758.920898, 21841.804688
+$label:  XSTR("Gamma Draconis", 5105)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 18
+$team: Hostile
+$class: SC Lilith
+$pos: -6743.865723, 758.920898, 23123.460938
+$label:  XSTR("Hypnus", 6151)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 20
+$team: Hostile
+$class: GVCv Sobek
+$pos: -6596.587402, 758.920898, 26120.064453
+$label:  XSTR("Shivan Forces?", 6153)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Pegasus
+$pos: -5598.633789, -2123.000977, 22791.414063
+$label:  XSTR("Alpha 1", 4974)
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("While the sensors of transports, freighters and warships are unable to pick up the Pegasus on their radars, fighter and bombercraft will be able to detect you if you stray too close. To remain undetected, you must stay $W 600 $W meters away from enemy patrols while in the nebula, and $W 1200 $W meters upon arrival in $b Gamma $b Draconis$|. Any activity from your afterburner will be detected immediately, as will firing your weapons. You will need to engage $W $quoteStealth $W Mode$quote $W (Shift+N)$| , which will prevent accidental discharge of these systems.", 6154)
+$end_multi_text
+$voice: none.wav
+$camera_pos: -7031.819336, 8144.974609, 24167.890625
+$camera_orient:
+	0.000168, -0.000004, -1.000000,
+	0.997628, 0.068831, 0.000167,
+	0.068831, -0.997628, 0.000016
+$camera_time: 500
+$num_lines: 0
+$num_icons: 5
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Pegasus
+$pos: -6401.913086, 138.722168, -13576.587891
+$label:  XSTR("Alpha 1", 4974)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 33
+$team: Unknown
+$class: GVCv Sobek
+$pos: -6631.931152, 758.920898, 21841.804688
+$label:  XSTR("Gamma Draconis", 5105)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 18
+$team: Hostile
+$class: SC Lilith
+$pos: -6743.865723, 758.920898, 23123.460938
+$label:  XSTR("Hypnus", 6151)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 20
+$team: Hostile
+$class: GVCv Sobek
+$pos: -6596.587402, 758.920898, 26120.064453
+$label:  XSTR("Shivan Forces?", 6153)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Pegasus
+$pos: -5598.633789, -2123.000977, 22791.414063
+$label:  XSTR("Alpha 1", 4974)
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Once you have completed your tasks and are safely away from any $h Shivan patrols, you may jump out to a pre-designated location and await the $f GVD $f Memphis's arrival. Attempting to jump back through the node only risks detection by the Shivans. We intend to evacuate the nebula once all repairs are complete, which should be in three hours' time.
+
+Good luck, pilot.", 6155)
+$end_multi_text
+$voice: none.wav
+$camera_pos: -7031.819336, 8144.974609, 24167.890625
+$camera_orient:
+	0.000168, -0.000004, -1.000000,
+	0.997628, 0.068831, 0.000167,
+	0.068831, -0.997628, 0.000016
+$camera_time: 500
+$num_lines: 0
+$num_icons: 4
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Pegasus
+$pos: -6401.913086, 138.722168, -13576.587891
+$label:  XSTR("Alpha 1", 4974)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 33
+$team: Unknown
+$class: GVCv Sobek
+$pos: -6631.931152, 758.920898, 21841.804688
+$label:  XSTR("Gamma Draconis", 5105)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 0
+$team: Friendly
+$class: GTF Pegasus
+$pos: -5598.633789, -2123.000977, 22791.414063
+$label:  XSTR("Alpha 1", 4974)
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 6
+$team: Friendly
+$class: GVD Hatshepsut
+$pos: -6660.122070, 0.000000, 23693.259766
+$label:  XSTR("Memphis", 5747)
++id: 7
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 4
+
+$Formula: ( and 
+   ( is-goal-true-delay 
+      "M5-P1: Infiltrate" 
+      0 
+   )
+   ( is-goal-true-delay "M5-P2: Recon" 0 ) 
+   ( is-goal-true-delay 
+      "M5-P3: Stealth" 
+      0 
+   )
+   ( or 
+      ( is-goal-false-delay 
+         "M5-B1: Scan Malcam" 
+         0 
+      )
+      ( is-goal-false-delay 
+         "M5-B2: Scan Menoetes" 
+         0 
+      )
+      ( is-goal-false-delay 
+         "M5-B3: Scan Empusa" 
+         0 
+      )
+   )
+   ( is-goal-true-delay 
+      "M5-S1: Scan Nebiros" 
+      0 
+   )
+)
+$Multi text
+    XSTR("Welcome back to the Memphis, Alpha 1.
+
+Shortly after you completed your mission, a Shivan scouting wing discovered our fleet's rallying point and forced us to move up our timetables for breaking through to Gamma Draconis. Fortunately your reconnaissance mission gave us the intelligence necessary to complete this maneuver without incurring any losses to the fleet, although a number of our vessels were damaged during the breakout. While work still needs to be done to bring the Memphis' guns to full operational status, we had sufficient energy in our cannons to break through Shivan lines. We destroyed the SC Sugriva and drove back the SCv Abraxis upon entry into the system, and we are now holding position in the outer reaches of the system while our fleet gathers.
+
+The SD Nebiros is a matter of concern, however. According to the data you gathered, this destroyer did not depart for the Capella jump node. Given the superiority of Shivan subspace technology and navigation, we believe the vessel is waiting to ambush the fleet should we attempt to escape. Long-range scans have already detected a sizable Shivan force gathering around the node. We must divide and conquer the Shivans before we can return to Allied-controlled space.
+
+I am pleased to report the rest of your wing successfully completed their mission. They have arrived in Gamma Draconis with the GVCv Sopedu and should be returning to the Memphis soon where you may reunite with them.
+
+One last thing. During the brief period that we had control of the node, a transport docked with the GTC Warwick and recovered nearly a hundred survivors from the cruiser. These crewpersons are now recovering aboard the Memphis and have expressed gratitude for your role in finding them. Excellent work, pilot..", 6156)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("Scanning all Shivan warships in the nebula will help minimize damage to GTVA forces during their escape.", 6157)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-goal-true-delay 
+      "M5-P1: Infiltrate" 
+      0 
+   )
+   ( is-goal-true-delay "M5-P2: Recon" 0 ) 
+   ( is-goal-true-delay 
+      "M5-P3: Stealth" 
+      0 
+   )
+   ( is-goal-true-delay 
+      "M5-B2: Scan Menoetes" 
+      0 
+   )
+   ( is-goal-true-delay 
+      "M5-B3: Scan Empusa" 
+      0 
+   )
+   ( is-goal-true-delay 
+      "M5-S1: Scan Nebiros" 
+      0 
+   )
+   ( is-goal-true-delay 
+      "M5-B1: Scan Malcam" 
+      0 
+   )
+)
+$Multi text
+    XSTR("Welcome back to the Memphis, Alpha 1.
+
+Shortly after you completed your mission, a Shivan scouting wing discovered our fleet's rallying point and forced us to move up our timetables for breaking through to Gamma Draconis. Fortunately your thorough reconnaissance mission gave us the intelligence necessary to complete this maneuver without incurring any losses to the fleet and suffering only minor damage. While work still needs to be done to bring the Memphis' guns to full operational status, we had sufficient energy in our cannons to break through Shivan lines. We destroyed the SC Sugriva and drove back the SCv Abraxis upon entry into the system, and we are now holding position in the outer reaches of the system while our fleet gathers.
+
+The SD Nebiros is a matter of concern, however. According to the data you gathered, this destroyer did not depart for the Capella jump node. Given the superiority of Shivan subspace technology and navigation, we believe the vessel is waiting to ambush the fleet should we attempt to escape. Long-range scans have already detected a sizable Shivan force gathering around the node. We must divide and conquer the Shivans before we can return to Allied-controlled space.
+
+I am pleased to report the rest of your wing successfully completed their mission. They have arrived in Gamma Draconis with the GVCv Sopedu and should be returning to the Memphis soon where you may reunite with them.
+
+One last thing. During the brief period that we had control of the node, a transport docked with the GTC Warwick and recovered nearly a hundred survivors from the cruiser. These crewpersons are now recovering aboard the Memphis and have expressed gratitude for your role in finding them. Excellent work, pilot.", 6158)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 3307)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-false-delay 
+      "COM: failed to leave nebula" 
+      0 
+   )
+   ( is-goal-false-delay 
+      "M5-P3: Stealth" 
+      0 
+   )
+)
+$Multi text
+    XSTR("The mission was a failure. With stealth compromised, the Shivans have begun to further fortify the jump node. Furthermore, enemy scout wings have discovered our position, and we are left with no other option but to push through the enemy's blockade. We will undoubtably suffer heavy losses.", 6159)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("Your directives will track the distance of the nearest member of the listed wing.", 6160)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "COM: failed to leave nebula" 
+   0 
+)
+$Multi text
+    XSTR("The mission was a failure. Without adequate intelligence of Shivan force composition on the other side of the node, we risk running into a trap. Furthermore, enemy scout wings have discovered our position, and we are left with no other option but to push through the enemy's blockade. We will undoubtably suffer heavy losses.", 6161)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("Your directives will track the distance of the nearest member of the listed wing.", 6160)
+$end_multi_text
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+)
+
++Weaponry Pool: (
+	"Subach HL-7"	1
+	"Tempest"	120
+)
+
+#Objects		;! 37 total
+
+$Name: Alpha 1		;! Object #0
+$Display Name: XSTR("Alpha 1", 4974)
+$Class: GTF Pegasus
+$Team: Friendly
+$Location: 415.592621, 138.721680, -1192.215088
+$Orientation:
+	0.632906, 0.352092, 0.689537,
+	-0.410361, 0.907776, -0.086872,
+	-0.656531, -0.227977, 0.719022
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Tempest" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "player-start" "stealth" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Menoetes		;! Object #1
+$Display Name: XSTR("Menoetes", 6162)
+$Class: SC Rakshasa
+$Team: Hostile
+$Location: 171.179138, 0.001526, 3792.585938
+$Orientation:
+	-0.769097, -0.342898, -0.539362,
+	-0.280742, 0.939373, -0.196882,
+	0.574172, 0.000000, -0.818735
+$AI Behavior: None
++AI Class: Olym-Captain
+$AI Goals: ( goals ( ai-waypoints-once "Menoetes depart" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Hull: 19
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Damage: 100
++Subsystem: turret02
+$Damage: 89
++Subsystem: turret03
+$Damage: 55
++Subsystem: turret04
+$Damage: 88
++Subsystem: turret05
+$Damage: 51
++Subsystem: turret06
+$Damage: 12
++Subsystem: turret07
+$Damage: 100
++Subsystem: turret08
+$Damage: 92
++Subsystem: turret09
+$Damage: 26
++Subsystem: turret10
+$Damage: 67
++Subsystem: turret11
+$Damage: 100
++Subsystem: turret12
+$Damage: 20
++Subsystem: turret13
+$Damage: 84
++Subsystem: turret14
+$Damage: 76
++Subsystem: sensors
+$Damage: 71
++Subsystem: communication
+$Damage: 65
++Subsystem: engine
+$Damage: 19
++Subsystem: weapons
+$Damage: 46
++Subsystem: navigation
+$Damage: 59
++Subsystem: reactor
+$Damage: 30
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( has-time-elapsed 33 ) 
+   ( not 
+      ( is-event-true-delay 
+         "Load Checkpoint 1" 
+         0 
+      )
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( <= 
+   ( distance 
+      "Menoetes" 
+      "Menoetes depart:1" 
+   )
+   300 
+)
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-music" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 300
+
+$Name: Empusa		;! Object #2
+$Display Name: XSTR("Empusa", 6163)
+$Class: SC Cain
+$Team: Hostile
+$Location: -2725.743896, 178.697998, 4934.716309
+$Orientation:
+	-0.460730, 0.837495, 0.293821,
+	0.624417, 0.541128, -0.563282,
+	-0.630740, -0.076054, -0.772259
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "nebula off" 0 ) 
+$Determination: 10
++Flags: ( "no-shields" "no-departure-warp" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Hypnus		;! Object #3
+$Display Name: XSTR("Hypnus", 6151)
+$Class: SC Lilith
+$Team: Hostile
+$Location: -298.873779, 250.000000, -631.644653
+$Orientation:
+	0.904753, -0.425940, 0.000000,
+	0.425940, 0.904753, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Major
+$AI Goals: ( goals ( ai-waypoints-once "Hypnus depart wp" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( <= 
+   ( distance 
+      "Hypnus" 
+      "Hypnus depart wp:1" 
+   )
+   500 
+)
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 100
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 210
+
+$Name: Aries 1		;! Object #4
+$Display Name: XSTR("Aries 1", 5286)
+$Class: SF Astaroth
+$Team: Hostile
+$Location: 129.926147, -500.000000, 2503.121582
+$Orientation:
+	0.080088, -0.025048, 0.996473,
+	0.007902, 0.999669, 0.024494,
+	-0.996757, 0.005912, 0.080259
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: Aries 2		;! Object #5
+$Display Name: XSTR("Aries 2", 5287)
+$Class: SF Astaroth
+$Team: Hostile
+$Location: 214.426208, -500.000061, 2355.321533
+$Orientation:
+	0.080088, -0.025049, 0.996473,
+	0.007902, 0.999669, 0.024494,
+	-0.996756, 0.005913, 0.080259
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: Aries 3		;! Object #6
+$Display Name: XSTR("Aries 3", 5288)
+$Class: SF Astaroth
+$Team: Hostile
+$Location: 339.562561, -588.242493, 2531.851318
+$Orientation:
+	0.080088, -0.025049, 0.996473,
+	0.007902, 0.999669, 0.024494,
+	-0.996756, 0.005913, 0.080259
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: Cancer 1		;! Object #7
+$Display Name: XSTR("Cancer 1", 5014)
+$Class: SF Dragon
+$Team: Hostile
+$Location: -103.282440, 499.998901, 5543.345703
+$Orientation:
+	-0.049145, -0.021941, -0.998551,
+	-0.039990, 0.999001, -0.019983,
+	0.997991, 0.038949, -0.049973
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Cancer 2		;! Object #8
+$Display Name: XSTR("Cancer 2", 5015)
+$Class: SF Dragon
+$Team: Hostile
+$Location: -199.184875, 498.320190, 5651.225098
+$Orientation:
+	-0.049144, -0.021941, -0.998551,
+	-0.039989, 0.999000, -0.019983,
+	0.997991, 0.038949, -0.049973
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Cancer 3		;! Object #9
+$Display Name: XSTR("Cancer 3", 5016)
+$Class: SF Dragon
+$Team: Hostile
+$Location: -269.443848, 492.075134, 5479.687500
+$Orientation:
+	-0.049144, -0.021941, -0.998551,
+	-0.039989, 0.999000, -0.019983,
+	0.997991, 0.038949, -0.049973
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Nebiros		;! Object #10
+$Display Name: XSTR("Nebiros", 6164)
+$Class: SD Ravana
+$Team: Hostile
+$Location: -3871.388184, 0.001190, 31364.136719
+$Orientation:
+	-0.461882, -0.021043, 0.886695,
+	0.188274, 0.974611, 0.121201,
+	-0.866730, 0.222921, -0.446192
+$AI Behavior: None
++AI Class: Olym-General
+$AI Goals: ( goals ( ai-chase "Manetho" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 91
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Damage: 4
++Subsystem: Turret03
+$Damage: 2
++Subsystem: Turret04
+$Damage: 34
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
+$Damage: 14
++Subsystem: Turret11
++Subsystem: Turret12
+$Damage: 6
++Subsystem: Turret13
++Subsystem: Turret14
+$Damage: 1
++Subsystem: Turret15
+$Damage: 46
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
+$Damage: 12
++Subsystem: Turret19
+$Damage: 6
++Subsystem: Turret20
++Subsystem: Turret21
+$Damage: 4
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
++Subsystem: Turret25
+$Damage: 15
++Subsystem: Turret26
++Subsystem: Turret27
++Subsystem: Turret28
++Subsystem: Turret29
+$Damage: 16
++Subsystem: Turret30
++Subsystem: navigation
+$Damage: 2
++Subsystem: weapons
+$Damage: 5
++Subsystem: sensors
+$Damage: 8
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      10 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-goal-true-delay 
+   "M5-P2: Recon" 
+   24 
+)
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 670
+
+$Name: Abraxis		;! Object #11
+$Display Name: XSTR("Abraxis", 6165)
+$Class: SCv Moloch
+$Team: Hostile
+$Location: -5206.100098, 902.200012, 35132.898438
+$Orientation:
+	0.070114, -0.994925, -0.072182,
+	0.698741, 0.100626, -0.708263,
+	0.711931, -0.000777, 0.702249
+$AI Behavior: None
++AI Class: Olym-Major
+$AI Goals: ( goals ( ai-waypoints "abraxis patrol path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 81
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      15 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 440
+
+$Name: Manetho		;! Object #12
+$Display Name: XSTR("Manetho", 5029)
+$Class: GVCv Sobek
+$Team: Friendly
+$Location: -8043.728516, 758.920593, 29159.341797
+$Orientation:
+	0.317180, 0.808497, 0.495713,
+	0.435749, -0.588501, 0.681022,
+	0.842331, 0.000000, -0.538962
+$AI Behavior: None
++AI Class: Coward
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 18
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Damage: 83
++Subsystem: turret02
+$Damage: 100
++Subsystem: turret03
+$Damage: 34
++Subsystem: turret04
+$Damage: 68
++Subsystem: turret05
+$Damage: 95
++Subsystem: turret06
+$Damage: 27
++Subsystem: turret07
+$Damage: 80
++Subsystem: turret08
+$Damage: 84
++Subsystem: turret09
+$Damage: 100
++Subsystem: turret10
+$Damage: 100
++Subsystem: turret11
+$Damage: 82
++Subsystem: turret12
+$Damage: 47
++Subsystem: turret13
++Subsystem: turret14
+$Damage: 27
++Subsystem: turret15
+$Damage: 32
++Subsystem: turret16
+$Damage: 88
++Subsystem: turret17
+$Damage: 56
++Subsystem: turret18
+$Damage: 79
++Subsystem: turret19
+$Damage: 100
++Subsystem: turret20
+$Damage: 100
++Subsystem: turret21
+$Damage: 91
++Subsystem: turret22
+$Damage: 100
++Subsystem: engine
+$Damage: 100
++Subsystem: communications
+$Damage: 79
++Subsystem: sensors
+$Damage: 65
++Subsystem: navigation
+$Damage: 88
++Subsystem: weapons
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      10 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" "hidden-from-sensors" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 400
+
+$Name: Kothar		;! Object #13
+$Display Name: XSTR("Kothar", 6166)
+$Class: GVC Mentu
+$Team: Friendly
+$Location: -5432.612305, 1716.042969, 33676.906250
+$Orientation:
+	0.680040, -0.161132, -0.715251,
+	0.567521, -0.501950, 0.652662,
+	-0.464185, -0.849755, -0.249900
+$AI Behavior: None
++AI Class: Coward
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 11
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
+$Damage: 100
++Subsystem: Turret02
+$Damage: 100
++Subsystem: Turret03
+$Damage: 94
++Subsystem: Turret04
+$Damage: 100
++Subsystem: Turret05
+$Damage: 29
++Subsystem: Turret06
+$Damage: 75
++Subsystem: Turret07
+$Damage: 60
++Subsystem: Turret08
+$Damage: 89
++Subsystem: Turret09
+$Damage: 32
++Subsystem: Turret10
+$Damage: 67
++Subsystem: Turret11
+$Damage: 76
++Subsystem: Turret12
+$Damage: 95
++Subsystem: Turret13
+$Damage: 69
++Subsystem: Turret14
+$Damage: 100
++Subsystem: Turret15
+$Damage: 100
++Subsystem: Turret16
+$Damage: 100
++Subsystem: engine
+$Damage: 100
++Subsystem: communications
+$Damage: 100
++Subsystem: sensors
+$Damage: 87
++Subsystem: navigation
+$Damage: 50
++Subsystem: weapons
+$Damage: 85
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      15 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "no-arrival-warp" "hidden-from-sensors" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
+$Texture Replace:
++old: htl-mentu
++new: htl-mentu-debris
++old: htl-mentu-turrets
++new: htl-mentu-debris
+
+$Name: Narodnaya		;! Object #14
+$Display Name: XSTR("Narodnaya", 6167)
+$Class: GTC Fenris
+$Team: Friendly
+$Location: -4836.000000, -2123.000000, 30272.000000
+$Orientation:
+	-0.759459, -0.350908, 0.547801,
+	-0.624626, 0.628683, -0.463249,
+	-0.181836, -0.693989, -0.696646
+$AI Behavior: None
++AI Class: Coward
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 9
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Damage: 100
++Subsystem: turret02
+$Damage: 100
++Subsystem: turret03
+$Damage: 87
++Subsystem: turret04
+$Damage: 48
++Subsystem: turret05
+$Damage: 100
++Subsystem: turret06
+$Damage: 88
++Subsystem: turret07
+$Damage: 62
++Subsystem: turret08
+$Damage: 100
++Subsystem: turret09a-01-main
+$Damage: 100
++Subsystem: radar01a-dish
+$Damage: 100
++Subsystem: sensors
+$Damage: 100
++Subsystem: communication
+$Damage: 61
++Subsystem: navigation
+$Damage: 88
++Subsystem: weapons
+$Damage: 91
++Subsystem: engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      15 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "no-arrival-warp" "hidden-from-sensors" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 100
+$Texture Replace:
++old: fenrisgreeb
++new: fenrisdead
++old: fenrisgreeb-reflect
++new: fenrisdead-reflect
++old: fenrismain
++new: fenrisdead
++old: fenrismain-ao
++new: fenrisdead-ao
++old: fenrismain-glow
++new: fenrisdead-glow
++old: fenrismain-normal
++new: fenrismain-normal
++old: fenrismain-reflect
++new: fenrismain-reflect
++old: nameplate
++new: damagedgtcnarodnaya
+
+$Name: Warwick		;! Object #15
+$Display Name: XSTR("Warwick", 5030)
+$Class: GTC Aeolus
+$Team: Friendly
+$Location: -1973.927246, -646.444336, 37998.589844
+$Orientation:
+	0.209016, 0.859167, 0.467064,
+	0.592381, -0.491251, 0.638562,
+	0.778074, 0.143210, -0.611633
+$AI Behavior: None
++AI Class: Coward
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 16
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
+$Damage: 100
++Subsystem: Turret02
+$Damage: 100
++Subsystem: Turret03
+$Damage: 45
++Subsystem: Turret04
+$Damage: 79
++Subsystem: Turret05
+$Damage: 100
++Subsystem: Turret06
+$Damage: 49
++Subsystem: turret07
+$Damage: 65
++Subsystem: turret08
+$Damage: 98
++Subsystem: turret09
+$Damage: 100
++Subsystem: turret10
+$Damage: 100
++Subsystem: turret11
+$Damage: 59
++Subsystem: turret12
+$Damage: 85
++Subsystem: Engine
+$Damage: 100
++Subsystem: Communication
+$Damage: 100
++Subsystem: Sensors
+$Damage: 85
++Subsystem: Navigation
+$Damage: 78
++Subsystem: Weapons
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      15 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "no-arrival-warp" "hidden-from-sensors" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 500
+$Texture Replace:
++old: nameplate
++new: gtc_warwick
+
+$Name: Sagittarius 1		;! Object #16
+$Display Name: XSTR("Sagittarius 1", 5292)
+$Class: SB Nahema
+$Team: Hostile
+$Location: -8432.723633, 1294.020752, 28999.761719
+$Orientation:
+	0.921061, 0.389418, 0.000000,
+	-0.331989, 0.785227, 0.522688,
+	0.203544, -0.481427, 0.852525
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Sbank Ammo: ( 0 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Sagittarius 2		;! Object #17
+$Display Name: XSTR("Sagittarius 2", 5293)
+$Class: SB Nahema
+$Team: Hostile
+$Location: -7102.607910, 631.494751, 29077.845703
+$Orientation:
+	0.457013, 0.370774, -0.808497,
+	0.630031, -0.776571, 0.000000,
+	-0.627855, -0.509378, -0.588502
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Sbank Ammo: ( 0 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Sugriva		;! Object #18
+$Display Name: XSTR("Sugriva", 6168)
+$Class: SC Rakshasa
+$Team: Hostile
+$Location: -3439.468506, 3022.276367, 32712.972656
+$Orientation:
+	0.086077, 0.991459, -0.097985,
+	-0.654347, 0.130424, 0.744864,
+	0.751281, 0.000000, 0.659984
+$AI Behavior: None
++AI Class: Olym-Captain
+$AI Goals: ( goals ( ai-waypoints "sugriva patrol path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 64
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      15 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 300
+
+$Name: Hypnus#2		;! Object #19
+$Display Name: XSTR("Hypnus", 6151)
+$Class: SC Lilith
+$Team: Hostile
+$Location: -1121.597656, -127.347778, 30450.398438
+$Orientation:
+	0.050774, 0.000000, 0.998710,
+	0.208191, 0.978031, -0.010584,
+	-0.976770, 0.208460, 0.049659
+$AI Behavior: None
++AI Class: Olym-Major
+$AI Goals: ( goals ( ai-waypoints-once "Hypnus#2 path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Sbank Ammo: ( 0 )
++Subsystem: turret09
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      15 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-goal-true-delay 
+   "M5-P2: Recon" 
+   25 
+)
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 210
+
+$Name: Aquarius 1		;! Object #20
+$Display Name: XSTR("Aquarius 1", 5017)
+$Class: SF Basilisk
+$Team: Hostile
+$Location: -4371.752930, -0.001648, 30668.625000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Aquarius 2		;! Object #21
+$Display Name: XSTR("Aquarius 2", 5018)
+$Class: SF Basilisk
+$Team: Hostile
+$Location: -4532.221191, -0.002075, 30506.425781
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Aquarius 3		;! Object #22
+$Display Name: XSTR("Aquarius 3", 5295)
+$Class: SF Basilisk
+$Team: Hostile
+$Location: -4244.562500, -0.002075, 30501.392578
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Aquarius 4		;! Object #23
+$Display Name: XSTR("Aquarius 4", 5296)
+$Class: SF Basilisk
+$Team: Hostile
+$Location: -4367.431152, -0.001953, 30400.001953
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Scorpio 1		;! Object #24
+$Display Name: XSTR("Scorpio 1", 5055)
+$Class: SF Mara
+$Team: Hostile
+$Location: -992.091064, 0.001465, 37312.789063
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Scorpio 2		;! Object #25
+$Display Name: XSTR("Scorpio 2", 5056)
+$Class: SF Mara
+$Team: Hostile
+$Location: -1133.733154, 0.001465, 37183.328125
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Scorpio 3		;! Object #26
+$Display Name: XSTR("Scorpio 3", 5057)
+$Class: SF Mara
+$Team: Hostile
+$Location: -872.089111, 0.001465, 37181.652344
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Virgo 1		;! Object #27
+$Display Name: XSTR("Virgo 1", 5040)
+$Class: SF Aeshma
+$Team: Hostile
+$Location: -4084.812500, 0.001465, 33271.625000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Virgo 2		;! Object #28
+$Display Name: XSTR("Virgo 2", 5041)
+$Class: SF Aeshma
+$Team: Hostile
+$Location: -4280.205078, 0.001465, 33134.101563
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Virgo 3		;! Object #29
+$Display Name: XSTR("Virgo 3", 5042)
+$Class: SF Aeshma
+$Team: Hostile
+$Location: -3925.446533, 0.001465, 33116.500000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
++AI Class: Olym-Captain
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: area 2 trigger		;! Object #30
+$Display Name: XSTR("area 2 trigger", 6169)
+$Class: GTNB Pharos
+$Team: Friendly
+$Location: 2998.745605, 0.007568, 39995.066406
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no_collide" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Malcam		;! Object #31
+$Display Name: XSTR("Malcam", 6170)
+$Class: SCv Moloch
+$Team: Hostile
+$Location: 2081.791992, -2634.759766, 3227.183594
+$Orientation:
+	-0.498952, 0.864507, -0.060615,
+	-0.866630, -0.497730, 0.034898,
+	0.000000, 0.069943, 0.997551
+$AI Behavior: None
++AI Class: Olym-Major
+$AI Goals: ( goals ( ai-waypoints "Malcam patrol" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "nebula off" 0 ) 
+$Determination: 10
++Flags: ( "no-shields" "no-departure-warp" "scannable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 440
+
+$Name: Taurus 1		;! Object #32
+$Display Name: XSTR("Taurus 1", 5297)
+$Class: SF Manticore
+$Team: Hostile
+$Location: 3199.641602, -0.000122, 2003.928833
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Taurus 2		;! Object #33
+$Display Name: XSTR("Taurus 2", 5298)
+$Class: SF Manticore
+$Team: Hostile
+$Location: 3100.992920, -0.000183, 1901.547852
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Meno scanned tracker		;! Object #34
+$Display Name: XSTR("Meno scanned tracker", 6171)
+$Class: GTNB Pharos
+$Team: Friendly
+$Location: 12.207031, 0.004883, 20047.064453
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-cargo-known-delay 0 "Menoetes" ) 
+   ( and 
+      ( is-event-true-delay 
+         "Load Checkpoint 1" 
+         0 
+      )
+      ( lua-savestate-shipstatus 
+         "Meno scanned tracker" 
+      )
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "no-arrival-warp" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no_collide" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Malcam scanned tracker		;! Object #35
+$Display Name: XSTR("Malcam scanned tracker", 6172)
+$Class: GTNB Pharos
+$Team: Friendly
+$Location: -186.756775, 0.000000, 20051.660156
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-cargo-known-delay 0 "Malcam" ) 
+   ( and 
+      ( is-event-true-delay 
+         "Load Checkpoint 1" 
+         0 
+      )
+      ( lua-savestate-shipstatus 
+         "Malcam scanned tracker" 
+      )
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "no-arrival-warp" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no_collide" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Empusa scanned tracker		;! Object #36
+$Display Name: XSTR("Empusa scanned tracker", 6173)
+$Class: GTNB Pharos
+$Team: Friendly
+$Location: -349.155640, 0.000031, 20050.734375
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 4975)
++Initial Velocity: 33
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-cargo-known-delay 0 "Empusa" ) 
+   ( and 
+      ( is-event-true-delay 
+         "Load Checkpoint 1" 
+         0 
+      )
+      ( lua-savestate-shipstatus 
+         "Empusa scanned tracker" 
+      )
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-music" "no-arrival-warp" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no_collide" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+#Wings		;! 8 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Alpha 1"
+)
++Hotkey: 0
++Flags: ( )
+
+$Name: Aries
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Aries 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "nebula off" 0 ) 
+$Ships: (		;! 3 total
+	"Aries 1"
+	"Aries 2"
+	"Aries 3"
+)
+$AI Goals: ( goals ( ai-waypoints "Aries patrol" 50 ) )
++Flags: ( "no-departure-warp" )
+
+$Name: Cancer
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Cancer 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "nebula off" 0 ) 
+$Ships: (		;! 3 total
+	"Cancer 1"
+	"Cancer 2"
+	"Cancer 3"
+)
+$AI Goals: ( goals ( ai-waypoints "Cancer patrol" 50 ) )
++Flags: ( "no-departure-warp" )
+
+$Name: Sagittarius
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Sagittarius 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      15 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Nebiros
+$Departure Cue: ( is-destroyed-delay 2 "Manetho" ) 
+$Ships: (		;! 2 total
+	"Sagittarius 1"
+	"Sagittarius 2"
+)
++Flags: ( "no-arrival-warp" )
+
+$Name: Aquarius
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Aquarius 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Nebiros
++Arrival Paths: ( "$bay04" "$bay05" "$bay06" )
+$Arrival Cue: ( is-destroyed-delay 35 "Manetho" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( has-departed-delay 0 "Nebiros" ) 
+$Ships: (		;! 4 total
+	"Aquarius 1"
+	"Aquarius 2"
+	"Aquarius 3"
+	"Aquarius 4"
+)
+$AI Goals: ( goals ( ai-waypoints "aquarius patrol path" 50 ) )
++Hotkey: 4
++Flags: ( "no-arrival-music" )
+
+$Name: Scorpio
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Scorpio 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      15 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Scorpio 1"
+	"Scorpio 2"
+	"Scorpio 3"
+)
+$AI Goals: ( goals ( ai-waypoints "scorpio patrol path" 50 ) )
++Hotkey: 5
++Flags: ( "no-arrival-warp" )
+
+$Name: Virgo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Virgo 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "gamma drac background" 
+      15 
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Virgo 1"
+	"Virgo 2"
+	"Virgo 3"
+)
+$AI Goals: ( goals ( ai-waypoints "virgo patrol path" 50 ) )
++Hotkey: 6
++Flags: ( "no-arrival-warp" )
+
+$Name: Taurus
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Taurus 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Malcam
+$Arrival Cue: ( is-event-true-delay 
+   "malcam scanned" 
+   10 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "nebula off" 0 ) 
+$Ships: (		;! 2 total
+	"Taurus 1"
+	"Taurus 2"
+)
+$AI Goals: ( goals ( ai-guard "Malcam" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-departure-warp" )
+
+#Events		;! 138 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[#Memphis]" 
+      "#Memphis" 
+      6144 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[#Command]" 
+      "#Command" 
+      5138 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[Gamma Draconis]" 
+      "Gamma Draconis" 
+      5105 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar4[Nebula]" 
+      "Nebula" 
+      5107 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar5[Scan Subsystem]" 
+      "Scan Subsystem" 
+      6245 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-time-elapsed 0 ) 
+   ( play-sound-from-file 
+      "SF_I_AmbFS2" 
+      1 
+   )
+   ( ignore-key -1 "Alt-J" ) 
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Alpha 1" 
+      "communications" 
+   )
+   ( hide-jumpnode "@autoGenVar4[Nebula]" ) 
+   ( alter-ship-flag 
+      "no-subspace-drive" 
+      ( true ) 
+      ( true ) 
+      "Alpha 1" 
+   )
+)
++Name: -----START-----
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-time-elapsed 3 ) 
+      ( not 
+         ( is-event-true-delay 
+            "Load Checkpoint 1" 
+            0 
+         )
+      )
+   )
+   ( training-msg "Toggle safeties" ) 
+)
++Name: Toggle safeties
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( key-pressed "Shift-N" ) 
+      ( is-event-true-delay 
+         "Load Checkpoint 1" 
+         1 
+      )
+   )
+   ( training-msg 
+      "Safeties armed" 
+      "Safeties armed" 
+      0 
+      5 
+   )
+   ( lock-primary-weapon "Alpha 1" ) 
+   ( lock-secondary-weapon "Alpha 1" ) 
+   ( lock-afterburner "Alpha 1" ) 
+)
++Name: Safety on
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: -----P1NEBULA-----
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-time-elapsed 2 ) 
+      ( not 
+         ( is-event-true-delay 
+            "Load Checkpoint 1" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: mission start 1" 
+   )
+)
++Name: COM: mission start 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: mission start 2" 
+   )
+)
++Name: COM: mission start 2
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Alpha 1" "Aries" ) 
+         900 
+      )
+      ( not 
+         ( or 
+            ( is-event-true-delay 
+               "COM: detected by aries" 
+               0 
+            )
+            ( is-event-true-delay 
+               "COM: detected by cancer" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: aries wing approaching" 
+   )
+)
++Name: COM: aries wing approaching
++Repeat Count: -1
++Trigger Count: 100
++Interval: 15
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Alpha 1" "Cancer" ) 
+         900 
+      )
+      ( not 
+         ( or 
+            ( is-event-true-delay 
+               "COM: detected by aries" 
+               0 
+            )
+            ( is-event-true-delay 
+               "COM: detected by cancer" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: cancer wing approaching" 
+   )
+)
++Name: COM: cancer wing approaching
++Repeat Count: -1
++Trigger Count: 100
++Interval: 15
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Menoetes" ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: Menoetes arrive" 
+   )
+)
++Name: COM: Menoetes arrive
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( <= 
+      ( distance-to-center 
+         "Alpha 1" 
+         "Empusa" 
+      )
+      2500 
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: Empusa detected" 
+   )
+)
++Name: COM: Empusa detected
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( <= 
+            ( distance "Alpha 1" "Aries" ) 
+            600 
+         )
+         ( or 
+            ( not 
+               ( is-event-true-delay 
+                  "Detected by Cancer" 
+                  0 
+               )
+            )
+            ( not 
+               ( is-event-true-delay 
+                  "Detected by Taurus" 
+                  0 
+               )
+            )
+         )
+      )
+      ( and 
+         ( primary-fired-since 
+            "Alpha 1" 
+            0 
+            30000 
+         )
+         ( not 
+            ( has-departed-delay 0 "Empusa" ) 
+         )
+      )
+      ( and 
+         ( secondary-fired-since 
+            "Alpha 1" 
+            0 
+            30000 
+         )
+         ( not 
+            ( has-departed-delay 0 "Empusa" ) 
+         )
+      )
+      ( and 
+         ( secondary-fired-since 
+            "Alpha 1" 
+            1 
+            30000 
+         )
+         ( not 
+            ( has-departed-delay 0 "Empusa" ) 
+         )
+      )
+      ( and 
+         ( < 
+            ( afterburner-energy-pct "Alpha 1" ) 
+            100 
+         )
+         ( not 
+            ( has-departed-delay 0 "Empusa" ) 
+         )
+      )
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( add-goal 
+      "Aries" 
+      ( ai-chase "Alpha 1" 89 ) 
+   )
+   ( add-goal 
+      "Cancer" 
+      ( ai-chase "Alpha 1" 89 ) 
+   )
+   ( ship-unstealthy "Alpha 1" ) 
+   ( close-sound-from-file ( true ) ) 
+)
++Name: Detected by Aries
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file "SF_I_Btl02" ) 
+)
++Name: aries music change
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: detected by aries/cancer" 
+   )
+)
++Name: COM: detected by aries
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Alpha 1" "Cancer" ) 
+         600 
+      )
+      ( or 
+         ( not 
+            ( is-event-true-delay 
+               "Detected by Aries" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Detected by Taurus" 
+               0 
+            )
+         )
+      )
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( add-goal 
+      "Cancer" 
+      ( ai-chase "Alpha 1" 89 ) 
+   )
+   ( add-goal 
+      "Aries" 
+      ( ai-chase "Alpha 1" 89 ) 
+   )
+   ( ship-unstealthy "Alpha 1" ) 
+   ( close-sound-from-file ( true ) ) 
+)
++Name: Detected by Cancer
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file "SF_I_Btl02" ) 
+)
++Name: cancer music change
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Command]" 
+      "High" 
+      "COM: detected by aries/cancer" 
+   )
+)
++Name: COM: detected by cancer
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance-to-center 
+            "Alpha 1" 
+            "Taurus" 
+         )
+         600 
+      )
+      ( or 
+         ( not 
+            ( is-event-true-delay 
+               "Detected by Aries" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "Detected by Cancer" 
+               0 
+            )
+         )
+      )
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( add-goal 
+      "Taurus" 
+      ( ai-chase "Alpha 1" 89 ) 
+   )
+   ( ship-unstealthy "Alpha 1" ) 
+   ( close-sound-from-file ( true ) ) 
+)
++Name: Detected by Taurus
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file "SF_I_Btl02" ) 
+)
++Name: taurus music change
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: detected by aries/cancer" 
+   )
+)
++Name: COM: detected by taurus
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( <= 
+      ( distance 
+         "Hypnus" 
+         "Hypnus depart wp:1" 
+      )
+      800 
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: hypnus preparing to jump" 
+   )
+)
++Name: COM: hypnus preparing to jump
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( <= 
+      ( distance 
+         "Hypnus" 
+         "Hypnus depart wp:1" 
+      )
+      500 
+   )
+   ( ignore-key 0 "Alt-J" ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: hypnus jumping" 
+   )
+)
++Name: hypnus jumping out
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-goal-true-delay 
+      "M5-P1: Infiltrate" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: jump to gamma drac directive
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Infiltrate Gamma Draconis", 6174)
++Objective key:  XSTR("SC Hypnus departs in 3 minutes", 6175)
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( has-arrived-delay 
+            0 
+            "Meno scanned tracker" 
+         )
+         ( has-arrived-delay 
+            0 
+            "Malcam scanned tracker" 
+         )
+         ( has-arrived-delay 
+            0 
+            "Empusa scanned tracker" 
+         )
+      )
+      ( is-goal-true-delay 
+         "M5-P1: Infiltrate" 
+         0 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Scan targets around node
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Scan targets of opportunity", 6176)
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "Alt-J" ) 
+      ( <= 
+         ( distance 
+            "Alpha 1" 
+            "gamma drac node center:1" 
+         )
+         650 
+      )
+   )
+   ( lua-jump-to 
+      "player jump arrive" 
+      25 
+      "Alpha 1" 
+   )
+)
++Name: jump out to gamma drac
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "jump out to gamma drac" 
+         7 
+      )
+      ( is-event-true-delay 
+         "Load Checkpoint 1" 
+         0 
+      )
+   )
+   ( nebula-change-storm "<none>" ) 
+   ( mission-set-nebula 0 ) 
+   ( remove-sun-bitmap 0 ) 
+)
++Name: nebula off
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay "nebula off" 1 ) 
+      ( is-event-true-delay 
+         "Load Checkpoint 1" 
+         0 
+      )
+   )
+   ( add-sun-bitmap 
+      "SunEtamin" 
+      323 
+      0 
+      305 
+      400 
+   )
+   ( hide-jumpnode "@autoGenVar3[Gamma Draconis]" ) 
+   ( show-jumpnode "@autoGenVar4[Nebula]" ) 
+   ( add-background-bitmap 
+      "NebulB3-Main" 
+      89 
+      0 
+      60 
+      300 
+      300 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulG9-Whisp" 
+      89 
+      188 
+      62 
+      300 
+      300 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB5-Whisp" 
+      90 
+      0 
+      70 
+      200 
+      200 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB2-Main" 
+      100 
+      44 
+      55 
+      300 
+      300 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB8-Whisp" 
+      136 
+      64 
+      77 
+      300 
+      140 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB12-Whisp" 
+      193 
+      295 
+      73 
+      300 
+      200 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB12-Whisp" 
+      29 
+      22 
+      71 
+      400 
+      200 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB14-Whisp" 
+      12 
+      4 
+      69 
+      200 
+      100 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB11-Whisp" 
+      79 
+      87 
+      86 
+      300 
+      200 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB2-Main" 
+      43 
+      55 
+      84 
+      500 
+      300 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB1-Main" 
+      300 
+      0 
+      340 
+      100 
+      100 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB5-Whisp" 
+      293 
+      0 
+      346 
+      300 
+      300 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB11-Whisp" 
+      301 
+      351 
+      330 
+      400 
+      120 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB12-Whisp" 
+      304 
+      158 
+      340 
+      400 
+      100 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB2-Main" 
+      320 
+      144 
+      305 
+      400 
+      300 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulG5-Whisp" 
+      322 
+      355 
+      307 
+      300 
+      300 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB9-Whisp" 
+      322 
+      0 
+      304 
+      300 
+      300 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB2-Main" 
+      0 
+      322 
+      0 
+      1300 
+      1000 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB2-Main" 
+      90 
+      77 
+      0 
+      1000 
+      800 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB9-Whisp" 
+      0 
+      0 
+      0 
+      300 
+      300 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB10-Whisp" 
+      348 
+      177 
+      12 
+      400 
+      400 
+      1 
+      1 
+   )
+   ( add-background-bitmap 
+      "NebulB2-Main" 
+      355 
+      99 
+      144 
+      900 
+      900 
+      1 
+      1 
+   )
+   ( set-skybox-model "StarField.pof" ) 
+)
++Name: gamma drac background
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Detected by Aries" 
+         1 
+      )
+      ( is-event-true-delay 
+         "Detected by Cancer" 
+         1 
+      )
+      ( is-event-true-delay 
+         "Detected by Taurus" 
+         0 
+      )
+   )
+   ( ship-guardian "Alpha 1" ) 
+)
++Name: Detected
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( fade-out 3000 ) ) 
++Name: fade to black
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: detected, mission fail
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "hypnus jumping out" 
+         10 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "jump out to gamma drac" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: failed to leave nebula" 
+   )
+   ( ship-guardian "Alpha 1" ) 
+)
++Name: COM: failed to leave nebula
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( fade-out 3000 ) ) 
++Name: fade to black
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: did not jump out, mission fail
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-cargo-known-delay 0 "Hypnus" ) 
+   ( do-nothing ) 
+)
++Name: hypnus scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 0 "Menoetes" ) 
+   ( do-nothing ) 
+)
++Name: menoetes scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 
+         2 
+         "Meno scanned tracker" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Load Checkpoint 1" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "Normal" 
+      "MEM: Meno scanned" 
+   )
+)
++Name: MEM: Meno scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 0 "Empusa" ) 
+   ( do-nothing ) 
+)
++Name: empusa scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 
+         2 
+         "Empusa scanned tracker" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Load Checkpoint 1" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "Normal" 
+      "MEM: Empusa scanned" 
+   )
+)
++Name: MEM: Empusa scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 0 "Malcam" ) 
+   ( do-nothing ) 
+)
++Name: malcam scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: Malcam launching fighters" 
+   )
+)
++Name: COM: Malcam launching fighters
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 6 "Taurus" ) 
+      ( not 
+         ( is-event-true-delay 
+            "Load Checkpoint 1" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "Normal" 
+      "MEM: Malcam scanned" 
+   )
+)
++Name: MEM: Malcam scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( cap-waypoint-speed "Malcam" 10 ) 
+)
++Name: Malcam patrol speed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( <= 
+      ( distance-to-center 
+         "Alpha 1" 
+         "Malcam" 
+      )
+      2500 
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: Malcam detected" 
+   )
+)
++Name: COM: Malcam detected
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( <= 
+      ( distance-to-bbox "Alpha 1" "Malcam" ) 
+      2500 
+   )
+   ( add-remove-escort "Malcam" 90 ) 
+)
++Name: Add Malcam to escort
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( every-time 
+   ( >= 
+      ( distance-to-bbox "Alpha 1" "Malcam" ) 
+      2500 
+   )
+   ( add-remove-escort "Malcam" 0 ) 
+)
++Name: Remove Malcam from escort
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( every-time 
+   ( <= 
+      ( distance-to-bbox "Alpha 1" "Empusa" ) 
+      2500 
+   )
+   ( add-remove-escort "Empusa" 80 ) 
+)
++Name: Add Empusa to escort
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( every-time 
+   ( > 
+      ( distance-to-bbox "Alpha 1" "Empusa" ) 
+      2500 
+   )
+   ( add-remove-escort "Empusa" 0 ) 
+)
++Name: Remove Empusa from escort
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( <= 
+      ( distance-to-bbox 
+         "Alpha 1" 
+         "Menoetes" 
+      )
+      2500 
+   )
+   ( add-remove-escort "Menoetes" 1 ) 
+)
++Name: Add Meno to escort
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( > 
+      ( distance-to-bbox 
+         "Alpha 1" 
+         "Menoetes" 
+      )
+      2500 
+   )
+   ( add-remove-escort "Menoetes" 0 ) 
+)
++Name: Remove Meno from escort
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( every-time 
+   ( <= 
+      ( distance-to-bbox "Alpha 1" "Hypnus" ) 
+      2500 
+   )
+   ( add-remove-escort "Hypnus" 100 ) 
+)
++Name: Add Hypnus to escort
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( >= 
+      ( distance-to-bbox "Alpha 1" "Hypnus" ) 
+      2500 
+   )
+   ( add-remove-escort "Hypnus" 0 ) 
+)
++Name: Remove Hypnus from escort
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "jump out to gamma drac" 
+      8 
+   )
+   ( fade-out 3000 ) 
+)
++Name: Fade out in tunnel
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "73 minutes later" 
+      -55 
+      50 
+      ( false ) 
+      ( false ) 
+      8000 
+      2000 
+      0 
+      255 
+      255 
+      255 
+      "font03.vf" 
+      ( true ) 
+   )
+)
++Name: 73 minutes later...
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-in 3000 3 3 3 ) 
+)
++Name: Fade in in tunnel
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "jump out to gamma drac" 
+         32 
+      )
+      ( is-event-true-delay 
+         "Load Checkpoint 1" 
+         0 
+      )
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( play-sound-from-file 
+      "Mainhall_SD_Lucifer" 
+      1 
+   )
+   ( subsys-set-random "Abraxis" 65 100 ) 
+   ( subsys-set-random "Sugriva" 45 100 ) 
+   ( subsys-set-random "Nebiros" 75 100 ) 
+)
++Name: -----P2GAMMADRAC-----
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( lock-afterburner "Alpha 1" ) 
+   ( lock-primary-weapon "Alpha 1" ) 
+   ( lock-secondary-weapon "Alpha 1" ) 
+)
++Name: Ensure safety on
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Ensure safety on" 
+         7 
+      )
+      ( is-event-true-delay 
+         "Load Checkpoint 1" 
+         2 
+      )
+   )
+   ( send-message 
+      "Manetho" 
+      "High" 
+      "MAN: arrive in gamma drac 1" 
+   )
+)
++Name: MAN: arrive in gamma drac 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: arrive in gamma drac 2" 
+   )
+   ( add-remove-escort "Nebiros" 100 ) 
+)
++Name: COM: arrive in gamma drac 2
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: arrive in gamma drac 3" 
+   )
+)
++Name: COM: arrive in gamma drac 3
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: arrive in gamma drac 4" 
+   )
+)
++Name: COM: arrive in gamma drac 4
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "COM: arrive in gamma drac 2" 
+      2 
+   )
+   ( lua-mark-subsystem 
+      "Nebiros" 
+      "@autoGenVar5[Scan Subsystem]" 
+      "communications" 
+      "weapons" 
+      "sensors" 
+      "navigation" 
+   )
+)
++Name: Markbox Nebiros systems
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 
+      0 
+      "Abraxis" 
+      "Sugriva" 
+   )
+   ( cap-waypoint-speed "Abraxis" 10 ) 
+   ( cap-waypoint-speed "Sugriva" 10 ) 
+)
++Name: abraxis+sugriva wp speed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 
+      0 
+      "Manetho" 
+      "Kothar" 
+      "Narodnaya" 
+      "Warwick" 
+   )
+   ( beam-lock-all 
+      "Manetho" 
+      "Kothar" 
+      "Narodnaya" 
+      "Warwick" 
+   )
+   ( turret-lock-all 
+      "Manetho" 
+      "Kothar" 
+      "Narodnaya" 
+      "Warwick" 
+   )
+   ( deactivate-glow-maps 
+      "Narodnaya" 
+      "Kothar" 
+      "Warwick" 
+   )
+   ( deactivate-glow-points "Kothar" ) 
+)
++Name: lock allied weapons glowpoints
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Fade in in tunnel" 
+         10 
+      )
+      ( is-event-true-delay 
+         "Load Checkpoint 1" 
+         2 
+      )
+   )
+   ( fire-beam 
+      "Nebiros" 
+      "turret01" 
+      "Manetho" 
+   )
+   ( fire-beam 
+      "Nebiros" 
+      "turret02" 
+      "Manetho" 
+   )
+)
++Name: nebiros fire on manetho
++Repeat Count: -1
++Trigger Count: 5
++Interval: 15
+
+$Formula: ( when 
+   ( <= 
+      ( distance "Alpha 1" "Aquarius" ) 
+      4000 
+   )
+   ( do-nothing ) 
+)
++Name: Aquarius track distance trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( not 
+         ( has-departed-delay 0 "Abraxis" ) 
+      )
+      ( <= 
+         ( distance "Alpha 1" "Aquarius" ) 
+         4000 
+      )
+   )
+   ( modify-variable 
+      @Distance_AlphaAquarius[0] 
+      ( distance "Alpha 1" "Aquarius" ) 
+   )
+)
++Name: Aquarius track distance
++Repeat Count: -1
++Trigger Count: 1000
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( <= 
+      ( distance "Alpha 1" "Aquarius" ) 
+      4000 
+   )
+   ( do-nothing ) 
+)
++Name: AquariusAlpha directive trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-departed-delay 0 "Abraxis" ) 
+      ( directive-value 
+         @Distance_AlphaAquarius[0] 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: AquariusAlpha directive
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Aquarius distance:", 6177)
++Objective key:  XSTR("F9", 5323)
+
+$Formula: ( when 
+   ( <= 
+      ( distance "Alpha 1" "Scorpio" ) 
+      4000 
+   )
+   ( do-nothing ) 
+)
++Name: Scorpio track distance trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( not 
+         ( has-departed-delay 0 "Abraxis" ) 
+      )
+      ( <= 
+         ( distance "Alpha 1" "Scorpio" ) 
+         4000 
+      )
+   )
+   ( modify-variable 
+      @Distance_AlphaScorpio[0] 
+      ( distance "Alpha 1" "Scorpio" ) 
+   )
+)
++Name: Scorpio track distance
++Repeat Count: -1
++Trigger Count: 1000
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( <= 
+      ( distance "Alpha 1" "Scorpio" ) 
+      4000 
+   )
+   ( do-nothing ) 
+)
++Name: ScorpioAlpha directive trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-departed-delay 0 "Abraxis" ) 
+      ( directive-value 
+         @Distance_AlphaScorpio[0] 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: ScorpioAlpha directive
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Scorpio distance:", 6178)
++Objective key:  XSTR("F10", 5623)
+
+$Formula: ( when 
+   ( <= 
+      ( distance "Alpha 1" "Virgo" ) 
+      4000 
+   )
+   ( do-nothing ) 
+)
++Name: Virgo track distance trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( not 
+         ( has-departed-delay 0 "Abraxis" ) 
+      )
+      ( <= 
+         ( distance "Alpha 1" "Virgo" ) 
+         4000 
+      )
+   )
+   ( modify-variable 
+      @Distance_AlphaVirgo[0] 
+      ( distance "Alpha 1" "Virgo" ) 
+   )
+)
++Name: Virgo track distance
++Repeat Count: -1
++Trigger Count: 1000
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( <= 
+      ( distance "Alpha 1" "Virgo" ) 
+      4000 
+   )
+   ( do-nothing ) 
+)
++Name: VirgoAlpha directive trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-departed-delay 0 "Abraxis" ) 
+      ( directive-value 
+         @Distance_AlphaVirgo[0] 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: VirgoAlpha directive
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Virgo distance:", 6179)
++Objective key:  XSTR("F11", 6180)
+
+$Formula: ( when 
+   ( <= 
+      ( distance-to-bbox 
+         "Alpha 1" 
+         "Sagittarius" 
+      )
+      4000 
+   )
+   ( do-nothing ) 
+)
++Name: Sagi track distance trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( has-departed-delay 0 "Abraxis" ) 
+      )
+      ( <= 
+         ( distance-to-bbox 
+            "Alpha 1" 
+            "Sagittarius" 
+         )
+         4000 
+      )
+   )
+   ( modify-variable 
+      @Distance_AlphaSagi[0] 
+      ( distance-to-bbox 
+         "Alpha 1" 
+         "Sagittarius" 
+      )
+   )
+)
++Name: Sagi track distance
++Repeat Count: -1
++Trigger Count: 1000
++Interval: 0
++Chained: 0
+
+$Formula: ( when 
+   ( <= 
+      ( distance-to-bbox 
+         "Alpha 1" 
+         "Sagittarius" 
+      )
+      4000 
+   )
+   ( do-nothing ) 
+)
++Name: SagiAlpha directive trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-departed-delay 0 "Sagittarius" ) 
+      ( directive-value 
+         @Distance_AlphaSagi[0] 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: SagiAlpha directive
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Bombers distance:", 6181)
++Objective key:  XSTR("F12", 6182)
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Alpha 1" "Sagittarius" ) 
+         1500 
+      )
+      ( not 
+         ( or 
+            ( is-event-true-delay 
+               "Detected by sagi bombers" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Virgo" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: sagi bombers approaching" 
+   )
+)
++Name: COM: sagi bombers approaching
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Alpha 1" "Aquarius" ) 
+         1500 
+      )
+      ( not 
+         ( or 
+            ( is-event-true-delay 
+               "Detected by sagi bombers" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Virgo" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: aquarius wing approaching" 
+   )
+)
++Name: COM: aquarius wing approaching
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Alpha 1" "Scorpio" ) 
+         1500 
+      )
+      ( not 
+         ( or 
+            ( is-event-true-delay 
+               "Detected by sagi bombers" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Virgo" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: scorpio wing approaching" 
+   )
+)
++Name: COM: scorpio wing approaching
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Alpha 1" "Virgo" ) 
+         1500 
+      )
+      ( not 
+         ( or 
+            ( is-event-true-delay 
+               "Detected by sagi bombers" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Virgo" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: virgo wing approaching" 
+   )
+)
++Name: COM: virgo wing approaching
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Alpha 1" "Sagittarius" ) 
+         1200 
+      )
+      ( not 
+         ( or 
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Virgo" 
+               0 
+            )
+         )
+      )
+      ( has-arrived-delay 0 "Sagittarius" ) 
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( add-goal 
+      "Aquarius" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( add-goal 
+      "Scorpio" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( add-goal 
+      "Virgo" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( ship-unstealthy "Alpha 1" ) 
+)
++Name: Detected by sagi bombers
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( <= 
+            ( distance "Alpha 1" "Scorpio" ) 
+            1200 
+         )
+         ( not 
+            ( or 
+               ( is-event-true-delay 
+                  "Detected by sagi bombers" 
+                  0 
+               )
+               ( is-event-true-delay 
+                  "Detected by Scorpio" 
+                  0 
+               )
+               ( is-event-true-delay 
+                  "Detected by Virgo" 
+                  0 
+               )
+            )
+         )
+         ( has-arrived-delay 0 "Scorpio" ) 
+      )
+      ( and 
+         ( primary-fired-since 
+            "Alpha 1" 
+            0 
+            30000 
+         )
+         ( not 
+            ( has-departed-delay 
+               0 
+               "area 2 trigger" 
+            )
+         )
+         ( has-arrived-delay 0 "Scorpio" ) 
+      )
+      ( and 
+         ( secondary-fired-since 
+            "Alpha 1" 
+            0 
+            30000 
+         )
+         ( not 
+            ( has-departed-delay 
+               0 
+               "area 2 trigger" 
+            )
+         )
+         ( has-arrived-delay 0 "Scorpio" ) 
+      )
+      ( and 
+         ( secondary-fired-since 
+            "Alpha 1" 
+            1 
+            30000 
+         )
+         ( not 
+            ( has-departed-delay 
+               0 
+               "area 2 trigger" 
+            )
+         )
+         ( has-arrived-delay 0 "Scorpio" ) 
+      )
+      ( and 
+         ( < 
+            ( afterburner-energy-pct "Alpha 1" ) 
+            100 
+         )
+         ( not 
+            ( has-departed-delay 
+               0 
+               "area 2 trigger" 
+            )
+         )
+         ( has-arrived-delay 0 "Scorpio" ) 
+      )
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( add-goal 
+      "Aquarius" 
+      ( ai-chase "Alpha 1" 89 ) 
+   )
+   ( add-goal 
+      "Scorpio" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( add-goal 
+      "Virgo" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( ship-unstealthy "Alpha 1" ) 
+)
++Name: Detected by Scorpio
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Alpha 1" "Aquarius" ) 
+         1200 
+      )
+      ( not 
+         ( or 
+            ( is-event-true-delay 
+               "Detected by sagi bombers" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Virgo" 
+               0 
+            )
+         )
+      )
+      ( has-arrived-delay 0 "Aquarius" ) 
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( add-goal 
+      "Aquarius" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( add-goal 
+      "Scorpio" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( add-goal 
+      "Virgo" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( ship-unstealthy "Alpha 1" ) 
+)
++Name: Detected by Aquarius
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Alpha 1" "Virgo" ) 
+         1200 
+      )
+      ( not 
+         ( or 
+            ( is-event-true-delay 
+               "Detected by sagi bombers" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+            ( is-event-true-delay 
+               "Detected by Scorpio" 
+               0 
+            )
+         )
+      )
+      ( has-arrived-delay 0 "Virgo" ) 
+   )
+   ( unprotect-ship "Alpha 1" ) 
+   ( add-goal 
+      "Aquarius" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( add-goal 
+      "Scorpio" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( add-goal 
+      "Virgo" 
+      ( ai-chase "Alpha 1" 200 ) 
+   )
+   ( ship-unstealthy "Alpha 1" ) 
+)
++Name: Detected by Virgo
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "COM: arrive in gamma drac 2" 
+      0 
+   )
+   ( alter-ship-flag 
+      "scannable" 
+      ( true ) 
+      ( true ) 
+      "Nebiros" 
+   )
+   ( set-cargo 
+      "Scanned" 
+      "Nebiros" 
+      "navigation" 
+   )
+   ( set-cargo 
+      "Scanned" 
+      "Nebiros" 
+      "weapons" 
+   )
+   ( set-cargo 
+      "Scanned" 
+      "Nebiros" 
+      "sensors" 
+   )
+   ( set-cargo 
+      "Scanned" 
+      "Nebiros" 
+      "communications" 
+   )
+)
++Name: Nebiros subsystems scannable
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( cap-subsys-cargo-known-delay 
+         0 
+         "Nebiros" 
+         "navigation" 
+         "weapons" 
+         "sensors" 
+         "communications" 
+      )
+      ( not 
+         ( is-goal-false-delay 
+            "M5-P3: Stealth" 
+            0 
+         )
+      )
+   )
+   ( add-remove-escort "Nebiros" 0 ) 
+)
++Name: scan nebiros subsystems
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Scan Nebiros Subsystems", 6183)
++Objective key:  XSTR("Weapons, Navs, Comms, Sensors", 6184)
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: all subsystems scanned" 
+   )
+)
++Name: COM: all subsystems scanned
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( cap-subsys-cargo-known-delay 
+      0 
+      "Nebiros" 
+      "communications" 
+   )
+   ( lua-mark-clear-subsys 
+      "Nebiros" 
+      "communications" 
+   )
+)
++Name: comms scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: comms scanned" 
+   )
+)
++Name: COM: comms scanned
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( cap-subsys-cargo-known-delay 
+      0 
+      "Nebiros" 
+      "sensors" 
+   )
+   ( lua-mark-clear-subsys 
+      "Nebiros" 
+      "sensors" 
+   )
+)
++Name: sensors scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: sensors scanned" 
+   )
+)
++Name: COM: sensors scanned
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( cap-subsys-cargo-known-delay 
+      0 
+      "Nebiros" 
+      "weapons" 
+   )
+   ( lua-mark-clear-subsys 
+      "Nebiros" 
+      "weapons" 
+   )
+)
++Name: weapons scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: weapons scanned" 
+   )
+)
++Name: COM: weapons scanned
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( cap-subsys-cargo-known-delay 
+      0 
+      "Nebiros" 
+      "navigation" 
+   )
+   ( lua-mark-clear-subsys 
+      "Nebiros" 
+      "navigation" 
+   )
+)
++Name: navigations scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: navigations scanned" 
+   )
+)
++Name: COM: navigations scanned
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( <= 
+      ( distance "Alpha 1" "Narodnaya" ) 
+      1750 
+   )
+   ( alter-ship-flag 
+      "hidden-from-sensors" 
+      ( false ) 
+      ( true ) 
+      "Narodnaya" 
+   )
+   ( add-remove-escort "Narodnaya" 99 ) 
+)
++Name: narodnaya on sensors
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: narod on sensors" 
+   )
+)
++Name: COM: narod on sensors
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 0 "Narodnaya" ) 
+   ( add-remove-escort "Narodnaya" 0 ) 
+)
++Name: narodnaya scanned
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Scan Narodnaya", 6185)
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Narodnaya" 
+      "High" 
+      "NAROD: narodnaya scanned 1" 
+   )
+)
++Name: NAROD: narodnaya scanned 1
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Narodnaya" 
+      "High" 
+      "NAROD: narodnaya scanned 2" 
+   )
+)
++Name: NAROD: narodnaya scanned 2
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: narodnaya scanned 3" 
+   )
+)
++Name: COM: narodnaya scanned 3
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Narodnaya" 
+      "High" 
+      "NAROD: narodnaya scanned 4" 
+   )
+)
++Name: NAROD: narodnaya scanned 4
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Narodnaya" 
+      "High" 
+      "NAROD: narodnaya scanned 5" 
+   )
+)
++Name: NAROD: narodnaya scanned 5
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "NAROD: narodnaya scanned 4" 
+      3 
+   )
+   ( fire-beam 
+      "Hypnus#2" 
+      "turret07" 
+      "Narodnaya" 
+      "Hull" 
+      ( true ) 
+   )
+)
++Name: hypnus#2 attack narodnaya
++Repeat Count: -1
++Trigger Count: 5
++Interval: 15
+
+$Formula: ( when 
+   ( <= 
+      ( distance "Alpha 1" "Kothar" ) 
+      1750 
+   )
+   ( alter-ship-flag 
+      "hidden-from-sensors" 
+      ( false ) 
+      ( true ) 
+      "Kothar" 
+   )
+   ( add-remove-escort "Kothar" 98 ) 
+)
++Name: kothar on sensors
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: kothar on sensors" 
+   )
+)
++Name: COM: kothar on sensors
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 0 "Kothar" ) 
+   ( add-remove-escort "Kothar" 0 ) 
+)
++Name: kothar scanned
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Scan Kothar", 6186)
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: kothar scanned 1" 
+   )
+)
++Name: COM: kothar scanned 1
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: kothar scanned 2" 
+   )
+)
++Name: COM: kothar scanned 2
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( <= 
+      ( distance "Alpha 1" "Warwick" ) 
+      1750 
+   )
+   ( alter-ship-flag 
+      "hidden-from-sensors" 
+      ( false ) 
+      ( true ) 
+      "Warwick" 
+   )
+   ( add-remove-escort "Warwick" 97 ) 
+)
++Name: warwick on sensors
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: warwick on sensors" 
+   )
+)
++Name: COM: warwick on sensors
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-cargo-known-delay 0 "Warwick" ) 
+   ( add-remove-escort "Warwick" 0 ) 
+)
++Name: warwick scanned
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Scan Warwick", 6187)
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: warwick scanned" 
+   )
+)
++Name: COM: warwick scanned
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Aquarius" ) 
+   ( do-nothing ) 
+)
++Name: Aquarius launch
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: aquarius launch" 
+   )
+)
++Name: COM: aquarius launch
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-cargo-known-delay 
+      0 
+      "Narodnaya" 
+      "Kothar" 
+      "Warwick" 
+   )
+   ( do-nothing ) 
+)
++Name: allied ships scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "COM: arrive in gamma drac 3" 
+      0 
+   )
+   ( do-nothing ) 
+)
++Name: investigate signals
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-goal-true-delay "M5-P2: Recon" 0 ) 
+   ( do-nothing ) 
+)
++Name: investigate signals directive
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Investigate signals", 6188)
+
+$Formula: ( when 
+   ( and 
+      ( is-goal-true-delay "M5-P2: Recon" 8 ) 
+      ( is-goal-true-delay 
+         "M5-S1: Scan Nebiros" 
+         8 
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: objectives complete" 
+   )
+)
++Name: withdraw to safe distance
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( >= 
+      ( distance "Alpha 1" "<any hostile>" ) 
+      6000 
+   )
+   ( do-nothing ) 
+)
++Name: safe distance directive
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Withdraw to safe distance", 6189)
++Objective key:  XSTR(" 6KM from nearest enemy", 6190)
+
+$Formula: ( when 
+   ( is-goal-true-delay 
+      "M5-P2: Recon" 
+      25 
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: Andro depart" 
+   )
+)
++Name: COM: Andro depart
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "safe distance directive" 
+         0 
+      )
+      ( >= 
+         ( distance "Alpha 1" "<any hostile>" ) 
+         6000 
+      )
+   )
+   ( alter-ship-flag 
+      "no-subspace-drive" 
+      ( false ) 
+      ( true ) 
+      "Alpha 1" 
+   )
+)
++Name: Jump out
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: Jump out directive
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Objective:  XSTR("Jump out", 5824)
++Objective key:  XSTR("$Alt-J$", 5331)
+
+$Formula: ( when 
+   ( is-event-true-delay "Jump out" 2 ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "Normal" 
+      "MEM: Depart" 
+   )
+)
++Name: MEM: Depart
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Detected by Scorpio" 
+         2 
+      )
+      ( is-event-true-delay 
+         "Detected by sagi bombers" 
+         2 
+      )
+      ( is-event-true-delay 
+         "Detected by Aquarius" 
+         2 
+      )
+      ( is-event-true-delay 
+         "Detected by Virgo" 
+         2 
+      )
+   )
+   ( ship-guardian "Alpha 1" ) 
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "High" 
+      "COM: Detected in G.Drac" 
+   )
+   ( play-sound-from-file "SF_I_Btl02" ) 
+)
++Name: Detected in gamma drac
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( fade-out 3000 ) ) 
++Name: fade out
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: detect in gamdrac, mission fail
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-event-true-delay "Jump out" 0 ) 
+   ( allow-ship "GVF Horus" ) 
+   ( allow-ship "GVF Thoth" ) 
+   ( allow-ship "GVF Serapis" ) 
+   ( allow-ship "GVF Tauret" ) 
+)
++Name: Allow more Vasudan stuff
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-goal-true-delay 
+         "M5-S1: Scan Nebiros" 
+         9 
+      )
+      ( or 
+         ( not 
+            ( is-event-true-delay 
+               "narodnaya scanned" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "warwick scanned" 
+               0 
+            )
+         )
+         ( not 
+            ( is-event-true-delay 
+               "kothar scanned" 
+               0 
+            )
+         )
+      )
+   )
+   ( send-message 
+      "@autoGenVar1[#Memphis]" 
+      "Normal" 
+      "MEM: Continue search" 
+   )
+)
++Name: MEM: Continue search
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: -----CHECKPOINT_STUFF-----
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( lua-savestate-check ) 
+      ( < ( mission-time ) 1 ) 
+   )
+   ( lua-call-prompt 
+      "LoadData" 
+      "Save Data Detected" 
+      ( true ) 
+      "Start from beginning" 
+      ( true ) 
+      "Checkpoint 1" 
+      ( lua-savestate-check 1 ) 
+   )
+)
++Name: Load Data Prompt
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = 
+      ( lua-get-prompt-response "LoadData" ) 
+      2 
+   )
+   ( lua-savestate-load 1 ) 
+   ( ignore-key 0 "Alt-J" ) 
+   ( subsys-set-random "Nebiros" 75 100 ) 
+   ( subsys-set-random "Abraxis" 65 100 ) 
+   ( subsys-set-random "Sugriva" 45 100 ) 
+   ( play-sound-from-file 
+      "Mainhall_SD_Lucifer" 
+   )
+)
++Name: Load Checkpoint 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Hypnus#2" 
+      ( ai-waypoints-once 
+         "Hypnus#2 path" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Abraxis" 
+      ( ai-waypoints 
+         "abraxis patrol path" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Sugriva" 
+      ( ai-waypoints 
+         "sugriva patrol path" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Virgo" 
+      ( ai-waypoints "virgo patrol path" 89 ) 
+   )
+   ( add-goal 
+      "Scorpio" 
+      ( ai-waypoints 
+         "scorpio patrol path" 
+         89 
+      )
+   )
+)
++Name: Shivans patrol
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Ensure safety on" 
+         5 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Load Checkpoint 1" 
+            0 
+         )
+      )
+   )
+   ( lua-savestate-save 1 ) 
+   ( training-msg "Checkpoint reached!" ) 
+)
++Name: Save Checkpoint 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( alter-ship-flag 
+      "hide-in-mission-log" 
+      ( true ) 
+      ( true ) 
+      "Meno scanned tracker" 
+      "Malcam scanned tracker" 
+      "Empusa scanned tracker" 
+      "area 2 trigger" 
+   )
+)
++Name: Hide logs
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 7 total
+
+$Type: Bonus
++Name: M5-B1: Scan Malcam
+$MessageNew:  XSTR("Scan Malcam", 6191)
+$end_multi_text
+$Formula: ( has-arrived-delay 
+   0 
+   "Malcam scanned tracker" 
+)
+
+$Type: Primary
++Name: M5-P1: Infiltrate
+$MessageNew:  XSTR("Infiltrate Gamma Draconis", 6174)
+$end_multi_text
+$Formula: ( or 
+   ( and 
+      ( is-event-true-delay 
+         "jump out to gamma drac" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay "Detected" 0 ) 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "COM: failed to leave nebula" 
+            0 
+         )
+      )
+   )
+   ( is-event-true-delay 
+      "Load Checkpoint 1" 
+      0 
+   )
+)
++No music
+
+$Type: Primary
++Name: M5-P2: Recon
+$MessageNew:  XSTR("Recon Gamma Draconis", 6192)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "allied ships scanned" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Detected by Scorpio" 
+         0 
+      )
+   )
+   ( not 
+      ( is-event-true-delay "Detected" 0 ) 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "COM: failed to leave nebula" 
+         0 
+      )
+   )
+   ( is-event-true-delay 
+      "scan nebiros subsystems" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Detected in gamma drac" 
+         0 
+      )
+   )
+)
++No music
+
+$Type: Bonus
++Name: M5-B2: Scan Menoetes
+$MessageNew:  XSTR("Scan Menoetes", 6193)
+$end_multi_text
+$Formula: ( has-arrived-delay 
+   0 
+   "Meno scanned tracker" 
+)
+
+$Type: Bonus
++Name: M5-B3: Scan Empusa
+$MessageNew:  XSTR("Scan Empusa", 6194)
+$end_multi_text
+$Formula: ( has-arrived-delay 
+   0 
+   "Empusa scanned tracker" 
+)
+
+$Type: Secondary
++Name: M5-S1: Scan Nebiros
+$MessageNew:  XSTR("Scan major threats", 6195)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "scan nebiros subsystems" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Detected by Scorpio" 
+         0 
+      )
+   )
+   ( not 
+      ( is-event-true-delay "Detected" 0 ) 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "COM: failed to leave nebula" 
+         0 
+      )
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Detected in gamma drac" 
+         0 
+      )
+   )
+)
++No music
+
+$Type: Primary
++Name: M5-P3: Stealth
+$MessageNew:  XSTR("Maintain Stealth", 6196)
+$end_multi_text
+$Formula: ( and 
+   ( not 
+      ( is-event-true-delay "Detected" 0 ) 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Detected by Scorpio" 
+         0 
+      )
+   )
+   ( is-event-true-delay "Jump out" 0 ) 
+   ( not 
+      ( is-event-true-delay 
+         "Detected in gamma drac" 
+         0 
+      )
+   )
+)
+
+#Waypoints		;! 13 lists total
+
+
+$Jump Node: 0.000000, 0.000000, 4000.000000
+$Jump Node Name: XSTR("Gamma Draconis", 5105)
+
+$Jump Node: 0.000000, 0.000000, 30000.000000
+$Jump Node Name: XSTR("Nebula", 5107)
+$Name: Hypnus depart wp
+$List: (		;! 1 points in list
+	( -300.000000, 250.000000, 4000.000000 )
+)
+
+$Name: Cancer patrol
+$List: (		;! 8 points in list
+	( -1.296753, 500.000610, 5545.664063 )
+	( 1002.000000, 500.000000, 5001.799805 )
+	( 1505.716064, 499.999878, 4002.256836 )
+	( 1000.666504, 500.001099, 3000.080811 )
+	( 20.699467, 500.001709, 2503.396973 )
+	( -998.957642, 500.001709, 2999.996826 )
+	( -1500.500000, 500.000000, 4003.199951 )
+	( -999.772461, 500.002686, 5005.182617 )
+)
+
+$Name: Aries patrol
+$List: (		;! 8 points in list
+	( -0.700000, -500.000000, 2500.199951 )
+	( -997.956543, -500.000000, 3000.828857 )
+	( -1498.699951, -500.000000, 4005.199951 )
+	( -989.092163, -500.001221, 5005.842773 )
+	( -6.400000, -500.000000, 5562.700195 )
+	( 998.316223, -500.000000, 5013.033691 )
+	( 1500.951904, -500.000000, 4015.129150 )
+	( 1002.799988, -500.000000, 3014.800049 )
+)
+
+$Name: Menoetes depart
+$List: (		;! 1 points in list
+	( 1515.034302, -0.000977, 1861.067627 )
+)
+
+$Name: player jump arrive
+$List: (		;! 2 points in list
+	( 2.575878, 0.008911, 30001.548828 )
+	( -494.939331, 0.009277, 30281.267578 )
+)
+
+$Name: gamma drac node center
+$List: (		;! 1 points in list
+	( -0.069305, -0.000610, 4002.139404 )
+)
+
+$Name: Hypnus#2 path
+$List: (		;! 2 points in list
+	( -3009.774414, 0.000122, 30299.308594 )
+	( -5020.014160, 244.587402, 29329.826172 )
+)
+
+$Name: sugriva patrol path
+$List: (		;! 4 points in list
+	( -1876.955811, 3000.000000, 34145.226563 )
+	( -3337.899902, 3000.000000, 36273.601563 )
+	( -6420.979004, 3000.003906, 36156.664063 )
+	( -4583.399902, 3000.000000, 32504.500000 )
+)
+
+$Name: abraxis patrol path
+$List: (		;! 4 points in list
+	( -3191.500000, 900.000000, 37120.101563 )
+	( -229.399994, 800.000000, 35225.300781 )
+	( -1496.034180, 700.000061, 33116.996094 )
+	( -5144.799805, 800.000000, 34163.300781 )
+)
+
+$Name: scorpio patrol path
+$List: (		;! 4 points in list
+	( -1060.425537, -251.343262, 37576.007813 )
+	( -3215.777832, -618.272949, 37558.121094 )
+	( -4839.948730, 1248.003906, 32800.683594 )
+	( -1257.759033, 1028.307007, 32685.925781 )
+)
+
+$Name: virgo patrol path
+$List: (		;! 4 points in list
+	( -5270.377441, 1724.160767, 33922.375000 )
+	( -3777.051758, 421.573975, 37305.031250 )
+	( -1350.091675, -257.079834, 37992.289063 )
+	( -2986.073486, 1668.221191, 32421.230469 )
+)
+
+$Name: aquarius patrol path
+$List: (		;! 4 points in list
+	( -5578.919434, 739.395996, 29404.962891 )
+	( -6591.909180, 570.904053, 31569.345703 )
+	( -3140.648682, -483.923828, 33240.250000 )
+	( -2092.472900, -539.833984, 31064.748047 )
+)
+
+$Name: Malcam patrol
+$List: (		;! 8 points in list
+	( 2012.677612, -2484.527344, 5080.314941 )
+	( 965.542969, -2484.527344, 6119.345215 )
+	( -1021.459900, -2484.527344, 6032.372559 )
+	( -2015.309082, -2484.527344, 4983.375488 )
+	( -2039.312378, -2484.527344, 3053.565918 )
+	( -1007.757202, -2484.527344, 2046.067871 )
+	( 896.176758, -2484.527344, 2049.372314 )
+	( 2025.669434, -2484.527344, 2968.039307 )
+)
+
+#Messages		;! 52 total
+
+
+$Name: COM: aries wing approaching
+$Team: -1
+$MessageNew:  XSTR("Evade Aries wing, Alpha 1.", 6197)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: cancer wing approaching
+$Team: -1
+$MessageNew:  XSTR("You are dangerously close to Cancer wing, Alpha 1.", 6198)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: detected by aries/cancer
+$Team: -1
+$MessageNew:  XSTR("Alpha 1, you have been detected! Withdraw from the area and return to the Memphis immediately!", 6199)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: sagi bombers approaching
+$Team: -1
+$MessageNew:  XSTR("Stay clear of those bombers, pilot. ", 6200)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: aquarius wing approaching
+$Team: -1
+$MessageNew:  XSTR("Aquarius wing is near your location.", 6201)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: scorpio wing approaching
+$Team: -1
+$MessageNew:  XSTR("Stand clear of scorpio wing, pilot.", 6202)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: virgo wing approaching
+$Team: -1
+$MessageNew:  XSTR("Alpha 1, you are close to Virgo wing. ", 6203)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: NAROD: narodnaya scanned 1
+$Team: -1
+$MessageNew:  XSTR("-course I saw it! See! Right there! ", 6204)
+$end_multi_text
++Persona: Large Ship
++Wave Name: msg.wav
+
+$Name: NAROD: narodnaya scanned 2
+$Team: -1
+$MessageNew:  XSTR("Hey! We can see you out there! Help us! Please!", 6205)
+$end_multi_text
++Persona: Large Ship
++Wave Name: msg.wav
+
+$Name: COM: narodnaya scanned 3
+$Team: -1
+$MessageNew:  XSTR("Alpha 1! Get away from that cruiser! The Shivans will have heard their transmission!", 6206)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: NAROD: narodnaya scanned 4
+$Team: -1
+$MessageNew:  XSTR("Please! There's still 52 of us alive on this ship! Get some help! I beg you!", 6207)
+$end_multi_text
++Persona: Large Ship
++Wave Name: msg.wav
+
+$Name: NAROD: narodnaya scanned 5
+$Team: -1
+$MessageNew:  XSTR("Oh my God...oh God...No...NO PLE-", 6208)
+$end_multi_text
++Persona: Large Ship
++Wave Name: msg.wav
+
+$Name: COM: failed to leave nebula
+$Team: -1
+$MessageNew:  XSTR("Your window of opportunity has closed, Alpha 1. Return to the Memphis at once.", 6209)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: sensors scanned
+$Team: -1
+$MessageNew:  XSTR("Sensors scanned.", 6210)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: navigations scanned
+$Team: -1
+$MessageNew:  XSTR("Navigations have been scanned.", 6211)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: weapons scanned
+$Team: -1
+$MessageNew:  XSTR("Weapons subsystem scanned.", 6212)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: comms scanned
+$Team: -1
+$MessageNew:  XSTR("Nebiros communications scanned.", 6213)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: kothar scanned 1
+$Team: -1
+$MessageNew:  XSTR("As we suspected. The Kothar has sustained heavy damage, including total atmospheric loss. It is a miracle that it is still in one piece.", 6214)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: kothar scanned 2
+$Team: -1
+$MessageNew:  XSTR("Detecting no lifesigns aboard however. A terrible death...", 6215)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: narod on sensors
+$Team: -1
+$MessageNew:  XSTR("Contact identified as GTC Narodnaya. Alpha 1, if there are any survivors aboard, we will try to pick them up when the fleet enters the system.", 6216)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: kothar on sensors
+$Team: -1
+$MessageNew:  XSTR("IFF matches that of the GVC Kothar, 6th Battlegroup of Adhara. The ship has suffered extensive damage. Scan for survivors.", 6217)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: warwick on sensors
+$Team: -1
+$MessageNew:  XSTR("GTC Warwick on sensors. Investigate that cruiser, Alpha 1.", 6218)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: warwick scanned
+$Team: -1
+$MessageNew:  XSTR("We are detecting some signs of life aboard the Warwick. We will begin SAR once the Memphis arrives in Gamma Dracronis.", 6219)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: MAN: arrive in gamma drac 1
+$Team: -1
+$MessageNew:  XSTR("-eld the line for as long as possible. If you are still reading us, you must sur-", 6220)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC2
++Wave Name: msg.wav
+
+$Name: COM: arrive in gamma drac 2
+$Team: -1
+$MessageNew:  XSTR("The blockade force is no more. Alpha 1. Admiral Nekba requests that you scan the Nebiros' subsystems. As soon as we are in-system we will destroy this monstrosity. Scan its weapons, communications, navigation and sensor subsystems.", 6221)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: arrive in gamma drac 3
+$Team: -1
+$MessageNew:  XSTR("We are also detecting faint IFF signatures from the debris field. Investigate these signals for survivors. We will pick them up once the area around the node is secured.", 6222)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: arrive in gamma drac 4
+$Team: -1
+$MessageNew:  XSTR("Shivan warships Abraxis and Sugriva with accompanying fighter wings are sweeping the area. Maintain a distance of at least 1200 meters from hostile fighters to preserve your stealth. Your computer will track their distance once they are within 4 kilometers of you. Good luck Alpha 1.", 6223)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: aquarius launch
+$Team: -1
+$MessageNew:  XSTR("A wing of Basilisks, designated Aquarius, has launched from the Nebiros. They are taking up a patrol pattern around the destroyer.", 6224)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: mission start 1
+$Team: -1
+$MessageNew:  XSTR("Alpha 1, activate stealth mode. You should see the Hypnus ahead of you. The cruiser will depart at the node in a little over 3 minutes time. You must enter subspace as the cruiser does to successfully enter Gamma Draconis undetected.", 6225)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: hypnus preparing to jump
+$Team: -1
+$MessageNew:  XSTR("The SC Hypnus is preparing to jump. ETD 15 seconds.", 6226)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: hypnus jumping
+$Team: -1
+$MessageNew:  XSTR("Alpha 1, activate your jump drives now!", 6227)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: Menoetes arrive
+$Team: -1
+$MessageNew:  XSTR("A Rakshasa-class cruiser has entered from Gamma Draconis. The vessel appears to be heavily damaged.", 6228)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: all subsystems scanned
+$Team: -1
+$MessageNew:  XSTR("All subsystems scanned. The Admiral will appreciate this immensely.", 6229)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: objectives complete
+$Team: -1
+$MessageNew:  XSTR("Excellent work, Alpha 1. Your mission is complete. Egress from the area and engage your jump drives once you are at least six kilometers away from the Shivans.", 6230)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: mission start 2
+$Team: -1
+$MessageNew:  XSTR("Multiple contacts are near the node. Computer puts their probability as two wings of fighters, one cruiser and a larger vessel. Likely a corvette. Proceed with caution, pilot.", 6231)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: Detected in G.Drac
+$Team: -1
+$MessageNew:  XSTR("The Shivans are on to you Alpha 1! Abort the mission!", 6232)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: Empusa detected
+$Team: -1
+$MessageNew:  XSTR("Detecting a Shivan cruiser on sensors. SC Empusa.", 6233)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: Malcam detected
+$Team: -1
+$MessageNew:  XSTR("A Moloch-class corvette is now on sensors. They appear to be following a patrol route.", 6234)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: Malcam launching fighters
+$Team: -1
+$MessageNew:  XSTR("The Malcam is launching fighters! Evade them, Alpha 1!", 6235)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: COM: Andro depart
+$Team: -1
+$MessageNew:  XSTR("Detecting heavy subspace activity. The Nebiros and the Hypnus appear to be departing.", 6236)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: 73 minutes later
+$Team: -1
+$MessageNew:  XSTR("73 minutes later...", 6237)
+$end_multi_text
+
+$Name: Checkpoint reached!
+$Team: -1
+$MessageNew:  XSTR("==CHECKPOINT REACHED==", 5453)
+$end_multi_text
+
+$Name: Save Data Detected
+$Team: -1
+$MessageNew:  XSTR("Save Data Detected", 5454)
+$end_multi_text
+
+$Name: Checkpoint 1
+$Team: -1
+$MessageNew:  XSTR("Checkpoint 1", 5455)
+$end_multi_text
+
+$Name: Start from beginning
+$Team: -1
+$MessageNew:  XSTR("Start from beginning", 5457)
+$end_multi_text
+
+$Name: MEM: Continue search
+$Team: -1
+$MessageNew:  XSTR("Continue searching the area for survivors. Refer to your radar to find any trace of their presence.", 6238)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: MEM: Malcam scanned
+$Team: -1
+$MessageNew:  XSTR("That was close. Good work scanning that corvette, Alpha 1. We will prioritize this threat.", 6239)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: MEM: Empusa scanned
+$Team: -1
+$MessageNew:  XSTR("Data received. We will destroy this cruiser before it can bring its beam cannon to bear.", 6240)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: MEM: Meno scanned
+$Team: -1
+$MessageNew:  XSTR("Despite its damage, the Menoetes may still pose a threat to our escape. We will attempt to track this vessel and destroy it before we move on the node.", 6241)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: MEM: Depart
+$Team: -1
+$MessageNew:  XSTR("Mission complete. Engage your subspace drives, Alpha 1.", 6242)
+$end_multi_text
++Persona: Large Ship Vasudan
++AVI Name: Head-VC
++Wave Name: msg.wav
+
+$Name: Safeties armed
+$Team: -1
+$MessageNew:  XSTR("Stealth mode activated", 6243)
+$end_multi_text
+
+$Name: Toggle safeties
+$Team: -1
+$MessageNew:  XSTR("To activate stealth mode, press Shift+N", 6244)
+$end_multi_text
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 500
+$Ambient light level: 7895160
++Neb2: nbackpurp1
+
++Neb2Flags: 60
+
+
+$Bitmap List:
+$Sun: SunBlue
++Angles: 0.174533 0.000000 2.251475
++Scale: 1.000000
+
+#Asteroid Fields
+
+$Density: 500
++Field Type: 1
++Debris Genre: 1
++Field Debris Type: 4
++Field Debris Type: 3
++Field Debris Type: 7
+$Average Speed: 0.000000
+$Minimum: -10000.000000, -1000.000000, 28000.000000
+$Maximum: 1000.000000, 3000.000000, 40000.000000
+
+#Music
+
+$Event Music: None
+$Briefing Music: Briefing_GVC_Aten
+$Debriefing Success Music: NewVictory
+$Debriefing Average Music: NewAverage
+$Debriefing Fail Music: NewFailure
+
+#End
+
