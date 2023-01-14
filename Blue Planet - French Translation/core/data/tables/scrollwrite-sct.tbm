@@ -9,7 +9,6 @@ function Scroll:Init()
 
 	self.Enabled = false
 	self.Lines = {}
-	self.Unicode = cf.fileExists("unicodeEnable.cfg", "data/config", true)
 
 end
 
@@ -71,14 +70,7 @@ function Scroll:Draw()
 				end
 				local toDraw = (mn.getMissionTime() - line.Timestamp) / line.Speed
 				if toDraw > 0 then
-					local displayString
-					
-					if self.Unicode then
-						displayString = utf8.sub(line.Text, 1, toDraw)
-					else
-						displayString = line.Text:sub(1, toDraw)
-					end
-					
+					local displayString = utf8.sub(line.Text, 1, toDraw)
 					local x, y = line.X, line.Y
 					
 					gr.CurrentFont = gr.Fonts[line.Font]
