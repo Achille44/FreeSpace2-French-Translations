@@ -3121,6 +3121,12 @@ $Formula: ( when
       "Alpha 3" 
       "Alpha 4" 
    )
+   ( add-to-collision-group "Gorgon Cannon" 0 ) 
+   ( add-to-collision-group "Meson Generator" 0 ) 
+   ( add-to-collision-group "Collar 1" 0 ) 
+   ( add-to-collision-group "Collar 2" 0 ) 
+   ( add-to-collision-group "Collar 3" 0 ) 
+   ( add-to-collision-group "Collar 4" 0 ) 
 )
 +Name: Setup forces
 +Repeat Count: 1
@@ -3287,7 +3293,10 @@ $Formula: ( when
 +Team: 0
 
 $Formula: ( when 
+   ( and 
    ( has-arrived-delay 23 "Chaugnar" ) 
+      ( false ) 
+   )
    ( set-thrusters-status 
       ( true ) 
       "Collar 1" 
@@ -3685,7 +3694,15 @@ $Formula: ( when
 +Team: 0
 
 $Formula: ( when 
-   ( true ) 
+   ( and 
+      ( has-arrived-delay 28 "Azathoth" ) 
+      ( not 
+         ( is-destroyed-delay 
+            0 
+            "Jilvaa"
+         )
+      )
+   )
    ( fire-beam 
       "Azathoth" 
       "turret01" 
@@ -3710,21 +3727,23 @@ $Formula: ( when
 +Name: Azathoth rips Jilvaa apart
 +Repeat Count: 3
 +Interval: 9
-+Chained: 26
 +Team: 0
 
 $Formula: ( when 
-   ( true ) 
-   ( sabotage-subsystem 
+   ( and 
+      ( has-arrived-delay 55 "Azathoth" ) 
+      ( not 
+         ( is-destroyed-delay 
+            0 
       "Jilvaa" 
-      "Hull" 
-      50 
    )
+)
+   )
+   ( self-destruct "Jilvaa" ) 
 )
 +Name: Kill Jilvaa
 +Repeat Count: 1
 +Interval: 1
-+Chained: 6
 
 $Formula: ( when 
    ( is-destroyed-delay 3 "Jilvaa" ) 

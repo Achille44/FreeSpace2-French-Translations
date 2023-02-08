@@ -4193,7 +4193,10 @@ $Formula: ( when
 +Team: 0
 
 $Formula: ( when 
-   ( = @GunCount[0] 1 ) 
+   ( and 
+      ( = @GunCount[0] 1 ) 
+      ( not ( is-destroyed-delay 0 "Argentus" ) ) 
+   )
    ( send-message 
       "Alpha 2" 
       "High" 
@@ -4206,7 +4209,10 @@ $Formula: ( when
 +Team: 0
 
 $Formula: ( when 
-   ( = @GunCount[0] 2 ) 
+   ( and 
+      ( = @GunCount[0] 2 ) 
+      ( not ( is-destroyed-delay 0 "Argentus" ) ) 
+   )
    ( send-message 
       "Alpha 2" 
       "High" 
@@ -4219,7 +4225,10 @@ $Formula: ( when
 +Team: 0
 
 $Formula: ( when 
-   ( = @GunCount[0] 3 ) 
+   ( and 
+      ( = @GunCount[0] 3 ) 
+      ( not ( is-destroyed-delay 0 "Argentus" ) ) 
+   )
    ( send-message-list 
       "Alpha 2" 
       "High" 
@@ -4311,8 +4320,10 @@ $Formula: ( when
 
 $Formula: ( when 
    ( and 
-      ( is-destroyed-delay 0 "Argentus" ) 
-      ( is-event-incomplete "three down!!" ) 
+      ( is-destroyed-delay 2 "Argentus" ) 
+      ( not 
+         ( is-destroyed-delay 0 "Nyarlathotep" ) 
+      )
    )
    ( send-message-list 
       "@autoGenVar2[#Command]" 
