@@ -7,9 +7,11 @@ $On Game Init:
 AXUI = {}
 
 --variables for translation
-local localizedMore = ba.XSTR("More", 5241)
+local localizedMore = ba.XSTR("More", 5232)
 
 function AXUI:Init()
+
+	ba.print("AXUI starting up...\n")
 
 	--Please don't mind the many commented debug lines!
 	self:ScreenInit()
@@ -21,30 +23,51 @@ function AXUI:Init()
 		self.Defaults = {}
 	end
 	
-	self.Fonts = {}
-	self.Fonts.Large = self.Defaults.LargeFont or gr.Fonts[6]
-	self.Fonts.Medium = self.Defaults.MediumFont or gr.Fonts[6]
-	self.Fonts.Small = self.Defaults.SmallFont or gr.Fonts[6]
-	self.Fonts.Old = nil
+	gr.CurrentOpacityType = ALPHABLEND_NONE
+	
+    self.Fonts = {}
+    self.Fonts.Small = gr.Fonts["Text1024"]
+    self.Fonts.Medium = gr.Fonts["Text1920"]
+    self.Fonts.Bear = gr.Fonts["Text2560"]
+    self.Fonts.Large = gr.Fonts["Text3840"]
+    self.Fonts.Huge = gr.Fonts["Text5120"]
+    self.Fonts.Massive = gr.Fonts["Text7680"]
+    self.Fonts.Old = nil
 	
 	self.MouseButton = {false, false, false}
 	
 end
 
-function AXUI:ScreenInit()
+function AXUI:ScreenInit(customW, customH, stretchOverride)
+
+	ba.print("AXUI Screen Intializing...\n")
+
+	local scaleOverride = false
 
 	self.Screen = {}  --w, h, origin_x, origin_y
 	
-	local baseX = 1024
-	local baseY = 768
+	local baseX = customW or 1024
+	local baseY = customH or 768
 	
-	local unscaledScreenWidth = gr.getScreenWidth()
-	local unscaledScreenHeight = gr.getScreenHeight()
+	if customW and customH then
+		scaleOverride = true
+	end
+	
+	local unscaledScreenWidth = gr.getCenterWidth()
+	local unscaledScreenHeight = gr.getCenterHeight()
 	local aspectX = unscaledScreenWidth / baseX
 	local aspectY = unscaledScreenHeight / baseY
 	
+	local aspect = 1
+	
+	if (baseX < unscaledScreenWidth) or (baseY < unscaledScreenHeight) then
+		aspect = math.min(aspectX, aspectY)
+	else
+		aspect = math.max(aspectX, aspectY)
+	end
+	
 	--if true then
-	if gr.isMenuStretched() or self.InGame then
+	if (gr.isMenuStretched() or self.InGame) and (not stretchOverride)then
 		self.Screen.x_aspect = aspectX
 		self.Screen.y_aspect = aspectY
 		self.Screen.w = unscaledScreenWidth
@@ -52,7 +75,6 @@ function AXUI:ScreenInit()
 		self.Screen.x = 0
 		self.Screen.y = 0
 	else
-		local aspect = math.min(aspectX, aspectY)
 		self.Screen.x_aspect = aspect
 		self.Screen.y_aspect = aspect
 		self.Screen.w = baseX * aspect
@@ -111,12 +133,28 @@ function AXUI:AutoFontScale(enable)
 		return
 	end
 		
-	if AXUI.Screen.h >= 850 then
-		self.Fonts.Old = gr.CurrentFont
-		gr.CurrentFont = self.Fonts.Medium
-	else
-		gr.CurrentFont = self.Fonts.Small
+    if AXUI.Screen.h >= 850 then
+        self.Fonts.Old = gr.CurrentFont
+        gr.CurrentFont = self.Fonts.Medium
+    else
+        gr.CurrentFont = self.Fonts.Small
+    end
+    if AXUI.Screen.h >= 1440 then
+        self.Fonts.Old = gr.CurrentFont
+        gr.CurrentFont = self.Fonts.Bear
+    end
+        if AXUI.Screen.h >= 2160 then
+        self.Fonts.Old = gr.CurrentFont
+        gr.CurrentFont = self.Fonts.Large
+    end
+        if AXUI.Screen.h >= 2880 then
+        self.Fonts.Old = gr.CurrentFont
+        gr.CurrentFont = self.Fonts.Huge
 	end
+        if AXUI.Screen.h >= 4320 then
+        self.Fonts.Old = gr.CurrentFont
+        gr.CurrentFont = self.Fonts.Massive
+    end
 
 end
 
@@ -330,6 +368,8 @@ function AXUI:CreateButton(text, x, y, text_x, text_y, color, color_h, color_c, 
 	end
 	
 	t:CalculateRegion()
+	
+	ba.print("AXUI: Button created!\n")
 
 	return t
 
@@ -503,7 +543,7 @@ function AXUI:CreateListBox(list, list_x, list_y, list_width, list_height, color
 	
 	ba.print("LIST HEIGHT :" .. t.ListHeight .. "\n")
 	ba.print("FONT HEIGHT :" .. t.FontHeight .. "\n")
-	t.MaxLines = math.floor(t.ListHeight / (t.FontHeight + 3))
+	t.MaxLines = math.floor(t.ListHeight / (t.FontHeight + (t.FontHeight / 4)))
 	t.ItemOffset = 0
 	
 	--t.Scaled = scaled
@@ -640,6 +680,9 @@ function AXUI:CalculateRegion(clipping)
 	self.Region = {}
 	
 	if self.Text then
+		if self.Font then
+			gr.CurrentFont = gr.Fonts[self.Font]
+		end
 		self.TextWidth = gr.getStringWidth(self.Text)
 		self.TextHeight = gr.CurrentFont.Height
 	end
@@ -656,23 +699,23 @@ function AXUI:CalculateRegion(clipping)
 			self.Region.x2 = math.max(self.TextX + self.TextWidth, self.BitmapX + self.BitmapWidth) + clipX
 			self.Region.y1 = math.min(self.TextY,self.BitmapY) + clipY
 			self.Region.y2 = math.max(self.TextY + self.TextHeight, self.BitmapY + self.BitmapHeight) + clipY
-			--ba.print("Text + Bitmap Region Made\n")
+			ba.print("Text + Bitmap Region Made\n")
 		elseif self.Text then
 			self.Region.x1 = self.TextX + clipX
 			self.Region.x2 = self.TextX + self.TextWidth + clipX
 			self.Region.y1 = self.TextY + clipY
 			self.Region.y2 = self.TextY + self.TextHeight + clipY
-			--ba.print("Text Region Made\n")
-			--ba.print("Text Coords: " .. math.floor(self.TextX) .. ", " .. math.floor(self.TextY) .. "\n")
-			--ba.print("Text W/H: " .. math.floor(self.TextWidth) .. ", " .. math.floor(self.TextHeight) .. "\n")
+			ba.print("Text Region Made\n")
+			ba.print("Text Coords: " .. math.floor(self.TextX) .. ", " .. math.floor(self.TextY) .. "\n")
+			ba.print("Text W/H: " .. math.floor(self.TextWidth) .. ", " .. math.floor(self.TextHeight) .. "\n")
 		elseif self.BitmapX then
 			self.Region.x1 = self.BitmapX + clipX
 			self.Region.x2 = self.BitmapX + self.BitmapWidth + clipX
 			self.Region.y1 = self.BitmapY + clipY
 			self.Region.y2 = self.BitmapY + self.BitmapHeight + clipY
-			--ba.print("Bitmap Region Made\n")
-			--ba.print("X1: " .. math.floor(self.Region.x1) .. ", Y1:" .. math.floor(self.Region.y1) .. "\n")
-			--ba.print("X2: " .. math.floor(self.Region.x2) .. ", Y2:" .. math.floor(self.Region.y2) .. "\n")
+			ba.print("Bitmap Region Made\n")
+			ba.print("X1: " .. math.floor(self.Region.x1) .. ", Y1:" .. math.floor(self.Region.y1) .. "\n")
+			ba.print("X2: " .. math.floor(self.Region.x2) .. ", Y2:" .. math.floor(self.Region.y2) .. "\n")
 		else
 			self.Region = nil
 			ba.print("Problem making Region\n")
@@ -1032,7 +1075,7 @@ function AXUI:Draw()
 		
 		hovering = true
 		
-		--gr.drawRectangle(self.Region.x1,self.Region.y1,self.Region.x2,self.Region.y2)	--For checking hotspots
+		--gr.drawRectangle(self.Region.x1,self.Region.y1,self.Region.x2,self.Region.y2)	--DEBUG For checking hotspots
 		
 			--Is this good for clicking?
 			if io.isMouseButtonDown(MOUSE_LEFT_BUTTON) and self.Clickable == true then
@@ -1104,7 +1147,7 @@ function AXUI:Draw()
 	if bitmap ~= nil then
 		if self.Monochrome then
 			AXUI:SetColor(color)
-			gr.drawMonochromeImage(bitmap, self.BitmapX, self.BitmapY, self.BitmapX + self.BitmapWidth, self.BitmapY + self.BitmapHeight)
+			gr.drawImage(bitmap, self.BitmapX, self.BitmapY, self.BitmapX + self.BitmapWidth, self.BitmapY + self.BitmapHeight,0,0,1,1,1,true)
 		else
 			gr.drawImage(bitmap, self.BitmapX, self.BitmapY, self.BitmapX + self.BitmapWidth, self.BitmapY + self.BitmapHeight) --Image gets drawn here
 		end
@@ -1198,10 +1241,11 @@ function AXUI:DrawList()
 		end
 		
 		if (#self.List > self.MaxLines) and (self.ItemOffset < (#self.List - self.MaxLines)) then
-			AXUI:SetColor("red")
-			gr.drawString(localizedMore, self.ListX + (self.ListWidth / 2) - (gr.getStringWidth(localizedMore) / 2), self.ListY + self.ListHeight - 45)
+				AXUI:SetColor("red")
+				gr.CurrentFont = gr.Fonts[3]
+				gr.drawString(localizedMore, AXUI.Screen.x + self.ListX + (self.ListWidth / 2) - (gr.getStringWidth(localizedMore) / 2), self.ListY + self.ListHeight)
 		end
-		
+	
 	end
 
 end
@@ -1215,7 +1259,7 @@ function AXUI:DrawThumbnails()
 
 		if (self.Offset + (self.ThumbnailsAcross * self.ThumbnailsHigh)) < #self.Items and (#self.Items > (self.ThumbnailsAcross * self.ThumbnailsHigh)) then
 			AXUI:SetColor("red")
-			gr.drawString("More Images Available",self.X + ((self.Width/2) - (gr.getStringWidth("More Images Available")/2)),self.Y + self.Height - 50)
+			gr.drawString("More Images Available", AXUI.Screen.x + self.X + ((self.Width/2) - (gr.getStringWidth("More Images Available")/2)),self.Y + self.Height - 50)
 		end
 		
 	end
