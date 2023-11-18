@@ -1,23 +1,24 @@
 #Mission Info
 
-$Version: 0.10
-$Name:  XSTR("Wounded Prey", 7035)
+$Version: 23.1
+$Name:  XSTR("Wounded Prey", 7084)
 $Author: Dan
 $Created: 02/06/07 at 14:34:15
-$Modified: 12/13/22 at 23:26:23
+$Modified: 11/04/23 at 11:24:36
 $Notes:
 This is a FRED2_OPEN created mission.
 $End Notes:
 
 $Mission Desc:
  XSTR("Put mission description here
-", 6693)
+", 6742)
 $end_multi_text
 +Game Type Flags: 1
 +Flags: 67714
 +Fog Near Mult: 1.000000
 
 +Fog Far Mult: 1.000000
+
 
 +Disallow Support: 1
 +Hull Repair Ceiling: 0.000000
@@ -33,6 +34,8 @@ $end_multi_text
 $Skybox Model: starfield.pof
 
 $AI Profile: BP
+
+$Lighting Profile: N362
 
 #Sexp_variables
 
@@ -61,7 +64,7 @@ The Duke continues to lead us on a wild chase. We followed it from Delta Serpent
 
 Our official orders were to consider the behaviour of the commanding officer as criminal, and to apprehend the ship as such. Having chased the Duke through two systems, I'm starting to believe her crew's intentions are rooted more from insanity than mere insubordination. Sensor readings from my fighter wing revealed power fluctuations within the cruiser's systems. If this is the case, then a reactor failure is indeed imminent.
 
-Something is not right about all of this. Why is Delta Serpentis, Ross 128 and Laramis empty of any GTVA vessels, save for Great War hulks? Why haven't we had contact with Command? What are Shivans doing in our systems? Taylor quipped about this not being our universe, but now I'm starting to believe her.", 7036)
+Something is not right about all of this. Why is Delta Serpentis, Ross 128 and Laramis empty of any GTVA vessels, save for Great War hulks? Why haven't we had contact with Command? What are Shivans doing in our systems? Taylor quipped about this not being our universe, but now I'm starting to believe her.", 7085)
 $end_multi_text
 $voice: bp06-sam-log01.ogg
 $camera_pos: 1273.220947, 4909.638184, -7181.013672
@@ -82,7 +85,7 @@ $end_briefing
 $Num stages: 0
 
 #Callsigns:
-$Callsign: XSTR("Bei", 6742)
+$Callsign: XSTR("Bei", 6791)
 
 #end
 
@@ -111,9 +114,9 @@ $Ship Choices: (
 #Objects		;! 3 total
 
 $Name: Alpha 1		;! Object #0
-$Display Name: XSTR("Alpha 1", 6694)
+$Display Name: XSTR("Alpha 1", 6743)
 $Class: GTF Perseus
-$Callsign: XSTR("Bei", 6742)
+$Callsign: XSTR("Bei", 6791)
 
 $Team: Friendly
 $Location: 0.000000, 0.000224, -2480.043701
@@ -121,7 +124,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: Stay Near
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -139,7 +141,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Duke		;! Object #1
-$Display Name: XSTR("Duke", 6751)
+$Display Name: XSTR("Duke", 6800)
 $Class: GTC Hyperion
 $Team: Friendly
 $Location: -49.274036, -0.000019, 2985.724609
@@ -147,7 +149,6 @@ $Orientation:
 	0.767677, -0.346672, 0.538976,
 	-0.548348, 0.079917, 0.832427,
 	-0.331651, -0.934579, -0.128746
-$AI Behavior: None
 $AI Goals: ( goals ( ai-play-dead 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -191,7 +192,7 @@ $Texture Replace:
 +new: gtc_duke
 
 $Name: Spacesuit 2		;! Object #2
-$Display Name: XSTR("Spacesuit 2", 7037)
+$Display Name: XSTR("Spacesuit 2", 7086)
 $Class: Spacesuit
 $Team: Friendly
 $Location: -146.852325, 110.811592, 3167.493652
@@ -199,7 +200,6 @@ $Orientation:
 	-0.908301, 0.000000, -0.418318,
 	0.000000, 1.000000, 0.000000,
 	0.418318, 0.000000, -0.908301
-$AI Behavior: Stay Near
 $AI Goals: ( goals ( ai-waypoints-once "Waypoint path 1" 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Shields: 100
@@ -243,17 +243,17 @@ $Formula: ( when
    ( modify-variable-xstr 
       "@autoGenVar1[#Alpha 1]" 
       "#Alpha 1" 
-      6807 
+      6856 
    )
    ( modify-variable-xstr 
       "@autoGenVar2[#Corey]" 
       "#Corey" 
-      7051 
+      7100 
    )
    ( modify-variable-xstr 
       "@autoGenVar3[#Taylor]" 
       "#Taylor" 
-      7052 
+      7101 
    )
 )
 +Name: Manage translation variables
@@ -443,8 +443,8 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Chained: 0
-+Objective:  XSTR("Eject and board GTC Duke", 7038)
-+Objective key:  XSTR("$Alt-A$", 7039)
++Objective:  XSTR("Eject and board GTC Duke", 7087)
++Objective key:  XSTR("$Alt-A$", 7088)
 
 $Formula: ( when 
    ( true ) 
@@ -466,7 +466,7 @@ $Formula: ( when ( true ) ( red-alert ) )
 
 $Type: Primary
 +Name: Duke
-$MessageNew:  XSTR("Apprehend the GTC Duke", 6988)
+$MessageNew:  XSTR("Apprehend the GTC Duke", 7037)
 $end_multi_text
 $Formula: ( is-event-true-delay "endmission" 0 ) 
 
@@ -482,71 +482,71 @@ $List: (		;! 1 points in list
 
 $Name: whr r u guys
 $Team: -1
-$MessageNew:  XSTR("Taylor? Corey? Where are you?", 7040)
+$MessageNew:  XSTR("Taylor? Corey? Where are you?", 7089)
 $end_multi_text
 +Wave Name: bp06-sam-ingame01.ogg
 
 $Name: woah
 $Team: -1
-$MessageNew:  XSTR("This is not right. I've emerged 10 light years away from your position, Alpha 1.", 7041)
+$MessageNew:  XSTR("This is not right. I've emerged 10 light years away from your position, Alpha 1.", 7090)
 $end_multi_text
 +AVI Name: Head-TP1
 +Wave Name: BP06-corey-ingame01.ogg
 
 $Name: woah 2
 $Team: -1
-$MessageNew:  XSTR("...Crap. I don't even know where I am.", 7042)
+$MessageNew:  XSTR("...Crap. I don't even know where I am.", 7091)
 $end_multi_text
 +AVI Name: Head-TP2
 +Wave Name: bp06-taylor-ingame01.ogg
 
 $Name: gravity pull
 $Team: -1
-$MessageNew:  XSTR("Damn. Looks like the gravitational pull of the neutron star played havoc with our subspace engines. We're going to have to recalibrate our navigation computers.", 7043)
+$MessageNew:  XSTR("Damn. Looks like the gravitational pull of the neutron star played havoc with our subspace engines. We're going to have to recalibrate our navigation computers.", 7092)
 $end_multi_text
 +Wave Name: bp06-sam-ingame02.ogg
 
 $Name: can't do it
 $Team: -1
-$MessageNew:  XSTR("Huh? I don't think this fighter has the hardware for that Alpha 1. We'll just stick tight and wait for the Temeraire. Where's the Duke?", 7044)
+$MessageNew:  XSTR("Huh? I don't think this fighter has the hardware for that Alpha 1. We'll just stick tight and wait for the Temeraire. Where's the Duke?", 7093)
 $end_multi_text
 +AVI Name: Head-TP1
 +Wave Name: BP06-corey-ingame02.ogg
 
 $Name: acknowledged
 $Team: -1
-$MessageNew:  XSTR("The Duke's right in front of me. Looks like I got lucky with regard to jumping in at the right place. Looks like I timed it right, too. Her reactor's completely down.", 7045)
+$MessageNew:  XSTR("The Duke's right in front of me. Looks like I got lucky with regard to jumping in at the right place. Looks like I timed it right, too. Her reactor's completely down.", 7094)
 $end_multi_text
 +Wave Name: bp06-sam-ingame03.ogg
 
 $Name: finally
 $Team: -1
-$MessageNew:  XSTR("Finally...an end to this useless goose chase! What are you going to do, sir?", 7046)
+$MessageNew:  XSTR("Finally...an end to this useless goose chase! What are you going to do, sir?", 7095)
 $end_multi_text
 +AVI Name: Head-TP2
 +Wave Name: bp06-taylor-ingame02.ogg
 
 $Name: time to dock
 $Team: -1
-$MessageNew:  XSTR("Engines and weapons seem to be offline...no signs of power on her whatsoever. Should be a straightforward boarding procedure.", 7047)
+$MessageNew:  XSTR("Engines and weapons seem to be offline...no signs of power on her whatsoever. Should be a straightforward boarding procedure.", 7096)
 $end_multi_text
 
 $Name: going to dock
 $Team: -1
-$MessageNew:  XSTR("I'm going to board the Duke, ascertain the status of the crew. It's time for some answers.", 7048)
+$MessageNew:  XSTR("I'm going to board the Duke, ascertain the status of the crew. It's time for some answers.", 7097)
 $end_multi_text
 +Wave Name: bp06-sam-ingame04.ogg
 
 $Name: be careful
 $Team: -1
-$MessageNew:  XSTR("Roger, sir. Be careful.", 7049)
+$MessageNew:  XSTR("Roger, sir. Be careful.", 7098)
 $end_multi_text
 +AVI Name: Head-TP2
 +Wave Name: bp06-taylor-ingame03.ogg
 
 $Name: I will
 $Team: -1
-$MessageNew:  XSTR("I will, Taylor. I'll keep my sidearm handy in case I meet any trouble from the crew.", 7050)
+$MessageNew:  XSTR("I will, Taylor. I'll keep my sidearm handy in case I meet any trouble from the crew.", 7099)
 $end_multi_text
 +Wave Name: bp06-sam-ingame05.ogg
 

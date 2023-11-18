@@ -7,31 +7,31 @@ $On Game Init:
 TDefense = {}
 
 --variables for translation
-local localizedUnused = ba.XSTR("[UNUSED]", 6665)
-local localizedDeploying = ba.XSTR("[DEPLOYING]", 6666)
-local localizedSelectPlatform = ba.XSTR("SELECT PLATFORM", 6667)
-local localizedSelected = ba.XSTR("SELECTED:", 6668)
-local localizedActive = ba.XSTR("Active: ", 6669)
-local localizedAvail = ba.XSTR("Avail: ", 6670)
-local localizedNoneAvailable = ba.XSTR("None available", 6671)
-local localizedChannel25 = ba.XSTR("CHANNEL 25", 6672)
-local localizedOrigin = ba.XSTR("ORIGIN: ", 6673)
-local localizedIntegrity = ba.XSTR("INTEGRITY: ", 6674)
-local localizedTracking = ba.XSTR("\nTRACKING:\n ", 6675)
-local localizedDist = ba.XSTR("DIST: ", 6676)
-local localizedActiveTanks = ba.XSTR("ACTIVE TANKS:", 6677)
-local localizedMonitoring = ba.XSTR("MONITORING:", 6678)
-local localizedStatusUnused = ba.XSTR("Status: [UNUSED]", 6679)
-local localizedStatusDeploying = ba.XSTR("Status: Deploying", 6680)
-local localizedStatusActive = ba.XSTR("Status: Active", 6681)
-local localizedStatusInactive = ba.XSTR("Status: Inactive", 6682)
-local localizedType = ba.XSTR("Type: ", 6683)
-local localizedIntegrityLowerCase = ba.XSTR("Integrity: ", 6684)
-local localizedTarget = ba.XSTR("Target: ", 6685)
-local localizedClass = ba.XSTR("Class: ", 6686)
-local localizedTargetNone = ba.XSTR("Target: None", 6687)
-local localizedClickToSelect = ba.XSTR("\n\nClick to Select", 6688)
-local localizedSelectPackage = ba.XSTR("Select package:", 6689)
+local localizedUnused = ba.XSTR("[UNUSED]", 6714)
+local localizedDeploying = ba.XSTR("[DEPLOYING]", 6715)
+local localizedSelectPlatform = ba.XSTR("SELECT PLATFORM", 6716)
+local localizedSelected = ba.XSTR("SELECTED:", 6717)
+local localizedActive = ba.XSTR("Active: ", 6718)
+local localizedAvail = ba.XSTR("Avail: ", 6719)
+local localizedNoneAvailable = ba.XSTR("None available", 6720)
+local localizedChannel25 = ba.XSTR("CHANNEL 25", 6721)
+local localizedOrigin = ba.XSTR("ORIGIN: ", 6722)
+local localizedIntegrity = ba.XSTR("INTEGRITY: ", 6723)
+local localizedTracking = ba.XSTR("\nTRACKING:\n ", 6724)
+local localizedDist = ba.XSTR("DIST: ", 6725)
+local localizedActiveTanks = ba.XSTR("ACTIVE TANKS:", 6726)
+local localizedMonitoring = ba.XSTR("MONITORING:", 6727)
+local localizedStatusUnused = ba.XSTR("Status: [UNUSED]", 6728)
+local localizedStatusDeploying = ba.XSTR("Status: Deploying", 6729)
+local localizedStatusActive = ba.XSTR("Status: Active", 6730)
+local localizedStatusInactive = ba.XSTR("Status: Inactive", 6731)
+local localizedType = ba.XSTR("Type: ", 6732)
+local localizedIntegrityLowerCase = ba.XSTR("Integrity: ", 6733)
+local localizedTarget = ba.XSTR("Target: ", 6734)
+local localizedClass = ba.XSTR("Class: ", 6735)
+local localizedTargetNone = ba.XSTR("Target: None", 6736)
+local localizedClickToSelect = ba.XSTR("\n\nClick to Select", 6737)
+local localizedSelectPackage = ba.XSTR("Select package:", 6738)
 
 function TDefense:Init()
 
@@ -1037,35 +1037,34 @@ $On Key Released:
 	end
 ]
 
-$On Death:
+$On Ship Death:
 [
 	if TDefense.Enabled then
-		local thisShip = hv.Self
-		if thisShip:getBreedName() == "Ship" then
-			ba.print(thisShip.Class.Name .. " was destroyed\n")
-			for key,value in pairs(TDefense.Platforms) do
-				if TDefense.Platforms[key].Sig == thisShip:getSignature() then
+		local thisShip = hv.Ship
+		ba.print(thisShip.Class.Name .. " was destroyed\n")
+		for key,value in pairs(TDefense.Platforms) do
+			if TDefense.Platforms[key].Sig == thisShip:getSignature() then
+			
+				ba.print("This was in the Platform table\n")
 				
-					ba.print("This was in the Platform table\n")
-					
-					for key2,value2 in pairs(TDefense.TankTypes) do
-						if thisShip.Class.Name == TDefense.TankTypes[key2].Shipclass then
-							ba.print("Something important got destroyed!!!\n")
-							TDefense.TankTypes[key2].Deployed = TDefense.TankTypes[key2].Deployed - 1
-							ba.print("boop\n")
-							TDefense:UpdateSEXPVars()
-							ba.print("beep\n")
-						end
+				for key2,value2 in pairs(TDefense.TankTypes) do
+					if thisShip.Class.Name == TDefense.TankTypes[key2].Shipclass then
+						ba.print("Something important got destroyed!!!\n")
+						TDefense.TankTypes[key2].Deployed = TDefense.TankTypes[key2].Deployed - 1
+						ba.print("boop\n")
+						TDefense:UpdateSEXPVars()
+						ba.print("beep\n")
 					end
-									
-					TDefense.Platforms[key].Status = -1
-									
-					if TDefense.CameraMode == 1 then
-						--TDefense:UpdateDButtonInfo()
-					end
+				end
+								
+				TDefense.Platforms[key].Status = -1
+								
+				if TDefense.CameraMode == 1 then
+					--TDefense:UpdateDButtonInfo()
 				end
 			end
 		end
+	
 	end
 ]
 
