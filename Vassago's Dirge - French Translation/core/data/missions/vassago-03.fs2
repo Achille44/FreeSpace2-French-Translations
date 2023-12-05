@@ -1,0 +1,7569 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Ossia", 5072)
+$Author: Joel "Axem" Reimer
+$Created: 07/17/09 at 23:57:36
+$Modified: 03/02/23 at 20:00:08
+$Notes:
+Mission 3 - Vassago's Dirge$End Notes:
+
+$Mission Desc:
+ XSTR("The GTVA closes in on an NTF scientist at the center of the Vassago mystery.", 5073)
+$end_multi_text
++Game Type Flags: 1
++Flags: 262146
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
++All Teams Attack
+
++Viewer pos: -98.010788, -2.525958, 1733.258301
++Viewer orient:
+	-0.729591, -0.000001, 0.683884,
+	-0.042852, 0.998035, -0.045714,
+	-0.682540, -0.062658, -0.728157
+
+
+$Load Screen 640: m3load
+$Load Screen 1024: 2_m3load
+
+$Skybox Model: starfield.pof
+
+$AI Profile: NewProfile
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"ESMOnline"		"0"		"number"
+		1		"jamShip"		"Alpha 1"		"string"
+		2		"nextPoll"		"0"		"number"
+		3		"nextSound"		"-1"		"number"
+		4		"nextTrack"		"0"		"number"
+		5		"oktoPlay"		"1"		"number"
+		6		"partADice"		"0"		"number"
+		7		"partBDice"		"0"		"number"
+		8		"partCDice"		"0"		"number"
+		9		"retakingShip"		"Alpha 1"		"string"
+		10		"sigA"		"0"		"number"
+		11		"sigD"		"0"		"number"
+		12		"signalStrength"		"0"		"number"
+		13		"sigS"		"0"		"number"
+		14		"spoonsFound"		"0"		"number"		"save-on-mission-progress"
+		15		"thisTrack"		"0"		"number"
+		16		"timeChangeTrack"		"-1"		"number"
+		17		"autoGenVar1"		"PC Hippocrates Refit"		"string"
+		18		"autoGenVar2"		"PC Faustus Refit"		"string"
+		19		"autoGenVar3"		"PFR Satis Refit"		"string"
+		20		"autoGenVar4"		"PFR Triton Refit"		"string"
+		21		"autoGenVar5"		"PI Polaris Refit"		"string"
+		22		"autoGenVar6"		"PF Hercules Refit"		"string"
+		23		"autoGenVar7"		"PB Zeus Refit"		"string"
+		24		"autoGenVar8"		"PF Horus Refit"		"string"
+		25		"autoGenVar9"		"PB Osiris Refit"		"string"
+		26		"autoGenVar10"		"PC Fenris Refit"		"string"
+		27		"autoGenVar11"		"PF Loki Refit"		"string"
+		28		"autoGenVar12"		"ESM System:"		"string"
+		29		"autoGenVar13"		"Booting. . ."		"string"
+		30		"autoGenVar14"		"#Command"		"string"
+		31		"autoGenVar15"		"MAG MOORING"		"string"
+)
+
+#Command Briefing
+
+$Stage Text:
+ XSTR("The reports are in. It wasn't us that woke those Shivans up. The data streaming from the $f Thevenin shows no high power scans were being done and their EVA crew hadn't even left the ship.
+
+So what woke the Shivans up? Best guess right now is $v Cagliari station itself. The Argus' scans showed the jamming field was coming from Cagliari, but we don't think it's actually a jamming field. It's more like a flare of EM and subspace activity, but the effect is still the same to us. We can't see in from far away.
+
+The enhanced sensors from a $f Charybdis or a $f Setekh are just about the only ways we can get a clear view in the area, and even then the Shivans just seem to be able to jump in on any vector. Not only that but the Shivans are repairing their ships and possibly even building more. A frontal assault would be costly, so $y Command's looking into other areas. First things first, disabling that field jamming our sensors.", 5074)
+$end_multi_text
+$Ani Filename: cb_m3-s1.ani
++Wave Filename: M03_CBR01.ogg
+
+$Stage Text:
+ XSTR("While you hot shots were out dancing with the Shivans, $y Intel was digging up information about $v Cagliari station and why it was just abandoned right before the rebellion started.
+
+Construction was being done by $y Strauss $y Construction, what we now know was a front for the $r Neo $r Terran $r Front. It looks like it was going to be a base for the NTF but they abandoned it when it became obvious they weren't going to have a hold in $b Capella. So they just left it.
+
+The civilian transport manifests to and from the unfinished installation show a name that pops up quite often. $E Doctor $E Serge $E Rachmann. He was a researcher at $y Vega $y University, specializing in subspace communications. He joined the NTF, developing hardware to bust through our jammers.", 5075)
+$end_multi_text
+$Ani Filename: cb_m3-s2.ani
++Wave Filename: M03_CBR02.ogg
+
+$Stage Text:
+ XSTR("Something's on that station and Rachmann is most likely connected to it.
+
+Now I hope you all bought your lottery tickets, because here's where it gets good.
+
+Intelligence last put Dr. Rachmann on the $r NTC $r Orpheus in $b Polaris. The Orpheus was seen entering $b Capella, but no records show she escaped our blockades or was destroyed. It's possible that they slipped out during the $r Sathanas' attack, but we've just received information that shows they're still in the system.", 5076)
+$end_multi_text
+$Ani Filename: cb_m3-s3.ani
++Wave Filename: M03_CBR03.ogg
+
+#Briefing
+$start_briefing
+$num_stages: 7
+$start_stage
+$multi_text
+ XSTR("We just received a weak, coded distress signal on a $f GTVA frequency. It appears to be coming from just outside a planetary ring over $b Dalton's $b Giant. The message is as follows:", 5077)
+$end_multi_text
+$voice: M03_BR01.ogg
+$camera_pos: -934.592163, 1914.589233, 1385.151123
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 2
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTNB Pharos
+$pos: -706.372559, -114.357300, 1316.462891
+$label:  XSTR("Dalton's Giant", 5078)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 9
+$team: Unknown
+$class: GTNB Pharos
+$pos: -1881.199951, 50.000000, 1496.400024
+$label:  XSTR("Distress Call", 5079)
++id: 2
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("This is $E Capt--- $E Sibelius of the $h Orpheus. My ship has been co-------red by a pirate gro---. We're st---, can't escape, we're ---- ---o this stati--. -- require imm------- assistance. Any ships---", 5080)
+$end_multi_text
+$voice: M03_BR02.ogg
+$camera_pos: -934.592163, 1914.589233, 1385.151123
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 2
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTNB Pharos
+$pos: -706.372559, -114.357300, 1316.462891
+$label:  XSTR("Dalton's Giant", 5078)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 9
+$team: Unknown
+$class: GTNB Pharos
+$pos: -1881.199951, 50.000000, 1496.400024
+$label:  XSTR("Distress Call", 5079)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Shivans flock to a station that was frequented by Dr. Rachmann, and the last ship he was seen on just so happens to appear in pirate custody one day later. This seems like a mighty large coincidence... Who knows what's really going on here.", 5081)
+$end_multi_text
+$voice: M03_BR03.ogg
+$camera_pos: -1908.831909, 573.591553, 1385.151123
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 3
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTNB Pharos
+$pos: -706.372559, -114.357300, 1316.462891
+$label:  XSTR("Dalton's Giant", 5078)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 9
+$team: Unknown
+$class: GTNB Pharos
+$pos: -1881.199951, 50.000000, 1496.400024
+$label:  XSTR("Distress Call", 5079)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 4
+$team: Hostile
+$class: GTC Aeolus
+$pos: -1831.620728, -274.999969, 1298.031128
+$label:  XSTR("NTC Orpheus", 5082)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("But protocol is protocol. Intelligence was able to contact the captain to determine the nature of this housecall. Apparently he tried asking the pirates for help, but when he met with them they turned on him and took over his ship. They've taken about half the crew, including Dr. Rachmann, to another ship, the $h PFr $h Thunderhorse.", 5083)
+$end_multi_text
+$voice: M03_BR04.ogg
+$camera_pos: -1908.831909, 573.591553, 1385.151123
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 5
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTNB Pharos
+$pos: -706.372559, -114.357300, 1316.462891
+$label:  XSTR("Dalton's Giant", 5078)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 9
+$team: Unknown
+$class: GTNB Pharos
+$pos: -1881.199951, 50.000000, 1496.400024
+$label:  XSTR("Distress Call", 5079)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 4
+$team: Hostile
+$class: GTC Aeolus
+$pos: -1831.620728, -274.999969, 1298.031128
+$label:  XSTR("NTC Orpheus", 5082)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: GTF Perseus
+$pos: -1198.880493, 100.505455, 1348.826294
+$label:  XSTR("Alpha Wing", 5084)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 11
+$team: Hostile
+$class: GTFR Triton
+$pos: -2313.317627, -275.000092, 1189.131104
+$label:  XSTR("PFr Thunderhorse", 5085)
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("Captain Sibelius has agreed to surrender if we can rescue him and his crew. $f Alpha wing will go in ahead to clear the area of any fighter threat and create a distraction. That should give the captain the chance to retake his ship and commandeer a transport to capture the Thunderhorse. We recommend that you carry the $y Akheton $y SDG in case you need to disable it. Your flight plan will take you through the planetary ring to mask your approach.", 5086)
+$end_multi_text
+$voice: M03_BR05.ogg
+$camera_pos: -1628.724365, 793.572449, 1385.151123
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 5
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTNB Pharos
+$pos: -706.372559, -114.357300, 1316.462891
+$label:  XSTR("Dalton's Giant", 5078)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 9
+$team: Unknown
+$class: GTNB Pharos
+$pos: -1881.199951, 50.000000, 1496.400024
+$label:  XSTR("Distress Call", 5079)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 4
+$team: Hostile
+$class: GTC Aeolus
+$pos: -1831.620728, -274.999969, 1298.031128
+$label:  XSTR("NTC Orpheus", 5082)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: GTF Perseus
+$pos: -1198.880493, 100.505455, 1348.826294
+$label:  XSTR("Alpha Wing", 5084)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 11
+$team: Hostile
+$class: GTFR Triton
+$pos: -2188.781494, -275.000061, 1151.793945
+$label:  XSTR("PFr Thunderhorse", 5085)
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("The pirate threat may be larger than usual. $h NTF pilots have been going AWOL, and either joining or selling their fighters to pirates for large sums of money in a last bid to escape from the GTVA. You can expect $y Hercules-class fighters and other older fighters. It is also likely you will engage transports and smaller sized capital ships. It is likely the pirates will retreat if you damage their ships enough. They can't make any profit if they're dead.", 5087)
+$end_multi_text
+$voice: M03_BR06.ogg
+$camera_pos: -1628.724365, 793.572449, 1385.151123
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 7
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 7
+$team: Friendly
+$class: GTNB Pharos
+$pos: -706.372559, -114.357300, 1316.462891
+$label:  XSTR("Dalton's Giant", 5078)
++id: 1
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 9
+$team: Unknown
+$class: GTNB Pharos
+$pos: -1881.199951, 50.000000, 1496.400024
+$label:  XSTR("Distress Call", 5079)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 4
+$team: Hostile
+$class: GTC Aeolus
+$pos: -1831.620728, -274.999969, 1298.031128
+$label:  XSTR("NTC Orpheus", 5082)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: GTF Perseus
+$pos: -1198.880493, 100.505455, 1348.826294
+$label:  XSTR("Alpha Wing", 5084)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: GTF Hercules
+$pos: -1558.595703, -98.450050, 1457.877075
+$label:  XSTR("Pirate Fighters", 5088)
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 11
+$team: Hostile
+$class: GTFR Triton
+$pos: -1435.815796, -274.999969, 1136.236816
+$label:  XSTR("Pirate Freighters", 5089)
++id: 6
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 11
+$team: Hostile
+$class: GTFR Triton
+$pos: -2188.781494, -275.000061, 1151.793945
+$label:  XSTR("PFr Thunderhorse", 5085)
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("After the area is clear of fighters, $f Beta wing will be standing by to assist. The $f GTT $f Amphion and the $f GTT $f Echion will be sent to board and secure any objectives.
+
+Good luck boys.", 5090)
+$end_multi_text
+$voice: M03_BR07.ogg
+$camera_pos: -1618.245239, 3824.637207, 1385.151123
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.000000, 1.000000,
+	0.000000, -1.000000, 0.000000
+$camera_time: 500
+$num_lines: 0
+$num_icons: 8
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 9
+$team: Unknown
+$class: GTNB Pharos
+$pos: -1914.998047, 49.999920, 1769.830688
+$label:  XSTR("Distress Call", 5079)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 4
+$team: Hostile
+$class: GTC Aeolus
+$pos: -1831.620728, -274.999969, 1298.031128
+$label:  XSTR("NTC Orpheus", 5082)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: GTF Perseus
+$pos: 178.281464, 100.505455, 1272.192505
+$label:  XSTR("Alpha Wing", 5084)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Hostile
+$class: GTF Hercules
+$pos: -750.074890, -98.450050, 1262.785156
+$label:  XSTR("Pirate Fighters", 5088)
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 11
+$team: Hostile
+$class: GTFR Triton
+$pos: -3146.202637, -274.999969, 1182.219238
+$label:  XSTR("Pirate Freighters", 5089)
++id: 6
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 34
+$team: Friendly
+$class: GTT Elysium
+$pos: -3603.880859, -50.000000, 369.769226
+$label:  XSTR("GTT Amphion", 5091)
++id: 7
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: GTF Perseus
+$pos: -3938.815430, 100.505455, 1189.963013
+$label:  XSTR("Beta Wing", 5092)
++id: 9
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 11
+$team: Hostile
+$class: GTFR Triton
+$pos: -2358.349609, -275.000000, 454.052002
+$label:  XSTR("PFr Thunderhorse", 5085)
++id: 10
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 6
+
+$Formula: ( and 
+   ( is-event-true-delay 
+      "You all fail!" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Alpha 1 Dies" 
+         0 
+      )
+   )
+)
+$Multi text
+    XSTR("I think the only thing that would be at fault was underestimating the Orpheus' desire to escape. Insane Shivan plan or not. But that is neither here nor there.
+
+I like to think we are well on our way to discovering the secret you hold in your brain. Now why don't you tell us about- Oh. I'm afraid our time here is up for the day. We will return tomorrow at 0800, maybe we'll be able to finish your recollection by then.
+
+Good night, Commander. Sweet dreams.", 5093)
+$end_multi_text
+$Voice: M3_DB1.ogg
+$Recommendation text:
+    XSTR("", 3307)
+$end_multi_text
+
+$Formula: ( and 
+   ( not 
+      ( is-event-true-delay 
+         "Capture Thunderhorse" 
+         0 
+      )
+   )
+   ( is-event-true-delay 
+      "Thunderhorse Escaped" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Alpha 1 Dies" 
+         0 
+      )
+   )
+)
+$Multi text
+    XSTR("Well, you had me until the Thunderhorse escaped. That isn't what happened, was it? The Thunderhorse didn't escape, you disabled her. This is all in the report you, yourself, wrote.
+
+Let's start again.", 5094)
+$end_multi_text
+$Voice: M3_DB2.ogg
+$Recommendation text:
+    XSTR("", 3307)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Orpheus Captured" 
+      0 
+   )
+   ( is-event-true-delay 
+      "Harle Destroyed" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Alpha 1 Dies" 
+         0 
+      )
+   )
+)
+$Multi text
+    XSTR("Perhaps you haven't remembered something correctly... Maybe you are remembering something out of sequence? Its common for recalling one thought to spawn several others. I think that's what happened here.
+
+The Harlequin wasn't destroyed here, was it? No... Why don't we try this one from the beginning, all right?", 5095)
+$end_multi_text
+$Voice: M3_DB3.ogg
+$Recommendation text:
+    XSTR("", 3307)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Thunderhorse Destroyed" 
+      0 
+   )
+   ( is-event-true-delay 
+      "Orpheus Captured" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Alpha 1 Dies" 
+         0 
+      )
+   )
+)
+$Multi text
+    XSTR("Ah! Commendable. You followed your orders down to the T and achieved your mission objectives. Shame about the Thunderhorse, hmm? No, this won't work...
+
+The innocent lie because they don't want to be blamed for something they didn't do, and the guilty lie because they don't have any other choice.
+
+We don't blame you for what the Orpheus did. There was nothing you could've done. Please don't try to impress me with your wild tales, I already know the truth. Think of it like this, don't tell the story to me, tell it to yourself. Why would you lie to yourself? It's not going to get you anywhere.
+
+Why don't we start again?", 5096)
+$end_multi_text
+$Voice: M3_DB4.ogg
+$Recommendation text:
+    XSTR("", 3307)
+$end_multi_text
+
+$Formula: ( and 
+   ( not 
+      ( is-event-true-delay 
+         "You all fail!" 
+         0 
+      )
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Orpheus Captured" 
+         0 
+      )
+   )
+   ( not 
+      ( and 
+         ( is-event-true-delay 
+            "Thunderhorse Destroyed" 
+            0 
+         )
+         ( is-event-true-delay 
+            "Orpheus Captured" 
+            0 
+         )
+      )
+   )
+   ( not 
+      ( is-event-true-delay 
+         "Alpha 1 Dies" 
+         0 
+      )
+   )
+   ( not 
+      ( is-event-true-delay "IGNOREME" 0 ) 
+   )
+)
+$Multi text
+    XSTR("I don't mean to push, but that's not at all what happened.
+
+Now think of it like this, don't tell the story to me, tell it to yourself. Why would you lie to yourself? It's not going to get you anywhere.
+
+Why don't we start again?", 5097)
+$end_multi_text
+$Voice: M3_DB5.ogg
+$Recommendation text:
+    XSTR("", 3307)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "Alpha 1 Dies" 
+   0 
+)
+$Multi text
+    XSTR("Death isn't really something that someone just... gets over. Maybe this whole experience has made you a bit unstable but you are alive and well.
+
+Lets take a five minute break and then we can start again.", 5098)
+$end_multi_text
+$Voice: M3_DB6.ogg
+$Recommendation text:
+    XSTR("", 3307)
+$end_multi_text
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+	"GTF Hercules Mark II"	4
+	"GTF Myrmidon"	4
+	"GTB Artemis"	4
+)
+
++Weaponry Pool: (
+	"Subach HL-7"	16
+	"Akheton SDG"	16
+	"Morning Star"	16
+	"Prometheus S"	16
+	"Circe"	16
+	"Lamprey"	16
+	"Rockeye"	500
+	"Tempest"	1500
+	"Hornet"	1000
+	"Tornado"	500
+	"Harpoon"	500
+	"Trebuchet"	5
+	"Piranha"	20
+	"Stiletto II"	20
+	"Infyrno"	20
+)
+
+#Objects		;! 58 total
+
+$Name: Alpha 1		;! Object #0
+$Display Name: XSTR("Alpha 1", 4855)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 5302.356934, 0.000331, -3476.858398
+$Orientation:
+	0.011755, -0.999784, 0.017153,
+	0.565178, 0.020795, 0.824708,
+	-0.824886, 0.000000, 0.565300
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Akheton SDG" )
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "player-start" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Alpha 2		;! Object #1
+$Display Name: XSTR("Alpha 2", 4857)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 5383.326172, 98.970520, -3534.840576
+$Orientation:
+	0.011755, -0.999784, 0.017154,
+	0.565177, 0.020795, 0.824707,
+	-0.824886, 0.000000, 0.565300
++AI Class: Wingman Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Akheton SDG" )
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
++Persona Index: 1
+
+$Name: Alpha 3		;! Object #2
+$Display Name: XSTR("Alpha 3", 4858)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 5384.115723, -100.315071, -3530.361572
+$Orientation:
+	0.011755, -0.999784, 0.017154,
+	0.565177, 0.020795, 0.824707,
+	-0.824886, 0.000000, 0.565300
++AI Class: Wingman Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Akheton SDG" )
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
++Persona Index: 4
+
+$Name: Alpha 4		;! Object #3
+$Display Name: XSTR("Alpha 4", 4859)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 5465.802734, -8.380694, -3588.659424
+$Orientation:
+	0.011755, -0.999784, 0.017154,
+	0.565177, 0.020795, 0.824707,
+	-0.824886, 0.000000, 0.565300
++AI Class: Wingman Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 100
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Akheton SDG" )
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
++Persona Index: 0
+
+$Name: Silver Hammer D		;! Object #4
+$Display Name: XSTR("Silver Hammer D", 5099)
+$Class: GTI Polaris
+
+$Team: Hostile
+$Location: -525.799988, 161.858643, 1205.780151
+$Orientation:
+	0.000796, 1.000000, 0.000000,
+	-1.000000, 0.000796, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("No Lifesigns Detected", 5100)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 900
+
+$Name: Orpheus		;! Object #5
+$Display Name: XSTR("Orpheus", 5101)
+$Class: GTC Aeolus
+$Team: Unknown
+$Location: -706.731812, -114.038506, 1284.885132
+$Orientation:
+	-0.999899, 0.008491, 0.011418,
+	0.008606, 0.999913, 0.009999,
+	-0.011332, 0.010096, -0.999885
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 53
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: Engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Orpheus and Thunderhorse WO" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "escort" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 85
++Hotkey: 7
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 500
+$Texture Replace:
++old: nameplate
++new: ntc_orpheus
++old: aeolusdet
++new: ntfaedet
++old: aeolusuv
++new: ntfaemain
+
+$Name: Harlequin		;! Object #6
+$Display Name: XSTR("Harlequin", 5102)
+$Class: GVFr Satis
+
+$Team: Hostile
+$Location: -707.023743, -58.554436, 1229.277344
+$Orientation:
+	0.999899, -0.008491, -0.011418,
+	-0.008606, -0.999913, -0.009999,
+	-0.011332, 0.010096, -0.999885
++AI Class: Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01-main
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 8000
++Special Shield Points: 0
++Hotkey: 5
++Docked With: Orpheus
+$Docker Point: dock01
+$Dockee Point: docking point
++Orders Accepted List: ( )
++Group: 0
++Score: 14
+
+$Name: Sleepwalker		;! Object #7
+$Display Name: XSTR("Sleepwalker", 5103)
+$Class: GVFr Satis
+
+$Team: Hostile
+$Location: 138.199997, -275.000000, 1820.099976
+$Orientation:
+	-0.654354, 0.368147, -0.660524,
+	0.403453, 0.908747, 0.106812,
+	0.639571, -0.196597, -0.743171
+$AI Goals: ( goals ( ai-waypoints "Sleepwalker Patrol" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01-main
++Primary Banks: ( "Terran Turret Weak" )
++Subsystem: turret02
++Primary Banks: ( "Terran Turret Weak" )
++Subsystem: turret03
++Primary Banks: ( "Terran Turret Weak" )
++Subsystem: turret04
++Primary Banks: ( "Terran Turret Weak" )
++Subsystem: turret05
++Primary Banks: ( "Terran Turret Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( < ( hits-left "Sleepwalker" ) 30 ) 
+   ( destroyed-or-departed-delay 
+      7 
+      "Skullcrusher" 
+      "Rattlehead" 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" "dock" )
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Skullcrusher		;! Object #8
+$Display Name: XSTR("Skullcrusher", 5104)
+$Class: GTM Hippocrates
+
+$Team: Hostile
+$Location: -760.640137, 174.542999, 2302.714111
+$Orientation:
+	0.684649, -0.138511, 0.715592,
+	0.715545, -0.059169, -0.696056,
+	0.138752, 0.988592, 0.058601
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Primary Banks: ( "Long Range Flak" )
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Primary Banks: ( "Standard Flak" )
++Subsystem: turret05
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
++Departure delay: 6
+$Departure Cue: ( is-event-true-delay 
+   "Skullcrusher Retreat" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 80
++Special Hitpoints: 12000
++Orders Accepted List: ( "attack ship" )
++Group: 0
++Use Table Score:
++Score: 100
+
+$Name: Rattlehead		;! Object #9
+$Display Name: XSTR("Rattlehead", 5105)
+$Class: GTSC Faustus
+
+$Team: Hostile
+$Location: -1241.703857, 100.505455, 1254.526978
+$Orientation:
+	-0.926808, 0.171598, 0.334043,
+	-0.132452, -0.981703, 0.136813,
+	0.351407, 0.082554, 0.932578
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Primary Banks: ( "Terran Turret Weak" "Terran Turret Weak" )
++Secondary Banks: ( "" "" )
++Sbank Ammo: ( 0 0 )
++Subsystem: Turret04
++Primary Banks: ( "Terran Huge Turret" )
++Subsystem: Turret05
++Primary Banks: ( "Terran Huge Turret" )
++Subsystem: Turret06
++Primary Banks: ( "Terran Turret Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
++Departure delay: 2
+$Departure Cue: ( is-event-true-delay 
+   "Rattlehead Retreat" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 70
++Special Hitpoints: 12000
++Orders Accepted List: ( "attack ship" )
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Thunderhorse		;! Object #10
+$Display Name: XSTR("Thunderhorse", 5106)
+$Class: GTFR Triton
+
+$Team: Hostile
+$Location: -835.777222, 699.999451, 1761.578491
+$Orientation:
+	0.628173, 0.001593, -0.778072,
+	0.001001, -0.999999, -0.001239,
+	-0.778073, 0.000000, -0.628174
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
++Departure delay: 7
+$Departure Cue: ( is-event-true-delay 
+   "Thunderhorse tries to escape!" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "escort" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 60
++Hotkey: 6
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Silver Hammer		;! Object #11
+$Display Name: XSTR("Silver Hammer", 5107)
+$Class: GTI Polaris
+
+$Team: Hostile
+$Location: -525.801147, -160.389618, 1204.492554
+$Orientation:
+	0.000796, -1.000000, 0.000000,
+	1.000000, 0.000796, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 900
+
+$Name: Brightside		;! Object #12
+$Display Name: XSTR("Brightside", 5108)
+$Class: GVFr Satis
+
+$Team: Hostile
+$Location: -2169.199951, 274.600006, 2517.000000
+$Orientation:
+	-0.923314, 0.000000, -0.384045,
+	-0.000081, 1.000000, 0.000194,
+	0.384045, 0.000210, -0.923314
+$AI Goals: ( goals ( ai-waypoints "Brightside Patrol" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01-main
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( < ( hits-left "Brightside" ) 25 ) 
+   ( destroyed-or-departed-delay 
+      5 
+      "Skullcrusher" 
+      "Rattlehead" 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" "dock" )
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: TC-TRI 192		;! Object #13
+$Display Name: XSTR("TC-TRI 192", 5109)
+$Class: TC-TRI
+$Team: Hostile
+$Location: -722.060608, 2957.127441, 960.877441
+$Orientation:
+	-0.970946, -0.237607, -0.028403,
+	-0.237703, 0.971338, 0.000000,
+	0.027589, 0.006752, -0.999597
+$Cargo 1:  XSTR("Foodstuffs", 4981)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: TC-TRI 320		;! Object #14
+$Display Name: XSTR("TC-TRI 320", 5110)
+$Class: TC-TRI
+$Team: Hostile
+$Location: -378.492828, 1580.444336, 958.841064
+$Orientation:
+	0.971338, 0.237703, 0.000000,
+	-0.219854, 0.898399, -0.380188,
+	-0.090372, 0.369291, 0.924909
+$Cargo 1:  XSTR("Weapon Supplies", 5111)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: TC-TRI 621		;! Object #15
+$Display Name: XSTR("TC-TRI 621", 5112)
+$Class: TC-TRI
+$Team: Hostile
+$Location: -499.100006, 2000.000000, 1501.900024
+$Orientation:
+	0.474860, 0.116206, -0.872356,
+	-0.237703, 0.971338, 0.000000,
+	0.847352, 0.207362, 0.488872
+$Cargo 1:  XSTR("A Spoon", 4969)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Libra 1		;! Object #16
+$Display Name: XSTR("Libra 1", 4874)
+$Class: GTF Loki
+
+$Team: Hostile
+$Location: -1212.663574, 0.001171, 3854.933594
+$Orientation:
+	0.000796, 0.000000, -1.000000,
+	0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000796
++AI Class: Rookie
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Vasudan Light Laser" )
++Secondary Banks: ( "Harpoon#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Libra 2		;! Object #17
+$Display Name: XSTR("Libra 2", 4875)
+$Class: GTF Loki
+
+$Team: Hostile
+$Location: -1316.778809, 0.001217, 3962.215576
+$Orientation:
+	0.000796, 0.000000, -1.000000,
+	0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000796
++AI Class: Rookie
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Vasudan Light Laser" )
++Secondary Banks: ( "Harpoon#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 8
+
+$Name: Libra 3		;! Object #18
+$Display Name: XSTR("Libra 3", 4876)
+$Class: GTF Loki
+
+$Team: Hostile
+$Location: -1316.475830, 0.001184, 3760.114746
+$Orientation:
+	0.000796, 0.000000, -1.000000,
+	0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000796
++AI Class: Rookie
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Prometheus R" )
++Secondary Banks: ( "Enemy MX-64" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 12
+
+$Name: Cancer 1		;! Object #19
+$Display Name: XSTR("Cancer 1", 4892)
+$Class: GTF Loki
+
+$Team: Hostile
+$Location: -1524.648682, 0.001565, 2141.768066
+$Orientation:
+	0.004908, -0.963721, -0.266870,
+	0.019626, -0.266729, 0.963573,
+	-0.999796, -0.009967, 0.017605
++AI Class: Rookie
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "" "Prometheus R" )
++Secondary Banks: ( "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Score: 10
+
+$Name: Cancer 2		;! Object #20
+$Display Name: XSTR("Cancer 2", 4893)
+$Class: GTF Hercules
+
+$Team: Hostile
+$Location: -1604.398682, -82.040260, 2120.682129
+$Orientation:
+	0.027295, -0.961275, 0.274235,
+	-0.095206, -0.275590, -0.956549,
+	0.995083, 0.000000, -0.099041
++AI Class: Rookie
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Prometheus R" )
++Secondary Banks: ( "" "" )
++Sbank Ammo: ( 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cancer 3		;! Object #21
+$Display Name: XSTR("Cancer 3", 4894)
+$Class: GTB Zeus
+
+$Team: Hostile
+$Location: -1631.322144, 120.357864, 2177.255615
+$Orientation:
+	0.027295, -0.961275, 0.274235,
+	-0.095206, -0.275590, -0.956549,
+	0.995083, 0.000000, -0.099041
++AI Class: Rookie
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Circe" )
++Secondary Banks: ( "Harpoon#Weak" "" "" )
++Sbank Ammo: ( 100 0 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Virgo 1		;! Object #22
+$Display Name: XSTR("Virgo 1", 5113)
+$Class: GVB Osiris
+
+$Team: Hostile
+$Location: -1236.454834, 0.001226, 3397.428223
+$Orientation:
+	0.000796, 0.000000, -1.000000,
+	0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000796
++AI Class: Rookie
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Vasudan Light Laser" )
++Secondary Banks: ( "" "" "" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: Turret01
++Primary Banks: ( "Vasudan Light Laser" )
++Subsystem: Turret02
++Primary Banks: ( "Vasudan Light Laser" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Score: 15
+
+$Name: Virgo 2		;! Object #23
+$Display Name: XSTR("Virgo 2", 5114)
+$Class: GVB Osiris
+
+$Team: Hostile
+$Location: -1323.779175, 0.001168, 3495.182129
+$Orientation:
+	0.000758, -0.305059, -0.952334,
+	0.000243, 0.952334, -0.305059,
+	1.000000, 0.000000, 0.000796
++AI Class: Rookie
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Vasudan Light Laser" )
++Secondary Banks: ( "" "" "" )
++Sbank Ammo: ( 0 0 0 )
++Subsystem: Turret01
++Primary Banks: ( "Vasudan Light Laser" )
++Subsystem: Turret02
++Primary Banks: ( "Vasudan Light Laser" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Score: 15
+
+$Name: Gemini 1		;! Object #24
+$Display Name: XSTR("Gemini 1", 4878)
+$Class: GTF Hercules
+
+$Team: Hostile
+$Location: -1499.918579, 0.001220, 1728.736084
+$Orientation:
+	0.000128, -0.999999, -0.000786,
+	0.160105, 0.000796, -0.987100,
+	0.987100, 0.000000, 0.160105
++AI Class: Rookie
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Prometheus R" )
++Secondary Banks: ( "Harpoon#Weak" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Gemini 2		;! Object #25
+$Display Name: XSTR("Gemini 2", 4879)
+$Class: GTF Hercules
+
+$Team: Hostile
+$Location: -1626.315918, 85.023682, 1708.304077
+$Orientation:
+	-0.000079, -1.000000, -0.000792,
+	-0.099041, 0.000796, -0.995083,
+	0.995083, 0.000000, -0.099041
++AI Class: Rookie
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "" "Prometheus R" )
++Secondary Banks: ( "Harpoon#Weak" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Gemini 3		;! Object #26
+$Display Name: XSTR("Gemini 3", 4880)
+$Class: GVF Horus
+
+$Team: Hostile
+$Location: -1673.622192, -98.450050, 1700.482422
+$Orientation:
+	-0.000079, -1.000000, -0.000792,
+	-0.099041, 0.000796, -0.995083,
+	0.995083, 0.000000, -0.099041
++AI Class: Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Mekhu HL-7" "Lamprey" )
++Secondary Banks: ( "Enemy MX-64" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: TC 2 38-R		;! Object #27
+$Display Name: XSTR("TC 2 38-R", 5115)
+$Class: TC 2
+$Team: Hostile
+$Location: -1007.944031, 3357.126953, 875.036255
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Machinery", 4979)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: TC 2 3922		;! Object #28
+$Display Name: XSTR("TC 2 3922", 5116)
+$Class: TC 2
+$Team: Hostile
+$Location: -311.707916, 1603.451050, 1447.785767
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Machinery", 4979)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Amphion		;! Object #29
+$Display Name: XSTR("Amphion", 5117)
+$Class: GTT Elysium
+$Team: Friendly
+$Location: -570.333984, 299.999908, 2789.871582
+$Orientation:
+	-0.235417, -0.966185, -0.105194,
+	-0.882125, 0.257850, -0.394169,
+	0.407964, 0.000000, -0.912998
+$AI Goals: ( goals ( ai-waypoints-once "Amp Path" 50 ) )
+$Cargo 1:  XSTR("Boarding Party", 5118)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
++Arrival Delay: 6
+$Arrival Cue: ( is-event-true-delay 
+   "Amphion Cue" 
+   10 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "General TV Warpout Order" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 50
++Orders Accepted List: ( )
++Group: 0
++Score: 40
+
+$Name: War Pig		;! Object #30
+$Display Name: XSTR("War Pig", 5119)
+$Class: GTC Fenris
+
+$Team: Hostile
+$Location: 530.276672, 1000.000061, 1724.815796
+$Orientation:
+	-0.991842, -0.087496, -0.092709,
+	0.094785, -0.019863, -0.995300,
+	0.085243, -0.995967, 0.027995
+$AI Goals: ( goals ( ai-waypoints-once "War Pig Path" 100 ) )
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Primary Banks: ( "Terran Huge Turret" )
++Subsystem: turret03
++Subsystem: turret04
++Primary Banks: ( "Terran Turret Weak" )
++Subsystem: turret05
++Subsystem: turret06
++Primary Banks: ( "Terran Turret Weak" )
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09a-01-main
++Secondary Banks: ( "Piranha" )
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
++Departure delay: 10
+$Departure Cue: ( is-event-true-delay 
+   "War Pig Retreat" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 50
++Special Hitpoints: 20000
++Special Shield Points: 0
++Orders Accepted List: ( "attack ship" )
++Group: 0
++Score: 200
+
+$Name: XGRT1		;! Object #31
+$Display Name: XSTR("XGRT1", 5120)
+$Class: GTNB Pharos
+$Team: Hostile
+$Location: -1193.048706, -0.000051, 3645.006836
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "hidden-from-sensors" )
++Flags2: ( "no_collide" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: XGRT2		;! Object #32
+$Display Name: XSTR("XGRT2", 5121)
+$Class: GTNB Pharos
+$Team: Hostile
+$Location: -1656.006348, -0.000051, 1922.836304
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "hidden-from-sensors" )
++Flags2: ( "no_collide" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Beta 1		;! Object #33
+$Display Name: XSTR("Beta 1", 4860)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: -3787.100098, -150.000000, 2676.399902
+$Orientation:
+	0.070737, 0.000000, -0.997495,
+	0.000000, 1.000000, 0.000000,
+	0.997495, 0.000000, 0.070737
++AI Class: Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Prometheus S" )
++Secondary Banks: ( "Harpoon" "Harpoon" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
++Persona Index: 2
+
+$Name: Beta 2		;! Object #34
+$Display Name: XSTR("Beta 2", 4861)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: -3901.086914, -149.999985, 2769.356201
+$Orientation:
+	0.070737, 0.000000, -0.997495,
+	0.000000, 1.000000, 0.000000,
+	0.997495, 0.000000, 0.070737
++AI Class: Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Prometheus S" )
++Secondary Banks: ( "Harpoon" "Harpoon" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Beta 3		;! Object #35
+$Display Name: XSTR("Beta 3", 4862)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: -3883.214111, -150.000000, 2561.924805
+$Orientation:
+	0.070737, 0.000000, -0.997495,
+	0.000000, 1.000000, 0.000000,
+	0.997495, 0.000000, 0.070737
++AI Class: Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Prometheus S" )
++Secondary Banks: ( "Harpoon" "Harpoon" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Beta 4		;! Object #36
+$Display Name: XSTR("Beta 4", 4863)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: -3990.455566, -149.999954, 2655.961182
+$Orientation:
+	0.070737, 0.000000, -0.997495,
+	0.000000, 1.000000, 0.000000,
+	0.997495, 0.000000, 0.070737
++AI Class: Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Prometheus S" )
++Secondary Banks: ( "Harpoon" "Harpoon" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Melchom		;! Object #37
+$Display Name: XSTR("Melchom", 4866)
+$Class: SC Lilith
+$Team: Neutral
+$Location: -474.200012, 2000.000000, 1232.199951
+$Orientation:
+	-0.887881, 0.037180, -0.458569,
+	0.459839, 0.039910, -0.887105,
+	-0.014681, -0.998511, -0.052532
+$AI Goals: ( goals ( ai-waypoints-once "Shivan Path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Hull: 72
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Sbank Ammo: ( 0 )
++Subsystem: turret09
+$Arrival Location: Hyperspace
++Arrival Delay: 3
+$Arrival Cue: ( is-event-true-delay "Shivan Cue" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Melchom Depart Cue" 
+   0 
+)
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 50
++Orders Accepted List: ( )
++Group: 0
++Score: 150
+
+$Name: Taurus 1		;! Object #38
+$Display Name: XSTR("Taurus 1", 4991)
+$Class: SF Mara
+$Team: Neutral
+$Location: -81.803642, 1500.000000, 1319.931274
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.140332, 0.990105,
+	0.000000, -0.990105, 0.140332
++AI Class: Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Hornet#Shivan" "Hornet#Shivan" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Taurus 2		;! Object #39
+$Display Name: XSTR("Taurus 2", 4992)
+$Class: SF Mara
+$Team: Neutral
+$Location: -189.775833, 1500.000000, 1214.198486
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.140332, 0.990105,
+	0.000000, -0.990105, 0.140332
++AI Class: Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Hornet#Shivan" "Hornet#Shivan" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Taurus 3		;! Object #40
+$Display Name: XSTR("Taurus 3", 4993)
+$Class: SF Mara
+$Team: Neutral
+$Location: 17.568672, 1500.000000, 1218.342163
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.140332, 0.990105,
+	0.000000, -0.990105, 0.140332
++AI Class: Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Hornet#Shivan" "Hornet#Shivan" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Aries 1		;! Object #41
+$Display Name: XSTR("Aries 1", 4950)
+$Class: SF Mara
+$Team: Neutral
+$Location: -802.652100, 1500.000122, 1274.176514
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.140332, 0.990105,
+	0.000000, -0.990105, 0.140332
++AI Class: Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Aries 2		;! Object #42
+$Display Name: XSTR("Aries 2", 4951)
+$Class: SF Mara
+$Team: Neutral
+$Location: -913.827881, 1500.000122, 1168.703369
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.140332, 0.990105,
+	0.000000, -0.990105, 0.140332
++AI Class: Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Aries 3		;! Object #43
+$Display Name: XSTR("Aries 3", 4952)
+$Class: SF Mara
+$Team: Neutral
+$Location: -704.689941, 1500.000122, 1164.640137
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.140332, 0.990105,
+	0.000000, -0.990105, 0.140332
++AI Class: Veteran
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Echion		;! Object #44
+$Display Name: XSTR("Echion", 5122)
+$Class: GTT Elysium
+$Team: Friendly
+$Location: -1188.344727, -0.000101, 2231.232178
+$Orientation:
+	-0.635923, 0.000000, -0.771753,
+	0.000000, 1.000000, 0.000000,
+	0.771753, 0.000000, -0.635923
+$AI Goals: ( goals ( ai-dock "Thunderhorse" "topside docking" "dock02" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "Echion Cue" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "General TV Warpout Order" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Pisces 1		;! Object #45
+$Display Name: XSTR("Pisces 1", 4953)
+$Class: SF Dragon
+$Team: Hostile
+$Location: -504.200012, 4000.000000, 1340.000000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.189641, 0.981854,
+	0.000000, -0.981854, 0.189641
++AI Class: Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Subsystem: Pilot
++Primary Banks: ( "Shivan Mega Laser" "Shivan Mega Laser" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Pisces 2		;! Object #46
+$Display Name: XSTR("Pisces 2", 4954)
+$Class: SF Dragon
+$Team: Hostile
+$Location: -538.532654, 4000.000000, 1336.505249
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.189641, 0.981854,
+	0.000000, -0.981854, 0.189641
++AI Class: Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Subsystem: Pilot
++Primary Banks: ( "Shivan Mega Laser" "Shivan Mega Laser" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Pisces 3		;! Object #47
+$Display Name: XSTR("Pisces 3", 4955)
+$Class: SF Dragon
+$Team: Hostile
+$Location: -468.340881, 4000.000000, 1335.833374
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.189641, 0.981854,
+	0.000000, -0.981854, 0.189641
++AI Class: Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Subsystem: Pilot
++Primary Banks: ( "Shivan Mega Laser" "Shivan Mega Laser" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: #BeamTargetHIT		;! Object #48
+$Display Name: XSTR("BeamTargetHIT", 5123)
+$Class: #BeamPoint
+$Team: Unknown
+$Location: -709.957947, -74.999886, 1301.027588
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01a
++Subsystem: turret02a
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "Shivans Arrive" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "ignore-count" "protect-ship" "no-shields" "no-arrival-warp" "invulnerable" "no-dynamic" "beam-protect-ship" "stealth" "don't-collide-invisible" )
++Flags2: ( "lock-all-turrets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: #BeamPointMISS		;! Object #49
+$Display Name: XSTR("BeamPointMISS", 5124)
+$Class: #BeamPoint
+$Team: Unknown
+$Location: -905.411743, -74.999725, 1283.183594
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01a
++Subsystem: turret02a
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "Shivans Arrive" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "ignore-count" "protect-ship" "no-shields" "no-arrival-warp" "invulnerable" "no-dynamic" "beam-protect-ship" "stealth" "don't-collide-invisible" )
++Flags2: ( "lock-all-turrets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 1
+
+$Name: Silver Hammer#Base		;! Object #50
+$Display Name: XSTR("Silver Hammer", 5107)
+$Class: GTI Polaris#B
+$Team: Hostile
+$Location: -362.138641, 0.000076, 1073.656982
+$Orientation:
+	0.000000, 0.000000, -1.000000,
+	-0.000000, 1.000000, 0.000000,
+	1.000000, 0.000000, 0.000000
++AI Class: None
+$Cargo 1:  XSTR("No Lifesigns Detected", 5100)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "don't-collide-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 900
+
+$Name: Monitor		;! Object #51
+$Display Name: XSTR("Monitor", 5125)
+$Class: GTCv Deimos
+$Team: Friendly
+$Location: -5745.000000, 0.000000, 4125.100098
+$Orientation:
+	-0.470747, 0.000000, -0.882268,
+	0.000000, 1.000000, -0.000000,
+	0.882268, -0.000000, -0.470747
+$AI Goals: ( goals ( ai-waypoints-once "Monitor Path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
++Subsystem: Turret19
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
++Subsystem: Turret25
++Subsystem: Turret26
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "You all fail!" 
+   30 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "beam-protect-ship" "flak-protect-ship" "laser-protect-ship" "missile-protect-ship" )
++Flags2: ( "lock-all-turrets" )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" )
++Group: 0
++Use Table Score:
++Score: 800
+$Texture Replace:
++old: nameplate
++new: gtcv_monitor
+
+$Name: Theta 1		;! Object #52
+$Display Name: XSTR("Theta 1", 5126)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: -6010.937988, -0.000873, 3603.747803
+$Orientation:
+	-0.555699, 0.000000, -0.831384,
+	0.000000, 1.000000, 0.000000,
+	0.831384, 0.000000, -0.555699
++AI Class: Wingman Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Prometheus S" )
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "beam-protect-ship" "flak-protect-ship" "laser-protect-ship" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Theta 2		;! Object #53
+$Display Name: XSTR("Theta 2", 5127)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: -6038.505859, -0.000912, 3762.250000
+$Orientation:
+	-0.555699, 0.000000, -0.831384,
+	0.000000, 1.000000, 0.000000,
+	0.831384, 0.000000, -0.555699
++AI Class: Wingman Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Prometheus S" )
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "beam-protect-ship" "flak-protect-ship" "laser-protect-ship" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Theta 3		;! Object #54
+$Display Name: XSTR("Theta 3", 5128)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: -6169.811035, -0.000908, 3557.508057
+$Orientation:
+	-0.555699, 0.000000, -0.831384,
+	0.000000, 1.000000, 0.000000,
+	0.831384, 0.000000, -0.555699
++AI Class: Wingman Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus S" "Prometheus S" )
++Secondary Banks: ( "Harpoon" "Tornado" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "beam-protect-ship" "flak-protect-ship" "laser-protect-ship" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Kappa 1		;! Object #55
+$Display Name: XSTR("Kappa 1", 5129)
+$Class: GTF Hercules Mark II
+$Team: Friendly
+$Location: -5289.043457, -0.000831, 4406.593750
+$Orientation:
+	-0.730602, 0.000000, -0.682803,
+	0.000000, 1.000000, 0.000000,
+	0.682803, 0.000000, -0.730602
++AI Class: Wingman Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "beam-protect-ship" "flak-protect-ship" "laser-protect-ship" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Kappa 2		;! Object #56
+$Display Name: XSTR("Kappa 2", 5130)
+$Class: GTF Hercules Mark II
+$Team: Friendly
+$Location: -5281.938965, -0.000851, 4556.485840
+$Orientation:
+	-0.782832, 0.000000, -0.622234,
+	0.000000, 1.000000, 0.000000,
+	0.622234, 0.000000, -0.782832
++AI Class: Wingman Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "beam-protect-ship" "flak-protect-ship" "laser-protect-ship" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Kappa 3		;! Object #57
+$Display Name: XSTR("Kappa 3", 5131)
+$Class: GTF Hercules Mark II
+$Team: Friendly
+$Location: -5425.305664, -0.000882, 4384.708008
+$Orientation:
+	-0.730602, 0.000000, -0.682803,
+	0.000000, 1.000000, 0.000000,
+	0.682803, 0.000000, -0.730602
++AI Class: Wingman Elite
+$Cargo 1:  XSTR("Nothing", 4856)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "beam-protect-ship" "flak-protect-ship" "laser-protect-ship" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+#Wings		;! 11 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "General TV Warpout Order" 
+   0 
+)
+$Ships: (		;! 4 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+	"Alpha 4"
+)
+$AI Goals: ( goals ( ai-stay-near-ship "Alpha 1" 50 ) )
++Hotkey: 0
++Flags: ( )
+
+$Name: Libra
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Libra 1
+$Arrival Location: Near Ship
++Arrival Distance: 25
+$Arrival Anchor: XGRT1
+$Arrival Cue: ( and 
+   ( or 
+      ( and 
+         ( = @partADice[0] 1 ) 
+         ( is-destroyed-delay 20 "Cancer" ) 
+      )
+      ( and 
+         ( = @partADice[0] 2 ) 
+         ( is-event-true-delay 
+            "Second Wave Cue" 
+            0 
+         )
+      )
+   )
+   ( not ( has-arrived-delay 0 "Beta" ) ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   5 
+   "Skullcrusher" 
+   "Rattlehead" 
+   "War Pig" 
+)
+$Ships: (		;! 3 total
+	"Libra 1"
+	"Libra 2"
+	"Libra 3"
+)
+$AI Goals: ( goals ( ai-waypoints "Fighter A Path" 50 ) )
++Flags: ( "no-arrival-message" "no-arrival-warp" )
+
+$Name: Cancer
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Cancer 1
+$Arrival Location: Near Ship
++Arrival Distance: 25
+$Arrival Anchor: XGRT2
+$Arrival Cue: ( and 
+   ( or 
+      ( = @partADice[0] 1 ) 
+      ( and 
+         ( = @partADice[0] 2 ) 
+         ( is-event-true-delay 
+            "Second Wave Cue" 
+            0 
+         )
+      )
+   )
+   ( not ( has-arrived-delay 0 "Beta" ) ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   4 
+   "Skullcrusher" 
+   "Rattlehead" 
+   "War Pig" 
+)
+$Ships: (		;! 3 total
+	"Cancer 1"
+	"Cancer 2"
+	"Cancer 3"
+)
+$AI Goals: ( goals ( ai-waypoints "Fighter B Path" 50 ) )
++Flags: ( "no-arrival-message" "no-arrival-warp" )
+
+$Name: Virgo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Virgo 1
+$Arrival Location: Near Ship
++Arrival Distance: 25
+$Arrival Anchor: XGRT1
+$Arrival Cue: ( and 
+   ( or 
+      ( and 
+         ( = @partADice[0] 2 ) 
+         ( is-destroyed-delay 20 "Gemini" ) 
+      )
+      ( and 
+         ( = @partADice[0] 1 ) 
+         ( is-event-true-delay 
+            "Second Wave Cue" 
+            0 
+         )
+      )
+   )
+   ( not ( has-arrived-delay 0 "Beta" ) ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   6 
+   "Skullcrusher" 
+   "Rattlehead" 
+   "War Pig" 
+)
+$Ships: (		;! 2 total
+	"Virgo 1"
+	"Virgo 2"
+)
+$AI Goals: ( goals ( ai-waypoints "Fighter A Path" 50 ) )
++Flags: ( "no-arrival-message" "no-arrival-warp" )
+
+$Name: Gemini
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Gemini 1
+$Arrival Location: Near Ship
++Arrival Distance: 25
+$Arrival Anchor: XGRT2
+$Arrival Cue: ( and 
+   ( or 
+      ( = @partADice[0] 2 ) 
+      ( and 
+         ( = @partADice[0] 1 ) 
+         ( is-event-true-delay 
+            "Second Wave Cue" 
+            0 
+         )
+      )
+   )
+   ( not ( has-arrived-delay 0 "Beta" ) ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   10 
+   "Skullcrusher" 
+   "Rattlehead" 
+   "War Pig" 
+)
+$Ships: (		;! 3 total
+	"Gemini 1"
+	"Gemini 2"
+	"Gemini 3"
+)
+$AI Goals: ( goals ( ai-waypoints "Fighter B Path" 50 ) )
++Flags: ( "no-arrival-message" "no-arrival-warp" )
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+$Arrival Location: Hyperspace
++Arrival delay: 1
+$Arrival Cue: ( is-event-true-delay 
+   "GTVA Reinforcement Cue" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "General TV Warpout Order" 
+   0 
+)
+$Ships: (		;! 4 total
+	"Beta 1"
+	"Beta 2"
+	"Beta 3"
+	"Beta 4"
+)
+$AI Goals: ( goals ( ai-chase-any 50 ) )
++Hotkey: 1
++Flags: ( )
+
+$Name: Taurus
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Taurus 1
+$Arrival Location: Hyperspace
++Arrival delay: 2
+$Arrival Cue: ( is-event-true-delay "Shivan Cue" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Melchom Depart Cue" 
+   4 
+)
+$Ships: (		;! 3 total
+	"Taurus 1"
+	"Taurus 2"
+	"Taurus 3"
+)
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) )
++Flags: ( )
+
+$Name: Aries
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Aries 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "Shivan Cue" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "Melchom Depart Cue" 
+   5 
+)
+$Ships: (		;! 3 total
+	"Aries 1"
+	"Aries 2"
+	"Aries 3"
+)
++Flags: ( )
+
+$Name: Pisces
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Pisces 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "Dragon Cue" 10 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( has-arrived-delay 10 "Pisces" ) 
+$Ships: (		;! 3 total
+	"Pisces 1"
+	"Pisces 2"
+	"Pisces 3"
+)
+$AI Goals: ( goals ( ai-chase-any 50 ) )
++Flags: ( "no-arrival-message" )
+
+$Name: Theta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Theta 1
+$Arrival Location: Hyperspace
++Arrival delay: 5
+$Arrival Cue: ( is-event-true-delay 
+   "You all fail!" 
+   30 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Theta 1"
+	"Theta 2"
+	"Theta 3"
+)
+$AI Goals: ( goals ( ai-guard "Monitor" 50 ) )
++Flags: ( )
++Wave Delay Min: 3
++Wave Delay Max: 7
+
+$Name: Kappa
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Kappa 1
+$Arrival Location: Hyperspace
++Arrival delay: 10
+$Arrival Cue: ( has-arrived-delay 0 "Monitor" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Kappa 1"
+	"Kappa 2"
+	"Kappa 3"
+)
+$AI Goals: ( goals ( ai-waypoints "Fighter A Path" 50 ) )
++Flags: ( )
++Wave Delay Min: 5
++Wave Delay Max: 10
+
+#Events		;! 121 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[PC Hippocrates Refit]" 
+      "PC Hippocrates Refit" 
+      5220 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar1[PC Hippocrates Refit]" 
+      "Skullcrusher" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[PC Faustus Refit]" 
+      "PC Faustus Refit" 
+      5221 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar2[PC Faustus Refit]" 
+      "Rattlehead" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[PFR Satis Refit]" 
+      "PFR Satis Refit" 
+      5222 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar3[PFR Satis Refit]" 
+      "Harlequin" 
+      "Sleepwalker" 
+      "Brightside" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar4[PFR Triton Refit]" 
+      "PFR Triton Refit" 
+      5223 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar4[PFR Triton Refit]" 
+      "Thunderhorse" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar5[PI Polaris Refit]" 
+      "PI Polaris Refit" 
+      5224 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar5[PI Polaris Refit]" 
+      "Silver Hammer D" 
+      "Silver Hammer" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar6[PF Hercules Refit]" 
+      "PF Hercules Refit" 
+      5225 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar6[PF Hercules Refit]" 
+      "Cancer 2" 
+      "Gemini 1" 
+      "Gemini 2" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar7[PB Zeus Refit]" 
+      "PB Zeus Refit" 
+      5226 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar7[PB Zeus Refit]" 
+      "Cancer 3" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar8[PF Horus Refit]" 
+      "PF Horus Refit" 
+      5227 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar8[PF Horus Refit]" 
+      "Gemini 3" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar9[PB Osiris Refit]" 
+      "PB Osiris Refit" 
+      5228 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar9[PB Osiris Refit]" 
+      "Virgo 1" 
+      "Virgo 2" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar10[PC Fenris Refit]" 
+      "PC Fenris Refit" 
+      5229 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar10[PC Fenris Refit]" 
+      "War Pig" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar11[PF Loki Refit]" 
+      "PF Loki Refit" 
+      5230 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar11[PF Loki Refit]" 
+      "Libra 1" 
+      "Libra 2" 
+      "Libra 3" 
+      "Cancer 1" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar12[ESM System:]" 
+      "ESM System:" 
+      5231 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar13[Booting. . .]" 
+      "Booting. . ." 
+      5232 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar14[#Command]" 
+      "#Command" 
+      4913 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar15[MAG MOORING]" 
+      "MAG MOORING" 
+      5233 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( turret-lock-all 
+      "Orpheus" 
+      "Harlequin" 
+   )
+   ( modify-variable 
+      @partADice[0] 
+      ( rand-multiple 1 2 ) 
+   )
+   ( modify-variable 
+      @partBDice[0] 
+      ( rand-multiple 1 2 ) 
+   )
+   ( modify-variable 
+      @partCDice[0] 
+      ( rand-multiple 2 2 ) 
+   )
+   ( ship-guardian-threshold 
+      ( rand 33 40 ) 
+      "Alpha 2" 
+   )
+   ( ship-guardian-threshold 
+      ( rand 33 40 ) 
+      "Alpha 3" 
+   )
+   ( ship-guardian-threshold 
+      ( rand 33 40 ) 
+      "Alpha 4" 
+   )
+   ( hud-set-max-targeting-range 10000 ) 
+   ( lock-primary-weapon 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+   ( lock-secondary-weapon 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+   ( cap-waypoint-speed "War Pig" 5 ) 
+   ( ship-subsys-guardian-threshold 
+      50 
+      "Alpha 2" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      50 
+      "Alpha 3" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      50 
+      "Alpha 4" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      1 
+      "Harlequin" 
+      "<all engines>" 
+   )
+   ( change-iff-color 
+      "Friendly" 
+      "Unknown" 
+      0 
+      255 
+      0 
+      "Orpheus" 
+   )
+   ( ship-vaporize 
+      "#BeamTargetHIT" 
+      "#BeamPointMISS" 
+   )
+   ( ship-subsys-guardian-threshold 
+      50 
+      "Alpha 1" 
+      "communications" 
+   )
+   ( ship-subsys-untargetable 
+      "Silver Hammer" 
+      "MooringA" 
+      "MooringB" 
+      "MooringC" 
+      "MooringD" 
+   )
+   ( ship-subsys-untargetable 
+      "Silver Hammer D" 
+      "MooringA" 
+      "MooringB" 
+      "MooringC" 
+      "MooringD" 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Silver Hammer" 
+      "MooringA" 
+      "MooringB" 
+   )
+   ( add-to-collision-group-new 
+      0 
+      "Silver Hammer D" 
+      "Silver Hammer" 
+   )
+)
++Name: Initial Events
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 Let's go bag some pirates!" 
+      0 
+      "Alpha 3" 
+      "Normal" 
+      "A3 Defenses" 
+      5000 
+      "Alpha 2" 
+      "Normal" 
+      "A2 Surprises" 
+      5000 
+   )
+)
++Name: Starting Off
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( < 
+      ( distance 
+         "<any friendly>" 
+         "<any hostile>" 
+      )
+      3000 
+   )
+   ( unprotect-ship 
+      "Alpha 1" 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+   ( add-goal 
+      "Libra" 
+      ( ai-chase "Alpha" 89 ) 
+   )
+   ( add-goal 
+      "Cancer" 
+      ( ai-chase "Alpha" 89 ) 
+   )
+   ( add-goal 
+      "Gemini" 
+      ( ai-chase "Alpha" 89 ) 
+   )
+   ( add-goal 
+      "Virgo" 
+      ( ai-chase "Alpha" 89 ) 
+   )
+   ( send-message 
+      "Alpha 4" 
+      "High" 
+      "A4 Spotted" 
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase-any 89 ) 
+   )
+   ( unlock-primary-weapon 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+   ( unlock-secondary-weapon 
+      "Alpha 2" 
+      "Alpha 3" 
+      "Alpha 4" 
+   )
+)
++Name: Alpha Visible
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Cancer" ) 
+   ( do-nothing ) 
+)
++Name: Kill Cancer
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Cancer", 5132)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Gemini" ) 
+   ( do-nothing ) 
+)
++Name: Kill Gemini
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Gemini", 5133)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Libra" ) 
+   ( do-nothing ) 
+)
++Name: Kill Libra
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Libra", 5134)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Virgo" ) 
+   ( do-nothing ) 
+)
++Name: Kill Virgo
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Virgo", 5135)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Orpheus Captured" 
+         0 
+         ( true ) 
+      )
+      ( not 
+         ( has-departed-delay 0 "Orpheus" ) 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Orpheus" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Secure Orpheus
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Secure Orpheus (F12)", 5136)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "Cancer" 
+            "Libra" 
+         )
+         ( is-destroyed-delay 
+            0 
+            "Gemini" 
+            "Virgo" 
+         )
+      )
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "@jamShip[Alpha 1]" 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Call Command anyway" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 Nailed them" 
+      0 
+   )
+)
++Name: First Wave Killed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "@jamShip[Alpha 1]" 
+         )
+      )
+      ( is-event-true-delay 
+         "Command is JAMMED" 
+         18 
+      )
+   )
+   ( hud-set-custom-gauge-active 
+      ( true ) 
+      "BPMiscStatus" 
+      "BPMiscStatusA" 
+   )
+   ( hud-set-text 
+      "BPMiscStatus" 
+      "@autoGenVar12[ESM System:]" 
+   )
+   ( hud-set-text 
+      "BPMiscStatusA" 
+      "@autoGenVar13[Booting. . .]" 
+   )
+)
++Name: ESM Online
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable @ESMOnline[0] 1 ) 
+   ( hud-gauge-set-active 
+      "SignalGaugeTop" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "SignalGaugeBar" 
+      ( true ) 
+   )
+   ( hud-set-custom-gauge-active 
+      ( false ) 
+      "BPMiscStatus" 
+      "BPMiscStatusA" 
+   )
+)
++Name: ESM Booted
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( = @partBDice[0] 1 ) 
+   ( modify-variable 
+      "@jamShip[Alpha 1]" 
+      "Skullcrusher" 
+   )
+)
++Name: Skullcrusher Jamming 1
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( = @partBDice[0] 2 ) 
+   ( modify-variable 
+      "@jamShip[Alpha 1]" 
+      "Rattlehead" 
+   )
+)
++Name: Rattlehead Jamming 2
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( = @partBDice[0] 3 ) 
+   ( modify-variable 
+      "@jamShip[Alpha 1]" 
+      "TC-TRI 621" 
+   )
+)
++Name: TRI 621 Jamming 3
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( facing "@jamShip[Alpha 1]" 90 ) 
+      ( is-event-true-delay "ESM Online" 5 ) 
+      ( not 
+         ( is-event-true-delay "Signal Cold" 0 ) 
+      )
+      ( not 
+         ( is-event-true-delay "Signal Warm" 0 ) 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Signal HOTHOTHOT" 
+            0 
+         )
+      )
+      ( < 
+         ( distance 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+         )
+         5000 
+      )
+   )
+   ( training-msg 
+      "SIGNAL -40dB" 
+      "SIGNAL -40dB" 
+      0 
+      1 
+   )
+)
++Name: Signal Very Cold
++Repeat Count: 999999
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+         )
+         5000 
+      )
+      ( is-event-true-delay "ESM Online" 5 ) 
+      ( facing "@jamShip[Alpha 1]" 60 ) 
+      ( not 
+         ( is-event-true-delay "Signal Warm" 0 ) 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Signal HOTHOTHOT" 
+            0 
+         )
+      )
+   )
+   ( training-msg 
+      "SIGNAL -10dB" 
+      "SIGNAL -10dB" 
+      0 
+      1 
+   )
+)
++Name: Signal Cold
++Repeat Count: 999999
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+         )
+         3000 
+      )
+      ( is-event-true-delay "ESM Online" 5 ) 
+      ( facing "@jamShip[Alpha 1]" 30 ) 
+      ( not 
+         ( is-event-true-delay 
+            "Signal HOTHOTHOT" 
+            0 
+         )
+      )
+   )
+   ( training-msg 
+      "SIGNAL +30dB" 
+      "SIGNAL +30dB" 
+      0 
+      1 
+   )
+)
++Name: Signal Warm
++Repeat Count: 999999
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+         )
+         1500 
+      )
+      ( is-event-true-delay "ESM Online" 5 ) 
+      ( facing "@jamShip[Alpha 1]" 15 ) 
+   )
+   ( training-msg 
+      "SIGNAL +120dB" 
+      "SIGNAL +120dB" 
+      0 
+      1 
+   )
+)
++Name: Signal HOTHOTHOT
++Repeat Count: 999999
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( destroyed-or-departed-delay 
+         0 
+         "@jamShip[Alpha 1]" 
+      )
+      ( is-event-true-delay 
+         "ESM Online" 
+         0 
+         ( is-event-true-delay "ESM Online" 0 ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Jamming Device
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Bring Down Jamming Field", 5137)
++Team: 0
+
+$Formula: ( when 
+   ( is-disabled-delay 0 "Thunderhorse" ) 
+   ( change-iff "Unknown" "Thunderhorse" ) 
+   ( change-iff-color 
+      "Friendly" 
+      "Unknown" 
+      128 
+      128 
+      128 
+      "Thunderhorse" 
+   )
+   ( turret-lock-all "Thunderhorse" ) 
+)
++Name: Disarm and disable Thunderhorse
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Disable Thunderhorse (F11)", 5138)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Silver Hammer" 
+            "MooringA" 
+            0 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Silver Hammer" 
+            "MooringB" 
+            0 
+         )
+      )
+      ( is-event-true-delay 
+         "Destroy the fricken moops" 
+         0 
+         ( is-event-true-delay 
+            "Destroy the fricken moops" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Thunderhorse Escaped" 
+            0 
+            ( true ) 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Destroy Moorings
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Magnetic Moorings (F9)", 5139)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay "ESM Online" 15 ) 
+         ( is-disabled-delay 15 "Thunderhorse" ) 
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "Cancer" 
+            "Libra" 
+         )
+         ( is-destroyed-delay 
+            0 
+            "Gemini" 
+            "Virgo" 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Second Wave Cue
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 
+      0 
+      "Libra" 
+      "Cancer" 
+      "Virgo" 
+      "Gemini" 
+   )
+   ( add-goal 
+      "Libra" 
+      ( ai-chase-any 89 ) 
+   )
+   ( add-goal 
+      "Cancer" 
+      ( ai-chase-any 89 ) 
+   )
+   ( add-goal 
+      "Gemini" 
+      ( ai-chase-any 89 ) 
+   )
+   ( add-goal 
+      "Virgo" 
+      ( ai-chase-any 89 ) 
+   )
+   ( send-message 
+      "Alpha 3" 
+      "Normal" 
+      "A3 Second wing incoming" 
+   )
+)
++Name: Second Wave Arrives
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "First Wave Killed" 
+         20 
+      )
+      ( < 
+         ( distance 
+            "<any friendly>" 
+            "Thunderhorse" 
+         )
+         2000 
+      )
+   )
+   ( add-goal 
+      "Skullcrusher" 
+      ( ai-waypoints-once 
+         "SkullCrusher bugout" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Rattlehead" 
+      ( ai-waypoints-once 
+         "Rattlehead Bugout" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Thunderhorse" 
+      ( ai-waypoints-once 
+         "Thunderhorse bugout" 
+         89 
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 Work fast" 
+   )
+   ( cap-waypoint-speed "Rattlehead" 10 ) 
+   ( cap-waypoint-speed 
+      "Skullcrusher" 
+      10 
+   )
+   ( cap-waypoint-speed 
+      "Thunderhorse" 
+      10 
+   )
+)
++Name: Pirates Bugout
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Second Wave Arrives" 
+         45 
+      )
+      ( not 
+         ( is-disabled-delay 0 "Thunderhorse" ) 
+      )
+   )
+   ( send-message-list 
+      "Alpha 3" 
+      "High" 
+      "A3 Pirates warping out" 
+      0 
+   )
+)
++Name: Pirates Warpout cue
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Disarm and disable Thunderhorse" 
+      0 
+   )
+   ( jettison-cargo-delay "Harlequin" 0 ) 
+   ( add-goal 
+      "Harlequin" 
+      ( ai-dock 
+         "Thunderhorse" 
+         "docking point" 
+         "dock02" 
+         89 
+      )
+   )
+   ( unprotect-ship "Harlequin" ) 
+   ( add-goal 
+      "Virgo" 
+      ( ai-chase "Harlequin" 89 ) 
+   )
+   ( add-goal 
+      "Libra" 
+      ( ai-chase "Harlequin" 89 ) 
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF Thunderhorse disabled" 
+      0 
+      "Alpha 3" 
+      "Normal" 
+      "A3 Hey uh" 
+      8000 
+      "Orpheus" 
+      "Normal" 
+      "ORF Nuh uh" 
+      3000 
+   )
+   ( add-remove-escort "Harlequin" 50 ) 
+)
++Name: Thunderhorse Disabled
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( has-docked-delay 
+            "Harlequin" 
+            "Thunderhorse" 
+            1 
+            5 
+         )
+         ( has-docked-delay 
+            "Echion" 
+            "Thunderhorse" 
+            1 
+            5 
+         )
+      )
+      ( is-event-true-delay 
+         "Thunderhorse Disabled" 
+         0 
+         ( is-event-true-delay 
+            "Thunderhorse Disabled" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF Harle Docked" 
+      0 
+      "Alpha 4" 
+      "Normal" 
+      "A4 Hold on" 
+      6000 
+      "Orpheus" 
+      "Normal" 
+      "ORF Excuse me?" 
+      3000 
+   )
+   ( protect-ship 
+      "Harlequin" 
+      "Thunderhorse" 
+   )
+   ( beam-protect-ship 
+      "Harlequin" 
+      "Thunderhorse" 
+   )
+   ( change-iff 
+      "Friendly" 
+      "Thunderhorse" 
+   )
+)
++Name: Capture Thunderhorse
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Engines Online Moops Dead" 
+         0 
+      )
+      ( is-event-true-delay 
+         "Capture Thunderhorse" 
+         0 
+      )
+      ( is-event-true-delay "Amphion Cue" 0 ) 
+      ( is-event-true-delay "Dragon Cue" 65 ) 
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF Excellent" 
+      0 
+   )
+)
++Name: Turncoat!
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( jettison-cargo-delay "Orpheus" 0 ) 
+   ( change-iff 
+      "Hostile" 
+      "Orpheus" 
+      "Thunderhorse" 
+      "Harlequin" 
+   )
+   ( set-subsystem-strength 
+      "Thunderhorse" 
+      "<all engines>" 
+      100 
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF Well its been fun" 
+      0 
+      "Alpha 3" 
+      "Normal" 
+      "A3 Oh bugger" 
+      3000 
+   )
+)
++Name: Go for it!
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: Orpheus and Thunderhorse WO
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Harlequin" ) 75 ) 
+      ( not 
+         ( has-docked-delay 
+            "Harlequin" 
+            "Thunderhorse" 
+            1 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay "Turncoat!" 0 ) 
+      )
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Thunderhorse" 
+         )
+      )
+   )
+   ( send-message-list 
+      "Harlequin" 
+      "High" 
+      "HRL 75 Hull" 
+      0 
+   )
+)
++Name: Harle 75 Hull
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Harlequin" ) 50 ) 
+      ( not 
+         ( has-docked-delay 
+            "Harlequin" 
+            "Thunderhorse" 
+            1 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay "Turncoat!" 0 ) 
+      )
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Thunderhorse" 
+         )
+      )
+   )
+   ( send-message-list 
+      "Harlequin" 
+      "High" 
+      "HRL 50 Hull" 
+      0 
+   )
+)
++Name: Harle 50 Hull
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Harlequin" ) 25 ) 
+      ( not 
+         ( has-docked-delay 
+            "Harlequin" 
+            "Thunderhorse" 
+            1 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay "Turncoat!" 0 ) 
+      )
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Thunderhorse" 
+         )
+      )
+   )
+   ( send-message-list 
+      "Harlequin" 
+      "High" 
+      "HRL 25 Hull" 
+      0 
+   )
+)
++Name: Harle 25 Hull
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 0 "Harlequin" ) 
+      ( not 
+         ( is-event-true-delay 
+            "Capture Thunderhorse" 
+            20 
+         )
+      )
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Thunderhorse" 
+         )
+      )
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF Harlequin destroyed" 
+      0 
+      "Alpha 3" 
+      "Normal" 
+      "A3 Don't worry" 
+      9500 
+   )
+)
++Name: Harle Destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         0 
+         "@jamShip[Alpha 1]" 
+      )
+      ( is-event-true-delay 
+         "Command is JAMMED" 
+         12 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "JamDestDep and no one noticed" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "Normal" 
+      "A2 Jamming Destroyed" 
+      0 
+      "Alpha 2" 
+      "Normal" 
+      "A2 HALP US" 
+      7000 
+      "@autoGenVar14[#Command]" 
+      "Normal" 
+      "CMD Roger that" 
+      5000 
+   )
+)
++Name: Jamming Device Destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( has-departed-delay 
+         0 
+         "@jamShip[Alpha 1]" 
+      )
+      ( is-event-true-delay "ESM Online" 0 ) 
+      ( not 
+         ( is-event-true-delay 
+            "JamDestDep and no one noticed" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "Normal" 
+      "A2 Jamming Left" 
+      0 
+      "Alpha 2" 
+      "Normal" 
+      "A2 HALP US" 
+      7000 
+      "@autoGenVar14[#Command]" 
+      "Normal" 
+      "CMD Roger that" 
+      4500 
+   )
+)
++Name: Jamming Device Left
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Destroy Jamming Device" 
+         25 
+      )
+      ( and 
+         ( is-event-true-delay 
+            "JamDestDep and no one noticed" 
+            0 
+         )
+         ( is-event-true-delay 
+            "First Wave Killed" 
+            25 
+         )
+      )
+   )
+   ( set-support-ship 
+      "Hyperspace" 
+      "<no anchor>" 
+      "Hyperspace" 
+      "<no anchor>" 
+      "<species support ship class>" 
+      -1 
+   )
+)
++Name: GTVA Reinforcement Cue
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "GTVA Reinforcement Cue" 
+      10 
+   )
+   ( send-message 
+      "Amphion" 
+      "High" 
+      "CMD Amphion Coming in" 
+   )
+)
++Name: Amphion Cue
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( not 
+         ( is-event-true-delay 
+            "Thunderhorse Escaped" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Harlequin Gone" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "@autoGenVar14[#Command]" 
+      "High" 
+      "CMD Ready Orfy?" 
+      0 
+      "Orpheus" 
+      "Normal" 
+      "ORF Yes" 
+      3000 
+   )
+)
++Name: No turncoat yet?
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Pisces" ) 
+   ( send-message-list 
+      "Alpha 4" 
+      "High" 
+      "A4 Incoming!" 
+      0 
+   )
+)
++Name: Destroy the Moops!
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "Thunderhorse Escaped" 
+         0 
+      )
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF Second" 
+      0 
+      "@autoGenVar14[#Command]" 
+      "Normal" 
+      "CMD Keep your shirt on" 
+      9000 
+      "Orpheus" 
+      "Normal" 
+      "ORF Uh yeah" 
+      6000 
+   )
+)
++Name: Extended Conversation
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( ship-subsys-guardian-threshold 
+      0 
+      "Silver Hammer" 
+      "MooringA" 
+      "MooringB" 
+   )
+   ( ship-subsys-targetable 
+      "Silver Hammer" 
+      "MooringA" 
+      "MooringB" 
+   )
+   ( lua-mark-subsystem 
+      "Silver Hammer" 
+      "@autoGenVar15[MAG MOORING]" 
+      "MooringA" 
+      "MooringA" 
+   )
+   ( lua-turrethotkey-add 
+      "F9" 
+      "Silver Hammer" 
+      "MooringA" 
+      "MAG MOORING" 
+   )
+   ( lua-turrethotkey-add 
+      "F9" 
+      "Silver Hammer" 
+      "MooringB" 
+      "MAG MOORING" 
+   )
+   ( ship-stealthy "Silver Hammer#Base" ) 
+   ( ship-unstealthy "Silver Hammer" ) 
+   ( add-remove-escort 
+      "Silver Hammer" 
+      100 
+   )
+   ( lua-set-player-target 
+      "Silver Hammer" 
+      "MooringA" 
+   )
+)
++Name: Show Moorings
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( and 
+      ( has-docked-delay 
+         "Amphion" 
+         "Orpheus" 
+         1 
+         5 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Thunderhorse Escaped" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Amphion" 
+      "High" 
+      "AMP Amp docked" 
+      0 
+   )
+)
++Name: Amp Docked
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Destroy the Moops!" 
+      47 
+   )
+   ( do-nothing ) 
+)
++Name: Shivan Cue
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Melchom" ) 
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 Incoming!" 
+      0 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Melchom" 
+      "turret07" 
+   )
+)
++Name: Shivans Arrive
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when ( false ) ( do-nothing ) ) 
++Name: Destroy SC Andras
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Orpheus" ) 
+   ( send-message-list 
+      "Alpha 3" 
+      "High" 
+      "A3 Crap, Orpheus is dead" 
+      0 
+      "@autoGenVar14[#Command]" 
+      "Normal" 
+      "CMD Abort" 
+      3000 
+   )
+   ( add-goal 
+      "Melchom" 
+      ( ai-chase "Thunderhorse" 89 ) 
+   )
+   ( unprotect-ship "Thunderhorse" ) 
+   ( beam-unprotect-ship "Thunderhorse" ) 
+)
++Name: Orpheus Destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "Amp Docked" 20 ) 
+      ( not 
+         ( is-event-true-delay 
+            "Harlequin Gone" 
+            0 
+         )
+      )
+      ( is-event-true-delay 
+         "Harle Destroyed" 
+         0 
+      )
+   )
+   ( send-message-list 
+      "Amphion" 
+      "High" 
+      "AMP Ahem" 
+      0 
+      "Orpheus" 
+      "Normal" 
+      "ORF One moment" 
+      3500 
+   )
+)
++Name: Yoohoo?
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Aries" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Aries
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Aries", 5140)
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Taurus" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Taurus
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Taurus", 5141)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( are-waypoints-done-delay 
+         "Amphion" 
+         "Amp Path" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Capture Thunderhorse" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Amphion En Route
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( has-docked-delay 
+         "Harlequin" 
+         "Thunderhorse" 
+         1 
+         5 
+      )
+      ( is-event-true-delay 
+         "Thunderhorse Disabled" 
+         0 
+         ( is-event-true-delay 
+            "Thunderhorse Disabled" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Protect Harlequin
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 
+      5 
+      "Orpheus" 
+      "Thunderhorse" 
+      "Melchom" 
+   )
+   ( send-message-list 
+      "@autoGenVar14[#Command]" 
+      "High" 
+      "CMD Return to Base" 
+      0 
+   )
+)
++Name: You all fail!
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: RTB "Win"
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return to Base", 5007)
++Team: 0
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Amphion" 
+      "Orpheus" 
+      1 
+      10 
+   )
+   ( do-nothing ) 
+)
++Name: Orpheus Captured
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "@autoGenVar14[#Command]" 
+      "High" 
+      "CMD Return to Base" 
+      0 
+   )
+)
++Name: Head on home
++Repeat Count: 1
++Interval: 1
++Chained: 6
++Team: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: RTB "Lose"
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Return to Base", 5007)
++Team: 0
+
+$Formula: ( when ( false ) ( do-nothing ) ) 
++Name: Echion Cue
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when ( false ) ( do-nothing ) ) 
++Name: Echion Docked
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: MUSIC!
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file "vassago3-1" ) 
+)
++Name: 1: On the Rocks
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Alpha Visible" 
+      0 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( play-sound-from-file "vassago3-2" ) 
+)
++Name: 2: First Strike
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when-argument 
+   ( in-sequence 
+      "vassago3-3" 
+      "vassago3-4" 
+      "vassago3-5" 
+      "vassago3-3" 
+      "vassago3-4" 
+      "vassago3-5" 
+      "vassago3-3" 
+      "vassago3-4" 
+      "vassago3-5" 
+      "vassago3-3" 
+      "vassago3-4" 
+      "vassago3-5" 
+   )
+   ( and 
+      ( < 
+         @timeChangeTrack[-1] 
+         ( mission-time ) 
+      )
+      ( is-event-true-delay 
+         "2: First Strike" 
+         44 
+      )
+      ( = 1 @oktoPlay[1] ) 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( when 
+      ( string-equals 
+         "<argument>" 
+         "vassago3-3" 
+      )
+      ( modify-variable 
+         @timeChangeTrack[-1] 
+         ( + ( mission-time ) 56 ) 
+      )
+      ( play-sound-from-file "vassago3-3" ) 
+   )
+   ( when 
+      ( string-equals 
+         "<argument>" 
+         "vassago3-4" 
+      )
+      ( modify-variable 
+         @timeChangeTrack[-1] 
+         ( + ( mission-time ) 78 ) 
+      )
+      ( play-sound-from-file "vassago3-4" ) 
+   )
+   ( when 
+      ( string-equals 
+         "<argument>" 
+         "vassago3-5" 
+      )
+      ( modify-variable 
+         @timeChangeTrack[-1] 
+         ( + ( mission-time ) 58 ) 
+      )
+      ( play-sound-from-file "vassago3-5" ) 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: 345: Pirates Mean Business
++Repeat Count: 9999
++Trigger Count: 9999
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "GTVA Reinforcement Cue" 
+      0 
+   )
+   ( modify-variable @oktoPlay[1] 0 ) 
+   ( close-sound-from-file ( true ) ) 
+   ( play-sound-from-file "vassago3-6" ) 
+   ( modify-variable 
+      @timeChangeTrack[-1] 
+      ( + ( mission-time ) 51 ) 
+   )
+)
++Name: 6: The Calvary Arrives
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "Dragon Cue" 0 ) 
+   ( close-sound-from-file ( true ) ) 
+   ( modify-variable @oktoPlay[1] 0 ) 
+   ( when 
+      ( = @partCDice[0] 1 ) 
+      ( play-sound-from-file "vassago3-7" ) 
+   )
+   ( when 
+      ( = @partCDice[0] 2 ) 
+      ( play-sound-from-file "vassago3-7" ) 
+   )
+)
++Name: 7: A Sinister Motive
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "7: A Sinister Motive" 
+         77 
+      )
+      ( false ) 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( when 
+      ( = @partCDice[0] 1 ) 
+      ( play-sound-from-file "vassago3-8" 1 ) 
+   )
+   ( when 
+      ( = @partCDice[0] 2 ) 
+      ( play-sound-from-file "vassago3-8" 1 ) 
+   )
+)
++Name: 8: The Foul Beast
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Melchom" ) 25 ) 
+      ( false ) 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( when 
+      ( = @partCDice[0] 1 ) 
+      ( play-sound-from-file "vassago3-9" ) 
+   )
+   ( when 
+      ( = @partCDice[0] 2 ) 
+      ( play-sound-from-file "vassago3-9" ) 
+   )
+)
++Name: 9: Back to Hell
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "9: Back to Hell" 
+            27 
+         )
+         ( is-event-true-delay 
+            "Orpheus Captured" 
+            0 
+         )
+         ( is-event-true-delay 
+            "Harlequin Gone" 
+            0 
+         )
+         ( and 
+            ( is-destroyed-delay 0 "Harlequin" ) 
+            ( destroyed-or-departed-delay 
+               0 
+               "War Pig" 
+               "Skullcrusher" 
+               "Rattlehead" 
+               "Libra" 
+               "Cancer" 
+               "Virgo" 
+               "Gemini" 
+            )
+            ( not 
+               ( has-docked-delay 
+                  "Harlequin" 
+                  "Thunderhorse" 
+                  1 
+                  0 
+               )
+            )
+         )
+      )
+      ( false ) 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( play-sound-from-file "vassago3-1" 5 ) 
+   ( modify-variable @oktoPlay[1] 0 ) 
+)
++Name: 10: Rock Reprise
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Destroy the Moops!" 
+      10 
+   )
+   ( do-nothing ) 
+)
++Name: Destroy the fricken moops
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Destroy Jamming Device" 
+         0 
+      )
+      ( is-event-true-delay 
+         "GTVA Reinforcement Cue" 
+         53 
+      )
+      ( is-event-true-delay 
+         "Capture Thunderhorse" 
+         5 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Dragon Cue
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Pisces" ) 
+   ( do-nothing ) 
+)
++Name: Destroy Pisces
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Pisces", 5142)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( has-departed-delay 2 "Thunderhorse" ) 
+      ( not 
+         ( has-docked-delay 
+            "Harlequin" 
+            "Thunderhorse" 
+            1 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF Fools" 
+      0 
+      "Alpha 3" 
+      "Normal" 
+      "A3 Sorry about your loss" 
+      3500 
+   )
+)
++Name: Thunderhorse Escaped
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Thunderhorse Escaped" 
+         20 
+      )
+      ( is-event-true-delay 
+         "Thunderhorse Destroyed" 
+         20 
+      )
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF I don't think so!" 
+      0 
+      "Alpha 4" 
+      "Normal" 
+      "A4 Hey!" 
+      3500 
+      "Alpha 3" 
+      "Normal" 
+      "A3 I dontthink he's listening" 
+      5000 
+   )
+   ( change-iff "Hostile" "Harlequin" ) 
+   ( add-goal 
+      "Harlequin" 
+      ( ai-undock 89 ) 
+   )
+   ( ship-subsys-guardian-threshold 
+      9 
+      "Harlequin" 
+      "<all engines>" 
+   )
+   ( set-object-speed-y "Harlequin" 20 ) 
+)
++Name: Harlequin undocks!
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( has-undocked-delay 
+      "Harlequin" 
+      "Orpheus" 
+      1 
+      5 
+   )
+   ( add-goal 
+      "Harlequin" 
+      ( ai-warp-out 89 ) 
+   )
+   ( ship-guardian "Harlequin" ) 
+)
++Name: Harelquin Escapes
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Harelquin Escapes" 
+         0 
+      )
+      ( has-departed-delay 0 "Harlequin" ) 
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 Shoot" 
+      0 
+   )
+)
++Name: Harlequin Gone
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( has-docked-delay 
+            "Amphion" 
+            "Orpheus" 
+            1 
+            0 
+         )
+      )
+      ( is-event-true-delay 
+         "Shivans Arrive" 
+         0 
+      )
+   )
+   ( add-goal 
+      "Amphion" 
+      ( ai-waypoints-once "Amp Run Away" 89 ) 
+   )
+)
++Name: Amp Breaks for it
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( has-docked-delay 
+         "Amphion" 
+         "Orpheus" 
+         1 
+         10 
+      )
+      ( is-event-true-delay 
+         "Thunderhorse Escaped" 
+         0 
+      )
+   )
+   ( send-message-list 
+      "Amphion" 
+      "High" 
+      "AMP Securing anyway" 
+      0 
+   )
+)
++Name: Amp Boards - Harle Escaped
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when ( false ) ( do-nothing ) ) 
++Name: Amp Boards - Harle Destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( are-waypoints-done-delay 
+         "Amphion" 
+         "Amp Path" 
+         0 
+      )
+      ( destroyed-or-departed-delay 
+         0 
+         "Harlequin" 
+      )
+      ( false ) 
+   )
+   ( add-goal 
+      "Amphion" 
+      ( ai-dock 
+         "Orpheus" 
+         "topside docking" 
+         "dock01" 
+         89 
+      )
+   )
+)
++Name: Amp OK to dock
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 0 "Thunderhorse" ) 
+      ( not 
+         ( is-event-true-delay 
+            "Capture Thunderhorse" 
+            0 
+         )
+      )
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF WTF" 
+      0 
+   )
+)
++Name: Thunderhorse Destroyed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "Pirates Warpout cue" 
+            0 
+         )
+         ( < ( hits-left "War Pig" ) 33 ) 
+         ( are-waypoints-done-delay 
+            "War Pig" 
+            "War Pig Path" 
+            0 
+         )
+         ( has-arrived-delay 10 "Beta" ) 
+      )
+      ( not 
+         ( is-disabled-delay 0 "War Pig" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: War Pig Retreat
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < ( hits-left "War Pig" ) 50 ) 
+         ( are-waypoints-done-delay 
+            "War Pig" 
+            "War Pig Path" 
+            0 
+         )
+         ( has-arrived-delay 10 "Beta" ) 
+      )
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "War Pig" 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 War Pig Retreating" 
+   )
+   ( protect-ship "War Pig" ) 
+)
++Name: Due to damage
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "Pirates Warpout cue" 
+            0 
+         )
+         ( < ( hits-left "Skullcrusher" ) 33 ) 
+         ( are-waypoints-done-delay 
+            "Skullcrusher" 
+            "SkullCrusher bugout" 
+            0 
+         )
+         ( has-arrived-delay 10 "Beta" ) 
+      )
+      ( not 
+         ( is-disabled-delay 0 "Skullcrusher" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Skullcrusher Retreat
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < ( hits-left "Skullcrusher" ) 50 ) 
+         ( are-waypoints-done-delay 
+            "Skullcrusher" 
+            "SkullCrusher bugout" 
+            0 
+         )
+         ( has-arrived-delay 10 "Beta" ) 
+      )
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Skullcrusher" 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 Skullcrusher out" 
+   )
+   ( protect-ship "Skullcrusher" ) 
+)
++Name: Due to damage
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "Pirates Warpout cue" 
+            0 
+         )
+         ( < ( hits-left "Rattlehead" ) 33 ) 
+         ( are-waypoints-done-delay 
+            "Rattlehead" 
+            "Rattlehead Bugout" 
+            0 
+         )
+         ( has-arrived-delay 10 "Beta" ) 
+      )
+      ( not 
+         ( is-disabled-delay 0 "Rattlehead" ) 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Rattlehead Retreat
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < ( hits-left "Rattlehead" ) 50 ) 
+         ( are-waypoints-done-delay 
+            "Rattlehead" 
+            "Rattlehead Bugout" 
+            0 
+         )
+         ( has-arrived-delay 10 "Beta" ) 
+      )
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Rattlehead" 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 3" 
+      "High" 
+      "A3 Rattlehead Out" 
+   )
+   ( protect-ship "Rattlehead" ) 
+)
++Name: Due to damage
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( or 
+         ( and 
+            ( or 
+               ( is-event-true-delay 
+                  "Pirates Warpout cue" 
+                  0 
+               )
+               ( < ( hits-left "Thunderhorse" ) 50 ) 
+            )
+            ( not 
+               ( is-disabled-delay 0 "Thunderhorse" ) 
+            )
+         )
+         ( < 
+            ( hits-left-subsystem 
+               "Thunderhorse" 
+               "engine" 
+               ( true ) 
+            )
+            35 
+         )
+      )
+      ( is-event-true-delay 
+         "Orpheus and Thunderhorse WO" 
+         0 
+      )
+   )
+   ( send-message 
+      "Alpha 4" 
+      "High" 
+      "A4 Watch out!" 
+   )
+)
++Name: Thunderhorse tries to escape!
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( false ) 
+   ( self-destruct "Harlequin" ) 
+)
++Name: Debug DELETE ME BEFORE RELEASE
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( false ) 
+   ( close-sound-from-file ( true ) ) 
+   ( end-mission ) 
+)
++Name: IGNOREME
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay "Dragon Cue" 53 ) 
+   ( set-subsystem-strength 
+      "Orpheus" 
+      "<all engines>" 
+      100 
+   )
+)
++Name: Orpheus Engines Online
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Orpheus Engines Online" 
+         0 
+      )
+      ( is-event-true-delay 
+         "Destroy Moorings" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Melchom Fire at Orph" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Orpheus" 
+      "High" 
+      "ORF Engines Online Moops Dead" 
+   )
+)
++Name: Engines Online Moops Dead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Orpheus Engines Online" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Destroy Moorings" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Orpheus" 
+      "High" 
+      "ORF Engines Online Moops Alive" 
+   )
+)
++Name: Engines Online Moops Alive
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( is-event-true-delay 
+            "Orpheus Engines Online" 
+            0 
+         )
+      )
+      ( is-event-true-delay 
+         "Destroy Moorings" 
+         0 
+      )
+   )
+   ( send-message 
+      "Orpheus" 
+      "High" 
+      "ORF Moops Dead, Engines Offlin" 
+   )
+)
++Name: Engines Offline Moops Dead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( hits-left-subsystem 
+         "Thunderhorse" 
+         "engine" 
+         ( true ) 
+      )
+      25 
+   )
+   ( set-subsystem-strength 
+      "Thunderhorse" 
+      "<all engines>" 
+      0 
+   )
+)
++Name: Thunderhose Engines Short
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 1 "Orpheus" ) 
+   ( do-nothing ) 
+)
++Name: Melchom Depart Cue
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 5 "Melchom" ) 
+      ( not 
+         ( is-event-true-delay 
+            "Engines Online Moops Dead" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Melcom Misses Orph" 
+            0 
+         )
+      )
+   )
+   ( ship-vulnerable 
+      "#BeamTargetHIT" 
+      "#BeamPointMISS" 
+   )
+   ( fire-beam 
+      "Melchom" 
+      "turret07" 
+      "#BeamTargetHIT" 
+   )
+)
++Name: Melchom Fire at Orph
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( set-subsystem-strength 
+      "Orpheus" 
+      "Hull" 
+      3 
+   )
+)
++Name: Orph Hit Critically
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 3 "Melchom" ) 
+      ( is-event-true-delay 
+         "Engines Online Moops Dead" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Melchom Fire at Orph" 
+            0 
+         )
+      )
+   )
+   ( ship-vulnerable 
+      "#BeamTargetHIT" 
+      "#BeamPointMISS" 
+   )
+   ( fire-beam 
+      "Melchom" 
+      "turret07" 
+      "#BeamPointMISS" 
+   )
+   ( add-goal 
+      "Melchom" 
+      ( ai-chase "Orpheus" 89 ) 
+   )
+)
++Name: Melcom Misses Orph
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Destroy the fricken moops" 
+      21 ; 10
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF Coded message" 
+      0 
+      "Thunderhorse" 
+      "Normal" 
+      "RCH Yes" 
+      3000 
+      "Orpheus" 
+      "Normal" 
+      "ORF Good to hear" 
+      7000 
+   )
+)
++Name: Orf Checking In
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Alpha Visible" 
+      20 
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 Making contact" 
+      0 
+      "Orpheus" 
+      "Normal" 
+      "ORF At last some service" 
+      5500 
+      "Alpha 3" 
+      "Normal" 
+      "A3 A tarp?" 
+      8000 
+      "Alpha 2" 
+      "Normal" 
+      "A2 Yeah" 
+      3500 
+   )
+)
++Name: Making Contact
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Destroy Moorings" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Melchom Fire at Orph" 
+            0 
+         )
+      )
+   )
+   ( add-goal 
+      "Orpheus" 
+      ( ai-waypoints-once "Orpheus Exit" 89 ) 
+   )
+)
++Name: Tell Orpheus to move
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "You all fail!" 
+         10 
+      )
+      ( is-event-true-delay 
+         "Head on home" 
+         10 
+      )
+      ( is-event-true-delay 
+         "Orpheus Destroyed" 
+         10 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: General TV Warpout Order
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "Orpheus Destroyed" 
+         5 
+      )
+      ( is-event-true-delay 
+         "Thunderhorse Escaped" 
+         5 
+      )
+      ( is-event-true-delay 
+         "Harle Destroyed" 
+         5 
+      )
+   )
+   ( fade-out 5000 0 0 0 ) 
+   ( close-sound-from-file ( true ) ) 
+)
++Name: Force End Mission
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: END MISSION
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 0 "Alpha 1" ) 
+      ( true ) 
+   )
+   ( fade-out 2000 0 0 0 ) 
+   ( close-sound-from-file ( true ) ) 
+)
++Name: Alpha 1 Dies
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: KILLIT
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( has-docked-delay 
+         "Harlequin" 
+         "Thunderhorse" 
+         1 
+         5 
+      )
+      ( is-event-true-delay 
+         "Thunderhorse Disabled" 
+         0 
+         ( is-event-true-delay 
+            "Thunderhorse Disabled" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: Protect Harlequin
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Protect Harlequin (F10)", 5143)
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "First Wave Killed" 
+            6 
+         )
+         ( is-event-true-delay 
+            "Call Command anyway" 
+            6 
+         )
+      )
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "@jamShip[Alpha 1]" 
+         )
+      )
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 Uh command?" 
+      0 
+      "Orpheus" 
+      "Normal" 
+      "ORF Won't do you" 
+      3000 
+   )
+)
++Name: Command is JAMMED
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( = @partADice[0] 1 ) 
+         ( is-destroyed-delay 5 "Cancer" ) 
+      )
+      ( and 
+         ( = @partADice[0] 2 ) 
+         ( is-destroyed-delay 5 "Gemini" ) 
+      )
+   )
+   ( send-message-list 
+      "Orpheus" 
+      "High" 
+      "ORF Now listen" 
+      0 
+   )
+   ( change-iff 
+      "Friendly" 
+      "Harlequin" 
+      "Orpheus" 
+   )
+)
++Name: Orpheus Retakes Harlequin
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Pirates Bugout" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "First Wave Killed" 
+            0 
+         )
+      )
+   )
+   ( when 
+      ( = 1 @partADice[0] ) 
+      ( add-goal 
+         "Libra" 
+         ( ai-chase "Alpha 1" 95 ) 
+      )
+      ( add-goal 
+         "Cancer" 
+         ( ai-chase "Alpha 1" 95 ) 
+      )
+   )
+   ( when 
+      ( = 2 @partADice[0] ) 
+      ( add-goal 
+         "Gemini" 
+         ( ai-chase "Alpha 1" 95 ) 
+      )
+      ( add-goal 
+         "Virgo" 
+         ( ai-chase "Alpha 1" 95 ) 
+      )
+   )
+)
++Name: L or V Target Alpha
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "You all fail!" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Alpha 1 Dies" 
+            0 
+         )
+      )
+   )
+   ( tech-add-ships 
+      "GTC Fenris" 
+      "GTM Hippocrates" 
+      "GTC Aeolus" 
+      "GTI Polaris" 
+   )
+)
++Name: CAMPAIGN: Allow Advance
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-time-elapsed 10 ) 
+   ( set-object-position 
+      "XGRT1" 
+      ( get-object-x 
+         "Pirate Reinforcement Point:1" 
+      )
+      ( get-object-y 
+         "Pirate Reinforcement Point:1" 
+      )
+      ( get-object-z 
+         "Pirate Reinforcement Point:1" 
+      )
+   )
+   ( set-object-position 
+      "XGRT2" 
+      ( get-object-x 
+         "Pirate Reinforcement Point:2" 
+      )
+      ( get-object-y 
+         "Pirate Reinforcement Point:2" 
+      )
+      ( get-object-z 
+         "Pirate Reinforcement Point:2" 
+      )
+   )
+)
++Name: Move Fighter Entry
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( = 1 @partADice[0] ) 
+         ( has-arrived-delay 0 "Libra" ) 
+      )
+      ( and 
+         ( = 2 @partADice[0] ) 
+         ( has-arrived-delay 0 "Virgo" ) 
+      )
+   )
+   ( send-message-list 
+      "Alpha 2" 
+      "High" 
+      "A2 Second wing" 
+      0 
+   )
+)
++Name: Second Wing Incoming
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-disabled-delay 18 "Thunderhorse" ) 
+      ( not 
+         ( is-event-true-delay 
+            "First Wave Killed" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 I'll call!" 
+   )
+)
++Name: Call Command anyway
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( and 
+      ( destroyed-or-departed-delay 
+         0 
+         "@jamShip[Alpha 1]" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "Command is JAMMED" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: JamDestDep and no one noticed
++Repeat Count: 1
++Interval: 1
++Team: 0
+
+$Formula: ( when 
+   ( is-cargo-known-delay 0 "TC-TRI 621" ) 
+   ( modify-variable 
+      @spoonsFound[0] 
+      ( + @spoonsFound[0] 1 ) 
+   )
+)
++Name: Soramimi Cake
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Pisces" ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "A2 Jumped out" 
+   )
+)
++Name: Dragons departed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( mission-time-msecs ) 
+         @nextPoll[0] 
+      )
+      ( = @ESMOnline[0] 1 ) 
+   )
+   ( modify-variable @sigA[0] 0 ) 
+   ( when 
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "@jamShip[Alpha 1]" 
+         )
+      )
+      ( when 
+         ( is-facing 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+            42 
+         )
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+            39 
+         )
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+            36 
+         )
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+            33 
+         )
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+            30 
+         )
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+            27 
+         )
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+            23 
+         )
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+            18 
+         )
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+            13 
+         )
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+      ( when 
+         ( is-facing 
+            "Alpha 1" 
+            "@jamShip[Alpha 1]" 
+            4 
+         )
+         ( modify-variable 
+            @sigA[0] 
+            ( + @sigA[0] 1 ) 
+         )
+      )
+   )
+)
++Name: Calculate Angle
++Repeat Count: -1
++Trigger Count: 99999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( mission-time-msecs ) 
+         @nextPoll[0] 
+      )
+      ( = @ESMOnline[0] 1 ) 
+   )
+   ( modify-variable @sigD[0] 0 ) 
+   ( when 
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "@jamShip[Alpha 1]" 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            5000 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            3882 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            3419 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            2764 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            2262 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            1838 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            1465 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            1128 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            817 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            528 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+      ( when 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "@jamShip[Alpha 1]" 
+            )
+            257 
+         )
+         ( modify-variable 
+            @sigD[0] 
+            ( + @sigD[0] 1 ) 
+         )
+      )
+   )
+)
++Name: Calculate Distance
++Repeat Count: -1
++Trigger Count: 99999999
++Interval: 0
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( mission-time-msecs ) 
+         @nextPoll[0] 
+      )
+      ( = @ESMOnline[0] 1 ) 
+   )
+   ( modify-variable 
+      @nextPoll[0] 
+      ( + ( mission-time-msecs ) 500 ) 
+   )
+   ( modify-variable 
+      @sigS[0] 
+      ( - @sigA[0] ( - 10 @sigD[0] ) ) 
+   )
+   ( when 
+      ( < @sigS[0] 0 ) 
+      ( modify-variable @sigS[0] 0 ) 
+   )
+   ( when 
+      ( > @sigS[0] 10 ) 
+      ( modify-variable @sigS[0] 10 ) 
+   )
+   ( hud-set-frame 
+      "SignalGaugeBar" 
+      @sigS[0] 
+   )
+   ( when 
+      ( > 
+         ( mission-time-msecs ) 
+         @nextSound[-1] 
+      )
+      ( modify-variable 
+         @nextSound[-1] 
+         ( + ( mission-time-msecs ) 1000 ) 
+      )
+      ( when 
+         ( or 
+            ( = @sigS[0] 3 ) 
+            ( = @sigS[0] 4 ) 
+         )
+         ( training-msg "SIGNAL -40dB" ) 
+      )
+      ( when 
+         ( or 
+            ( = @sigS[0] 5 ) 
+            ( = @sigS[0] 6 ) 
+         )
+         ( training-msg "SIGNAL -10dB" ) 
+      )
+      ( when 
+         ( or 
+            ( = @sigS[0] 7 ) 
+            ( = @sigS[0] 8 ) 
+         )
+         ( training-msg "SIGNAL +30dB" ) 
+      )
+      ( when 
+         ( or 
+            ( = @sigS[0] 9 ) 
+            ( = @sigS[0] 10 ) 
+         )
+         ( training-msg "SIGNAL +120dB" ) 
+      )
+   )
+)
++Name: Calculate Signal
++Repeat Count: -1
++Trigger Count: 99999999
++Interval: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Destroy Jamming Device" 
+      6 
+   )
+   ( modify-variable @ESMOnline[0] 0 ) 
+   ( hud-gauge-set-active 
+      "SignalGaugeBar" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "SignalGaugeTop" 
+      ( false ) 
+   )
+)
++Name: Turn off ESM
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 4 total
+
+$Type: Primary
++Name: Secure Orpheus
+$MessageNew:  XSTR("Secure Orpheus", 5144)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Secure Orpheus" 
+      0 
+   )
+   ( not 
+      ( has-departed-delay 0 "Orpheus" ) 
+   )
+)
+
+$Type: Primary
++Name: Secure Thunderhorse
+$MessageNew:  XSTR("Secure Thunderhorse", 5145)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "Capture Thunderhorse" 
+      0 
+   )
+   ( not 
+      ( has-departed-delay 0 "Thunderhorse" ) 
+   )
+)
+
+$Type: Primary
++Name: Destroy Jammer
+$MessageNew:  XSTR("Take out Jamming Ship", 5146)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "Destroy Jamming Device" 
+   0 
+)
++Invalid
+
+$Type: Primary
++Name: Destroy Moorings
+$MessageNew:  XSTR("Destroy Moorings", 5147)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "Destroy Moorings" 
+   0 
+)
++Invalid
+
+#Waypoints		;! 15 lists total
+
+$Name: Fighter A Path
+$List: (		;! 5 points in list
+	( 111.694275, 0.000309, 3376.334717 )
+	( 1568.947998, -0.000150, 2428.530762 )
+	( 1743.874023, 0.000009, -541.912598 )
+	( -2167.437744, 0.000307, -2038.711914 )
+	( -2318.265137, -0.000277, 3193.395020 )
+)
+
+$Name: Fighter B Path
+$List: (		;! 4 points in list
+	( -996.429810, 0.000128, 1958.690186 )
+	( 707.891907, -0.000079, 1575.455078 )
+	( 117.665039, 0.000005, 350.798828 )
+	( -1515.964233, 0.000023, 373.153809 )
+)
+
+$Name: Orpheus Bugout
+$List: (		;! 3 points in list
+	( -520.000000, 0.000000, 1512.500000 )
+	( 334.308044, 0.000160, 2686.650635 )
+	( 313.354218, -0.000138, 4726.273926 )
+)
+
+$Name: SkullCrusher bugout
+$List: (		;! 1 points in list
+	( -452.793152, 174.999847, 5504.368164 )
+)
+
+$Name: Rattlehead Bugout
+$List: (		;! 1 points in list
+	( 471.227325, 99.999901, 4551.905762 )
+)
+
+$Name: Thunderhorse bugout
+$List: (		;! 1 points in list
+	( 360.827362, 699.999817, 4289.905762 )
+)
+
+$Name: Brightside Patrol
+$List: (		;! 4 points in list
+	( -1437.540039, 275.000061, 757.957886 )
+	( -410.601563, 275.000000, 673.078552 )
+	( 319.124817, 274.999908, 1241.715454 )
+	( -891.599976, 275.000000, 1787.599976 )
+)
+
+$Name: Sleepwalker Patrol
+$List: (		;! 4 points in list
+	( 795.836914, -275.000061, 1175.703247 )
+	( -639.696045, -274.999969, 362.096527 )
+	( -1929.125854, -274.999969, 1163.740601 )
+	( -493.600006, -275.000000, 2213.800049 )
+)
+
+$Name: War Pig Path
+$List: (		;! 2 points in list
+	( 709.099976, -500.000000, 1717.599976 )
+	( 777.113953, -500.000092, 4327.279785 )
+)
+
+$Name: Amp Path
+$List: (		;! 1 points in list
+	( -708.299988, -50.000000, 1547.800049 )
+)
+
+$Name: Pirate Reinforcement Point
+$List: (		;! 2 points in list
+	( 2056.390381, -0.000020, 5267.517578 )
+	( 2245.213867, 0.000011, 5118.632813 )
+)
+
+$Name: Orpheus Exit
+$List: (		;! 1 points in list
+	( -691.099976, 50.000000, 698.000000 )
+)
+
+$Name: Shivan Path
+$List: (		;! 3 points in list
+	( -503.606110, -0.002423, 1126.978638 )
+	( -482.513306, -0.002447, 1898.985107 )
+	( 313.493164, -0.002427, 2108.839600 )
+)
+
+$Name: Amp Run Away
+$List: (		;! 1 points in list
+	( -1881.199951, 50.000000, 1496.400024 )
+)
+
+$Name: Monitor Path
+$List: (		;! 3 points in list
+	( -2446.240479, -0.000100, 2365.000977 )
+	( -1311.504272, -0.000101, 1510.579712 )
+	( 146.672241, -0.000048, 1586.049072 )
+)
+
+#Messages		;! 76 total
+
+
+$Name: A2 Let's go bag some pirates!
+$Team: -1
+$MessageNew:  XSTR("Command, we're in. The installation is dead ahead.", 5148)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Lets go bag.ogg
+
+$Name: A3 Defenses
+$Team: -1
+$MessageNew:  XSTR("I don't see much for defenses.  Only one wing of fighters?", 5149)
+$end_multi_text
++Persona: Wingman 5
++AVI Name: Head-TP8
++Wave Name: A3 Defenses.ogg
+
+$Name: A2 Surprises
+$Team: -1
+$MessageNew:  XSTR("And a Fenris.  I'm sure they've got some surprises up their sleeves.  Don't let your guard down.", 5150)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Surprises.ogg
+
+$Name: A4 Spotted
+$Team: -1
+$MessageNew:  XSTR("I think we've been spotted.  The fighters are heading straight for us.", 5151)
+$end_multi_text
++Persona: Wingman 1
++AVI Name: Head-TP1
++Wave Name: A4 Spotted.ogg
+
+$Name: A2 Nailed them
+$Team: -1
+$MessageNew:  XSTR("Pirate fighter cover is down.  Command, the area is clear for reinforcements.", 5152)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Nailed them.ogg
+
+$Name: A2 Uh command?
+$Team: -1
+$MessageNew:  XSTR("Command?  Come in, Command!", 5153)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Uh command.ogg
+
+$Name: ESM ONLINE
+$Team: -1
+$MessageNew:  XSTR("Directional Electronics Support Module Activated - Filter: KS Band", 5154)
+$end_multi_text
+
+$Name: SIGNAL -40dB
+$Team: -1
+$MessageNew:  XSTR(" ", 2943)
+$end_multi_text
++Wave Name: signal_1
+
+$Name: SIGNAL -10dB
+$Team: -1
+$MessageNew:  XSTR(" ", 2943)
+$end_multi_text
++Wave Name: signal_2
+
+$Name: SIGNAL +30dB
+$Team: -1
+$MessageNew:  XSTR(" ", 2943)
+$end_multi_text
++Wave Name: signal_3
+
+$Name: SIGNAL +120dB
+$Team: -1
+$MessageNew:  XSTR(" ", 2943)
+$end_multi_text
++Wave Name: signal_4
+
+$Name: ORF Won't do you
+$Team: -1
+$MessageNew:  XSTR("It looks like they activated a jamming field. We're not sure which ship is transmitting it, maybe the Skullcrusher or the Rattlehead. If you activate your ESM system, you should be able to find it.", 5155)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Wont do you.ogg
+
+$Name: ORF Now listen
+$Team: -1
+$MessageNew:  XSTR("We've managed to gain control of the Harlequin.  We can board the freighter if you can disable it.", 5156)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Now listen.ogg
+
+$Name: ORF Second
+$Team: -1
+$MessageNew:  XSTR("What did you say?  Shivans?  Alpha, you must free my ship immediately!  We're stuck to this installation.   We need you to destroy the moorings we're docked to.", 5157)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Second.ogg
+
+$Name: A2 Work fast
+$Team: -1
+$MessageNew:  XSTR("The pirates are starting to bug out.  We better act fast.", 5158)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Work fast.ogg
+
+$Name: ORF Thunderhorse disabled
+$Team: -1
+$MessageNew:  XSTR("Good job, the Thunderhorse is dead in the water.  We'll send the Harlequin right over to rescue our men.  Make sure you protect it.", 5159)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Thunderhorse disabled.ogg
+
+$Name: A3 Hey uh
+$Team: -1
+$MessageNew:  XSTR("You sure your men can take care of this, Orpheus?", 5160)
+$end_multi_text
++Persona: Wingman 5
++AVI Name: Head-TP8
++Wave Name: A3 Hey uh.ogg
+
+$Name: ORF Nuh uh
+$Team: -1
+$MessageNew:  XSTR("My men are trained soldiers and these pirates are just lowlifes.  They should be no trouble for them.", 5161)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Nuh uh.ogg
+
+$Name: ORF Coded message
+$Team: -1
+$MessageNew:  XSTR("Orpheus to Daniels, are you there?", 5162)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Coded message.ogg
+
+$Name: RCH Yes
+$Team: -1
+$MessageNew:  XSTR("Affirmative, captain.  The pirates surrendered easily. We are all unharmed.  Rachmann sends his regards.", 5163)
+$end_multi_text
++AVI Name: Head-Civ2
++Wave Name: RCH Yes.ogg
+
+$Name: ORF Excellent
+$Team: -1
+$MessageNew:  XSTR("If you'll be excusing us, gentlemen, we must be leaving.  We have more important things to attend to.", 5164)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Excellent.ogg
+
+$Name: A2 Incoming!
+$Team: -1
+$MessageNew:  XSTR("Here they come... Lilith-class cruiser and two wings of Maras.", 5165)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Incoming.ogg
+
+$Name: A3 Oh bugger
+$Team: -1
+$MessageNew:  XSTR("Orpheus, stand down!  Cut your engines immediately!", 5166)
+$end_multi_text
++Persona: Wingman 5
++AVI Name: Head-TP8
++Wave Name: A3 Oh bugger.ogg
+
+$Name: HRL 75 Hull
+$Team: -1
+$MessageNew:  XSTR("Harlequin here, we've taken light damage.  We need assistance.", 5167)
+$end_multi_text
++AVI Name: Head-Civ2
++Wave Name: HRL 25 Hull.ogg
+
+$Name: HRL 50 Hull
+$Team: -1
+$MessageNew:  XSTR("We've lost our port thrusters, we need support from you, pilots.", 5168)
+$end_multi_text
++AVI Name: Head-Civ2
++Wave Name: HRL 50 Hull.ogg
+
+$Name: HRL 25 Hull
+$Team: -1
+$MessageNew:  XSTR("Dammit, we need cover!  Alpha wing, cover us!", 5169)
+$end_multi_text
++AVI Name: Head-Civ2
++Wave Name: HRL 25 Hull.ogg
+
+$Name: A2 Jamming Destroyed
+$Team: -1
+$MessageNew:  XSTR("Jamming device destroyed.  I'm getting a clear signal from Command.  Signaling our reinforcements now.", 5170)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Jamming Destroyed.ogg
+
+$Name: A2 Jamming Left
+$Team: -1
+$MessageNew:  XSTR("Looks like the jamming device just left the area.  I'm getting a clear signal from Command.  I'll call in the reinforcements.", 5171)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Jamming Left.ogg
+
+$Name: A2 HALP US
+$Team: -1
+$MessageNew:  XSTR("Command, this is Alpha wing.  The area is clear for reinforcements.", 5172)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 HALP US.ogg
+
+$Name: CMD Roger that
+$Team: -1
+$MessageNew:  XSTR("Roger that Alpha.  Beta wing is on the way.", 5173)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM2
++Wave Name: CMD Roger that.ogg
+
+$Name: CMD Amphion Coming in
+$Team: -1
+$MessageNew:  XSTR("All craft, be advised, the GTT Amphion and Epsilon wing will be arriving soon.", 5174)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM2
++Wave Name: CMD Amphion Coming.ogg
+
+$Name: CMD Ready Orfy?
+$Team: -1
+$MessageNew:  XSTR("Orpheus, are you ready to receive the boarding party?", 5175)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM2
++Wave Name: CMD Ready Orfy.ogg
+
+$Name: ORF Yes
+$Team: -1
+$MessageNew:  XSTR("Yes, of course.  We would be happy to receive your men.", 5176)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Yes.ogg
+
+$Name: ORF Harlequin destroyed
+$Team: -1
+$MessageNew:  XSTR("The Harlequin has been destroyed.  Many brave men on that transport volunteered to go save their brothers.  I hope you realize the consequences...", 5177)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Harlequin destroyed.ogg
+
+$Name: ORF Harle Docked
+$Team: -1
+$MessageNew:  XSTR("Very good work, pilots.  We've managed to dock with the Thunderhorse.  My men should make quick work of the pirates.", 5178)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Harle Docked.ogg
+
+$Name: A4 Hold on
+$Team: -1
+$MessageNew:  XSTR("So how did they get taken in the first place, then?", 5179)
+$end_multi_text
++Persona: Wingman 1
++AVI Name: Head-TP1
++Wave Name: A4 Hold on.ogg
+
+$Name: ORF Excuse me?
+$Team: -1
+$MessageNew:  XSTR("I'm sorry, Alpha 4, but comms should be used for relevant tactical communication and not petty dribble.", 5180)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Excuse me.ogg
+
+$Name: AMP Prepare to be boarded
+$Team: -1
+$MessageNew:  XSTR("Orpheus, this the Amphion. Prepare to be boarded.", 5181)
+$end_multi_text
++AVI Name: Head-CM07
++Wave Name: AMP Prepare to be.ogg
+
+$Name: CMD Keep your shirt on
+$Team: -1
+$MessageNew:  XSTR("If the Shivans are right behind those fighters, the Orpheus will be a sitting duck.  Destroy the moorings.", 5182)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM2
++Wave Name: CMD Keep your shirt.ogg
+
+$Name: ORF Uh yeah
+$Team: -1
+$MessageNew:  XSTR("I have transmitted the targeting coordinates for the moorings.  Engineering reports engines will be online shortly.", 5183)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Uh yeah.ogg
+
+$Name: AMP Amp Docked
+$Team: -1
+$MessageNew:  XSTR("We've docked with the Orpheus, soft seal. Orpheus, please open your docking port.", 5184)
+$end_multi_text
++AVI Name: Head-CM07
++Wave Name: AMP Amp Docked.ogg
+
+$Name: ORF Well its been fun
+$Team: -1
+$MessageNew:  XSTR("Cheerio! Be seeing you all.", 5185)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Well its been.ogg
+
+$Name: A3 Crap, Orpheus is dead
+$Team: -1
+$MessageNew:  XSTR("Shoot, the Orpheus was taken out!", 5186)
+$end_multi_text
++Persona: Wingman 5
++AVI Name: Head-TP8
++Wave Name: A3 Crap Orpheus is dead.ogg
+
+$Name: AMP Ahem
+$Team: -1
+$MessageNew:  XSTR("Orpheus?  Do you read?  We need you to open your docking port.", 5187)
+$end_multi_text
++AVI Name: Head-CM07
++Wave Name: AMP Ahem.ogg
+
+$Name: ORF One moment
+$Team: -1
+$MessageNew:  XSTR("One moment, gentlemen.  We're running on a skeleton crew over here.", 5188)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF One moment.ogg
+
+$Name: CMD Return to Base
+$Team: -1
+$MessageNew:  XSTR("Our primary objectives have left the area. Alpha and Beta wings, return to base. The GTCv Monitor will be arriving shortly to apprehend the pirates.", 5189)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM2
++Wave Name: CMD Return to base M3.ogg
+
+$Name: ORF Come on in!
+$Team: -1
+$MessageNew:  XSTR("Now that the trauma has been dealt with... Opening docking latch now.", 5190)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Come on in.ogg
+
+$Name: AMP Moving in!
+$Team: -1
+$MessageNew:  XSTR("Confirmed, boarding crew is securing the Orpheus.", 5191)
+$end_multi_text
++AVI Name: Head-CM07
++Wave Name: AMP Moving in.ogg
+
+$Name: A3 Don't worry
+$Team: -1
+$MessageNew:  XSTR("We'll get a second transport in here pronto.  Nothing to worry about, Orpheus.", 5192)
+$end_multi_text
++Persona: Wingman 5
++AVI Name: Head-TP8
++Wave Name: A3 Don't worry.ogg
+
+$Name: A4 Incoming!
+$Team: -1
+$MessageNew:  XSTR("I'm detecting a jump signature.  Shivan fighters, Dragon class...", 5193)
+$end_multi_text
++Persona: Wingman 1
++AVI Name: Head-TP1
++Wave Name: A4 Incoming M93.ogg
+
+$Name: ORF Fools
+$Team: -1
+$MessageNew:  XSTR("The Thunderhorse has left with our men on it!  How could you let that happen?", 5194)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Fools.ogg
+
+$Name: A3 Sorry about your loss
+$Team: -1
+$MessageNew:  XSTR("Look, there's not a lot of places they could run.  We'll find them.", 5195)
+$end_multi_text
++Persona: Wingman 5
++AVI Name: Head-TP8
++Wave Name: A3 Sorry about.ogg
+
+$Name: ORF I don't think so!
+$Team: -1
+$MessageNew:  XSTR("How do I know you didn't let them escape?  Just what are you trying to pull here?", 5196)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF I dont think so.ogg
+
+$Name: A4 Hey!
+$Team: -1
+$MessageNew:  XSTR("Harlequin, cut your engines immediately.  Do not attempt to escape.", 5197)
+$end_multi_text
++Persona: Wingman 1
++AVI Name: Head-TP1
++Wave Name: A4 Hey.ogg
+
+$Name: A2 Shoot
+$Team: -1
+$MessageNew:  XSTR("Shoot, they got away!  Now what are we supposed to do?", 5198)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Shoot.ogg
+
+$Name: AMP Securing anyway
+$Team: -1
+$MessageNew:  XSTR("Amphion here.  The boarding team is securing the Orpheus.", 5199)
+$end_multi_text
++AVI Name: Head-CM07
++Wave Name: AMP Securing anyway.ogg
+
+$Name: ORF WTF
+$Team: -1
+$MessageNew:  XSTR("Why did you destroy the Thunderhorse?!  My crew was on that ship!", 5200)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF WTF.ogg
+
+$Name: A3 I dontthink he's listening
+$Team: -1
+$MessageNew:  XSTR("I don't think he's going to listen...", 5201)
+$end_multi_text
++Persona: Wingman 5
++AVI Name: Head-TP8
++Wave Name: A3 I dontthink.ogg
+
+$Name: A2 War Pig Retreating
+$Team: -1
+$MessageNew:  XSTR("The War Pig is on its way out.", 5202)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 War Pig .ogg
+
+$Name: A2 Skullcrusher out
+$Team: -1
+$MessageNew:  XSTR("The Skullcrusher is moving out.", 5203)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Skullcrusher.ogg
+
+$Name: A3 Rattlehead Out
+$Team: -1
+$MessageNew:  XSTR("The Rattlehead is powering up its jump drive!", 5204)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP8
++Wave Name: A3 Rattlehead .ogg
+
+$Name: A3 Pirates warping out
+$Team: -1
+$MessageNew:  XSTR("The pirates are powering up their jump drives.  They're about to jump out!", 5205)
+$end_multi_text
++Persona: Wingman 5
++AVI Name: Head-TP8
++Wave Name: A3 Pirates warping .ogg
+
+$Name: A4 Watch out!
+$Team: -1
+$MessageNew:  XSTR("Watch out!  The Thunderhorse is trying to make a break for it!", 5206)
+$end_multi_text
++Persona: Wingman 1
++AVI Name: Head-TP1
++Wave Name: A4 Watch out.ogg
+
+$Name: ORF Engines Online Moops Dead
+$Team: -1
+$MessageNew:  XSTR("Helm is setting a course away from the station. Full speed, bring jump engines online.", 5207)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Engines Online.ogg
+
+$Name: ORF Engines Online Moops Alive
+$Team: -1
+$MessageNew:  XSTR("Our engines are online, but we're still stuck to this station.", 5208)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Engines OnlineMA.ogg
+
+$Name: ORF Moops Dead, Engines Offlin
+$Team: -1
+$MessageNew:  XSTR("Good job, pilots.  As soon as our engines are back online, we can get out of here.", 5209)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Moops Dead.ogg
+
+$Name: ORF Good to hear
+$Team: -1
+$MessageNew:  XSTR("So good to hear...", 5210)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF Good to hear.ogg
+
+$Name: A2 Making contact
+$Team: -1
+$MessageNew:  XSTR("This is Alpha wing to Orpheus, are you there?  We are responding to your distress signal.", 5211)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Making contact.ogg
+
+$Name: ORF At last some service
+$Team: -1
+$MessageNew:  XSTR("It's about time.  We've managed to retake the bridge, but the moorings are keeping us from moving.  My men are moving to take the Harlequin as we speak.", 5212)
+$end_multi_text
++Persona: Large Ship
++AVI Name: Head-CM06
++Wave Name: ORF At last some.ogg
+
+$Name: A3 A tarp?
+$Team: -1
+$MessageNew:  XSTR("I don't know, this still seems pretty fishy to me...", 5213)
+$end_multi_text
++Persona: Wingman 5
++AVI Name: Head-TP8
++Wave Name: A3 A tarp.ogg
+
+$Name: A2 Yeah
+$Team: -1
+$MessageNew:  XSTR("I know what you mean, but orders are orders.", 5214)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Yeah.ogg
+
+$Name: CMD Abort
+$Team: -1
+$MessageNew:  XSTR("Abort the mission!  Get out of there, pilots!", 5215)
+$end_multi_text
++Persona: Terran Command
++AVI Name: Head-CM2
++Wave Name: CMD Abort.ogg
+
+$Name: A2 Second wing
+$Team: -1
+$MessageNew:  XSTR("Second wing incoming from the asteroid belt!", 5216)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Second wing.ogg
+
+$Name: A3 Second wing incoming
+$Team: -1
+$MessageNew:  XSTR("Sensors reading two more wings of fighters coming in from the asteroid belt!", 5217)
+$end_multi_text
++Persona: Wingman 5
++AVI Name: Head-TP8
++Wave Name: A3 Second wing.ogg
+
+$Name: A2 I'll call!
+$Team: -1
+$MessageNew:  XSTR("I'll call Command for reinforcements.  Looks like things are going to get pretty dicey.", 5218)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 I'll call.ogg
+
+$Name: A2 Jumped out
+$Team: -1
+$MessageNew:  XSTR("Those Dragons just jumped out! What the hell is going on?", 5219)
+$end_multi_text
++Persona: Wingman 2
++AVI Name: Head-TP5
++Wave Name: A2 Jumped out.ogg
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 90 total
+
+$Num stars: 0
+$Ambient light level: 65793
+
+$Bitmap List:
++Flags: ( "corrected angles" )
+$Sun: SunCapellaA
++Angles: 0.000000 0.000000 4.049165
++Scale: 0.600000
+$Starbitmap: NebulA1-Main
++Angles: 6.283185 1.623160 4.712390
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA12-Whisp
++Angles: 0.146900 6.274758 5.068447
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA4-Whisp
++Angles: 0.016963 6.005105 4.850989
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA3-Whisp
++Angles: 0.132614 6.098533 5.328412
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA7-Whisp
++Angles: 5.878962 5.237230 5.207466
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA4-Whisp
++Angles: 6.083347 0.242831 5.237502
++ScaleX: 2.500000
++ScaleY: 2.500000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA9-Whisp
++Angles: 6.224333 0.658707 4.279793
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA6-Whisp
++Angles: 0.098557 5.145782 4.304602
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA6-Whisp
++Angles: 0.187271 0.620365 3.926870
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA10-Whisp
++Angles: 0.180991 6.151493 5.354063
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA12-Whisp
++Angles: 0.000000 3.787366 5.410522
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA10-Whisp
++Angles: 6.171333 0.134262 5.402994
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA5-Whisp
++Angles: 5.699568 5.229357 5.299672
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA9-Whisp
++Angles: 5.604839 0.599607 5.455059
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA14-Whisp
++Angles: 5.814197 0.546649 5.521443
++ScaleX: 3.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA7-Whisp
++Angles: 6.040003 0.300151 5.373571
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA14-Whisp
++Angles: 5.938506 0.425740 5.352763
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA14-Whisp
++Angles: 5.950850 0.457551 5.297550
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA10-Whisp
++Angles: 5.323792 1.630952 5.225843
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA10-Whisp
++Angles: 5.081335 1.748015 5.547863
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA3-Whisp
++Angles: 5.078079 3.498222 5.830407
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA5-Whisp
++Angles: 4.905159 1.428871 0.091251
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA4-Whisp
++Angles: 6.162148 0.290622 5.096081
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA7-Whisp
++Angles: 0.237959 1.529193 4.656361
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA4-Whisp
++Angles: 0.380701 2.880094 4.533240
++ScaleX: 2.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA10-Whisp
++Angles: 0.486683 1.249710 4.269573
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA7-Whisp
++Angles: 0.540048 2.349505 4.562356
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA5-Whisp
++Angles: 0.685449 2.740824 4.567698
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA14-Whisp
++Angles: 0.625555 1.463072 4.649151
++ScaleX: 2.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA14-Whisp
++Angles: 0.604065 4.542476 4.615245
++ScaleX: 1.500000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA14-Whisp
++Angles: 0.674655 1.414096 4.614019
++ScaleX: 1.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA14-Whisp
++Angles: 0.732488 1.617751 4.743802
++ScaleX: 1.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA14-Whisp
++Angles: 0.777970 6.111256 4.591116
++ScaleX: 2.000000
++ScaleY: 1.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA14-Whisp
++Angles: 0.819650 1.621954 4.749796
++ScaleX: 1.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA14-Whisp
++Angles: 0.852412 4.818574 4.792461
++ScaleX: 1.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA9-Whisp
++Angles: 0.657413 5.622468 4.617460
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA9-Whisp
++Angles: 0.335233 0.520764 4.191626
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulA4-Whisp
++Angles: 6.234826 0.149509 5.022927
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH2-Main
++Angles: 0.000000 0.645776 2.426011
++ScaleX: 6.000000
++ScaleY: 6.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.223712 4.575253 2.585116
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH13-Whisp
++Angles: 6.249983 5.473674 2.827258
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH5-Whisp
++Angles: 6.027387 0.213396 2.433371
++ScaleX: 3.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH7-Whisp
++Angles: 5.963708 4.037457 2.359464
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH9-Whisp
++Angles: 6.173519 4.870296 2.172979
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH5-Whisp
++Angles: 6.181221 0.095560 2.386225
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH8-Whisp
++Angles: 0.000000 0.122179 1.937319
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH4-Whisp
++Angles: 0.128521 0.290340 2.007225
++ScaleX: 2.500000
++ScaleY: 2.500000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH9-Whisp
++Angles: 5.904228 0.794052 1.887156
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH11-Whisp
++Angles: 0.292781 5.779784 2.053509
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH13-Whisp
++Angles: 6.155628 0.399131 1.877738
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH5-Whisp
++Angles: 0.489411 5.490765 2.090576
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.000000 0.000000 1.815145
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.000000 0.000000 1.815145
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.222009 5.690373 1.886716
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.194156 4.588079 1.904191
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH9-Whisp
++Angles: 0.049406 6.184861 1.828001
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 6.185440 0.037650 2.773235
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH13-Whisp
++Angles: 6.196393 5.855999 3.036479
++ScaleX: 2.500000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH8-Whisp
++Angles: 6.044477 2.028424 2.709685
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 6.164880 0.074340 2.578686
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH11-Whisp
++Angles: 6.076155 2.289402 1.875453
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH10-Whisp
++Angles: 0.130504 5.297592 1.712014
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH8-Whisp
++Angles: 0.380503 5.930855 1.913078
++ScaleX: 1.500000
++ScaleY: 1.500000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH13-Whisp
++Angles: 0.392187 5.091529 1.721914
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH4-Whisp
++Angles: 0.364413 4.792273 1.530695
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.624340 3.462779 1.646597
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.069292 5.838332 3.019127
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.381760 2.558337 3.028718
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH9-Whisp
++Angles: 5.921205 0.421854 2.672698
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH13-Whisp
++Angles: 5.787616 0.176554 2.782662
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH1-Main
++Angles: 5.974391 4.122550 1.771472
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH8-Whisp
++Angles: 5.804241 3.116889 1.671904
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH8-Whisp
++Angles: 5.790771 0.326075 1.384999
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH8-Whisp
++Angles: 5.747576 0.733747 1.190876
++ScaleX: 1.500000
++ScaleY: 1.500000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 5.847142 4.768360 1.554524
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 5.877497 2.500460 1.463500
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 5.902227 4.844051 1.521598
++ScaleX: 2.000000
++ScaleY: 2.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 5.655314 1.527662 1.596146
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 5.574067 3.459952 1.465250
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 5.566606 5.158829 1.266185
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.052619 2.904516 1.845177
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.890122 0.000000 0.000000
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.880969 1.177078 6.090498
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH14-Whisp
++Angles: 0.750496 5.497787 0.000000
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH9-Whisp
++Angles: 0.632001 0.142811 0.238755
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH12-Whisp
++Angles: 0.582110 0.297413 0.508579
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH12-Whisp
++Angles: 0.290592 1.691925 0.401722
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH1-Main
++Angles: 0.026174 3.186955 1.047796
++ScaleX: 7.000000
++ScaleY: 7.000000
++DivX: 1
++DivY: 1
+$Starbitmap: NebulH2-Main
++Angles: 0.000000 0.000005 1.483527
++ScaleX: 3.000000
++ScaleY: 3.000000
++DivX: 1
++DivY: 1
+$Starbitmap: planet17
++Angles: 0.000000 3.141595 1.256641
++ScaleX: 7.000000
++ScaleY: 7.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+$Density: 255
++Field Type: 0
++Debris Genre: 0
++Field Debris Type: 0
+$Average Speed: 0.000000
+$Minimum: 1000.000000, -1000.000000, -5000.000000
+$Maximum: 8000.000000, 1000.000000, 15000.000000
+
+#Music
+
+$Event Music: None
+$Briefing Music: Brief3
+
+#End
+
