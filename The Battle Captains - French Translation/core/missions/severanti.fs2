@@ -1,0 +1,4219 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("No Time to Bleed", 16454)
+$Author: Lepanto
+$Created: 07/01/13 at 15:02:53
+$Modified: 04/27/23 at 12:55:50
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Commander Cyrus Severanti fends off the NTF attack on Luzon Station while covering its evacuation, despite suffering personal injuries.", 16455)
+$end_multi_text
++Game Type Flags: 1
++Flags: 131216
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 5961.227539, 8035.397461, -1720.222778
++Viewer orient:
+	0.429297, 0.000000, 0.903163,
+	-0.660784, 0.681699, 0.314088,
+	-0.615686, -0.731633, 0.292652
+
+$Starting wing names: ( "Steadfast#" "Alpha" "Beta" )
+$Squadron wing names: ( "Steadfast#" "Alpha" "Beta" "Gamma" "Delta" )
+$Team-versus-team wing names: ( "Steadfast#" "Zeta" )
+
+$Skybox Model: skybox_EPegasi.pof
+
+$AI Profile: BP2 R2
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"ablecountdown"		"0"		"number"
+		1		"ablecountup"		"0"		"number"
+		2		"AfterburnerCharge"		"59"		"number"
+		3		"beamCooldown"		"0"		"number"
+		4		"beamRefireRate"		"10"		"number"
+		5		"dfC"		"0"		"number"
+		6		"fD"		"5"		"number"
+		7		"flareChargeCounter"		"0"		"number"
+		8		"flaresLeft"		"10"		"number"
+		9		"inasteroid"		"0"		"number"
+		10		"lastColor"		"0"		"number"
+		11		"menuon"		"1"		"number"
+		12		"playersecondary"		"0"		"number"
+		13		"SalvoFire"		"0"		"number"
+		14		"useTrainingMsgs"		"0"		"number"
+		15		"autoGenVar1"		"NTB Zeus"		"string"
+		16		"autoGenVar2"		"NTF Hercules"		"string"
+		17		"autoGenVar3"		"TACTICAL INTERFACE"		"string"
+		18		"autoGenVar4"		"   ==OFFLINE=="		"string"
+		19		"autoGenVar5"		" "		"string"
+		20		"autoGenVar6"		"$1$ - Overload Beams"		"string"
+		21		"autoGenVar7"		"$2$ - Jamming Burst"		"string"
+		22		"autoGenVar8"		"$3$ - Thruster Boost"		"string"
+		23		"autoGenVar9"		"boosting plasma feed"		"string"
+		24		"autoGenVar10"		"charging overloads"		"string"
+		25		"autoGenVar11"		"firing overloads"		"string"
+		26		"autoGenVar12"		"capacitors discharging"		"string"
+		27		"autoGenVar13"		"hostiles disrupted"		"string"
+		28		"autoGenVar14"		"jamming active"		"string"
+		29		"autoGenVar15"		"hostiles adapting"		"string"
+		30		"autoGenVar16"		"cycling frequencies"		"string"
+		31		"autoGenVar17"		"thrusters boosted"		"string"
+		32		"autoGenVar18"		"boost complete"		"string"
+		33		"autoGenVar19"		"thrusters cooling"		"string"
+		34		"autoGenVar20"		"Beam Ready In"		"string"
+		35		"autoGenVar21"		"Cycle Time"		"string"
+		36		"autoGenVar22"		"HULL INTEGRITY CRITICAL"		"string"
+		37		"autoGenVar23"		"#Gunnery"		"string"
+		38		"autoGenVar24"		"#Severanti"		"string"
+		39		"autoGenVar25"		"#Steadfast XO"		"string"
+)
+
+#Command Briefing
+
+$Stage Text:
+ XSTR("$b April $b 4, $b 2366
+
+The Neo-Terran Front Rebellion has dragged on for nearly a year. The Lost Generation's anti-Vasudan hate and blame, which Aken Bosch whipped into a storm of fury, continues to ravage GTVA space. Polaris, Regulus, and Sirius continue to produce NTF warships, crewed by the eager youth of the Lost Generation, which are hurled into battle against the Alliance across multiple fronts. The Rebels are unaware that they are merely puppets in Bosch's grand, mad scheme to save humanity by forging an alliance with the Shivans, but they eagerly kill Terran and Vasudan soldiers and civilians alike, all the same.
+
+The Alliance battles the NTF in Alpha Centauri, Deneb, Vega, and Epsilon Pegasi. After an initial series of costly battles around the NTF home systems, the war has largely devolved into a stalemate. Neither side is willing to risk a major offensive, and risk losing everything$semicolon most fighting is limited to probes and raids. The Security Council has repeatedly proposed cease-fires, which the NTF has abused to recover its strength and launch covert attacks.
+
+Cyrus Severanti, captain of the 6th Fleet's GTCv Steadfast, is already a stalwart commander and veteran of months of war. The 6th is assigned to the Epsilon Pegasi theater, against the NTF's own 6th Fleet, which has recently fallen under the command of the fiery Rear Admiral Koth. Koth has launched a series of probing attacks at the GTVA's scattered holdings in the system. Admiral West, the GTVA 6th Fleet's CO, is worried that Koth is planning a major offensive, and has dispatched ships to reinforce poorly-defended Allied holdings . . .", 16456)
+$end_multi_text
+$Ani Filename: <default>
++Wave Filename: Severanti_CBR01.ogg
+
+$Stage Text:
+ XSTR("$bFrom: $b cseveranti2@6flt.navy.mil
+$b To: $b gwest5@6flt.navy.mil
+$b Subject: $b Re: $b Your $b performance $b evaluation
+
+Admiral,
+
+You are most kind. During these months, I have resolved to do my duty as a corvette captain, but I feel honored that you would consider recommending me for fast-track promotion. You have been a most generous patron, Sir.
+
+Frankly, I am amazed that Admiral Koth was ever given a theater command. His tactics are unduly aggressive, especially his frequent attacks with his flagship. His fleet, and the NTF as a whole, are losing the war of attrition. Even if Bosch has the operational genius of a Robert E. Lee, as long as we play Grant and grind the Rebels down under our superior numbers and industrial might, our eventual victory is assured. You know me, Sir$semicolon I simply cannot abide commanders taking foolish gambles.
+
+On a lighter note, the Steadfast's maintenance has finished. The ETS is working at peak efficiency, and my Chief Engineer has devised some new power-distribution programs. My ship stands ready to fight, Admiral.
+
+Yours,
+Cpt. Cyrus Severanti", 16457)
+$end_multi_text
+$Ani Filename: <default>
++Wave Filename: Severanti_CBR02.ogg
+
+$Stage Text:
+ XSTR("$b CAPTAIN'S $b REFERENCE
+$b GTCv $b Steadfast $b (CV-73)
+$b TACTICAL $b SUMMARY
+
+The GTCv Deimos is an effective multirole combatant, protected by modern molybdenum armor, and mounting weaponry capable of engaging all classes of hostile vessels.
+
+The Deimos is equipped with an Energy Transfer System, allowing you to shift power between the ship's weapons and engines as the situation dictates.", 16458)
+$end_multi_text
+$Ani Filename: <default>
++Wave Filename: Severanti_CBR03.ogg
+
+$Stage Text:
+ XSTR("The Deimos's main anti-capital weapons systems are its four 'Forge Eagle' slash beam cannons$semicolon two are mounted in the nose, and one on each side of the vessel. These beams have a range of 4 km.
+
+You can set your beams to $y fire $y manually when you press $b Left $b CTRL on your console, $y engage $y automatically, fire on your current main target $y(track $y mode), or fire on a designated secondary target $y(lock $y mode). Designate secondary targets by targeting them and then pulling the 'primary fire' trigger. Your HUD will track your current secondary target in the gunnery display.
+
+To toggle between Manual Fire and the three automatic modes, press $b Alt-X on your console. To toggle between the individual automatic modes, press the $b Left and $b Right keys.
+
+The Deimos also mounts 10 laser turrets, 6 flak cannons, 4 AAA beams, and 2 Piranha missile launchers. These weapons are primarily placed to cover the Deimos's side, ventral, and stern arcs$semicolon if you are attacked by enemy bombers from ahead or from the top, maneuver into a more favorable firing arc. Your anti-fighter weapons are all automated.", 16459)
+$end_multi_text
+$Ani Filename: <default>
++Wave Filename: Severanti_CBR04.ogg
+
+$Stage Text:
+ XSTR("$b ADDENDUM
+
+The GTCv Steadfast mounts nonstandard upgrades to its ETS, giving it three alternate energy-transfer modes, to be used according to tactical exigency.
+
+Pressing $b 1 on your console will start overcharging your main beams to fire a single overloaded volley. The plasma cores will require 30 seconds to charge, temporarily taking all your beams and turrets offline$semicolon once charging is complete, your overloaded beams will fire on your target.
+
+Press $b 2 to fire a heavy jamming burst. All enemy ships in the battlespace will lose fire control and avionics for 20 seconds$semicolon your capacitors must cycle for 10 seconds afterward.
+
+Press $b 3 to channel more plasma to your engines, temporarily mimicking a strikecraft's afterburner. You will have 20 seconds of afterburner power, but your engines will take 15 seconds to recover.", 16460)
+$end_multi_text
+$Ani Filename: <default>
++Wave Filename: Severanti_CBR05.ogg
+
+#Briefing
+$start_briefing
+$num_stages: 2
+$start_stage
+$multi_text
+ XSTR("Looks like $h Koth's finally making a move. Our scout wings have detected an $h NTF $h strike $h force mobilizing at the $h Polaris $h node beachhead. We are unsure of their intended target, but $f Luzon $f Station, in Orbital Sector 137 of Epsilon Pegasi V, is too vulnerable to be left uncovered. Therefore, Commander, you are ordered to deploy the $f Steadfast to $f Luzon, and prepare for defensive action. You will be supported by $f Luzon's four onboard $f fighter $f squadrons, which should be sufficient to repulse any expected attack. All other operational $f 6th $f Fleet units are being kept in reserve to counter other potential $h NTF attacks.", 16461)
+$end_multi_text
+$voice: Severanti_BR01.ogg
+$camera_pos: 0.000000, 5496.619629, -9460.607422
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.866025, 0.500000,
+	0.000000, -0.500000, 0.866025
+$camera_time: 500
+$num_lines: 1
+$line_start: 0
+$line_end: 2
+$num_icons: 4
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 15
+$team: Friendly
+$class: GTI Arcadia
+$pos: -3536.682617, -0.000969, 1975.515625
+$label:  XSTR("Luzon Station", 16462)
++id: 1
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 28
+$team: Friendly
+$class: GTCv Deimos#Player
+$pos: -4165.955566, -0.001220, -3556.783203
+$label:  XSTR("GTCv Steadfast", 16463)
++id: 2
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 19
+$team: Neutral
+$class: GTC Leviathan
+$pos: 7941.571777, 0.000681, 6236.583984
+$label:  XSTR("NTF Attackers", 16464)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 1
+$team: Friendly
+$class: GTF Myrmidon
+$pos: -671.066772, -0.003395, -3457.496338
+$label:  XSTR("Luzon Defense Squadrons", 16465)
++id: 5
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$start_stage
+$multi_text
+ XSTR("The $f 341st $f Bomber $f Squadron is on Jump Five, in case the $f Luzon $f Station situation becomes critical. They will be deployed at my discretion. Between the $f Steadfast, the Luzon $f defense $f fighters, and the $f 341st, $f Luzon should be able to repel any assault force under battlegroup strength.
+
+Should the $h NTF attack with overwhelming force and $f Luzon $f Station be in critical danger, it will be evacuated in accordance with General Order 22. If this occurs, you are ordered to cover the $f evacuation $f transports' exit pattern. $f Luzon $f Station is manned by over 12,000 military and civilian personnel. Their safety is a high priority, especially the civilians'.
+
+Godspeed, Commander Severanti.
+Dismissed.", 16466)
+$end_multi_text
+$voice: Severanti_BR02.ogg
+$camera_pos: -0.000000, 5142.111816, -8939.438477
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.856620, 0.515948,
+	0.000000, -0.515948, 0.856620
+$camera_time: 500
+$num_lines: 1
+$line_start: 0
+$line_end: 3
+$num_icons: 5
+$Flags: 0
+$Formula: ( true ) 
+$start_icon
+$type: 15
+$team: Friendly
+$class: GTI Arcadia
+$pos: -6372.683105, -0.001101, 2768.188721
+$label:  XSTR("Luzon Station", 16462)
++id: 1
+$hlight: 1
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 19
+$team: Neutral
+$class: GTC Leviathan
+$pos: 7701.519531, 0.000773, 4833.833984
+$label:  XSTR("NTF Attackers", 16464)
++id: 3
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 17
+$team: Friendly
+$class: GTB Ursa
+$pos: 3865.748535, -0.001866, -3735.659424
+$label:  XSTR("341st Bomber Squadron", 16467)
++id: 4
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 27
+$team: Friendly
+$class: GTT Elysium
+$pos: -4046.393799, -0.000193, -3531.674805
+$label:  XSTR("Evac Transports", 16468)
++id: 6
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$start_icon
+$type: 28
+$team: Friendly
+$class: GTCv Deimos#Player
+$pos: -250.291534, 0.000694, -1998.155518
+$label:  XSTR("GTCv Steadfast", 16463)
++id: 7
+$hlight: 0
+$mirror: 0
+$multi_text
+$end_multi_text
+$end_icon
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 2
+
+$Formula: ( is-event-true-delay 
+   "Too Many Transps Dead" 
+   0 
+)
+$Multi text
+    XSTR("Captain Cyrus Severanti, already heavily injured in the back and arm when the Steadfast's gravity plating failed under enemy bombardment, passed out and died on his ship's bridge.
+
+The NTF attack did heavy damage to Luzon Station, crippling GTVA efforts in Epsilon Pegasi.
+
+Over a decade later, when the GTVA declared war on the United Earth Federation, Admiral Chiwetel Steele was quickly appointed to supreme command in the Sol theater. Without Severanti's grinding fourteen-month campaign to wear the UEF down, or the TEI ships which would enter service in the near future, the ambitious Steele overplayed his hand, and the GTVA took heavy losses in a failed Blitz on Earth . . .", 16469)
+$end_multi_text
+$Voice: Severanti_DBR01.ogg
+$Recommendation text:
+    XSTR("To stop the NTF cruisers from firing on the evac ships, move in close enough to distract them. To stop the fighters, move in and engage them with your AAA. Proper positioning, and use of the Deimos's capabilities, is key.", 16470)
+$end_multi_text
+
+$Formula: ( is-event-true-delay "Fade Out" 0 ) 
+$Multi text
+    XSTR("For his heroic defense of Luzon Station on April 4, 2366, and for staying in command of the Steadfast despite heavy personal injury, Captain Cyrus Severanti was awarded the Order of Galatea.
+
+With Luzon Station intact, the GTVA could hold Epsilon Pegasi without needing to reroute forces from other theaters.
+
+Between his wartime achievements and his connections in GTVA high command, Severanti would rise in rank over the ensuing years.
+
+Over a decade later, when the GTVA invaded the United Earth Federation, Severanti would take supreme command of the Sol theater. Thanks to his slow, attrition-based strategy, the war would drag on for eighteen months, before the mounting impatience of his political masters pressured him into the foolish gamble of attacking Luna. After nearly losing his flagship to a UEF counterattack, he was ignominiously relieved of command, and rotated back home. His war of attrition did succeed in depleting UEF logistical assets, and rendered Sol more vulnerable to his successor, the more aggressive Admiral Steele . . .", 16471)
+$end_multi_text
+$Voice: Severanti_DBR02.ogg
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+
+#Callsigns:
+$Callsign: XSTR("90th Hetairoi", 16472)
+$Callsign: XSTR("163rd Sirius Lancers", 16473)
+$Callsign: XSTR("341st Bomber Squadron", 16467)
+$Callsign: XSTR("308th Berserkers", 16474)
+$Callsign: XSTR("308th Purifiers", 16475)
+$Callsign: XSTR("240th Saracens", 16476)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Steadfast# 1
+$Ship Choices: (
+	"GVF Ptah"	5
+)
+
++Weaponry Pool: (
+	"Subach HL-7"	16
+	"Subach HL-D"	16
+	"Mekhu HL-7"	16
+	"Mekhu HL-7D"	16
+	"Akheton SDG"	16
+	"Morning Star"	16
+	"MorningStar D"	16
+	"Prometheus R"	30
+	"Prometheus S"	16
+	"Prometheus D"	16
+	"Maxim"	16
+	"Maxim D"	16
+	"UD-8 Kayser"	16
+	"UD-D Kayser"	16
+	"Circe"	16
+	"Lamprey"	16
+	"Rockeye"	500
+	"Rockeye D"	500
+	"Tempest"	500
+	"Tempest D"	500
+	"Hornet"	500
+	"Hornet D"	500
+	"Tornado"	500
+	"Tornado D"	500
+	"Harpoon"	500
+	"Harpoon D"	500
+	"Trebuchet"	500
+	"TAG-A"	500
+	"TAG-B"	500
+	"TAG-C"	500
+)
+
+#Objects		;! 44 total
+
+$Name: Steadfast# 1		;! Object #0
+$Display Name: XSTR("Steadfast", 16477)
+$Class: GTCv Deimos#Player
+$Team: Friendly
+$Location: 1211.339355, -255.149734, -4261.530762
+$Orientation:
+	0.446049, -0.887973, 0.112000,
+	0.888130, 0.454626, 0.067384,
+	-0.110753, 0.069414, 0.991421
++AI Class: BP2-Captain
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
++Subsystem: Turret19
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
++Subsystem: Turret25
++Subsystem: Turret26
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" )
++Flags2: ( "no-subspace-drive" )
++Respawn priority: 0
++Group: 0
++Score: 8
+$Texture Replace:
++old: nameplate
++new: gtcv_steadfast
+
+$Name: Luzon Station		;! Object #1
+$Display Name: XSTR("Luzon Station", 16462)
+$Class: GTI Arcadia
+$Team: Friendly
+$Location: 40.473114, -17.220978, 2945.337891
+$Orientation:
+	0.780536, -0.574042, -0.247476,
+	-0.621635, -0.754488, -0.210529,
+	-0.065865, 0.318164, -0.945749
++AI Class: BP2-General
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Primary Banks: ( "Terran Turret Weak" )
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "guardian" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 0
++Docked With: Julius
+$Docker Point: Bottom dock
+$Dockee Point: topside docking
++Docked With: Hortense
+$Docker Point: Frontside dock
+$Dockee Point: Bigship docking
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 800
+
+$Name: Hortense		;! Object #2
+$Display Name: XSTR("Hortense", 16478)
+$Class: GTT Argo
+$Team: Friendly
+$Location: -468.501831, -117.577850, 2835.899902
+$Orientation:
+	-0.780550, 0.574025, 0.247471,
+	0.065782, -0.318264, 0.945721,
+	0.621626, 0.754459, 0.210660
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("GTVA Personnel", 16479)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 15500
++Hotkey: 4
++Docked With: Luzon Station
+$Docker Point: Bigship docking
+$Dockee Point: Frontside dock
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 40
+
+$Name: Julius		;! Object #3
+$Display Name: XSTR("Julius", 16480)
+$Class: GTT Argo
+$Team: Friendly
+$Location: -668.935730, 576.959473, 3227.960449
+$Orientation:
+	0.780536, -0.574042, -0.247477,
+	-0.621637, -0.754477, -0.210562,
+	-0.065844, 0.318191, -0.945741
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("GTVA Personnel", 16479)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Special Hitpoints: 15500
++Hotkey: 4
++Docked With: Luzon Station
+$Docker Point: topside docking
+$Dockee Point: Bottom dock
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 40
+
+$Name: Nakura		;! Object #4
+$Display Name: XSTR("Nakura", 16481)
+$Class: GTC Leviathan
+$Team: Neutral
+$Location: -4354.054688, 2061.393555, 2142.353027
+$Orientation:
+	0.317870, 0.771745, 0.550789,
+	-0.187582, -0.518247, 0.834406,
+	0.929393, -0.368551, -0.019970
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: turret02
++Subsystem: turret03
++Primary Banks: ( "AAAh" )
++Subsystem: turret04
++Primary Banks: ( "AAAh" )
++Subsystem: turret05
++Primary Banks: ( "AAAh" )
++Subsystem: turret06
++Primary Banks: ( "AAAh" )
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: turret09a-01-main
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-time-elapsed 21 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 1
++Orders Accepted List: ( "attack ship" )
++Group: 0
++Use Table Score:
++Score: 200
+$Texture Replace:
++old: nameplate
++new: ntcnakura
++old: LeviathanMain
++new: NTFLevyMain
+
+$Name: Kiowa		;! Object #5
+$Display Name: XSTR("Kiowa", 16482)
+$Class: GTC Leviathan
+$Team: Neutral
+$Location: -3496.299316, 2383.433105, 3468.727539
+$Orientation:
+	0.683460, 0.541257, 0.489820,
+	-0.187581, -0.518247, 0.834407,
+	0.705477, -0.662164, -0.252670
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: turret02
++Subsystem: turret03
++Primary Banks: ( "AAAh" )
++Subsystem: turret04
++Primary Banks: ( "AAAh" )
++Subsystem: turret05
++Primary Banks: ( "AAAh" )
++Subsystem: turret06
++Primary Banks: ( "AAAh" )
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: turret09a-01-main
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-time-elapsed 21 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( <= ( hits-left "Kiowa" ) 32 ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 1
++Orders Accepted List: ( "attack ship" )
++Group: 0
++Use Table Score:
++Score: 200
+$Texture Replace:
++old: nameplate
++new: ntckiowa
++old: LeviathanMain
++new: NTFLevyMain
+
+$Name: Mali		;! Object #6
+$Display Name: XSTR("Mali", 16483)
+$Class: GTT Elysium
+$Team: Friendly
+$Location: -3167.402344, 0.000532, 1054.350952
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Lieutenant
+$AI Goals: ( goals ( ai-waypoints-once "Julius Jump" 50 ) ( ai-warp-out 50 ) )
+$Cargo 1:  XSTR("GTVA Personnel", 16479)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Luzon Station
+$Arrival Cue: ( is-event-true-delay 
+   "Kill Bombers" 
+   25 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 7
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Alpha 1		;! Object #7
+$Display Name: XSTR("Alpha 1", 6694)
+$Class: GTF Myrmidon
+$Callsign: XSTR("90th Hetairoi", 16472)
+
+$Team: Friendly
+$Location: 1163.247559, -965.931213, 5003.918945
+$Orientation:
+	0.952382, 0.301203, 0.047385,
+	-0.302124, 0.911272, 0.279829,
+	0.041104, -0.280821, 0.958880
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Prometheus R" )
++Secondary Banks: ( "" "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 0
+
+$Name: Alpha 2		;! Object #8
+$Display Name: XSTR("Alpha 2", 6753)
+$Class: GTF Myrmidon
+$Callsign: XSTR("90th Hetairoi", 16472)
+
+$Team: Friendly
+$Location: 1325.831055, -1031.146118, 5025.327637
+$Orientation:
+	0.952382, 0.301203, 0.047385,
+	-0.302124, 0.911272, 0.279829,
+	0.041104, -0.280821, 0.958880
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Prometheus R" )
++Secondary Banks: ( "" "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 0
+
+$Name: Alpha 3		;! Object #9
+$Display Name: XSTR("Alpha 3", 6754)
+$Class: GTF Myrmidon
+$Callsign: XSTR("90th Hetairoi", 16472)
+
+$Team: Friendly
+$Location: 1347.364746, -1114.336914, 5310.100098
+$Orientation:
+	0.952382, 0.301203, 0.047385,
+	-0.302124, 0.911272, 0.279829,
+	0.041104, -0.280821, 0.958880
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Prometheus R" )
++Secondary Banks: ( "" "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 0
+
+$Name: Beta 1		;! Object #10
+$Display Name: XSTR("Beta 1", 7239)
+$Class: GTF Myrmidon
+$Callsign: XSTR("90th Hetairoi", 16472)
+
+$Team: Friendly
+$Location: 87.527695, -2308.985596, 3241.361572
+$Orientation:
+	0.952382, 0.301203, 0.047385,
+	-0.302124, 0.911272, 0.279829,
+	0.041104, -0.280821, 0.958880
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Prometheus R" )
++Secondary Banks: ( "" "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 0
+
+$Name: Beta 2		;! Object #11
+$Display Name: XSTR("Beta 2", 7240)
+$Class: GTF Myrmidon
+$Callsign: XSTR("90th Hetairoi", 16472)
+
+$Team: Friendly
+$Location: 75.115128, -2243.531250, 3011.031494
+$Orientation:
+	0.952382, 0.301203, 0.047385,
+	-0.302124, 0.911272, 0.279829,
+	0.041104, -0.280821, 0.958880
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Prometheus R" )
++Secondary Banks: ( "" "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 0
+
+$Name: Beta 3		;! Object #12
+$Display Name: XSTR("Beta 3", 7241)
+$Class: GTF Myrmidon
+$Callsign: XSTR("90th Hetairoi", 16472)
+
+$Team: Friendly
+$Location: 193.526703, -2239.299561, 2831.009521
+$Orientation:
+	0.952382, 0.301203, 0.047385,
+	-0.302124, 0.911272, 0.279829,
+	0.041104, -0.280821, 0.958880
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Prometheus R" )
++Secondary Banks: ( "" "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 0
+
+$Name: Beta 4		;! Object #13
+$Display Name: XSTR("Beta 4", 7242)
+$Class: GTF Myrmidon
+$Team: Friendly
+$Location: 295.815033, -2403.623047, 3310.728271
+$Orientation:
+	0.952382, 0.301203, 0.047385,
+	-0.302124, 0.911272, 0.279829,
+	0.041104, -0.280821, 0.958880
++AI Class: Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Prometheus R" "Prometheus R" )
++Secondary Banks: ( "" "" "" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 0
+
+$Name: Gamma 1		;! Object #14
+$Display Name: XSTR("Gamma 1", 7264)
+$Class: GTB Ursa
+$Callsign: XSTR("341st Bomber Squadron", 16467)
+
+$Team: Friendly
+$Location: -1060.944458, 2211.590820, -250.730972
+$Orientation:
+	0.758362, 0.000000, 0.651834,
+	0.000000, 1.000000, 0.000000,
+	-0.651834, 0.000000, 0.758362
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Subach HL-7" )
++Secondary Banks: ( "Hornet" "Cyclops#short" "Cyclops#short" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Gamma 2		;! Object #15
+$Display Name: XSTR("Gamma 2", 7265)
+$Class: GTB Ursa
+$Callsign: XSTR("341st Bomber Squadron", 16467)
+
+$Team: Friendly
+$Location: -789.306519, 2211.591064, -123.199127
+$Orientation:
+	0.758362, -0.000000, 0.651834,
+	0.000000, 1.000000, 0.000000,
+	-0.651834, 0.000000, 0.758362
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Subach HL-7" )
++Secondary Banks: ( "Hornet" "Cyclops#short" "Cyclops#short" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Gamma 3		;! Object #16
+$Display Name: XSTR("Gamma 3", 7266)
+$Class: GTB Ursa
+$Callsign: XSTR("341st Bomber Squadron", 16467)
+
+$Team: Friendly
+$Location: -933.065369, 2211.591064, 52.002548
+$Orientation:
+	0.758362, -0.000000, 0.651834,
+	0.000000, 1.000000, 0.000000,
+	-0.651834, 0.000000, 0.758362
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Subach HL-7" )
++Secondary Banks: ( "Hornet" "Cyclops#short" "Cyclops#short" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Gamma 4		;! Object #17
+$Display Name: XSTR("Gamma 4", 7803)
+$Class: GTB Ursa
+$Callsign: XSTR("341st Bomber Squadron", 16467)
+
+$Team: Friendly
+$Location: -1244.350830, 2211.591064, -87.764511
+$Orientation:
+	0.758362, -0.000000, 0.651834,
+	0.000000, 1.000000, 0.000000,
+	-0.651834, 0.000000, 0.758362
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Subach HL-7" )
++Secondary Banks: ( "Hornet" "Cyclops#short" "Cyclops#short" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Delta 1		;! Object #18
+$Display Name: XSTR("Delta 1", 6757)
+$Class: GTB Ursa
+$Callsign: XSTR("341st Bomber Squadron", 16467)
+
+$Team: Friendly
+$Location: -1224.500122, 2211.591064, -410.845154
+$Orientation:
+	0.758362, -0.000000, 0.651834,
+	0.000000, 1.000000, 0.000000,
+	-0.651834, 0.000000, 0.758362
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Subach HL-7" )
++Secondary Banks: ( "Hornet" "Cyclops#short" "Cyclops#short" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Delta 2		;! Object #19
+$Display Name: XSTR("Delta 2", 6758)
+$Class: GTB Ursa
+$Callsign: XSTR("341st Bomber Squadron", 16467)
+
+$Team: Friendly
+$Location: -1469.656250, 2211.591064, -300.048462
+$Orientation:
+	0.758362, -0.000000, 0.651834,
+	0.000000, 1.000000, 0.000000,
+	-0.651834, 0.000000, 0.758362
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Subach HL-7" )
++Secondary Banks: ( "Hornet" "Cyclops#short" "Cyclops#short" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Delta 3		;! Object #20
+$Display Name: XSTR("Delta 3", 7323)
+$Class: GTB Ursa
+$Callsign: XSTR("341st Bomber Squadron", 16467)
+
+$Team: Friendly
+$Location: -1591.965332, 2211.591064, -374.679749
+$Orientation:
+	0.758362, -0.000000, 0.651834,
+	0.000000, 1.000000, 0.000000,
+	-0.651834, 0.000000, 0.758362
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Subach HL-7" )
++Secondary Banks: ( "Hornet" "Cyclops#short" "Cyclops#short" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Delta 4		;! Object #21
+$Display Name: XSTR("Delta 4", 8505)
+$Class: GTB Ursa
+$Callsign: XSTR("341st Bomber Squadron", 16467)
+
+$Team: Friendly
+$Location: -1337.330811, 2211.591064, -494.762604
+$Orientation:
+	0.758362, -0.000000, 0.651834,
+	0.000000, 1.000000, 0.000000,
+	-0.651834, 0.000000, 0.758362
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Subach HL-7" "Subach HL-7" )
++Secondary Banks: ( "Hornet" "Cyclops#short" "Cyclops#short" )
++Subsystem: b05-turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sagittarius 1		;! Object #22
+$Display Name: XSTR("Sagittarius 1", 8171)
+$Class: GTB Zeus
+
+$Callsign: XSTR("163rd Sirius Lancers", 16473)
+
+$Team: Neutral
+$Location: -7.845337, 1687.925049, -3402.982422
+$Orientation:
+	-0.410779, -0.486968, -0.770793,
+	-0.755959, 0.654532, -0.010645,
+	0.509693, 0.578316, -0.636996
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sagittarius 2		;! Object #23
+$Display Name: XSTR("Sagittarius 2", 8172)
+$Class: GTB Zeus
+
+$Callsign: XSTR("163rd Sirius Lancers", 16473)
+
+$Team: Neutral
+$Location: 84.000175, 1848.243774, -3335.724365
+$Orientation:
+	-0.410779, -0.486968, -0.770794,
+	-0.755959, 0.654533, -0.010645,
+	0.509694, 0.578315, -0.636996
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sagittarius 3		;! Object #24
+$Display Name: XSTR("Sagittarius 3", 9067)
+$Class: GTB Zeus
+
+$Callsign: XSTR("163rd Sirius Lancers", 16473)
+
+$Team: Neutral
+$Location: 9.416584, 1615.510010, -3587.975342
+$Orientation:
+	-0.410779, -0.486968, -0.770794,
+	-0.755959, 0.654533, -0.010645,
+	0.509694, 0.578315, -0.636996
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Sagittarius 4		;! Object #25
+$Display Name: XSTR("Sagittarius 4", 9068)
+$Class: GTB Zeus
+
+$Callsign: XSTR("163rd Sirius Lancers", 16473)
+
+$Team: Neutral
+$Location: 178.903946, 1463.955933, -3323.404297
+$Orientation:
+	-0.410779, -0.486968, -0.770794,
+	-0.755959, 0.654533, -0.010645,
+	0.509694, 0.578315, -0.636996
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Libra 1		;! Object #26
+$Display Name: XSTR("Libra 1", 8167)
+$Class: GTB Zeus
+
+$Callsign: XSTR("163rd Sirius Lancers", 16473)
+
+$Team: Neutral
+$Location: 2301.845215, 689.533569, -1427.738770
+$Orientation:
+	-0.379476, -0.451414, -0.807603,
+	-0.755959, 0.654532, -0.010645,
+	0.533408, 0.606476, -0.589630
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Libra 2		;! Object #27
+$Display Name: XSTR("Libra 2", 8168)
+$Class: GTB Zeus
+
+$Callsign: XSTR("163rd Sirius Lancers", 16473)
+
+$Team: Neutral
+$Location: 2376.172119, 502.021790, -1542.838867
+$Orientation:
+	-0.379476, -0.451414, -0.807603,
+	-0.755959, 0.654532, -0.010645,
+	0.533408, 0.606476, -0.589630
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Libra 3		;! Object #28
+$Display Name: XSTR("Libra 3", 8169)
+$Class: GTB Zeus
+
+$Callsign: XSTR("163rd Sirius Lancers", 16473)
+
+$Team: Neutral
+$Location: 2316.529785, 442.589966, -1419.728027
+$Orientation:
+	-0.379476, -0.451414, -0.807603,
+	-0.755959, 0.654532, -0.010645,
+	0.533408, 0.606476, -0.589630
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Libra 4		;! Object #29
+$Display Name: XSTR("Libra 4", 8181)
+$Class: GTB Zeus
+
+$Callsign: XSTR("163rd Sirius Lancers", 16473)
+
+$Team: Neutral
+$Location: 2238.387207, 602.863892, -1333.828979
+$Orientation:
+	-0.379476, -0.451414, -0.807603,
+	-0.755959, 0.654532, -0.010645,
+	0.533408, 0.606476, -0.589630
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Taurus 1		;! Object #30
+$Display Name: XSTR("Taurus 1", 8073)
+$Class: GTF Hercules
+
+$Callsign: XSTR("308th Purifiers", 16475)
+
+$Team: Neutral
+$Location: -3718.180176, 2081.123535, 3536.439941
+$Orientation:
+	0.374625, 0.920088, 0.114431,
+	0.920046, -0.384179, 0.076958,
+	0.114770, 0.076451, -0.990446
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Weak" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Taurus 4		;! Object #31
+$Display Name: XSTR("Taurus 4", 8076)
+$Class: GTF Hercules
+
+$Callsign: XSTR("308th Purifiers", 16475)
+
+$Team: Neutral
+$Location: -3673.037598, 2174.093750, 3577.172363
+$Orientation:
+	0.374626, 0.920088, 0.114430,
+	0.920045, -0.384180, 0.076959,
+	0.114771, 0.076450, -0.990446
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Weak" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Taurus 3		;! Object #32
+$Display Name: XSTR("Taurus 3", 8075)
+$Class: GTF Hercules
+
+$Callsign: XSTR("308th Purifiers", 16475)
+
+$Team: Neutral
+$Location: -3663.414551, 2196.970703, 3420.533691
+$Orientation:
+	0.374626, 0.920088, 0.114430,
+	0.920045, -0.384180, 0.076959,
+	0.114771, 0.076450, -0.990446
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Weak" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Taurus 2		;! Object #33
+$Display Name: XSTR("Taurus 2", 8074)
+$Class: GTF Hercules
+
+$Callsign: XSTR("308th Purifiers", 16475)
+
+$Team: Neutral
+$Location: -3711.078613, 2054.631836, 3467.221191
+$Orientation:
+	0.374626, 0.920088, 0.114430,
+	0.920045, -0.384180, 0.076959,
+	0.114771, 0.076450, -0.990446
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Weak" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cancer 1		;! Object #34
+$Display Name: XSTR("Cancer 1", 8077)
+$Class: GTF Hercules
+
+$Callsign: XSTR("308th Purifiers", 16475)
+
+$Team: Neutral
+$Location: -4443.165527, 1762.246704, 2298.188232
+$Orientation:
+	0.374626, 0.920088, 0.114430,
+	0.920045, -0.384180, 0.076959,
+	0.114771, 0.076450, -0.990446
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Weak" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cancer 2		;! Object #35
+$Display Name: XSTR("Cancer 2", 8078)
+$Class: GTF Hercules
+
+$Callsign: XSTR("308th Purifiers", 16475)
+
+$Team: Neutral
+$Location: -4438.485840, 1665.211182, 2148.643311
+$Orientation:
+	0.374626, 0.920088, 0.114430,
+	0.920045, -0.384180, 0.076959,
+	0.114771, 0.076450, -0.990446
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Weak" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cancer 3		;! Object #36
+$Display Name: XSTR("Cancer 3", 8079)
+$Class: GTF Hercules
+
+$Callsign: XSTR("308th Purifiers", 16475)
+
+$Team: Neutral
+$Location: -4397.702637, 1780.265259, 2099.934326
+$Orientation:
+	0.374626, 0.920088, 0.114430,
+	0.920045, -0.384180, 0.076959,
+	0.114771, 0.076450, -0.990446
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Weak" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Cancer 4		;! Object #37
+$Display Name: XSTR("Cancer 4", 8080)
+$Class: GTF Hercules
+
+$Callsign: XSTR("308th Purifiers", 16475)
+
+$Team: Neutral
+$Location: -4416.032715, 1845.398193, 2274.403076
+$Orientation:
+	0.976295, -0.216348, 0.006427,
+	-0.212809, -0.964899, -0.153894,
+	0.039496, 0.148878, -0.988067
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon#Weak" "Hornet#Weak" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Camera		;! Object #38
+$Display Name: XSTR("Camera", 6937)
+$Class: GTF Hercules
+$Team: Friendly
+$Location: -5286.793457, 2613.766113, 3528.165039
+$Orientation:
+	-0.638116, -0.332424, -0.694480,
+	0.073301, 0.871666, -0.484589,
+	0.766443, -0.360130, -0.531857
+$AI Goals: ( goals ( ai-play-dead 200 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "hidden-from-sensors" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "immobile" "cloaked" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Umayyad		;! Object #39
+$Display Name: XSTR("Umayyad", 16484)
+$Class: GTT Elysium
+$Team: Friendly
+$Location: -3157.538086, 0.000770, 1315.294556
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Lieutenant
+$AI Goals: ( goals ( ai-waypoints-once "Julius Jump" 50 ) ( ai-warp-out 50 ) )
+$Cargo 1:  XSTR("GTVA Personnel", 16479)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Luzon Station
+$Arrival Cue: ( is-event-true-delay 
+   "Kill Bombers" 
+   21 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 7
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Leo 1		;! Object #40
+$Display Name: XSTR("Leo 1", 8173)
+$Class: GTB Zeus
+
+$Callsign: XSTR("240th Saracens", 16476)
+
+$Team: Neutral
+$Location: 455.285309, 1687.924805, -2461.108154
+$Orientation:
+	-0.410779, -0.486968, -0.770793,
+	-0.755959, 0.654532, -0.010645,
+	0.509693, 0.578316, -0.636996
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Leo 2		;! Object #41
+$Display Name: XSTR("Leo 2", 8174)
+$Class: GTB Zeus
+
+$Callsign: XSTR("240th Saracens", 16476)
+
+$Team: Neutral
+$Location: 547.130859, 1848.243530, -2393.850098
+$Orientation:
+	-0.410779, -0.486968, -0.770794,
+	-0.755959, 0.654533, -0.010645,
+	0.509694, 0.578315, -0.636996
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Leo 3		;! Object #42
+$Display Name: XSTR("Leo 3", 8175)
+$Class: GTB Zeus
+
+$Callsign: XSTR("240th Saracens", 16476)
+
+$Team: Neutral
+$Location: 472.547272, 1615.509766, -2646.101074
+$Orientation:
+	-0.410779, -0.486968, -0.770794,
+	-0.755959, 0.654533, -0.010645,
+	0.509694, 0.578315, -0.636996
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Leo 4		;! Object #43
+$Display Name: XSTR("Leo 4", 9860)
+$Class: GTB Zeus
+
+$Callsign: XSTR("240th Saracens", 16476)
+
+$Team: Neutral
+$Location: 642.034546, 1463.955688, -2381.530029
+$Orientation:
+	-0.410779, -0.486968, -0.770794,
+	-0.755959, 0.654533, -0.010645,
+	0.509694, 0.578315, -0.636996
++AI Class: BP2-Colonel
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Harpoon" "Rebel Bomb" "Rebel Bomb" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+#Wings		;! 10 total
+
+$Name: Steadfast#
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Steadfast# 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Steadfast# 1"
+)
++Flags: ( )
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+)
++Flags: ( )
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Beta 1"
+	"Beta 2"
+	"Beta 3"
+	"Beta 4"
+)
+$AI Goals: ( goals ( ai-waypoints "Patrol" 50 ) )
++Flags: ( )
+
+$Name: Gamma
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Gamma 1
+$Arrival Location: Near Ship
++Arrival Distance: 1200
+$Arrival Anchor: Kiowa
+$Arrival Cue: ( destroyed-or-departed-delay 
+   4 
+   "Umayyad" 
+   "Mali" 
+   "Hortense" 
+   "Julius" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Gamma 1"
+	"Gamma 2"
+	"Gamma 3"
+	"Gamma 4"
+)
+$AI Goals: ( goals ( ai-chase "Kiowa" 50 ) )
++Flags: ( "no-arrival-message" )
+
+$Name: Delta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Delta 1
+$Arrival Location: Near Ship
++Arrival Distance: 1200
+$Arrival Anchor: Kiowa
+$Arrival Cue: ( destroyed-or-departed-delay 
+   4 
+   "Umayyad" 
+   "Mali" 
+   "Hortense" 
+   "Julius" 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Delta 1"
+	"Delta 2"
+	"Delta 3"
+	"Delta 4"
+)
+$AI Goals: ( goals ( ai-chase "Kiowa" 50 ) )
++Flags: ( "no-arrival-message" )
+
+$Name: Sagittarius
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Sagittarius 1
+$Arrival Location: In front of ship
++Arrival Distance: 1300
+$Arrival Anchor: Steadfast# 1
+$Arrival Cue: ( has-time-elapsed 45 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Sagittarius 1"
+	"Sagittarius 2"
+	"Sagittarius 3"
+	"Sagittarius 4"
+)
+$AI Goals: ( goals ( ai-destroy-subsystem "Steadfast# 1" "turret11" 50 ) ( ai-chase "Steadfast# 1" 50 ) ( ai-chase "Steadfast# 1" 50 ) )
++Hotkey: 1
++Flags: ( "no-arrival-message" )
+
+$Name: Libra
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Libra 1
+$Arrival Location: In front of ship
++Arrival Distance: 1550
+$Arrival Anchor: Steadfast# 1
+$Arrival Cue: ( has-time-elapsed 45 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Libra 1"
+	"Libra 2"
+	"Libra 3"
+	"Libra 4"
+)
+$AI Goals: ( goals ( ai-destroy-subsystem "Steadfast# 1" "turret24" 50 ) ( ai-destroy-subsystem "Steadfast# 1" "turret23" 50 ) ( ai-chase "Steadfast# 1" 50 ) )
++Hotkey: 1
++Flags: ( "no-arrival-message" )
+
+$Name: Taurus
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Taurus 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Nakura" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   3 
+   "Nakura" 
+   "Kiowa" 
+)
+$Ships: (		;! 4 total
+	"Taurus 1"
+	"Taurus 2"
+	"Taurus 3"
+	"Taurus 4"
+)
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) ( ai-chase-wing "Beta" 50 ) ( ai-stay-near-ship "Kiowa" 50 ) )
++Hotkey: 3
++Flags: ( "no-arrival-message" )
+
+$Name: Cancer
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Cancer 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Nakura" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   3 
+   "Nakura" 
+   "Kiowa" 
+)
+$Ships: (		;! 4 total
+	"Cancer 1"
+	"Cancer 2"
+	"Cancer 3"
+	"Cancer 4"
+)
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) ( ai-chase-wing "Beta" 50 ) ( ai-stay-near-ship "Nakura" 50 ) )
++Hotkey: 3
++Flags: ( "no-arrival-message" )
+
+$Name: Leo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Leo 1
+$Arrival Location: In front of ship
++Arrival Distance: 1500
+$Arrival Anchor: Steadfast# 1
+$Arrival Cue: ( has-arrived-delay 4 "Sagittarius" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Leo 1"
+	"Leo 2"
+	"Leo 3"
+	"Leo 4"
+)
+$AI Goals: ( goals ( ai-chase "Steadfast# 1" 50 ) )
++Flags: ( )
+
+#Events		;! 47 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[NTB Zeus]" 
+      "NTB Zeus" 
+      15207 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar1[NTB Zeus]" 
+      "Sagittarius 1" 
+      "Sagittarius 2" 
+      "Sagittarius 3" 
+      "Sagittarius 4" 
+      "Libra 1" 
+      "Libra 2" 
+      "Libra 3" 
+      "Libra 4" 
+      "Leo 1" 
+      "Leo 2" 
+      "Leo 3" 
+      "Leo 4" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[NTF Hercules]" 
+      "NTF Hercules" 
+      15068 
+   )
+   ( ship-change-alt-name 
+      "@autoGenVar2[NTF Hercules]" 
+      "Taurus 1" 
+      "Taurus 4" 
+      "Taurus 3" 
+      "Taurus 2" 
+      "Cancer 1" 
+      "Cancer 2" 
+      "Cancer 3" 
+      "Cancer 4" 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[TACTICAL INTERFACE]" 
+      "TACTICAL INTERFACE" 
+      12226 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar4[   ==OFFLINE==]" 
+      "   ==OFFLINE==" 
+      12227 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar5[ ]" 
+      " " 
+      2943 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar6[$1$ - Overload Beams]" 
+      "$1$ - Overload Beams" 
+      16420 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar7[$2$ - Jamming Burst]" 
+      "$2$ - Jamming Burst" 
+      16530 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar8[$3$ - Thruster Boost]" 
+      "$3$ - Thruster Boost" 
+      16422 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar9[boosting plasma feed]" 
+      "boosting plasma feed" 
+      16424 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar10[charging overloads]" 
+      "charging overloads" 
+      16425 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar11[firing overloads]" 
+      "firing overloads" 
+      16426 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar12[capacitors discharging]" 
+      "capacitors discharging" 
+      16427 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar13[hostiles disrupted]" 
+      "hostiles disrupted" 
+      16531 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar14[jamming active]" 
+      "jamming active" 
+      16532 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar15[hostiles adapting]" 
+      "hostiles adapting" 
+      16533 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar16[cycling frequencies]" 
+      "cycling frequencies" 
+      16431 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar17[thrusters boosted]" 
+      "thrusters boosted" 
+      16432 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar18[boost complete]" 
+      "boost complete" 
+      16433 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar19[thrusters cooling]" 
+      "thrusters cooling" 
+      16434 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar20[Beam Ready In]" 
+      "Beam Ready In" 
+      16438 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar21[Cycle Time]" 
+      "Cycle Time" 
+      16439 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar22[HULL INTEGRITY CRITICAL]" 
+      "HULL INTEGRITY CRITICAL" 
+      16440 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar23[#Gunnery]" 
+      "#Gunnery" 
+      14948 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar24[#Severanti]" 
+      "#Severanti" 
+      16534 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar25[#Steadfast XO]" 
+      "#Steadfast XO" 
+      16535 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "BPLowerRightMFD" 
+      "BPLowerRightMFDA" 
+      "BPLowerRightMFDB" 
+      "BPLowerRightMFDC" 
+      "BPLowerRightMFDD" 
+      "BPLowerRightMFDE" 
+      "BPLowerRightMFDF" 
+      "BPLowerRightMFDG" 
+      "BPLowerRightMFDH" 
+   )
+   ( true ) 
+   ( hud-gauge-set-active 
+      "<argument>" 
+      ( true ) 
+   )
+   ( hud-set-message 
+      "BPLowerRightMFDG" 
+      "press alt-x to change" 
+   )
+   ( hud-set-text 
+      "BPLowerRightMFD" 
+      "@autoGenVar3[TACTICAL INTERFACE]" 
+   )
+   ( hud-set-text 
+      "BPLowerRightMFDC" 
+      "@autoGenVar4[   ==OFFLINE==]" 
+   )
+   ( hud-set-text "BPTaccomA" "@autoGenVar5[ ]" ) 
+   ( hud-set-text "BPLowerRightMFDA" "@autoGenVar5[ ]" ) 
+   ( hud-set-text "BPLowerRightMFDB" "@autoGenVar5[ ]" ) 
+   ( hud-set-text "BPLowerRightMFDD" "@autoGenVar5[ ]" ) 
+   ( hud-set-text "BPLowerRightMFDE" "@autoGenVar5[ ]" ) 
+   ( hud-set-text "BPMiscStatus" "@autoGenVar5[ ]" ) 
+   ( hud-set-text "BPTaccomA" "@autoGenVar5[ ]" ) 
+   ( hud-set-text "BPTaccomC" "@autoGenVar5[ ]" ) 
+   ( hud-set-message 
+      "BPLowerRightMFDF" 
+      "beams: manual fire" 
+   )
+   ( set-afterburner-energy 
+      0 
+      "Steadfast# 1" 
+   )
+   ( lock-afterburner "Steadfast# 1" ) 
+   ( hud-set-message 
+      "BPLowerRightMFDF" 
+      "beams: auto fire" 
+   )
+)
++Name: enable taccomm and menuon
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( or 
+            ( key-pressed "1" ) 
+            ( key-pressed "2" ) 
+            ( key-pressed "3" ) 
+         )
+      )
+      ( = @menuon[1] 1 ) 
+   )
+   ( when 
+      ( = @useTrainingMsgs[0] 0 ) 
+      ( hud-set-directive 
+         "BPLowerRightMFDA" 
+         "@autoGenVar6[$1$ - Overload Beams]" 
+      )
+      ( hud-set-directive 
+         "BPLowerRightMFDB" 
+         "@autoGenVar7[$2$ - Jamming Burst]" 
+      )
+      ( hud-set-directive 
+         "BPLowerRightMFDC" 
+         "@autoGenVar8[$3$ - Thruster Boost]" 
+      )
+   )
+)
++Name: able1: main tac menu
++Repeat Count: 1410065407
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( = @menuon[1] 1 ) 
+      ( key-pressed "1" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      35 
+   )
+   ( modify-variable @ablecountup[0] 30 ) 
+   ( modify-variable @menuon[1] 2 ) 
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( play-sound-from-file 
+      "interfacepress.ogg" 
+   )
+)
++Name: able1: select overload
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[1] 2 ) 
+      ( > @ablecountdown[0] 0 ) 
+   )
+   ( when 
+      ( = @useTrainingMsgs[0] 0 ) 
+      ( hud-set-text 
+         "BPLowerRightMFDB" 
+         "@autoGenVar9[boosting plasma feed]" 
+      )
+      ( hud-set-message 
+         "BPLowerRightMFDC" 
+         "HUDCountup" 
+      )
+      ( hud-set-text 
+         "BPLowerRightMFDA" 
+         "@autoGenVar10[charging overloads]" 
+      )
+      ( hud-set-text "BPLowerRightMFDD" "@autoGenVar5[ ]" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      ( - @ablecountdown[0] 1 ) 
+   )
+   ( when 
+      ( > @ablecountup[0] 0 ) 
+      ( modify-variable 
+         @ablecountup[0] 
+         ( - @ablecountup[0] 1 ) 
+      )
+   )
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( beam-lock-all "Steadfast# 1" ) 
+   ( turret-lock-all "Steadfast# 1" ) 
+)
++Name: able1: charging overload
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[1] 2 ) 
+      ( = @ablecountup[0] 0 ) 
+   )
+   ( when 
+      ( = @useTrainingMsgs[0] 0 ) 
+      ( hud-set-text 
+         "BPLowerRightMFDA" 
+         "@autoGenVar11[firing overloads]" 
+      )
+      ( hud-set-text 
+         "BPLowerRightMFDB" 
+         "@autoGenVar12[capacitors discharging]" 
+      )
+      ( hud-set-text "BPLowerRightMFDC" "@autoGenVar5[ ]" ) 
+      ( hud-set-text "BPLowerRightMFDD" "@autoGenVar5[ ]" ) 
+   )
+   ( beam-free-all "Steadfast# 1" ) 
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( turret-change-weapon 
+      "Steadfast# 1" 
+      "turret11" 
+      "BGreen" 
+      1 
+      0 
+   )
+   ( turret-change-weapon 
+      "Steadfast# 1" 
+      "turret12" 
+      "BGreen" 
+      1 
+      0 
+   )
+   ( turret-change-weapon 
+      "Steadfast# 1" 
+      "turret23" 
+      "BGreen" 
+      1 
+      0 
+   )
+   ( turret-change-weapon 
+      "Steadfast# 1" 
+      "turret24" 
+      "BGreen" 
+      1 
+      0 
+   )
+   ( when-argument 
+      ( any-of "Nakura" "Kiowa" ) 
+      ( and 
+         ( = @beamCooldown[0] 0 ) 
+         ( targeted "<argument>" ) 
+         ( <= 
+            ( distance-center-to-subsystem 
+               "<argument>" 
+               "Steadfast# 1" 
+               "turret23" 
+            )
+            4300 
+         )
+      )
+      ( send-message 
+         "@autoGenVar23[#Gunnery]" 
+         "High" 
+         "Firing overloads!" 
+      )
+      ( fire-beam 
+         "Steadfast# 1" 
+         "turret11" 
+         "<argument>" 
+      )
+      ( fire-beam 
+         "Steadfast# 1" 
+         "turret12" 
+         "<argument>" 
+      )
+      ( fire-beam 
+         "Steadfast# 1" 
+         "turret23" 
+         "<argument>" 
+      )
+      ( fire-beam 
+         "Steadfast# 1" 
+         "turret24" 
+         "<argument>" 
+      )
+      ( modify-variable 
+         @beamCooldown[0] 
+         @beamRefireRate[10] 
+      )
+      ( key-reset-multiple "Left Ctrl" ) 
+   )
+)
++Name: able1: firing overloads
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @ablecountdown[0] 0 ) 
+      ( = @ablecountup[0] 0 ) 
+      ( = @menuon[1] 2 ) 
+   )
+   ( modify-variable @menuon[1] 1 ) 
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( turret-free-all "Steadfast# 1" ) 
+   ( turret-change-weapon 
+      "Steadfast# 1" 
+      "turret11" 
+      "TerSlash" 
+      1 
+      0 
+   )
+   ( turret-change-weapon 
+      "Steadfast# 1" 
+      "turret12" 
+      "TerSlash" 
+      1 
+      0 
+   )
+   ( turret-change-weapon 
+      "Steadfast# 1" 
+      "turret23" 
+      "TerSlash" 
+      1 
+      0 
+   )
+   ( turret-change-weapon 
+      "Steadfast# 1" 
+      "turret24" 
+      "TerSlash" 
+      1 
+      0 
+   )
+   ( play-sound-from-file 
+      "interfacepress.ogg" 
+   )
+)
++Name: able1: overload reset
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( = @menuon[1] 1 ) 
+      ( key-pressed "2" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      30 
+   )
+   ( modify-variable @ablecountup[0] 20 ) 
+   ( modify-variable @menuon[1] 3 ) 
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( play-sound-from-file 
+      "interfacepress.ogg" 
+   )
+)
++Name: able1: select jamming
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[1] 3 ) 
+      ( > @ablecountdown[0] 0 ) 
+   )
+   ( when 
+      ( = @useTrainingMsgs[0] 0 ) 
+      ( hud-set-text 
+         "BPLowerRightMFDB" 
+         "@autoGenVar13[hostiles disrupted]" 
+      )
+      ( hud-set-message 
+         "BPLowerRightMFDC" 
+         "HUDCountup" 
+      )
+      ( hud-set-text 
+         "BPLowerRightMFDA" 
+         "@autoGenVar14[jamming active]" 
+      )
+      ( hud-set-text "BPLowerRightMFDD" "@autoGenVar5[ ]" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      ( - @ablecountdown[0] 1 ) 
+   )
+   ( when 
+      ( > @ablecountup[0] 0 ) 
+      ( modify-variable 
+         @ablecountup[0] 
+         ( - @ablecountup[0] 1 ) 
+      )
+   )
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( when-argument 
+      ( any-of 
+         "Nakura" 
+         "Kiowa" 
+         "Taurus 1" 
+         "Taurus 2" 
+         "Taurus 3" 
+         "Taurus 4" 
+         "Cancer 1" 
+         "Cancer 2" 
+         "Cancer 3" 
+         "Cancer 4" 
+         "Sagittarius 1" 
+         "Sagittarius 2" 
+         "Sagittarius 3" 
+         "Sagittarius 4" 
+         "Leo 1" 
+         "Leo 2" 
+         "Leo 3" 
+         "Leo 4" 
+         "Libra 1" 
+         "Libra 2" 
+         "Libra 4" 
+         "Libra 3" 
+      )
+      ( true ) 
+      ( change-ai-class 
+         "Lieutenant" 
+         "<argument>" 
+      )
+   )
+)
++Name: able1: jamming active
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[1] 3 ) 
+      ( = @ablecountup[0] 0 ) 
+   )
+   ( when 
+      ( = @useTrainingMsgs[0] 0 ) 
+      ( hud-set-text 
+         "BPLowerRightMFDA" 
+         "@autoGenVar15[hostiles adapting]" 
+      )
+      ( hud-set-text 
+         "BPLowerRightMFDB" 
+         "@autoGenVar16[cycling frequencies]" 
+      )
+      ( hud-set-message 
+         "BPLowerRightMFDC" 
+         "HUDCountdown" 
+      )
+      ( hud-set-text "BPLowerRightMFDD" "@autoGenVar5[ ]" ) 
+   )
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( when-argument 
+      ( any-of 
+         "Nakura" 
+         "Kiowa" 
+         "Taurus 1" 
+         "Taurus 2" 
+         "Taurus 3" 
+         "Taurus 4" 
+         "Cancer 1" 
+         "Cancer 2" 
+         "Cancer 3" 
+         "Cancer 4" 
+         "Sagittarius 1" 
+         "Sagittarius 2" 
+         "Sagittarius 3" 
+         "Sagittarius 4" 
+         "Leo 1" 
+         "Leo 2" 
+         "Leo 3" 
+         "Leo 4" 
+         "Libra 1" 
+         "Libra 2" 
+         "Libra 4" 
+         "Libra 3" 
+      )
+      ( true ) 
+      ( change-ai-class 
+         "BP2-Colonel" 
+         "<argument>" 
+      )
+   )
+)
++Name: able1: jamming cooldown
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @ablecountdown[0] 0 ) 
+      ( = @ablecountup[0] 0 ) 
+      ( = @menuon[1] 3 ) 
+   )
+   ( modify-variable @menuon[1] 1 ) 
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( play-sound-from-file 
+      "interfacepress.ogg" 
+   )
+)
++Name: able1: jamming reset
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( = @menuon[1] 1 ) 
+      ( key-pressed "3" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      35 
+   )
+   ( modify-variable @ablecountup[0] 20 ) 
+   ( modify-variable @menuon[1] 4 ) 
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( play-sound-from-file 
+      "interfacepress.ogg" 
+   )
+)
++Name: able1: select afterburner
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[1] 4 ) 
+      ( > @ablecountdown[0] 0 ) 
+   )
+   ( when 
+      ( = @useTrainingMsgs[0] 0 ) 
+      ( hud-set-text 
+         "BPLowerRightMFDB" 
+         "@autoGenVar12[capacitors discharging]" 
+      )
+      ( hud-set-message 
+         "BPLowerRightMFDC" 
+         "HUDCountup" 
+      )
+      ( hud-set-text 
+         "BPLowerRightMFDA" 
+         "@autoGenVar17[thrusters boosted]" 
+      )
+      ( hud-set-text "BPLowerRightMFDD" "@autoGenVar5[ ]" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      ( - @ablecountdown[0] 1 ) 
+   )
+   ( when 
+      ( > @ablecountup[0] 0 ) 
+      ( modify-variable 
+         @ablecountup[0] 
+         ( - @ablecountup[0] 1 ) 
+      )
+   )
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( unlock-afterburner "Steadfast# 1" ) 
+   ( set-afterburner-energy 
+      ( + 
+         ( afterburner-energy-pct 
+            "Steadfast# 1" 
+         )
+         @AfterburnerCharge[59] 
+      )
+      "Steadfast# 1" 
+   )
+)
++Name: able1: afterburner active
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[1] 4 ) 
+      ( = @ablecountup[0] 0 ) 
+   )
+   ( when 
+      ( = @useTrainingMsgs[0] 0 ) 
+      ( hud-set-text 
+         "BPLowerRightMFDA" 
+         "@autoGenVar18[boost complete]" 
+      )
+      ( hud-set-text 
+         "BPLowerRightMFDB" 
+         "@autoGenVar19[thrusters cooling]" 
+      )
+      ( hud-set-message 
+         "BPLowerRightMFDC" 
+         "HUDCountdown" 
+      )
+      ( hud-set-text "BPLowerRightMFDD" "@autoGenVar5[ ]" ) 
+   )
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( set-afterburner-energy 
+      0 
+      "Steadfast# 1" 
+   )
+   ( lock-afterburner "Steadfast# 1" ) 
+)
++Name: able1: afterburner cooldown
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @ablecountdown[0] 0 ) 
+      ( = @ablecountup[0] 0 ) 
+      ( = @menuon[1] 4 ) 
+   )
+   ( modify-variable @menuon[1] 1 ) 
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+   ( play-sound-from-file 
+      "interfacepress.ogg" 
+   )
+)
++Name: able1: afterburner reset
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( = @SalvoFire[0] 1 ) 
+   ( when-argument 
+      ( any-of "Nakura" "Kiowa" ) 
+      ( and 
+         ( = @beamCooldown[0] 0 ) 
+         ( targeted "<argument>" ) 
+         ( key-pressed "Left Ctrl" ) 
+         ( <= 
+            ( distance-center-to-subsystem 
+               "<argument>" 
+               "Steadfast# 1" 
+               "turret23" 
+            )
+            4300 
+         )
+      )
+      ( send-message 
+         "@autoGenVar23[#Gunnery]" 
+         "High" 
+         "Gunnery: firing!" 
+      )
+      ( fire-beam 
+         "Steadfast# 1" 
+         "turret11" 
+         "<argument>" 
+      )
+      ( fire-beam 
+         "Steadfast# 1" 
+         "turret12" 
+         "<argument>" 
+      )
+      ( fire-beam 
+         "Steadfast# 1" 
+         "turret23" 
+         "<argument>" 
+      )
+      ( fire-beam 
+         "Steadfast# 1" 
+         "turret24" 
+         "<argument>" 
+      )
+      ( modify-variable 
+         @beamCooldown[0] 
+         @beamRefireRate[10] 
+      )
+      ( key-reset-multiple "Left Ctrl" ) 
+   )
+   ( when 
+      ( > @beamCooldown[0] 0 ) 
+      ( modify-variable 
+         @beamCooldown[0] 
+         ( - @beamCooldown[0] 1 ) 
+      )
+   )
+   ( when 
+      ( = @beamCooldown[0] 1 ) 
+      ( send-message 
+         "@autoGenVar23[#Gunnery]" 
+         "Normal" 
+         "Gunnery: beams ready!" 
+      )
+   )
+   ( beam-lock "Steadfast# 1" "turret11" ) 
+   ( beam-lock "Steadfast# 1" "turret12" ) 
+   ( beam-lock "Steadfast# 1" "turret23" ) 
+   ( beam-lock "Steadfast# 1" "turret24" ) 
+)
++Name: SALVO FIRE
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( has-time-elapsed 1 ) 
+   ( send-message-list 
+      "@autoGenVar24[#Severanti]" 
+      "High" 
+      "Init 1" 
+      0 
+      "Luzon Station" 
+      "High" 
+      "Init 2" 
+      9000 
+      "Luzon Station" 
+      "High" 
+      "Init 3" 
+      12500 
+      "Alpha 1" 
+      "High" 
+      "Init 4" 
+      10000 
+      "@autoGenVar24[#Severanti]" 
+      "High" 
+      "Init 5" 
+      4000 
+      "Luzon Station" 
+      "High" 
+      "Init 6" 
+      9000 
+   )
+   ( set-armor-type 
+      "Steadfast# 1" 
+      ( true ) 
+      "Heavy Armor 150" 
+      "Hull" 
+   )
+   ( set-armor-type 
+      "Nakura" 
+      ( true ) 
+      "Heavy Armor 40" 
+      "Hull" 
+   )
+   ( set-armor-type 
+      "Kiowa" 
+      ( true ) 
+      "Heavy Armor 40" 
+      "Hull" 
+   )
+   ( set-armor-type 
+      "Steadfast# 1" 
+      ( true ) 
+      "Light Armor 150" 
+      "turret23" 
+      "turret24" 
+   )
+   ( ship-subsys-guardian-threshold 
+      45 
+      "Kiowa" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      45 
+      "Hortense" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      45 
+      "Julius" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Steadfast# 1" 
+      "turret01" 
+      "turret02" 
+      "turret03" 
+      "turret04" 
+      "turret05" 
+      "turret06" 
+      "turret07" 
+      "turret08" 
+      "turret09" 
+      "turret10" 
+      "turret13" 
+      "turret14" 
+      "turret15" 
+      "turret16" 
+      "turret17" 
+      "turret18" 
+      "turret19" 
+      "turret20" 
+      "turret21" 
+      "turret22" 
+      "turret26" 
+      "engine03" 
+      "engine02" 
+      "sensors" 
+      "engine01" 
+      "communications" 
+      "navigation" 
+      "weapons" 
+      "turret12" 
+      "turret25" 
+      "turret23" 
+   )
+   ( lock-afterburner "Steadfast# 1" ) 
+   ( set-afterburner-energy 
+      0 
+      "Steadfast# 1" 
+   )
+   ( disable-builtin-messages ) 
+   ( ship-guardian-threshold 12 "Nakura" ) 
+)
++Name: Initial Chatter and Stuff
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-disable-except-messages 1 ) 
+   ( set-camera-host "Camera" ) 
+)
++Name: N and K cutscene
++Repeat Count: 1
++Interval: 1
++Chained: 19
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-disable-except-messages 0 ) 
+   ( reset-camera ) 
+   ( ship-vanish "Camera" ) 
+)
++Name: End cutscene
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( self-destruct "Alpha 1" ) 
+)
++Name: Kill Alpha 1
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      2 
+      "Sagittarius" 
+      "Libra" 
+      "Leo" 
+   )
+   ( send-message-list 
+      "Luzon Station" 
+      "High" 
+      "Bombers dead 1" 
+      0 
+      "@autoGenVar24[#Severanti]" 
+      "High" 
+      "Bombers dead 2" 
+      8000 
+      "@autoGenVar25[#Steadfast XO]" 
+      "High" 
+      "Sev injured 1" 
+      9000 
+      "@autoGenVar24[#Severanti]" 
+      "High" 
+      "Sev injured 2" 
+      7000 
+      "@autoGenVar25[#Steadfast XO]" 
+      "High" 
+      "Sev injured 3" 
+      7000 
+   )
+   ( fade-out 598000 2 ) 
+   ( set-armor-type 
+      "Steadfast# 1" 
+      ( true ) 
+      "Heavy Armor 100" 
+      "Hull" 
+   )
+   ( protect-ship "Luzon Station" ) 
+   ( add-goal 
+      "Nakura" 
+      ( ai-waypoints-once 
+         "Nakura Attack" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Kiowa" 
+      ( ai-waypoints-once "Kiowa Attack" 89 ) 
+   )
+)
++Name: Kill Bombers
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Bombers", 15458)
++Objective key:  XSTR("F6", 16485)
+
+$Formula: ( when 
+   ( percent-ships-departed 
+      75 
+      "Umayyad" 
+      "Mali" 
+      "Julius" 
+      "Hortense" 
+   )
+   ( send-message 
+      "Luzon Station" 
+      "High" 
+      "Transps Away" 
+   )
+)
++Name: Def Transports
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Protect Evac Transports", 16486)
++Objective key:  XSTR("F9", 16243)
+
+$Formula: ( when 
+   ( <= ( hits-left "Steadfast# 1" ) 43 ) 
+   ( send-message-list 
+      "@autoGenVar25[#Steadfast XO]" 
+      "High" 
+      "Sev injured 2-1" 
+      0 
+      "@autoGenVar24[#Severanti]" 
+      "High" 
+      "Sev injured 2-2" 
+      7000 
+   )
+)
++Name: Damaged 43
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Kill Bombers" 
+      18 
+   )
+   ( add-goal 
+      "Julius" 
+      ( ai-undock 200 "Luzon Station" ) 
+   )
+   ( add-goal 
+      "Julius" 
+      ( ai-waypoints-once "Julius Jump" 70 ) 
+   )
+   ( add-goal 
+      "Julius" 
+      ( ai-warp-out 40 ) 
+   )
+   ( add-remove-escort "Julius" 7 ) 
+   ( add-remove-escort "Hortense" 7 ) 
+)
++Name: Julius undocks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Kill Bombers" 
+      12 
+   )
+   ( add-goal 
+      "Hortense" 
+      ( ai-undock 200 ) 
+   )
+   ( add-goal 
+      "Hortense" 
+      ( ai-waypoints-once 
+         "Hortense Jump" 
+         70 
+      )
+   )
+   ( add-goal 
+      "Hortense" 
+      ( ai-warp-out 40 ) 
+   )
+)
++Name: Hortense undocks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( >= 
+      ( distance "Nakura" "Steadfast# 1" ) 
+      4100 
+   )
+   ( protect-ship "Steadfast# 1" ) 
+   ( unprotect-ship "Julius" ) 
+   ( unprotect-ship "Hortense" ) 
+   ( unprotect-ship "Umayyad" ) 
+   ( unprotect-ship "Mali" ) 
+   ( send-message 
+      "Luzon Station" 
+      "High" 
+      "NTCs engage transports" 
+   )
+   ( add-goal 
+      "Nakura" 
+      ( ai-chase "Julius" 30 ) 
+   )
+   ( add-goal 
+      "Kiowa" 
+      ( ai-chase "Hortense" 30 ) 
+   )
+   ( protect-ship "Luzon Station" ) 
+   ( add-goal 
+      "Taurus" 
+      ( ai-chase "Julius" 80 ) 
+   )
+   ( add-goal 
+      "Cancer" 
+      ( ai-chase "Hortense" 80 ) 
+   )
+)
++Name: NTCs engage transports
++Repeat Count: 2
++Interval: 55
++Chained: 27
+
+$Formula: ( when 
+   ( not 
+      ( skill-level-at-least "Medium" ) 
+   )
+   ( set-armor-type 
+      "Hortense" 
+      ( true ) 
+      "Heavy Armor 60" 
+      "Hull" 
+   )
+   ( set-armor-type 
+      "Julius" 
+      ( true ) 
+      "Heavy Armor 60" 
+      "Hull" 
+   )
+)
++Name: Transport armor buffs on Easy
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( <= 
+         ( distance "Nakura" "Steadfast# 1" ) 
+         3800 
+      )
+      ( is-event-true-delay 
+         "Kill Bombers" 
+         35 
+      )
+   )
+   ( unprotect-ship "Steadfast# 1" ) 
+   ( protect-ship "Julius" ) 
+   ( protect-ship "Hortense" ) 
+   ( protect-ship "Umayyad" ) 
+   ( protect-ship "Mali" ) 
+   ( send-message 
+      "@autoGenVar25[#Steadfast XO]" 
+      "High" 
+      "NTCs engage Steadfast" 
+   )
+   ( ship-tag "Steadfast# 1" 1 40 ) 
+   ( add-goal 
+      "Nakura" 
+      ( ai-chase "Steadfast# 1" 120 ) 
+   )
+   ( add-goal 
+      "Kiowa" 
+      ( ai-chase "Steadfast# 1" 120 ) 
+   )
+   ( add-goal 
+      "Cancer" 
+      ( ai-chase "Hortense" 80 ) 
+   )
+   ( add-goal 
+      "Taurus" 
+      ( ai-chase "Julius" 80 ) 
+   )
+)
++Name: NTCs engage Steadfast
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Gamma" ) 
+   ( send-message-list 
+      "Gamma 1" 
+      "High" 
+      "Bomber Squadron shows" 
+      0 
+      "@autoGenVar24[#Severanti]" 
+      "High" 
+      "Bomber Squadron shows 2" 
+      9000 
+   )
+   ( set-armor-type 
+      "Nakura" 
+      ( true ) 
+      "Heavy Armor 100" 
+      "Hull" 
+   )
+   ( set-armor-type 
+      "Kiowa" 
+      ( true ) 
+      "Heavy Armor 100" 
+      "Hull" 
+   )
+   ( ship-no-guardian "Nakura" ) 
+)
++Name: Unimaginative Squadron arrives
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 1 "Nakura" ) 
+   ( send-message 
+      "@autoGenVar23[#Gunnery]" 
+      "High" 
+      "Nakura dead" 
+   )
+)
++Name: Nakura dead
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Nakura", 16487)
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Kiowa" ) 
+   ( send-message 
+      "@autoGenVar25[#Steadfast XO]" 
+      "High" 
+      "Kiowa bolts" 
+   )
+)
++Name: Kiowa bolts
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 1 "Kiowa" ) 
+   ( send-message 
+      "@autoGenVar23[#Gunnery]" 
+      "High" 
+      "Kiowa dead" 
+   )
+)
++Name: Kiowa dead, NOT
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Kiowa", 16488)
+
+$Formula: ( when 
+   ( true ) 
+   ( when 
+      ( > 
+         ( weapon-recharge-pct "Steadfast# 1" ) 
+         99 
+      )
+      ( change-ai-class 
+         "Little Devil" 
+         "Steadfast# 1" 
+      )
+      ( modify-variable 
+         @beamRefireRate[10] 
+         10 
+      )
+      ( modify-variable 
+         @AfterburnerCharge[59] 
+         5 
+      )
+   )
+   ( when 
+      ( and 
+         ( > 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            82 
+         )
+         ( < 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            100 
+         )
+      )
+      ( change-ai-class 
+         "BP2-General" 
+         "Steadfast# 1" 
+      )
+      ( modify-variable 
+         @beamRefireRate[10] 
+         12 
+      )
+      ( modify-variable 
+         @AfterburnerCharge[59] 
+         10 
+      )
+   )
+   ( when 
+      ( and 
+         ( > 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            65 
+         )
+         ( < 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            83 
+         )
+      )
+      ( change-ai-class 
+         "BP2-Colonel" 
+         "Steadfast# 1" 
+      )
+      ( modify-variable 
+         @beamRefireRate[10] 
+         14 
+      )
+      ( modify-variable 
+         @AfterburnerCharge[59] 
+         20 
+      )
+   )
+   ( when 
+      ( and 
+         ( > 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            48 
+         )
+         ( < 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            66 
+         )
+      )
+      ( change-ai-class 
+         "BP2-Major" 
+         "Steadfast# 1" 
+      )
+      ( modify-variable 
+         @beamRefireRate[10] 
+         18 
+      )
+      ( modify-variable 
+         @AfterburnerCharge[59] 
+         30 
+      )
+   )
+   ( when 
+      ( and 
+         ( > 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            30 
+         )
+         ( < 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            49 
+         )
+      )
+      ( change-ai-class 
+         "BP2-Captain" 
+         "Steadfast# 1" 
+      )
+      ( modify-variable 
+         @beamRefireRate[10] 
+         8 
+      )
+      ( modify-variable 
+         @AfterburnerCharge[59] 
+         40 
+      )
+   )
+   ( when 
+      ( and 
+         ( > 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            12 
+         )
+         ( < 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            31 
+         )
+      )
+      ( change-ai-class 
+         "BP2-Lieutenant" 
+         "Steadfast# 1" 
+      )
+      ( modify-variable 
+         @beamRefireRate[10] 
+         22 
+      )
+      ( modify-variable 
+         @AfterburnerCharge[59] 
+         50 
+      )
+   )
+   ( when 
+      ( and 
+         ( > 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            -1 
+         )
+         ( < 
+            ( weapon-recharge-pct "Steadfast# 1" ) 
+            13 
+         )
+      )
+      ( change-ai-class 
+         "BP2-LieutenantJAMMED" 
+         "Steadfast# 1" 
+      )
+      ( modify-variable 
+         @beamRefireRate[10] 
+         26 
+      )
+      ( modify-variable 
+         @AfterburnerCharge[59] 
+         59 
+      )
+   )
+)
++Name: check ets and setBeamRefireRate
++Repeat Count: -1
++Trigger Count: 999999999
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Libra" ) 
+   ( send-message 
+      "@autoGenVar25[#Steadfast XO]" 
+      "High" 
+      "Bombers" 
+   )
+)
++Name: Bombers show
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Julius" 
+      "Hortense" 
+      "Umayyad" 
+      "Mali" 
+   )
+   ( is-destroyed-delay 0 "<argument>" ) 
+   ( send-message 
+      "Luzon Station" 
+      "High" 
+      "Transp Dead" 
+   )
+)
++Name: Transp dead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( percent-ships-destroyed 
+      50 
+      "Umayyad" 
+      "Mali" 
+      "Julius" 
+      "Hortense" 
+   )
+   ( send-message-list 
+      "Luzon Station" 
+      "High" 
+      "Too many Transps Dead" 
+      0 
+      "@autoGenVar25[#Steadfast XO]" 
+      "High" 
+      "Too Many Dead 2" 
+      5000 
+   )
+   ( fade-out 10000 ) 
+)
++Name: Too Many Transps Dead
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: YOU LOSE
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( and 
+      ( is-subsystem-destroyed-delay 
+         "Steadfast# 1" 
+         "turret11" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Steadfast# 1" 
+         "turret24" 
+         0 
+      )
+   )
+   ( send-message 
+      "@autoGenVar23[#Gunnery]" 
+      "High" 
+      "Beams down" 
+   )
+)
++Name: Beams down
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-goal-true-delay 
+      "Repel NTF Attack" 
+      4 
+   )
+   ( send-message-list 
+      "@autoGenVar25[#Steadfast XO]" 
+      "High" 
+      "You're Winner 1" 
+      0 
+      "@autoGenVar24[#Severanti]" 
+      "High" 
+      "You're Winner 2" 
+      9000 
+      "Luzon Station" 
+      "High" 
+      "You're Winner 3" 
+      8000 
+      "@autoGenVar24[#Severanti]" 
+      "High" 
+      "You're Winner 4" 
+      9000 
+      "@autoGenVar25[#Steadfast XO]" 
+      "High" 
+      "You're Winner 5" 
+      9000 
+   )
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file "morning" ) 
+   ( set-cargo 
+      "GTVA Personnel" 
+      "Luzon Station" 
+   )
+)
++Name: You're WINNER
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( fade-out 3000 ) 
+   ( change-player-score 
+      -100000 
+      "Steadfast# 1" 
+   )
+   ( grant-medal "Order of Galatea" ) 
+)
++Name: Fade Out
++Repeat Count: 1
++Interval: 1
++Chained: 38
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: END
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when-argument 
+   ( any-of "Nakura" "Kiowa" ) 
+   ( <= 
+      ( distance 
+         "<argument>" 
+         "Steadfast# 1" 
+      )
+      1800 
+   )
+   ( add-goal 
+      "<argument>" 
+      ( ai-stay-still "Steadfast# 1" 120 ) 
+   )
+)
++Name: N and K stop
++Repeat Count: 2
++Interval: 15
+
+$Formula: ( when-argument 
+   ( any-of "Nakura" "Kiowa" ) 
+   ( >= 
+      ( distance 
+         "<argument>" 
+         "Steadfast# 1" 
+      )
+      1800 
+   )
+   ( remove-goal 
+      "<argument>" 
+      ( ai-stay-still "Steadfast# 1" 120 ) 
+   )
+)
++Name: N and K start up
++Repeat Count: 2
++Interval: 15
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      2 
+      "Taurus" 
+      "Cancer" 
+   )
+   ( send-message 
+      "@autoGenVar23[#Gunnery]" 
+      "High" 
+      "Fighters dead" 
+   )
+)
++Name: Kill Fighters
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Fighters", 15337)
++Objective key:  XSTR("F8", 16489)
+
+$Formula: ( every-time 
+   ( and 
+      ( key-pressed "Alt-X" ) 
+      ( = @SalvoFire[0] 1 ) 
+   )
+   ( key-reset-multiple "Alt-X" ) 
+   ( modify-variable @SalvoFire[0] 0 ) 
+   ( hud-set-message 
+      "BPLowerRightMFDF" 
+      "beams: auto fire" 
+   )
+   ( beam-free "Steadfast# 1" "turret11" ) 
+   ( beam-free "Steadfast# 1" "turret12" ) 
+   ( beam-free "Steadfast# 1" "turret23" ) 
+   ( beam-free "Steadfast# 1" "turret24" ) 
+   ( when-argument 
+      ( every-of 
+         "BPTaccom" 
+         "BPTaccomA" 
+         "BPTaccomB" 
+         "BPTaccomC" 
+         "BPTaccomD" 
+      )
+      ( true ) 
+      ( hud-gauge-set-active 
+         "<argument>" 
+         ( false ) 
+      )
+   )
+   ( play-sound-from-file 
+      "interfacepress.ogg" 
+   )
+)
++Name: SalvoFireOff
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( key-pressed "Alt-X" ) 
+      ( = @SalvoFire[0] 0 ) 
+   )
+   ( key-reset-multiple "Alt-X" ) 
+   ( modify-variable @SalvoFire[0] 1 ) 
+   ( when-argument 
+      ( every-of 
+         "BPTaccom" 
+         "BPTaccomA" 
+         "BPTaccomB" 
+         "BPTaccomC" 
+         "BPTaccomD" 
+      )
+      ( true ) 
+      ( hud-gauge-set-active 
+         "<argument>" 
+         ( true ) 
+      )
+      ( hud-set-text 
+         "BPTaccom" 
+         "@autoGenVar20[Beam Ready In]" 
+      )
+      ( hud-set-message 
+         "BPTaccomA" 
+         "Beams ready in..." 
+      )
+      ( hud-set-text 
+         "BPTaccomB" 
+         "@autoGenVar21[Cycle Time]" 
+      )
+      ( hud-set-message 
+         "BPTaccomC" 
+         "Beam refire time" 
+      )
+   )
+   ( play-sound-from-file 
+      "interfacepress.ogg" 
+   )
+   ( hud-set-message 
+      "BPLowerRightMFDF" 
+      "beams: manual fire" 
+   )
+)
++Name: SalvoFireOn
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( <= ( hits-left "Steadfast# 1" ) 20 ) 
+   ( hud-gauge-set-active 
+      "BPMiscStatusA" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "BPMiscStatusB" 
+      ( true ) 
+   )
+   ( hud-set-text 
+      "BPMiscStatusB" 
+      "@autoGenVar22[HULL INTEGRITY CRITICAL]" 
+   )
+   ( play-sound-from-file "alarm2.ogg" ) 
+)
++Name: Critical Annoyance
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-gauge-set-active 
+      "BPMiscStatusA" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "BPMiscStatusB" 
+      ( false ) 
+   )
+)
++Name: CA Off
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+#Goals		;! 4 total
+
+$Type: Primary
++Name: Protect Luzon
+$MessageNew:  XSTR("Protect Luzon Station.", 16490)
+$end_multi_text
+$Formula: ( is-cargo 
+   "GTVA Personnel" 
+   "Luzon Station" 
+)
+
+$Type: Primary
++Name: Repel NTF Attack
+$MessageNew:  XSTR("Repel NTF attackers.", 16491)
+$end_multi_text
+$Formula: ( destroyed-or-departed-delay 
+   4 
+   "Nakura" 
+   "Kiowa" 
+   "Libra" 
+   "Sagittarius" 
+   "Taurus" 
+   "Cancer" 
+)
+
+$Type: Primary
++Name: Protect Transports
+$MessageNew:  XSTR("Protect evacuee transports.", 16492)
+$end_multi_text
+$Formula: ( or 
+   ( and 
+      ( percent-ships-departed 
+         75 
+         "Umayyad" 
+         "Julius" 
+         "Hortense" 
+         "Mali" 
+      )
+      ( percent-ships-destroyed 
+         25 
+         "Umayyad" 
+         "Julius" 
+         "Hortense" 
+         "Mali" 
+      )
+   )
+   ( percent-ships-departed 
+      100 
+      "Umayyad" 
+      "Julius" 
+      "Hortense" 
+      "Mali" 
+   )
+)
+
+$Type: Bonus
++Name: Destroy Kiowa
+$MessageNew:  XSTR("Destroy the NTC Kiowa before it escapes", 16493)
+$end_multi_text
+$Formula: ( is-destroyed-delay 0 "Kiowa" ) 
++No music
+
+#Waypoints		;! 5 lists total
+
+$Name: Julius Jump
+$List: (		;! 1 points in list
+	( -609.969727, 775.081116, 1222.900269 )
+)
+
+$Name: Nakura Attack
+$List: (		;! 1 points in list
+	( -2173.282227, 1030.403198, 1570.665039 )
+)
+
+$Name: Kiowa Attack
+$List: (		;! 1 points in list
+	( -1928.984375, 1126.974487, 2409.381104 )
+)
+
+$Name: Patrol
+$List: (		;! 4 points in list
+	( 2193.113281, -608.912842, 2643.566650 )
+	( 586.092285, 1366.933105, 3098.924805 )
+	( -2840.831299, 249.187225, 3516.710449 )
+	( -178.259216, -2775.860840, 3486.195801 )
+)
+
+$Name: Hortense Jump
+$List: (		;! 1 points in list
+	( -255.627960, 354.028809, 1104.547485 )
+)
+
+#Messages		;! 51 total
+
+
+$Name: beep
+$Team: -1
+$MessageNew:  XSTR(" ", 2943)
+$end_multi_text
++Wave Name: interfacepress.ogg
+
+$Name: press alt-x to change
+$Team: -1
+$MessageNew:  XSTR("Alt-X to switch", 12083)
+$end_multi_text
+
+$Name: able1: main tac menu
+$Team: -1
+$MessageNew:  XSTR("TACTICAL INTERFACE
+$1$ - Overload Beams
+$2$ - Damage Control 
+$3$ - Thruster Boost", 16494)
+$end_multi_text
+
+$Name: able1: overload charging
+$Team: -1
+$MessageNew:  XSTR("TACTICAL INTERFACEbeam capacitors charging$ablecountup seconds remaining", 16495)
+$end_multi_text
+
+$Name: able1: overload cooldown
+$Team: -1
+$MessageNew:  XSTR("TACTICAL INTERFACEoverloads fired, capacitors cooling
+$ablecountdown seconds remaining", 16496)
+$end_multi_text
+
+$Name: able1: blasting noise
+$Team: -1
+$MessageNew:  XSTR("TACTICAL INTERFACE
+pumping active sealant
+$ablecountup seconds remaining", 12088)
+$end_multi_text
+
+$Name: able1: noise cooldown
+$Team: -1
+$MessageNew:  XSTR("TACTICAL INTERFACE
+hardening active sealant
+stand by capacitors
+$ablecountdown seconds", 12089)
+$end_multi_text
+
+$Name: able1: thruster boost underway
+$Team: -1
+$MessageNew:  XSTR("TACTICAL INTERFACE
+MHD thrusters overcharged
+$ablecountup seconds remaining", 12090)
+$end_multi_text
+
+$Name: able1: thruster boost complete
+$Team: -1
+$MessageNew:  XSTR("TACTICAL INTERFACE
+MHD thrusters cooling
+$ablecountdown seconds remaining", 12091)
+$end_multi_text
+
+$Name: Init 1
+$Team: -1
+$MessageNew:  XSTR("Luzon Station, this is GTCv Steadfast. 6th Fleet Command suspects an NTF attack on Luzon, and has deployed us to reinforce your CSP.", 16497)
+$end_multi_text
++Wave Name: severanti_Init 1.ogg
+
+$Name: Init 2
+$Team: -1
+$MessageNew:  XSTR("Copy, Steadfast. If the Rebs attack in force, we've got evac transports loaded and on hot standby. Not that we doubt you, Captain.", 16498)
+$end_multi_text
++AVI Name: EndeavourBridgeOff.ani
++Wave Name: severanti_Init 2.ogg
+
+$Name: Init 3
+$Team: -1
+$MessageNew:  XSTR(" . . . Fleet Command, we have a situation! Jump flash, tally two Rebel Levis and fighter escort! Alpha and Beta, pull back! Air Boss, scramble our fighters!", 16499)
+$end_multi_text
++AVI Name: EndeavourBridgeOff.ani
++Wave Name: severanti_Init 3.ogg
+
+$Name: Init 4
+$Team: -1
+$MessageNew:  XSTR("Three, break righ- Agh!", 16500)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: severanti_Init 4.ogg
+
+$Name: Init 6
+$Team: -1
+$MessageNew:  XSTR("Rebel saboteurs just bombed our fighter bay! We cannot launch any more squadrons! Steadfast, you're on your own!", 16501)
+$end_multi_text
++AVI Name: EndeavourBridgeOff.ani
++Wave Name: severanti_Init 6.ogg
+
+$Name: Init 5
+$Team: -1
+$MessageNew:  XSTR("Blast. Helm, bring us into firing range! Gunnery, prepare to engage the cruisers Nakura and Kiowa!", 16502)
+$end_multi_text
++Wave Name: severanti_Init 5.ogg
+
+$Name: Bombers
+$Team: -1
+$MessageNew:  XSTR("Jump flash! Tally three bomber wings, targeting our forward beams!", 16503)
+$end_multi_text
++Wave Name: Bombers.ogg
+
+$Name: Beams down
+$Team: -1
+$MessageNew:  XSTR("Captain, we've lost our starboard and forward-port beam cannons!", 16504)
+$end_multi_text
++Wave Name: Beams_down.ogg
+
+$Name: Bombers dead 1
+$Team: -1
+$MessageNew:  XSTR("Steadfast, Luzon. We are launching four transports$semicolon please hold those cruisers off and cover our exit pattern!", 16505)
+$end_multi_text
++Wave Name: Bombers dead 1.ogg
+
+$Name: Sev injured 1
+$Team: -1
+$MessageNew:  XSTR("Captain, you're injured! Lay down$semicolon medics are en route!", 16506)
+$end_multi_text
++Wave Name: Sev injured 1.ogg
+
+$Name: Sev injured 2
+$Team: -1
+$MessageNew:  XSTR("N-Negative. I will stay at my post until the battle is over, Commander. Do I make myself clear?", 16507)
+$end_multi_text
++Wave Name: Sev injured 2.ogg
+
+$Name: Sev injured 3
+$Team: -1
+$MessageNew:  XSTR(". . . Yes, Sir.", 16508)
+$end_multi_text
++Wave Name: Sev injured 3.ogg
+
+$Name: Bombers dead 2
+$Team: -1
+$MessageNew:  XSTR("C-Copy, Luzon. Helm, move to engage the Nakura. Draw the cruisers' fire, and protect the transports. ", 16509)
+$end_multi_text
++Wave Name: Bombers dead 2.ogg
+
+$Name: Sev injured 2-1
+$Team: -1
+$MessageNew:  XSTR("Captain, accept medical assistance and leave the bridge, or I'll remove you from command!", 16510)
+$end_multi_text
++Wave Name: Sev injured 2-1.ogg
+
+$Name: Sev injured 2-2
+$Team: -1
+$MessageNew:  XSTR("Not a chance. Let me fight my ship, or we all die!", 16511)
+$end_multi_text
++Wave Name: Sev injured 2-2.ogg
+
+$Name: Bomber Squadron shows
+$Team: -1
+$MessageNew:  XSTR("Captain Severanti, the 341st Bomber Squadron is now on station. Commencing anti-warship strike.", 16512)
+$end_multi_text
++AVI Name: Head-TP8
++Wave Name: Bomber Squadron shows.ogg
+
+$Name: Bomber Squadron shows 2
+$Team: -1
+$MessageNew:  XSTR("Copy, 341st. Helm, move us to flank the Nakura. Gunnery, her armor's buckling$semicolon go for terminal engagement.", 16513)
+$end_multi_text
++Wave Name: Bomber Squadron shows 2.ogg
+
+$Name: Kiowa bolts
+$Team: -1
+$MessageNew:  XSTR("Yes! The NTC Kiowa has withdrawn!", 16514)
+$end_multi_text
++Wave Name: Kiowa bolts.ogg
+
+$Name: Nakura dead
+$Team: -1
+$MessageNew:  XSTR("The Nakura's ammo bays are cooking off! Scratch one Reb cruiser!", 16515)
+$end_multi_text
++Wave Name: Nakura_dead.ogg
+
+$Name: You're Winner 1
+$Team: -1
+$MessageNew:  XSTR("The Nakura and Kiowa have been neutralized. We have repulsed the NTF attack. Sir, please, you're bleeding out! Stand down and accept medical attention!", 16516)
+$end_multi_text
++Wave Name: Youre Winner 1.ogg
+
+$Name: You're Winner 2
+$Team: -1
+$MessageNew:  XSTR(". . . Y-Yes, Commander. Excellent work, men. Luzon, we request clearance to pull into dock for repairs.", 16517)
+$end_multi_text
++Wave Name: Youre Winner 2.ogg
+
+$Name: You're Winner 3
+$Team: -1
+$MessageNew:  XSTR("Affirmative, Captain! Accept my thanks, and that of everyone on Luzon Station! They'd better put you in for a medal!", 16518)
+$end_multi_text
++AVI Name: EndeavourBridgeOff.ani
++Wave Name: Youre Winner 3.ogg
+
+$Name: You're Winner 5
+$Team: -1
+$MessageNew:  XSTR("Rest now, Captain. You've saved us all.", 16519)
+$end_multi_text
++Wave Name: Youre Winner 5.ogg
+
+$Name: Transps Away
+$Team: -1
+$MessageNew:  XSTR("Steadfast, the transports are away. You may turn your full attention to the enemy warships.", 16520)
+$end_multi_text
++AVI Name: EndeavourBridgeOff.ani
++Wave Name: Transps Away.ogg
+
+$Name: Transp Dead
+$Team: -1
+$MessageNew:  XSTR("We've lost a transport, Captain!", 16521)
+$end_multi_text
++AVI Name: EndeavourBridgeOff.ani
++Wave Name: Transp Dead.ogg
+
+$Name: Too many Transps Dead
+$Team: -1
+$MessageNew:  XSTR("The NTF has savaged our evac fleet!", 16522)
+$end_multi_text
++AVI Name: EndeavourBridgeOff.ani
++Wave Name: Too many Transps Dead.ogg
+
+$Name: NTCs engage transports
+$Team: -1
+$MessageNew:  XSTR("The cruisers and fighters are targeting our evac transports! Move in closer and try to draw their fire, or they'll cut our evacuees to shreds!", 16523)
+$end_multi_text
++AVI Name: EndeavourBridgeOff.ani
++Wave Name: NTCs engage transports.ogg
+
+$Name: NTCs engage Steadfast
+$Team: -1
+$MessageNew:  XSTR("The Nakura and Kiowa are locking beams on us, but the fighters are making an end run on the evac transports! Recommend that we move in and cover the transports with our AAA!", 16524)
+$end_multi_text
++Wave Name: NTCs engage Stdfst.ogg
+
+$Name: Too Many Dead 2
+$Team: -1
+$MessageNew:  XSTR("Captain? CAPTAIN!", 16525)
+$end_multi_text
++Wave Name: Too Many Dead 2.ogg
+
+$Name: Fighters dead
+$Team: -1
+$MessageNew:  XSTR("We've splashed the cruisers' fighter escorts!", 16526)
+$end_multi_text
++Wave Name: Fighters_dead.ogg
+
+$Name: Beams ready in...
+$Team: -1
+$MessageNew:  XSTR("$beamCooldown", 16267)
+$end_multi_text
+
+$Name: Beam refire time
+$Team: -1
+$MessageNew:  XSTR("$beamRefireRate sec", 16268)
+$end_multi_text
+
+$Name: Gunnery: firing!
+$Team: -1
+$MessageNew:  XSTR("Firing salvo!", 16269)
+$end_multi_text
++Wave Name: Gunnery_firing.ogg
+
+$Name: Gunnery: beams ready!
+$Team: -1
+$MessageNew:  XSTR("Salvo ready!", 16270)
+$end_multi_text
++Wave Name: Gunnery_beams_ready.ogg
+
+$Name: HUDCountup
+$Team: -1
+$MessageNew:  XSTR("$ablecountup seconds remaining", 12149)
+$end_multi_text
+
+$Name: HUDCountdown
+$Team: -1
+$MessageNew:  XSTR("$ablecountdown seconds remaining", 12150)
+$end_multi_text
+
+$Name: able1: overload ready
+$Team: -1
+$MessageNew:  XSTR("TACTICAL INTERFACEoverloads ready$ablecountup seconds left to fire", 16527)
+$end_multi_text
+
+$Name: beams: manual fire
+$Team: -1
+$MessageNew:  XSTR("beams: manual fire", 16271)
+$end_multi_text
+
+$Name: beams: auto fire
+$Team: -1
+$MessageNew:  XSTR("beams: auto fire", 16272)
+$end_multi_text
+
+$Name: Kiowa dead
+$Team: -1
+$MessageNew:  XSTR("The Kiowa's down. Good shot, good kill.", 16528)
+$end_multi_text
++Wave Name: Kiowa_dead.ogg
+
+$Name: You're Winner 4
+$Team: -1
+$MessageNew:  XSTR("Any Alliance officer worth his salt would have done the same. Just be thankful that you're still alive. When victory is on the line, many commanders won't respect the dividing line between soldiers and civilians.", 16529)
+$end_multi_text
++Wave Name: Youre Winner 4.ogg
+
+$Name: Firing overloads!
+$Team: -1
+$MessageNew:  XSTR("Plasma cores at maximum feed! Firing overloads!", 16383)
+$end_multi_text
++Wave Name: Firing_overloads.ogg
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 1 total
+
+$Num stars: 500
+$Ambient light level: 7895160
+
+$Bitmap List:
++Flags: ( "corrected angles" )
+$Sun: SunEnif
++Angles: 1.371882 6.015135 6.020178
++Scale: 1.000000
+$Starbitmap: planete
++Angles: 0.869090 2.281001 5.359444
++ScaleX: 7.000000
++ScaleY: 7.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: 10: Machine
+$Briefing Music: Brief11
+
+#End
+
