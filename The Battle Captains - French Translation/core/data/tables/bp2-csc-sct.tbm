@@ -1,0 +1,509 @@
+;The CSC script. No longer messy and unreadable. Allows effective control over capital ship turrets.
+
+#Conditional Hooks
+
+$Application: FS2_Open
+
+$On Key Pressed: [[csc_KeyPressed.lua]]
+$On Key Released: [[csc_KeyReleased.lua]]
+
+$On Game Init:
+[
+ui_keyToggleFunctions = {}
+InputStates = {}
+
+ui_keyToggleFunctions["Up Arrow"]    = function(val) InputStates.up    = val end
+ui_keyToggleFunctions["Down Arrow"]  = function(val) InputStates.down  = val end
+ui_keyToggleFunctions["Left Arrow"]  = function(val) InputStates.left  = val end
+ui_keyToggleFunctions["Right Arrow"] = function(val) InputStates.right = val end
+ui_keyToggleFunctions["0"] = function(val) InputStates.zero = val end
+
+--variables for translation
+local localizedNone = ba.XSTR("None", 5411)
+local localizedPDTurret = ba.XSTR("  PD Turret: ", 6241)
+local localizedInvalid = ba.XSTR("Invalid", 6235)
+local localizedCurrentTarget = ba.XSTR("Current Target: ", 6236)
+local localizedClass = ba.XSTR(" Class: ", 6237)
+local localized2Dots = ba.XSTR(": ", 6239)
+local localizedRange = ba.XSTR("Range:", 6238)
+local localizedPointDefenseTurrets = ba.XSTR("point defense turrets: ", 16000)
+local localizedFlakTurrets = ba.XSTR("flak turrets: ", 16001)
+local localizedMassDrivers = ba.XSTR("mass drivers: ", 16002)
+local localizedGaussCannons = ba.XSTR("gauss cannons: ", 16003)
+local localizedApocalpyseTorpedoes = ba.XSTR("apocalypse torpedoes: ", 16004)
+local localizedMissileLaunchers = ba.XSTR("missile launchers: ", 16005)
+local localizedGattlers = ba.XSTR("gattler: ", 16006)
+local localizedRapier = ba.XSTR("rapier: ", 16007)
+local localizedAAABeams = ba.XSTR("AAA beams: ", 16008)
+local localizedHeavyBeamCannons = ba.XSTR("heavy beam cannons: ", 16009)
+local localizedSlashBeamCannons = ba.XSTR("slash beam cannons: ", 16010)
+local localizedAutomatic = ba.XSTR("Automatic", 6243)
+local localizedTrack = ba.XSTR("Track", 6244)
+local localizedLock = ba.XSTR("Lock", 6245)
+local localizedOffline = ba.XSTR("Offline", 6246)
+
+function getTargetName(target)
+ local targetname
+ if target then
+  local targetship = mn.getObjectFromSignature(target:getSignature())
+  if targetship:isValid() then
+   if targetship:getBreedName() == "Ship" then
+    targetname = targetship.DisplayName
+
+    if targetname == '' then
+      targetname = targetship.Name
+    end
+   end
+  else
+   targetname = localizedNone
+  end
+ else
+  targetname = localizedNone
+ end
+ return targetname
+end
+
+function getTargetClass(target)
+ local targetname
+ if target then
+  local targetship = mn.getObjectFromSignature(target:getSignature())
+  if targetship:isValid() then
+   if targetship:getBreedName() == "Ship" then
+    targetname = targetship.Class.Type.Name
+   end
+  else
+   targetname = localizedNone
+  end
+ else
+  targetname = localizedNone
+ end
+ return targetname
+end
+
+function setTurretColor(weapon)
+ gr.setColor(csc.turretColors[weapon][1], csc.turretColors[weapon][2], csc.turretColors[weapon][3])
+end
+
+function drawTurretUI()
+ local sel = csc.shipdef[csc.shipIdx].turretControl[csc.acnum]
+ local weapon
+ 
+ gr.drawString("", 5, gr.getScreenHeight() * 0.6)
+ 
+ for i = 1, #csc.shipdef[csc.shipIdx].turretControl, 1 do
+  weapon = csc.shipdef[csc.shipIdx].turretControl[i]
+  ba.print("CSC: ui: " .. weapon)
+  if sel == weapon then
+   gr.setColor(255, 255, 255)
+  else
+   setTurretColor(weapon)
+  end
+  gr.drawString(csc.turretDisplay[weapon] .. csc.turretMode[weapon][csc.turretStatus[weapon]])
+  setTurretColor(weapon)
+  for i = 1, #csc.turretGroup[weapon], 1 do
+   local targetname = getTargetName(csc.turretGroup[weapon][i].Target)
+   if not targetname then targetname = localizedNone end
+   if weapon == "pd" then
+    gr.drawString(localizedPDTurret .. targetname)
+   else
+    gr.drawString("  " .. csc.turretGroup[weapon][i].Name .. localized2Dots .. targetname)
+   end
+  end
+ end
+
+ gr.setColor(255, 255, 255)
+ local targetname = getTargetName(csc.CurrentTarget)
+ local classname = getTargetClass(csc.CurrentTarget)
+ if not classname then classname = localizedNone end
+ if not targetname then targetname = localizedInvalid end
+ gr.drawString(localizedCurrentTarget .. targetname .. localizedClass .. classname)
+end
+
+function fillturretlist(ship)
+ local turretnum = 1
+ ba.print("CSC: Entered fillturretlist\n")
+ csc.turrets = {}
+ for i = 1, 60, 1 do
+  if i < 10 then
+   turretname = "turret0" .. i
+  else
+   turretname = "turret" .. i
+  end
+
+  ba.print("CSC: Looking for turret: " .. turretname .. "\n")
+
+  if ship[turretname]:isValid() then
+   csc.turrets[turretnum] = ship[turretname]
+   ba.print("CSC: Found Turret.\n")
+   turretnum = turretnum + 1
+  end
+ end
+end
+
+function groupTurrets()
+ ba.print("CSC: Entered GroupTurrets\n")
+
+ for i = 1, #csc.turrets, 1 do
+  if csc.turrets[i].PrimaryBanks[1].WeaponClass:isValid() or csc.turrets[i].SecondaryBanks[1].WeaponClass:isValid() then
+   for j = 1, #csc.weapondef, 1 do
+    if string.find(csc.turrets[i].PrimaryBanks[1].WeaponClass.Name, csc.weapondef[j].weapon) then
+     csc.turretGroup[csc.weapondef[j].turret][#csc.turretGroup[csc.weapondef[j].turret] + 1] = csc.turrets[i]
+     ba.print("CSC: Found " .. csc.weapondef[j].weapon .. ". Turret Number: " .. i .. " weaponnum: " .. #csc.turretGroup[csc.weapondef[j].turret] .. "\n")
+    end
+   end
+  end
+ end 
+
+ csc.initComplete = true
+end
+
+function drawTargetBraces(weapon)
+ setTurretColor(weapon)
+ for i = 1, #csc.turretGroup[weapon], 1 do
+  target = csc.turretGroup[weapon][i].Target
+  if target:isValid() then
+   gr.drawTargetingBrackets(target, true, csc.turretColors[weapon][4])
+  end
+ end
+end
+
+function doInput()
+ MissionTime = mn.getMissionTime()
+
+ if OldMissionTime ~= MissionTime and MissionTime ~= 0 then
+ 
+  if InputStates.up and not csc.inputstates.keyup then
+   csc.acnum = csc.acnum - 1
+   if csc.acnum == 0 then
+    csc.acnum = #csc.shipdef[csc.shipIdx].turretControl
+   end 
+   csc.inputstates.keyup = true
+  elseif not InputStates.up then
+   csc.inputstates.keyup = false
+  end
+
+  if InputStates.down and not csc.inputstates.keydown then
+   csc.acnum = csc.acnum + 1
+   if csc.acnum == #csc.shipdef[csc.shipIdx].turretControl + 1 then
+    csc.acnum = 1
+   end 
+   csc.inputstates.keydown = true
+  elseif not InputStates.down then
+   csc.inputstates.keydown = false
+  end
+  
+  local weapon = csc.shipdef[csc.shipIdx].turretControl[csc.acnum]
+  if InputStates.left and not csc.inputstates.keyleft then
+   if csc.turretStatus[weapon] <= 1 then
+    csc.turretStatus[weapon] = #csc.turretMode[weapon] 
+   else
+    csc.turretStatus[weapon] = csc.turretStatus[weapon] - 1 
+   end
+   
+   csc.inputstates.keyleft = true
+  elseif not InputStates.left then
+   csc.inputstates.keyleft = false
+  end
+
+  if InputStates.right and not csc.inputstates.keyright then
+
+   if csc.turretStatus[weapon] >= #csc.turretMode[weapon] then
+    csc.turretStatus[weapon] = 1 
+   else
+    csc.turretStatus[weapon] = csc.turretStatus[weapon] + 1 
+   end
+   
+   csc.inputstates.keyright = true
+  elseif not InputStates.right then
+   csc.inputstates.keyright = false
+  end
+
+  if InputStates.zero or io.isMouseButtonDown(MOUSE_LEFT_BUTTON) then
+   csc.CurrentTarget = csc.plrship.Target
+   csc.inputstates.zero = true
+  elseif not InputStates.zero or not io.isMouseButtonDown(MOUSE_LEFT_BUTTON) then
+   csc.inputstates.zero = false
+  end
+  OldMissionTime = MissionTime
+ end
+end
+
+function doTurretMode()
+ local weapon
+ for j = 1, #csc.shipdef[csc.shipIdx].turretControl, 1 do
+  weapon = csc.shipdef[csc.shipIdx].turretControl[j]
+
+  if csc.turretStatus[weapon] == 1 then
+   for i = 1, #csc.turretGroup[weapon] do
+    csc.turretGroup[weapon][i]:targetingOverride(false)
+   end
+  elseif csc.turretStatus[weapon] == 2 then
+   for i = 1, #csc.turretGroup[weapon] do
+    csc.turretGroup[weapon][i].Target = csc.plrship.Target
+   end
+  elseif csc.turretStatus[weapon] == 3 then
+    if csc.CurrentTarget then
+     if csc.CurrentTarget:isValid() then
+      for i = 1, #csc.turretGroup[weapon] do
+       csc.turretGroup[weapon][i].Target = csc.CurrentTarget
+      end
+     end
+    end
+  elseif csc.turretStatus[weapon] == 4 then
+   for i = 1, #csc.turretGroup[weapon] do
+    csc.turretGroup[weapon][i]:targetingOverride(true)
+   end
+  end
+ end 
+end
+
+function drawRangeDisplay()
+ local turposCount = #csc.shipdef[csc.shipIdx].turretRange
+ if turposCount > 0 then
+  csc.range = nil
+  csc.range = {}
+  csc.range.Shipname = {}
+  csc.range.Range = {}
+  local plrship = hv.Player
+    
+  local turpos = {}
+  
+  for j = 1, turposCount, 1 do
+    turpos[j] = (plrship.Position + plrship[csc.shipdef[csc.shipIdx].turretRange[j]].Position)
+  end  
+  
+  items = 1
+  for i = 1, #mn.Ships do
+   local tempship = mn.Ships[i]
+   local class = getTargetClass(tempship)
+   if class ~= "Fighter" and class ~= "Bomber" then
+    if tempship ~= csc.plrship then
+     local temp = tempship.Position
+     local tempsum = 0
+     for j = 1, turposCount, 1 do
+       tempsum = tempsum + math.sqrt( (temp[1] - turpos[j][1])^2 + (temp[2] - turpos[j][2])^2 + (temp[3] - turpos[j][3])^2 )
+     end  
+     csc.range.Shipname[items] = tempship.DisplayName
+          if csc.range.Shipname[items] == '' then
+            csc.range.Shipname[items] = tempship.Name
+          end
+     csc.range.Range[items] = math.floor( tempsum / turposCount)
+     items = items + 1
+    end
+   end
+  end
+
+  gr.setColor(255,255,255)
+  gr.drawString(localizedRange, gr.getScreenWidth() * 0.17, gr.getScreenHeight() * 0.78)
+  for i = 1, #csc.range.Shipname do
+   if csc.range.Range[i] < 1000 then
+    local c = math.floor((csc.range.Range[i] / 4)) + 5
+    gr.setColor(255, c, c)
+    gr.drawString("  " .. csc.range.Shipname[i] .. localized2Dots .. csc.range.Range[i])
+    gr.setColor(255, 255, 255)
+   else
+    gr.drawString("  " .. csc.range.Shipname[i] .. localized2Dots .. csc.range.Range[i])
+   end
+  end
+ end 
+end
+
+function turretInit(weapon, display, r, g, b, p)
+ csc.turretGroup[weapon] = {}
+ csc.turretMode[weapon] = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
+ csc.turretStatus[weapon] = 1
+ csc.turretColors[weapon] = {r, g, b, p}
+ csc.turretDisplay[weapon] = display
+ ba.print("CSC: Turret init " .. weapon .. "\n")
+end;
+
+function weaponInit(weapon, turret)
+ local i = #csc.weapondef + 1
+ csc.weapondef[i] = {}
+ csc.weapondef[i].weapon = weapon
+ csc.weapondef[i].turret = turret
+ ba.print("CSC: Weapon init " .. weapon .. "\n")
+end
+
+function defineTurrets()
+ csc.turretGroup = {}
+ csc.turretStatus = {}
+ csc.turretColors = {}
+ csc.turretMode = {}
+ csc.turretDisplay = {}
+ -- config stuff start
+ -- turret group, UI display, R, G, B, Brace padding
+
+ turretInit("pd", localizedPointDefenseTurrets, 61, 93, 255, 8)
+ turretInit("flak", localizedFlakTurrets, 61, 93, 255, 8)
+ turretInit("md", localizedMassDrivers, 255, 93, 48, 11)
+ turretInit("gauss", localizedGaussCannons, 255, 187, 53, 14)
+ turretInit("torpedo", localizedApocalpyseTorpedoes, 255, 255, 53, 17)
+ turretInit("missile", localizedMissileLaunchers, 255, 255, 53, 17)
+ turretInit("gattler", localizedGattlers, 255, 187, 53, 14)
+ turretInit("rapier", localizedRapier, 255, 187, 53, 14)
+ turretInit("aaa", localizedAAABeams, 255, 187, 53, 14)
+ turretInit("beam", localizedHeavyBeamCannons, 255, 93, 48, 11)
+ turretInit("slash", localizedSlashBeamCannons, 255, 255, 53, 17)
+end 
+
+function defineWeapons()
+ csc.weapondef = {}
+
+ --weaponClassName -> turret group
+
+ weaponInit("Point Defense Turret", "pd")
+ weaponInit("PD Turret#Player", "pd")
+ weaponInit("Burst Flak", "flak")
+ weaponInit("Mass Driver", "md")
+ weaponInit("Gauss Cannon", "gauss")
+ weaponInit("Apocalypse", "torpedo")
+ weaponInit("Apocalypse#Solaris", "torpedo")
+ weaponInit("Warhammer", "missile")
+ weaponInit("Gattler", "gattler")
+ weaponInit("Gattler Turret#Solaris", "gattler")
+ weaponInit("Rapier", "rapier")
+ weaponInit("AAAf", "aaa")
+ weaponInit("BGreen", "beam")
+ weaponInit("TerSlash", "slash")
+ weaponInit("Terran Turret", "pd")
+ weaponInit("Terran Huge Turret", "pd")
+ weaponInit("Terran Turret", "pd")
+ weaponInit("Standard Flak", "flak")
+ weaponInit("Heavy Flak", "flak")
+ weaponInit("Standard Flak", "flak")
+ weaponInit("Piranha", "missile")
+end
+
+function defineShips()
+ csc.shipdef = {}
+
+ local 
+ --Solaris
+ --Entry number - don't forget to change while copypasting this one
+ i = 1
+ csc.shipdef[i] = {}
+ csc.shipdef[i].shipClassName = "UED Solaris#Player"
+ --turrets showing target braces
+ csc.shipdef[i].turretTargets={"pd", "flak", "md", "gauss", "torpedo"}
+ --turrets aviable in UI
+ csc.shipdef[i].turretControl={"md", "gauss", "torpedo"}
+ --turrets to calculate target range
+ csc.shipdef[i].turretRange={"turret01", "turret02", "turret03", "turret04"} 
+ -- possible turret weapon groups:
+ -- {"pd", "flak", "md", "gauss", "torpedo", "gattler", "missile", "aaa", "beam", "slash"}
+
+ --Custos
+ i = 2
+ csc.shipdef[i] = {}
+ csc.shipdef[i].shipClassName = "UEC Custos#Player"
+ csc.shipdef[i].turretTargets={"pd", "missile"}
+ csc.shipdef[i].turretControl={"pd", "missile"}
+ csc.shipdef[i].turretRange={}
+
+ --Carthage
+ i = 3
+ csc.shipdef[i] = {}
+ csc.shipdef[i].shipClassName = "GTD Orion"
+ csc.shipdef[i].turretTargets={"pd", "flak", "aaa", "beam", "slash"}
+ csc.shipdef[i].turretControl={"beam", "slash"}
+ csc.shipdef[i].turretRange={}
+
+ --Steadfast
+ i = 4
+ csc.shipdef[i] = {}
+ csc.shipdef[i].shipClassName = "GTCv Deimos#Player"
+ csc.shipdef[i].turretTargets={"pd", "flak", "missile", "aaa", "slash"}
+ csc.shipdef[i].turretControl={"slash"}
+ csc.shipdef[i].turretRange={"turret11", "turret12", "turret23", "turret24"} 
+
+end
+-- config stuff end
+
+function cscInit()
+ csc = {}
+ if not csc.initComplete then
+  defineShips()
+  defineWeapons()
+  ba.print("CSC: init \n")
+
+  if not csc.plrship then
+   csc.plrship = hv.Player
+   
+   csc.disable = true
+
+   if csc.plrship:getBreedName() == "Ship" then
+    csc.shipIdx = 0
+    for i = 1, #csc.shipdef, 1 do
+     if csc.plrship.Class.Name == csc.shipdef[i].shipClassName then
+      csc.shipIdx = i
+      csc.disable = false
+      ba.print("CSC: Ship found " .. csc.shipdef[i].shipClassName)
+     end
+    end
+   end
+
+   if not csc.disable and not csc.turrets then
+    defineTurrets()
+    csc.active = {"*", " ", " "}
+    csc.acnum = 1
+    csc.inputstates = {}
+
+    inputlocked = false
+
+    fillturretlist(csc.plrship)
+    groupTurrets()
+    --The Shieldman and Betty script overrides
+    ShieldmanOverride = true
+    BettyOverride = true
+   end
+  end
+ end
+end
+]
+
+$On Gameplay Start:
+[
+if (csc) then
+ ba.warning("There was already a CSC table present when initing the CSC script!")
+end
+
+cscInit()
+]
+
+$State: GS_STATE_GAME_PLAY
+$On Frame:
+[
+cscMissionTime = mn.getMissionTime()
+
+if cscMissionTime ~= 0 then
+ if csc then
+  if not csc.disable and csc.initComplete then
+   doInput()
+   doTurretMode()
+   for j = 1, #csc.shipdef[csc.shipIdx].turretTargets, 1 do
+    drawTargetBraces(csc.shipdef[csc.shipIdx].turretTargets[j]) 
+   end
+  end
+ end
+end
+]
+
+$On HUD Draw:
+[
+if csc then
+ if not csc.disable and csc.initComplete then
+  drawRangeDisplay()
+  drawTurretUI()
+ end
+end
+]
+
+$On Mission End:
+[
+csc = nil
+ShieldmanOverride = false
+BettyOverride = false
+]
+
+#End
