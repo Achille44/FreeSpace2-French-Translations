@@ -1,0 +1,5861 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Voices from the Mist", 7034)
+$Author: Exile Team
+$Created: 02/20/14 at 14:29:55
+$Modified: 09/22/22 at 09:25:01
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 2304)
+$end_multi_text
++Game Type Flags: 1
++Flags: 327812
++NebAwacs: 4000.000000
+
++Storm: none
+
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 7578.348145, 14443.439453, 9409.945313
++Viewer orient:
+	0.062490, 0.000002, 0.998046,
+	-0.992735, 0.103021, 0.062157,
+	-0.102819, -0.994679, 0.006440
+
+
+$Load Screen 1024: Loading_M06.png
+
+$Skybox Model: skybox_uranus2.pof
+
+$AI Profile: Exile
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"filename"		"exile05ships"		"string"
+		1		"saveexist"		"2"		"number"
+		2		"autoGenVar1"		"#Valhalla"		"string"
+		3		"autoGenVar2"		"#Spark"		"string"
+		4		"autoGenVar3"		"#Ironclad"		"string"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 1
+$start_stage
+$multi_text
+ XSTR("Tactical Arbiter Hemming:
+Good job destroying those devices, pilots. Thanks to your efforts, our scanners are fully functional in the vicinity around Uranus once again. We were able to track our missing convoy and confirm that its crash-jump from Europa took it all the way to Uranus. Beyond that, we are uncertain about how many ships may have survived entry into the planet's atmosphere. 
+
+You are going to start your search at the exact destination point of their crash-jump. Be advised that we are not receiving any distress signals from the convoy. We suspect their emergency transponders were deactivated in order to reduce the likelihood of being discovered. However, the Shivans have sufficient forces to scour the entirety of the vicinity near Uranus. We do not. Therefore, it is imperative that we find the convoy before the Shivans do. 
+
+Your primary objective is to locate and secure the ORSh Big Buddha, a mobile shipyard the ORS previously used during the Rim Conflict to repair its damaged warships, and the ORCa Graf Zeppelin, a Syr Darya-class carrier that was escorting the convoy. Because of their strategic value, it is essential you locate and rescue both the Big Buddha and the Graf Zeppelin and bring them both to the rendezvous point intact.", 7035)
+$end_multi_text
+$voice: none.wav
+$camera_pos: 1906.135498, 5917.928711, 20383.074219
+$camera_orient:
+	0.896305, -0.000000, 0.443438,
+	-0.340954, 0.639385, 0.689157,
+	-0.283528, -0.768886, 0.573084
+$camera_time: 500
+$num_lines: 0
+$num_icons: 0
+$Flags: 0
+$Formula: ( true ) 
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 3
+
+$Formula: ( is-goal-true-delay 
+   "Protect convoy" 
+   0 
+)
+$Multi text
+    XSTR("Shipmaster Donnelly:
+Welcome aboard the Graf Zeppelin, pilots. I am Shipmaster Donnelly. I wanted to personally welcome the ORS pilots who braved Uranus' atmosphere in order to rescue the Big Buddha. Our crews are hard at work servicing your fighters. Once they are rearmed and repaired, you can thank them by supporting our retreat to Beta Volantis. 
+
+I believe it is only fair that I inform you where I stand in all this. Your Fleetmaster may have convinced me to take part in his plan, but he has not gained my trust. At least, not yet. I'm taking a great risk in joining his exodus. There are thirty thousand survivors under my care whom I must protect at all costs. Tyrone had better be well prepared if his goal is to get us out of Sol alive. Otherwise, all my efforts to save this small human enclave will have been for nothing. 
+
+In any case, we are, as your squadmaster said himself, 'in the same boat now.' One of our deck officers will show you to your cabins. Take time to rest, eat something and get a shower. All of you need to be at full combat readiness when my fleet reaches the rallying point.", 7036)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+$Formula: ( or 
+   ( is-destroyed-delay 0 "Big Buddha" ) 
+   ( is-destroyed-delay 
+      0 
+      "Graf Zeppelin" 
+   )
+)
+$Multi text
+    XSTR("Your squadron failed in its mission to locate and retrieve the Big Buddha and the missing refuge convoy from Uranus. Soon after you reached the allied rally point, it was compromised and came under attack by multiple Shivan bomber wings. Despite the valiant effort of the Avalonians and other escort wings, the Syndicate's ships didn't make it out of Uranus alive.", 7037)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+$Formula: ( is-event-true-delay 
+   "you got lost" 
+   0 
+)
+$Multi text
+    XSTR("The ORS patrol sent to locate Europa's missing refugee convoy failed in accomplishing its objectives. The pilots who participated in the mission became separated by the planet's dense gas clouds. Failing to re-establish contact, Beta wing was officially listed by Valhalla as MIA. The rescue operation in this theatre was also suspended as a result.", 7038)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+#Callsigns:
+$Callsign: XSTR("Harper", 5869)
+$Callsign: XSTR("Black Widow", 5870)
+$Callsign: XSTR("Spark", 5871)
+$Callsign: XSTR("Al-Churi", 5874)
+$Callsign: XSTR("Nielsen", 5875)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Beta 1
+$Ship Choices: (
+	"GTF Ulysses"	5
+	"GTF Hercules"	5
+	"GTF Hercules Mark II"	5
+	"GTF Ares"	5
+	"GTF Erinyes"	5
+	"GTF Loki"	5
+	"GTF Pegasus"	5
+	"GTF Perseus"	5
+	"GTF Myrmidon"	5
+	"SF Mara (terrans)"	5
+	"GTB Artemis"	5
+	"GTB Artemis D.H."	5
+	"GTB Medusa"	5
+	"GTB Ursa"	5
+	"GTB Zeus"	5
+	"GTB Boanerges"	5
+	"GVF Ptah"	5
+	"ORF Rapier"	5
+	"ORF Ymir"	5
+	"ORF Vindicator"	5
+	"ORB Stalker"	5
+)
+
++Weaponry Pool: (
+	"Subach HL-7"	16
+	"Subach HL-D"	16
+	"Mekhu HL-7"	16
+	"Mekhu HL-7D"	16
+	"Akheton SDG"	16
+	"Morning Star"	16
+	"MorningStar D"	16
+	"Prometheus R"	16
+	"Prometheus S"	16
+	"Prometheus D"	16
+	"Maxim"	16
+	"Maxim D"	16
+	"UD-8 Kayser"	16
+	"UD-D Kayser"	16
+	"Circe"	16
+	"Lamprey"	16
+	"Pulsar PC-9"	24
+	"Prometheus N"	24
+	"Defiler LPC"	16
+	"Scythe"	16
+	"Eviscerator"	16
+	"Incisor"	16
+	"Devastator"	16
+	"Excalibur"	16
+	"Vengeance"	16
+	"Yali Pulse Cannon"	16
+	"Rockeye"	500
+	"Rockeye D"	500
+	"Tempest"	500
+	"Tempest D"	500
+	"Hornet"	500
+	"Hornet D"	500
+	"Tornado"	500
+	"Tornado D"	500
+	"Harpoon"	500
+	"Harpoon D"	500
+	"Trebuchet"	500
+	"TAG-A"	500
+	"TAG-B"	500
+	"TAG-C"	500
+	"Piranha"	500
+	"Stiletto II"	500
+	"Infyrno"	500
+	"Infyrno D"	500
+	"Cyclops"	500
+	"Cyclops#short"	500
+	"Helios"	500
+	"EMP Adv."	500
+	"Bolt"	500
+	"Seeker"	500
+	"Maelstrom"	500
+	"Stinger"	580
+	"MX-112"	1300
+	"Vortex"	500
+	"Thunderstrike"	500
+	"Hurricane"	500
+	"Arbalest"	500
+	"Demolisher"	500
+	"Revenant"	500
+)
+
+#Objects		;! 92 total
+
+$Name: Beta 1		;! Object #0
+$Display Name: XSTR("Beta 1", 5765)
+$Class: ORF Defender
+$Callsign: XSTR("Spark", 5871)
+
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -3520.294189, -0.000000, -8875.750000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" "disable ship" "disarm ship" "guard ship" "ignore ship" "form on wing" "cover me" "attack any" "disable subsys" )
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Beta 2		;! Object #1
+$Display Name: XSTR("Beta 2", 5766)
+$Class: ORF Defender
+$Callsign: XSTR("Al-Churi", 5874)
+
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -3550.000000, -0.000000, -8912.477539
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" "disable ship" "disarm ship" "guard ship" "ignore ship" "form on wing" "cover me" "attack any" "disable subsys" )
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 11
+
+$Name: Beta 3		;! Object #2
+$Display Name: XSTR("Beta 3", 5767)
+$Class: ORF Defender
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -3459.399170, -0.000000, -8914.454102
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" "disable ship" "disarm ship" "guard ship" "ignore ship" "form on wing" "cover me" "attack any" "disable subsys" )
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 21
+
+$Name: Beta 4		;! Object #3
+$Display Name: XSTR("Beta 4", 5768)
+$Class: ORF Defender
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -3500.942627, -0.000000, -8949.229492
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" "disable ship" "disarm ship" "guard ship" "ignore ship" "form on wing" "cover me" "attack any" "disable subsys" )
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 20
+
+$Name: Alpha 1		;! Object #4
+$Display Name: XSTR("Alpha 1", 5745)
+$Class: ORF Defender
+$Callsign: XSTR("Harper", 5869)
+
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -3659.866943, -0.000000, -8868.958008
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 7
+
+$Name: Alpha 2		;! Object #5
+$Display Name: XSTR("Alpha 2", 5890)
+$Class: ORF Defender
+$Callsign: XSTR("Black Widow", 5870)
+
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -3622.672119, -0.000000, -8934.868164
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 8
+
+$Name: Alpha 3		;! Object #6
+$Display Name: XSTR("Alpha 3", 5891)
+$Class: ORF Defender
+$Callsign: XSTR("Nielsen", 5875)
+
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -3683.573486, -0.000000, -8945.778320
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 9
+
+$Name: Alpha 4		;! Object #7
+$Display Name: XSTR("Alpha 4", 5892)
+$Class: ORF Defender
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -3640.071533, -0.000000, -8993.805664
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 21
+
+$Name: Ganymede Express		;! Object #8
+$Display Name: XSTR("Ganymede Express", 7039)
+$Class: ORFr Chronos
+$Team: Friendly
+$Location: 3911.325195, 1425.984619, 23271.107422
+$Orientation:
+	0.985585, -0.162118, 0.048378,
+	0.169182, 0.944431, -0.281830,
+	0.000000, 0.285952, 0.958244
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 87
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
++Departure delay: 1
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: UHI Hauler 14a		;! Object #9
+$Display Name: XSTR("UHI Hauler 14a", 7040)
+$Class: ORFr Chronos
+$Team: Friendly
+$Location: 4129.502441, 1168.781006, 23692.404297
+$Orientation:
+	0.985587, -0.162100, 0.048438,
+	0.169183, 0.944488, -0.281655,
+	-0.000093, 0.285791, 0.958300
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: UHI Cargo 138-H		;! Object #10
+$Display Name: XSTR("UHI Cargo 138-H", 7041)
+$Class: ORHCG-03
+$Team: Friendly
+$Location: 4131.975586, 1180.327637, 23684.748047
+$Orientation:
+	0.985587, -0.162101, 0.048438,
+	0.169183, 0.944929, -0.280171,
+	-0.000355, 0.284328, 0.958735
+$AI Behavior: None
+$Cargo 1:  XSTR("Ammunition", 7042)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: UHI Hauler 14a
+$Docker Point: cargo dockpoint
+$Dockee Point: cargo dockpoint
++Group: 0
++Use Table Score:
++Score: 5
+
+$Name: Bradley		;! Object #11
+$Display Name: XSTR("Bradley", 7043)
+$Class: ORFr Chronos
+$Team: Friendly
+$Location: 5039.064941, 553.474060, 21623.968750
+$Orientation:
+	0.131424, -0.167065, -0.977143,
+	-0.262457, 0.944665, -0.196813,
+	0.955954, 0.282324, 0.080304
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 92
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
++Departure delay: 1
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Bamiyan Corp. Cargo 66		;! Object #12
+$Display Name: XSTR("Bamiyan Corp. Cargo 66", 7044)
+$Class: ORHCG-03
+$Team: Friendly
+$Location: 5031.687500, 565.036621, 21620.816406
+$Orientation:
+	0.131424, -0.167066, -0.977143,
+	-0.260977, 0.945101, -0.196689,
+	0.956359, 0.280861, 0.080608
+$AI Behavior: None
+$Cargo 1:  XSTR("Engine Parts", 7045)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Bradley
+$Docker Point: cargo dockpoint
+$Dockee Point: cargo dockpoint
++Group: 0
++Use Table Score:
++Score: 5
+
+$Name: Izyda		;! Object #13
+$Display Name: XSTR("Izyda", 7046)
+$Class: ORFr Chronos
+$Team: Friendly
+$Location: 5542.007813, 479.458374, 21967.664063
+$Orientation:
+	0.708747, -0.165677, -0.685758,
+	-0.087943, 0.943709, -0.318888,
+	0.699987, 0.286319, 0.654279
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
++Departure delay: 5
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: ORHCG-239		;! Object #14
+$Display Name: XSTR("ORHCG-239", 7047)
+$Class: ORHCG-03
+$Team: Friendly
+$Location: 5538.121582, 490.992157, 21960.599609
+$Orientation:
+	0.708747, -0.165677, -0.685758,
+	-0.086859, 0.944151, -0.317875,
+	0.700122, 0.284858, 0.654772
+$AI Behavior: None
+$Cargo 1:  XSTR("Supplies", 6596)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Izyda
+$Docker Point: cargo dockpoint
+$Dockee Point: cargo dockpoint
++Group: 0
++Use Table Score:
++Score: 5
+
+$Name: Tesla		;! Object #15
+$Display Name: XSTR("Tesla", 7048)
+$Class: ORSC Faustus
+$Team: Friendly
+$Location: 3959.437012, 775.086548, 22061.632813
+$Orientation:
+	0.688846, -0.342067, 0.639126,
+	0.320478, 0.934528, 0.154760,
+	-0.650220, 0.098220, 0.753371
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 39
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
++Departure delay: 4
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Asimov		;! Object #16
+$Display Name: XSTR("Asimov", 7049)
+$Class: ORSC Faustus
+$Team: Friendly
+$Location: 5733.429199, 992.865845, 23326.324219
+$Orientation:
+	0.894090, 0.076488, 0.441307,
+	0.152615, 0.874317, -0.460737,
+	-0.421083, 0.479291, 0.770045
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 61
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
++Departure delay: 1
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: UHI Omega 7		;! Object #17
+$Display Name: XSTR("UHI Omega 7", 7050)
+$Class: ORT Elysium
+$Team: Friendly
+$Location: 5165.249512, 290.539978, 21774.199219
+$Orientation:
+	0.654003, 0.516481, 0.552745,
+	0.756489, -0.448500, -0.475996,
+	0.002063, 0.729449, -0.684032
+$AI Behavior: None
+$Cargo 1:  XSTR("Survivors", 1610)
++Initial Velocity: 33
++Initial Hull: 61
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Mariposa		;! Object #18
+$Display Name: XSTR("Mariposa", 7051)
+$Class: ORFr Nautilus
+$Team: Friendly
+$Location: 5432.286621, 1418.724609, 21420.652344
+$Orientation:
+	0.269390, 0.420077, -0.866583,
+	-0.247637, 0.899806, 0.359201,
+	0.930648, 0.117833, 0.346425
+$AI Behavior: None
+$Cargo 1:  XSTR("Heavy Supplies", 7052)
++Initial Velocity: 33
++Initial Hull: 48
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 17
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 180
+
+$Name: Queen of the Stars		;! Object #19
+$Display Name: XSTR("Queen of the Stars", 7053)
+$Class: ORLr Hestia
+$Team: Friendly
+$Location: 6614.827637, 269.449371, 23016.310547
+$Orientation:
+	0.608257, -0.450966, 0.653187,
+	0.637522, 0.767805, -0.063570,
+	-0.472853, 0.455088, 0.754523
+$AI Behavior: None
+$Cargo 1:  XSTR("Passengers", 7054)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 16
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Score: 180
+
+$Name: Inventory Hauler 24		;! Object #20
+$Display Name: XSTR("Inventory Hauler 24", 7055)
+$Class: ORT Elysium
+$Team: Friendly
+$Location: 6032.252441, 410.177063, 23066.392578
+$Orientation:
+	-0.281899, 0.616625, -0.735056,
+	-0.542973, -0.734169, -0.407647,
+	-0.791021, 0.284200, 0.541772
+$AI Behavior: None
+$Cargo 1:  XSTR("Supplies", 6596)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
++Departure delay: 3
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Graf Zeppelin		;! Object #21
+$Display Name: XSTR("Graf Zeppelin", 7056)
+$Class: ORCa Syr Darya
+$Team: Friendly
+$Location: 3781.615234, 1800.593018, 23999.232422
+$Orientation:
+	0.333345, 0.295068, -0.895442,
+	-0.458287, 0.880719, 0.119611,
+	0.823926, 0.370498, 0.428809
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 76
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
++Subsystem: Turret19
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 19
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Score: 8
+
+$Name: GZ Beta 1		;! Object #22
+$Display Name: XSTR("GZ Beta 1", 7057)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 3245.729248, 412.474976, 21532.933594
+$Orientation:
+	0.985585, -0.162118, 0.048378,
+	0.169182, 0.944431, -0.281830,
+	0.000000, 0.285952, 0.958244
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Score: 30
++Persona Index: 21
+
+$Name: GZ Epsilon 1		;! Object #23
+$Display Name: XSTR("GZ Epsilon 1", 7058)
+$Class: ORF Defender
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 2892.658447, 1172.438477, 23637.300781
+$Orientation:
+	0.985585, -0.162118, 0.048378,
+	0.169182, 0.944431, -0.281830,
+	0.000000, 0.285952, 0.958244
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 74
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 4
+
+$Name: GZ Beta 2		;! Object #24
+$Display Name: XSTR("GZ Beta 2", 7059)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 3271.768066, 369.815308, 21405.611328
+$Orientation:
+	0.985585, -0.162118, 0.048378,
+	0.169182, 0.944431, -0.281830,
+	0.000000, 0.285952, 0.958244
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Score: 30
++Persona Index: 20
+
+$Name: GZ Beta 3		;! Object #25
+$Display Name: XSTR("GZ Beta 3", 7060)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 3139.074707, 407.510742, 21452.251953
+$Orientation:
+	0.985585, -0.162118, 0.048378,
+	0.169182, 0.944431, -0.281830,
+	0.000000, 0.285952, 0.958244
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Score: 30
++Persona Index: 20
+
+$Name: GZ Epsilon 2		;! Object #26
+$Display Name: XSTR("GZ Epsilon 2", 7061)
+$Class: ORF Defender
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 2840.192627, 1118.337891, 23424.470703
+$Orientation:
+	0.985585, -0.162118, 0.048378,
+	0.169182, 0.944431, -0.281830,
+	0.000000, 0.285952, 0.958244
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 32
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 20
+
+$Name: GZ Alpha 1		;! Object #27
+$Display Name: XSTR("GZ Alpha 1", 7062)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 6362.208496, 284.570251, 22058.769531
+$Orientation:
+	0.985585, -0.162118, 0.048378,
+	0.169182, 0.944431, -0.281830,
+	0.000000, 0.285952, 0.958244
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 65
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 20
+
+$Name: GZ Alpha 2		;! Object #28
+$Display Name: XSTR("GZ Alpha 2", 7063)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 6595.447754, 294.695923, 22232.753906
+$Orientation:
+	0.985585, -0.162118, 0.048378,
+	0.169182, 0.944431, -0.281830,
+	0.000000, 0.285952, 0.958244
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 93
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 21
+
+$Name: GZ Alpha 3		;! Object #29
+$Display Name: XSTR("GZ Alpha 3", 7064)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 6655.293457, 226.949036, 22041.673828
+$Orientation:
+	0.985585, -0.162118, 0.048378,
+	0.169182, 0.944431, -0.281830,
+	0.000000, 0.285952, 0.958244
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 20
+
+$Name: Big Buddha		;! Object #30
+$Display Name: XSTR("Big Buddha", 7065)
+$Class: ORSh Qadesh
+$Team: Friendly
+$Location: 2450.975586, 57.122620, 21911.169922
+$Orientation:
+	0.790938, 0.502328, 0.349403,
+	-0.341230, 0.836079, -0.429574,
+	-0.507916, 0.220539, 0.832697
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 62
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 20
++Hotkey: 4
++Orders Accepted List: ( )
++Group: 0
++Score: 1000
+
+$Name: ORFR 43-VRH-6621		;! Object #31
+$Display Name: XSTR("ORFR 43-VRH-6621", 7066)
+$Class: ORFr Chronos
+$Team: Friendly
+$Location: -3227.705566, 286.631104, -6085.160645
+$Orientation:
+	-0.428539, 0.707786, 0.561599,
+	0.157435, -0.553562, 0.817791,
+	0.889701, 0.438871, 0.125793
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 12
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: communication
+$Damage: 450
++Subsystem: navigation
+$Damage: 355
++Subsystem: weapons
+$Damage: 801
++Subsystem: sensors
+$Damage: 855
++Subsystem: engine 1
+$Damage: 100
++Subsystem: engine 2
+$Damage: 100
++Subsystem: engine 3
+$Damage: 100
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Score: 15
+
+$Name: GZ Gamma 3		;! Object #32
+$Display Name: XSTR("GZ Gamma 3", 7067)
+$Class: ORF Defender
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -3539.099121, 189.559631, -6142.193359
+$Orientation:
+	0.382536, -0.702824, -0.599755,
+	0.729984, 0.627823, -0.270117,
+	0.566384, -0.334481, 0.753215
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: communication
+$Damage: 18
++Subsystem: navigation
+$Damage: 18
++Subsystem: weapons
+$Damage: 29
++Subsystem: sensors
+$Damage: 15
++Subsystem: engines
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Score: 30
+
+$Name: GZ Gamma 1		;! Object #33
+$Display Name: XSTR("GZ Gamma 1", 7068)
+$Class: ORF Defender
+$Team: Friendly
+$Team Color Setting: Jovian Second Fleet
+$Location: -754.589050, -0.000000, -198.770020
+$Orientation:
+	-0.507864, -0.770445, 0.385344,
+	-0.728204, 0.144989, -0.669850,
+	0.460211, -0.620801, -0.634675
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: communication
+$Damage: 16
++Subsystem: navigation
+$Damage: 18
++Subsystem: weapons
+$Damage: 25
++Subsystem: sensors
+$Damage: 18
++Subsystem: engines
+$Damage: 63
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Score: 30
+
+$Name: GZ Kappa 2		;! Object #34
+$Display Name: XSTR("GZ Kappa 2", 7069)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Jovian Second Fleet
+$Location: 549.454529, 83.494308, -934.782410
+$Orientation:
+	0.725707, 0.212232, 0.654452,
+	0.667164, 0.015270, -0.744755,
+	-0.168055, 0.977100, -0.130512
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 9
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Sensors
+$Damage: 87
++Subsystem: Communication
+$Damage: 100
++Subsystem: Weapons
+$Damage: 100
++Subsystem: Navigation
+$Damage: 100
++Subsystem: Engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Delphine		;! Object #35
+$Display Name: XSTR("Delphine", 7070)
+$Class: ORFr Chronos
+$Team: Friendly
+$Location: 60.400627, -98.675903, -35.860519
+$Orientation:
+	0.840746, 0.333971, 0.426160,
+	0.118522, 0.654485, -0.746730,
+	-0.528301, 0.678320, 0.510673
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 15
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: bridge
+$Damage: 100
++Subsystem: communication
+$Damage: 100
++Subsystem: navigation
+$Damage: 100
++Subsystem: weapons
+$Damage: 89
++Subsystem: sensors
+$Damage: 93
++Subsystem: engine 1
+$Damage: 100
++Subsystem: engine 2
+$Damage: 100
++Subsystem: engine 3
+$Damage: 100
++Subsystem: turreta
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: UHI Cargo 58-B		;! Object #36
+$Display Name: XSTR("UHI Cargo 58-B", 7071)
+$Class: ORC-C 1
+$Team: Friendly
+$Location: -687.695435, -241.620499, -797.654419
+$Orientation:
+	-0.595337, 0.682100, -0.424636,
+	-0.001382, -0.529367, -0.848393,
+	-0.803476, -0.504492, 0.316093
+$AI Behavior: None
+$Cargo 1:  XSTR("Navigation Parts", 7072)
++Initial Velocity: 33
++Initial Hull: 15
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 5
+
+$Name: ORCG-115		;! Object #37
+$Display Name: XSTR("ORCG-115", 7073)
+$Class: ORCG-01
+$Team: Friendly
+$Location: -590.549011, 342.994110, -823.181885
+$Orientation:
+	-0.129979, -0.428401, -0.894192,
+	-0.700586, -0.598492, 0.388570,
+	-0.701630, 0.676964, -0.222340
+$AI Behavior: None
+$Cargo 1:  XSTR("Supplies", 6596)
++Initial Velocity: 33
++Initial Hull: 46
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Rama 1		;! Object #38
+$Display Name: XSTR("Rama 1", 5886)
+$Class: SF Scorpion
+$Team: Hostile
+$Location: 2955.951904, 0.000000, 6189.392090
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Rama 2		;! Object #39
+$Display Name: XSTR("Rama 2", 5887)
+$Class: SF Scorpion
+$Team: Hostile
+$Location: 2598.456787, 0.000000, 6303.997070
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Rama 3		;! Object #40
+$Display Name: XSTR("Rama 3", 5888)
+$Class: SF Scorpion
+$Team: Hostile
+$Location: 2525.505615, 0.000000, 6755.208984
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Rama 4		;! Object #41
+$Display Name: XSTR("Rama 4", 5889)
+$Class: SF Scorpion
+$Team: Hostile
+$Location: 3244.033691, 0.000000, 6620.690430
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase-wing "Beta" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Rama 5		;! Object #42
+$Display Name: XSTR("Rama 5", 5922)
+$Class: SF Scorpion
+$Team: Hostile
+$Location: 4057.657959, 0.000000, 6272.210938
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-chase-wing "Beta" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Durga 1		;! Object #43
+$Display Name: XSTR("Durga 1", 5786)
+$Class: SF Mara
+$Team: Hostile
+$Location: 6927.079102, 0.000000, 9651.005859
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Durga 2		;! Object #44
+$Display Name: XSTR("Durga 2", 5787)
+$Class: SF Mara
+$Team: Hostile
+$Location: 6321.463867, 0.000000, 9779.625000
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Durga 3		;! Object #45
+$Display Name: XSTR("Durga 3", 5788)
+$Class: SF Mara
+$Team: Hostile
+$Location: 6730.692383, 0.000000, 10209.306641
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Durga 4		;! Object #46
+$Display Name: XSTR("Durga 4", 5789)
+$Class: SF Mara
+$Team: Hostile
+$Location: 7316.153320, 0.000000, 9870.414063
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Durga 5		;! Object #47
+$Display Name: XSTR("Durga 5", 6573)
+$Class: SF Mara
+$Team: Hostile
+$Location: 7587.386719, 0.000000, 9438.054688
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Krishna 1		;! Object #48
+$Display Name: XSTR("Krishna 1", 5790)
+$Class: SF Astaroth
+$Team: Hostile
+$Location: 4396.587891, 0.000000, 11125.531250
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: Krishna 2		;! Object #49
+$Display Name: XSTR("Krishna 2", 5791)
+$Class: SF Astaroth
+$Team: Hostile
+$Location: 4187.936523, 0.000000, 10508.835938
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: Krishna 3		;! Object #50
+$Display Name: XSTR("Krishna 3", 5792)
+$Class: SF Astaroth
+$Team: Hostile
+$Location: 3755.883301, 0.000000, 10758.990234
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: Krishna 4		;! Object #51
+$Display Name: XSTR("Krishna 4", 5793)
+$Class: SF Astaroth
+$Team: Hostile
+$Location: 4028.597656, 0.000000, 11196.097656
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: GZ Delta 1		;! Object #52
+$Display Name: XSTR("GZ Delta 1", 7074)
+$Class: ORF Defender
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 8295.308594, 0.000000, 16579.140625
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 21
++Initial Shields: 0
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Special Shield Points: 80
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 20
+
+$Name: GZ Zeta 1		;! Object #53
+$Display Name: XSTR("GZ Zeta 1", 7075)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 16911.050781, 0.000000, 13074.939453
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 17
++Initial Shields: 0
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "guardian" )
++Flags2: ( "always-death-scream" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
++Persona Index: 1
+
+$Name: GZ Delta 2		;! Object #54
+$Display Name: XSTR("GZ Delta 2", 7076)
+$Class: ORF Defender
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 8379.633789, 0.000000, 16528.187500
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 38
++Initial Shields: 0
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Special Shield Points: 80
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 21
+
+$Name: GZ Delta 3		;! Object #55
+$Display Name: XSTR("GZ Delta 3", 7077)
+$Class: ORF Defender
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 8380.604492, 0.000000, 16609.539063
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 45
++Initial Shields: 0
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "guardian" )
++Flags2: ( "always-death-scream" )
++Respawn priority: 0
++Special Shield Points: 80
++Group: 0
++Use Table Score:
++Score: 8
++Persona Index: 20
+
+$Name: Arjuna 1		;! Object #56
+$Display Name: XSTR("Arjuna 1", 5781)
+$Class: SF Mara
+$Team: Hostile
+$Location: 8851.518555, 0.000000, 16620.273438
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Arjuna 2		;! Object #57
+$Display Name: XSTR("Arjuna 2", 5782)
+$Class: SF Mara
+$Team: Hostile
+$Location: 8787.749023, 0.000000, 16679.509766
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Arjuna 3		;! Object #58
+$Display Name: XSTR("Arjuna 3", 5783)
+$Class: SF Mara
+$Team: Hostile
+$Location: 8949.846680, 0.000000, 16650.314453
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Arjuna 4		;! Object #59
+$Display Name: XSTR("Arjuna 4", 5784)
+$Class: SF Mara
+$Team: Hostile
+$Location: 8932.235352, 0.000000, 16761.056641
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Arjuna 5		;! Object #60
+$Display Name: XSTR("Arjuna 5", 5785)
+$Class: SF Mara
+$Team: Hostile
+$Location: 8880.549805, 0.000000, 16773.835938
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Deva 1		;! Object #61
+$Display Name: XSTR("Deva 1", 5822)
+$Class: SF Astaroth
+$Team: Hostile
+$Location: 16746.599609, 0.000000, 11759.786133
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: Deva 2		;! Object #62
+$Display Name: XSTR("Deva 2", 5823)
+$Class: SF Astaroth
+$Team: Hostile
+$Location: 17465.962891, 0.000000, 12437.660156
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: Deva 3		;! Object #63
+$Display Name: XSTR("Deva 3", 5824)
+$Class: SF Astaroth
+$Team: Hostile
+$Location: 17920.138672, 0.000000, 12098.365234
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 13
+
+$Name: Omega 2		;! Object #64
+$Display Name: XSTR("Omega 2", 7078)
+$Class: ORT Elysium
+$Team: Friendly
+$Location: 7783.794922, 812.952026, 10254.144531
+$Orientation:
+	0.772005, 0.464132, -0.434271,
+	-0.355979, 0.881739, 0.309542,
+	0.526582, -0.084377, 0.845927
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 16
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: engine
+$Damage: 100
++Subsystem: navigation
+$Damage: 100
++Subsystem: communication
+$Damage: 89
++Subsystem: sensors
+$Damage: 94
++Subsystem: weapons
+$Damage: 100
++Subsystem: turret01
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Brahma 1		;! Object #65
+$Display Name: XSTR("Brahma 1", 5912)
+$Class: SB Nahema
+$Team: Hostile
+$Location: -4155.603027, 0.000000, 23873.609375
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Brahma 2		;! Object #66
+$Display Name: XSTR("Brahma 2", 5913)
+$Class: SB Nahema
+$Team: Hostile
+$Location: -4615.445801, 592.791626, 23649.980469
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Brahma 3		;! Object #67
+$Display Name: XSTR("Brahma 3", 5914)
+$Class: SB Nahema
+$Team: Hostile
+$Location: -4744.304199, 592.791626, 24330.529297
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Brahma 4		;! Object #68
+$Display Name: XSTR("Brahma 4", 5915)
+$Class: SB Nahema
+$Team: Hostile
+$Location: -4243.540527, 0.000000, 24536.294922
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Brahma 5		;! Object #69
+$Display Name: XSTR("Brahma 5", 5916)
+$Class: SB Nahema
+$Team: Hostile
+$Location: -4010.425293, 0.000000, 25101.511719
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Indra 1		;! Object #70
+$Display Name: XSTR("Indra 1", 5900)
+$Class: SB Seraphim
+$Team: Hostile
+$Location: -3085.609131, 0.000000, 21283.789063
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Indra 2		;! Object #71
+$Display Name: XSTR("Indra 2", 5901)
+$Class: SB Seraphim
+$Team: Hostile
+$Location: -3189.373047, 428.241333, 21212.660156
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Indra 3		;! Object #72
+$Display Name: XSTR("Indra 3", 5902)
+$Class: SB Seraphim
+$Team: Hostile
+$Location: -3381.210205, 0.000000, 21661.074219
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Indra 4		;! Object #73
+$Display Name: XSTR("Indra 4", 5903)
+$Class: SB Seraphim
+$Team: Hostile
+$Location: -3702.665039, 428.241333, 21238.740234
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Indra 5		;! Object #74
+$Display Name: XSTR("Indra 5", 5923)
+$Class: SB Seraphim
+$Team: Hostile
+$Location: -3411.145508, 428.241333, 20740.900391
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Kurma 1		;! Object #75
+$Display Name: XSTR("Kurma 1", 6582)
+$Class: SF Basilisk
+$Team: Hostile
+$Location: -113.765137, 0.000000, 17638.988281
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Kurma 2		;! Object #76
+$Display Name: XSTR("Kurma 2", 6584)
+$Class: SF Basilisk
+$Team: Hostile
+$Location: 398.354370, 0.000000, 17567.078125
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Kurma 3		;! Object #77
+$Display Name: XSTR("Kurma 3", 6585)
+$Class: SF Basilisk
+$Team: Hostile
+$Location: 227.160645, 0.000000, 17859.478516
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Kurma 4		;! Object #78
+$Display Name: XSTR("Kurma 4", 6583)
+$Class: SF Basilisk
+$Team: Hostile
+$Location: -48.890137, 0.000000, 18031.853516
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Kurma 5		;! Object #79
+$Display Name: XSTR("Kurma 5", 6726)
+$Class: SF Basilisk
+$Team: Hostile
+$Location: 235.069824, 0.000000, 18287.236328
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Vishnu 1		;! Object #80
+$Display Name: XSTR("Vishnu 1", 5904)
+$Class: SB Nephilim
+$Team: Hostile
+$Location: -1287.380371, 0.000000, 17655.238281
+$Orientation:
+	0.605821, 0.000000, -0.795603,
+	0.165852, 0.978034, 0.126290,
+	0.778126, -0.208461, 0.592513
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 11
+
+$Name: Vishnu 2		;! Object #81
+$Display Name: XSTR("Vishnu 2", 5905)
+$Class: SB Nephilim
+$Team: Hostile
+$Location: -1529.498047, -77.703117, 17966.568359
+$Orientation:
+	0.605820, -0.000000, -0.795602,
+	0.165852, 0.978033, 0.126289,
+	0.778125, -0.208460, 0.592512
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 11
+
+$Name: Vishnu 3		;! Object #82
+$Display Name: XSTR("Vishnu 3", 5906)
+$Class: SB Nephilim
+$Team: Hostile
+$Location: -1514.836914, 320.824738, 17981.041016
+$Orientation:
+	0.605820, -0.000000, -0.795602,
+	0.165852, 0.978033, 0.126289,
+	0.778125, -0.208460, 0.592512
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 11
+
+$Name: Vishnu 4		;! Object #83
+$Display Name: XSTR("Vishnu 4", 5907)
+$Class: SB Nephilim
+$Team: Hostile
+$Location: -1437.374023, 514.384460, 17895.677734
+$Orientation:
+	0.605820, -0.000000, -0.795602,
+	0.165852, 0.978033, 0.126289,
+	0.778125, -0.208460, 0.592512
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 11
+
+$Name: Radha 1		;! Object #84
+$Display Name: XSTR("Radha 1", 5895)
+$Class: SF Mara
+$Team: Hostile
+$Location: -5439.254395, 735.193298, 21373.175781
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Radha 2		;! Object #85
+$Display Name: XSTR("Radha 2", 5896)
+$Class: SF Mara
+$Team: Hostile
+$Location: -4854.280762, 735.193298, 21154.800781
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Radha 3		;! Object #86
+$Display Name: XSTR("Radha 3", 5897)
+$Class: SF Mara
+$Team: Hostile
+$Location: -4704.496582, 0.000000, 21727.640625
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Radha 4		;! Object #87
+$Display Name: XSTR("Radha 4", 5898)
+$Class: SF Mara
+$Team: Hostile
+$Location: -5069.088379, 735.193298, 21918.761719
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Radha 5		;! Object #88
+$Display Name: XSTR("Radha 5", 5899)
+$Class: SF Mara
+$Team: Hostile
+$Location: -4724.476074, 0.000000, 22240.480469
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: find missing convoy		;! Object #89
+$Display Name: XSTR("find missing convoy", 7079)
+$Class: GTF Ulysses
+$Team: Friendly
+$Location: 21994.107422, -0.000000, 39538.187500
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "fadein" 2 ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" "no-departure-warp" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Big Buddha's location		;! Object #90
+$Display Name: XSTR("Big Buddha's location", 7080)
+$Class: ORNB Lumen
+$Team: Friendly
+$Location: 3990.098633, -7.932637, 22241.017578
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "msg37" 2 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "fadein" 2 ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-departure-warp" "invulnerable" )
++Flags2: ( "no_collide" )
++Respawn priority: 0
++Escort priority: 10
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: follow alpha 1		;! Object #91
+$Display Name: XSTR("follow alpha 1", 7081)
+$Class: GTF Ulysses
+$Team: Friendly
+$Location: 22193.837891, -0.000000, 40172.011719
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "msg3" 5 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "msg38+alpha goal" 
+   4 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" "no-arrival-warp" "no-departure-warp" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 8
+
+#Wings		;! 17 total
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Beta 1"
+	"Beta 2"
+	"Beta 3"
+	"Beta 4"
+)
+$AI Goals: ( goals ( ai-guard "Beta 1" 50 ) )
++Hotkey: 1
++Flags: ( )
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Graf Zeppelin
+$Departure Cue: ( is-event-true-delay 
+   "msg70+allow warp+tech" 
+   6 
+)
+$Ships: (		;! 4 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+	"Alpha 4"
+)
++Hotkey: 0
++Flags: ( "no-departure-warp" )
+
+$Name: GZ Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! GZ Alpha 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 2 ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Graf Zeppelin
+$Departure Cue: ( is-event-true-delay "msg69" 4 ) 
+$Ships: (		;! 3 total
+	"GZ Alpha 1"
+	"GZ Alpha 2"
+	"GZ Alpha 3"
+)
+$AI Goals: ( goals ( ai-guard "Queen of the Stars" 50 ) )
++Flags: ( "no-arrival-warp" "no-departure-warp" )
+
+$Name: GZ Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! GZ Beta 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 2 ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Graf Zeppelin
+$Departure Cue: ( is-event-true-delay "msg69" 7 ) 
+$Ships: (		;! 3 total
+	"GZ Beta 1"
+	"GZ Beta 2"
+	"GZ Beta 3"
+)
+$AI Goals: ( goals ( ai-guard "Big Buddha" 50 ) )
++Flags: ( "no-arrival-warp" "no-departure-warp" )
+
+$Name: GZ Epsilon
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! GZ Epsilon 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "fadein" 0 ) 
+$Departure Location: Docking Bay
+$Departure Anchor: Graf Zeppelin
++Departure delay: 4
+$Departure Cue: ( is-event-true-delay "msg69" 9 ) 
+$Ships: (		;! 2 total
+	"GZ Epsilon 1"
+	"GZ Epsilon 2"
+)
+$AI Goals: ( goals ( ai-guard "Graf Zeppelin" 50 ) )
++Flags: ( "no-arrival-warp" "no-departure-warp" )
+
+$Name: Rama
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Rama 1
+$Arrival Location: Near Ship
++Arrival Distance: 2300
+$Arrival Anchor: Beta 1
+$Arrival Cue: ( < 
+   ( distance "Alpha 1" "searching 3:1" ) 
+   18200 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 5 total
+	"Rama 1"
+	"Rama 2"
+	"Rama 3"
+	"Rama 4"
+	"Rama 5"
+)
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) )
++Flags: ( "no-arrival-message" "no-arrival-warp" )
+
+$Name: Durga
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Durga 1
+$Arrival Location: Near Ship
++Arrival Distance: 800
+$Arrival Anchor: Krishna 1
+$Arrival Cue: ( has-arrived-delay 1 "Krishna" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 5 total
+	"Durga 1"
+	"Durga 2"
+	"Durga 3"
+	"Durga 4"
+	"Durga 5"
+)
+$AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) )
++Flags: ( "no-arrival-warp" )
+
+$Name: Krishna
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Krishna 1
+$Arrival Location: Near Ship
++Arrival Distance: 2500
+$Arrival Anchor: Beta 1
+$Arrival Cue: ( < 
+   ( distance "Alpha 1" "searching 3:1" ) 
+   15200 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Krishna 1"
+	"Krishna 2"
+	"Krishna 3"
+	"Krishna 4"
+)
+$AI Goals: ( goals ( ai-chase-wing "Beta" 50 ) )
++Flags: ( "no-arrival-warp" )
+
+$Name: GZ Delta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! GZ Delta 1
+$Arrival Location: In front of ship
++Arrival Distance: 5500
+$Arrival Anchor: Beta 1
+$Arrival Cue: ( and 
+   ( < 
+      ( distance "Alpha 1" "searching 3:1" ) 
+      12200 
+   )
+   ( destroyed-or-departed-delay 
+      30 
+      "Rama" 
+      "Durga" 
+      "Krishna" 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"GZ Delta 1"
+	"GZ Delta 2"
+	"GZ Delta 3"
+)
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" )
+
+$Name: GZ Zeta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! GZ Zeta 1
+$Arrival Location: In front of ship
++Arrival Distance: 7000
+$Arrival Anchor: Beta 1
+$Arrival Cue: ( and 
+   ( < 
+      ( distance "Alpha 1" "searching 3:1" ) 
+      9200 
+   )
+   ( destroyed-or-departed-delay 
+      25 
+      "GZ Delta" 
+      "Arjuna" 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"GZ Zeta 1"
+)
+$AI Goals: ( goals ( ai-waypoints-once "searching 3" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" )
+
+$Name: Arjuna
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Arjuna 1
+$Arrival Location: Near Ship
++Arrival Distance: 700
+$Arrival Anchor: GZ Delta 1
+$Arrival Cue: ( has-arrived-delay 4 "GZ Delta" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 5 total
+	"Arjuna 1"
+	"Arjuna 2"
+	"Arjuna 3"
+	"Arjuna 4"
+	"Arjuna 5"
+)
+$AI Goals: ( goals ( ai-chase-wing "GZ Delta" 55 ) ( ai-chase-wing "Alpha" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" )
+
+$Name: Deva
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Deva 1
+$Arrival Location: Near Ship
++Arrival Distance: 800
+$Arrival Anchor: GZ Zeta 1
+$Arrival Cue: ( has-arrived-delay 7 "GZ Zeta" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-destroyed-delay 5 "GZ Zeta" ) 
+$Ships: (		;! 3 total
+	"Deva 1"
+	"Deva 2"
+	"Deva 3"
+)
+$AI Goals: ( goals ( ai-chase-wing "GZ Zeta" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" )
+
+$Name: Brahma
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Brahma 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "msg40" 35 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 5 total
+	"Brahma 1"
+	"Brahma 2"
+	"Brahma 3"
+	"Brahma 4"
+	"Brahma 5"
+)
+$AI Goals: ( goals ( ai-chase "Graf Zeppelin" 50 ) )
++Hotkey: 6
++Flags: ( "no-arrival-warp" )
++Wave Delay Min: 5
++Wave Delay Max: 10
+
+$Name: Indra
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Indra 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "msg40" 37 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 5 total
+	"Indra 1"
+	"Indra 2"
+	"Indra 3"
+	"Indra 4"
+	"Indra 5"
+)
+$AI Goals: ( goals ( ai-chase "Big Buddha" 50 ) )
++Hotkey: 6
++Flags: ( "no-arrival-warp" )
++Wave Delay Min: 5
++Wave Delay Max: 10
+
+$Name: Kurma
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Kurma 1
+$Arrival Location: In front of ship
++Arrival Distance: 1500
+$Arrival Anchor: Beta 1
+$Arrival Cue: ( or 
+   ( < 
+      ( distance 
+         "Alpha 1" 
+         "Big Buddha's location" 
+      )
+      5500 
+   )
+   ( < 
+      ( distance 
+         "Beta 1" 
+         "Big Buddha's location" 
+      )
+      5500 
+   )
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 5 total
+	"Kurma 1"
+	"Kurma 2"
+	"Kurma 3"
+	"Kurma 4"
+	"Kurma 5"
+)
+$AI Goals: ( goals ( ai-chase "Big Buddha" 50 ) )
++Flags: ( "no-arrival-warp" )
+
+$Name: Vishnu
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Vishnu 1
+$Arrival Location: Near Ship
++Arrival Distance: 2200
+$Arrival Anchor: Beta 1
+$Arrival Cue: ( has-arrived-delay 0 "Kurma" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Vishnu 1"
+	"Vishnu 2"
+	"Vishnu 3"
+	"Vishnu 4"
+)
+$AI Goals: ( goals ( ai-chase "Big Buddha" 50 ) )
++Hotkey: 6
++Flags: ( "no-arrival-warp" )
+
+$Name: Radha
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Radha 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "msg40" 38 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 5 total
+	"Radha 1"
+	"Radha 2"
+	"Radha 3"
+	"Radha 4"
+	"Radha 5"
+)
+$AI Goals: ( goals ( ai-guard-wing "Indra" 50 ) ( ai-guard-wing "Brahma" 50 ) )
++Flags: ( "no-arrival-warp" )
++Wave Delay Min: 5
++Wave Delay Max: 10
+
+#Events		;! 114 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[#Valhalla]" 
+      "#Valhalla" 
+      6261 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[#Spark]" 
+      "#Spark" 
+      6260 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[#Ironclad]" 
+      "#Ironclad" 
+      7178 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( never-warp "Beta 1" ) 
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Alpha 1" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Alpha 2" 
+   )
+   ( play-sound-from-file 
+      "Deadland.ogg" 
+      9 
+   )
+   ( hud-set-max-targeting-range 2500 ) 
+   ( deactivate-glow-maps 
+      "ORFR 43-VRH-6621" 
+      "GZ Gamma 3" 
+      "GZ Gamma 1" 
+      "GZ Kappa 2" 
+      "Delphine" 
+      "Omega 2" 
+   )
+   ( ship-subsys-guardian-threshold 
+      47 
+      "Alpha 1" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      53 
+      "Alpha 2" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      5 
+      "ORFR 43-VRH-6621" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      12 
+      "Delphine" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      5 
+      "Omega 2" 
+      "<all engines>" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Beta 2" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Beta 3" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Beta 2" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Beta 3" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Alpha 3" 
+      "<all engines>" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Alpha 3" 
+   )
+)
++Name: initialization
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "1 - Harper" 
+   )
+)
++Name: msg1
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Valhalla]" 
+      "High" 
+      "2 - Command" 
+   )
+)
++Name: msg2
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "3 - Harper" 
+   )
+)
++Name: msg3
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-waypoints-once "searching 1" 89 ) 
+   )
+   ( add-remove-escort "Alpha 1" 20 ) 
+)
++Name: alpha goals 1
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( < 
+            ( distance 
+               "Alpha 1" 
+               "ORFR 43-VRH-6621" 
+            )
+            500 
+         )
+         ( < 
+            ( distance 
+               "Beta 1" 
+               "ORFR 43-VRH-6621" 
+            )
+            500 
+         )
+      )
+      ( is-event-true-delay "msg3,3" 8 ) 
+   )
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "4 - Spark" 
+   )
+)
++Name: msg4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Valhalla]" 
+      "High" 
+      "5 - Command" 
+   )
+)
++Name: msg5
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance 
+            "Alpha 1" 
+            "ORFR 43-VRH-6621" 
+         )
+         500 
+      )
+      ( is-event-true-delay "msg5" 6 ) 
+   )
+   ( clear-goals "Alpha" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-waypoints-once "searching 2" 89 ) 
+   )
+)
++Name: alpha goals 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "6 - Spark" 
+   )
+)
++Name: msg6
++Repeat Count: 1
++Interval: 1
++Chained: 21
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "7 - Harper" 
+   )
+)
++Name: msg7
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "8 - Spark" 
+   )
+)
++Name: msg8
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "9 - Harper" 
+   )
+)
++Name: msg9
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance "Alpha 1" "Delphine" ) 
+         1400 
+      )
+      ( < 
+         ( distance "Beta 1" "Delphine" ) 
+         1400 
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "10 - Harper" 
+   )
+)
++Name: msg10
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Valhalla]" 
+      "High" 
+      "11 - Command" 
+   )
+)
++Name: msg11
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "12 - Harper" 
+   )
+)
++Name: msg12
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Valhalla]" 
+      "High" 
+      "12,1 - Command" 
+   )
+)
++Name: msg12,1
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "12,2 - Harper" 
+   )
+)
++Name: msg12,2
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Valhalla]" 
+      "High" 
+      "13 - Command" 
+   )
+)
++Name: msg13
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "14 - Harper" 
+   )
+)
++Name: msg14
++Repeat Count: 1
++Interval: 1
++Chained: 16
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-waypoints-once "searching 3" 89 ) 
+   )
+)
++Name: alpha goals 3
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "15 - Spark" 
+   )
+)
++Name: msg15
++Repeat Count: 1
++Interval: 1
++Chained: 31
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "16 - Black Widow" 
+   )
+)
++Name: msg16
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "17 - Harper" 
+   )
+)
++Name: msg17
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "18 - Spark" 
+   )
+)
++Name: msg18
++Repeat Count: 1
++Interval: 1
++Chained: 19
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "19 - Black Widow" 
+   )
+)
++Name: msg19
++Repeat Count: 1
++Interval: 1
++Chained: 17
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "20 - Harper" 
+   )
+)
++Name: msg20
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Rama" ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "21 - Spark" 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( change-soundtrack "Ex07: Callisto" ) 
+)
++Name: msg21+soundtrack
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "22 - Harper" 
+   )
+)
++Name: msg22
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Rama" 95 ) 
+   )
+)
++Name: alpha attack rama
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Rama" ) 
+   ( send-message 
+      "Alpha 3" 
+      "High" 
+      "23 - Nielsen" 
+   )
+)
++Name: msg23
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "24 - Harper" 
+   )
+)
++Name: msg24
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( has-arrived-delay 3 "Durga" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Durga" 95 ) 
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Krishna" 93 ) 
+   )
+)
++Name: alpha attack durga & krishna
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance "Alpha 1" "Omega 2" ) 
+         1400 
+      )
+      ( < 
+         ( distance "Beta 1" "Omega 2" ) 
+         1400 
+      )
+   )
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "25 - Black Widow" 
+   )
+)
++Name: msg25
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "GZ Delta 3" ) 
+   ( send-message 
+      "GZ Delta 3" 
+      "High" 
+      "26 - GZ Delta 3" 
+   )
+)
++Name: msg26
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "27 - Harper" 
+   )
+)
++Name: msg27
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Arjuna" 93 ) 
+   )
+)
++Name: alpha guard gz delta
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "GZ Delta 3" 
+      "High" 
+      "28 - GZ Delta 3" 
+   )
+   ( ship-no-guardian "GZ Delta 3" ) 
+)
++Name: msg28+noguardian
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "GZ Delta 3" ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "29 - Harper" 
+   )
+)
++Name: msg29
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "GZ Zeta 1" ) 
+   ( send-message 
+      "GZ Zeta 1" 
+      "High" 
+      "30 - GZ Zeta 1" 
+   )
+)
++Name: msg30
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "31 - Harper" 
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-chase "Deva" 95 ) 
+   )
+)
++Name: msg31+alpha guard gz zeta
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "GZ Zeta 1" 
+      "High" 
+      "32 - GZ Zeta 1" 
+   )
+)
++Name: msg32
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "33 - Harper" 
+   )
+)
++Name: msg33
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "34 - Spark" 
+   )
+)
++Name: msg34
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "GZ Zeta 1" 
+      "High" 
+      "35 - GZ Zeta 1" 
+   )
+   ( ship-no-guardian "GZ Zeta 1" ) 
+)
++Name: msg35+noguardian
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "GZ Zeta" ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "36 - Black Widow" 
+   )
+)
++Name: msg36
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "37 - Spark" 
+   )
+)
++Name: msg37
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "38 - Harper" 
+   )
+   ( clear-goals "Alpha" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Beta" 89 ) 
+   )
+   ( hud-set-max-targeting-range 25000 ) 
+   ( add-remove-escort "Alpha 1" 0 ) 
+   ( ship-stealthy 
+      "ORFR 43-VRH-6621" 
+      "GZ Gamma 3" 
+      "GZ Gamma 1" 
+      "GZ Kappa 2" 
+      "Delphine" 
+      "Omega 2" 
+   )
+   ( friendly-stealth-invisible 
+      "ORFR 43-VRH-6621" 
+      "GZ Gamma 3" 
+      "GZ Gamma 1" 
+      "GZ Kappa 2" 
+      "Delphine" 
+      "Omega 2" 
+   )
+   ( alter-ship-flag 
+      "hidden-from-sensors" 
+      ( true ) 
+      ( true ) 
+      "ORFR 43-VRH-6621" 
+      "GZ Gamma 3" 
+      "GZ Gamma 1" 
+      "GZ Kappa 2" 
+      "Delphine" 
+      "Omega 2" 
+   )
+)
++Name: msg38+alpha goal
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance 
+            "Alpha 1" 
+            "Big Buddha's location" 
+         )
+         8500 
+      )
+      ( < 
+         ( distance 
+            "Beta 1" 
+            "Big Buddha's location" 
+         )
+         8500 
+      )
+   )
+   ( send-message 
+      "Alpha 3" 
+      "High" 
+      "38,1 - Nielsen" 
+   )
+)
++Name: msg38,1
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "38,2 - Harper" 
+   )
+)
++Name: msg38,2
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Kurma" ) 
+   ( fade-out 2000 1 ) 
+)
++Name: fadeout
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "39 - Spark" 
+   )
+   ( validate-goal "Protect convoy" ) 
+   ( hud-set-max-targeting-range 6000 ) 
+)
++Name: msg39+monitoringlist+goals
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when ( true ) ( fade-in 2000 1 ) ) 
++Name: fadein
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "40 - Harper" 
+   )
+)
++Name: msg40
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Brahma" ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "41 - Graf Zeppelin" 
+   )
+)
++Name: msg41
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Alpha" ) 
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Big Buddha" 89 ) 
+   )
+)
++Name: alpha guard buddha
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      5 
+      "Brahma" 
+      "Indra" 
+      "Radha" 
+      "Vishnu" 
+      "Kurma" 
+   )
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "42 - Graf Zeppelin" 
+   )
+)
++Name: msg42
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "43 - Harper" 
+   )
+)
++Name: msg43
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "44 - Graf Zeppelin" 
+   )
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file 
+      "Deadland.ogg" 
+      9 
+   )
+)
++Name: msg44+soundtrack
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "44,5 - Harper" 
+   )
+)
++Name: msg44,5
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 3" 
+      "High" 
+      "44,6 - Nielsen" 
+   )
+)
++Name: msg44,6
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "45 - Spark" 
+   )
+)
++Name: msg45
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "46 - Graf Zeppelin" 
+   )
+)
++Name: msg46
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "47 - Graf Zeppelin" 
+   )
+)
++Name: msg47
++Repeat Count: 1
++Interval: 1
++Chained: 18
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "47,1 - Graf Zeppelin" 
+   )
+)
++Name: msg47,1
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "48 - Spark" 
+   )
+)
++Name: msg48
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "49 - Harper" 
+   )
+)
++Name: msg49
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "50 - Harper" 
+   )
+)
++Name: msg50
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Valhalla]" 
+      "High" 
+      "51 - Command" 
+   )
+)
++Name: msg51
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "52 - Harper" 
+   )
+)
++Name: msg52
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "53 - Graf Zeppelin" 
+   )
+)
++Name: msg53
++Repeat Count: 1
++Interval: 1
++Chained: 16
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Valhalla]" 
+      "High" 
+      "54 - Command" 
+   )
+)
++Name: msg54
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "55 - Graf Zeppelin" 
+   )
+)
++Name: msg55
++Repeat Count: 1
++Interval: 1
++Chained: 16
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Valhalla]" 
+      "High" 
+      "56 - Command" 
+   )
+)
++Name: msg56
++Repeat Count: 1
++Interval: 1
++Chained: 16
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar3[#Ironclad]" 
+      "High" 
+      "57 - Tyrone" 
+   )
+)
++Name: msg57
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Valhalla]" 
+      "High" 
+      "58 - Command" 
+   )
+   ( close-sound-from-file ( true ) ) 
+   ( play-sound-from-file 
+      "ORS_Briefing2.ogg" 
+      9 
+   )
+)
++Name: msg58+soundtrack
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "59 - Graf Zeppelin" 
+   )
+)
++Name: msg59
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar3[#Ironclad]" 
+      "High" 
+      "60 - Tyrone" 
+   )
+)
++Name: msg60
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar3[#Ironclad]" 
+      "High" 
+      "61 - Tyrone" 
+   )
+)
++Name: msg61
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar3[#Ironclad]" 
+      "High" 
+      "62 - Tyrone" 
+   )
+)
++Name: msg62
++Repeat Count: 1
++Interval: 1
++Chained: 18
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "63 - Graf Zeppelin" 
+   )
+)
++Name: msg63
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar3[#Ironclad]" 
+      "High" 
+      "64 - Tyrone" 
+   )
+)
++Name: msg64
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "65 - Harper" 
+   )
+)
++Name: msg65
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "66 - Graf Zeppelin" 
+   )
+   ( add-goal 
+      "Big Buddha" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Ganymede Express" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "UHI Hauler 14a" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Bradley" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Izyda" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Tesla" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Asimov" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "UHI Omega 7" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Mariposa" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Queen of the Stars" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Inventory Hauler 24" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Graf Zeppelin" 
+      ( ai-waypoints-once 
+         "convoy departure" 
+         89 
+      )
+   )
+)
++Name: msg66+goals
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Spark]" 
+      "High" 
+      "67 - Spark" 
+   )
+)
++Name: msg67
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "68 - Harper" 
+   )
+)
++Name: msg68
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Graf Zeppelin" 
+      "High" 
+      "69 - Graf Zeppelin" 
+   )
+)
++Name: msg69
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "70 - Harper" 
+   )
+   ( clear-goals 
+      "Big Buddha" 
+      "Graf Zeppelin" 
+      "Mariposa" 
+      "Queen of the Stars" 
+      "Inventory Hauler 24" 
+      "Izyda" 
+      "Tesla" 
+      "Asimov" 
+      "Ganymede Express" 
+      "UHI Hauler 14a" 
+      "Bradley" 
+      "Bamiyan Corp. Cargo 66" 
+   )
+   ( tech-add-weapons "Vortex" ) 
+)
++Name: msg70+allow warp+tech
++Repeat Count: 1
++Interval: 1
++Chained: 16
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance-center-to-subsystem 
+            "Beta 1" 
+            "Graf Zeppelin" 
+            "fighterbay01" 
+         )
+         80 
+      )
+      ( < 
+         ( distance-center-to-subsystem 
+            "Beta 1" 
+            "Graf Zeppelin" 
+            "fighterbay02" 
+         )
+         80 
+      )
+   )
+   ( end-mission ) 
+)
++Name: rtb
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Objective:  XSTR("Land on Graf Zeppelin", 7082)
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "find missing convoy" 
+   )
+   ( do-nothing ) 
+)
++Name: find missing convoy
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Find missing convoy", 7083)
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "follow alpha 1" 
+   )
+   ( do-nothing ) 
+)
++Name: follow alpha 1
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Follow Alpha 1", 7084)
++Objective key:  XSTR("(F5)", 7085)
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "find missing convoy" 
+   )
+   ( do-nothing ) 
+)
++Name: condition1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Big Buddha" ) 
+   ( do-nothing ) 
+)
++Name: protect big buddha
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Objective:  XSTR("Protect Big Buddha", 7086)
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "find missing convoy" 
+   )
+   ( do-nothing ) 
+)
++Name: condition2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "Graf Zeppelin" 
+   )
+   ( do-nothing ) 
+)
++Name: protect graf zeppelin
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Objective:  XSTR("Protect Graf Zeppelin", 7087)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Rama" ) 
+   ( do-nothing ) 
+)
++Name: destroy rama
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Rama", 6060)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Durga" ) 
+   ( do-nothing ) 
+)
++Name: destroy durga
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Durga", 6789)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Krishna" ) 
+   ( do-nothing ) 
+)
++Name: destroy krishna
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Krishna", 7088)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Arjuna" ) 
+   ( do-nothing ) 
+)
++Name: destroy arjuna
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Arjuna", 6061)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Brahma" ) 
+   ( do-nothing ) 
+)
++Name: intercept brahma
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Brahma bombers", 7089)
++Objective key:  XSTR("(F11)", 6068)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Indra" ) 
+   ( do-nothing ) 
+)
++Name: intercept indra
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Indra bombers", 7090)
++Objective key:  XSTR("(F11)", 6068)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Kurma" ) 
+   ( do-nothing ) 
+)
++Name: destroy kurma
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Kurma", 6960)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Vishnu" ) 
+   ( do-nothing ) 
+)
++Name: intercept vishnu bombers
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Vishnu bombers", 6790)
++Objective key:  XSTR("(F11)", 6068)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Radha" ) 
+   ( do-nothing ) 
+)
++Name: destroy radha
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Radha", 6625)
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 
+         4 
+         "Graf Zeppelin" 
+      )
+      ( is-destroyed-delay 4 "Big Buddha" ) 
+      ( is-event-true-delay 
+         "you got lost" 
+         0 
+      )
+   )
+   ( hud-disable 1 ) 
+   ( lock-primary-weapon "Beta 1" ) 
+   ( lock-secondary-weapon "Beta 1" ) 
+   ( lock-afterburner "Beta 1" ) 
+   ( never-warp "Beta 1" ) 
+   ( adjust-audio-volume "Effects" 20 ) 
+   ( protect-ship "Beta 1" ) 
+   ( ship-invulnerable "Beta 1" ) 
+   ( close-sound-from-file ( true ) ) 
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file 
+      "Callisto_GFail.ogg" 
+   )
+)
++Name: mission failed hud
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( if-then-else 
+      ( is-destroyed-delay 
+         0 
+         "Graf Zeppelin" 
+      )
+      ( show-subtitle-text 
+         "Mission failed Graf" 
+         0 
+         0 
+         ( true ) 
+         ( true ) 
+         5000 
+         1000 
+      )
+      ( if-then-else 
+         ( is-destroyed-delay 0 "Big Buddha" ) 
+         ( show-subtitle-text 
+            "Mission failed Buddha" 
+            0 
+            0 
+            ( true ) 
+            ( true ) 
+            5000 
+            1000 
+         )
+         ( if-then-else 
+            ( is-event-true-delay 
+               "you got lost" 
+               0 
+            )
+            ( show-subtitle-text 
+               "Mission failed Lost" 
+               0 
+               0 
+               ( true ) 
+               ( true ) 
+               5000 
+               1000 
+            )
+            ( do-nothing ) 
+         )
+      )
+   )
+)
++Name: mission failed msg
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when ( true ) ( fade-out 4500 1 ) ) 
++Name: mission failed fade
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: mission failed end
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( distance "Beta 1" "Alpha 1" ) 
+         2200 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "msg38+alpha goal" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "71 - Harper" 
+   )
+)
++Name: msg71
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( distance "Beta 1" "Alpha 1" ) 
+         3100 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "msg38+alpha goal" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "72 - Harper" 
+   )
+)
++Name: msg72
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( > 
+         ( distance "Beta 1" "Alpha 1" ) 
+         3800 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "msg38+alpha goal" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: you got lost
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( script-eval "saveexist()" ) 
+   ( if-then-else 
+      ( = @saveexist[2] 1 ) 
+      ( script-eval 
+         "loadship('Alpha 1',1,1)" 
+         "loadship('Alpha 2',1,1)" 
+         "loadship('Alpha 3',1,1)" 
+         "loadship('Alpha 4',1,1)" 
+         "loadship('Beta 1',1,1)" 
+         "loadship('Beta 2',1,1)" 
+         "loadship('Beta 3',1,1)" 
+         "loadship('Beta 4',1,1)" 
+      )
+      ( do-nothing ) 
+   )
+)
++Name: load ships
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "msg3" 9 ) 
+   ( send-message 
+      "Alpha 3" 
+      "High" 
+      "3,1 - Alpha 3" 
+   )
+)
++Name: msg3,1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Beta 2" 
+      "High" 
+      "3,2 - Beta 2" 
+   )
+)
++Name: msg3,2
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "3,3 - Alpha 1" 
+   )
+)
++Name: msg3,3
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+#Goals		;! 2 total
+
+$Type: Primary
++Name: Locate convoy
+$MessageNew:  XSTR("Locate missing convoy", 7091)
+$end_multi_text
+$Formula: ( is-event-true-delay "fadein" 4 ) 
+
+$Type: Primary
++Name: Protect convoy
+$MessageNew:  XSTR("Protect convoy until it departs", 7092)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "msg70+allow warp+tech" 
+      0 
+   )
+   ( not 
+      ( is-destroyed-delay 
+         0 
+         "Graf Zeppelin" 
+      )
+   )
+   ( not 
+      ( is-destroyed-delay 0 "Big Buddha" ) 
+   )
+)
++Invalid
++No music
+
+#Waypoints		;! 4 lists total
+
+$Name: searching 1
+$List: (		;! 1 points in list
+	( -3439.712891, 0.000000, -6341.062012 )
+)
+
+$Name: searching 2
+$List: (		;! 1 points in list
+	( -326.975861, 98.178406, -1344.202393 )
+)
+
+$Name: searching 3
+$List: (		;! 1 points in list
+	( 18847.685547, 1700.314819, 21336.847656 )
+)
+
+$Name: convoy departure
+$List: (		;! 1 points in list
+	( 4791.302734, -0.000000, 140806.250000 )
+)
+
+#Messages		;! 85 total
+
+$Command Sender: Valhalla
+
+$Name: 1 - Harper
+$Team: -1
+$MessageNew:  XSTR("Command, Alpha and Beta wings are reporting in from Uranus. I've got no visuals on any of our missing ships. Just us, dead silence...and lots of fuckin' gas.", 7093)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 2 - Command
+$Team: -1
+$MessageNew:  XSTR("Pilots, we need you to sweep the area and keep your eyes open. This is the last known location of the survivors from Europa. That convoy has to be somewhere nearby. ", 7094)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: msg_caps.ogg
+
+$Name: 3 - Harper
+$Team: -1
+$MessageNew:  XSTR("Copy that, Command. If our people are alive and kicking out here, we're gonna find them. Alpha 1, out.", 7095)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 4 - Spark
+$Team: -1
+$MessageNew:  XSTR("I've got something...it's a wrecked Chronos freighter. Heavily damaged. I'm not reading any lifesigns inside it.", 7096)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 5 - Command
+$Team: -1
+$MessageNew:  XSTR("Acknowledged, Beta 1. Continue your search.", 7097)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: msg_caps.ogg
+
+$Name: 6 - Spark
+$Team: -1
+$MessageNew:  XSTR("Hey, squadmaster...how many ships are we looking for exactly? Somewhere around ten or twenty maybe?", 7098)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 7 - Harper
+$Team: -1
+$MessageNew:  XSTR("More than forty ships crash-jumped when the Tyrant showed up, kid. I don't know how many of those actually made it here or even still have any survivors at this point.", 7099)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 8 - Spark
+$Team: -1
+$MessageNew:  XSTR("Forty ships...then we're talking about tens of thousands of our people. Do you think they could've actually managed to hide themselves here, boss?", 7100)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 9 - Harper
+$Team: -1
+$MessageNew:  XSTR("It's like I said, kid. I don't know. Either way, we're about to find out.", 7101)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 10 - Harper
+$Team: -1
+$MessageNew:  XSTR("I got something! Command, this is Alpha 1. Looks like we found more missing ships...or rather what's left of them.", 7102)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 11 - Command
+$Team: -1
+$MessageNew:  XSTR("Acknowledged, Alpha 1. Receiving visual confirmation now. This...is a disaster. It looks like they came under Shivan attack shortly after arrival. Any sign of survivors?", 7103)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: msg_caps.ogg
+
+$Name: 12 - Harper
+$Team: -1
+$MessageNew:  XSTR(" Negative, Command. I'm not reading any lifesigns in this debris.", 7104)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 13 - Command
+$Team: -1
+$MessageNew:  XSTR("You are racing against the clock, pilots. Each passing second reduces our chances of finding those ships intact. Keep searching. You need to locate the Big Buddha or confirm its destruction.", 7105)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: msg_caps.ogg
+
+$Name: 14 - Harper
+$Team: -1
+$MessageNew:  XSTR("Roger that, Command. All fighters, form up on me. Let's get moving.", 7106)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 15 - Spark
+$Team: -1
+$MessageNew:  XSTR(" I keep thinking.... Forty ships. Let's say they carry a thousand passengers each. First attacking the comm nodes and then this entire rescue mission.... Billions are losing their lives right now. Why is Command sending us to the ass end of the solar system in order to save just forty thousand people instead?", 7107)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 16 - Black Widow
+$Team: -1
+$MessageNew:  XSTR("Spark, c'mon. Our superior officers issue us orders and we follow them to the letter. That's how the military works. Isn't it about time you stopped questioning our orders?", 7108)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: msg_chatter.ogg
+
+$Name: 17 - Harper
+$Team: -1
+$MessageNew:  XSTR("The kid has a point, Widow. The refugees don't seem to bother Command all that much. There's something else this convoy has that the ORS wants retrieved. I don't know...weapons? Supplies? Secret technologies? What could be that important?", 7109)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 18 - Spark
+$Team: -1
+$MessageNew:  XSTR("Arbiter Hemming said the mobile shipyard was our priority. Remember back at Valhalla Station? Three frigates were put at risk just to save the Ida Lewis and that was a single factory ship. I'm assuming its 'necessity' is somehow connected.", 7110)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 19 - Black Widow
+$Team: -1
+$MessageNew:  XSTR("We still don't know what they intend to do with those factory ships. Sure, we could move our entire industry into space just like we did during the Rim Conflict. But how long could we last in resisting the Shivans that way?", 7111)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: msg_chatter.ogg
+
+$Name: 20 - Harper
+$Team: -1
+$MessageNew:  XSTR("You asked me that once before, Widow. Look, the ORS is gonna find a way through all this. They always do. At the very least, believing that might somehow grant us a glimmer of hope in this war. ", 7112)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 21 - Spark
+$Team: -1
+$MessageNew:  XSTR("Enemy contact! We've got incoming Shivan fighters! ", 7113)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 22 - Harper
+$Team: -1
+$MessageNew:  XSTR("All fighters, break and attack! Make sure not to stray too far apart or we'll never find our way back to each other!", 7114)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 23 - Nielsen
+$Team: -1
+$MessageNew:  XSTR("Shivans neutralized. Area is secure. ", 7115)
+$end_multi_text
++AVI Name: Head-TP6
++Wave Name: msg_chatter.ogg
+
+$Name: 24 - Harper
+$Team: -1
+$MessageNew:  XSTR("Good. Let's keep moving. If the Shivans are already here, then the Big Buddha could be in some really big trouble right about now. ", 7116)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 25 - Black Widow
+$Team: -1
+$MessageNew:  XSTR("I'm picking up more derelict ships...", 7117)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: msg_chatter.ogg
+
+$Name: 26 - GZ Delta 3
+$Team: -1
+$MessageNew:  XSTR("Terran fighters! Thank God! I've got Shivans right on my tail! Please, help me out! ", 7118)
+$end_multi_text
++AVI Name: Head-TP4
++Wave Name: msg_chatter.ogg
+
+$Name: 27 - Harper
+$Team: -1
+$MessageNew:  XSTR("Coming right to you, pilot! Just keep heading our way! ", 7119)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 28 - GZ Delta 3
+$Team: -1
+$MessageNew:  XSTR("They've caught up with me! I can't shake them off! Nooo--", 7120)
+$end_multi_text
++AVI Name: Head-TP4
++Wave Name: msg_chatter.ogg
+
+$Name: 29 - Harper
+$Team: -1
+$MessageNew:  XSTR("He's down! Damn them! But that means there are still Terran ships out here somewhere! Now we're definitely running out of time to find them!", 7121)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 30 - GZ Zeta 1
+$Team: -1
+$MessageNew:  XSTR("Mayday, ma-- --eta wi-- --af Zeppeli-- --need immed--", 7122)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: msg_chatter.ogg
+
+$Name: 31 - Harper
+$Team: -1
+$MessageNew:  XSTR("Zeta wing, this is Alpha 1 of the 49th Avalonians, Uranus Recon Force! We have you on our scopes. Head our way and we'll do what we can to-- ", 7123)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 32 - GZ Zeta 1
+$Team: -1
+$MessageNew:  XSTR("Don-t bo-- --find B-- --hurry or---", 7124)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: msg_chatter.ogg
+
+$Name: 33 - Harper
+$Team: -1
+$MessageNew:  XSTR("Zeta 1, repeat your last. Just stay where you are. We're coming right to you. It's going to be alright-", 7125)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 34 - Spark
+$Team: -1
+$MessageNew:  XSTR("Zeta 1, we're here to find the Big Buddha. Send us the shipyard's coordinates! I say again, send us the Big Buddha's coordinates right now, over!", 7126)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 35 - GZ Zeta 1
+$Team: -1
+$MessageNew:  XSTR("Yes--- --ind Big Bu-- --19-34-- --ordina-- 64-19-34-- --", 7127)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 36 - Black Widow
+$Team: -1
+$MessageNew:  XSTR("Blasted Shivans! We lost his signal!", 7128)
+$end_multi_text
++AVI Name: Head-TP2
++Wave Name: msg_chatter.ogg
+
+$Name: 37 - Spark
+$Team: -1
+$MessageNew:  XSTR("We'd never have reached him in time, Widow. Squadmaster, I have the Big Buddha's coordinates! It's not far from our current location. Let's move!", 7129)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 38 - Harper
+$Team: -1
+$MessageNew:  XSTR("Great job, kid. Let's kick the afterburners and get to that flying scrapheap before there's nothing left for us to save.", 7130)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 39 - Spark
+$Team: -1
+$MessageNew:  XSTR("I've got new Shivan signatures on my sensors but they're not targeting us! They must be attacking the refugee ships!", 7131)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 40 - Harper
+$Team: -1
+$MessageNew:  XSTR("I see them! Alright, kiddies, our lost birds are straight ahead! Break those Shivan formations apart and try to lure them away from the refugees!", 7132)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 41 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("This is Shipmaster Donnelly of the Graf Zeppelin hailing unidentified Syndicate fighters! Target Brahma and Indra bombers! They are close to your position and rapidly approaching the Big Buddha as well as the Graf Zeppelin!", 7133)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 42 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("Unidentified fighters, this is the Graf Zeppelin. You have our thanks for your timely intervention. You would be most welcome to join our forces and follow us deeper into Uranus. ", 7134)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 43 - Harper
+$Team: -1
+$MessageNew:  XSTR("Graf Zeppelin, this is Alpha 1 of the 49th Avalonians, Uranus Recon Force. Thanks for your, uh, hospitality, but we're actually here to retrieve you from this place. Command is looking forward to seeing their precious mobile shipyard again.", 7135)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 44 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("We're not going anywhere, pilot. Can't you see the simple fact that the war is lost? We and the Federates used everything we had against the Shivans. All of it...was simply not enough. I wish the ORS the rest of the Syndicate could see our struggle with the same clarity that I have.", 7136)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 44,5 - Harper
+$Team: -1
+$MessageNew:  XSTR("Well, I guess we know why they weren't broadcasting any distress signals. They didn't want to be found. Not even by us. ", 7137)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 45 - Spark
+$Team: -1
+$MessageNew:  XSTR("I can't believe what I'm hearing! You can't be serious about just hiding here, sir. Billions of people are dying out there!", 7138)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 46 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("That is exactly why we're hiding, pilot. Because billions are dying everywhere else. What could Big Buddha possibly give the ORS now? Two or three frigates repaired and returned to the frontline? Supplies for one more futile counterattack? ", 7139)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 47 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("I realized we can no longer fight the Shivans. I also realized I can contribute to mankind's survival in ways other than supporting the failing Syndicate until the bitter end. One day, the Shivans will leave. Our only hope is to remain hidden until that moment comes. ", 7140)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 48 - Spark
+$Team: -1
+$MessageNew:  XSTR("Do you honestly believe your own words, sir? Hide from them? You're fighting for survival like we are! Stay here and you'll end up running like prey until the Shivans hunt you down to the last. Is helping humanity's extinction along what you truly want?", 7141)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 49 - Harper
+$Team: -1
+$MessageNew:  XSTR("Calm down, kid! I don't like this either but playing fuckin' diplomat is not our mission. I'm establishing a connection with Command. Let's see how persuasive they can be with these guys.", 7142)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 50 - Harper
+$Team: -1
+$MessageNew:  XSTR("Command, this is Alpha 1 of the 49th Avalonians, Uranus Recon Force. Do you copy?", 7143)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 51 - Command
+$Team: -1
+$MessageNew:  XSTR("Loud and clear, Alpha 1. Did you find the Big Buddha? Is it ready to depart? ", 7144)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: msg_caps.ogg
+
+$Name: 52 - Harper
+$Team: -1
+$MessageNew:  XSTR("Oh, boy... Yes, we found it. However, the commander of the Graf Zeppelin is not likely to give it back. I'm patching him through so you can hear his story. Just a little heads-up? It's not easy to listen to without a glass of whiskey.", 7145)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 53 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR(" Command, this is Shipmaster Donnelly of the ORCa Graf Zeppelin. I will only repeat to you what I already told your pilot. We are not going to rejoin your war. The Big Buddha is staying with my convoy.", 7146)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 54 - Command
+$Team: -1
+$MessageNew:  XSTR("That decision is not yours to make, Shipmaster. If you intend to keep the Big Buddha from us, you and your subordinates will be considered traitors to the Syndicate and treated accordingly.", 7147)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: msg_caps.ogg
+
+$Name: 55 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("Don't make me laugh, Command! The Syndicate is dead, just like the Federated Nations! You no longer have any jurisdiction here. My convoy is not part of the Syndicate any longer. We're just Terrans who want to get away from danger.", 7148)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 56 - Command
+$Team: -1
+$MessageNew:  XSTR("This is your last warning, Shipmaster Donnelly. If the Big Buddha is not returned to our control, then you force our hand. We will use any means necessary to--", 7149)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: msg_caps.ogg
+
+$Name: 57 - Tyrone
+$Team: -1
+$MessageNew:  XSTR("Forgive the interjection, Command, but we don't want any bloodshed here. Please, allow me to handle this situation personally.", 7150)
+$end_multi_text
++AVI Name: HeadTyrone
++Wave Name: msg_caps.ogg
+
+$Name: 58 - Command
+$Team: -1
+$MessageNew:  XSTR("If that is your wish, Fleetmaster Tyrone. You may proceed.", 7151)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: msg_caps.ogg
+
+$Name: 59 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("Fleetmaster Tyrone? The great Horatio Tyrone himself? I'm impressed that you've managed to survive the Shivans this long. Is the Big Buddha really that important to the Syndicate?", 7152)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 60 - Tyrone
+$Team: -1
+$MessageNew:  XSTR("Yes, it is, Shipmaster Donnelly. The Syndicate doesn't need the Big Buddha to continue the war in Sol. You are right. We lost. We cannot continue to resist the Shivans the way we have so far. Billions of people are dead and our worlds are now lifeless hunks of rock.", 7153)
+$end_multi_text
++AVI Name: HeadTyrone
++Wave Name: msg_caps.ogg
+
+$Name: 61 - Tyrone
+$Team: -1
+$MessageNew:  XSTR("But mankind isn't extinct yet. We have rallied over a million survivors. They are crossing through subspace into Beta Volantis as we speak. We are abandoning Sol in search of a new home, one that is far enough away from the Shivans to ensure our safety.", 7154)
+$end_multi_text
++AVI Name: HeadTyrone
++Wave Name: msg_caps.ogg
+
+$Name: 62 - Tyrone
+$Team: -1
+$MessageNew:  XSTR("If we are to succeed, then we need all the help we can get. That includes you, Shipmaster Donnelly. We also need the Big Buddha to maintain our ships. I know you want to give those refugees a chance to survive. Join us and you'll be giving them so much more.", 7155)
+$end_multi_text
++AVI Name: HeadTyrone
++Wave Name: msg_caps.ogg
+
+$Name: 63 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("One million survivors... Fleetmaster, I had no idea about your plans. The Syndicate is really going to abandon the Sol system?", 7156)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 64 - Tyrone
+$Team: -1
+$MessageNew:  XSTR("That is correct. We will be waiting for you at our rallying point near the Beta Volantis jump node, Shipmaster. Godspeed to you and all the people you swore to protect. Fleetmaster Tyrone, out.", 7157)
+$end_multi_text
++AVI Name: HeadTyrone
++Wave Name: msg_caps.ogg
+
+$Name: 66 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("All units, stand by. I'm sending you a new set of coordinates. Prepare to jump to the Beta Volantis node on my command.", 7158)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 65 - Harper
+$Team: -1
+$MessageNew:  XSTR("Well, I'll be damned. Looks like these guys will be joining us after all.", 7159)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 67 - Spark
+$Team: -1
+$MessageNew:  XSTR("Holy shit.... Leave Sol? They were really able to execute such a plan in secret? If they had revealed all this to us much sooner...", 7160)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 68 - Harper
+$Team: -1
+$MessageNew:  XSTR("Then things could've turned out a lot differently. For better or worse. That's how the military works, kid. We both know it all too well.", 7161)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 69 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("All fighter escorts, the Graf Zeppelin's hangar crews are ready to receive you. Avalonians, you are also welcome to land. We'll gladly resupply your fighters while the convoy jumps to the node. ", 7162)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 70 - Harper
+$Team: -1
+$MessageNew:  XSTR("We would be honored, Shipmaster Donnelly. Seems like we're in the same boat now. Alright, Avalonians, park yourselves on the Graf Zeppelin and let's test our new allies' hospitality...", 7163)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 12,1 - Command
+$Team: -1
+$MessageNew:  XSTR("Can you identify any wreckage that might belong to the Big Buddha?", 7164)
+$end_multi_text
++AVI Name: Head-CM1
++Wave Name: msg_caps.ogg
+
+$Name: 12,2 - Harper
+$Team: -1
+$MessageNew:  XSTR("That's a neg, Command. Mostly smaller civilian ships and trashed fighters. Nothing we're seeing was ever part of the Big Buddha. I'm sure of it.", 7165)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: Mission failed Graf
+$Team: -1
+$MessageNew:  XSTR("Mission failed
+
+Graf Zeppelin has been destroyed", 7166)
+$end_multi_text
+
+$Name: Mission failed Buddha
+$Team: -1
+$MessageNew:  XSTR("Mission failed
+
+Big Buddha has been destroyed", 7167)
+$end_multi_text
+
+$Name: 71 - Harper
+$Team: -1
+$MessageNew:  XSTR("Spark! Stop lagging behind and get back here! We've got a job to do.", 7168)
+$end_multi_text
++Persona: Harper
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 72 - Harper
+$Team: -1
+$MessageNew:  XSTR("Where the fuck are you, kid!? I've lost your signal! Get back here now or you'll get lost in these damn clouds!", 7169)
+$end_multi_text
++Persona: Harper
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: Mission failed Lost
+$Team: -1
+$MessageNew:  XSTR("Mission failed
+
+You got lost", 7170)
+$end_multi_text
+
+$Name: 47,1 - Graf Zeppelin
+$Team: -1
+$MessageNew:  XSTR("I present this offer to you, pilots. With the Big Buddha and all these cargo-laden supply ships, this small human enclave can outlast the Shivan invasion. We will hide here until the Shivans leave Sol. If you wish to join us, you may do so. If not, leave us in peace.", 7171)
+$end_multi_text
++AVI Name: HeadODonnelly
++Wave Name: msg_caps.ogg
+
+$Name: 3,1 - Alpha 3
+$Team: -1
+$MessageNew:  XSTR("We sacrificed a lot to get to this point. I certainly hope this whole rescue mission is worth it.", 7172)
+$end_multi_text
++Persona: Nielsen
++AVI Name: Head-TP6
++Wave Name: msg_chatter.ogg
+
+$Name: 3,2 - Beta 2
+$Team: -1
+$MessageNew:  XSTR("These Europans require our help, my friend. Of course it is worth it. ", 7173)
+$end_multi_text
++Persona: Al-Churi
++AVI Name: Head-TP4
++Wave Name: msg_chatter.ogg
+
+$Name: 3,3 - Alpha 1
+$Team: -1
+$MessageNew:  XSTR("Cut the chatter, people, and stay alert. We're flying almost blind in these clouds.", 7174)
+$end_multi_text
++Persona: Harper
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 38,1 - Nielsen
+$Team: -1
+$MessageNew:  XSTR("Still nothing. This could be a trap. I'm not detecting any allied units at these coordinates.", 7175)
+$end_multi_text
++Persona: Nielsen
++AVI Name: Head-TP6
++Wave Name: msg_chatter.ogg
+
+$Name: 38,2 - Harper
+$Team: -1
+$MessageNew:  XSTR("We're still too far away. Our long range sensors are next to useless in all this gas. We've got to get closer. ", 7176)
+$end_multi_text
++Persona: Harper
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 44,6 - Nielsen
+$Team: -1
+$MessageNew:  XSTR("Cowards. Fucking despicable cowards. After everything it took to find them, they repay us by refusing to be rescued!?", 7177)
+$end_multi_text
++Persona: Nielsen
++AVI Name: Head-TP6
++Wave Name: msg_chatter.ogg
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 500
+$Ambient light level: 7895160
+
++Neb2: nbackcyan
++Neb2Flags: 3
+
+$Bitmap List:
++Flags: ( "corrected angles" )
+$Sun: SunSol
++Angles: 0.052073 6.277708 4.607527
++Scale: 0.300000
+
+#Asteroid Fields
+
+$Density: 20
++Field Type: 1
++Debris Genre: 1
++Field Debris Type: 12
++Field Debris Type: 13
++Field Debris Type: 12
+$Average Speed: 0.000000
+$Minimum: -1000.000000, -500.000000, -1000.000000
+$Maximum: 1000.000000, 800.000000, 1000.000000
+
+#Music
+
+$Event Music: None
+$Briefing Music: Brief03 FS1 Briefing2
+$Debriefing Success Music: Brief02 The Fleet
+
+#End
+

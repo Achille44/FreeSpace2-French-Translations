@@ -1,0 +1,5867 @@
+#Mission Info
+
+$Version: 0.10
+$Name:  XSTR("Pastoralism", 7454)
+$Author: Exile Team
+$Created: 01/19/14 at 16:29:36
+$Modified: 04/05/18 at 20:35:43
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 2304)
+$end_multi_text
++Game Type Flags: 1
++Flags: 1216
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
++Disallow Support: 0
++Hull Repair Ceiling: 60.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 2269.893555, 1927.869751, 8329.246094
++Viewer orient:
+	-0.429253, 0.000014, -0.903184,
+	0.164682, 0.983238, -0.078252,
+	0.888044, -0.182328, -0.422060
+
+
+$Load Screen 1024: Loading_M09.png
+
+$Skybox Model: StarField.pof
+
+$AI Profile: Exile
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"achievement07"		"0"		"number"
+		1		"achievement_count"		"0"		"number"
+		2		"achievement_total"		"19"		"number"
+		3		"adrastushauler02"		"0"		"number"
+		4		"checkpoint1"		"0"		"number"		"player-persistent"
+		5		"counterInit"		"240"		"number"
+		6		"eta"		"0"		"number"
+		7		"etaDecSec"		"0"		"number"
+		8		"etaMin"		"0"		"number"
+		9		"etaSec"		"0"		"number"
+		10		"filename"		"a"		"string"
+		11		"fleet_population"		"1198732"		"number"		"campaign-persistent"
+		12		"loadship"		"a"		"string"
+		13		"omega14"		"0"		"number"
+		14		"rayangel"		"0"		"number"
+		15		"saveexist"		"2"		"number"
+		16		"uranusmoverb15"		"0"		"number"
+		17		"weinberg"		"0"		"number"
+		18		"wessex"		"0"		"number"
+		19		"autoGenVar1"		"#Spark"		"string"
+		20		"autoGenVar2"		"#Harmattan"		"string"
+		21		"autoGenVar3"		"#Beta 1"		"string"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 0
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 6
+
+$Formula: ( and 
+   ( is-goal-true-delay 
+      "Rescue civilian convoy" 
+      0 
+   )
+   ( is-goal-true-delay 
+      "Protect frigates" 
+      0 
+   )
+   ( has-departed-delay 
+      0 
+      "Ray Angel" 
+      "Omega 14" 
+      "Adrastus Hauler 02" 
+      "Weinberg" 
+      "Wessex" 
+      "Uranus Mover B15" 
+   )
+)
+$Multi text
+    XSTR("Shipmaster Donnelly: 
+Excellent work out there, pilots. You successfully drove off a Shivan attack on a civilian convoy. Not only did you destroy all enemy units on the field of engagement, but you were also able to escort all remaining civilian vessels to safety. You saved a lot of lives today. In our current situation, every life we can save is priceless.", 7455)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-goal-true-delay 
+      "Rescue civilian convoy" 
+      0 
+   )
+   ( is-goal-true-delay 
+      "Protect frigates" 
+      0 
+   )
+   ( percent-ships-destroyed 
+      10 
+      "Ray Angel" 
+      "Omega 14" 
+      "Adrastus Hauler 02" 
+      "Weinberg" 
+      "Wessex" 
+      "Uranus Mover B15" 
+   )
+)
+$Multi text
+    XSTR("Shipmaster Donnelly: 
+You did well, pilots. Shivan forces took the convoy by surprise and inflicted major damage, but you successfully drove the enemy off. Regrettably, we sustained civilian casualties in this engagement. If we had arrived a little earlier, they would never have taken place. But given the situation, you did all you could to save the rest of the convoy and escort them to safety.", 7456)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+$Formula: ( and 
+   ( is-goal-true-delay 
+      "Rescue civilian convoy" 
+      0 
+   )
+   ( is-goal-true-delay 
+      "Protect frigates" 
+      0 
+   )
+)
+$Multi text
+    XSTR("I'm afraid you're not going to get any R&R just yet, pilots. More and more Shivans are swarming our blockade, and the Ironclad's battle group is just barely holding the line. The rest of the Exodus fleet, including the Graf Zeppelin is now regrouping to assist them. 
+
+Squadmaster Harper, Flightmaster Tarabein, please come with me. There is an issue we need to discuss.", 7457)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+$Formula: ( is-destroyed-delay 4 "Harmattan" ) 
+$Multi text
+    XSTR("Shipmaster Donnelly: 
+The rescue operation ended in failure after the ORFg Harmattan was overwhelmed by Shivan forces. We mourn the loss of one of the fleet's most battle-hardened crews. They were heroes who played a crucial part in Operation Moyses and they will be remembered for their contribution to the fleet and their sacrifice to protect those in need.", 7458)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+$Formula: ( is-destroyed-delay 4 "Nocturnalia" ) 
+$Multi text
+    XSTR("Shipmaster Donnelly: 
+The rescue operation ended in failure after the ORFg Nocturnalia was overwhelmed by Shivan reavers. We faced a difficult situation today, but the loss of Nocturnalia could have been avoided. For now, we mourn the loss of its crew.", 7459)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+$Formula: ( or 
+   ( is-destroyed-delay 4 "Sun Tzu" ) 
+   ( is-destroyed-delay 4 "Essex" ) 
+   ( is-destroyed-delay 4 "Raspadskaja" ) 
+   ( percent-ships-destroyed 
+      35 
+      "Ray Angel" 
+      "Omega 14" 
+      "Adrastus Hauler 02" 
+      "Raspadskaja" 
+      "Weinberg" 
+      "Wessex" 
+      "Uranus Mover B15" 
+   )
+)
+$Multi text
+    XSTR("Shipmaster Donnelly: 
+The rescue operation did not go as planned. Although you successfully drove off the Shivan warships that ambushed our convoy, the enemy launched another strike and eliminated the convoy. Many innocents died today, pilots -- innocents that you could have saved. We simply cannot afford losses of this scale. It must never happen again.", 7460)
+$end_multi_text
+$Voice: none.wav
+$Recommendation text:
+    XSTR("", 10)
+$end_multi_text
+
+#Callsigns:
+$Callsign: XSTR("Harper", 5869)
+$Callsign: XSTR("Spark", 5871)
+$Callsign: XSTR("Fives", 7361)
+$Callsign: XSTR("Al-Churi", 5874)
+$Callsign: XSTR("Black Widow", 5870)
+$Callsign: XSTR("Nielsen", 5875)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Beta 1
+$Ship Choices: (
+	"GTF Ulysses"	5
+	"GTF Hercules"	5
+	"GTF Hercules Mark II"	5
+	"GTF Ares"	5
+	"GTF Erinyes"	5
+	"GTF Loki"	5
+	"GTF Pegasus"	5
+	"GTF Perseus"	5
+	"GTF Myrmidon"	5
+	"SF Mara (terrans)"	5
+	"GTB Artemis"	5
+	"GTB Artemis D.H."	5
+	"GTB Medusa"	5
+	"GTB Ursa"	5
+	"GTB Zeus"	5
+	"GTB Boanerges"	5
+	"GVF Ptah"	5
+	"ORF Rapier"	5
+	"ORF Ymir"	5
+	"ORF Vindicator"	5
+	"ORB Stalker"	5
+)
+
++Weaponry Pool: (
+	"Subach HL-7"	16
+	"Subach HL-D"	16
+	"Mekhu HL-7"	16
+	"Mekhu HL-7D"	16
+	"Akheton SDG"	16
+	"Morning Star"	16
+	"MorningStar D"	16
+	"Prometheus R"	16
+	"Prometheus S"	16
+	"Prometheus D"	16
+	"Maxim"	16
+	"Maxim D"	16
+	"UD-8 Kayser"	16
+	"UD-D Kayser"	16
+	"Circe"	16
+	"Lamprey"	16
+	"Pulsar PC-9"	24
+	"Prometheus N"	24
+	"Defiler LPC"	16
+	"Scythe"	16
+	"Eviscerator"	16
+	"Incisor"	16
+	"Devastator"	16
+	"Widow"	16
+	"Excalibur"	16
+	"Vengeance"	16
+	"Yali Pulse Cannon"	16
+	"Rockeye"	500
+	"Rockeye D"	500
+	"Tempest"	500
+	"Tempest D"	500
+	"Hornet"	500
+	"Hornet D"	500
+	"Tornado"	500
+	"Tornado D"	500
+	"Harpoon"	500
+	"Harpoon D"	500
+	"Trebuchet"	500
+	"TAG-A"	500
+	"TAG-B"	500
+	"TAG-C"	500
+	"Piranha"	500
+	"Stiletto II"	500
+	"Infyrno"	500
+	"Infyrno D"	500
+	"Cyclops"	500
+	"Cyclops#short"	500
+	"Helios"	500
+	"EMP Adv."	500
+	"Bolt"	500
+	"Seeker"	500
+	"Maelstrom"	500
+	"Stinger"	468
+	"MX-112"	500
+	"Vortex"	1060
+	"Thunderstrike"	500
+	"Hurricane"	500
+	"Arbalest"	500
+	"Demolisher"	500
+	"Revenant"	500
+)
+
+#Objects		;! 75 total
+
+$Name: Beta 1		;! Object #0
+$Display Name: XSTR("Beta 1", 5765)
+$Class: ORF Claymore
+$Callsign: XSTR("Spark", 5871)
+
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -60.430294, 0.000000, -1054.694946
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
+
+$Name: Beta 2		;! Object #1
+$Display Name: XSTR("Beta 2", 5766)
+$Class: ORF Claymore
+$Callsign: XSTR("Al-Churi", 5874)
+
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -134.188232, 0.000000, -1157.210205
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-guard "Beta 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
++Persona Index: 11
+
+$Name: Beta 3		;! Object #2
+$Display Name: XSTR("Beta 3", 5767)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -40.622410, 0.000000, -1158.540039
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-guard "Beta 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
++Persona Index: 2
+
+$Name: Beta 4		;! Object #3
+$Display Name: XSTR("Beta 4", 5768)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -81.280640, 0.000000, -1216.456543
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-guard "Beta 1" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 33023		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
++Persona Index: 3
+
+$Name: Alpha 1		;! Object #4
+$Display Name: XSTR("Alpha 1", 5745)
+$Class: ORF Claymore
+$Callsign: XSTR("Harper", 5869)
+
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -323.256409, 122.523056, -1056.675537
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
++Persona Index: 7
+
+$Name: Alpha 2		;! Object #5
+$Display Name: XSTR("Alpha 2", 5890)
+$Class: ORF Claymore
+$Callsign: XSTR("Black Widow", 5870)
+
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -252.394653, 122.523056, -1138.755615
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
++Persona Index: 8
+
+$Name: Alpha 3		;! Object #6
+$Display Name: XSTR("Alpha 3", 5891)
+$Class: ORF Claymore
+$Callsign: XSTR("Nielsen", 5875)
+
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -399.914551, 122.523056, -1152.380371
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
++Persona Index: 9
+
+$Name: Alpha 4		;! Object #7
+$Display Name: XSTR("Alpha 4", 5892)
+$Class: ORF Claymore
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -294.464905, 122.523056, -1230.946533
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Vortex" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
++Persona Index: 2
+
+$Name: Essex		;! Object #8
+$Display Name: XSTR("Essex", 7401)
+$Class: ORC Amalthea
+$Team: Friendly
+$Team Color Setting: Escort Fleet
+$Location: 1920.882690, 1882.394165, 7742.939941
+$Orientation:
+	-0.437319, -0.353851, -0.826767,
+	-0.250890, 0.930843, -0.265687,
+	0.863602, 0.091236, -0.495851
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "amalthea8 path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 61
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
++Departure delay: 4
+$Departure Cue: ( is-event-true-delay "msg23" 6 ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 15
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 200
+$Texture Replace:
++old: nameplate
++new: nameplate-essex
+
+$Name: Harmattan		;! Object #9
+$Display Name: XSTR("Harmattan", 5880)
+$Class: ORFg Vitalius
+$Team: Friendly
+$Team Color Setting: Roaming Fleet
+$Location: 1148.623535, 497.211975, -1217.896484
+$Orientation:
+	0.891568, -0.452886, 0.000000,
+	0.452886, 0.891568, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "harmattan path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01a
++Subsystem: turret02a
++Subsystem: turret03a
++Subsystem: turret04
++Sbank Ammo: ( 0 )
++Subsystem: turret05
++Sbank Ammo: ( 0 )
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
+$Arrival Location: Hyperspace
++Arrival Delay: 2
+$Arrival Cue: ( is-event-true-delay 
+   "reinforcements arrive" 
+   0 
+)
+$Departure Location: Hyperspace
++Departure delay: 5
+$Departure Cue: ( and 
+   ( is-event-true-delay "msg23" 16 ) 
+   ( is-event-true-delay 
+      "protect convoy" 
+      4 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 20
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 8
+$Texture Replace:
++old: nameplate
++new: nameplate-harmattan
+
+$Name: Nocturnalia		;! Object #10
+$Display Name: XSTR("Nocturnalia", 7461)
+$Class: ORFg Vitalius
+$Team: Friendly
+$Team Color Setting: Roaming Fleet
+$Location: -717.578796, -136.700684, -1449.187500
+$Orientation:
+	0.961055, 0.276356, 0.000000,
+	-0.276356, 0.961055, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "Nocturnalia path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01a
++Subsystem: turret02a
++Subsystem: turret03a
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "reinforcements arrive" 
+   0 
+)
+$Departure Location: Hyperspace
++Departure delay: 3
+$Departure Cue: ( and 
+   ( is-event-true-delay "msg23" 16 ) 
+   ( is-event-true-delay 
+      "protect convoy" 
+      4 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 20
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 8
+$Texture Replace:
++old: nameplate
++new: nameplate-nocturnalia
+
+$Name: Ray Angel		;! Object #11
+$Display Name: XSTR("Ray Angel", 7462)
+$Class: ORT Elysium
+$Team: Friendly
+$Location: 3875.547363, 1722.524414, 8154.181641
+$Orientation:
+	-0.605723, -0.160020, -0.779419,
+	-0.102040, 0.987102, -0.123359,
+	0.789106, 0.004810, -0.614238
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "elysium14 path" 50 ) )
+$Cargo 1:  XSTR("Supplies", 6596)
++Initial Velocity: 33
++Initial Hull: 70
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
++Departure delay: 1
+$Departure Cue: ( is-event-true-delay "msg23" 6 ) 
+$Determination: 10
++Flags: ( "cargo-known" "escort" "no-arrival-warp" "invulnerable" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 12
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Omega 14		;! Object #12
+$Display Name: XSTR("Omega 14", 7463)
+$Class: ORT Elysium
+$Team: Friendly
+$Location: 4074.791016, 2095.961914, 8469.337891
+$Orientation:
+	-0.521265, -0.436852, -0.733105,
+	-0.367676, 0.890190, -0.269026,
+	0.770128, 0.129311, -0.624646
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "elysium 15&16 path" 50 ) )
+$Cargo 1:  XSTR("Medical Supplies", 148)
++Initial Velocity: 33
++Initial Hull: 54
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
++Departure delay: 5
+$Departure Cue: ( is-event-true-delay "msg23" 6 ) 
+$Determination: 10
++Flags: ( "cargo-known" "escort" "no-arrival-warp" "invulnerable" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 12
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Adrastus Hauler 02		;! Object #13
+$Display Name: XSTR("Adrastus Hauler 02", 7464)
+$Class: ORT Elysium
+$Team: Friendly
+$Location: 3857.475098, 2084.397461, 8668.257813
+$Orientation:
+	-0.605721, -0.160021, -0.779420,
+	-0.102041, 0.987102, -0.123359,
+	0.789107, 0.004811, -0.614237
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "elysium 15&16 path" 50 ) )
+$Cargo 1:  XSTR("Civilians", 145)
++Initial Velocity: 33
++Initial Hull: 97
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
++Departure delay: 4
+$Departure Cue: ( is-event-true-delay "msg23" 6 ) 
+$Determination: 10
++Flags: ( "cargo-known" "escort" "no-arrival-warp" "invulnerable" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 12
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Raspadskaja		;! Object #14
+$Display Name: XSTR("Raspadskaja", 7465)
+$Class: ORGT Pluto
+$Team: Friendly
+$Location: 2981.606445, 1969.770996, 8276.570313
+$Orientation:
+	-0.617770, -0.022852, -0.786027,
+	0.028764, 0.998252, -0.051630,
+	0.785832, -0.054505, -0.616033
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "nautilus17 path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 68
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
++Departure delay: 2
+$Departure Cue: ( is-event-true-delay "msg23" 6 ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" "invulnerable" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 14
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 180
+
+$Name: Weinberg		;! Object #15
+$Display Name: XSTR("Weinberg", 7466)
+$Class: ORSC Faustus
+$Team: Friendly
+$Location: 3636.882324, 2043.105347, 8224.261719
+$Orientation:
+	-0.759303, 0.083355, -0.645376,
+	0.159100, 0.985443, -0.059909,
+	0.630988, -0.148168, -0.761512
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "faustus18 path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 65
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "msg23" 6 ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" "invulnerable" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 12
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: Wessex		;! Object #16
+$Display Name: XSTR("Wessex", 7467)
+$Class: ORFr Chronos
+$Team: Friendly
+$Location: 3188.752930, 1543.761597, 8108.431152
+$Orientation:
+	-0.617764, 0.023139, -0.786023,
+	0.072511, 0.996985, -0.027640,
+	0.783014, -0.074070, -0.617579
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "chronos19 path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 42
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
++Departure delay: 3
+$Departure Cue: ( is-event-true-delay "msg23" 6 ) 
+$Determination: 10
++Flags: ( "cargo-known" "escort" "no-arrival-warp" "invulnerable" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 12
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Uranus Mover B15		;! Object #17
+$Display Name: XSTR("Uranus Mover B15", 7468)
+$Class: ORFr Chronos
+$Team: Friendly
+$Location: 3663.502930, 2240.704590, 8662.343750
+$Orientation:
+	-0.602708, 0.178387, -0.777767,
+	0.219770, 0.974105, 0.053113,
+	0.767101, -0.138918, -0.626305
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "chronos20 path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 76
++Subsystem: Pilot
++Subsystem: turreta
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
++Departure delay: 3
+$Departure Cue: ( is-event-true-delay "msg23" 6 ) 
+$Determination: 10
++Flags: ( "cargo-known" "escort" "no-arrival-warp" "invulnerable" "beam-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 12
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 20
+
+$Name: Sun Tzu		;! Object #18
+$Display Name: XSTR("Sun Tzu", 7469)
+$Class: ORC Amalthea
+$Team: Friendly
+$Team Color Setting: Roaming Fleet
+$Location: 2583.900146, 1470.780029, 7291.466309
+$Orientation:
+	-0.437318, -0.353851, -0.826766,
+	-0.250889, 0.930841, -0.265687,
+	0.863601, 0.091237, -0.495851
+$AI Behavior: None
+$AI Goals: ( goals ( ai-waypoints-once "amalthea21 path" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 66
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
++Departure delay: 5
+$Departure Cue: ( is-event-true-delay "msg23" 6 ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 16
++Hotkey: 4
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 200
+$Texture Replace:
++old: nameplate
++new: nameplate-suntzu
+
+$Name: Hakael		;! Object #19
+$Display Name: XSTR("Hakael", 7470)
+$Class: SC Daeva
+$Team: Hostile
+$Location: -843.122253, -241.584885, 4761.610352
+$Orientation:
+	0.448633, -0.838229, -0.310008,
+	0.202257, 0.433103, -0.878362,
+	0.870531, 0.331360, 0.363840
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 78
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" "no-arrival-warp" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 10
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 250
+
+$Name: Barbiel		;! Object #20
+$Display Name: XSTR("Barbiel", 7471)
+$Class: SFg Moloch
+$Team: Hostile
+$Location: -1436.490723, -154.127625, 6004.745117
+$Orientation:
+	0.282640, 0.035686, -0.958562,
+	-0.625439, 0.764529, -0.155953,
+	0.727283, 0.643600, 0.238406
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 62
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Sbank Ammo: ( 0 )
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Primary Banks: ( "Shivan Turret Laser" )
++Subsystem: turret12
++Subsystem: turret13
++Sbank Ammo: ( 0 )
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" "no-arrival-warp" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 10
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 440
+
+$Name: Tabaet		;! Object #21
+$Display Name: XSTR("Tabaet", 5956)
+$Class: SC Cain
+$Team: Hostile
+$Location: -505.584839, 104.779732, 5652.862793
+$Orientation:
+	0.537833, -0.445292, -0.715856,
+	-0.432660, 0.582983, -0.687703,
+	0.723561, 0.679592, 0.120888
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 84
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "sound and fading" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" "no-arrival-warp" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 10
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 150
+
+$Name: Jota 1		;! Object #22
+$Display Name: XSTR("Jota 1", 7472)
+$Class: ORF Encantona
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 2897.378662, 1809.562500, 8024.464844
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 85
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
++Persona Index: 6
+
+$Name: Jota 2		;! Object #23
+$Display Name: XSTR("Jota 2", 7473)
+$Class: ORF Encantona
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 2806.693604, 1809.562500, 7979.737793
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
++Persona Index: 0
+
+$Name: Jota 3		;! Object #24
+$Display Name: XSTR("Jota 3", 7474)
+$Class: ORF Encantona
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: 2794.859131, 1809.562500, 8131.029297
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
++Persona Index: 5
+
+$Name: Harmattan #subspace		;! Object #25
+$Display Name: XSTR("Harmattan", 5880)
+$Class: ORFg Vitalius
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -16820.410156, 497.211975, 24379.701172
+$Orientation:
+	0.891568, -0.452886, 0.000000,
+	0.452886, 0.891568, -0.000000,
+	-0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01a
++Subsystem: turret02a
++Subsystem: turret03a
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "msg8" 9 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "subspace off" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Nocturnalia #subspace		;! Object #26
+$Display Name: XSTR("Nocturnalia", 7461)
+$Class: ORFg Vitalius
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -18897.775391, -136.700684, 25287.775391
+$Orientation:
+	0.961055, 0.276356, 0.000000,
+	-0.276356, 0.961055, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01a
++Subsystem: turret02a
++Subsystem: turret03a
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "msg8" 9 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "subspace off" 
+   0 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 1		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: Arjuna 1		;! Object #27
+$Display Name: XSTR("Arjuna 1", 5781)
+$Class: SF Scorpion
+$Team: Hostile
+$Location: 668.367004, 968.044250, 6546.742676
+$Orientation:
+	0.644827, -0.000000, -0.764329,
+	-0.373128, 0.872745, -0.314790,
+	0.667064, 0.488177, 0.562769
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Arjuna 2		;! Object #28
+$Display Name: XSTR("Arjuna 2", 5782)
+$Class: SF Scorpion
+$Team: Hostile
+$Location: 701.629456, 968.044250, 6479.279785
+$Orientation:
+	0.644827, 0.000000, -0.764329,
+	-0.373128, 0.872744, -0.314790,
+	0.667064, 0.488177, 0.562769
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Arjuna 3		;! Object #29
+$Display Name: XSTR("Arjuna 3", 5783)
+$Class: SF Scorpion
+$Team: Hostile
+$Location: 839.656311, 968.044250, 6546.976074
+$Orientation:
+	0.644827, 0.000000, -0.764329,
+	-0.373128, 0.872744, -0.314790,
+	0.667064, 0.488177, 0.562769
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Arjuna 4		;! Object #30
+$Display Name: XSTR("Arjuna 4", 5784)
+$Class: SF Scorpion
+$Team: Hostile
+$Location: 757.154236, 968.044250, 6566.165527
+$Orientation:
+	0.644827, 0.000000, -0.764329,
+	-0.373128, 0.872744, -0.314790,
+	0.667064, 0.488177, 0.562769
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Rama 1		;! Object #31
+$Display Name: XSTR("Rama 1", 5886)
+$Class: SF Dragon
+$Team: Hostile
+$Location: 657.736389, 1108.064575, 6629.782715
+$Orientation:
+	0.644827, 0.000000, -0.764329,
+	-0.373128, 0.872744, -0.314790,
+	0.667064, 0.488177, 0.562769
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Rama 2		;! Object #32
+$Display Name: XSTR("Rama 2", 5887)
+$Class: SF Dragon
+$Team: Hostile
+$Location: 604.124146, 1108.064575, 6565.661133
+$Orientation:
+	0.644827, 0.000000, -0.764329,
+	-0.373128, 0.872744, -0.314790,
+	0.667064, 0.488177, 0.562769
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Rama 3		;! Object #33
+$Display Name: XSTR("Rama 3", 5888)
+$Class: SF Dragon
+$Team: Hostile
+$Location: 689.072083, 1108.064575, 6568.629883
+$Orientation:
+	0.644827, 0.000000, -0.764329,
+	-0.373128, 0.872744, -0.314790,
+	0.667064, 0.488177, 0.562769
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Rama 4		;! Object #34
+$Display Name: XSTR("Rama 4", 5889)
+$Class: SF Dragon
+$Team: Hostile
+$Location: 710.693848, 1108.064575, 6592.180176
+$Orientation:
+	0.644827, 0.000000, -0.764329,
+	-0.373128, 0.872744, -0.314790,
+	0.667064, 0.488177, 0.562769
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Rama 5		;! Object #35
+$Display Name: XSTR("Rama 5", 5922)
+$Class: SF Dragon
+$Team: Hostile
+$Location: 632.053162, 1108.064575, 6602.051758
+$Orientation:
+	0.644827, 0.000000, -0.764329,
+	-0.373128, 0.872744, -0.314790,
+	0.667064, 0.488177, 0.562769
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 16
+
+$Name: Deva 1		;! Object #36
+$Display Name: XSTR("Deva 1", 5822)
+$Class: SF Manticore
+$Team: Hostile
+$Location: -271.310120, 0.000000, 5007.701172
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Durga 1		;! Object #37
+$Display Name: XSTR("Durga 1", 5786)
+$Class: SB Nahema
+$Team: Hostile
+$Location: 3812.750732, -0.000000, 6540.456543
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, -0.049184, -0.998791,
+	0.000000, 0.998791, -0.049184
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Durga 2		;! Object #38
+$Display Name: XSTR("Durga 2", 5787)
+$Class: SB Nahema
+$Team: Hostile
+$Location: 3816.788330, 22.899710, 6653.425781
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, -0.049184, -0.998791,
+	0.000000, 0.998791, -0.049184
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Durga 3		;! Object #39
+$Display Name: XSTR("Durga 3", 5788)
+$Class: SB Nahema
+$Team: Hostile
+$Location: 3903.553223, 13.150950, 6605.332520
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, -0.049184, -0.998791,
+	0.000000, 0.998791, -0.049184
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Durga 4		;! Object #40
+$Display Name: XSTR("Durga 4", 5789)
+$Class: SB Nahema
+$Team: Hostile
+$Location: 3760.805420, 9.401636, 6586.834473
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, -0.049184, -0.998791,
+	0.000000, 0.998791, -0.049184
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 14
+
+$Name: Deva 2		;! Object #41
+$Display Name: XSTR("Deva 2", 5823)
+$Class: SF Manticore
+$Team: Hostile
+$Location: -175.141891, 0.000000, 4960.405762
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Deva 3		;! Object #42
+$Display Name: XSTR("Deva 3", 5824)
+$Class: SF Manticore
+$Team: Hostile
+$Location: -98.054100, 0.000000, 5059.575684
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Deva 4		;! Object #43
+$Display Name: XSTR("Deva 4", 5825)
+$Class: SF Manticore
+$Team: Hostile
+$Location: -179.189651, 0.000000, 5101.617188
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Deva 5		;! Object #44
+$Display Name: XSTR("Deva 5", 5826)
+$Class: SF Manticore
+$Team: Hostile
+$Location: -225.820923, 0.000000, 5222.371582
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-arrival-warp" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Krishna 2		;! Object #45
+$Display Name: XSTR("Krishna 2", 5791)
+$Class: SF Manticore
+$Team: Hostile
+$Location: 4946.700684, -0.000000, 7942.964844
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Krishna 3		;! Object #46
+$Display Name: XSTR("Krishna 3", 5792)
+$Class: SF Manticore
+$Team: Hostile
+$Location: 5236.372070, -0.000000, 8078.462891
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Krishna 1		;! Object #47
+$Display Name: XSTR("Krishna 1", 5790)
+$Class: SF Manticore
+$Team: Hostile
+$Location: 5160.335938, -0.000000, 8204.043945
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Indra 1		;! Object #48
+$Display Name: XSTR("Indra 1", 5900)
+$Class: SF Aeshma
+$Team: Hostile
+$Location: 2777.167969, -0.000000, 5990.220703
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Indra 2		;! Object #49
+$Display Name: XSTR("Indra 2", 5901)
+$Class: SF Aeshma
+$Team: Hostile
+$Location: 2660.898682, -0.000000, 5973.319336
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Indra 3		;! Object #50
+$Display Name: XSTR("Indra 3", 5902)
+$Class: SF Aeshma
+$Team: Hostile
+$Location: 2766.784424, -0.000000, 6075.477051
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 12
+
+$Name: Vishnu 1		;! Object #51
+$Display Name: XSTR("Vishnu 1", 5904)
+$Class: SB Nephilim
+$Team: Hostile
+$Location: 7304.447754, 0.000000, 4691.261230
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 11
+
+$Name: Vishnu 2		;! Object #52
+$Display Name: XSTR("Vishnu 2", 5905)
+$Class: SB Nephilim
+$Team: Hostile
+$Location: 7344.875977, 0.000000, 4558.475586
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 11
+
+$Name: Vishnu 3		;! Object #53
+$Display Name: XSTR("Vishnu 3", 5906)
+$Class: SB Nephilim
+$Team: Hostile
+$Location: 7220.743164, 0.000000, 4536.365234
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 11
+
+$Name: Vishnu 4		;! Object #54
+$Display Name: XSTR("Vishnu 4", 5907)
+$Class: SB Nephilim
+$Team: Hostile
+$Location: 7141.387695, 0.000000, 4727.696289
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 11
+
+$Name: Kurma 1		;! Object #55
+$Display Name: XSTR("Kurma 1", 6582)
+$Class: SB Taurvi
+$Team: Hostile
+$Location: 2451.135742, 0.000000, 5202.334961
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Kurma 2		;! Object #56
+$Display Name: XSTR("Kurma 2", 6584)
+$Class: SB Taurvi
+$Team: Hostile
+$Location: 2653.199707, 0.000000, 5208.865234
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Kurma 3		;! Object #57
+$Display Name: XSTR("Kurma 3", 6585)
+$Class: SB Taurvi
+$Team: Hostile
+$Location: 2714.335938, 0.000000, 5093.487305
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Kurma 4		;! Object #58
+$Display Name: XSTR("Kurma 4", 6583)
+$Class: SB Taurvi
+$Team: Hostile
+$Location: 2558.406250, 0.000000, 5064.665527
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: protect convoy		;! Object #59
+$Display Name: XSTR("protect convoy", 7475)
+$Class: GTF Ulysses
+$Team: Friendly
+$Location: -7448.083008, -0.000000, 57306.121094
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay "msg14" 3 ) 
+   ( has-arrived-delay 0 "Checkpoint 1" ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( and 
+   ( percent-ships-departed 
+      66 
+      "Ray Angel" 
+      "Omega 14" 
+      "Adrastus Hauler 02" 
+      "Weinberg" 
+      "Wessex" 
+      "Uranus Mover B15" 
+   )
+   ( has-departed-delay 
+      0 
+      "Sun Tzu" 
+      "Raspadskaja" 
+      "Essex" 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-arrival-music" "no-arrival-warp" "no-departure-warp" "hidden-from-sensors" "guardian" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 8
+
+$Name: ScreenCam#Exile 60		;! Object #60
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: 10704.135742, 4121.400879, 11884.081055
+$Orientation:
+	0.880870, 0.095498, -0.463625,
+	-0.148944, 0.985606, -0.079973,
+	0.449314, 0.139500, 0.882415
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 61		;! Object #61
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: -1939.471191, -281.224762, 4036.935059
+$Orientation:
+	0.818750, 0.063167, -0.570664,
+	-0.169306, 0.976295, -0.134843,
+	0.548619, 0.207020, 0.810037
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 62		;! Object #62
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: 751.382690, 1068.160889, 6573.886719
+$Orientation:
+	0.621542, -0.024207, -0.783007,
+	-0.193016, 0.963976, -0.183015,
+	0.759230, 0.264884, 0.594479
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 63		;! Object #63
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: 1880.601440, 1183.113159, 6428.737305
+$Orientation:
+	0.993246, 0.104970, 0.049443,
+	-0.088798, 0.961945, -0.258411,
+	-0.074687, 0.252275, 0.964769
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 64		;! Object #64
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: -15797.248047, 237.704330, 23760.285156
+$Orientation:
+	0.666214, -0.029784, 0.745166,
+	0.080404, 0.996247, -0.032065,
+	-0.741414, 0.081276, 0.666108
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 65		;! Object #65
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: -17980.359375, 3.401273, 22403.583984
+$Orientation:
+	0.992075, -0.009396, -0.125296,
+	-0.007267, 0.991241, -0.131867,
+	0.125438, 0.131733, 0.983317
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 66		;! Object #66
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: -410.220947, -300.100708, 4391.964355
+$Orientation:
+	0.867318, 0.126951, 0.481293,
+	-0.038763, 0.981219, -0.188964,
+	-0.496243, 0.145235, 0.855950
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 67		;! Object #67
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: 182.425598, 335.094574, 4465.515625
+$Orientation:
+	0.648991, 0.149721, 0.745918,
+	-0.340885, 0.933745, 0.109167,
+	-0.680153, -0.325121, 0.657030
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 68		;! Object #68
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: 2301.623291, 1498.355591, 7100.891113
+$Orientation:
+	-0.233535, -0.107057, -0.966437,
+	-0.108209, 0.990608, -0.083586,
+	0.966309, 0.085057, -0.242926
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 69		;! Object #69
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: 1992.994019, 1800.674561, 6978.651855
+$Orientation:
+	-0.122651, 0.090781, -0.988289,
+	0.010490, 0.995871, 0.090176,
+	0.992394, 0.000693, -0.123097
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 70		;! Object #70
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: -1751.726074, -290.210754, -945.189087
+$Orientation:
+	0.279277, -0.134242, -0.950780,
+	-0.129478, 0.975871, -0.175816,
+	0.951441, 0.172207, 0.255157
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 71		;! Object #71
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: -1436.308594, -54.474468, -1930.683716
+$Orientation:
+	0.886366, 0.119302, -0.447351,
+	-0.082909, 0.991512, 0.100149,
+	0.455502, -0.051679, 0.888734
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 72		;! Object #72
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: 4166.895508, 2187.066162, 6544.676758
+$Orientation:
+	0.082415, 0.236596, 0.968106,
+	-0.380969, 0.905113, -0.188769,
+	-0.920907, -0.353261, 0.164731
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ScreenCam#Exile 73		;! Object #73
+$Display Name: XSTR("ScreenCam", 5713)
+$Class: ScreenCam#Exile
+$Team: Friendly
+$Location: 3664.817871, 1963.811646, 7455.481445
+$Orientation:
+	-0.360614, -0.087861, 0.928568,
+	-0.227627, 0.973741, 0.003735,
+	-0.904513, -0.210020, -0.371144
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" "no_collide" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Checkpoint 1		;! Object #74
+$Display Name: XSTR("Checkpoint 1", 6049)
+$Class: ORF Encantona
+$Team: Friendly
+$Team Color Setting: Non-Assigned
+$Location: -3090.014160, 0.000000, 3937.573486
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Behavior: None
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( and 
+   ( is-event-true-delay 
+      "checkpoint init" 
+      0 
+   )
+   ( not 
+      ( is-event-true-delay 
+         "checkpoint init hide" 
+         0 
+      )
+   )
+   ( = @checkpoint1[0] 1 ) 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "reinforcement" "no-arrival-warp" "invulnerable" "hidden-from-sensors" "vaporize" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-death-scream" )
++Respawn priority: 0
++Orders Accepted: 0		;! note that this is a bitfield!!!
++Group: 0
++Score: 8
+
+#Wings		;! 11 total
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Beta 1"
+	"Beta 2"
+	"Beta 3"
+	"Beta 4"
+)
++Hotkey: 1
++Flags: ( )
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 3 "Harmattan" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( has-departed-delay 5 "Nocturnalia" ) 
+$Ships: (		;! 4 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+	"Alpha 4"
+)
+$AI Goals: ( goals ( ai-guard "Nocturnalia" 50 ) )
++Hotkey: 0
++Flags: ( "no-arrival-music" )
+
+$Name: Jota
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Jota 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Sun Tzu" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( has-departed-delay 4 "Sun Tzu" ) 
+$Ships: (		;! 3 total
+	"Jota 1"
+	"Jota 2"
+	"Jota 3"
+)
+$AI Goals: ( goals ( ai-guard "Sun Tzu" 50 ) ( ai-chase-wing "Arjuna" 55 ) )
++Hotkey: 2
++Flags: ( "no-arrival-warp" )
+
+$Name: Arjuna
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Arjuna 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "shivan goals" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( has-arrived-delay 3 "Checkpoint 1" ) 
+$Ships: (		;! 4 total
+	"Arjuna 1"
+	"Arjuna 2"
+	"Arjuna 3"
+	"Arjuna 4"
+)
+$AI Goals: ( goals ( ai-chase-wing "Jota" 55 ) ( ai-chase "Sun Tzu" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" "no-departure-warp" )
+
+$Name: Rama
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Rama 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "shivan goals" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( has-arrived-delay 3 "Checkpoint 1" ) 
+$Ships: (		;! 5 total
+	"Rama 1"
+	"Rama 2"
+	"Rama 3"
+	"Rama 4"
+	"Rama 5"
+)
+$AI Goals: ( goals ( ai-chase "Essex" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" "no-departure-warp" )
+
+$Name: Durga
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Durga 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 3500
+$Arrival Anchor: Raspadskaja
+$Arrival Cue: ( is-event-true-delay "msg14,6" 9 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Durga 1"
+	"Durga 2"
+	"Durga 3"
+	"Durga 4"
+)
+$AI Goals: ( goals ( ai-chase "Raspadskaja" 50 ) ( ai-chase "Sun Tzu" 50 ) )
++Hotkey: 6
++Flags: ( )
++Wave Delay Min: 10
++Wave Delay Max: 15
+
+$Name: Deva
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Deva 1
+
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "end cutscene" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( has-arrived-delay 3 "Checkpoint 1" ) 
+$Ships: (		;! 5 total
+	"Deva 1"
+	"Deva 2"
+	"Deva 3"
+	"Deva 4"
+	"Deva 5"
+)
+$AI Goals: ( goals ( ai-guard "Hakael" 50 ) ( ai-guard "Barbiel" 50 ) ( ai-guard "Tabaet" 50 ) )
++Flags: ( "no-arrival-music" "no-arrival-message" "no-arrival-warp" "no-departure-warp" )
++Wave Delay Min: 10
++Wave Delay Max: 15
+
+$Name: Krishna
+$Waves: 2
+$Wave Threshold: 0
+$Special Ship: 0		;! Krishna 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 3000
+$Arrival Anchor: Raspadskaja
++Arrival delay: 13
+$Arrival Cue: ( has-arrived-delay 0 "Durga" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Krishna 1"
+	"Krishna 2"
+	"Krishna 3"
+)
+$AI Goals: ( goals ( ai-chase "Ray Angel" 50 ) ( ai-chase "Omega 14" 50 ) ( ai-chase "Adrastus Hauler 02" 50 ) ( ai-chase "Wessex" 50 ) ( ai-chase "Raspadskaja" 45 ) )
++Hotkey: 7
++Flags: ( )
++Wave Delay Min: 15
++Wave Delay Max: 20
+
+$Name: Indra
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Indra 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 3000
+$Arrival Anchor: Raspadskaja
+$Arrival Cue: ( has-arrived-delay 3 "Vishnu" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Indra 1"
+	"Indra 2"
+	"Indra 3"
+)
+$AI Goals: ( goals ( ai-chase "Uranus Mover B15" 50 ) ( ai-chase "Wessex" 50 ) ( ai-chase "Weinberg" 50 ) ( ai-chase "Adrastus Hauler 02" 50 ) ( ai-chase "Essex" 45 ) )
++Hotkey: 7
++Flags: ( )
++Wave Delay Min: 15
++Wave Delay Max: 20
+
+$Name: Vishnu
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Vishnu 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 3500
+$Arrival Anchor: Nocturnalia
++Arrival delay: 6
+$Arrival Cue: ( is-event-true-delay "msg29" 0 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Vishnu 1"
+	"Vishnu 2"
+	"Vishnu 3"
+	"Vishnu 4"
+)
+$AI Goals: ( goals ( ai-chase "Nocturnalia" 50 ) )
++Hotkey: 6
++Flags: ( )
++Wave Delay Min: 15
++Wave Delay Max: 30
+
+$Name: Kurma
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Kurma 1
+
+$Arrival Location: Near Ship
++Arrival Distance: 3500
+$Arrival Anchor: Raspadskaja
+$Arrival Cue: ( has-arrived-delay 1 "Vishnu" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Kurma 1"
+	"Kurma 2"
+	"Kurma 3"
+	"Kurma 4"
+)
+$AI Goals: ( goals ( ai-chase "Sun Tzu" 50 ) ( ai-chase "Raspadskaja" 50 ) )
++Hotkey: 6
++Flags: ( )
+
+#Events		;! 97 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@autoGenVar1[#Spark]" 
+      "#Spark" 
+      6260 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar2[#Harmattan]" 
+      "#Harmattan" 
+      7524 
+   )
+   ( modify-variable-xstr 
+      "@autoGenVar3[#Beta 1]" 
+      "#Beta 1" 
+      6680 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable 
+      "@filename[a]" 
+      "exile09cp1" 
+   )
+   ( script-eval "saveexist()" ) 
+   ( modify-variable 
+      @checkpoint1[0] 
+      @saveexist[2] 
+   )
+)
++Name: init
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "end cutscene" 
+      2 
+   )
+   ( do-nothing ) 
+)
++Name: checkpoint condition
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "checkpoint condition" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint condition" 
+            15 
+         )
+      )
+      ( = @checkpoint1[0] 1 ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterHeader" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterA" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterB" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterEnd2" 
+      ( true ) 
+   )
+   ( hud-set-message 
+      "IntCenterA" 
+      "Checkpoint Init" 
+   )
+   ( hud-set-message 
+      "IntCenterB" 
+      "Checkpoint Init 2" 
+   )
+)
++Name: checkpoint init
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "checkpoint init" 
+         15 
+      )
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterHeader" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterA" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterB" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterEnd2" 
+      ( false ) 
+   )
+   ( hud-set-message 
+      "IntCenterB" 
+      "empty" 
+   )
+)
++Name: checkpoint init hide
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 
+         2 
+         "Durga" 
+         "Krishna" 
+         "Arjuna" 
+         "Rama" 
+         "Hakael" 
+         "Barbiel" 
+         "Tabaet" 
+      )
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( hud-gauge-set-active 
+      "IntCenterHeader" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterA" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterEnd" 
+      ( true ) 
+   )
+   ( hud-set-message 
+      "IntCenterA" 
+      "Checkpoint 1 reached" 
+   )
+   ( play-sound-from-file 
+      "Enlightenment_Goal.ogg" 
+   )
+   ( modify-variable @checkpoint1[0] 1 ) 
+   ( modify-variable 
+      "@filename[a]" 
+      "exile09cp1" 
+   )
+)
++Name: Checkpoint 1 reached
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( script-eval 
+      "svsp('Beta 1',3,3)" 
+      "svsp('Beta 2',3,3)" 
+      "svsp('Beta 3',3,3)" 
+      "svsp('Beta 4',3,3)" 
+      "svsp('Alpha 1',3,3)" 
+      "svsp('Alpha 2',3,3)" 
+      "svsp('Alpha 3',3,3)" 
+      "svsp('Alpha 4',3,3)" 
+      "svsp('Essex',3,3)" 
+      "svsp('Harmattan',3,3)" 
+      "svsp('Nocturnalia',3,3)" 
+      "svsp('Ray Angel',3,3)" 
+      "svsp('Omega 14',3,3)" 
+      "svsp('Adrastus Hauler 02',3,3)" 
+      "svsp('Raspadskaja',3,3)" 
+      "svsp('Weinberg',3,3)" 
+      "svsp('Wessex',3,3)" 
+      "svsp('Uranus Mover B15',3,3)" 
+      "svsp('Sun Tzu',3,3)" 
+      "svsp('Hakael',3,3)" 
+      "svsp('Barbiel',3,3)" 
+      "svsp('Tabaet',3,3)" 
+      "svsp('Jota 1',3,3)" 
+      "svsp('Jota 2',3,3)" 
+      "svsp('Jota 3',3,3)" 
+      "svsp('Arjuna 1',3,3)" 
+      "svsp('Arjuna 2',3,3)" 
+      "svsp('Arjuna 3',3,3)" 
+      "svsp('Arjuna 4',3,3)" 
+      "svsp('Rama 1',3,3)" 
+      "svsp('Rama 2',3,3)" 
+      "svsp('Rama 3',3,3)" 
+      "svsp('Rama 4',3,3)" 
+      "svsp('Rama 5',3,3)" 
+      "svsp('Deva 1',3,3)" 
+      "svsp('Durga 1',3,3)" 
+      "svsp('Durga 2',3,3)" 
+      "svsp('Durga 3',3,3)" 
+      "svsp('Durga 4',3,3)" 
+      "svsp('Deva 2',3,3)" 
+      "svsp('Deva 3',3,3)" 
+      "svsp('Deva 4',3,3)" 
+      "svsp('Deva 5',3,3)" 
+      "svsp('Krishna 2',3,3)" 
+      "svsp('Krishna 3',3,3)" 
+      "svsp('Krishna 1',3,3)" 
+   )
+)
++Name: Checkpoint 1 save ships
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-gauge-set-active 
+      "IntCenterHeader" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterA" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterEnd" 
+      ( false ) 
+   )
+)
++Name: Checkpoint 1 reached hide
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Checkpoint 1" ) 
+   ( fade-out 2500 1 ) 
+   ( hud-gauge-set-active 
+      "IntCenterHeader" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterA" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterEnd" 
+      ( true ) 
+   )
+   ( hud-set-message 
+      "IntCenterA" 
+      "Checkpoint 1 activated" 
+   )
+   ( modify-variable 
+      "@filename[a]" 
+      "exile09cp1" 
+   )
+)
++Name: Checkpoint 1 fade
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( fade-in 2500 ) ) 
++Name: Checkpoint 1 activated
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( script-eval 
+      "ldsp('Beta 1',3,3)" 
+      "ldsp('Beta 2',3,3)" 
+      "ldsp('Beta 3',3,3)" 
+      "ldsp('Beta 4',3,3)" 
+      "ldsp('Alpha 1',3,3)" 
+      "ldsp('Alpha 2',3,3)" 
+      "ldsp('Alpha 3',3,3)" 
+      "ldsp('Alpha 4',3,3)" 
+      "ldsp('Essex',3,3)" 
+      "ldsp('Harmattan',3,3)" 
+      "ldsp('Nocturnalia',3,3)" 
+      "ldsp('Ray Angel',3,3)" 
+      "ldsp('Omega 14',3,3)" 
+      "ldsp('Adrastus Hauler 02',3,3)" 
+      "ldsp('Raspadskaja',3,3)" 
+      "ldsp('Weinberg',3,3)" 
+      "ldsp('Wessex',3,3)" 
+      "ldsp('Uranus Mover B15',3,3)" 
+      "ldsp('Sun Tzu',3,3)" 
+      "ldsp('Hakael',3,3)" 
+      "ldsp('Barbiel',3,3)" 
+      "ldsp('Tabaet',3,3)" 
+      "ldsp('Jota 1',3,3)" 
+      "ldsp('Jota 2',3,3)" 
+      "ldsp('Jota 3',3,3)" 
+      "ldsp('Arjuna 1',3,3)" 
+      "ldsp('Arjuna 2',3,3)" 
+      "ldsp('Arjuna 3',3,3)" 
+      "ldsp('Arjuna 4',3,3)" 
+      "ldsp('Rama 1',3,3)" 
+      "ldsp('Rama 2',3,3)" 
+      "ldsp('Rama 3',3,3)" 
+      "ldsp('Rama 4',3,3)" 
+      "ldsp('Rama 5',3,3)" 
+      "ldsp('Deva 1',3,3)" 
+      "ldsp('Durga 1',3,3)" 
+      "ldsp('Durga 2',3,3)" 
+      "ldsp('Durga 3',3,3)" 
+      "ldsp('Durga 4',3,3)" 
+      "ldsp('Deva 2',3,3)" 
+      "ldsp('Deva 3',3,3)" 
+      "ldsp('Deva 4',3,3)" 
+      "ldsp('Deva 5',3,3)" 
+      "ldsp('Krishna 2',3,3)" 
+      "ldsp('Krishna 3',3,3)" 
+      "ldsp('Krishna 1',3,3)" 
+   )
+)
++Name: Checkpoint 1 load ships
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-gauge-set-active 
+      "IntCenterHeader" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterA" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterEnd" 
+      ( false ) 
+   )
+)
++Name: Checkpoint 1 activated hide
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-disable-except-messages 1 ) 
+   ( player-use-ai ) 
+   ( add-goal 
+      "Beta 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( lock-primary-weapon "Beta 1" ) 
+   ( lock-secondary-weapon "Beta 1" ) 
+   ( lock-afterburner "Beta 1" ) 
+   ( never-warp "Beta 1" ) 
+   ( fade-out ) 
+   ( fade-in 3000 ) 
+   ( protect-ship "Beta 1" ) 
+   ( ship-invulnerable "Beta 1" "Jota 1" ) 
+   ( ship-invisible 
+      "Beta 1" 
+      "Beta 2" 
+      "Beta 3" 
+      "Beta 4" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 60 ) 
+      "Jota 1" 
+   )
+   ( ship-subsys-guardian-threshold 
+      ( rand-multiple 20 60 ) 
+      "Jota 1" 
+      "<all engines>" 
+   )
+)
++Name: init cutscene
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file 
+      "M09_ColdKill_Cutscene.ogg" 
+      9 
+   )
+   ( fade-in 500 ) 
+   ( adjust-audio-volume "Effects" 0 ) 
+)
++Name: sound and fading
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 60" ) 
+      ( get-object-y "ScreenCam#Exile 60" ) 
+      ( get-object-z "ScreenCam#Exile 60" ) 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 60" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 60" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 60" 
+      )
+   )
+)
++Name: camera1
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( cap-waypoint-speed "Essex" 5 ) 
+   ( cap-waypoint-speed "Sun Tzu" 5 ) 
+   ( cap-waypoint-speed "Ray Angel" 5 ) 
+   ( cap-waypoint-speed "Omega 14" 5 ) 
+   ( cap-waypoint-speed 
+      "Adrastus Hauler 02" 
+      5 
+   )
+   ( cap-waypoint-speed "Raspadskaja" 5 ) 
+   ( cap-waypoint-speed "Weinberg" 5 ) 
+   ( cap-waypoint-speed "Wessex" 5 ) 
+   ( cap-waypoint-speed 
+      "Uranus Mover B15" 
+      5 
+   )
+)
++Name: convoy set speed
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-image 
+      "title_actI.dds" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      0 
+      0 
+      4500 
+      2000 
+   )
+)
++Name: subtitle act1
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "skip cutscene hint" 
+      80 
+      80 
+      ( false ) 
+      ( false ) 
+      6000 
+      1000 
+   )
+)
++Name: skip cutscene hint
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "subtitle1" 
+      40 
+      60 
+      ( false ) 
+      ( false ) 
+      6000 
+      2000 
+   )
+)
++Name: subtitle
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "subtitle2" 
+      40 
+      63 
+      ( false ) 
+      ( false ) 
+      6000 
+      2000 
+   )
+)
++Name: subtitle2
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 61" ) 
+      ( get-object-y "ScreenCam#Exile 61" ) 
+      ( get-object-z "ScreenCam#Exile 61" ) 
+      10000 
+      2000 
+      3000 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 61" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 61" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 61" 
+      )
+      10000 
+      2000 
+      3000 
+   )
+   ( adjust-audio-volume "Effects" ) 
+)
++Name: camera2
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: shivan goals
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 62" ) 
+      ( get-object-y "ScreenCam#Exile 62" ) 
+      ( get-object-z "ScreenCam#Exile 62" ) 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 62" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 62" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 62" 
+      )
+   )
+)
++Name: camera3
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 63" ) 
+      ( get-object-y "ScreenCam#Exile 63" ) 
+      ( get-object-z "ScreenCam#Exile 63" ) 
+      16000 
+      2000 
+      2000 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 63" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 63" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 63" 
+      )
+      16000 
+      2000 
+      2000 
+   )
+)
++Name: camera4
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 72" ) 
+      ( get-object-y "ScreenCam#Exile 72" ) 
+      ( get-object-z "ScreenCam#Exile 72" ) 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 72" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 72" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 72" 
+      )
+   )
+)
++Name: camera5
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 73" ) 
+      ( get-object-y "ScreenCam#Exile 73" ) 
+      ( get-object-z "ScreenCam#Exile 73" ) 
+      15000 
+      2000 
+      2000 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 73" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 73" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 73" 
+      )
+      15000 
+      2000 
+      2000 
+   )
+)
++Name: camera6
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Sun Tzu" 
+      "High" 
+      "8 - Sun Tzu" 
+   )
+)
++Name: msg8
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( mission-set-subspace 1 ) 
+   ( adjust-audio-volume "Effects" 20 ) 
+)
++Name: subspace on
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 64" ) 
+      ( get-object-y "ScreenCam#Exile 64" ) 
+      ( get-object-z "ScreenCam#Exile 64" ) 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 64" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 64" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 64" 
+      )
+   )
+)
++Name: camera7
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 65" ) 
+      ( get-object-y "ScreenCam#Exile 65" ) 
+      ( get-object-z "ScreenCam#Exile 65" ) 
+      18000 
+      2000 
+      2000 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 65" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 65" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 65" 
+      )
+      18000 
+      2000 
+      2000 
+   )
+)
++Name: camera8
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Harmattan #subspace" 
+      "High" 
+      "9 - Harmattan" 
+   )
+)
++Name: msg9
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( mission-set-subspace 0 ) 
+   ( adjust-audio-volume "Effects" ) 
+   ( ship-vulnerable "Jota 2" "Jota 3" ) 
+)
++Name: subspace off
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 66" ) 
+      ( get-object-y "ScreenCam#Exile 66" ) 
+      ( get-object-z "ScreenCam#Exile 66" ) 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 66" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 66" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 66" 
+      )
+   )
+)
++Name: camera9
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 67" ) 
+      ( get-object-y "ScreenCam#Exile 67" ) 
+      ( get-object-z "ScreenCam#Exile 67" ) 
+      17000 
+      2000 
+      2000 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 67" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 67" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 67" 
+      )
+      17000 
+      2000 
+      2000 
+   )
+)
++Name: camera10
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( fire-beam 
+      "Hakael" 
+      "turret01" 
+      "Sun Tzu" 
+   )
+)
++Name: daeva fire
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( fire-beam 
+      "Tabaet" 
+      "turret07" 
+      "Essex" 
+   )
+)
++Name: cain fire
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 68" ) 
+      ( get-object-y "ScreenCam#Exile 68" ) 
+      ( get-object-z "ScreenCam#Exile 68" ) 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 68" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 68" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 68" 
+      )
+   )
+)
++Name: camera11
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 69" ) 
+      ( get-object-y "ScreenCam#Exile 69" ) 
+      ( get-object-z "ScreenCam#Exile 69" ) 
+      17000 
+      2000 
+      2000 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 69" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 69" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 69" 
+      )
+      17000 
+      2000 
+      2000 
+   )
+)
++Name: camera12
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Jota 1" 
+      "High" 
+      "10 - Jota 1" 
+   )
+)
++Name: msg10
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 70" ) 
+      ( get-object-y "ScreenCam#Exile 70" ) 
+      ( get-object-z "ScreenCam#Exile 70" ) 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 70" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 70" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 70" 
+      )
+   )
+)
++Name: camera13
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( close-sound-from-file ( true ) ) 
+   ( change-soundtrack "Ex08: Cold Kill" ) 
+)
++Name: reinforcements arrive
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 
+      ( get-object-x "ScreenCam#Exile 71" ) 
+      ( get-object-y "ScreenCam#Exile 71" ) 
+      ( get-object-z "ScreenCam#Exile 71" ) 
+      14000 
+      2000 
+      2000 
+   )
+   ( set-camera-rotation 
+      ( get-object-pitch 
+         "ScreenCam#Exile 71" 
+      )
+      ( get-object-bank 
+         "ScreenCam#Exile 71" 
+      )
+      ( get-object-heading 
+         "ScreenCam#Exile 71" 
+      )
+      14000 
+      2000 
+      2000 
+   )
+)
++Name: camera14
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-disable-except-messages 0 ) 
+   ( player-not-use-ai ) 
+   ( remove-goal 
+      "Beta 1" 
+      ( ai-play-dead 101 ) 
+   )
+   ( ship-vulnerable "Beta 1" ) 
+   ( unlock-primary-weapon "Beta 1" ) 
+   ( unlock-secondary-weapon "Beta 1" ) 
+   ( unlock-afterburner "Beta 1" ) 
+   ( reset-camera ) 
+   ( unprotect-ship "Beta 1" ) 
+   ( hud-disable 0 ) 
+   ( ship-vulnerable 
+      "Jota 1" 
+      "Essex" 
+      "Sun Tzu" 
+      "Ray Angel" 
+      "Omega 14" 
+      "Adrastus Hauler 02" 
+      "Raspadskaja" 
+      "Weinberg" 
+      "Wessex" 
+      "Uranus Mover B15" 
+      "Hakael" 
+      "Barbiel" 
+      "Tabaet" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Alpha 1" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Alpha 2" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Beta 2" 
+   )
+   ( ship-guardian-threshold 
+      ( rand-multiple 20 50 ) 
+      "Beta 3" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Sun Tzu" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Essex" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Ray Angel" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Omega 14" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Adrastus Hauler 02" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Raspadskaja" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Weinberg" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Wessex" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      80 
+      "Uranus Mover B15" 
+      "<all engines>" 
+   )
+   ( ship-visible 
+      "Beta 1" 
+      "Beta 2" 
+      "Beta 3" 
+      "Beta 4" 
+   )
+   ( reset-time-compression ) 
+   ( adjust-audio-volume "Effects" 100 ) 
+   ( adjust-audio-volume "Music" 100 ) 
+   ( adjust-audio-volume "Voice" 100 ) 
+   ( if-then-else 
+      ( is-event-true-delay 
+         "skip cutscene" 
+         0 
+      )
+      ( fade-in 500 ) 
+      ( do-nothing ) 
+   )
+)
++Name: end cutscene
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( true ) 
+   ( cap-waypoint-speed "Essex" 25 ) 
+   ( cap-waypoint-speed "Sun Tzu" 25 ) 
+   ( cap-waypoint-speed "Ray Angel" 25 ) 
+   ( cap-waypoint-speed "Omega 14" 25 ) 
+   ( cap-waypoint-speed 
+      "Adrastus Hauler 02" 
+      25 
+   )
+   ( cap-waypoint-speed "Raspadskaja" 25 ) 
+   ( cap-waypoint-speed "Weinberg" 25 ) 
+   ( cap-waypoint-speed "Wessex" 25 ) 
+   ( cap-waypoint-speed 
+      "Uranus Mover B15" 
+      25 
+   )
+)
++Name: convoy set speed 2
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Harmattan" 
+      "High" 
+      "11 - Harmattan" 
+   )
+)
++Name: msg11
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "12 - Harper" 
+   )
+)
++Name: msg12
++Repeat Count: 1
++Interval: 1
++Chained: 16
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( add-goal 
+      "Hakael" 
+      ( ai-waypoints-once "daeva22 path" 89 ) 
+   )
+   ( add-goal 
+      "Barbiel" 
+      ( ai-waypoints-once 
+         "moloch23 path" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Tabaet" 
+      ( ai-waypoints-once "cain24 path" 89 ) 
+   )
+   ( beam-protect-ship "Sun Tzu" "Essex" ) 
+)
++Name: shivan warships goals
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( not 
+      ( has-arrived-delay 0 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "@autoGenVar1[#Spark]" 
+      "High" 
+      "13 - Spark" 
+   )
+)
++Name: msg13
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "14 - Harper" 
+   )
+)
++Name: msg14
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Spark]" 
+      "High" 
+      "14,1 - Spark" 
+   )
+)
++Name: msg14,1
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Jota 1" 
+      "High" 
+      "14,2 - Jota 1" 
+   )
+)
++Name: msg14,2
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Spark]" 
+      "High" 
+      "14,3 - Spark" 
+   )
+)
++Name: msg14,3
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Jota 1" 
+      "High" 
+      "14,4 - Jota 1" 
+   )
+)
++Name: msg14,4
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Jota 1" 
+      "High" 
+      "14,45 - Jota 1" 
+   )
+)
++Name: msg14,45
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar1[#Spark]" 
+      "High" 
+      "14,5 - Spark" 
+   )
+)
++Name: msg14,5
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Jota 1" 
+      "High" 
+      "14,6 - Jota 1" 
+   )
+)
++Name: msg14,6
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( has-arrived-delay 3 "Durga" ) 
+   ( send-message 
+      "Harmattan" 
+      "High" 
+      "15 - Harmattan" 
+   )
+)
++Name: msg15
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 3 "Krishna" ) 
+   ( send-message 
+      "Sun Tzu" 
+      "High" 
+      "15,5 - Sun Tzu" 
+   )
+)
++Name: msg15,5
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 
+         2 
+         "Durga" 
+         "Krishna" 
+         "Arjuna" 
+         "Rama" 
+         "Hakael" 
+         "Barbiel" 
+         "Tabaet" 
+      )
+      ( has-arrived-delay 5 "Checkpoint 1" ) 
+   )
+   ( send-message 
+      "Sun Tzu" 
+      "High" 
+      "16 - Sun Tzu" 
+   )
+)
++Name: msg16
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Harmattan" 
+      "High" 
+      "17 - Harmattan" 
+   )
+)
++Name: msg17
++Repeat Count: 1
++Interval: 1
++Chained: 18
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Sun Tzu" 
+      "High" 
+      "18 - Sun Tzu" 
+   )
+)
++Name: msg18
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Harmattan" 
+      "High" 
+      "19 - Harmattan" 
+   )
+)
++Name: msg19
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( has-arrived-delay 4 "Kurma" ) 
+   ( send-message 
+      "Nocturnalia" 
+      "High" 
+      "20 - Nocturnalia" 
+   )
+)
++Name: msg20
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "21 - Harper" 
+   )
+)
++Name: msg21
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( is-event-true-delay "msg19" 128 ) 
+   ( send-message 
+      "Sun Tzu" 
+      "High" 
+      "22 - Sun Tzu" 
+   )
+)
++Name: msg22
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Sun Tzu" 
+      "High" 
+      "23 - Sun Tzu" 
+   )
+)
++Name: msg23
++Repeat Count: 1
++Interval: 1
++Chained: 125
+
+$Formula: ( when 
+   ( has-departed-delay 
+      2 
+      "Harmattan" 
+      "Nocturnalia" 
+   )
+   ( allow-warp "Beta 1" ) 
+)
++Name: frigates depart
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar2[#Harmattan]" 
+      "High" 
+      "24 - Harmattan" 
+   )
+)
++Name: msg24
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( has-departed-delay 32 "Beta 1" ) 
+   ( do-nothing ) 
+)
++Name: rtb
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Objective:  XSTR("Return to base", 66)
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "protect convoy" 
+   )
+   ( do-nothing ) 
+)
++Name: protect convoy
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Protect convoy", 7476)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Krishna" ) 
+   ( do-nothing ) 
+)
++Name: destroy krishna
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Krishna", 7477)
++Objective key:  XSTR("(F12)", 6621)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Indra" ) 
+   ( do-nothing ) 
+)
++Name: destroy indra
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Indra", 7478)
++Objective key:  XSTR("(F12)", 6621)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Durga" ) 
+   ( do-nothing ) 
+)
++Name: intercept durga
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Durga bombers", 6069)
++Objective key:  XSTR("(F11)", 6068)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Kurma" ) 
+   ( do-nothing ) 
+)
++Name: intercept kurma
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Kurma bombers", 6624)
++Objective key:  XSTR("(F11)", 6068)
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Vishnu" ) 
+   ( do-nothing ) 
+)
++Name: intercept vishnu
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Vishnu bombers", 6790)
++Objective key:  XSTR("(F11)", 6068)
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 1 "Hakael" ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Harmattan" 
+      "High" 
+      "15,1 - Harmattan" 
+   )
+)
++Name: msg15,1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 2 "Barbiel" ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Nocturnalia" 
+      "High" 
+      "15,2 - Nocturnalia" 
+   )
+)
++Name: msg15,2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 3 "Tabaet" ) 
+      ( not 
+         ( has-arrived-delay 0 "Checkpoint 1" ) 
+      )
+   )
+   ( send-message 
+      "Nocturnalia" 
+      "High" 
+      "15,3 - Nocturnalia" 
+   )
+)
++Name: msg15,3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Ray Angel" 
+      "Omega 14" 
+      "Adrastus Hauler 02" 
+      "Weinberg" 
+      "Wessex" 
+      "Uranus Mover B15" 
+   )
+   ( is-destroyed-delay 0 "<argument>" ) 
+   ( send-message 
+      "@autoGenVar1[#Spark]" 
+      "High" 
+      "15,6 - Spark" 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: msg15,6
++Repeat Count: -1
++Trigger Count: 6
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 
+         0 
+         "Hakael" 
+         "Barbiel" 
+         "Tabaet" 
+      )
+      ( has-arrived-delay 3 "Checkpoint 1" ) 
+   )
+   ( clear-goals 
+      "Harmattan" 
+      "Nocturnalia" 
+   )
+   ( add-goal 
+      "Nocturnalia" 
+      ( ai-waypoints-once 
+         "Nocturnalia support convoy" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Harmattan" 
+      ( ai-waypoints-once 
+         "harmattan support convoy" 
+         89 
+      )
+   )
+)
++Name: frigates support convoy
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "show counter" 
+      0 
+   )
+   ( modify-variable 
+      @eta[0] 
+      ( - @eta[0] 1 ) 
+   )
+   ( modify-variable 
+      @etaMin[0] 
+      ( / @eta[0] 60 ) 
+   )
+   ( modify-variable 
+      @etaDecSec[0] 
+      ( / ( mod @eta[0] 60 ) 10 ) 
+   )
+   ( modify-variable 
+      @etaSec[0] 
+      ( mod @eta[0] 10 ) 
+   )
+   ( hud-set-message 
+      "IntCenterA" 
+      "Counter Message" 
+   )
+)
++Name: counter
++Repeat Count: -1
++Trigger Count: 240
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "msg19" 1 ) 
+   ( hud-gauge-set-active 
+      "IntCenterHeader" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterA" 
+      ( true ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterEnd" 
+      ( true ) 
+   )
+   ( modify-variable 
+      @eta[0] 
+      @counterInit[240] 
+   )
+   ( hud-set-message 
+      "IntCenterA" 
+      "Counter Empty" 
+   )
+)
++Name: show counter
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( = @eta[0] 0 ) 
+   ( hud-gauge-set-active 
+      "IntCenterHeader" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterA" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterEnd" 
+      ( false ) 
+   )
+)
++Name: hide counter
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 4 "Checkpoint 1" ) 
+   ( clear-goals 
+      "Sun Tzu" 
+      "Essex" 
+      "Raspadskaja" 
+      "Omega 14" 
+      "Ray Angel" 
+      "Wessex" 
+      "Uranus Mover B15" 
+      "Weinberg" 
+      "Adrastus Hauler 02" 
+   )
+   ( add-goal 
+      "Sun Tzu" 
+      ( ai-waypoints-once 
+         "amalthea21 path2" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Raspadskaja" 
+      ( ai-waypoints-once 
+         "nautilus17 path2" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Wessex" 
+      ( ai-waypoints-once 
+         "chronos19 path2" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Weinberg" 
+      ( ai-waypoints-once 
+         "faustus18 path2" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Ray Angel" 
+      ( ai-waypoints-once 
+         "elysium14 path2" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Omega 14" 
+      ( ai-waypoints-once 
+         "elysium 15&16 path2" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Adrastus Hauler 02" 
+      ( ai-waypoints-once 
+         "elysium 15&16 path2" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Essex" 
+      ( ai-waypoints-once 
+         "amalthea8 path2" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Uranus Mover B15" 
+      ( ai-waypoints-once 
+         "chronos20 path2" 
+         89 
+      )
+   )
+)
++Name: checkpoint convoy goals
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "msg24" 1 ) 
+   ( modify-variable 
+      "@filename[a]" 
+      "exile09ships" 
+   )
+   ( modify-variable 
+      @fleet_population[1198732] 
+      ( - @fleet_population[1198732] 598 ) 
+   )
+   ( script-eval "deleteshipsavefile()" ) 
+   ( if-then-else 
+      ( is-destroyed-delay 0 "Wessex" ) 
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @fleet_population[1198732] 
+            ( - @fleet_population[1198732] 200 ) 
+         )
+         ( modify-variable @wessex[0] 1 ) 
+         ( script-eval "svar('wessex')" ) 
+      )
+      ( do-nothing ) 
+   )
+   ( if-then-else 
+      ( is-destroyed-delay 0 "Weinberg" ) 
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @fleet_population[1198732] 
+            ( - @fleet_population[1198732] 54 ) 
+         )
+         ( modify-variable @weinberg[0] 1 ) 
+         ( script-eval "svar('weinberg')" ) 
+      )
+      ( do-nothing ) 
+   )
+   ( if-then-else 
+      ( is-destroyed-delay 0 "Ray Angel" ) 
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @fleet_population[1198732] 
+            ( - @fleet_population[1198732] 404 ) 
+         )
+         ( modify-variable @rayangel[0] 1 ) 
+         ( script-eval "svar('rayangel')" ) 
+      )
+      ( do-nothing ) 
+   )
+   ( if-then-else 
+      ( is-destroyed-delay 0 "Omega 14" ) 
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @fleet_population[1198732] 
+            ( - @fleet_population[1198732] 371 ) 
+         )
+         ( modify-variable @omega14[0] 1 ) 
+         ( script-eval "svar('omega14')" ) 
+      )
+      ( do-nothing ) 
+   )
+   ( if-then-else 
+      ( is-destroyed-delay 
+         0 
+         "Adrastus Hauler 02" 
+      )
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @fleet_population[1198732] 
+            ( - @fleet_population[1198732] 350 ) 
+         )
+         ( modify-variable 
+            @adrastushauler02[0] 
+            1 
+         )
+         ( script-eval 
+            "svar('adrastushauler02')" 
+         )
+      )
+      ( do-nothing ) 
+   )
+   ( if-then-else 
+      ( is-destroyed-delay 
+         0 
+         "Uranus Mover B15" 
+      )
+      ( when 
+         ( true ) 
+         ( modify-variable 
+            @fleet_population[1198732] 
+            ( - @fleet_population[1198732] 174 ) 
+         )
+         ( modify-variable 
+            @uranusmoverb15[0] 
+            1 
+         )
+         ( script-eval 
+            "svar('uranusmoverb15')" 
+         )
+      )
+      ( do-nothing ) 
+   )
+)
++Name: update fleet state
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 
+      0 
+      "Essex" 
+      "Ray Angel" 
+      "Omega 14" 
+      "Adrastus Hauler 02" 
+      "Raspadskaja" 
+      "Weinberg" 
+      "Wessex" 
+      "Uranus Mover B15" 
+      "Sun Tzu" 
+   )
+   ( modify-variable 
+      "@filename[a]" 
+      "exile_act1_achievements" 
+   )
+   ( script-eval "saveexist()" ) 
+   ( if-then-else 
+      ( = @saveexist[2] 1 ) 
+      ( when 
+         ( true ) 
+         ( script-eval 
+            "lvar('achievement_count')" 
+         )
+         ( script-eval "lvar('achievement07')" ) 
+      )
+      ( do-nothing ) 
+   )
+   ( if-then-else 
+      ( = @achievement07[0] 0 ) 
+      ( when 
+         ( true ) 
+         ( play-sound-from-file 
+            "Enlightenment_Goal.ogg" 
+         )
+         ( modify-variable @achievement07[0] 1 ) 
+         ( script-eval "svar('achievement07')" ) 
+         ( modify-variable 
+            @achievement_count[0] 
+            ( + @achievement_count[0] 1 ) 
+         )
+         ( script-eval 
+            "svar('achievement_count')" 
+         )
+         ( when 
+            ( true ) 
+            ( hud-gauge-set-active 
+               "IntCenterHeader" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterA" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterB" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterC" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterD" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterE" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterF" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterG" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterH" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterI" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterJ" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterK" 
+               ( true ) 
+            )
+            ( hud-gauge-set-active 
+               "IntCenterEnd11" 
+               ( true ) 
+            )
+            ( hud-set-message 
+               "IntCenterA" 
+               "achievement1" 
+            )
+         )
+      )
+      ( modify-variable @achievement07[0] 1 ) 
+   )
+)
++Name: achievement gained
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-gauge-set-active 
+      "IntCenterHeader" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterA" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterB" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterC" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterD" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterE" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterF" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterG" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterH" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterI" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterJ" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterK" 
+      ( false ) 
+   )
+   ( hud-gauge-set-active 
+      "IntCenterEnd11" 
+      ( false ) 
+   )
+)
++Name: achievement hide bar
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( or 
+      ( is-destroyed-delay 4 "Harmattan" ) 
+      ( is-destroyed-delay 4 "Nocturnalia" ) 
+      ( is-destroyed-delay 4 "Sun Tzu" ) 
+      ( is-destroyed-delay 4 "Essex" ) 
+      ( is-destroyed-delay 4 "Raspadskaja" ) 
+      ( percent-ships-destroyed 
+         34 
+         "Ray Angel" 
+         "Omega 14" 
+         "Adrastus Hauler 02" 
+         "Raspadskaja" 
+         "Weinberg" 
+         "Wessex" 
+         "Uranus Mover B15" 
+      )
+   )
+   ( hud-disable 1 ) 
+   ( lock-primary-weapon "Beta 1" ) 
+   ( lock-secondary-weapon "Beta 1" ) 
+   ( lock-afterburner "Beta 1" ) 
+   ( never-warp "Beta 1" ) 
+   ( adjust-audio-volume "Effects" 20 ) 
+   ( protect-ship "Beta 1" ) 
+   ( ship-invulnerable "Beta 1" ) 
+   ( close-sound-from-file ( true ) ) 
+   ( change-soundtrack "<No Music>" ) 
+   ( play-sound-from-file "ddeath.ogg" ) 
+)
++Name: mission failed hud
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( if-then-else 
+      ( is-destroyed-delay 0 "Harmattan" ) 
+      ( show-subtitle-text 
+         "Mission failed Harmattan" 
+         0 
+         0 
+         ( true ) 
+         ( true ) 
+         5000 
+         1000 
+      )
+      ( if-then-else 
+         ( is-destroyed-delay 0 "Nocturnalia" ) 
+         ( show-subtitle-text 
+            "Mission failed Nocturnalia" 
+            0 
+            0 
+            ( true ) 
+            ( true ) 
+            5000 
+            1000 
+         )
+         ( if-then-else 
+            ( or 
+               ( is-destroyed-delay 0 "Sun Tzu" ) 
+               ( is-destroyed-delay 0 "Essex" ) 
+            )
+            ( show-subtitle-text 
+               "Mission failed cruisers" 
+               0 
+               0 
+               ( true ) 
+               ( true ) 
+               5000 
+               1000 
+            )
+            ( if-then-else 
+               ( is-destroyed-delay 0 "Raspadskaja" ) 
+               ( show-subtitle-text 
+                  "Mission failed Ras" 
+                  0 
+                  0 
+                  ( true ) 
+                  ( true ) 
+                  5000 
+                  1000 
+               )
+               ( if-then-else 
+                  ( percent-ships-destroyed 
+                     35 
+                     "Ray Angel" 
+                     "Omega 14" 
+                     "Adrastus Hauler 02" 
+                     "Raspadskaja" 
+                     "Weinberg" 
+                     "Wessex" 
+                     "Uranus Mover B15" 
+                  )
+                  ( show-subtitle-text 
+                     "Mission failed transports" 
+                     0 
+                     0 
+                     ( true ) 
+                     ( true ) 
+                     5000 
+                     1000 
+                  )
+                  ( do-nothing ) 
+               )
+            )
+         )
+      )
+   )
+)
++Name: mission failed msg
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when ( true ) ( fade-out 4500 1 ) ) 
++Name: mission failed fade
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: mission failed end
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( is-event-true-delay "msg19" 9 ) 
+   ( send-message 
+      "Alpha 3" 
+      "High" 
+      "25 - Nielsen" 
+   )
+)
++Name: msg25
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 1" 
+      "High" 
+      "26 - Harper" 
+   )
+)
++Name: msg26
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@autoGenVar3[#Beta 1]" 
+      "High" 
+      "27 - Spark" 
+   )
+)
++Name: msg27
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 2" 
+      "High" 
+      "28 - Black Widow" 
+   )
+)
++Name: msg28
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Alpha 3" 
+      "High" 
+      "29 - Nielsen" 
+   )
+)
++Name: msg29
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "Alt-X" ) 
+      ( not 
+         ( is-event-true-delay "camera14" 0 ) 
+      )
+   )
+   ( fade-out 1000 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      1000 
+   )
+   ( adjust-audio-volume "Voice" 0 1000 ) 
+   ( adjust-audio-volume "Music" 0 1000 ) 
+)
++Name: skip cutscene
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-time-compression 6400 ) 
+)
++Name: skip cutscene time compression
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+#Goals		;! 2 total
+
+$Type: Primary
++Name: Rescue civilian convoy
+$MessageNew:  XSTR("Rescue civilian convoy", 7479)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "protect convoy" 
+   0 
+)
++No music
+
+$Type: Primary
++Name: Protect frigates
+$MessageNew:  XSTR("Protect Harmattan and Nocturnalia", 7480)
+$end_multi_text
+$Formula: ( has-departed-delay 
+   0 
+   "Harmattan" 
+   "Nocturnalia" 
+)
+
+#Waypoints		;! 25 lists total
+
+$Name: amalthea21 path
+$List: (		;! 2 points in list
+	( 5483.246094, 1346.637939, 5486.494629 )
+	( 2975.438232, 1686.532593, 503.765076 )
+)
+
+$Name: amalthea8 path
+$List: (		;! 2 points in list
+	( 5374.447266, 1815.885254, 5814.132324 )
+	( 2929.303955, 1815.755859, 835.695923 )
+)
+
+$Name: nautilus17 path
+$List: (		;! 2 points in list
+	( 5736.575195, 2045.830444, 6153.988770 )
+	( 3467.901367, 2095.861816, 1040.167236 )
+)
+
+$Name: faustus18 path
+$List: (		;! 2 points in list
+	( 6437.929199, 1809.562500, 6129.790527 )
+	( 4102.062988, 1837.261963, 624.747375 )
+)
+
+$Name: chronos20 path
+$List: (		;! 2 points in list
+	( 6896.585449, 2027.661987, 6117.588867 )
+	( 4557.039551, 1899.611694, 314.490356 )
+)
+
+$Name: elysium14 path
+$List: (		;! 2 points in list
+	( 6536.115723, 1542.266724, 6149.864258 )
+	( 4178.286621, 1686.532593, 641.326233 )
+)
+
+$Name: elysium 15&16 path
+$List: (		;! 2 points in list
+	( 7102.621582, 2014.243408, 6214.779785 )
+	( 4794.048340, 1877.897827, 136.505432 )
+)
+
+$Name: chronos19 path
+$List: (		;! 2 points in list
+	( 5898.706055, 1557.956665, 6062.665527 )
+	( 3562.523926, 1686.532593, 489.473083 )
+)
+
+$Name: Nocturnalia path
+$List: (		;! 1 points in list
+	( -678.811096, -36.987232, 1388.173218 )
+)
+
+$Name: harmattan path
+$List: (		;! 1 points in list
+	( 1202.215210, 326.349823, 1443.567749 )
+)
+
+$Name: moloch23 path
+$List: (		;! 2 points in list
+	( -1903.303101, 218.771530, 3665.253174 )
+	( -1902.609985, 219.018906, 3067.808105 )
+)
+
+$Name: daeva22 path
+$List: (		;! 2 points in list
+	( -337.329376, -222.510925, 3829.859375 )
+	( -301.000000, -223.000000, 3196.100098 )
+)
+
+$Name: cain24 path
+$List: (		;! 2 points in list
+	( 389.763336, -0.000000, 4090.247559 )
+	( 412.175415, 0.000000, 3344.255615 )
+)
+
+$Name: Nocturnalia retreat
+$List: (		;! 1 points in list
+	( 3479.606934, 599.545105, -1794.866699 )
+)
+
+$Name: harmattan retreat
+$List: (		;! 1 points in list
+	( 4487.629883, 2766.461182, -1593.941162 )
+)
+
+$Name: Nocturnalia support convoy
+$List: (		;! 3 points in list
+	( 2805.483154, 341.417572, 1510.613647 )
+	( 3515.479980, 599.165527, 734.600891 )
+	( 3508.115723, 599.165527, -668.424805 )
+)
+
+$Name: harmattan support convoy
+$List: (		;! 4 points in list
+	( 2514.479492, 2784.243652, 1097.054810 )
+	( 4047.625244, 2842.097656, 881.523926 )
+	( 4488.450684, 2537.882324, 603.678223 )
+	( 4477.720703, 2675.806885, -764.734009 )
+)
+
+$Name: amalthea8 path2
+$List: (		;! 1 points in list
+	( 2929.303955, 1778.574219, 248.210571 )
+)
+
+$Name: amalthea21 path2
+$List: (		;! 1 points in list
+	( 2975.438232, 1655.708008, -83.720276 )
+)
+
+$Name: chronos19 path2
+$List: (		;! 1 points in list
+	( 3562.523926, 1663.536865, -98.012268 )
+)
+
+$Name: nautilus17 path2
+$List: (		;! 1 points in list
+	( 3467.901367, 2062.443848, 452.682068 )
+)
+
+$Name: faustus18 path2
+$List: (		;! 1 points in list
+	( 4102.062988, 1818.352661, 37.262024 )
+)
+
+$Name: elysium14 path2
+$List: (		;! 1 points in list
+	( 4178.286621, 1667.773193, 53.840881 )
+)
+
+$Name: chronos20 path2
+$List: (		;! 1 points in list
+	( 4557.039551, 1885.678833, -272.994995 )
+)
+
+$Name: elysium 15&16 path2
+$List: (		;! 1 points in list
+	( 4794.048340, 1859.485352, -450.979919 )
+)
+
+#Messages		;! 50 total
+
+$Command Sender: Valhalla
+
+$Name: Checkpoint Init
+$Team: -1
+$MessageNew:  XSTR("Press C, then 4 and", 6208)
+$end_multi_text
+
+$Name: Checkpoint Init 2
+$Team: -1
+$MessageNew:  XSTR("select a checkpoint. ", 6209)
+$end_multi_text
+
+$Name: Checkpoint 1 reached
+$Team: -1
+$MessageNew:  XSTR("Checkpoint 1 reached", 6210)
+$end_multi_text
+
+$Name: Checkpoint 1 activated
+$Team: -1
+$MessageNew:  XSTR("Checkpoint 1 activated", 6211)
+$end_multi_text
+
+$Name: 8 - Sun Tzu
+$Team: -1
+$MessageNew:  XSTR("Mayday! Mayday! This is the ORC Sun Tzu to any ORS forces in the area! We're under Shivan attack! Their warships are closing fast! Can anyone hear me?", 7481)
+$end_multi_text
++AVI Name: Head-CM3
++Wave Name: msg_caps.ogg
+
+$Name: 9 - Harmattan
+$Team: -1
+$MessageNew:  XSTR("This is the ORFg Harmattan. Take it easy, old man. We received your distress signal. We have your position, so just stay where you are and try to survive, okay?", 7482)
+$end_multi_text
++AVI Name: HeadLeBrunon
++Wave Name: msg_caps.ogg
+
+$Name: 10 - Jota 1
+$Team: -1
+$MessageNew:  XSTR("The Shivans are pressing us hard! If the convoy stays here any longer, these cruisers are gonna finish us off! ", 7483)
+$end_multi_text
++AVI Name: Head-TP5
++Wave Name: msg_chatter.ogg
+
+$Name: 11 - Harmattan
+$Team: -1
+$MessageNew:  XSTR("Sun Tzu, we're in position. All cannons, target the Shivan warships and fire at will. We've got to draw the bugs away from the civilians. Escort fighters, form up on us. Expect Shivan bombers to show up at any time.", 7484)
+$end_multi_text
++AVI Name: HeadLeBrunon
++Wave Name: msg_caps.ogg
+
+$Name: 12 - Harper
+$Team: -1
+$MessageNew:  XSTR("Easy, shipmaster. We're no rookie squadron. We know our job, and we're good at it. Not a single bomb will hit your precious frigate. ", 7485)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 13 - Spark
+$Team: -1
+$MessageNew:  XSTR("Shivan warships are disengaging and turning to attack us. But the convoy could still use some reinforcement!", 7486)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 14 - Harper
+$Team: -1
+$MessageNew:  XSTR("Sounds like you've just volunteered for the escort, kid. Beta wing, break off and defend the convoy! We have to protect them until they recharge their jump drives!", 7487)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 15 - Harmattan
+$Team: -1
+$MessageNew:  XSTR("Beta, be advised, Shivan bombers are approaching the convoy. Do us a favor and take care of Durga wing. ", 7488)
+$end_multi_text
++AVI Name: HeadLeBrunon
++Wave Name: alert.ogg
+
+$Name: 16 - Sun Tzu
+$Team: -1
+$MessageNew:  XSTR("This is the Sun Tzu. Harmattan, Nocturnalia, we are grateful for your support. But where did those Shivans come from? Last we heard, the Ironclad's battlegroup was still holding the blockade and had neutralized all enemy forces. ", 7489)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: msg_caps.ogg
+
+$Name: 17 - Harmattan
+$Team: -1
+$MessageNew:  XSTR("Apparently not. Fleetmaster Tyrone must have missed a few. How bad are your losses? When can you make your jump?", 7490)
+$end_multi_text
++AVI Name: HeadLeBrunon
++Wave Name: msg_caps.ogg
+
+$Name: 18 - Sun Tzu
+$Team: -1
+$MessageNew:  XSTR("We've lost a cruiser, two utility transports, and most of our fighters. Many other ships are heavily damaged. The civilian vessels need about four minutes to recharge their drives. ", 7491)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: msg_caps.ogg
+
+$Name: 19 - Harmattan
+$Team: -1
+$MessageNew:  XSTR(" Understood, Sun Tzu. Stand by and keep your eyes open. Expect more surprises from the bugs.", 7492)
+$end_multi_text
++AVI Name: HeadLeBrunon
++Wave Name: msg_caps.ogg
+
+$Name: 20 - Nocturnalia
+$Team: -1
+$MessageNew:  XSTR("More Shivan forces have arrived! We've got a wing of bombers going for the convoy, designation Kurma wing!", 7493)
+$end_multi_text
++AVI Name: HeadNocturnalia
++Wave Name: alert.ogg
+
+$Name: 21 - Harper
+$Team: -1
+$MessageNew:  XSTR("Alright, people, let's get the job done. Focus on ships that are attacking the convoy. The frigates can take a few hits and remain intact. ", 7494)
+$end_multi_text
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 22 - Sun Tzu
+$Team: -1
+$MessageNew:  XSTR("Two minutes until jump drives are recharged. ", 7495)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: msg_caps.ogg
+
+$Name: 23 - Sun Tzu
+$Team: -1
+$MessageNew:  XSTR("This is the Sun Tzu. The civilian ships are ready to depart and we're heading for the rendezvous. Thank you, Harmattan. We wouldn't have made it without you.", 7496)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: msg_caps.ogg
+
+$Name: 24 - Harmattan
+$Team: -1
+$MessageNew:  XSTR("Alright, we've made it to safety. Avalonians, report back to the Graf Zeppelin immediately. Shipmaster Donnelly just called and said he wants to debrief you.", 7497)
+$end_multi_text
++AVI Name: HeadLeBrunon
++Wave Name: msg_caps.ogg
+
+$Name: 15,5 - Sun Tzu
+$Team: -1
+$MessageNew:  XSTR("Beta, watch out for Krishna wing! They're going after the transports! ", 7498)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: msg_caps.ogg
+
+$Name: 15,1 - Harmattan
+$Team: -1
+$MessageNew:  XSTR("We've taken down the Hakael. That's one Shivan capital ship down. Nice job, men!", 7499)
+$end_multi_text
++AVI Name: HeadLeBrunon
++Wave Name: msg_caps.ogg
+
+$Name: 15,2 - Nocturnalia
+$Team: -1
+$MessageNew:  XSTR("The Barbiel has been destroyed. ", 7500)
+$end_multi_text
++AVI Name: HeadNocturnalia
++Wave Name: msg_caps.ogg
+
+$Name: 15,3 - Nocturnalia
+$Team: -1
+$MessageNew:  XSTR("The Tabaet is history! Stay sharp, it's not over yet!", 7501)
+$end_multi_text
++AVI Name: HeadNocturnalia
++Wave Name: msg_caps.ogg
+
+$Name: 15,6 - Spark
+$Team: -1
+$MessageNew:  XSTR("Shivan fighters are attacking the civilians! Beta wing, assume escort position and neutralize the enemy!", 7502)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: subtitle1
+$Team: -1
+$MessageNew:  XSTR("Syndicate Exodus Fleet 
+Rendezvous Point", 7503)
+$end_multi_text
+
+$Name: subtitle2
+$Team: -1
+$MessageNew:  XSTR("Cor Caroli System", 7504)
+$end_multi_text
+
+$Name: Counter Message
+$Team: -1
+$MessageNew:  XSTR("Convoy departs in $etaMin:$etaDecSec$etaSec", 7505)
+$end_multi_text
+
+$Name: Counter Empty
+$Team: -1
+$MessageNew:  XSTR(" ", 2943)
+$end_multi_text
+
+$Name: achievement1
+$Team: -1
+$MessageNew:  XSTR("New achievement: 
+
+DEFENDER
+OF THE WEAK
+
+All ships of 
+the convoy 
+must survive
+
+$achievement_count $slash $achievement_total ACHIEVEMENTS", 7506)
+$end_multi_text
+
+$Name: Mission failed Harmattan
+$Team: -1
+$MessageNew:  XSTR("Mission failed
+
+Harmattan has been destroyed", 7507)
+$end_multi_text
+
+$Name: Mission failed Nocturnalia
+$Team: -1
+$MessageNew:  XSTR("Mission failed
+
+Nocturnalia has been destroyed", 7508)
+$end_multi_text
+
+$Name: Mission failed cruisers
+$Team: -1
+$MessageNew:  XSTR("Mission failed
+
+One of the cruisers has been destroyed", 7509)
+$end_multi_text
+
+$Name: Mission failed transports
+$Team: -1
+$MessageNew:  XSTR("Mission failed
+
+You have lost too many transports", 7510)
+$end_multi_text
+
+$Name: Mission failed Ras
+$Team: -1
+$MessageNew:  XSTR("Mission failed
+
+Raspadskaja has been destroyed", 7511)
+$end_multi_text
+
+$Name: empty
+$Team: -1
+$MessageNew:  XSTR("", 10)
+$end_multi_text
+
+$Name: 25 - Nielsen
+$Team: -1
+$MessageNew:  XSTR("<PRIVATE CHANNEL> This Shipmaster Le Brunon...does he always talk down to subordinates like that?", 7512)
+$end_multi_text
++Persona: Nielsen
++AVI Name: Head-TP6
++Wave Name: msg_chatter.ogg
+
+$Name: 26 - Harper
+$Team: -1
+$MessageNew:  XSTR("<PRIVATE CHANNEL> Yeah. You didn't notice before? He's been like this for the entire fucking war.", 7513)
+$end_multi_text
++Persona: Harper
++AVI Name: Head-TP3
++Wave Name: msg_chatter.ogg
+
+$Name: 27 - Spark
+$Team: -1
+$MessageNew:  XSTR("<PRIVATE CHANNEL> No wonder he's called 'the eccentric shipmaster.' We'll get used to him. Besides, he's a much better commander than he seems. ", 7514)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 28 - Black Widow
+$Team: -1
+$MessageNew:  XSTR("<PRIVATE CHANNEL> I wouldn't mind so much if he only talked down to Nielsen.", 7515)
+$end_multi_text
++Persona: Black Widow
++AVI Name: Head-TP2
++Wave Name: msg_chatter.ogg
+
+$Name: 29 - Nielsen
+$Team: -1
+$MessageNew:  XSTR("<PRIVATE CHANNEL> Nielsen - Hey! I heard that!", 7516)
+$end_multi_text
++Persona: Nielsen
++AVI Name: Head-TP6
++Wave Name: msg_chatter.ogg
+
+$Name: 14,1 - Spark
+$Team: -1
+$MessageNew:  XSTR("Jota, this is Beta 1 from the Harmattan. We are joining the convoy's escort. ", 7517)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 14,2 - Jota 1
+$Team: -1
+$MessageNew:  XSTR("Good to have some more fighters here. It was difficult to hold off those bugs by ourselves. Especially in this piece of junk disguised as a fighter.", 7518)
+$end_multi_text
++AVI Name: Head-TP7
++Wave Name: msg_chatter.ogg
+
+$Name: 14,3 - Spark
+$Team: -1
+$MessageNew:  XSTR("Ah, the infamous Encantona. The new-old addition to the fleet. Is it really as bad as they say? ", 7519)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 14,4 - Jota 1
+$Team: -1
+$MessageNew:  XSTR("Far worse, Beta 1. I've already heard a rumor of three pilots getting poisoned by a radiation leak from the engines that got into their cockpits. And that was just one story out of a bunch I heard from the Demetrius' squadrons.", 7520)
+$end_multi_text
++AVI Name: Head-TP7
++Wave Name: msg_chatter.ogg
+
+$Name: 14,5 - Spark
+$Team: -1
+$MessageNew:  XSTR("Damn. Glad I still have my Claymore. So, Jota 1, just try not to be killed by your own fighters and we'll keep the convoy safe and sound. Deal?", 7521)
+$end_multi_text
++AVI Name: Head-TP1
++Wave Name: msg_chatter.ogg
+
+$Name: 14,6 - Jota 1
+$Team: -1
+$MessageNew:  XSTR("...you know, if we didn't need your assistance so badly, I'd shoot you right now, Beta 1. Too bad I can't kill you with my toaster...", 7522)
+$end_multi_text
++AVI Name: Head-TP7
++Wave Name: msg_chatter.ogg
+
+$Name: skip cutscene hint
+$Team: -1
+$MessageNew:  XSTR("Press Alt-X to skip cutscene", 5866)
+$end_multi_text
+
+$Name: 14,45 - Jota 1
+$Team: -1
+$MessageNew:  XSTR(" I swear, it's got wiring as old as the Unification Wars, the maneuverability of an early 20th Century Ford Model T automobile, and all the firepower of an old toaster.", 7523)
+$end_multi_text
++AVI Name: Head-TP7
++Wave Name: msg_chatter.ogg
+
+#Reinforcements		;! 1 total
+
+$Name: Checkpoint 1
+$Type: Attack/Protect
+$Num times: 1
++Arrival Delay: 0
++No Messages: ( )
++Yes Messages: ( )
+
+#Background bitmaps		;! 13 total
+
+$Num stars: 500
+$Ambient light level: 7895160
+
+$Bitmap List:
+$Sun: SunGold
++Angles: 0.331613 0.000000 0.052360
++Scale: 2.000000
+$Starbitmap: neb-C01
++Angles: 0.279253 0.000000 5.986480
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: neb-C08
++Angles: 0.000000 0.000000 6.056293
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: neb-C14
++Angles: 0.314159 0.000000 0.349066
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: neb-C01
++Angles: 6.021386 0.785398 0.174533
++ScaleX: 6.000000
++ScaleY: 6.000000
++DivX: 1
++DivY: 1
+$Starbitmap: neb-C06
++Angles: 0.593412 6.021386 6.126106
++ScaleX: 6.000000
++ScaleY: 6.000000
++DivX: 1
++DivY: 1
+$Starbitmap: neb-B07
++Angles: 5.881760 5.811947 5.811947
++ScaleX: 6.000000
++ScaleY: 6.000000
++DivX: 1
++DivY: 1
+$Starbitmap: neb-B02
++Angles: 0.000000 0.000000 5.550148
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: neb-B06
++Angles: 0.366519 2.234022 5.777040
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: neb-C16
++Angles: 0.122173 3.141593 5.375614
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+$Starbitmap: p_gasbrown
++Angles: 5.759587 0.698132 5.358161
++ScaleX: 4.000000
++ScaleY: 4.000000
++DivX: 1
++DivY: 1
+$Starbitmap: p_Dead
++Angles: 0.000000 4.956735 5.515241
++ScaleX: 0.700000
++ScaleY: 0.700000
++DivX: 1
++DivY: 1
+$Starbitmap: neb-C03
++Angles: 0.366519 0.000000 0.628319
++ScaleX: 7.000000
++ScaleY: 7.000000
++DivX: 1
++DivY: 1
+$Starbitmap: neb-A05
++Angles: 0.401426 1.029744 0.907571
++ScaleX: 5.000000
++ScaleY: 5.000000
++DivX: 1
++DivY: 1
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: None
+
+#End
+
