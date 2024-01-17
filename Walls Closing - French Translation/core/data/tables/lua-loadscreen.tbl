@@ -1,0 +1,162 @@
+;Axem's Extended Loading Screen Script
+
+#General Settings
+
+$Scale Zoom:	true
+
+#End
+
+#Loading Bars
+
+;All loading Bars have...
+;$Name:		Name of loading bar within the table
+;$File: 	This should be an animation, can be any length. For reference FS2's loading animation is 14 frames long
+;$Origin	(optional) x,y Origins are based off of % of the screen's size. Loading bars will NOT scale up or down. Default is 0.5, 0.5
+;$Offset	(optional) x,y Pixel offset from the origin, comment out or remove Offset and the graphic will center itself automatically
+;Scaling	(optional) Boolean, if true, the loading bar will inherit the scaling of the background. This should make the loading bar be the same relative size in any resolution.
+
+$Name: 		MoGW-pale_blue
+$File: 		LB-mogw-pb 
+$Origin: 	0.405, 0.268 
+$Offset:	-26, -210
+
+#End
+
+#Loading Text
+
+;All Loading Texts have...
+;$Name: 	Name of text
+;$Text: 	The actual text. XSTRs can be used for localization support.
+;$Font: 	(optional) Font to use. Default is font 1.
+;$Image:	(optional) Associated image to go with the text
+
+$Name: 		Walls_1_Text
+$Text: 		XSTR("In the wake of the Sathanas' jump to Capella, GTVA forces race to blockade the nodes in Gamma Draconis.", 4000)
+$Font: 		3
+
+$Name:		Walls_2_Text
+$Text: 		XSTR("To find the Phoenicia, the 309th must escort the GTC Proteus as it lays modified nav buoys to amplify AWACS sensor coverage of the system.", 4001)
+$Font: 		3
+
+$Name:		Walls_3_Text
+$Text: 		XSTR("GTVA Command puts forth a plan to destroy a Shivan rallying point.", 4002)
+$Font: 		3
+
+$Name:		Walls_4_Text
+$Text: 		XSTR("The fate of the GTD Phoenicia hangs in the balance.", 4003)
+$Font: 		3
+
+#End
+
+#Loading Screens
+
+;All Loading Screens have...
+;$Name:				Name of loading screen within the table
+;$Loading Bar:		Name of loading bar as defined in #Loading Bars
+;$Loading Image:	Name of image to use as the background. If you use the name 'random', it will randomly select from a list of +Images below
+;	+Scaling:		(Optional) Boolean, if the script should attempt to scale the image to best fit the screen. Regardless of scaling, the script will place the image to be centered in the screen
+;	+Image:			(Optional) A possible image that can be selected if Loading Image is set to random. You can have as many +Image entries as you like
+;$Text Color:		(Optional) R,G,B,A, color of text to be drawn. Default is 192,192,192,255. If A is not specified it will be 255.
+;$Text Origin:		(Optional) x,y Origin for the top left corner of the text in terms of screen percent.  If Text Origin is not specified, no text will be drawn even if one is specified.
+;	+Center			(Optional) Having this present will make the origin become the top MIDDLE of the text
+;	+Offset			(Optional) x,y Pixel offset for the text
+;	+Width			(Optional) Text width before word wrapping occurs
+;$Image Origin:		(Optional) x,y Origin for the top left corner of the image in terms of screen percent. If Image Origin is not specified, no image will be drawn even if one is specified.
+;	+Center			(Optional) 
+;	+Offset			(Optional) 
+;$Draw Mission Name:(Optional) Boolean, if true will draw the mission's name as part of the loading screen
+;	+Font			(Optional) Font to use for the mission name, defaults to 1
+;	+Origin			(Optional)
+;	+Offset			(Optional)
+;	+Justify		(Optional) Specifies if mission name should be "left", "center", or "right" justified. Default is left.
+;$Loading Text:		(Optional) Name of a loading text entry as specified in the table. You can have as many entries as you want
+
+$Name: 			WallsClosing_1
+$Loading Bar: 		MoGW-pale_blue 
+$Loading Image: 	WallsClosing_1
+    	+Scaling: true
+$Text Color: 192,192,255,255 
+$Text Origin: 		0.560, 0.93
+	+Center
+	+Width:		800
+$Image Origin: 0.5, 0.75 
+	+Center 
+$Draw Mission Name: false
+    +Font: 	2 
+    +Origin: 	0.47,0 
+    +Offset: 	0,20 
+    +Justify: 	left 
+$Loading Text: Walls_1_Text 
+
+$Name: 			WallsClosing_2
+$Loading Bar: 		MoGW-pale_blue 
+$Loading Image: 	WallsClosing_2
+    	+Scaling: true
+$Text Color: 192,192,255,255 
+$Text Origin: 		0.645, 0.93
+	+Center
+	+Width:		800
+$Image Origin: 0.5, 0.75 
+	+Center 
+$Draw Mission Name: false
+    +Font: 	2 
+    +Origin: 	0.47,0 
+    +Offset: 	0,20 
+    +Justify: 	left 
+$Loading Text: Walls_2_Text
+
+$Name: 			WallsClosing_3 
+$Loading Bar: 		MoGW-pale_blue 
+$Loading Image: 	WallsClosing_3
+    	+Scaling: true
+$Text Color: 192,192,255,255 
+$Text Origin: 		0.500, 0.93
+	+Center
+	+Width:		800
+$Image Origin: 0.5, 0.75 
+	+Center 
+$Draw Mission Name: false
+    +Font: 	2 
+    +Origin: 	0.47,0 
+    +Offset: 	0,20 
+    +Justify: 	left 
+$Loading Text: Walls_3_Text 
+
+$Name: 			WallsClosing_4 
+$Loading Bar: 		MoGW-pale_blue 
+$Loading Image: 	WallsClosing_4
+    	+Scaling: true
+$Text Color: 192,192,255,255 
+$Text Origin: 		0.500, 0.93
+	+Center
+	+Width:		800
+$Image Origin: 0.5, 0.75 
+	+Center 
+$Draw Mission Name: false
+    +Font: 	2 
+    +Origin: 	0.47,0 
+    +Offset: 	0,20 
+    +Justify: 	left 
+$Loading Text: Walls_4_Text 
+
+#End
+
+#Mission Screens
+
+;All mission screens must have...
+;$Filename:			The filename of the mission that the loading screen will apply to. The file extension is not needed, but is not harmful either. Note that a filename of 'default' will be a special case and will draw the loading screen if no other valid missions are being loaded.
+;$Loading Screen:	The Loading Screen Name Entry as specified in the table
+
+$Filename:			wallsclosing1.fs2
+$Loading Screen:		WallsClosing_1
+
+$Filename:			wallsclosing2.fs2
+$Loading Screen:		WallsClosing_2
+
+$Filename:			wallsclosing3.fs2
+$Loading Screen:		WallsClosing_3
+
+$Filename:			wallsclosing4.fs2
+$Loading Screen:		WallsClosing_4
+
+#End
