@@ -1,0 +1,5070 @@
+#Mission Info
+
+$Version: 23.1
+$Name:  XSTR("Antietam", 8485)
+$Author: Jake Berman
+$Created: 01/02/24 at 18:08:31
+$Modified: 01/29/24 at 11:12:53
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Ned Mozingo's SOC mission has gone wrong.  It's about to get worse.", 8486)
+$end_multi_text
++Game Type Flags: 1
++Flags: 327810
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
+
++Disallow Support: 0
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 5588.215820, 9292.307617, 299.385345
++Viewer orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.866025, 0.500000,
+	0.000000, -0.500000, 0.866025
+
+$Starting wing names: ( "Zeta" "Omicron" "Tau" )
+$Squadron wing names: ( "Zeta" "Omicron" "Tau" "Blue" "Gold" )
+$Team-versus-team wing names: ( "Zeta" "Omicron" )
+
+$Skybox Model: NHTSB.pof
++Skybox Orientation:
+	-0.105241, -0.816443, -0.567755,
+	0.989301, -0.143961, 0.023639,
+	-0.101034, -0.559193, 0.822858
+
+$AI Profile: BP2 R2
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"i18nVariable1"		"UED Orion"		"string"
+		1		"i18nVariable2"		"#Vengeance"		"string"
+)
+
+#Cutscenes
+$Pre-game Cutscene: subspace.ogg
++formula: ( true ) 
+#end
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 1
+$start_stage
+$multi_text
+ XSTR("My apologies for that outburst, Lieutenant Commander.
+ 
+I logged into $f Fleetnet right after we jumped. The situation across the $p Sol theater is a mess. The $f Vengeance and GTD $f Phoenicia are under attack at the node.  The GTD $f Hood is pinned down at $p Mars by $h gunships. Same for the $p Ganymede garrison.   The GTD $f Agamemnon and GTD $f Implacable are preparing a counterattack.  Maybe they'll nail the $h Solaris - that destroyer has been a thorn in our side for far too long.
+
+There's still no sign of the $h Maitreya, either, which has me worried. Using an old Starblade mining ship to mimic the Maitreya's jump signature was clever. I always wanted to see one of those in person. I did not anticipate I'd get my wish today.
+
+It looks like this is the $h Federals' last hurrah. I'm not a gambling man, but I'm fairly certain they're going all-in.", 8487)
+$end_multi_text
+$voice: asakawa-br-b-intro.ogg
+$camera_pos: -115.546021, 7557.002930, 14473.636719
+$camera_orient:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 0.866025, 0.500000,
+	0.000000, -0.500000, 0.866025
+$camera_time: 500
+$num_lines: 0
+$num_icons: 0
+$Flags: 0
+$Formula: ( true ) 
+$end_stage
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 2
+
+$Formula: ( is-event-true-delay "BAD ENDING" 0 ) 
+$Multi text
+    XSTR("What a mess of a sortie.  Sent on a wild goose chase, jumped by the Federation, and now we're left to pick up the pieces. The UEF really did a number on us, didn't they? Two destroyers lost in one day.  God help us all.
+
+One of our scout wings reports that the Maitreya deployed to the node.  Fleet Command in Delta Serpentis went silent shortly afterward.", 8488)
+$end_multi_text
+$Voice: asakawa-dbr-b1.ogg
+$Recommendation text:
+    XSTR("Move fast to kill Cancer wing and upload the virus.  If the Vengeance is destroyed early, the Federal admiral will sortie bombers to kill the Phoenicia. If you reach that point, there's nothing you can do.", 8489)
+$end_multi_text
+
+$Formula: ( is-event-true-delay "withdraw" 0 ) 
+$Multi text
+    XSTR("What a mess of a sortie.  Sent on a wild goose chase, ambushed by the Federation, warped into the middle of a free-for-all, and barely escaped with our lives. God.  We lost a lot of good people there, but now is not the time to mourn.  Not yet. 
+	
+We're still not out of the woods.  The Phoenicia's drives were damaged by Federal torpedoes, and we've arrived well outside Artemis Station's perimeter. We'll have to go the rest of the way on fusion drives. Eta wing is on CAP now. We're going out there again in 30 minutes.", 8490)
+$end_multi_text
+$Voice: asakawa-dbr-b2.ogg
+$Recommendation text:
+    XSTR("There was nothing you could have done to save the Vengeance.", 8491)
+$end_multi_text
+
+
+#Callsigns:
+$Callsign: XSTR("Asakawa", 8384)
+$Callsign: XSTR("Mozingo", 7308)
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Zeta 2
+$Ship Choices: (
+	"GTF Pegasus"	5
+)
+
++Weaponry Pool: (
+	"Subach HL-7"	16
+	"Subach HL-D"	16
+	"Mekhu HL-7"	16
+	"Mekhu HL-7D"	16
+	"Akheton SDG"	16
+	"Morning Star"	16
+	"MorningStar D"	16
+	"Prometheus R"	16
+	"Prometheus S"	28
+	"Prometheus D"	16
+	"Maxim"	16
+	"Maxim D"	16
+	"UD-8 Kayser"	18
+	"UD-D Kayser"	16
+	"Circe"	16
+	"Lamprey"	16
+	"Vasudan Light Laser"	16
+	"Balor"	24
+	"Balrog"	16
+	"Vulcan"	16
+	"Maul"	16
+	"Rapier"	16
+	"Gattler"	16
+	"Firestorm"	16
+	"Scalpel"	16
+	"Sidhe"	16
+	"Gauss Sidhe"	16
+	"UX Accelerator"	16
+	"Cavalier"	16
+	"Archer"	16
+	"Redeemer"	16
+	"Vajra"	16
+	"Vishnan Primary"	16
+	"Vishnan Proximity Gun"	16
+	"Vishnan Gravity Spike"	16
+	"Ammo Pack"	16
+	"ERA Kit"	16
+	"Repair System"	16
+	"Arquebus"	16
+	"Hornet"	1070
+	"Hornet D"	500
+	"Hornet#Weak"	500
+	"Tornado"	500
+	"Tornado D"	500
+	"Harpoon"	756
+	"Harpoon D"	500
+	"Harpoon#Weak"	500
+	"Trebuchet"	506
+	"TAG-A"	100
+	"Piranha"	500
+	"Stiletto II"	500
+	"Infyrno"	500
+	"EMP Adv."	500
+	"Rockeye#Shivan"	500
+	"Rockeye D#Shivan"	500
+	"Tempest#Shivan"	500
+	"Tempest D#Shivan"	500
+	"Hornet#Shivan"	500
+	"Hornet D#Shivan"	500
+	"Hornet#Weak#Shivan"	500
+	"Tornado#Shivan"	500
+	"Tornado D#Shivan"	500
+	"Harpoon#Shivan"	500
+	"Harpoon D#Shivan"	500
+	"Harpoon#Weak#Shivan"	500
+	"Trebuchet#Shivan"	500
+	"Piranha#Shivan"	500
+	"Shivan Disruptor"	500
+	"Shivan Area Bomb"	500
+	"Shivan Bomb"	500
+	"Shivan Bomb#Short"	500
+	"Shivan Megabomb"	500
+	"EMP Adv.#Shivan"	500
+	"TAG-D"	500
+	"Piranha#bomber"	500
+	"Vishnan Missile"	500
+	"Vishnan Missile#Impact"	500
+	"Vishnan Subspace Missile"	500
+	"Vishnan Flechette Pod"	500
+	"Vishnan Megabomb"	500
+	"Vishnan Ultrabomb"	500
+	"Bifrost"	500
+	"Javelin"	500
+	"Dart"	500
+	"Dirk"	500
+	"Slammer"	500
+	"Paveway"	500
+	"Hellfire"	500
+	"Shrike"	500
+	"Grimler"	500
+	"Warhammer"	500
+	"Jackhammer"	500
+	"Jackhammer IIEC"	500
+	"Sledgehammer"	500
+	"Revelation"	500
+	"Grimler#Child"	500
+	"Tempest"	80
+	"Cyclops#short"	0
+)
+
+#Objects		;! 107 total
+
+$Name: Zeta 1		;! Object #0
+$Display Name: XSTR("Zeta 1", 8385)
+$Class: GTF Pegasus
+$Callsign: XSTR("Asakawa", 8384)
+
+$Team: Friendly
+$Location: 2430.399414, 864.149414, 380.736328
+$Orientation:
+	0.975494, 0.000000, 0.220025,
+	-0.000000, 1.000000, 0.000000,
+	-0.220025, -0.000000, 0.975494
++AI Class: BP2-General
+$AI Goals: ( goals ( ai-chase-wing "Cancer" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 30
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "UD-8 Kayser" )
++Secondary Banks: ( "Trebuchet" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "invulnerable" "no-dynamic" "red-alert-carry" "stealth" )
++Flags2: ( "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Score: 8
++Persona Name: Asakawa
+
+$Name: Phoenicia		;! Object #1
+$Display Name: XSTR("Phoenicia", 8386)
+$Class: GTD Hecate#MK2
+$Team: Friendly
+$Location: 8382.194336, 0.004395, 6411.356445
+$Orientation:
+	-0.079224, 0.000000, 0.996857,
+	-0.000000, 1.000000, -0.000000,
+	-0.996857, -0.000000, -0.079224
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 75
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
++Subsystem: Turret19
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
++Subsystem: Turret25
++Subsystem: Turret26
++Subsystem: Turret27
++Subsystem: turret28
++Secondary Banks: ( "Eos#Command" "Eos#Command" "Eos#Command" "Eos#Command" )
++Sbank Ammo: ( 0 0 0 0 )
++Subsystem: turret29
++Secondary Banks: ( "Eos#Command" "Eos#Command" "Eos#Command" "Eos#Command" )
++Sbank Ammo: ( 0 0 0 0 )
++Subsystem: turret30
++Secondary Banks: ( "Eos#Command" "Eos#Command" "Eos#Command" "Eos#Command" )
++Sbank Ammo: ( 0 0 0 0 )
++Subsystem: turret31
++Secondary Banks: ( "Eos#Command" "Eos#Command" "Eos#Command" "Eos#Command" )
++Sbank Ammo: ( 0 0 0 0 )
++Subsystem: turret32
++Secondary Banks: ( "Eos#Command" "Eos#Command" "Eos#Command" "Eos#Command" )
++Sbank Ammo: ( 0 0 0 0 )
++Subsystem: turret33
++Secondary Banks: ( "Eos#Command" "Eos#Command" "Eos#Command" "Eos#Command" )
++Sbank Ammo: ( 0 0 0 0 )
++Subsystem: Navigation
+$Damage: 28
++Subsystem: engine01
+$Damage: 66
++Subsystem: engine02
+$Damage: 24
++Subsystem: engine04
+$Damage: 88
++Subsystem: fighterbay
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( has-departed-delay 10 "Scylla" ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 89
++Orders Accepted List: ( )
++Use Table Score:
++Score: 1300
+$Texture Replace:
++old: nameplate
++new: gtd_phoenicia
+
+$Name: Vengeance		;! Object #2
+$Display Name: XSTR("Vengeance", 8387)
+$Class: GTD Orion
+$Team: Friendly
+$Location: 4370.844727, 913.954102, 3243.985840
+$Orientation:
+	0.417595, 0.000000, 0.908634,
+	0.000000, 1.000000, 0.000000,
+	-0.908634, 0.000000, 0.417595
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 85
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01a
++Subsystem: Turret02a
++Primary Banks: ( "PDTerPulse" "PDTerPulse" "PDTerPulse" )
++Subsystem: Turret03a
++Primary Banks: ( "PDTerPulse" "PDTerPulse" "PDTerPulse" )
++Subsystem: Turret04a
++Primary Banks: ( "PDTerPulse" "PDTerPulse" "PDTerPulse" )
++Subsystem: Turret05a
++Primary Banks: ( "PDTerPulse" "PDTerPulse" "PDTerPulse" )
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Primary Banks: ( "Standard Flak" )
++Subsystem: Turret13
++Primary Banks: ( "Standard Flak" )
++Subsystem: Turret14
++Subsystem: Turret15
++Primary Banks: ( "Standard Flak" )
++Subsystem: Turret16
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-departure-warp" )
++Flags2: ( )
++Respawn priority: 0
++Escort priority: 90
++Orders Accepted List: ( )
++Use Table Score:
++Score: 1000
+$Texture Replace:
++old: nameplate
++new: gtd_vengeance
+
+$Name: Zeta 2		;! Object #3
+$Display Name: XSTR("Zeta 2", 8396)
+$Class: GTF Pegasus
+$Callsign: XSTR("Mozingo", 7308)
+
+$Team: Friendly
+$Location: 2059.810547, 864.149414, 624.595703
+$Orientation:
+	0.980334, 0.000000, 0.197347,
+	-0.000000, 1.000000, 0.000000,
+	-0.197347, -0.000000, 0.980334
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 5
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "UD-8 Kayser" )
++Secondary Banks: ( "Tornado" "Tempest" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "player-start" "red-alert-carry" "stealth" )
++Flags2: ( "no-subspace-drive" "ship-locked" )
++Respawn priority: 0
++Use Table Score:
++Score: 10
+
+$Name: Litai		;! Object #4
+$Display Name: XSTR("Litai", 8397)
+$Class: GTCv Deimos
+$Team: Friendly
+$Location: 6561.174805, 470.638428, 4283.105469
+$Orientation:
+	-0.158532, 0.000000, 0.987354,
+	0.000000, 1.000000, 0.000000,
+	-0.987354, 0.000000, -0.158532
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
++Subsystem: Turret19
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
++Subsystem: Turret25
++Subsystem: Turret26
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "other ships warp" 
+      ( rand 0 15 ) 
+   )
+   ( is-event-true-delay 
+      "withdraw" 
+      ( rand 0 15 ) 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 800
+$Texture Replace:
++old: nameplate
++new: gtcv_litai
+
+$Name: Escher		;! Object #5
+$Display Name: XSTR("Escher", 8398)
+$Class: GTCv Deimos
+$Team: Friendly
+$Location: 4574.590820, -320.335449, 4101.146484
+$Orientation:
+	-0.158532, 0.000000, 0.987354,
+	0.000000, 1.000000, 0.000000,
+	-0.987354, 0.000000, -0.158532
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
++Subsystem: Turret19
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
++Subsystem: Turret25
++Subsystem: Turret26
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "other ships warp" 
+      ( rand 0 15 ) 
+   )
+   ( is-event-true-delay 
+      "withdraw" 
+      ( rand 0 15 ) 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 800
+$Texture Replace:
++old: nameplate
++new: gtcv_escher
+
+$Name: Generation		;! Object #6
+$Display Name: XSTR("Generation", 8399)
+$Class: GTCv Deimos
+$Team: Friendly
+$Location: 4153.712891, 0.003662, 6645.473633
+$Orientation:
+	-0.158532, 0.000000, 0.987354,
+	0.000000, 1.000000, 0.000000,
+	-0.987354, 0.000000, -0.158532
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
++Subsystem: Turret19
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
++Subsystem: Turret25
++Subsystem: Turret26
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "other ships warp" 
+      ( rand 0 15 ) 
+   )
+   ( is-event-true-delay 
+      "withdraw" 
+      ( rand 0 15 ) 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 800
+$Texture Replace:
++old: nameplate
++new: gtcv_generation
+
+$Name: Yakiba		;! Object #7
+$Display Name: XSTR("Yakiba", 8400)
+$Class: GTCv Deimos
+$Team: Friendly
+$Location: 3401.478760, 1223.586914, 4651.128906
+$Orientation:
+	-0.158532, 0.000000, 0.987354,
+	0.000000, 1.000000, 0.000000,
+	-0.987354, 0.000000, -0.158532
++AI Class: BP2-Major
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret18
++Subsystem: Turret19
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: Turret22
++Subsystem: Turret23
++Subsystem: Turret24
++Subsystem: Turret25
++Subsystem: Turret26
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "other ships warp" 
+      ( rand 0 15 ) 
+   )
+   ( is-event-true-delay 
+      "withdraw" 
+      ( rand 0 15 ) 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 800
+$Texture Replace:
++old: nameplate
++new: gtcv_yakiba
+
+$Name: Stalwart		;! Object #8
+$Display Name: XSTR("Stalwart", 8403)
+$Class: GTC Aeolus
+$Team: Friendly
+$Location: 7384.906250, -1190.801270, 9560.648438
+$Orientation:
+	-0.158532, 0.000000, 0.987354,
+	0.000000, 1.000000, 0.000000,
+	-0.987354, 0.000000, -0.158532
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "other ships warp" 
+      ( rand 0 15 ) 
+   )
+   ( is-event-true-delay 
+      "withdraw" 
+      ( rand 0 15 ) 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 500
+$Texture Replace:
++old: nameplate
++new: gtc_stalwart
+
+$Name: Decatur		;! Object #9
+$Display Name: XSTR("Decatur", 7769)
+$Class: UEFg Narayana
+$Team: Hostile
+$Team Color Setting: 1stFleet_BlueStripes
+$Location: -3601.991211, 0.003418, 5395.958008
+$Orientation:
+	-0.058827, 0.000000, -0.998268,
+	-0.000000, 1.000000, 0.000000,
+	0.998268, 0.000000, -0.058827
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 97
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01a
++Subsystem: Turret02a
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 500
+$Texture Replace:
++old: nameplate
++new: uefg_decatur
+
+$Name: Prince Eugene		;! Object #10
+$Display Name: XSTR("Prince Eugene", 8117)
+$Class: UEFg Narayana
+$Team: Hostile
+$Team Color Setting: 1stFleet_BlueStripes
+$Location: -2659.331543, 0.003906, 2862.690918
+$Orientation:
+	0.080434, 0.000000, -0.996760,
+	-0.000000, 1.000000, -0.000000,
+	0.996760, 0.000000, 0.080434
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01a
++Subsystem: Turret02a
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret12
++Subsystem: Turret13
++Subsystem: Turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 500
+$Texture Replace:
++old: nameplate
++new: uefg_princeeugene
+
+$Name: Avicenna		;! Object #11
+$Display Name: XSTR("Avicenna", 8492)
+$Class: UESc Shen Kuo
+$Team: Hostile
+$Location: -2487.674316, 0.000977, 4258.694336
+$Orientation:
+	0.011049, 0.000000, -0.999939,
+	-0.000000, 1.000000, -0.000000,
+	0.999939, 0.000000, 0.011049
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 7
++Orders Accepted List: ( )
++Use Table Score:
++Score: 160
+
+$Name: Alexander		;! Object #12
+$Display Name: XSTR("Alexander", 8119)
+$Class: UEFg Karuna#MK2
+$Team: Hostile
+$Location: 596.349609, -517.920166, 6101.221680
+$Orientation:
+	-0.031487, 0.000000, -0.999504,
+	-0.000000, 1.000000, 0.000000,
+	0.999504, 0.000000, -0.031487
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 89
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
++Subsystem: turret31
++Subsystem: turret32
++Subsystem: turret33
++Subsystem: turret34
++Subsystem: turret35
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 500
+$Texture Replace:
++old: nameplate
++new: uefg_alexander
+
+$Name: Shiraz		;! Object #13
+$Display Name: XSTR("Shiraz", 8118)
+$Class: UEFg Karuna#MK2
+$Team: Hostile
+$Location: 908.829102, -517.919922, 4028.340820
+$Orientation:
+	0.125446, 0.000000, -0.992100,
+	-0.000000, 1.000000, -0.000000,
+	0.992100, 0.000000, 0.125446
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 93
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: turret10
++Subsystem: turret11
++Subsystem: turret12
++Subsystem: turret13
++Subsystem: turret14
++Subsystem: turret15
++Subsystem: turret16
++Subsystem: turret17
++Subsystem: turret18
++Subsystem: turret19
++Subsystem: turret20
++Subsystem: turret21
++Subsystem: turret22
++Subsystem: turret23
++Subsystem: turret24
++Subsystem: turret25
++Subsystem: turret26
++Subsystem: turret27
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
++Subsystem: turret31
++Subsystem: turret32
++Subsystem: turret33
++Subsystem: turret34
++Subsystem: turret35
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 500
+$Texture Replace:
++old: nameplate
++new: uefg_shiraz
+
+$Name: Ridwan		;! Object #14
+$Display Name: XSTR("Ridwan", 8493)
+$Class: UEFg Karuna
+$Team: Hostile
+$Team Color Setting: 1stFleet
+$Location: 801.895020, 1256.254395, 3217.615723
+$Orientation:
+	0.085246, 0.000000, -0.996360,
+	-0.000000, 1.000000, -0.000000,
+	0.996360, 0.000000, 0.085246
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 80
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret28
++Subsystem: turret29
++Subsystem: turret30
++Subsystem: turret31
++Subsystem: turret32
++Subsystem: turret35
++Subsystem: turret36
++Subsystem: turret37
++Subsystem: turret38
++Subsystem: turret39
++Subsystem: turret40
++Subsystem: turret41
++Subsystem: turret42
++Subsystem: turret43
++Subsystem: turret44
++Subsystem: turret45
++Subsystem: turret46
++Subsystem: turret47
++Subsystem: turret48
++Subsystem: turret49
++Subsystem: turret50
++Subsystem: turret51
++Subsystem: Turret52
++Subsystem: Turret53
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 300
+$Texture Replace:
++old: nameplate
++new: uefg_ridwan
+
+$Name: Sagittarius 1		;! Object #15
+$Display Name: XSTR("Sagittarius 1", 7828)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: -155.161621, -0.000488, 4298.443359
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Sagittarius 2		;! Object #16
+$Display Name: XSTR("Sagittarius 2", 7829)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 16.453613, -0.000488, 4422.332031
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Sagittarius 3		;! Object #17
+$Display Name: XSTR("Sagittarius 3", 7830)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 69.634766, -0.000488, 4251.772461
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Cancer 1		;! Object #18
+$Display Name: XSTR("Cancer 1", 7471)
+$Class: UEB Durga
+$Team: Hostile
+$Location: 1543.710938, -0.000488, 2555.138672
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
++Arrival Delay: 15
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Cancer 2		;! Object #19
+$Display Name: XSTR("Cancer 2", 7472)
+$Class: UEB Durga
+$Team: Hostile
+$Location: 1414.380859, -0.000488, 2350.627930
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
++Arrival Delay: 15
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Cancer 3		;! Object #20
+$Display Name: XSTR("Cancer 3", 7473)
+$Class: UEB Durga
+$Team: Hostile
+$Location: 1695.149414, -0.000488, 2215.489258
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
++Arrival Delay: 15
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Pisces 1		;! Object #21
+$Display Name: XSTR("Pisces 1", 7475)
+$Class: UEF Uhlan
+$Team: Hostile
+$Location: -4044.174805, -0.000244, 6801.580078
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Score: 100
+
+$Name: Pisces 2		;! Object #22
+$Display Name: XSTR("Pisces 2", 7476)
+$Class: UEF Uhlan
+$Team: Hostile
+$Location: -4047.175781, -0.000488, 6379.753906
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Score: 100
+
+$Name: Capricorn 1		;! Object #23
+$Display Name: XSTR("Capricorn 1", 7480)
+$Class: UEF Uhlan
+$Team: Hostile
+$Location: -2496.082031, -0.000488, 2188.327637
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 10
+
+$Name: Aries 1		;! Object #24
+$Display Name: XSTR("Aries 1", 7467)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 444.102295, 0.000489, 4471.106445
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Aries 2		;! Object #25
+$Display Name: XSTR("Aries 2", 7468)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 625.952881, 0.000489, 4400.667969
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Aries 3		;! Object #26
+$Display Name: XSTR("Aries 3", 7469)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 541.792236, 0.000489, 4277.364258
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Capricorn 2		;! Object #27
+$Display Name: XSTR("Capricorn 2", 7481)
+$Class: UEF Uhlan
+$Team: Hostile
+$Location: -2332.431641, -0.000488, 2141.614746
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 10
+
+$Name: Taurus 1		;! Object #28
+$Display Name: XSTR("Taurus 1", 8057)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 3477.887207, -0.000488, 1237.751953
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Dart" "Slammer" "Paveway" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Score: 10
+
+$Name: Taurus 2		;! Object #29
+$Display Name: XSTR("Taurus 2", 8058)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 3930.783691, -0.000488, 1840.929688
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Dart" "Slammer" "Paveway" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Score: 10
+
+$Name: Taurus 3		;! Object #30
+$Display Name: XSTR("Taurus 3", 8134)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 3994.142578, -0.000488, 1188.224609
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Dart" "Slammer" "Paveway" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Score: 10
+
+$Name: Taurus 4		;! Object #31
+$Display Name: XSTR("Taurus 4", 8135)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 4477.247070, -0.000488, 1139.026367
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Dart" "Slammer" "Paveway" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Score: 10
+
+$Name: Taurus 5		;! Object #32
+$Display Name: XSTR("Taurus 5", 8136)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 4822.833984, -0.000488, 1734.086914
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Dart" "Slammer" "Paveway" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Score: 10
+
+$Name: Taurus 6		;! Object #33
+$Display Name: XSTR("Taurus 6", 8137)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 4947.771484, -0.000488, 1122.699219
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
++Secondary Banks: ( "Dart" "Slammer" "Paveway" )
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Score: 10
+
+$Name: Gemini 1		;! Object #34
+$Display Name: XSTR("Gemini 1", 7774)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 3383.681885, 539.367188, 1913.666504
+$Orientation:
+	0.803054, 0.000000, -0.595906,
+	-0.131429, 0.975375, -0.177116,
+	0.581232, 0.220553, 0.783279
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Gemini 2		;! Object #35
+$Display Name: XSTR("Gemini 2", 7775)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 3540.040527, 539.367188, 2130.702637
+$Orientation:
+	0.801435, 0.000000, -0.598082,
+	-0.155716, 0.965512, -0.208661,
+	0.577456, 0.260359, 0.773795
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Gemini 3		;! Object #36
+$Display Name: XSTR("Gemini 3", 7776)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 3605.024902, 539.367188, 1843.470703
+$Orientation:
+	0.877394, 0.000000, -0.479771,
+	-0.109611, 0.973552, -0.200453,
+	0.467082, 0.228464, 0.854189
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Gemini 4		;! Object #37
+$Display Name: XSTR("Gemini 4", 7777)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 4535.405273, 539.367188, 1944.073730
+$Orientation:
+	0.992082, 0.000000, 0.125591,
+	0.034521, 0.961481, -0.272693,
+	-0.120754, 0.274870, 0.953868
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Gemini 5		;! Object #38
+$Display Name: XSTR("Gemini 5", 8494)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 4700.807617, 539.367188, 2109.604980
+$Orientation:
+	0.960204, 0.000000, 0.279299,
+	0.084416, 0.953231, -0.290215,
+	-0.266236, 0.302242, 0.915296
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Gemini 6		;! Object #39
+$Display Name: XSTR("Gemini 6", 8495)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 4701.726563, 539.367188, 1893.503906
+$Orientation:
+	0.971272, 0.000000, 0.237971,
+	0.061903, 0.965574, -0.252657,
+	-0.229779, 0.260130, 0.937835
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-music" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Washington		;! Object #40
+$Display Name: XSTR("Washington", 8496)
+$Class: GTD Orion#2 (Bastion)
+
+$Team: Hostile
+$Location: 3635.131348, 3769.526123, 15973.247070
+$Orientation:
+	-0.995218, -0.000000, 0.097679,
+	-0.028308, 0.957085, -0.288421,
+	-0.093487, -0.289807, -0.952508
++AI Class: None
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 39
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01a
+$Damage: 100
++Subsystem: Turret02a
+$Damage: 100
++Subsystem: Turret03a
+$Damage: 100
++Subsystem: Turret04a
+$Damage: 100
++Subsystem: Turret05a
+$Damage: 100
++Subsystem: Turret06
+$Damage: 100
++Subsystem: Turret07
+$Damage: 100
++Subsystem: Turret08
+$Damage: 100
++Subsystem: Turret09
+$Damage: 100
++Subsystem: Turret10
+$Damage: 100
++Subsystem: Turret11
+$Damage: 100
++Subsystem: Turret12
+$Damage: 100
++Subsystem: Turret13
+$Damage: 100
++Subsystem: Turret14
+$Damage: 100
++Subsystem: Turret15
+$Damage: 100
++Subsystem: Turret16
+$Damage: 100
++Subsystem: weapons
+$Damage: 45
++Subsystem: sensors
+$Damage: 100
++Subsystem: engines
+$Damage: 75
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "Show jump node" 
+   15 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 1000
+$Texture Replace:
++old: nameplate
++new: ued_washington
+
+$Name: Deir ez-Zor		;! Object #41
+$Display Name: XSTR("Deir ez-Zor", 8497)
+$Class: UET Corsair
+$Team: Hostile
+$Location: 3602.111572, 3480.826904, 15125.962891
+$Orientation:
+	-0.093487, -0.289807, -0.952508,
+	0.028308, -0.957085, 0.288421,
+	-0.995218, -0.000000, 0.097679
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Docked With: Washington
+$Docker Point: front docking bay
+$Dockee Point: Docking Point
++Orders Accepted List: ( )
++Use Table Score:
++Score: 20
+
+$Name: Alpha 1		;! Object #42
+$Display Name: XSTR("Alpha 1", 7319)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: 3566.034180, 0.000000, 4182.821777
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Score: 14
+
+$Name: Alpha 2		;! Object #43
+$Display Name: XSTR("Alpha 2", 7376)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: 3436.913086, 0.000000, 4035.911865
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Score: 14
+
+$Name: Alpha 3		;! Object #44
+$Display Name: XSTR("Alpha 3", 7387)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: 3516.077637, 0.000000, 3902.551514
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Score: 14
+
+$Name: Alpha 4		;! Object #45
+$Display Name: XSTR("Alpha 4", 7479)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: 3678.256836, 0.000000, 3990.654297
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Score: 14
+
+$Name: Beta 1		;! Object #46
+$Display Name: XSTR("Beta 1", 7377)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 7832.052734, 0.000000, 4513.330078
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 14
+
+$Name: Beta 2		;! Object #47
+$Display Name: XSTR("Beta 2", 7378)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 7573.104492, 0.000000, 4180.402344
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 14
+
+$Name: Beta 3		;! Object #48
+$Display Name: XSTR("Beta 3", 7394)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 7702.670410, 0.000000, 4012.966797
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 14
+
+$Name: Beta 4		;! Object #49
+$Display Name: XSTR("Beta 4", 7395)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 8049.725098, 0.000000, 4258.059570
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 14
+
+$Name: Scylla		;! Object #50
+$Display Name: XSTR("Scylla", 8418)
+$Class: GTA Charybdis
+$Team: Friendly
+$Location: 6442.546875, 0.000000, 5534.777344
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-event-true-delay 
+      "other ships warp" 
+      ( rand 0 15 ) 
+   )
+   ( is-event-true-delay 
+      "withdraw" 
+      ( rand 0 15 ) 
+   )
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 150
+
+$Name: Eta 1		;! Object #51
+$Display Name: XSTR("Eta 1", 8498)
+$Class: GTF Hercules Mark II
+$Team: Friendly
+$Location: 7281.917480, 0.000000, 8726.842773
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 12
+
+$Name: Eta 2		;! Object #52
+$Display Name: XSTR("Eta 2", 8499)
+$Class: GTF Hercules Mark II
+$Team: Friendly
+$Location: 6981.562988, 0.000000, 8041.563477
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 12
+
+$Name: Eta 3		;! Object #53
+$Display Name: XSTR("Eta 3", 8500)
+$Class: GTF Hercules Mark II
+$Team: Friendly
+$Location: 7244.991211, 0.000000, 7843.080078
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 12
+
+$Name: Eta 4		;! Object #54
+$Display Name: XSTR("Eta 4", 8501)
+$Class: GTF Hercules Mark II
+$Team: Friendly
+$Location: 7472.390625, 0.000000, 8269.711914
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 12
+
+$Name: Vengeance Escape Alpha 1		;! Object #55
+$Display Name: XSTR("Vengeance Escape Alpha 1", 8502)
+$Class: GTSh Mercury
+$Team: Friendly
+$Location: 2709.969238, 0.000000, 3916.807861
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 15
+
+$Name: Vengeance Escape Alpha 2		;! Object #56
+$Display Name: XSTR("Vengeance Escape Alpha 2", 8503)
+$Class: GTSh Mercury
+$Team: Friendly
+$Location: 2781.666260, 0.000000, 4037.358398
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 15
+
+$Name: Vengeance Escape Alpha 3		;! Object #57
+$Display Name: XSTR("Vengeance Escape Alpha 3", 8504)
+$Class: GTSh Mercury
+$Team: Friendly
+$Location: 2900.253662, 0.000000, 3839.698242
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 15
+
+$Name: Vengeance Escape Alpha 4		;! Object #58
+$Display Name: XSTR("Vengeance Escape Alpha 4", 8505)
+$Class: GTSh Mercury
+$Team: Friendly
+$Location: 2857.328369, 0.000000, 3785.604980
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 15
+
+$Name: Vengeance Escape Beta 1		;! Object #59
+$Display Name: XSTR("Vengeance Escape Beta 1", 8506)
+$Class: GTSh Mercury
+$Team: Friendly
+$Location: 2854.361816, 0.000000, 4891.659180
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 15
+
+$Name: Vengeance Escape Beta 2		;! Object #60
+$Display Name: XSTR("Vengeance Escape Beta 2", 8507)
+$Class: GTSh Mercury
+$Team: Friendly
+$Location: 2832.044434, 0.000000, 4710.486328
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 15
+
+$Name: Vengeance Escape Beta 3		;! Object #61
+$Display Name: XSTR("Vengeance Escape Beta 3", 8508)
+$Class: GTSh Mercury
+$Team: Friendly
+$Location: 2924.753174, 0.000000, 4612.652344
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 15
+
+$Name: Vengeance Escape Beta 4		;! Object #62
+$Display Name: XSTR("Vengeance Escape Beta 4", 8509)
+$Class: GTSh Mercury
+$Team: Friendly
+$Location: 2982.448486, 0.000000, 4771.626953
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "invulnerable" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 15
+
+$Name: Incoming Subspace Transit		;! Object #63
+$Display Name: XSTR("Incoming Subspace Transit", 7868)
+$Class: GTNB Pharos
+$Team: Surrendered
+$Location: 3530.578613, 3628.391113, 14643.460938
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "Show jump node" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( has-arrived-delay 0 "Washington" ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" "no-departure-warp" )
++Flags2: ( "no_collide" )
++Respawn priority: 0
++Escort priority: 2
++Use Table Score:
++Score: 0
+
+$Name: Leo 1		;! Object #64
+$Display Name: XSTR("Leo 1", 8510)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 7006.303711, 0.000000, 3275.436279
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Leo 2		;! Object #65
+$Display Name: XSTR("Leo 2", 8511)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 7186.165039, 0.000000, 3427.647705
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Leo 3		;! Object #66
+$Display Name: XSTR("Leo 3", 8512)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 7191.201660, 0.000000, 3152.064209
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Leo 4		;! Object #67
+$Display Name: XSTR("Leo 4", 8513)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 7611.242188, 0.000000, 3518.615234
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Leo 5		;! Object #68
+$Display Name: XSTR("Leo 5", 8514)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 7502.698242, 0.000000, 3164.262939
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Leo 6		;! Object #69
+$Display Name: XSTR("Leo 6", 8515)
+$Class: UEB Vajradhara
+$Team: Hostile
+$Location: 7745.279297, 0.000000, 3164.262451
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 25
+
+$Name: Libra 1		;! Object #70
+$Display Name: XSTR("Libra 1", 7488)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 8217.226563, 0.000000, 3087.966553
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Libra 2		;! Object #71
+$Display Name: XSTR("Libra 2", 7489)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 8336.522461, 0.000000, 3348.363770
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Libra 3		;! Object #72
+$Display Name: XSTR("Libra 3", 7490)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 8433.856445, 0.000000, 3121.081787
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Libra 4		;! Object #73
+$Display Name: XSTR("Libra 4", 7491)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 8415.303711, 0.000000, 3699.436523
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Libra 5		;! Object #74
+$Display Name: XSTR("Libra 5", 7580)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 8580.581055, 0.000000, 4038.083008
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Libra 6		;! Object #75
+$Display Name: XSTR("Libra 6", 7581)
+$Class: UEF Uriel
+$Team: Hostile
+$Location: 8679.484375, 0.000000, 3737.308594
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Subsystem: turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 100
+
+$Name: Tau 1		;! Object #76
+$Display Name: XSTR("Tau 1", 7396)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 3455.959229, 0.000244, 6988.877930
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 14
+
+$Name: Tau 2		;! Object #77
+$Display Name: XSTR("Tau 2", 7398)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 3354.940674, 0.000244, 6748.441406
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 14
+
+$Name: Tau 3		;! Object #78
+$Display Name: XSTR("Tau 3", 7399)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 3419.770020, 0.000000, 6519.175781
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 14
+
+$Name: Tau 4		;! Object #79
+$Display Name: XSTR("Tau 4", 8516)
+$Class: GTF Perseus
+$Team: Friendly
+$Location: 3204.115967, 0.000000, 6956.145508
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 14
+
+$Name: Virgo 1		;! Object #80
+$Display Name: XSTR("Virgo 1", 7583)
+$Class: UEF Uhlan
+$Team: Hostile
+$Location: 672.247681, 0.000061, 5793.693359
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 10
+
+$Name: Virgo 2		;! Object #81
+$Display Name: XSTR("Virgo 2", 7584)
+$Class: UEF Uhlan
+$Team: Hostile
+$Location: 647.199768, 0.000061, 5688.931641
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 10
+
+$Name: Virgo 3		;! Object #82
+$Display Name: XSTR("Virgo 3", 7585)
+$Class: UEF Uhlan
+$Team: Hostile
+$Location: 708.638428, 0.000000, 5623.591797
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 10
+
+$Name: Virgo 4		;! Object #83
+$Display Name: XSTR("Virgo 4", 7689)
+$Class: UEF Uhlan
+$Team: Hostile
+$Location: 743.335693, -0.000061, 5710.065430
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 10
+
+$Name: Freetown		;! Object #84
+$Display Name: XSTR("Freetown", 7773)
+$Class: UEC Sanctus#MK2
+$Team: Hostile
+$Team Color Setting: 3rdFleet
+$Location: 4805.367676, 3060.434570, 13899.900391
+$Orientation:
+	-0.999170, 0.000000, 0.040744,
+	-0.012478, 0.951949, -0.306003,
+	-0.038786, -0.306258, -0.951158
+$AI Goals: ( goals ( ai-stay-near-ship "Alexander" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: turret22
++Subsystem: turret23
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 5 "Washington" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 200
+
+$Name: Armstrong		;! Object #85
+$Display Name: XSTR("Armstrong", 8123)
+$Class: UEC Sanctus#MK2
+$Team: Hostile
+$Team Color Setting: 3rdFleet
+$Location: 1714.594482, 3060.434570, 15947.337891
+$Orientation:
+	-0.991475, 0.000000, 0.130300,
+	-0.040941, 0.949354, -0.311531,
+	-0.123701, -0.314209, -0.941260
+$AI Goals: ( goals ( ai-stay-near-ship "Alexander" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: Turret05
++Subsystem: Turret06
++Subsystem: Turret07
++Subsystem: Turret08
++Subsystem: Turret09
++Subsystem: Turret10
++Subsystem: Turret11
++Subsystem: Turret14
++Subsystem: Turret15
++Subsystem: Turret16
++Subsystem: Turret17
++Subsystem: Turret20
++Subsystem: Turret21
++Subsystem: turret22
++Subsystem: turret23
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 5 "Washington" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 200
+
+$Name: Scorpio 1		;! Object #86
+$Display Name: XSTR("Scorpio 1", 8517)
+$Class: UEF Kentauroi
+$Team: Hostile
+$Location: -1551.732666, 0.000000, 9955.988281
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-guard "Armstrong" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 12
+
+$Name: Scorpio 2		;! Object #87
+$Display Name: XSTR("Scorpio 2", 8518)
+$Class: UEF Kentauroi
+$Team: Hostile
+$Location: -1058.032104, 0.000000, 9875.367188
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-guard "Armstrong" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 12
+
+$Name: Scorpio 3		;! Object #88
+$Display Name: XSTR("Scorpio 3", 8519)
+$Class: UEF Kentauroi
+$Team: Hostile
+$Location: -1015.311401, 0.000000, 9249.123047
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-guard "Armstrong" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 12
+
+$Name: Scorpio 4		;! Object #89
+$Display Name: XSTR("Scorpio 4", 8520)
+$Class: UEF Kentauroi
+$Team: Hostile
+$Location: -1287.559448, 0.000000, 9097.582031
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-guard "Armstrong" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 12
+
+$Name: Scorpio 5		;! Object #90
+$Display Name: XSTR("Scorpio 5", 8521)
+$Class: UEF Kentauroi
+$Team: Hostile
+$Location: -1796.915039, 0.000000, 9480.136719
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-guard "Armstrong" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 12
+
+$Name: Scorpio 6		;! Object #91
+$Display Name: XSTR("Scorpio 6", 8522)
+$Class: UEF Kentauroi
+$Team: Hostile
+$Location: -2080.090088, 0.000000, 10792.710938
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Major
+$AI Goals: ( goals ( ai-guard "Armstrong" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 12
+
+$Name: Omega 1		;! Object #92
+$Display Name: XSTR("Omega 1", 7385)
+$Class: GTC Cretheus
+$Team: Friendly
+$Location: -2323.891113, 2637.284180, -2679.222656
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01-base
++Subsystem: turret02-base
++Subsystem: turret03-base
++Subsystem: turret04-base
++Subsystem: turret05-base
++Subsystem: turret06-base
++Subsystem: turret07-base
++Subsystem: turret08-base
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 75
+
+$Name: Omega 2		;! Object #93
+$Display Name: XSTR("Omega 2", 7386)
+$Class: GTC Cretheus
+$Team: Friendly
+$Location: -1726.544434, 2637.284180, -2993.508789
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01-base
++Subsystem: turret02-base
++Subsystem: turret03-base
++Subsystem: turret04-base
++Subsystem: turret05-base
++Subsystem: turret06-base
++Subsystem: turret07-base
++Subsystem: turret08-base
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 75
+
+$Name: Sigma 1		;! Object #94
+$Display Name: XSTR("Sigma 1", 8523)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: -1368.047363, 0.000000, -2072.331055
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Balor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 12
+
+$Name: Sigma 2		;! Object #95
+$Display Name: XSTR("Sigma 2", 8524)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: -1279.428223, 0.000000, -2945.864258
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Balor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 12
+
+$Name: Sigma 3		;! Object #96
+$Display Name: XSTR("Sigma 3", 8525)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: -723.838867, 0.000000, -2880.085938
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Balor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 12
+
+$Name: Umbriel 1		;! Object #97
+$Display Name: XSTR("Umbriel 1", 8405)
+$Class: UEC Custos
+$Team: Hostile
+$Location: -4156.876953, 0.000000, 2508.782227
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Goals: ( goals ( ai-chase-wing "Omega" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" )
++Use Table Score:
++Score: 50
+
+$Name: Umbriel 2		;! Object #98
+$Display Name: XSTR("Umbriel 2", 8406)
+$Class: UEC Custos
+$Team: Hostile
+$Location: -4165.800781, 0.000000, 2939.354492
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Goals: ( goals ( ai-chase-wing "Omega" 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" )
++Use Table Score:
++Score: 50
+
+$Name: Sigma 4		;! Object #99
+$Display Name: XSTR("Sigma 4", 8526)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: -504.715332, 0.000000, -2171.618164
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Balor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 12
+
+$Name: Sigma 5		;! Object #100
+$Display Name: XSTR("Sigma 5", 8527)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: -249.616699, 0.000000, -2771.091797
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Balor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 12
+
+$Name: Sigma 6		;! Object #101
+$Display Name: XSTR("Sigma 6", 8528)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: -714.931641, 0.000000, -2604.460938
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
++Primary Banks: ( "Balor" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 12
+
+$Name: Directive trigger		;! Object #102
+$Display Name: XSTR("Directive trigger", 8529)
+$Class: GTF Ulysses
+$Team: Hostile
+$Location: -55989.039063, 0.000000, 54616.917969
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Velocity: 33
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "dir: upload virus" 
+   0 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-arrival-warp" "no-departure-warp" "hidden-from-sensors" "stealth" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 8
+
+$Name: Omicron 1		;! Object #103
+$Display Name: XSTR("Omicron 1", 8530)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: 3933.624268, 0.000000, 4335.949219
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Score: 14
+
+$Name: Omicron 2		;! Object #104
+$Display Name: XSTR("Omicron 2", 8531)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: 3885.292969, 0.000000, 4250.388184
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Score: 14
+
+$Name: Omicron 3		;! Object #105
+$Display Name: XSTR("Omicron 3", 8532)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: 3949.558105, 0.000000, 4055.751953
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Score: 14
+
+$Name: Omicron 4		;! Object #106
+$Display Name: XSTR("Omicron 4", 8533)
+$Class: GTF Kulas
+$Team: Friendly
+$Location: 4075.120850, 0.000000, 4164.194336
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: BP2-Lieutenant
+$Cargo 1:  XSTR("Nothing", 13)
++Initial Hull: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" )
++Flags2: ( )
++Respawn priority: 0
++Orders Accepted List: ( )
++Score: 14
+
+#Wings		;! 22 total
+
+$Name: Zeta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Zeta 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   ( rand 0 15 ) 
+   "Phoenicia" 
+)
+$Ships: (		;! 2 total
+	"Zeta 1"
+	"Zeta 2"
+)
++Flags: ( )
+
+$Name: Sagittarius
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Sagittarius 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Sagittarius 1"
+	"Sagittarius 2"
+	"Sagittarius 3"
+)
+$AI Goals: ( goals ( ai-guard "Shiraz" 50 ) )
++Flags: ( )
+
+$Name: Cancer
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Cancer 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Ridwan
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Cancer 1"
+	"Cancer 2"
+	"Cancer 3"
+)
+$AI Goals: ( goals ( ai-chase "Vengeance" 50 ) )
++Hotkey: 6
++Flags: ( )
+
+$Name: Aries
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Aries 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Aries 1"
+	"Aries 2"
+	"Aries 3"
+)
+$AI Goals: ( goals ( ai-guard "Alexander" 50 ) )
++Flags: ( )
+
+$Name: Pisces
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Pisces 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Pisces 1"
+	"Pisces 2"
+)
+$AI Goals: ( goals ( ai-guard "Decatur" 50 ) )
++Flags: ( )
+
+$Name: Capricorn
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Capricorn 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Capricorn 1"
+	"Capricorn 2"
+)
+$AI Goals: ( goals ( ai-guard "Prince Eugene" 50 ) )
++Flags: ( "no-arrival-message" "no-first-wave-message" )
+
+$Name: Taurus
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Taurus 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 2 "Gemini" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-destroyed-delay 15 "Vengeance" ) 
+$Ships: (		;! 6 total
+	"Taurus 1"
+	"Taurus 2"
+	"Taurus 3"
+	"Taurus 4"
+	"Taurus 5"
+	"Taurus 6"
+)
+$AI Goals: ( goals ( ai-chase "Vengeance" 50 ) )
++Hotkey: 5
++Flags: ( "no-arrival-music" "no-arrival-message" "no-first-wave-message" )
+
+$Name: Gemini
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Gemini 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 15 "Washington" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-destroyed-delay 15 "Vengeance" ) 
+$Ships: (		;! 6 total
+	"Gemini 1"
+	"Gemini 2"
+	"Gemini 3"
+	"Gemini 4"
+	"Gemini 5"
+	"Gemini 6"
+)
+$AI Goals: ( goals ( ai-chase "Vengeance" 50 ) )
++Hotkey: 5
++Flags: ( "no-arrival-music" "no-arrival-message" "no-first-wave-message" )
+
+$Name: Alpha
+$Waves: 4
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Vengeance
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   ( rand 0 15 ) 
+   "Phoenicia" 
+)
+$Ships: (		;! 4 total
+	"Alpha 1"
+	"Alpha 2"
+	"Alpha 3"
+	"Alpha 4"
+)
+$AI Goals: ( goals ( ai-guard "Vengeance" 50 ) )
++Flags: ( )
++Wave Delay Min: 15
++Wave Delay Max: 25
+
+$Name: Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Beta 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   ( rand 0 15 ) 
+   "Phoenicia" 
+)
+$Ships: (		;! 4 total
+	"Beta 1"
+	"Beta 2"
+	"Beta 3"
+	"Beta 4"
+)
+$AI Goals: ( goals ( ai-guard "Phoenicia" 50 ) )
++Flags: ( )
+
+$Name: Eta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Eta 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   ( rand 0 15 ) 
+   "Phoenicia" 
+)
+$Ships: (		;! 4 total
+	"Eta 1"
+	"Eta 2"
+	"Eta 3"
+	"Eta 4"
+)
+$AI Goals: ( goals ( ai-guard "Scylla" 50 ) )
++Hotkey: 1
++Flags: ( )
+
+$Name: Vengeance Escape Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Vengeance Escape Alpha 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Vengeance
+$Arrival Cue: ( has-arrived-delay 15 "Gemini" ) 
+$Departure Location: Hyperspace
++Departure delay: 10
+$Departure Cue: ( true ) 
+$Ships: (		;! 4 total
+	"Vengeance Escape Alpha 1"
+	"Vengeance Escape Alpha 2"
+	"Vengeance Escape Alpha 3"
+	"Vengeance Escape Alpha 4"
+)
++Flags: ( )
+
+$Name: Vengeance Escape Beta
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Vengeance Escape Beta 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Vengeance
+$Arrival Cue: ( has-arrived-delay 15 "Gemini" ) 
+$Departure Location: Hyperspace
++Departure delay: 10
+$Departure Cue: ( true ) 
+$Ships: (		;! 4 total
+	"Vengeance Escape Beta 1"
+	"Vengeance Escape Beta 2"
+	"Vengeance Escape Beta 3"
+	"Vengeance Escape Beta 4"
+)
++Flags: ( )
+
+$Name: Leo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Leo 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "BAD ENDING" 10 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-destroyed-delay 0 "Phoenicia" ) 
+$Ships: (		;! 6 total
+	"Leo 1"
+	"Leo 2"
+	"Leo 3"
+	"Leo 4"
+	"Leo 5"
+	"Leo 6"
+)
++Flags: ( "no-arrival-message" "no-first-wave-message" )
+
+$Name: Libra
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Libra 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 2 "Leo" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-destroyed-delay 0 "Phoenicia" ) 
+$Ships: (		;! 6 total
+	"Libra 1"
+	"Libra 2"
+	"Libra 3"
+	"Libra 4"
+	"Libra 5"
+	"Libra 6"
+)
+$AI Goals: ( goals ( ai-chase "Phoenicia" 50 ) )
++Flags: ( "no-arrival-message" "no-first-wave-message" )
+
+$Name: Tau
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Tau 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   ( rand 0 15 ) 
+   "Phoenicia" 
+)
+$Ships: (		;! 4 total
+	"Tau 1"
+	"Tau 2"
+	"Tau 3"
+	"Tau 4"
+)
+$AI Goals: ( goals ( ai-chase-wing "Virgo" 50 ) )
++Flags: ( )
+
+$Name: Virgo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Virgo 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Alexander
+$Arrival Cue: ( has-time-elapsed 15 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Virgo 1"
+	"Virgo 2"
+	"Virgo 3"
+	"Virgo 4"
+)
+$AI Goals: ( goals ( ai-chase-wing "Tau" 50 ) )
++Flags: ( )
+
+$Name: Scorpio
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Scorpio 1
+$Arrival Location: Near Ship
++Arrival Distance: 500
+$Arrival Anchor: Freetown
+$Arrival Cue: ( has-arrived-delay 5 "Freetown" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 6 total
+	"Scorpio 1"
+	"Scorpio 2"
+	"Scorpio 3"
+	"Scorpio 4"
+	"Scorpio 5"
+	"Scorpio 6"
+)
++Flags: ( )
+
+$Name: Omega
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Omega 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( or 
+   ( is-destroyed-delay 0 "Vengeance" ) 
+   ( is-destroyed-delay 0 "Phoenicia" ) 
+)
+$Ships: (		;! 2 total
+	"Omega 1"
+	"Omega 2"
+)
+$AI Goals: ( goals ( ai-chase "Decatur" 50 ) )
++Flags: ( )
+
+$Name: Sigma
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Sigma 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   5 
+   "Vengeance" 
+)
+$Ships: (		;! 6 total
+	"Sigma 1"
+	"Sigma 2"
+	"Sigma 3"
+	"Sigma 4"
+	"Sigma 5"
+	"Sigma 6"
+)
+$AI Goals: ( goals ( ai-guard-wing "Omega" 50 ) )
++Flags: ( )
+
+$Name: Umbriel
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Umbriel 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Umbriel 1"
+	"Umbriel 2"
+)
++Flags: ( )
+
+$Name: Omicron
+$Waves: 3
+$Wave Threshold: 0
+$Special Ship: 0		;! Omicron 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Vengeance
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( destroyed-or-departed-delay 
+   0 
+   "Phoenicia" 
+)
+$Ships: (		;! 4 total
+	"Omicron 1"
+	"Omicron 2"
+	"Omicron 3"
+	"Omicron 4"
+)
+$AI Goals: ( goals ( ai-guard "Escher" 50 ) )
++Flags: ( )
++Wave Delay Min: 15
++Wave Delay Max: 20
+
+#Events		;! 32 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@i18nVariable1[UED Orion]" 
+      "UED Orion" 
+      8573 
+   )
+   ( ship-change-alt-name 
+      "@i18nVariable1[UED Orion]" 
+      "Washington" 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable2[#Vengeance]" 
+      "#Vengeance" 
+      8483 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Ridwan" 
+      "Shiraz" 
+      "Decatur" 
+      "Prince Eugene" 
+      "Alexander" 
+      "Yakiba" 
+      "Vengeance" 
+      "Phoenicia" 
+      "Generation" 
+      "Litai" 
+      "Stalwart" 
+      "Escher" 
+      "Umbriel" 
+      "Omega" 
+   )
+   ( true ) 
+   ( set-armor-type 
+      "<argument>" 
+      ( true ) 
+      "Heavy Armor 5" 
+      "Hull" 
+   )
+   ( turret-set-rate-of-fire 
+      "Phoenicia" 
+      ( rand 10 20 ) 
+      "Turret22" 
+      "Turret24" 
+      "Turret26" 
+      "Turret27" 
+   )
+   ( turret-lock "Phoenicia" "Turret20" ) 
+   ( turret-set-rate-of-fire 
+      "Vengeance" 
+      ( rand 10 20 ) 
+      "Turret06" 
+      "Turret07" 
+      "Turret14" 
+   )
+   ( turret-lock 
+      "Vengeance" 
+      "Turret01a" 
+      "Turret09" 
+      "Turret11" 
+   )
+   ( turret-set-rate-of-fire 
+      "Prince Eugene" 
+      ( rand 10 20 ) 
+      "turret01a" 
+      "turret02a" 
+      "turret11" 
+      "turret12" 
+      "turret13" 
+      "turret14" 
+   )
+   ( turret-set-rate-of-fire 
+      "Decatur" 
+      ( rand 10 20 ) 
+      "turret01a" 
+      "turret02a" 
+      "turret11" 
+      "turret12" 
+      "turret13" 
+      "turret14" 
+   )
+   ( turret-set-rate-of-fire 
+      "Alexander" 
+      ( rand 10 20 ) 
+      "turret01" 
+      "turret06" 
+      "turret07" 
+      "turret08" 
+      "turret09" 
+      "turret10" 
+      "turret11" 
+      "turret12" 
+      "turret13" 
+      "turret14" 
+      "turret15" 
+      "turret16" 
+      "turret17" 
+      "turret02" 
+      "turret03" 
+      "turret04" 
+      "turret05" 
+   )
+   ( turret-set-rate-of-fire 
+      "Shiraz" 
+      ( rand 10 20 ) 
+      "turret01" 
+      "turret06" 
+      "turret07" 
+      "turret08" 
+      "turret09" 
+      "turret10" 
+      "turret11" 
+      "turret12" 
+      "turret13" 
+      "turret14" 
+      "turret15" 
+      "turret16" 
+      "turret17" 
+      "turret02" 
+      "turret03" 
+      "turret04" 
+      "turret05" 
+   )
+   ( turret-set-rate-of-fire 
+      "Ridwan" 
+      ( rand 10 20 ) 
+      "turret52" 
+      "turret53" 
+      "turret01" 
+      "turret02" 
+      "turret03" 
+      "turret04" 
+      "turret05" 
+      "turret32" 
+      "turret36" 
+      "turret37" 
+   )
+   ( turret-set-rate-of-fire 
+      "Yakiba" 
+      ( rand 10 30 ) 
+      "Turret11" 
+      "Turret12" 
+      "Turret23" 
+      "Turret24" 
+   )
+   ( turret-set-rate-of-fire 
+      "Litai" 
+      ( rand 10 30 ) 
+      "Turret11" 
+      "Turret12" 
+      "Turret23" 
+      "Turret24" 
+   )
+   ( turret-set-rate-of-fire 
+      "Escher" 
+      ( rand 10 30 ) 
+      "Turret11" 
+      "Turret12" 
+      "Turret23" 
+      "Turret24" 
+   )
+   ( turret-set-rate-of-fire 
+      "Generation" 
+      ( rand 10 30 ) 
+      "Turret11" 
+      "Turret12" 
+      "Turret23" 
+      "Turret24" 
+   )
+   ( awacs-set-radius 
+      "Avicenna" 
+      "Sensors" 
+      250 
+   )
+   ( ship-subsys-guardian-threshold 
+      75 
+      "Vengeance" 
+      "Turret01a" 
+      "Turret09" 
+   )
+   ( hide-jumpnode 
+      "Subspace Transit Detected" 
+   )
+   ( lua-CRZUtils-music-play 
+      "immediatemusic3.ogg" 
+   )
+)
++Name: mission setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( turret-set-rate-of-fire 
+      "Prince Eugene" 
+      ( rand 35 45 ) 
+      "turret19" 
+      "turret20" 
+      "turret21" 
+   )
+   ( turret-set-rate-of-fire 
+      "Decatur" 
+      ( rand 35 45 ) 
+      "turret19" 
+      "turret20" 
+      "turret21" 
+   )
+   ( turret-set-forced-target 
+      "Phoenicia" 
+      "Prince Eugene" 
+      "turret19" 
+      "turret20" 
+      "turret21" 
+   )
+   ( turret-set-forced-target 
+      "Phoenicia" 
+      "Decatur" 
+      "turret19" 
+      "turret20" 
+      "turret21" 
+   )
+)
++Name: set artillery torp rof
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ---PART 1: INTERCEPT---
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ---PART 2: VIRAL STRIKE---
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message-list 
+      "Zeta 1" 
+      "Normal" 
+      "z1: hi" 
+      0 
+      "Vengeance" 
+      "Normal" 
+      "ven: fighters coming in" 
+      4000 
+      "Zeta 1" 
+      "Normal" 
+      "z1: snipe the bombers" 
+      7000 
+      "Zeta 2" 
+      "Normal" 
+      "ned: wtf no phoenicia ships" 
+      7000 
+      "Vengeance" 
+      "Normal" 
+      "ven: torpedo hits" 
+      4000 
+   )
+)
++Name: initial convo
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Cancer" ) 
+   ( lua-DistanceCheck-start 
+      "Avicenna" 
+      500 
+      15000 
+   )
+   ( add-remove-escort "Avicenna" 1 ) 
+   ( clear-goals "Zeta 1" ) 
+   ( add-goal 
+      "Zeta 1" 
+      ( ai-guard "Zeta 2" 89 ) 
+   )
+)
++Name: dir: intercept cancer
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Objective:  XSTR("Intercept Cancer bombers", 8534)
++Objective key:  XSTR("F11", 7592)
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ---PART 3: DELENDA EST---
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "dir: intercept cancer" 
+      0 
+   )
+   ( send-message-list 
+      "Zeta 2" 
+      "Normal" 
+      "ned: cancer down" 
+      0 
+      "Vengeance" 
+      "Normal" 
+      "ven: upload to awacs" 
+      3000 
+      "Zeta 1" 
+      "Normal" 
+      "z1: you do it" 
+      10000 
+   )
+)
++Name: trigger for avicenna dir
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( lua-DistanceCheck-isDone ) 
+   ( send-message-list 
+      "Zeta 2" 
+      "Normal" 
+      "ned: virus uploaded" 
+      0 
+      "Vengeance" 
+      "Normal" 
+      "ven: good job" 
+      4000 
+      "Vengeance" 
+      "Normal" 
+      "ven: uplink" 
+      4000 
+      "Vengeance" 
+      "Normal" 
+      "ven: target locked" 
+      4000 
+      "Zeta 2" 
+      "Normal" 
+      "ned: woo hoo" 
+      8000 
+      "Vengeance" 
+      "Normal" 
+      "ven: target frigate" 
+      4000 
+   )
+   ( protect-ship "Vengeance" ) 
+   ( lua-CRZUtils-music-stop ( true ) ) 
+   ( change-soundtrack "<No Music>" ) 
+   ( lua-CRZUtils-music-play 
+      "carthage.ogg" 
+   )
+   ( training-msg "upload complete" ) 
+)
++Name: dir: upload virus
++Repeat Count: 1
++Interval: 1
++Chained: 12
++Objective:  XSTR("Upload virus to Avicenna (F12)", 8535)
++Objective key:  XSTR("Target Avicenna - stay < 500m", 8536)
+
+$Formula: ( when 
+   ( true ) 
+   ( set-armor-type 
+      "Avicenna" 
+      ( true ) 
+      "Light Armor 150" 
+      "Hull" 
+   )
+   ( fire-beam 
+      "Vengeance" 
+      "Turret01a" 
+      "Avicenna" 
+      "Hull" 
+      ( true ) 
+   )
+   ( fire-beam 
+      "Phoenicia" 
+      "Turret01" 
+      "Avicenna" 
+      "Hull" 
+      ( true ) 
+   )
+   ( turret-set-rate-of-fire 
+      "Phoenicia" 
+      ( rand 50 59 ) 
+      "Turret22" 
+      "Turret24" 
+      "Turret26" 
+      "Turret27" 
+   )
+   ( turret-free "Phoenicia" "Turret20" ) 
+   ( turret-set-rate-of-fire 
+      "Vengeance" 
+      ( rand 50 59 ) 
+      "Turret06" 
+      "Turret07" 
+      "Turret14" 
+   )
+)
++Name: beam spam 1
++Repeat Count: 1
++Interval: 1
++Chained: 15
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "Directive trigger" 
+   )
+   ( do-nothing ) 
+)
++Name: dir: stand clear of beam fire
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Stand clear of beam fire", 8252)
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ---PART 4: RIDWAN---
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Avicenna" ) 
+   ( set-armor-type 
+      "Ridwan" 
+      ( true ) 
+      "Heavy Armor 150" 
+      "Hull" 
+   )
+   ( add-remove-escort "Ridwan" 1 ) 
+)
++Name: destroy the ridwan
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( fire-beam 
+      "Vengeance" 
+      "Turret01a" 
+      "Ridwan" 
+   )
+   ( fire-beam 
+      "Phoenicia" 
+      "Turret20" 
+      "Ridwan" 
+      "Hull" 
+      ( true ) 
+   )
+   ( fire-beam 
+      "Escher" 
+      "Turret23" 
+      "Ridwan" 
+   )
+   ( fire-beam 
+      "Escher" 
+      "Turret24" 
+      "Ridwan" 
+   )
+   ( fire-beam 
+      "Generation" 
+      "Turret23" 
+      "Ridwan" 
+   )
+   ( fire-beam 
+      "Generation" 
+      "Turret24" 
+      "Ridwan" 
+   )
+   ( fire-beam 
+      "Vengeance" 
+      "Turret09" 
+      "Ridwan" 
+   )
+)
++Name: fire beams
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Ridwan" ) 
+   ( send-message-list 
+      "Zeta 2" 
+      "Normal" 
+      "ned: frigate destroyed" 
+      0 
+      "Vengeance" 
+      "Normal" 
+      "ven: pilots, subspace transit" 
+      3000 
+      "Zeta 2" 
+      "Normal" 
+      "ned: maitreya" 
+      4000 
+      "Zeta 1" 
+      "Normal" 
+      "z1: here we go" 
+      4000 
+      "Vengeance" 
+      "Normal" 
+      "ven: prepare to intercept" 
+      4000 
+   )
+)
++Name: ridwan down
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( show-jumpnode 
+      "Subspace Transit Detected" 
+   )
+)
++Name: Show jump node
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( has-departed "Vengeance" ) 
+   ( do-nothing ) 
+)
++Name: dir: fake intercept
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Assume intercept position", 8537)
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ---PART 5: SURPRISE---
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 5 "Ridwan" ) 
+   ( add-goal 
+      "Beta" 
+      ( ai-guard "Generation" 89 ) 
+   )
+   ( add-goal 
+      "Eta" 
+      ( ai-guard "Generation" 89 ) 
+   )
+   ( add-goal 
+      "Tau" 
+      ( ai-guard "Generation" 89 ) 
+   )
+   ( self-destruct "Directive trigger" ) 
+)
++Name: trigger - washington
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Washington" ) 
+   ( hide-jumpnode 
+      "Subspace Transit Detected" 
+   )
+   ( send-message-list 
+      "Zeta 2" 
+      "Normal" 
+      "ned: wait wtf" 
+      3000 
+      "Zeta 1" 
+      "Normal" 
+      "z1: wait wtf2" 
+      5000 
+      "Vengeance" 
+      "Normal" 
+      "ven: wait wtf3" 
+      3500 
+      "Zeta 1" 
+      "Normal" 
+      "z1: incoming bombers" 
+      5000 
+      "Zeta 2" 
+      "Normal" 
+      "ned: oh hell" 
+      4000 
+   )
+   ( unprotect-ship "Vengeance" ) 
+   ( lua-CRZUtils-music-stop ) 
+   ( lua-CRZUtils-music-play 
+      "immediatemusic2.ogg" 
+   )
+)
++Name: trigger - washington arrives
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      0 
+      "Gemini" 
+      "Taurus" 
+   )
+   ( do-nothing ) 
+)
++Name: dir: intercept bombers
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Intercept Federal bombers", 8538)
++Objective key:  XSTR("F10", 7857)
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Washington" ) 
+   ( clear-goals 
+      "Tau" 
+      "Alpha" 
+      "Beta" 
+      "Eta" 
+   )
+   ( add-goal 
+      "Tau" 
+      ( ai-guard "Vengeance" 89 ) 
+   )
+   ( add-goal 
+      "Alpha" 
+      ( ai-guard "Vengeance" 89 ) 
+   )
+   ( add-goal 
+      "Beta" 
+      ( ai-guard "Vengeance" 89 ) 
+   )
+   ( add-goal 
+      "Eta" 
+      ( ai-guard "Vengeance" 89 ) 
+   )
+)
++Name: all fighters return to defend v
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( has-arrived-delay 4 "Gemini" ) 
+   ( set-armor-type 
+      "Vengeance" 
+      ( true ) 
+      "Heavy Armor 60" 
+      "Hull" 
+   )
+)
++Name: reset vengeance armor
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 0 "Gemini" ) 
+      ( < ( hits-left "Vengeance" ) 10 ) 
+   )
+   ( send-message-list 
+      "@i18nVariable2[#Vengeance]" 
+      "Normal" 
+      "ven: many hits" 
+      0 
+      "Zeta 1" 
+      "Normal" 
+      "z1: christ and allah" 
+      7000 
+   )
+)
++Name: vengeance hull failure
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ---PART 6: CUTSCENE---
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 13 "Vengeance" ) 
+      ( is-event-true-delay 
+         "dir: upload virus" 
+         0 
+      )
+   )
+   ( alter-ship-flag 
+      "no-subspace-drive" 
+      ( false ) 
+      ( true ) 
+   )
+   ( send-message 
+      "Phoenicia" 
+      "Normal" 
+      "Phoenicia: retreat" 
+   )
+)
++Name: withdraw
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Zeta 2" ) 
+   ( lua-CRZUtils-music-stop ) 
+)
++Name: warpout trigger
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Enter subspace and retreat", 8539)
++Objective key:  XSTR("Alt-J", 7510)
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "withdraw" 
+         ( rand 0 10 ) 
+      )
+      ( is-event-true-delay 
+         "trigger for bad warpout" 
+         ( rand 0 10 ) 
+      )
+   )
+   ( add-goal "Leo" ( ai-warp-out 89 ) ) 
+   ( add-goal "Libra" ( ai-warp-out 89 ) ) 
+   ( add-goal 
+      "Gemini" 
+      ( ai-warp-out 89 ) 
+   )
+   ( add-goal 
+      "Gemini" 
+      ( ai-warp-out 89 ) 
+   )
+)
++Name: enemies jump
++Repeat Count: -1
++Trigger Count: -1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( is-destroyed-delay 0 "Avicenna" ) 
+      )
+      ( is-destroyed-delay 0 "Vengeance" ) 
+   )
+   ( send-message-list 
+      "@i18nVariable2[#Vengeance]" 
+      "Normal" 
+      "ven: many hits" 
+      0 
+      "Zeta 1" 
+      "Normal" 
+      "z1: christ and allah" 
+      7000 
+   )
+   ( set-armor-type 
+      "Phoenicia" 
+      ( true ) 
+      "Heavy Armor 150" 
+      "Hull" 
+   )
+)
++Name: BAD ENDING
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 5 "Phoenicia" ) 
+   ( send-message 
+      "Zeta 1" 
+      "Normal" 
+      "z1: phoenicia going down" 
+   )
+   ( alter-ship-flag 
+      "no-subspace-drive" 
+      ( false ) 
+      ( true ) 
+   )
+)
++Name: trigger for bad warpout
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( has-departed-delay 0 "Zeta 2" ) 
+   ( lua-CRZUtils-music-stop ) 
+)
++Name: bad warpout
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Retreat to Artemis Station", 7863)
++Objective key:  XSTR("Alt-J", 7510)
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Litai" 
+      "Generation" 
+      "Yakiba" 
+      "Phoenicia" 
+      "Escher" 
+      "Stalwart" 
+      "Scylla" 
+      "Beta" 
+      "Eta" 
+      "Alpha" 
+   )
+   ( is-event-true-delay 
+      "trigger for bad warpout" 
+      ( rand-multiple 10 20 ) 
+   )
+   ( add-goal 
+      "<argument>" 
+      ( ai-warp-out 150 ) 
+   )
+)
++Name: other ships warp
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 3 total
+
+$Type: Primary
++Name: Defend Phoenicia
+$MessageNew:  XSTR("Defend Phoenicia", 8540)
+$end_multi_text
+$Formula: ( has-departed-delay 0 "Phoenicia" ) 
+
+$Type: Primary
++Name: Defend Vengeance
+$MessageNew:  XSTR("Defend Vengeance", 8541)
+$end_multi_text
+$Formula: ( has-departed-delay 0 "Vengeance" ) 
+
+$Type: Primary
++Name: Upload virus to AWACS
+$MessageNew:  XSTR("Upload virus to AWACS", 8542)
+$end_multi_text
+$Formula: ( lua-DistanceCheck-isDone ) 
++Invalid
+
+#Waypoints		;! 0 lists total
+
+
+$Jump Node: 9712.605469, 0.001953, 5803.441406
+$Jump Node Name: Delta Serpentis
++Display Name: XSTR("Delta Serpentis", 8145)
+
+$Jump Node: 3563.006348, 3600.000488, 14504.463867
+$Jump Node Name: Subspace Transit Detected
++Display Name: XSTR("Subspace Transit Detected", 8543)
++Alphacolor: 200 200 200 255
++Hidden: false
+
+#Messages		;! 38 total
+
+
+$Name: WARPIN DIALOGUE
+$Team: -1
+$MessageNew:  XSTR("<put description here>", 7614)
+$end_multi_text
++Wave Name: j1-b-msg01_none_.wav
+
+$Name: z1: hi
+$Team: -1
+$MessageNew:  XSTR("Vengeance control, Zeta wing entering AO.", 8544)
+$end_multi_text
++Persona: Asakawa
++AVI Name: head-tp22
++Wave Name: asakawa-b-1.ogg
+
+$Name: ven: fighters coming in
+$Team: -1
+$MessageNew:  XSTR("Zeta, we read a heavy bomber wing launching from the Ridwan, designation Cancer. Intercept them.", 8545)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg03vengeance.wav
+
+$Name: z1: snipe the bombers
+$Team: -1
+$MessageNew:  XSTR("Will comply. Set up your shot and take it carefully, Two. When we open fire we lose our stealth.", 8546)
+$end_multi_text
++Persona: Asakawa
++AVI Name: head-tp22
++Wave Name: asakawa-b-2.ogg
+
+$Name: ned: wtf no phoenicia ships
+$Team: -1
+$MessageNew:  XSTR("Vengeance, where are the Phoenicia's fighters?", 8547)
+$end_multi_text
++Wave Name: j1-b-mozingo1_3.ogg
+
+$Name: ven: torpedo hits
+$Team: -1
+$MessageNew:  XSTR("Fed torpedoes hit their flight deck as they were preparing a strike package. Damage control is still in progress.", 8548)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg06vengeance.wav
+
+$Name: VIRAL STRIKE SETUP
+$Team: -1
+$MessageNew:  XSTR("<put description here>", 7614)
+$end_multi_text
++Wave Name: j1-b-msg07_none_.wav
+
+$Name: ned: cancer down
+$Team: -1
+$MessageNew:  XSTR("Scratch Cancer wing.", 8549)
+$end_multi_text
++Wave Name: j1-b-mozingo2_1.ogg
+
+$Name: ven: upload to awacs
+$Team: -1
+$MessageNew:  XSTR("Good job, Zeta. Your new objective is the Federal science ship Avicenna, which is jamming our beam targeting. Upload the tracking virus to the Avicenna.  You'll have to stay within 500 meters to upload.", 8550)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg09vengeance.wav
+
+$Name: z1: you do it
+$Team: -1
+$MessageNew:  XSTR("Copy. Zeta 2, make your run. I'll cover you. When you get in upload distance they'll probably try blind fire.", 8551)
+$end_multi_text
++Persona: Asakawa
++AVI Name: head-tp22
++Wave Name: asakawa-b-3.ogg
+
+$Name: AVICENNA DESTROYED
+$Team: -1
+$MessageNew:  XSTR("<put description here>", 7614)
+$end_multi_text
++Wave Name: j1-b-msg11_none_.wav
+
+$Name: ned: virus uploaded
+$Team: -1
+$MessageNew:  XSTR("Virus uploaded, Vengeance control.", 8552)
+$end_multi_text
++Wave Name: j1-b-mozingo3_3.ogg
+
+$Name: ven: good job
+$Team: -1
+$MessageNew:  XSTR("Good job, Zeta. Stand clear of beam fire.", 8553)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg13vengeance.wav
+
+$Name: ven: uplink
+$Team: -1
+$MessageNew:  XSTR("Establishing data link... link is good. ", 8554)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg14vengeance.wav
+
+$Name: ven: target locked
+$Team: -1
+$MessageNew:  XSTR("Target lock achieved.  Firing for effect.", 8555)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg15vengeance.wav
+
+$Name: ned: woo hoo
+$Team: -1
+$MessageNew:  XSTR("[private channel] That did it. No more jamming signals detected.", 8556)
+$end_multi_text
++Wave Name: j1-b-mozingo4_3.ogg
+
+$Name: ven: target frigate
+$Team: -1
+$MessageNew:  XSTR("Scratch one AWACS.  Targeting the Ridwan.", 8557)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg17vengeance.wav
+
+$Name: TARGET RIDWAN
+$Team: -1
+$MessageNew:  XSTR("<put description here>", 7614)
+$end_multi_text
++Wave Name: j1-b-msg18_none_.wav
+
+$Name: ned: frigate destroyed
+$Team: -1
+$MessageNew:  XSTR("Scratch one frigate!", 8558)
+$end_multi_text
++Wave Name: j1-b-mozingo5_3.ogg
+
+$Name: ven: pilots, subspace transit
+$Team: -1
+$MessageNew:  XSTR("Jump flash.  Detecting a very large subspace transit.", 8559)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg20vengeance.wav
+
+$Name: ned: maitreya
+$Team: -1
+$MessageNew:  XSTR("[private channel] The Maitreya!", 8560)
+$end_multi_text
++Wave Name: j1-b-mozingo6_6.ogg
+
+$Name: z1: here we go
+$Team: -1
+$MessageNew:  XSTR("[private channel] Check your seals. This is it. Here we go.", 8561)
+$end_multi_text
++Persona: Asakawa
++AVI Name: head-tp22
++Wave Name: asakawa-b-4.ogg
+
+$Name: ven: prepare to intercept
+$Team: -1
+$MessageNew:  XSTR("All wings, prepare to intercept incoming torpedoes.", 8562)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg23vengeance.wav
+
+$Name: DECOY JUMPS IN
+$Team: -1
+$MessageNew:  XSTR("<put description here>", 7614)
+$end_multi_text
++Wave Name: j1-b-msg24_none_.wav
+
+$Name: ned: wait wtf
+$Team: -1
+$MessageNew:  XSTR("Tally ... a Mark 1 Orion?  What the hell?", 8563)
+$end_multi_text
++Wave Name: j1-b-mozingo7_1.ogg
+
+$Name: z1: wait wtf2
+$Team: -1
+$MessageNew:  XSTR("No weapons signatures. Reads as the ... UED Washington?", 8564)
+$end_multi_text
++Persona: Asakawa
++AVI Name: head-tp22
++Wave Name: asakawa-b-5.ogg
+
+$Name: ven: wait wtf3
+$Team: -1
+$MessageNew:  XSTR("All wings, get back to the Vengeance! It's a decoy!", 8565)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg27vengeance.wav
+
+$Name: z1: incoming bombers
+$Team: -1
+$MessageNew:  XSTR("Tally - oh, Christ, it's a whole squadron.", 8566)
+$end_multi_text
++Persona: Asakawa
++AVI Name: head-tp22
++Wave Name: asakawa-b-6.ogg
+
+$Name: ned: oh hell
+$Team: -1
+$MessageNew:  XSTR("[private channel] We took the bait, all right.", 8567)
+$end_multi_text
++Wave Name: j1-b-mozingo8_3.ogg
+
+$Name: BOMBERS BLINDSIDE
+$Team: -1
+$MessageNew:  XSTR("<put description here>", 7614)
+$end_multi_text
++Wave Name: j1-b-msg30_none_.wav
+
+$Name: ven: many hits
+$Team: -1
+$MessageNew:  XSTR("Multiple torpedo hits on decks 2, 6 and 10. Abandon ship. All hands to the escape pods.  Repeat, all hands abandon --", 8568)
+$end_multi_text
++AVI Name: Head-CM4
++Wave Name: j1-b-msg31vengeance.wav
+
+$Name: z1: christ and allah
+$Team: -1
+$MessageNew:  XSTR("[private channel] Goddamn it.", 8569)
+$end_multi_text
++Persona: Asakawa
++AVI Name: head-tp22
++Wave Name: asakawa-b-7.ogg
+
+$Name: WARPOUT
+$Team: -1
+$MessageNew:  XSTR("<put description here>", 7614)
+$end_multi_text
++Wave Name: j1-b-msg33_none_.wav
+
+$Name: Phoenicia: retreat
+$Team: -1
+$MessageNew:  XSTR("This is Rear Admiral Aria Shalmaneser, assuming command of the 19th Battlegroup.  All units, engage jump drives and retreat. Pilots, we'll recover you in subspace.", 8570)
+$end_multi_text
++AVI Name: Head-FR04
++Wave Name: shalmaneser-b-1.ogg
+
+$Name: BAD ENDING
+$Team: -1
+$MessageNew:  XSTR("<put description here>", 7614)
+$end_multi_text
++Wave Name: j1-b-msg35_none_.wav
+
+$Name: z1: phoenicia going down
+$Team: -1
+$MessageNew:  XSTR("The Phoenicia is going down!  All units, withdraw to Artemis Station!  Repeat, withdraw to Artemis Station!", 8571)
+$end_multi_text
++Persona: Asakawa
++AVI Name: head-tp22
++Wave Name: asakawa-b-8.ogg
+
+$Name: TRAINING MSG
+$Team: -1
+$MessageNew:  XSTR("<put description here>", 7614)
+$end_multi_text
+
+$Name: upload complete
+$Team: -1
+$MessageNew:  XSTR("UPLOAD COMPLETE", 8572)
+$end_multi_text
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 0
+$Ambient light level: 7895160
+
+$Bitmap List:
++Flags: ( "corrected angles" )
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: Hisashi
+$Debriefing Success Music: DireFailure
+$Debriefing Average Music: DireFailure
+$Debriefing Fail Music: DireFailure
+
+#End
+

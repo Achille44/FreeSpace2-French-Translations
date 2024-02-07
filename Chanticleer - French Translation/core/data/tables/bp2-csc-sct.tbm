@@ -1,0 +1,671 @@
+;The CSC script. Messy and unreadable, but functional enough to allow effective control over capital ship turrets.
+
+#Conditional Hooks
+
+$Application: FS2_Open
+
+$On Key Pressed: [[csc_KeyPressed.lua]]
+$On Key Released: [[csc_KeyReleased.lua]]
+
+$On Game Init:
+[
+	ui_keyToggleFunctions = {}
+	InputStates = {}
+
+	ui_keyToggleFunctions["Up Arrow"]    = function(val) InputStates.up    = val end
+	ui_keyToggleFunctions["Down Arrow"]  = function(val) InputStates.down  = val end
+	ui_keyToggleFunctions["Left Arrow"]  = function(val) InputStates.left  = val end
+	ui_keyToggleFunctions["Right Arrow"] = function(val) InputStates.right = val end
+	ui_keyToggleFunctions["0"] = function(val) InputStates.zero = val end
+
+	--variables for translation
+	local localizedNone = ba.XSTR("None", 5422)
+	local localizedMassDrivers = ba.XSTR("Mass drivers: ", 5423)
+	local localizedGaussCannons = ba.XSTR("Gauss Cannons: ", 5424)
+	local localizedApocalypseTorpedoes = ba.XSTR("Apocalypse Torpedoes: ", 5425)
+	local localizedInvalid = ba.XSTR("Invalid", 5426)
+	local localizedCurrentTarget = ba.XSTR("Current Target: ", 5427)
+	local localizedClass = ba.XSTR(" Class: ", 5428)
+	local localizedRange = ba.XSTR("Range:", 5429)
+	local localized2Dots = ba.XSTR(": ", 5430)
+	local localizedPointDefenseTurrets = ba.XSTR("Point Defense turrets: ", 5431)
+	local localizedPDTurret = ba.XSTR("  PD Turret: ", 5432)
+	local localizedMissileLaunchers = ba.XSTR("Missile Launchers: ", 5433)
+	local localizedAutomatic = ba.XSTR("Automatic", 5434)
+	local localizedTrack = ba.XSTR("Track", 5435)
+	local localizedLock = ba.XSTR("Lock", 5436)
+	local localizedOffline = ba.XSTR("Offline", 5437)
+
+	function getTargetName(target)
+		local targetname
+		if target then
+			local sig = target:getSignature()
+			if sig > 0 then
+				local targetship = mn.getObjectFromSignature(sig)
+				if targetship:isValid() then
+					if targetship:getBreedName() == "Ship" then
+						targetname = targetship.DisplayName
+
+						if targetname == '' then
+							targetname = targetship.Name
+						end
+					end
+				else
+					targetname = localizedNone
+				end
+			end
+		else
+			targetname = localizedNone
+		end
+		return targetname
+	end
+
+	function getTargetClass(target)
+		local targetname
+		if target then
+			local sig = target:getSignature()
+			if sig > 0 then
+				local targetship = mn.getObjectFromSignature(target:getSignature())
+				if targetship:isValid() then
+					if targetship:getBreedName() == "Ship" then
+						targetname = targetship.Class.Type.Name
+					end
+				else
+					targetname = localizedNone
+				end
+			end
+		else
+			targetname = localizedNone
+		end
+		return targetname
+	end
+
+	function drawTurretUIKaruna()
+		--Mass drivers
+		if csc.acnum == 1 then
+			gr.setColor(255, 255, 255)
+		else
+			gr.setColor(255, 93, 48)
+		end
+		gr.drawString(localizedMassDrivers .. csc.mdmode[csc.mdstatus], gr.getScreenWidth() * 0.67, gr.getScreenHeight() * 0.75)
+		gr.setColor(255, 93, 48)
+		for i = 1, #csc.mdguns, 1 do
+			local targetname = getTargetName(csc.mdguns[i].Target)
+			if not targetname then targetname = localizedNone end
+			gr.drawString("  " .. csc.mdguns[i].Name .. localized2Dots .. targetname)
+		end
+
+		--Gauss cannons
+		if csc.acnum == 2 then
+			gr.setColor(255, 255, 255)
+		else
+			gr.setColor(255, 187, 53)
+		end
+		gr.drawString(localizedGaussCannons .. csc.railgunmode[csc.rgstatus])
+		gr.setColor(255, 187, 53)
+		for i = 1, #csc.railguns, 1 do
+			local targetname = getTargetName(csc.railguns[i].Target)
+			if not targetname then targetname = localizedNone end
+			gr.drawString("  " .. csc.railguns[i].Name .. localized2Dots .. targetname)
+		end
+
+		--Apocalypse
+		if csc.acnum == 3 then
+			gr.setColor(255, 255, 255)
+		else
+			gr.setColor(255, 255, 53)
+		end
+		gr.drawString(localizedApocalypseTorpedoes .. csc.apocalypsemode[csc.apostatus])
+		gr.setColor(255, 255, 53)
+		for i = 1, #csc.apocalypse, 1 do
+			local targetname = getTargetName(csc.apocalypse[i].Target)
+			if not targetname then targetname = localizedNone end
+			gr.drawString("  " .. csc.apocalypse[i].Name .. localized2Dots .. targetname)
+		end
+
+		gr.setColor(255, 255, 255)
+		local targetname = getTargetName(csc.CurrentTarget)
+		local classname = getTargetClass(csc.CurrentTarget)
+		if not classname then classname = localizedNone end
+		if not targetname then targetname = localizedInvalid end
+		gr.drawString(localizedCurrentTarget .. targetname .. localizedClass .. classname)
+	end
+
+	function fillturretlist(ship)
+		local turretnum = 1
+		ba.print("CSC: Entered fillturretlist\n")
+		csc.turrets = {}
+		for i = 1, 60, 1 do
+			if i < 10 then
+				turretname = "turret0" .. i
+			else
+				turretname = "turret" .. i
+			end
+
+			ba.print("CSC: Looking for turret: " .. turretname .. "\n")
+
+			if ship[turretname]:isValid() then
+				csc.turrets[turretnum] = ship[turretname]
+				ba.print("CSC: Found Turret.\n")
+				turretnum = turretnum + 1
+			end
+		end
+	end
+
+	function groupTurrets()
+
+		local pdnum = 1
+		local flaknum = 1
+		local railgunnum = 1
+		local mdnum = 1
+		local aponum = 1
+		local gatnum = 1
+		local rapnum = 1
+		local misnum = 1
+
+		ba.print("CSC: Entered GroupTurrets\n")
+
+		for i = 1, #csc.turrets, 1 do
+			if csc.turrets[i].PrimaryBanks[1].WeaponClass:isValid() or csc.turrets[i].SecondaryBanks[1].WeaponClass:isValid() then
+				if string.find(csc.turrets[i].PrimaryBanks[1].WeaponClass.Name, "Point Defense Turret") then
+					csc.pdTurrets[pdnum] = csc.turrets[i]
+					ba.print("CSC: Found PD Turret. Turret Number: " .. i .. " pdnum: " .. pdnum .. "\n")
+					pdnum = pdnum + 1
+				elseif string.find(csc.turrets[i].PrimaryBanks[1].WeaponClass.Name, "PD Turret#Player") then
+					csc.pdTurrets[pdnum] = csc.turrets[i]
+					ba.print("CSC: Found PD Turret. Turret Number: " .. i .. " pdnum: " .. pdnum .. "\n")
+					pdnum = pdnum + 1
+				elseif string.find(csc.turrets[i].PrimaryBanks[1].WeaponClass.Name, "Burst Flak") then
+					csc.flakTurrets[flaknum] = csc.turrets[i]
+					ba.print("CSC: Found Flak Turret. Turret Number: " .. i .. " flaknum: " .. flaknum .. "\n")
+					flaknum = flaknum + 1
+				elseif string.find(csc.turrets[i].PrimaryBanks[1].WeaponClass.Name, "Gauss Cannon") then
+					csc.railguns[railgunnum] = csc.turrets[i]
+					ba.print("CSC: Found Gauss Cannon. Turret Number: " .. i .. " railgunnum: " .. railgunnum .. "\n")
+					railgunnum = railgunnum + 1
+				elseif string.find(csc.turrets[i].PrimaryBanks[1].WeaponClass.Name, "Mass Driver") then
+					csc.mdguns[mdnum] = csc.turrets[i]
+					ba.print("CSC: Found Mass Driver. Turret Number: " .. i .. " mdnum: " .. mdnum .. "\n")
+					mdnum = mdnum + 1
+				elseif string.find(csc.turrets[i].SecondaryBanks[1].WeaponClass.Name, "Apocalypse") then
+					csc.apocalypse[aponum] = csc.turrets[i]
+					ba.print("CSC: Found Apocalypse. Turret Number: " .. i .. " aponum: " .. aponum .. "\n")
+					aponum = aponum + 1
+				elseif string.find(csc.turrets[i].PrimaryBanks[1].WeaponClass.Name, "Gattler") then
+					csc.gattler[gatnum] = csc.turrets[i]
+					ba.print("CSC: Found Gattler. Turret Number: " .. i .. " gatnum: " .. gatnum .. "\n")
+					gatnum = gatnum + 1
+				elseif string.find(csc.turrets[i].PrimaryBanks[1].WeaponClass.Name, "Rapier") then
+					csc.rapier[rapnum] = csc.turrets[i]
+					ba.print("CSC: Found Rapier. Turret Number: " .. i .. " rapnum: " .. rapnum .. "\n")
+					rapnum = rapnum + 1
+				elseif string.find(csc.turrets[i].SecondaryBanks[1].WeaponClass.Name, "Warhammer") then
+					csc.missile[misnum] = csc.turrets[i]
+					ba.print("CSC: Found Missiles. Turret Number: " .. i .. " misnum: " .. misnum .. "\n")
+					misnum = misnum + 1
+				end
+			end
+		end
+
+		csc.initComplete = true
+	end
+
+	function drawTargets(turrets, r, g, b, padding)
+		gr.setColor(r, g, b)
+		for i = 1, #turrets, 1 do
+			target = turrets[i].Target
+			if target:isValid() then
+				gr.drawTargetingBrackets(target, true, padding)
+			end
+		end
+	end
+
+	function doInput()
+		MissionTime = mn.getMissionTime()
+
+		if OldMissionTime ~= MissionTime and MissionTime ~= 0 then
+			if InputStates.up and not csc.inputstates.keyup then
+				csc.acnum = csc.acnum - 1
+				if csc.ship == "Karuna" then
+					if csc.acnum == 0 then
+						csc.acnum = 3
+					end
+				elseif csc.ship == "Custos" then
+					if csc.acnum == 0 then
+						csc.acnum = 2
+					end
+				end
+				csc.inputstates.keyup = true
+			elseif not InputStates.up then
+				csc.inputstates.keyup = false
+			end
+
+			if InputStates.down and not csc.inputstates.keydown then
+				csc.acnum = csc.acnum + 1
+				if csc.ship == "Karuna" then
+					if csc.acnum == 4 then
+						csc.acnum = 1
+					end
+				elseif csc.ship == "Custos" then
+					if csc.acnum == 3 then
+						csc.acnum = 1
+					end
+				end
+				csc.inputstates.keydown = true
+			elseif not InputStates.down then
+				csc.inputstates.keydown = false
+			end
+
+			if InputStates.left and not csc.inputstates.keyleft then
+				if csc.ship == "Karuna" then
+					if csc.acnum == 1 then
+						csc.mdstatus = csc.mdstatus - 1
+						if csc.mdstatus == 0 then
+							csc.mdstatus = 4
+						end
+					end
+					if csc.acnum == 2 then
+						csc.rgstatus = csc.rgstatus - 1
+						if csc.rgstatus == 0 then
+							csc.rgstatus = 4
+						end
+					end
+					if csc.acnum == 3 then
+						csc.apostatus = csc.apostatus - 1
+						if csc.apostatus == 0 then
+							csc.apostatus = 4
+						end
+					end
+				elseif csc.ship == "Custos" then
+					if csc.acnum == 1 then
+						csc.pdstatus = csc.pdstatus - 1
+						if csc.pdstatus == 0 then
+							csc.pdstatus = 4
+						end
+					end
+					if csc.acnum == 2 then
+						csc.missilestatus = csc.missilestatus - 1
+						if csc.missilestatus == 0 then
+							csc.missilestatus = 4
+						end
+					end
+				end
+				csc.inputstates.keyleft = true
+			elseif not InputStates.left then
+				csc.inputstates.keyleft = false
+			end
+
+			if InputStates.right and not csc.inputstates.keyright then
+				if csc.ship == "Karuna" then
+					if csc.acnum == 1 then
+						csc.mdstatus = csc.mdstatus + 1
+						if csc.mdstatus == 5 then
+							csc.mdstatus = 1
+						end
+					end
+					if csc.acnum == 2 then
+						csc.rgstatus = csc.rgstatus + 1
+						if csc.rgstatus == 5 then
+							csc.rgstatus = 1
+						end
+					end
+					if csc.acnum == 3 then
+						csc.apostatus = csc.apostatus + 1
+						if csc.apostatus == 5 then
+							csc.apostatus = 1
+						end
+					end
+				elseif csc.ship == "Custos" then
+					if csc.acnum == 1 then
+						csc.pdstatus = csc.pdstatus + 1
+						if csc.pdstatus == 5 then
+							csc.pdstatus = 1
+						end
+					end
+					if csc.acnum == 2 then
+						csc.missilestatus = csc.missilestatus + 1
+						if csc.missilestatus == 5 then
+							csc.missilestatus = 1
+						end
+					end
+				end
+				csc.inputstates.keyright = true
+			elseif not InputStates.right then
+				csc.inputstates.keyright = false
+			end
+
+			if InputStates.zero or io.isMouseButtonDown(MOUSE_LEFT_BUTTON) then
+				csc.CurrentTarget = csc.plrship.Target
+				csc.inputstates.zero = true
+			elseif not InputStates.zero or not io.isMouseButtonDown(MOUSE_LEFT_BUTTON) then
+				csc.inputstates.zero = false
+			end
+			OldMissionTime = MissionTime
+		end
+	end
+
+	function doTurretModeKaruna()
+		if csc.mdstatus == 1 then
+			for i = 1, #csc.mdguns do
+				csc.mdguns[i]:targetingOverride(false)
+			end
+		elseif csc.mdstatus == 2 then
+			for i = 1, #csc.mdguns do
+				csc.mdguns[i].Target = csc.plrship.Target
+			end
+		elseif csc.mdstatus == 3 then
+			if csc.CurrentTarget then
+				if csc.CurrentTarget:isValid() then
+					for i = 1, #csc.mdguns do
+						csc.mdguns[i].Target = csc.CurrentTarget
+					end
+				end
+			end
+		elseif csc.mdstatus == 4 then
+			for i = 1, #csc.mdguns do
+				csc.mdguns[i]:targetingOverride(true)
+			end
+		end
+
+		if csc.rgstatus == 1 then
+			for i = 1, #csc.railguns do
+				csc.railguns[i]:targetingOverride(false)
+			end
+		elseif csc.status == 2 then
+			for i = 1, #csc.railguns do
+				csc.railguns[i].Target = csc.plrship.Target
+			end
+		elseif csc.rgstatus == 3 then
+			if csc.CurrentTarget then
+				if csc.CurrentTarget:isValid() then
+					for i = 1, #csc.railguns do
+						csc.railguns[i].Target = csc.CurrentTarget
+					end
+				end
+			end
+		elseif csc.rgstatus == 4 then
+			for i = 1, #csc.railguns do
+				csc.railguns[i]:targetingOverride(true)
+			end
+		end
+
+		if csc.apostatus == 1 then
+			for i = 1, #csc.apocalypse do
+				csc.apocalypse[i]:targetingOverride(false)
+			end
+		elseif csc.apostatus == 2 then
+			for i = 1, #csc.apocalypse do
+				csc.apocalypse[i].Target = csc.plrship.Target
+			end
+		elseif csc.apostatus == 3 then
+			if csc.CurrentTarget then
+				if csc.CurrentTarget:isValid() then
+					for i = 1, #csc.apocalypse do
+						csc.apocalypse[i].Target = csc.CurrentTarget
+					end
+				end
+			end
+		elseif csc.apostatus == 4 then
+			for i = 1, #csc.apocalypse do
+				csc.apocalypse[i]:targetingOverride(true)
+			end
+		end
+	end
+
+	function drawRangeDisplayKaruna()
+		csc.range = nil
+		csc.range = {}
+		csc.range.Shipname = {}
+		csc.range.Range = {}
+		local plrship = hv.Player
+		if plrship:isValid() then
+			plrship = mn.getObjectFromSignature(csc.plr:getSignature())
+		end
+		local turpos1 = (plrship.Position + plrship["turret01"].Position)
+		local turpos2 = (plrship.Position + plrship["turret02"].Position)
+		local turpos3 = (plrship.Position + plrship["turret03"].Position)
+		local turpos4 = (plrship.Position + plrship["turret04"].Position)
+		items = 1
+		for i = 1, #mn.Ships do
+			local tempship = mn.Ships[i]
+			local class = getTargetClass(tempship)
+			if class ~= "Fighter" and class ~= "Bomber" then
+				if tempship ~= csc.plrship then
+					local temp = tempship.Position
+					local temprange1 = math.sqrt( (temp[1] - turpos1[1])^2 + (temp[2] - turpos1[2])^2 + (temp[3] - turpos1[3])^2 )
+					local temprange2 = math.sqrt( (temp[1] - turpos2[1])^2 + (temp[2] - turpos2[2])^2 + (temp[3] - turpos2[3])^2 )
+					local temprange3 = math.sqrt( (temp[1] - turpos3[1])^2 + (temp[2] - turpos3[2])^2 + (temp[3] - turpos3[3])^2 )
+					local temprange4 = math.sqrt( (temp[1] - turpos4[1])^2 + (temp[2] - turpos4[2])^2 + (temp[3] - turpos4[3])^2 )
+					csc.range.Shipname[items] = tempship.DisplayName
+					if csc.range.Shipname[items] == '' then
+						csc.range.Shipname[items] = tempship.Name
+					end
+					csc.range.Range[items] = math.floor( (temprange1 + temprange2 + temprange3 + temprange4) / 4 )
+					items = items + 1
+				end
+			end
+		end
+		gr.setColor(255,255,255)
+		gr.drawString(localizedRange, gr.getScreenWidth() * 0.16, gr.getScreenHeight() * 0.85)
+		for i = 1, #csc.range.Shipname do
+			if csc.range.Range[i] < 1000 then
+				local c = math.floor((csc.range.Range[i] / 4)) + 5
+				gr.setColor(255, c, c)
+				gr.drawString("  " .. csc.range.Shipname[i] .. localized2Dots .. csc.range.Range[i])
+				gr.setColor(255, 255, 255)
+			else
+				gr.drawString("  " .. csc.range.Shipname[i] .. localized2Dots .. csc.range.Range[i])
+			end
+		end
+	end
+
+	function drawRangeDisplayCustos()
+	end
+
+	function drawTurretUICustos()
+		--Rapier
+		if csc.acnum == 1 then
+			gr.setColor(255, 255, 255)
+		else
+			gr.setColor(61, 93, 255)
+		end
+		gr.drawString(localizedPointDefenseTurrets .. csc.pdmode[csc.pdstatus], 5, gr.getScreenHeight() * 0.6)
+		gr.setColor(61, 93, 255)
+		for i = 1, #csc.pdTurrets, 1 do
+			local targetname = getTargetName(csc.pdTurrets[i].Target)
+			if not targetname then targetname = localizedNone end
+			gr.drawString(localizedPDTurret .. targetname)
+		end
+
+		--Missiles
+		if csc.acnum == 2 then
+			gr.setColor(255, 255, 255)
+		else
+			gr.setColor(255, 255, 53)
+		end
+		gr.drawString(localizedMissileLaunchers .. csc.missilemode[csc.missilestatus])
+		gr.setColor(255, 255, 53)
+		for i = 1, #csc.missile, 1 do
+			local targetname = getTargetName(csc.missile[i].Target)
+			if not targetname then targetname = localizedNone end
+			gr.drawString("  " .. csc.missile[i].Name .. localized2Dots .. targetname)
+		end
+
+		gr.setColor(255, 255, 255)
+		local targetname = getTargetName(csc.CurrentTarget)
+		local classname = getTargetClass(csc.CurrentTarget)
+		if not classname then classname = localizedNone end
+		if not targetname then targetname = localizedInvalid end
+		gr.drawString(localizedCurrentTarget .. targetname .. localizedClass .. classname)
+	end
+
+	function doTurretModeCustos()
+		if csc.pdstatus == 1 then
+			for i = 1, #csc.pdTurrets do
+				csc.pdTurrets[i]:targetingOverride(false)
+			end
+		elseif csc.pdstatus == 2 then
+			for i = 1, #csc.pdTurrets do
+				csc.pdTurrets[i].Target = csc.plrship.Target
+			end
+		elseif csc.pdstatus == 3 then
+			if csc.CurrentTarget then
+				if csc.CurrentTarget:isValid() then
+					for i = 1, #csc.pdTurrets do
+						csc.pdTurrets[i].Target = csc.CurrentTarget
+					end
+				end
+			end
+		elseif csc.pdstatus == 4 then
+			for i = 1, #csc.pdTurrets do
+				csc.pdTurrets[i]:targetingOverride(true)
+			end
+		end
+
+		if csc.missilestatus == 1 then
+			for i = 1, #csc.missile do
+				csc.missile[i]:targetingOverride(false)
+			end
+		elseif csc.missilestatus == 2 then
+			for i = 1, #csc.missile do
+				csc.missile[i].Target = csc.plrship.Target
+			end
+		elseif csc.missilestatus == 3 then
+			if csc.CurrentTarget then
+				if csc.CurrentTarget:isValid() then
+					for i = 1, #csc.missile do
+						csc.missile[i].Target = csc.CurrentTarget
+					end
+				end
+			end
+		elseif csc.missilestatus == 4 then
+			for i = 1, #csc.missile do
+				csc.missile[i]:targetingOverride(true)
+			end
+		end
+	end
+
+	function cscInit()
+		csc = {}
+		if not csc.initComplete then
+			if not csc.plrship then
+				csc.plr = hv.Player
+				if csc.plr:isValid() then
+					csc.plrship = mn.getObjectFromSignature(csc.plr:getSignature())
+				end
+
+				if csc.plrship:getBreedName() == "Ship" then
+					if csc.plrship.Class.Name ~= "UEFg Karuna#Player" and csc.plrship.Class.Name ~= "UEC Custos-X" then
+						csc.disable = true
+					end
+					if csc.plrship.Class.Name == "UEFg Karuna#Player" then
+						csc.ship = "Karuna"
+					elseif csc.plrship.Class.Name == "UEC Custos-X" then
+						csc.ship = "Custos"
+					end
+				else
+					csc.disable = true
+				end
+
+				if not csc.disable then
+					if not csc.turrets then
+						csc.pdTurrets = {}
+						csc.pdmode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
+						csc.pdstatus = 1
+
+						csc.flakTurrets = {}
+
+						csc.railguns = {}
+						csc.railgunmode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
+						csc.rgstatus = 1
+
+						csc.mdguns = {}
+						csc.mdmode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
+						csc.mdstatus = 1
+
+						csc.apocalypse = {}
+						csc.apocalypsemode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
+						csc.apostatus = 1
+
+						csc.gattler = {}
+						csc.gattlermode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
+						csc.gattlerstatus = 1
+
+						csc.missile = {}
+						csc.missilemode = {localizedAutomatic, localizedTrack, localizedLock, localizedOffline}
+						csc.missilestatus = 1
+
+						csc.active = {"*", " ", " "}
+						csc.acnum = 1
+						csc.inputstates = {}
+
+						inputlocked = false
+
+						fillturretlist(csc.plrship)
+						groupTurrets()
+						ShieldmanOverride = true
+						BettyOverride = true
+						OldMissionTime = cscMissionTime
+					end
+				end
+			end
+		end
+	end
+]
+
+$State: GS_STATE_GAME_PLAY
+
+$On Frame:
+[
+	cscMissionTime = mn.getMissionTime()
+
+
+	if cscOldMissionTime ~= cscMissionTime and cscMissionTime ~= 0 then
+		if not csc then
+			cscInit()
+		end
+
+		if csc then
+			if not csc.disable and csc.initComplete then
+				doInput()
+				if csc.ship == "Karuna" then
+					doTurretModeKaruna()
+					drawTargets(csc.pdTurrets,   61, 93, 255,  8)
+					drawTargets(csc.flakTurrets, 61, 93, 255,  8)
+					drawTargets(csc.mdguns,     255, 93,  48, 11)
+					drawTargets(csc.railguns,   255, 187, 53, 14)
+					drawTargets(csc.apocalypse, 255, 255, 53, 17)
+				elseif csc.ship == "Custos" then
+					doTurretModeCustos()
+					drawTargets(csc.pdTurrets,   61, 93, 255,  8)
+					drawTargets(csc.missile, 255, 255, 53, 17)
+				end
+			end
+		end
+	cscOldMissionTime = cscMissionTime
+	end
+]
+
+$On HUD Draw:
+[
+	if csc then
+		if not csc.disable and csc.initComplete then
+			if csc.ship == "Karuna" then
+				drawRangeDisplayKaruna()
+				drawTurretUIKaruna()
+			elseif csc.ship == "Custos" then
+				drawRangeDisplayCustos()
+				drawTurretUICustos()
+			end
+		end
+	end
+]
+
+$On State End:
+[
+	csc = nil
+	ShieldmanOverride = false
+	BettyOverride = false
+]
+
+#End

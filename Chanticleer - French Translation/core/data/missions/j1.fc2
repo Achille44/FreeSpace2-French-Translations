@@ -1,7 +1,7 @@
-$Name: XSTR("Blue Planet: Chanticleer", 16000)
+$Name: XSTR("Blue Planet: Chanticleer", 5000)
 $Type: single
 +Description:
- XSTR("What price for the GTVA to reunify Humanity?", 18520)
+ XSTR("What price for the GTVA to reunify Humanity?", 8684)
 $end_multi_text
 $Flags: 0
 
@@ -11,9 +11,21 @@ $Flags: 0
 +Starting Weapons: ( "Subach HL-7"  "Akheton SDG"  "Morning Star"  "Prometheus S"  "Maxim"  "UD-8 Kayser"  "Circe"  "Lamprey"  "Balor"  "Balrog"  "Rockeye"  "Tempest"  "Hornet"  "Tornado"  "Harpoon"  "Trebuchet"  "TAG-A"  "TAG-B"  "Piranha"  "Stiletto II"  "Infyrno"  "Cyclops"  "Helios"  "EMP Adv." )
 
 
+$Mission: j1-00.fs2
++Flags: 0
++Main Hall: Chanticleer
++Debriefing Persona Index: 52
++Formula: ( cond
+   ( ( true ) ( next-mission "j1-01.fs2" ) )
+)
+
++Level: 0
++Position: 0
+
 $Mission: j1-01.fs2
 +Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    (
       ( is-previous-goal-true 
@@ -25,12 +37,13 @@ $Mission: j1-01.fs2
    ( ( true ) ( next-mission "j1-01.fs2" ) )
 )
 
-+Level: 0
++Level: 1
 +Position: 0
 
 $Mission: j1-02.fs2
 +Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    (
       ( is-previous-goal-true 
@@ -42,22 +55,24 @@ $Mission: j1-02.fs2
    ( ( true ) ( next-mission "j1-02.fs2" ) )
 )
 
-+Level: 1
++Level: 2
 +Position: 0
 
 $Mission: j1-03.fs2
-+Flags: -2147483648
++Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    ( ( true ) ( next-mission "j1-03b.fs2" ) )
 )
 
-+Level: 2
++Level: 3
 +Position: 0
 
 $Mission: j1-03b.fs2
 +Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    (
       ( is-previous-event-true 
@@ -69,22 +84,24 @@ $Mission: j1-03b.fs2
    ( ( true ) ( next-mission "j1-03b.fs2" ) )
 )
 
-+Level: 3
++Level: 4
 +Position: 0
 
 $Mission: j1-04.fs2
-+Flags: -2147483648
++Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    ( ( true ) ( next-mission "j1-04b.fs2" ) )
 )
 
-+Level: 4
++Level: 5
 +Position: 0
 
 $Mission: j1-04b.fs2
 +Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    (
       ( is-previous-goal-true 
@@ -96,12 +113,13 @@ $Mission: j1-04b.fs2
    ( ( true ) ( next-mission "j1-04b.fs2" ) )
 )
 
-+Level: 5
++Level: 6
 +Position: 0
 
 $Mission: j1-05.fs2
 +Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    (
       ( is-previous-goal-true 
@@ -113,22 +131,24 @@ $Mission: j1-05.fs2
    ( ( true ) ( next-mission "j1-05.fs2" ) )
 )
 
-+Level: 6
++Level: 7
 +Position: 0
 
 $Mission: j1-06.fs2
-+Flags: -2147483648
++Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    ( ( true ) ( next-mission "j1-07.fs2" ) )
 )
 
-+Level: 7
++Level: 8
 +Position: 0
 
 $Mission: j1-07.fs2
 +Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    (
       ( is-previous-goal-true 
@@ -140,12 +160,95 @@ $Mission: j1-07.fs2
    ( ( true ) ( next-mission "j1-07.fs2" ) )
 )
 
-+Level: 8
++Mission Loop:
++Mission Loop Text:
+ XSTR("Lieutenant Commander Mozingo: 
+
+$f Special $f Operations $f Command has requested your temporary reassignment for a high-risk reconnaissance mission.  
+
+Will you accept?", 1)
+$end_multi_text
++Mission Loop Brief Anim:
+ XSTR("SOC.eff", 8685)
+$end_multi_text
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "j1-07.fs2" 
+         "Capture water lily" 
+      )
+      ( next-mission "j1-loop-A.fs2" )
+   )
+)
+
++Level: 9
 +Position: 0
+
+$Mission: j1-loop-A.fs2
++Flags: 0
++Main Hall: Chanticleer
++Debriefing Persona Index: 52
++Formula: ( cond
+   (
+      ( is-previous-goal-true 
+         "j1-loop-A.fs2" 
+         "Contact Command" 
+      )
+      ( next-mission "j1-loop-B.fs2" )
+   )
+   (
+      ( is-previous-event-true 
+         "j1-loop-A.fs2" 
+         "abort mission" 
+      )
+      ( next-mission "j1-08.fs2" )
+   )
+   ( ( true ) ( next-mission "j1-loop-A.fs2" ) )
+)
+
++Level: 10
++Position: 4
+
+$Mission: j1-loop-B.fs2
++Flags: 0
++Main Hall: Chanticleer
++Debriefing Persona Index: 52
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "j1-loop-B.fs2" 
+         "warpout trigger" 
+      )
+      ( next-mission "j1-loop-C.fs2" )
+   )
+   ( ( true ) ( next-mission "j1-loop-B.fs2" ) )
+)
+
++Level: 11
++Position: 4
+
+$Mission: j1-loop-C.fs2
++Flags: 0
++Main Hall: Chanticleer
++Debriefing Persona Index: 52
++Formula: ( cond
+   (
+      ( is-previous-event-true 
+         "j1-loop-C.fs2" 
+         "Conditions to land" 
+      )
+      ( next-mission "j1-08.fs2" )
+   )
+   ( ( true ) ( next-mission "j1-loop-C.fs2" ) )
+)
+
++Level: 12
++Position: 4
 
 $Mission: j1-08.fs2
 +Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    (
       ( is-previous-goal-true 
@@ -157,12 +260,13 @@ $Mission: j1-08.fs2
    ( ( true ) ( next-mission "j1-08.fs2" ) )
 )
 
-+Level: 9
++Level: 13
 +Position: 0
 
 $Mission: j1-09.fs2
 +Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    (
       ( is-previous-goal-true 
@@ -174,17 +278,18 @@ $Mission: j1-09.fs2
    ( ( true ) ( next-mission "j1-09.fs2" ) )
 )
 
-+Level: 10
++Level: 14
 +Position: 0
 
 $Mission: j1-10.fs2
-+Flags: -2147483648
++Flags: 0
 +Main Hall: Chanticleer
++Debriefing Persona Index: 52
 +Formula: ( cond
    ( ( true ) ( end-of-campaign ) )
 )
 
-+Level: 11
++Level: 15
 +Position: 0
 
 #End
