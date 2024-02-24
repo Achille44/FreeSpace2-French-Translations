@@ -1,33 +1,33 @@
 #Mission Info
 
 $Version: 0.10
-$Name:  XSTR("Rebellion", 4038)
+$Name:  XSTR("Rebellion", 4160)
 $Author: Darius
 $Created: 01/09/20 at 22:53:17
-$Modified: 04/28/22 at 19:07:34
+$Modified: 05/16/23 at 15:56:12
 $Notes:
 This is a FRED2_OPEN created mission.
 $End Notes:
 
 $Mission Desc:
  XSTR("Put mission description here
-", 3191)
+", 3291)
 $end_multi_text
 +Game Type Flags: 1
-+Flags: 786496
++Flags: 786624
 +Fog Near Mult: 1.000000
 
 +Fog Far Mult: 1.000000
 
 +Disallow Support: 1
-+Hull Repair Ceiling: 75.000000
++Hull Repair Ceiling: 95.000000
 +Subsystem Repair Ceiling: 100.000000
 
-+Viewer pos: 7227.300293, 3548.625488, 12296.429688
++Viewer pos: 9006.039063, 4825.238281, 8937.558594
 +Viewer orient:
-	0.958880, -0.000000, 0.283811,
-	-0.090365, 0.947956, 0.305309,
-	-0.269040, -0.318401, 0.908976
+	0.791838, -0.000001, 0.610732,
+	-0.194457, 0.947956, 0.252123,
+	-0.578947, -0.318401, 0.750627
 
 $Starting wing names: ( "Alfa" "Bravo" "Charlie" )
 $Squadron wing names: ( "Alfa" "Bravo" "Charlie" "Delta" "Echo" )
@@ -43,9 +43,10 @@ $AI Profile: Solaris
 
 $Variables:
 (
-		0		"autoGenVar1"		"#Bertini"		"string"
-		1		"autoGenVar2"		"Meiks"		"string"
-		2		"autoGenVar3"		"Astrogation"		"string"
+		0		"i18nVariable1"		"#Bertini"		"string"
+		1		"i18nVariable2"		"#Erikson"		"string"
+		2		"i18nVariable3"		"Meiks"		"string"
+		3		"i18nVariable4"		"Astrogation"		"string"
 )
 
 #Command Briefing
@@ -57,7 +58,7 @@ $end_briefing
 
 #Debriefing_info
 
-$Num stages: 2
+$Num stages: 1
 
 $Formula: ( is-event-true-delay 
    "mission complete title" 
@@ -66,55 +67,45 @@ $Formula: ( is-event-true-delay
 $Multi text
     XSTR("You okay you two? I wasn't sure if we'd bitten off more than we could chew. You guys did good. 
 
-Admiral Bertini's logistics ship Palos has finished going over our hull. Thankfully we didn't take any critical structural damage. The Hoshikuzu will continue to fight.
+Admiral Bertini's logistics ship Palos has finished going over our hull. Thankfully we didn't take any critical structural damage. The Hoshikuzu's still got some fight left in her.
 
-It looks like the assault on the Protogeneia was just the first move. Andri Gadaria's gone to war. There's reports of Malikan attacks throughout Sulsia and it's turning into chaos out there. All the trade cartels are pulling out and embassies are evacuating. Everyone's fleeing in fear of getting caught up in the war.
+The Sulsian government sent out a statement a few minutes before you came in. Andri Gadaria's declared war on the Hegemony, with the attack on the Protogeneia being the first move. Malikan warships are sweeping through Sulsia, there's chaos everywhere. All the trade cartels are pulling out and embassies are evacuating. Everyone's fleeing while they can.
 
-It's too dangerous for us to stay. Once the Hoshikuzu has finished repairs, I'm taking us out of Sulsia. I haven't decided where to take us yet. I'll ask around, see if I can find some safe harbour. I'll let you know soon.", 4039)
+It's too dangerous for us to stay. Once the Hoshikuzu has finished repairs, I'm taking us out of Sulsia. I haven't decided where to take us yet. I'll ask around, see if I can find some safe harbour. I'll let you know soon.", 4161)
 $end_multi_text
 $Voice: 14-db1
 $Recommendation text:
-    XSTR("", 2982)
-$end_multi_text
+    XSTR("Mission successful.
 
-$Formula: ( is-event-true-delay 
-   "mission failed title" 
-   0 
-)
-$Multi text
-    XSTR("Mission failed debriefing", 3943)
-$end_multi_text
-$Voice: none.wav
-$Recommendation text:
-    XSTR("", 2982)
+The majority of the Malikan fleet still consists of converted mining ships and transports - low-performance and low-maintenance hulls that the Militia could find and convert at short notice. Despite this, the Militia Navy has been able to challenge the Sulsian Hegemony using powerful weapons supplied by a mysterious benefactor.", 4162)
 $end_multi_text
 
 #Callsigns:
-$Callsign: XSTR("Lau", 3444)
-$Callsign: XSTR("Meiks", 3819)
-$Callsign: XSTR("Ross", 3197)
+$Callsign: XSTR("Lau", 3562)
+$Callsign: XSTR("Meiks", 3936)
+$Callsign: XSTR("Ross", 3298)
 
 #end
 
 
 #Players		;! 1 total
 
-$Starting Shipname: Bravo 1
+$Starting Shipname: Alfa 1
 $Ship Choices: (
 )
 
 +Weaponry Pool: (
 	"Huaqing"	2
 	"Maxim"	2
-	"Sparrow"	32
+	"Sparrow"	16
 )
 
 #Objects		;! 22 total
 
 $Name: Hoshikuzu		;! Object #0
-$Display Name: XSTR("Hoshikuzu", 3754)
+$Display Name: XSTR("Hoshikuzu", 3872)
 $Class: Rasputin-class Corvette
-$Callsign: XSTR("Lau", 3444)
+$Callsign: XSTR("Lau", 3562)
 
 $Team: Friendly
 $Location: 0.584351, 492.442749, -3035.771484
@@ -122,11 +113,10 @@ $Orientation:
 	1.000000, 0.000000, -0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, -0.000000, 1.000000
-$AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "Hoshi approach" 50 ) )
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 100
-+Initial Hull: 97
++Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
 +Subsystem: turret01
@@ -144,18 +134,49 @@ $Determination: 10
 +Escort priority: 99
 +Docked With: Bravo 1
 $Docker Point: Docking Point
-$Dockee Point: Port Fighter Rail
+$Dockee Point: Starb Fighter Rail
 +Docked With: Alfa 1
 $Docker Point: Docking Point
-$Dockee Point: Starb Fighter Rail
+$Dockee Point: Port Fighter Rail
 +Group: 0
 +Use Table Score:
 +Score: 0
 
 $Name: Alfa 1		;! Object #1
-$Display Name: XSTR("Alfa 1", 3821)
+$Display Name: XSTR("Alfa 1", 3937)
 $Class: Comet-class Gunship
-$Callsign: XSTR("Meiks", 3819)
+$Callsign: XSTR("Ross", 3298)
+
+$Team: Friendly
+$Location: -23.206030, 489.742737, -2933.521484
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3300)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Primary Banks: ( "Maxim" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Docked With: Hoshikuzu
+$Docker Point: Port Fighter Rail
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Bravo 1		;! Object #2
+$Display Name: XSTR("Bravo 1", 3565)
+$Class: Comet-class Gunship
+$Callsign: XSTR("Meiks", 3936)
 
 $Team: Friendly
 $Location: 24.374731, 489.742737, -2933.521484
@@ -163,8 +184,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -185,40 +205,8 @@ $Dockee Point: Docking Point
 +Score: 10
 +Persona Index: 17
 
-$Name: Bravo 1		;! Object #2
-$Display Name: XSTR("Bravo 1", 3447)
-$Class: Comet-class Gunship
-$Callsign: XSTR("Ross", 3197)
-
-$Team: Friendly
-$Location: -23.206030, 489.742737, -2933.521484
-$Orientation:
-	1.000000, 0.000000, 0.000000,
-	0.000000, 1.000000, 0.000000,
-	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
-+Initial Hull: 100
-+Initial Shields: 100
-+Subsystem: Pilot
-+Primary Banks: ( "Maxim" )
-$Arrival Location: Hyperspace
-$Arrival Cue: ( false ) 
-$Departure Location: Hyperspace
-$Departure Cue: ( false ) 
-$Determination: 10
-+Flags: ( "cargo-known" "no-shields" "player-start" )
-+Flags2: ( "no-subspace-drive" "no-ets" )
-+Respawn priority: 0
-+Docked With: Hoshikuzu
-$Docker Point: Port Fighter Rail
-$Dockee Point: Docking Point
-+Group: 0
-+Use Table Score:
-+Score: 10
-
 $Name: Protogeneia		;! Object #3
-$Display Name: XSTR("Protogeneia", 4040)
+$Display Name: XSTR("Protogeneia", 4163)
 $Class: Impetus-class Battlecruiser
 $Team: Friendly
 $Location: -177.837524, -267.193481, 5313.875000
@@ -226,8 +214,7 @@ $Orientation:
 	0.022716, -0.209836, -0.977473,
 	0.249318, 0.948023, -0.197720,
 	0.968155, -0.239210, 0.073851
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 93
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -275,7 +262,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Victor 1		;! Object #4
-$Display Name: XSTR("Victor 1", 3826)
+$Display Name: XSTR("Victor 1", 3942)
 $Class: Mace-class Fighter
 $Team: Hostile
 $Location: -34.552883, 1073.556030, 4762.256836
@@ -283,8 +270,7 @@ $Orientation:
 	-0.756666, 0.000000, 0.653801,
 	-0.283988, 0.900738, -0.328668,
 	-0.588903, -0.434364, -0.681558
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -302,7 +288,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Victor 2		;! Object #5
-$Display Name: XSTR("Victor 2", 3827)
+$Display Name: XSTR("Victor 2", 3943)
 $Class: Mace-class Fighter
 $Team: Hostile
 $Location: -151.742462, 1073.556030, 4754.390625
@@ -310,8 +296,7 @@ $Orientation:
 	-0.756666, -0.000000, 0.653801,
 	-0.283987, 0.900737, -0.328668,
 	-0.588903, -0.434364, -0.681557
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -329,7 +314,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Victor 3		;! Object #6
-$Display Name: XSTR("Victor 3", 4041)
+$Display Name: XSTR("Victor 3", 4164)
 $Class: Mace-class Fighter
 $Team: Hostile
 $Location: -89.104126, 1073.556030, 4500.147461
@@ -337,8 +322,7 @@ $Orientation:
 	-0.756666, -0.000000, 0.653801,
 	-0.283987, 0.900737, -0.328668,
 	-0.588903, -0.434364, -0.681557
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -356,7 +340,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Whiskey 1		;! Object #7
-$Display Name: XSTR("Whiskey 1", 3824)
+$Display Name: XSTR("Whiskey 1", 3940)
 $Class: Mace-class Fighter
 $Team: Hostile
 $Location: -1071.539795, 961.205994, 3360.441162
@@ -364,8 +348,7 @@ $Orientation:
 	-0.991689, 0.000000, -0.128662,
 	-0.045364, 0.935780, 0.349655,
 	0.120399, 0.352586, -0.928002
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -383,7 +366,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Whiskey 2		;! Object #8
-$Display Name: XSTR("Whiskey 2", 3825)
+$Display Name: XSTR("Whiskey 2", 3941)
 $Class: Mace-class Fighter
 $Team: Hostile
 $Location: -1188.731445, 961.205994, 3352.574707
@@ -391,8 +374,7 @@ $Orientation:
 	-0.984967, -0.000000, -0.172740,
 	-0.060705, 0.936216, 0.346141,
 	0.161722, 0.351424, -0.922143
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -410,7 +392,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Whiskey 3		;! Object #9
-$Display Name: XSTR("Whiskey 3", 3828)
+$Display Name: XSTR("Whiskey 3", 3944)
 $Class: Mace-class Fighter
 $Team: Hostile
 $Location: -1126.092041, 961.205994, 3098.331543
@@ -418,8 +400,7 @@ $Orientation:
 	-0.986236, 0.000000, -0.165341,
 	-0.063604, 0.923048, 0.379390,
 	0.152618, 0.384685, -0.910344
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -437,7 +418,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Opus		;! Object #10
-$Display Name: XSTR("Opus", 4042)
+$Display Name: XSTR("Opus", 4165)
 $Class: Goliath-class Cruiser
 $Team: Hostile
 $Location: 4739.584961, 2705.471924, 13519.329102
@@ -445,8 +426,7 @@ $Orientation:
 	-0.857763, 0.000000, 0.514046,
 	-0.095116, 0.982732, -0.158716,
 	-0.505169, -0.185035, -0.842951
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -475,7 +455,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Xray 1		;! Object #11
-$Display Name: XSTR("Xray 1", 3836)
+$Display Name: XSTR("Xray 1", 3952)
 $Class: Jackal-class Gunship
 $Team: Hostile
 $Location: 4162.098633, 1538.198608, 11836.239258
@@ -483,8 +463,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -502,7 +481,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Xray 2		;! Object #12
-$Display Name: XSTR("Xray 2", 3837)
+$Display Name: XSTR("Xray 2", 3953)
 $Class: Jackal-class Gunship
 $Team: Hostile
 $Location: 4054.105469, 1538.198608, 11611.282227
@@ -510,8 +489,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -529,7 +507,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Tango 1		;! Object #13
-$Display Name: XSTR("Tango 1", 4043)
+$Display Name: XSTR("Tango 1", 4166)
 $Class: Armadillo-class Gunship
 $Team: Hostile
 $Location: 3891.913330, 1538.198608, 11488.698242
@@ -537,8 +515,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -555,7 +532,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Tango 2		;! Object #14
-$Display Name: XSTR("Tango 2", 4044)
+$Display Name: XSTR("Tango 2", 4167)
 $Class: Armadillo-class Gunship
 $Team: Hostile
 $Location: 3951.208008, 1538.198608, 11459.610352
@@ -563,8 +540,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -581,7 +557,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Yankee 1		;! Object #15
-$Display Name: XSTR("Yankee 1", 3830)
+$Display Name: XSTR("Yankee 1", 3946)
 $Class: Jackal-class Gunship
 $Team: Hostile
 $Location: 4525.471680, 1538.198608, 11755.996094
@@ -589,8 +565,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -608,7 +583,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Yankee 2		;! Object #16
-$Display Name: XSTR("Yankee 2", 3831)
+$Display Name: XSTR("Yankee 2", 3947)
 $Class: Jackal-class Gunship
 $Team: Hostile
 $Location: 4417.478516, 1538.198608, 11531.039063
@@ -616,8 +591,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -635,7 +609,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Uniform 1		;! Object #17
-$Display Name: XSTR("Uniform 1", 4045)
+$Display Name: XSTR("Uniform 1", 4168)
 $Class: Armadillo-class Gunship
 $Team: Hostile
 $Location: 4211.841309, 1538.198608, 11417.935547
@@ -643,9 +617,8 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 +AI Class: Fighter
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -662,7 +635,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Uniform 2		;! Object #18
-$Display Name: XSTR("Uniform 2", 4046)
+$Display Name: XSTR("Uniform 2", 4169)
 $Class: Armadillo-class Gunship
 $Team: Hostile
 $Location: 4271.136230, 1538.198608, 11388.847656
@@ -670,9 +643,8 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 +AI Class: Fighter
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -689,7 +661,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Palos		;! Object #19
-$Display Name: XSTR("Palos", 4047)
+$Display Name: XSTR("Palos", 4170)
 $Class: Fortitude-class Auxiliary
 $Team: Friendly
 $Location: 8494.385742, 2608.295410, 12853.039063
@@ -697,8 +669,7 @@ $Orientation:
 	-0.761797, 0.000000, 0.647816,
 	0.000000, 1.000000, 0.000000,
 	-0.647816, 0.000000, -0.761797
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -723,7 +694,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Fafnir		;! Object #20
-$Display Name: XSTR("Fafnir", 4048)
+$Display Name: XSTR("Fafnir", 4171)
 $Class: Leonidas-class Destroyer
 $Team: Friendly
 $Location: 7123.281738, 3445.173584, 13007.002930
@@ -731,11 +702,16 @@ $Orientation:
 	-0.761797, 0.000000, 0.647816,
 	0.000000, 1.000000, 0.000000,
 	-0.647816, 0.000000, -0.761797
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
++Subsystem: turret03
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: mturret1
++Subsystem: mturret2
 $Arrival Location: Hyperspace
 $Arrival Cue: ( has-arrived-delay 0 "Palos" ) 
 $Departure Location: Hyperspace
@@ -749,7 +725,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Yankee 3		;! Object #21
-$Display Name: XSTR("Yankee 3", 3832)
+$Display Name: XSTR("Yankee 3", 3948)
 $Class: Jackal-class Gunship
 $Team: Hostile
 $Location: 4622.421875, 1538.198608, 11506.686523
@@ -757,8 +733,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -777,19 +752,6 @@ $Determination: 10
 
 #Wings		;! 8 total
 
-$Name: Bravo
-$Waves: 1
-$Wave Threshold: 0
-$Special Ship: 0		;! Bravo 1
-$Arrival Location: Hyperspace
-$Arrival Cue: ( false ) 
-$Departure Location: Hyperspace
-$Departure Cue: ( false ) 
-$Ships: (		;! 1 total
-	"Bravo 1"
-)
-+Flags: ( )
-
 $Name: Alfa
 $Waves: 1
 $Wave Threshold: 0
@@ -800,6 +762,19 @@ $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Ships: (		;! 1 total
 	"Alfa 1"
+)
++Flags: ( )
+
+$Name: Bravo
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Bravo 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Bravo 1"
 )
 +Flags: ( )
 
@@ -925,24 +900,29 @@ $AI Goals: ( goals ( ai-chase "Protogeneia" 50 ) )
 +Hotkey: 6
 +Flags: ( )
 
-#Events		;! 84 total
+#Events		;! 85 total
 
 $Formula: ( when 
    ( true ) 
    ( modify-variable-xstr 
-      "@autoGenVar1[#Bertini]" 
+      "@i18nVariable1[#Bertini]" 
       "#Bertini" 
-      4090 
+      4215 
    )
    ( modify-variable-xstr 
-      "@autoGenVar2[Meiks]" 
+      "@i18nVariable2[#Erikson]" 
+      "#Erikson" 
+      4057 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable3[Meiks]" 
       "Meiks" 
-      3819 
+      3936 
    )
    ( modify-variable-xstr 
-      "@autoGenVar3[Astrogation]" 
+      "@i18nVariable4[Astrogation]" 
       "Astrogation" 
-      2579 
+      2914 
    )
 )
 +Name: Manage translation variables
@@ -957,7 +937,7 @@ $Formula: ( when
    ( script-eval-block 
       "Scroll:Write(" 
       "'title1'," 
-      "15,12,0.05,2,2,true,2,false)" 
+      "15,12,0.05,2,2,true,10,false)" 
    )
 )
 +Name: title
@@ -969,15 +949,15 @@ $Formula: ( when
    ( jettison-cargo 
       "Hoshikuzu" 
       100 
-      "Bravo 1" 
+      "Alfa 1" 
    )
    ( training-msg "detach" ) 
 )
 +Name: dir undock
 +Repeat Count: 1
 +Interval: 1
-+Objective:  XSTR("Undock from Hoshikuzu", 3839)
-+Objective key:  XSTR("$Alt-D$", 3348)
++Objective:  XSTR("Undock from Hoshikuzu", 3955)
++Objective key:  XSTR("$Alt-D$", 3467)
 
 $Formula: ( when 
    ( is-event-true-msecs-delay 
@@ -987,26 +967,26 @@ $Formula: ( when
    ( jettison-cargo 
       "Hoshikuzu" 
       100 
-      "Alfa 1" 
+      "Bravo 1" 
    )
 )
-+Name: alfa jetissons
++Name: Bravo jetissons
 +Repeat Count: 1
 +Interval: 1
 
 $Formula: ( when 
    ( true ) 
-   ( clear-goals "Alfa 1" ) 
+   ( clear-goals "Bravo 1" ) 
    ( add-goal 
-      "Alfa 1" 
+      "Bravo 1" 
       ( ai-guard "Hoshikuzu" 89 ) 
    )
    ( add-goal 
-      "Alfa 1" 
+      "Bravo 1" 
       ( ai-ignore-new "Opus" 89 ) 
    )
 )
-+Name: alfa engages
++Name: Bravo engages
 +Repeat Count: 1
 +Interval: 1
 
@@ -1016,9 +996,9 @@ $Formula: ( when
       2500 
    )
    ( player-not-use-ai ) 
-   ( clear-goals "Alfa 1" ) 
+   ( clear-goals "Bravo 1" ) 
    ( add-goal 
-      "Alfa 1" 
+      "Bravo 1" 
       ( ai-guard "Hoshikuzu" 89 ) 
    )
 )
@@ -1030,10 +1010,10 @@ $Formula: ( when
    ( true ) 
    ( ship-guardian-threshold 
       ( rand 20 50 ) 
-      "Alfa 1" 
+      "Bravo 1" 
    )
    ( add-goal 
-      "Bravo 1" 
+      "Alfa 1" 
       ( ai-play-dead 100 ) 
    )
    ( set-support-ship 
@@ -1047,13 +1027,13 @@ $Formula: ( when
    )
    ( ship-subsys-guardian-threshold 
       45 
-      "Alfa 1" 
+      "Bravo 1" 
       "<all engines>" 
       "Weapons" 
       "Communication" 
    )
    ( add-goal 
-      "Alfa 1" 
+      "Bravo 1" 
       ( ai-play-dead 100 ) 
    )
    ( turret-set-rate-of-fire 
@@ -1062,9 +1042,9 @@ $Formula: ( when
       "mturret01" 
       "mturret02" 
    )
-   ( lock-secondary-weapon "Alfa 1" ) 
+   ( lock-secondary-weapon "Bravo 1" ) 
    ( ship-guardian-threshold 3 "Opus" ) 
-   ( lua-mark-ship "@autoGenVar2[Meiks]" "Alfa 1" ) 
+   ( lua-mark-ship "@i18nVariable3[Meiks]" "Bravo 1" ) 
    ( lock-rotating-subsystem 
       "Protogeneia" 
       "Habitation" 
@@ -1149,7 +1129,7 @@ $Formula: ( when
 
 $Formula: ( when 
    ( < 
-      ( distance "Bravo 1" "Protogeneia" ) 
+      ( distance "Alfa 1" "Protogeneia" ) 
       2100 
    )
    ( add-goal 
@@ -1171,8 +1151,8 @@ $Formula: ( when
 +Name: dir destroy victor
 +Repeat Count: 1
 +Interval: 1
-+Objective:  XSTR("Destroy Victor", 3840)
-+Objective key:  XSTR("F9", 3235)
++Objective:  XSTR("Destroy Victor", 3956)
++Objective key:  XSTR("F9", 3340)
 
 $Formula: ( when 
    ( is-destroyed-delay 0 "Whiskey" ) 
@@ -1181,8 +1161,8 @@ $Formula: ( when
 +Name: dir destroy whiskey
 +Repeat Count: 1
 +Interval: 1
-+Objective:  XSTR("Destroy Whiskey", 3841)
-+Objective key:  XSTR("F10", 3237)
++Objective:  XSTR("Destroy Whiskey", 3957)
++Objective key:  XSTR("F10", 3343)
 
 $Formula: ( when 
    ( > ( mission-time ) 110 ) 
@@ -1206,8 +1186,8 @@ $Formula: ( when
 +Name: dir destroy xray
 +Repeat Count: 1
 +Interval: 1
-+Objective:  XSTR("Destroy Xray Bombers", 4049)
-+Objective key:  XSTR("F11", 3240)
++Objective:  XSTR("Destroy Xray Bombers", 4172)
++Objective key:  XSTR("F11", 3345)
 
 $Formula: ( when 
    ( and 
@@ -1219,8 +1199,8 @@ $Formula: ( when
 +Name: dir destroy tango
 +Repeat Count: 1
 +Interval: 1
-+Objective:  XSTR("Destroy Tango Escorts", 4050)
-+Objective key:  XSTR("F9", 3235)
++Objective:  XSTR("Destroy Tango Escorts", 4173)
++Objective key:  XSTR("F9", 3340)
 
 $Formula: ( when 
    ( and 
@@ -1232,8 +1212,8 @@ $Formula: ( when
 +Name: dir destroy yankee
 +Repeat Count: 1
 +Interval: 1
-+Objective:  XSTR("Destroy Yankee Bombers", 4051)
-+Objective key:  XSTR("F11", 3240)
++Objective:  XSTR("Destroy Yankee Bombers", 4174)
++Objective key:  XSTR("F11", 3345)
 
 $Formula: ( when 
    ( and 
@@ -1245,8 +1225,8 @@ $Formula: ( when
 +Name: dir destroy uniform
 +Repeat Count: 1
 +Interval: 1
-+Objective:  XSTR("Destroy Uniform escorts", 4052)
-+Objective key:  XSTR("F10", 3237)
++Objective:  XSTR("Destroy Uniform escorts", 4175)
++Objective key:  XSTR("F10", 3343)
 
 $Formula: ( when 
    ( has-arrived-delay 15 "Yankee" ) 
@@ -1338,7 +1318,7 @@ $Formula: ( when
       ( has-departed-delay 3 "Opus" ) 
    )
    ( fade-out 1500 ) 
-   ( ship-invulnerable "Bravo 1" ) 
+   ( ship-invulnerable "Alfa 1" ) 
    ( adjust-audio-volume 
       "Effects" 
       0 
@@ -1364,11 +1344,11 @@ $Formula: ( when
       255 
       255 
       255 
-      "font02" 
+      "10" 
       ( true ) 
    )
    ( play-sound-from-file "dirtangelend" ) 
-   ( self-destruct "Bravo 1" ) 
+   ( self-destruct "Alfa 1" ) 
    ( hud-disable 1 ) 
 )
 +Name: mission failed title
@@ -1571,7 +1551,7 @@ $Formula: ( when
 
 $Formula: ( when 
    ( and 
-      ( is-destroyed-delay 2 "Bravo 1" ) 
+      ( is-destroyed-delay 2 "Alfa 1" ) 
       ( not 
          ( is-event-true-delay "fadeout bad" 0 ) 
       )
@@ -1602,7 +1582,7 @@ $Formula: ( when
       255 
       255 
       255 
-      "font02" 
+      "10" 
       ( true ) 
    )
    ( play-sound-from-file "dirtangelend" ) 
@@ -1615,10 +1595,7 @@ $Formula: ( when
 
 $Formula: ( when 
    ( and 
-      ( < 
-         ( distance "Bravo 1" "Opus" ) 
-         3000 
-      )
+      ( < ( distance "Alfa 1" "Opus" ) 3000 ) 
       ( not 
          ( is-event-true-delay 
             "new gunships" 
@@ -1636,7 +1613,6 @@ $Formula: ( when
    ( < ( hits-left "Opus" ) 4 ) 
    ( clear-goals "Opus" ) 
    ( add-goal "Opus" ( ai-play-dead 89 ) ) 
-   ( change-iff "Surrendered" "Opus" ) 
    ( protect-ship "Opus" ) 
    ( ship-rot-maneuver 
       "Opus" 
@@ -1655,6 +1631,7 @@ $Formula: ( when
       ( true ) 
       "Opus" 
    )
+   ( change-iff "Surrendered" "Opus" ) 
 )
 +Name: opus crippled
 +Repeat Count: 1
@@ -1740,7 +1717,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "@autoGenVar1[#Bertini]" 
+      "@i18nVariable1[#Bertini]" 
       "Normal" 
       "need your guns" 
    )
@@ -1768,7 +1745,20 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "Alfa 1" 
+      "@i18nVariable2[#Erikson]" 
+      "Normal" 
+      "light em up" 
+   )
+)
++Name: light em up
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Bravo 1" 
       "Normal" 
       "no time" 
    )
@@ -1776,7 +1766,7 @@ $Formula: ( when
 +Name: no time
 +Repeat Count: 1
 +Interval: 1
-+Chained: 7
++Chained: 3
 +Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
@@ -1792,7 +1782,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "@autoGenVar1[#Bertini]" 
+      "@i18nVariable1[#Bertini]" 
       "Normal" 
       "hit by javelins" 
    )
@@ -1854,7 +1844,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "@autoGenVar1[#Bertini]" 
+      "@i18nVariable1[#Bertini]" 
       "High" 
       "saving ammo" 
    )
@@ -1873,7 +1863,7 @@ $Formula: ( when
       "bombers" 
    )
    ( add-goal 
-      "Alfa 1" 
+      "Bravo 1" 
       ( ai-guard "Hoshikuzu" 89 ) 
    )
 )
@@ -1899,7 +1889,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "Alfa 1" 
+      "Bravo 1" 
       "Normal" 
       "got flares" 
    )
@@ -1913,7 +1903,7 @@ $Formula: ( when
 $Formula: ( when 
    ( is-destroyed-delay 2 "Xray" "Tango" ) 
    ( send-message 
-      "Bravo 1" 
+      "Alfa 1" 
       "High" 
       "xray destroyed" 
    )
@@ -1926,7 +1916,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "@autoGenVar1[#Bertini]" 
+      "@i18nVariable1[#Bertini]" 
       "High" 
       "when engines fixed" 
    )
@@ -1944,9 +1934,9 @@ $Formula: ( when
       "High" 
       "new gunships" 
    )
-   ( clear-goals "Alfa 1" ) 
+   ( clear-goals "Bravo 1" ) 
    ( add-goal 
-      "Alfa 1" 
+      "Bravo 1" 
       ( ai-guard "Protogeneia" 89 ) 
    )
 )
@@ -2048,7 +2038,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "@autoGenVar1[#Bertini]" 
+      "@i18nVariable1[#Bertini]" 
       "High" 
       "plot course" 
    )
@@ -2066,7 +2056,7 @@ $Formula: ( when
       "Normal" 
       "opus retreating" 
    )
-   ( unlock-secondary-weapon "Alfa 1" ) 
+   ( unlock-secondary-weapon "Bravo 1" ) 
 )
 +Name: opus reatreating
 +Repeat Count: 1
@@ -2083,13 +2073,13 @@ $Formula: ( when
       )
    )
    ( send-message 
-      "@autoGenVar1[#Bertini]" 
+      "@i18nVariable1[#Bertini]" 
       "High" 
       "take out astrogation" 
    )
    ( lua-mark-subsystem 
       "Opus" 
-      "@autoGenVar3[Astrogation]" 
+      "@i18nVariable4[Astrogation]" 
       "Navigation" 
    )
 )
@@ -2100,10 +2090,17 @@ $Formula: ( when
 +Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
-   ( is-subsystem-destroyed-delay 
-      "Opus" 
-      "Navigation" 
-      0 
+   ( or 
+      ( is-subsystem-destroyed-delay 
+         "Opus" 
+         "Navigation" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Opus" 
+         "Engine" 
+         0 
+      )
    )
    ( do-nothing ) 
 )
@@ -2111,14 +2108,21 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Chained: 0
-+Objective:  XSTR("Disable Opus Astrogation", 4053)
++Objective:  XSTR("Disable Opus Astrogation", 4176)
 +Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
-   ( is-subsystem-destroyed-delay 
-      "Opus" 
-      "Navigation" 
-      3 
+   ( or 
+      ( is-subsystem-destroyed-delay 
+         "Opus" 
+         "Navigation" 
+         3 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Opus" 
+         "Engine" 
+         3 
+      )
    )
    ( send-message 
       "Hoshikuzu" 
@@ -2187,6 +2191,13 @@ $Formula: ( when
             0 
          )
       )
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Opus" 
+            "Engine" 
+            0 
+         )
+      )
    )
    ( send-message 
       "Hoshikuzu" 
@@ -2194,7 +2205,7 @@ $Formula: ( when
       "90 secs" 
    )
    ( add-goal 
-      "Alfa 1" 
+      "Bravo 1" 
       ( ai-destroy-subsystem 
          "Opus" 
          "Navigation" 
@@ -2229,7 +2240,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "@autoGenVar1[#Bertini]" 
+      "@i18nVariable1[#Bertini]" 
       "Normal" 
       "ready mass drivers" 
    )
@@ -2283,7 +2294,7 @@ $Formula: ( when
 $Formula: ( when 
    ( is-destroyed-delay 1 "Hoshikuzu" ) 
    ( send-message 
-      "Alfa 1" 
+      "Bravo 1" 
       "High" 
       "hoshikuzu destroyed" 
    )
@@ -2337,7 +2348,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( fade-out 1500 ) 
-   ( ship-invulnerable "Bravo 1" ) 
+   ( ship-invulnerable "Alfa 1" ) 
    ( adjust-audio-volume 
       "Effects" 
       0 
@@ -2364,7 +2375,7 @@ $Formula: ( when
       255 
       255 
       255 
-      "font02" 
+      "10" 
       ( true ) 
    )
    ( play-sound-from-file "neuvictory" ) 
@@ -2383,7 +2394,7 @@ $Formula: ( when
 
 $Formula: ( when 
    ( not 
-      ( is-destroyed-delay 0 "Bravo 1" ) 
+      ( is-destroyed-delay 0 "Alfa 1" ) 
    )
    ( end-mission ) 
 )
@@ -2396,7 +2407,7 @@ $Formula: ( when
 $Formula: ( when 
    ( and 
       ( <= 
-         ( distance "Bravo 1" "Opus" ) 
+         ( distance "Alfa 1" "Opus" ) 
          5100 
       )
       ( not 
@@ -2421,7 +2432,7 @@ $Formula: ( when
 
 $Type: Primary
 +Name: Secure Protogeneia
-$MessageNew:  XSTR("Secure Protogeneia", 4054)
+$MessageNew:  XSTR("Secure Protogeneia", 4177)
 $end_multi_text
 $Formula: ( and 
    ( < ( hits-left "Opus" ) 4 ) 
@@ -2462,291 +2473,297 @@ $List: (		;! 1 points in list
 	( 8261.532227, 0.000488, 7919.206055 )
 )
 
-#Messages		;! 45 total
+#Messages		;! 46 total
 
 
 $Name: title1
 $Team: -1
-$MessageNew:  XSTR("$quoteRebellion$quote", 4055)
+$MessageNew:  XSTR("$quoteRebellion$quote", 4178)
 $end_multi_text
 
 $Name: Checkpoint Save
 $Team: -1
-$MessageNew:  XSTR("Checkpoint Save Detected", 3290)
+$MessageNew:  XSTR("Checkpoint Save Detected", 3397)
 $end_multi_text
 
 $Name: Start from beginning
 $Team: -1
-$MessageNew:  XSTR("Start from beginning", 3291)
+$MessageNew:  XSTR("Start from beginning", 3398)
 $end_multi_text
 
 $Name: Start from checkpoint
 $Team: -1
-$MessageNew:  XSTR("Start from checkpoint", 3292)
+$MessageNew:  XSTR("Start from checkpoint", 3399)
 $end_multi_text
 
 $Name: title1
 $Team: -1
-$MessageNew:  XSTR("Mission Title", 3849)
+$MessageNew:  XSTR("Mission Title", 3965)
 $end_multi_text
 
 $Name: mission complete title
 $Team: -1
-$MessageNew:  XSTR("MISSION COMPLETE", 3289)
+$MessageNew:  XSTR("MISSION COMPLETE", 3396)
 $end_multi_text
 
 $Name: mission failed title
 $Team: -1
-$MessageNew:  XSTR("MISSION FAILED", 3288)
+$MessageNew:  XSTR("MISSION FAILED", 3395)
 $end_multi_text
 
 $Name: detach
 $Team: -1
-$MessageNew:  XSTR(" ", 2536)
+$MessageNew:  XSTR(" ", 2679)
 $end_multi_text
 +Wave Name: dock.ogg
 
 $Name: get yourselves clear
 $Team: -1
-$MessageNew:  XSTR("Incoming fighters! Meiks, Ross, get yourselves clear as quick as you can.", 4056)
+$MessageNew:  XSTR("Incoming fighters! Meiks, Ross, get yourselves clear as quick as you can.", 4179)
 $end_multi_text
 +AVI Name: head-f3a
 +Wave Name: 14-01
 
 $Name: here to assist
 $Team: -1
-$MessageNew:  XSTR("Sulsian battlecruiser Protogeneia, this is the corvette Hoshikuzu. We're here to assist.", 4057)
+$MessageNew:  XSTR("Sulsian battlecruiser Protogeneia, this is the corvette Hoshikuzu. We're here to assist.", 4180)
 $end_multi_text
 +Wave Name: 14-02
 
 $Name: need your guns
 $Team: -1
-$MessageNew:  XSTR("This is Admiral Bertini. Get your CIWS to supplement my flagship's point defense. The Malikan strike damaged our weapons control.", 4058)
+$MessageNew:  XSTR("Admiral Bertini to Hoshikuzu. Get in position for your CIWS to cover my flagship. The Malikan strike damaged our weapons control.", 4181)
 $end_multi_text
 +AVI Name: head-m1a
 +Wave Name: 14-03
 
 $Name: gunships do what you can
 $Team: -1
-$MessageNew:  XSTR("We're still at least sixty seconds out of weapons range. Gunships, do what you can to protect the flagship.", 4059)
+$MessageNew:  XSTR("We're still at least sixty seconds out of weapons range. Gunships, do what you can to protect the flagship.", 4182)
 $end_multi_text
 +AVI Name: head-f3a
 +Wave Name: 14-04
 
 $Name: no time
 $Team: -1
-$MessageNew:  XSTR("No time for the fighters. Don't let them get in your way!", 4060)
+$MessageNew:  XSTR("No time for the fighters. Don't let them get in your way!", 4183)
 $end_multi_text
 +AVI Name: Head-TP1
 +Wave Name: 14-05
 
 $Name: hit by javelins
 $Team: -1
-$MessageNew:  XSTR("We're being hit by Malikan warheads! We can't take much more.", 4061)
+$MessageNew:  XSTR("Hoshikuzu, we're being hit by Malikan warheads! We can't take much more.", 4184)
 $end_multi_text
 +AVI Name: head-m1a
 +Wave Name: 14-06
 
 $Name: in position
 $Team: -1
-$MessageNew:  XSTR("Admiral, we're in position. Setting PDCs to autotarget.", 4062)
+$MessageNew:  XSTR("Admiral, we're in position. Setting PDCs to autotarget.", 4185)
 $end_multi_text
 +AVI Name: head-f3a
 +Wave Name: 14-07
 
 $Name: missiles powering down
 $Team: -1
-$MessageNew:  XSTR("The silos on the Opus are powering down. They've stopped their launch cycles. What's happening?", 4063)
+$MessageNew:  XSTR("The silos on the Opus are powering down. They've stopped their launch cycles. What's happening?", 4186)
 $end_multi_text
 +AVI Name: head-f3a
 +Wave Name: 14-08
 
 $Name: bombers
 $Team: -1
-$MessageNew:  XSTR("Contact! Malikan gunships launching from the Opus. ", 4064)
+$MessageNew:  XSTR("Contact! Malikan gunships launching from the Opus. ", 4187)
 $end_multi_text
 +Wave Name: 14-09
 
 $Name: carry bombs
 $Team: -1
-$MessageNew:  XSTR("Well, we now know what their plan is. Those gunships carry underslung ASMs and HE grenades.", 4065)
+$MessageNew:  XSTR("Well, we now know what their plan is. Those gunships carry underslung ASMs and HE grenades.", 4188)
 $end_multi_text
 +AVI Name: head-f3a
 +Wave Name: 14-10
 
 $Name: got flares
 $Team: -1
-$MessageNew:  XSTR("Watch out lad. I'm reading missile pods on those Malikan escort fighters.", 4066)
+$MessageNew:  XSTR("Watch out lad. I'm seeing missile pods on those Malikan escort fighters.", 4189)
 $end_multi_text
 +AVI Name: Head-TP1
 +Wave Name: 14-11
 
 $Name: incoming jackhammers
 $Team: -1
-$MessageNew:  XSTR("Jackhammers ASMs incoming!", 4067)
+$MessageNew:  XSTR("Jackhammer ASMs incoming!", 4190)
 $end_multi_text
 +Wave Name: 14-12
 
 $Name: new gunships
 $Team: -1
-$MessageNew:  XSTR("Admiral, second wave of gunships inbound.", 4068)
+$MessageNew:  XSTR("Admiral, second wave of gunships inbound.", 4191)
 $end_multi_text
 +Wave Name: 14-13
 
 $Name: xray destroyed
 $Team: -1
-$MessageNew:  XSTR("Gunships are toast.", 4069)
+$MessageNew:  XSTR("Gunships are toast.", 4192)
 $end_multi_text
 +Wave Name: 14-14
 
 $Name: unlocked missiles
 $Team: -1
-$MessageNew:  XSTR("Their missile silos have powered up again. Looks like they're hoping to overwhelm our point defense.", 4070)
+$MessageNew:  XSTR("Their missile silos have powered up again. Looks like they're hoping to overwhelm our point defense.", 4193)
 $end_multi_text
 +Wave Name: 14-15
 
 $Name: engines fixed
 $Team: -1
-$MessageNew:  XSTR("Admiral! Engineering reports power flow restored to fusion engines. The Protogeneia now has propulsion.", 4071)
+$MessageNew:  XSTR("Admiral! Engineering reports power flow restored to fusion engines. The Protogeneia now has propulsion.", 4194)
 $end_multi_text
 +Wave Name: 14-16
 
 $Name: plot course
 $Team: -1
-$MessageNew:  XSTR("Captain Annisa, bring the ship to a mass driver engagement with the Opus. That cruiser doesn't have any heavy weapons outside of her ASM launchers.", 4072)
+$MessageNew:  XSTR("Good. Hoshikuzu, I'm bringing the ship to a mass driver engagement with the Opus. Supplement our CIWS cover.", 4195)
 $end_multi_text
 +AVI Name: head-m1a
 +Wave Name: 14-17
 
 $Name: take out astrogation
 $Team: -1
-$MessageNew:  XSTR("Take out the astrogation systems of the Opus before she jumps. The Malikans will not escape justice.", 4073)
+$MessageNew:  XSTR("Get your fighter craft to hit the astrogation of the Opus before she jumps. The Malikans will pay for their transgression.", 4196)
 $end_multi_text
 +AVI Name: head-m1a
 +Wave Name: 14-18
 
 $Name: when engines fixed
 $Team: -1
-$MessageNew:  XSTR("Engineering, give me a time estimate on engine power restoration.", 4074)
+$MessageNew:  XSTR("Hoshikuzu, continue your cover. Engineering, I need a time estimate on engine power restoration.", 4197)
 $end_multi_text
 +AVI Name: head-m1a
 +Wave Name: 14-19
 
 $Name: opus retreating
 $Team: -1
-$MessageNew:  XSTR("The Opus is turning tail! She's retreating!", 4075)
+$MessageNew:  XSTR("The Opus is turning tail! She's retreating!", 4198)
 $end_multi_text
 +AVI Name: head-f3a
 +Wave Name: 14-20
 
 $Name: missiles restored
 $Team: -1
-$MessageNew:  XSTR("Admiral, Engineering has restored power to missile silos. Javelins ready to launch.", 4076)
+$MessageNew:  XSTR("Admiral, Engineering has restored power to missile silos. Javelins ready to launch.", 4199)
 $end_multi_text
 +Wave Name: 14-21
 
 $Name: warning javelin
 $Team: -1
-$MessageNew:  XSTR("WARNING: HOSTILE ASM LAUNCH DETECTED", 3904)
+$MessageNew:  XSTR("WARNING: HOSTILE ASM LAUNCH DETECTED", 4020)
 $end_multi_text
 +Wave Name: warning2
 
 $Name: corvette critical damage
 $Team: -1
-$MessageNew:  XSTR("Lau here. She's getting torn up bad. We're losing power. ", 3910)
+$MessageNew:  XSTR("Lau here. She's getting torn up bad. We're losing power. ", 4200)
 $end_multi_text
 +AVI Name: head-f3a
 +Wave Name: 12-64
 
 $Name: 90 secs
 $Team: -1
-$MessageNew:  XSTR("The Opus is spooling impellers. Estimate ninety seconds before she jumps. Take out her astrogation!", 4077)
+$MessageNew:  XSTR("The Opus is spooling impellers. Estimate ninety seconds before she jumps. Take out her astrogation!", 4201)
 $end_multi_text
 +AVI Name: head-f3a
 +Wave Name: 14-22
 
 $Name: coming up on range
 $Team: -1
-$MessageNew:  XSTR("Admiral, we're coming up to mass driver range.", 4078)
+$MessageNew:  XSTR("Admiral, we're coming up to mass driver range.", 4202)
 $end_multi_text
 +Wave Name: 14-23
 
 $Name: ready mass drivers
 $Team: -1
-$MessageNew:  XSTR("Good. Ready mass drivers to fire.", 4079)
+$MessageNew:  XSTR("Good. Ready mass drivers to fire.", 4203)
 $end_multi_text
 +AVI Name: head-m1a
 +Wave Name: 14-24
 
 $Name: not going anywhere
 $Team: -1
-$MessageNew:  XSTR("Amazing work, Ross. She's not going anywhere.", 4080)
+$MessageNew:  XSTR("Amazing work, Ross. She's not going anywhere.", 4204)
 $end_multi_text
 +AVI Name: head-f3a
 +Wave Name: 14-25
 
 $Name: opus destroyed
 $Team: -1
-$MessageNew:  XSTR("Malikan threat is neutralised. Standing down red alert.", 4081)
+$MessageNew:  XSTR("Malikan threat is neutralised. Standing down red alert.", 4205)
 $end_multi_text
 +Wave Name: 14-26
 
 $Name: it's the hoshikuzu
 $Team: -1
-$MessageNew:  XSTR("<intercepted> It's the Hoshikuzu! Agasi wing, kill those mercenary thugs!", 4082)
+$MessageNew:  XSTR("<intercepted> It's the Hoshikuzu! Agasi wing, kill those mercenary thugs!", 4206)
 $end_multi_text
 +Wave Name: 14-27
 
 $Name: saving ammo
 $Team: -1
-$MessageNew:  XSTR("You've got us covered with your point defense. They're saving Javelin ammo and reconsidering their options.", 4083)
+$MessageNew:  XSTR("Your arrival's complicated their plans. The Malikans are saving Javelin ammo and reconsidering their options.", 4207)
 $end_multi_text
 +AVI Name: head-m1a
 +Wave Name: 14-28
 
 $Name: hoshikuzu destroyed
 $Team: -1
-$MessageNew:  XSTR("Ross! The Hoshikuzu's breaking apart!", 4031)
+$MessageNew:  XSTR("Ross! The Hoshikuzu's breaking apart!", 4152)
 $end_multi_text
 +AVI Name: Head-TP1
 +Wave Name: 14-29
 
 $Name: opus is adrift
 $Team: -1
-$MessageNew:  XSTR("Admiral, the Opus is adrift. What are your orders?", 4084)
+$MessageNew:  XSTR("Admiral, the Opus is adrift. What are your orders?", 4208)
 $end_multi_text
 +Wave Name: 14-30
 
 $Name: palos here
 $Team: -1
-$MessageNew:  XSTR("Protogeneia, auxiliary ship Palos is on station to assist. What is your status?", 4085)
+$MessageNew:  XSTR("Protogeneia, auxiliary ship Palos is on station to assist. What is your status?", 4209)
 $end_multi_text
 +Wave Name: 14-31
 
 $Name: functional
 $Team: -1
-$MessageNew:  XSTR("Palos, we are damaged but functional. Bring your vessel alongside and send boarding crews to the Opus. Check for survivors and bring them in for medical assistance.", 4086)
+$MessageNew:  XSTR("Palos, we are damaged but functional. Bring your vessel alongside and send boarding crews to the Opus. Check for survivors and bring them in for medical assistance.", 4210)
 $end_multi_text
 +Wave Name: 14-32
 
 $Name: hoshikuzu stay with us
 $Team: -1
-$MessageNew:  XSTR("Hoshikuzu, stay with us until we can secure the Opus. We will have Palos repair drones attend to your damage.", 4087)
+$MessageNew:  XSTR("Hoshikuzu, stay with us until we can secure the Opus. We will have Palos repair drones attend to your damage.", 4211)
 $end_multi_text
 +Wave Name: 14-33
 
 $Name: gunships stay clear
 $Team: -1
-$MessageNew:  XSTR("Gunships, stay clear of the Opus. Let the Protogeneia deal with that warship. ", 4088)
+$MessageNew:  XSTR("Gunships, stay clear of the Opus. Let the Protogeneia deal with that warship. ", 4212)
 $end_multi_text
 +Wave Name: 14-34
 
 $Name: don't get too close
 $Team: -1
-$MessageNew:  XSTR("Ross, don't get too close to that cruiser!", 4089)
+$MessageNew:  XSTR("Ross, don't get too close to that cruiser!", 4213)
 $end_multi_text
 +AVI Name: head-f3a
 +Wave Name: 14-35
+
+$Name: light em up
+$Team: -1
+$MessageNew:  XSTR("Light em up!", 4214)
+$end_multi_text
++Wave Name: 14-36
 
 #Reinforcements		;! 0 total
 
@@ -2757,8 +2774,9 @@ $Num stars: 0
 $Ambient light level: 5530478
 
 $Bitmap List:
++Flags: ( "corrected angles" )
 $Sun: SolNeptune
-+Angles: 1.570796 1.448623 0.401426
++Angles: 5.759586 4.712389 1.570796
 +Scale: 1.000000
 
 #Asteroid Fields

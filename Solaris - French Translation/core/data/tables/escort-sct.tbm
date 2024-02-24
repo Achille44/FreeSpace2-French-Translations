@@ -17,6 +17,9 @@ function drawReticle(ship)
 	local r, g, b = ship.Team:getColor()
 	gr.setColor(r, g, b, 120)
 	
+	local prevFont = gr.CurrentFont
+	gr.CurrentFont = gr.Fonts["HUDText1024"]
+
 	local l, t, r, b = gr.drawTargetingBrackets(ship, true)
 	
 	if l ~= nil then
@@ -57,6 +60,8 @@ function drawReticle(ship)
 
 		gr.drawString(distString, r - gr.getStringWidth(distString), b + 3)
 	end
+
+	gr.CurrentFont = prevFont
 end
 ]
 

@@ -1,33 +1,33 @@
 #Mission Info
 
 $Version: 0.10
-$Name:  XSTR("Fall of Angels", 5234)
+$Name:  XSTR("Fall of Angels", 5391)
 $Author: Darius
 $Created: 04/01/18 at 19:23:38
-$Modified: 08/05/22 at 00:32:05
+$Modified: 04/23/23 at 14:05:56
 $Notes:
 This is a FRED2_OPEN created mission.
 $End Notes:
 
 $Mission Desc:
  XSTR("Put mission description here
-", 3191)
+", 3291)
 $end_multi_text
 +Game Type Flags: 1
-+Flags: 4456448
-+Fog Near Mult: 5.000000
++Flags: 4456576
++Fog Near Mult: 7.000000
 
-+Fog Far Mult: 5.000000
++Fog Far Mult: 10.000000
 
 +Disallow Support: 1
-+Hull Repair Ceiling: 75.000000
++Hull Repair Ceiling: 95.000000
 +Subsystem Repair Ceiling: 100.000000
 
-+Viewer pos: -30830.037109, 14661.324219, -4901.203125
++Viewer pos: -29396.462891, 14210.419922, -4621.780762
 +Viewer orient:
-	0.085129, 0.000006, -0.996370,
-	0.293912, 0.955503, 0.025117,
-	0.952034, -0.294983, 0.081339
+	0.411869, 0.000006, 0.911243,
+	0.006253, 0.999976, -0.002833,
+	-0.911222, 0.006865, 0.411859
 
 
 $Load Screen 1024: 2_LoadingBGM00
@@ -41,17 +41,15 @@ $AI Profile: Solaris
 $Variables:
 (
 		0		"loadcheckpoint"		"0"		"number"
-		1		"m6checkpoint"		"0"		"number"
-		2		"playerview"		"1"		"number"
-		3		"saveexist"		"0"		"number"
-		4		"VNdone"		"0"		"number"
-		5		"autoGenVar1"		"#Artemis Control"		"string"
-		6		"autoGenVar2"		"#Artemis Tactical"		"string"
-		7		"autoGenVar3"		"#"		"string"
-		8		"autoGenVar4"		"Nav 1"		"string"
-		9		"autoGenVar5"		"Nav 2"		"string"
-		10		"autoGenVar6"		"Nav 3"		"string"
-		11		"autoGenVar7"		"Nav 4"		"string"
+		1		"saveexist"		"0"		"number"
+		2		"VNdone"		"0"		"number"
+		3		"i18nVariable1"		"#Artemis Control"		"string"
+		4		"i18nVariable2"		"#Artemis"		"string"
+		5		"i18nVariable3"		"#"		"string"
+		6		"i18nVariable4"		"Nav 1"		"string"
+		7		"i18nVariable5"		"Nav 2"		"string"
+		8		"i18nVariable6"		"Nav 3"		"string"
+		9		"i18nVariable7"		"Nav 4"		"string"
 )
 
 #Command Briefing
@@ -65,26 +63,33 @@ $end_briefing
 
 $Num stages: 1
 
-$Formula: ( is-goal-true-delay "Patrol area" 0 ) 
+$Formula: ( is-event-true-delay 
+   "fadeout good" 
+   0 
+)
 $Multi text
     XSTR("Lieutenant McKearney. Lieutenant Ross. Watch the space, the flight deck is a mess right now.
 
-Captain Lancaster, FNS Longview. I'm sorry for your loss. The Artemis was a fine ship, and her reputation was well known. One more casualty of the Combine war machine.
+Captain Lancaster, FNS Longview. Sounds like you two have been through hell. We've heard about everything that happened in Durius, all the battles the Artemis fought and survived. Now she's just one more casualty of the Combine war machine.
 
-Fifth fleet has been pulverised by the Combine. I lead what little is left. The Combine have initiated a full scale invasion of Morik and we're continuing the fight as best as we can. It's a real mess out here.
+Fifth fleet has been pulverised by the Combine. I command what little is left. The Combine have initiated a full scale invasion of Morik and we're continuing the fight as best as we can. It's a real mess out here.
 
-I've authorised your transfer to the Longview. Any assistance you two could give would be greatly appreciated. The Longview's air wing is critically short of equipment and personnel and two experienced pilots like yourself would make a world of difference.
+I've authorised your transfer to the Longview. Any assistance you two could give would be appreciated. The Longview's air wing is critically short of equipment and personnel, experienced pilots like you two will make a world of difference.
 
-Get some rest in the meantime. Use what time you have to grieve. I'll call on you when I need you.", 5235)
+XO, bring them downside. There's plenty of spare quarters for them to occupy. You two will  hear from me soon. The fight for Morik's nowhere near over. ", 5392)
 $end_multi_text
 $Voice: 06-db1
 $Recommendation text:
-    XSTR("The Artemis was outmatched and her fate was sealed. Nothing could have been done to change the outcome.", 5236)
+    XSTR("Mission successful.
+
+The Combine Navy battle doctrine emphasises overwhelming 'First Strikes' with large-calibre weapons and heavy missiles. Combine battlecruisers with their balance of mobility and firepower are the product of this doctrine.
+
+The Artemis was outmatched and her fate was sealed. Nothing could have been done to change the outcome.", 5393)
 $end_multi_text
 
 #Callsigns:
-$Callsign: XSTR("Raptor", 3194)
-$Callsign: XSTR("Razor", 5089)
+$Callsign: XSTR("Raptor", 3295)
+$Callsign: XSTR("Razor", 5246)
 
 #end
 
@@ -104,9 +109,9 @@ $Ship Choices: (
 #Objects		;! 34 total
 
 $Name: Alpha 1		;! Object #0
-$Display Name: XSTR("Alpha 1", 3198)
+$Display Name: XSTR("Alpha 1", 3299)
 $Class: Thunderbolt-class Interceptor
-$Callsign: XSTR("Razor", 5089)
+$Callsign: XSTR("Razor", 5246)
 
 $Team: Friendly
 $Location: 14213.236328, 34.300125, -912.173950
@@ -114,8 +119,7 @@ $Orientation:
 	-0.005509, 0.000000, 0.999985,
 	0.000000, 1.000000, 0.000000,
 	-0.999985, 0.000000, -0.005509
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 100
 +Initial Hull: 100
 +Initial Shields: 100
@@ -134,7 +138,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Cruiser 1		;! Object #1
-$Display Name: XSTR("Cruiser 1", 5237)
+$Display Name: XSTR("Cruiser 1", 5394)
 $Class: Liberty-class Battlecruiser
 $Team: Friendly
 $Location: -2806.139648, 623.992188, -1216.069336
@@ -142,8 +146,7 @@ $Orientation:
 	0.690490, -0.555447, 0.463360,
 	0.004449, 0.643831, 0.765155,
 	-0.723328, -0.526270, 0.447030
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 100
 +Initial Hull: 100
 +Initial Shields: 100
@@ -182,7 +185,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Assault Carrier 2		;! Object #2
-$Display Name: XSTR("Assault Carrier 2", 5238)
+$Display Name: XSTR("Assault Carrier 2", 5395)
 $Class: Leander-class Cruiser
 $Team: Friendly
 $Location: -3702.832031, -909.102539, -3588.136963
@@ -190,8 +193,7 @@ $Orientation:
 	-0.276658, 0.335334, -0.900562,
 	0.360876, -0.832295, -0.420777,
 	-0.890634, -0.441402, 0.109247
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 100
 +Initial Hull: 100
 +Initial Shields: 100
@@ -227,7 +229,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Frigate 3		;! Object #3
-$Display Name: XSTR("Frigate 3", 5239)
+$Display Name: XSTR("Frigate 3", 5396)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: -4422.897461, 380.515625, -1122.639404
@@ -235,8 +237,7 @@ $Orientation:
 	0.170400, -0.793420, 0.584336,
 	0.273008, -0.531780, -0.801671,
 	0.946800, 0.296133, 0.125995
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -269,7 +270,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Frigate 4		;! Object #4
-$Display Name: XSTR("Frigate 4", 5240)
+$Display Name: XSTR("Frigate 4", 5397)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: 2348.157959, -526.490234, -12584.897461
@@ -277,8 +278,7 @@ $Orientation:
 	0.299005, -0.474900, -0.827687,
 	0.630977, -0.552293, 0.544831,
 	-0.715866, -0.685159, 0.134513
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -311,7 +311,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Frigate 5		;! Object #5
-$Display Name: XSTR("Frigate 5", 5241)
+$Display Name: XSTR("Frigate 5", 5398)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: 3352.102295, -262.394531, -12766.766602
@@ -319,8 +319,7 @@ $Orientation:
 	0.144899, 0.810593, 0.567401,
 	0.045046, 0.567454, -0.822172,
 	-0.988421, 0.144691, 0.045709
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -353,7 +352,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Cruiser 6		;! Object #6
-$Display Name: XSTR("Cruiser 6", 5242)
+$Display Name: XSTR("Cruiser 6", 5399)
 $Class: Liberty-class Battlecruiser
 $Team: Friendly
 $Location: -8146.476563, -834.095703, -5420.919434
@@ -361,8 +360,7 @@ $Orientation:
 	-0.323277, -0.315507, -0.892159,
 	0.750243, -0.660044, -0.038432,
 	-0.576739, -0.681760, 0.450084
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 100
 +Initial Hull: 100
 +Initial Shields: 100
@@ -401,7 +399,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Battleship 7		;! Object #7
-$Display Name: XSTR("Battleship 7", 5243)
+$Display Name: XSTR("Battleship 7", 5400)
 $Class: Vanguard-class Dreadnought
 $Team: Friendly
 $Location: -2364.266602, -508.777344, -5616.337402
@@ -409,8 +407,7 @@ $Orientation:
 	0.430533, 0.583404, 0.688681,
 	-0.415618, 0.805454, -0.422500,
 	-0.801189, -0.104328, 0.589247
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -430,8 +427,6 @@ $Cargo 1:  XSTR("Nothing", 3199)
 +Subsystem: turret14
 +Subsystem: turret16
 +Subsystem: turret17
-+Subsystem: turret18
-+Subsystem: turret19
 +Subsystem: turret20
 +Subsystem: turret21
 +Subsystem: turret22
@@ -453,7 +448,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Fleet Carrier 8		;! Object #8
-$Display Name: XSTR("Fleet Carrier 8", 5244)
+$Display Name: XSTR("Fleet Carrier 8", 5401)
 $Class: Hyperion-class Fleet Carrier
 $Team: Friendly
 $Location: -7169.118652, -604.073242, -3371.528564
@@ -461,9 +456,8 @@ $Orientation:
 	0.198804, 0.253660, 0.946643,
 	-0.625700, 0.776293, -0.076611,
 	-0.754306, -0.577084, 0.313045
-$AI Behavior: None
 $AI Goals: ( goals ( ai-play-dead 50 ) )
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -519,7 +513,7 @@ $Texture Replace:
 +new: cwhull1debris-shine
 
 $Name: Frigate 9		;! Object #9
-$Display Name: XSTR("Frigate 9", 5245)
+$Display Name: XSTR("Frigate 9", 5402)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: -2833.055664, 550.796875, 3329.712891
@@ -527,8 +521,7 @@ $Orientation:
 	0.357494, 0.737859, -0.572506,
 	0.658516, 0.235531, 0.714760,
 	0.662234, -0.632527, -0.401692
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -561,7 +554,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Frigate 10		;! Object #10
-$Display Name: XSTR("Frigate 10", 5246)
+$Display Name: XSTR("Frigate 10", 5403)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: -3177.956055, 455.615234, -7152.414063
@@ -569,8 +562,7 @@ $Orientation:
 	0.061635, -0.975907, -0.209300,
 	0.057441, 0.212819, -0.975402,
 	0.996445, 0.048097, 0.069174
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -603,7 +595,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Prometheus		;! Object #11
-$Display Name: XSTR("Prometheus", 5247)
+$Display Name: XSTR("Prometheus", 5404)
 $Class: Federation-class Supercarrier
 $Team: Friendly
 $Location: -3409.703125, 542.433594, 7026.140625
@@ -611,8 +603,7 @@ $Orientation:
 	0.620188, -0.701479, -0.351132,
 	0.345783, 0.646242, -0.680298,
 	0.704131, 0.300497, 0.643351
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -652,7 +643,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Cruiser 12		;! Object #12
-$Display Name: XSTR("Cruiser 12", 5248)
+$Display Name: XSTR("Cruiser 12", 5405)
 $Class: Liberty-class Battlecruiser
 $Team: Friendly
 $Location: -6604.135742, -307.640625, 905.180176
@@ -660,8 +651,7 @@ $Orientation:
 	-0.759602, -0.509452, -0.404306,
 	0.623127, -0.391971, -0.676810,
 	0.186326, -0.766040, 0.615195
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 100
 +Initial Hull: 100
 +Initial Shields: 100
@@ -701,7 +691,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Fleet HQ 13		;! Object #13
-$Display Name: XSTR("Fleet HQ 13", 5249)
+$Display Name: XSTR("Fleet HQ 13", 5406)
 $Class: Fleet HQ
 $Team: Friendly
 $Location: 1746.014893, 0.009765, -10133.121094
@@ -709,8 +699,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -744,7 +733,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Artemis		;! Object #14
-$Display Name: XSTR("Artemis", 3207)
+$Display Name: XSTR("Artemis", 3309)
 $Class: Leander-class Cruiser
 $Team: Friendly
 $Location: 14817.953125, 293.902344, -953.005859
@@ -752,8 +741,7 @@ $Orientation:
 	0.001368, 0.000000, 0.999999,
 	-0.000129, 1.000000, 0.000000,
 	-0.999999, -0.000129, 0.001368
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -788,9 +776,9 @@ $Determination: 10
 +Score: 0
 
 $Name: Alpha 2		;! Object #15
-$Display Name: XSTR("Alpha 2", 3202)
+$Display Name: XSTR("Alpha 2", 3304)
 $Class: Thunderbolt-class Interceptor
-$Callsign: XSTR("Raptor", 3194)
+$Callsign: XSTR("Raptor", 3295)
 
 $Team: Friendly
 $Location: 14311.443359, 34.300079, -856.692871
@@ -798,8 +786,7 @@ $Orientation:
 	-0.005509, 0.000000, 0.999985,
 	0.000000, 1.000000, 0.000000,
 	-0.999985, 0.000000, -0.005509
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 100
 +Initial Hull: 100
 +Initial Shields: 100
@@ -819,7 +806,7 @@ $Determination: 10
 +Persona Index: 12
 
 $Name: Draco 1		;! Object #16
-$Display Name: XSTR("Draco 1", 3216)
+$Display Name: XSTR("Draco 1", 3318)
 $Class: Hunter-class Stealth Fighter
 $Team: Hostile
 $Location: -4946.070313, 7719.984375, -2646.815430
@@ -827,9 +814,8 @@ $Orientation:
 	0.059629, 0.000000, -0.998221,
 	-0.000000, 1.000000, 0.000000,
 	0.998221, 0.000000, 0.059629
-$AI Behavior: None
 $AI Goals: ( goals ( ai-chase "Alpha 1" 50 ) )
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -859,7 +845,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Draco 2		;! Object #17
-$Display Name: XSTR("Draco 2", 3225)
+$Display Name: XSTR("Draco 2", 3327)
 $Class: Hunter-class Stealth Fighter
 $Team: Hostile
 $Location: -4836.184570, 7725.812500, -2864.424316
@@ -867,9 +853,8 @@ $Orientation:
 	0.664178, 0.000000, -0.747575,
 	0.000000, 1.000000, 0.000000,
 	0.747575, 0.000000, 0.664178
-$AI Behavior: None
 $AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) )
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -899,7 +884,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Veritas		;! Object #18
-$Display Name: XSTR("Veritas", 5250)
+$Display Name: XSTR("Veritas", 5407)
 $Class: Archon-class Battlecruiser
 $Team: Hostile
 $Location: 15103.144531, 57.598633, -3494.942383
@@ -907,8 +892,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -951,7 +935,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Commerce Hub 20		;! Object #19
-$Display Name: XSTR("Commerce Hub 20", 5251)
+$Display Name: XSTR("Commerce Hub 20", 5408)
 $Class: Station
 $Team: Friendly
 $Location: 1044.054688, 0.002930, -7855.714355
@@ -959,8 +943,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -979,7 +962,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Fleet Carrier 20		;! Object #20
-$Display Name: XSTR("Fleet Carrier 20", 5252)
+$Display Name: XSTR("Fleet Carrier 20", 5409)
 $Class: Hyperion-class Fleet Carrier
 $Team: Friendly
 $Location: -8067.378906, 919.289063, -9829.404297
@@ -987,8 +970,7 @@ $Orientation:
 	0.198804, 0.253660, 0.946643,
 	-0.625700, 0.776293, -0.076611,
 	-0.754306, -0.577084, 0.313045
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 100
 +Initial Hull: 100
 +Initial Shields: 100
@@ -1022,7 +1004,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Assault Carrier 21		;! Object #21
-$Display Name: XSTR("Assault Carrier 21", 5253)
+$Display Name: XSTR("Assault Carrier 21", 5410)
 $Class: Liberty-class Battlecruiser
 $Team: Friendly
 $Location: 796.042969, 903.519531, -3713.732422
@@ -1030,8 +1012,7 @@ $Orientation:
 	-0.276658, 0.335334, -0.900562,
 	0.360876, -0.832295, -0.420777,
 	-0.890634, -0.441402, 0.109247
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -1070,7 +1051,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Frigate 22		;! Object #22
-$Display Name: XSTR("Frigate 22", 5254)
+$Display Name: XSTR("Frigate 22", 5411)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: 374.712891, 550.796875, -2549.556641
@@ -1078,8 +1059,7 @@ $Orientation:
 	0.484948, -0.863357, 0.139432,
 	-0.142689, 0.079187, 0.986595,
 	-0.862824, -0.498343, -0.084790
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -1113,7 +1093,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Frigate 23		;! Object #23
-$Display Name: XSTR("Frigate 23", 5255)
+$Display Name: XSTR("Frigate 23", 5412)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: 693.833984, 550.796875, -323.679688
@@ -1121,8 +1101,7 @@ $Orientation:
 	0.247322, 0.422870, -0.871787,
 	0.914360, -0.399554, 0.065592,
 	-0.320589, -0.813350, -0.485475
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -1156,7 +1135,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Frigate 24		;! Object #24
-$Display Name: XSTR("Frigate 24", 5256)
+$Display Name: XSTR("Frigate 24", 5413)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: -551.794556, 550.796875, -1534.477539
@@ -1164,8 +1143,7 @@ $Orientation:
 	-0.004286, -0.991894, 0.126995,
 	-0.176516, 0.125753, 0.976232,
 	-0.984288, -0.018233, -0.175624
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -1199,7 +1177,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Longview		;! Object #25
-$Display Name: XSTR("Longview", 5257)
+$Display Name: XSTR("Longview", 5414)
 $Class: Independence-class Carrier
 $Team: Friendly
 $Location: -24862.382813, -0.001953, -17722.544922
@@ -1207,8 +1185,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -1233,7 +1210,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Taurus 1		;! Object #26
-$Display Name: XSTR("Taurus 1", 3210)
+$Display Name: XSTR("Taurus 1", 3312)
 $Class: Defender-class Fighter
 $Team: Hostile
 $Location: 8674.406250, -0.000977, -4222.178711
@@ -1241,8 +1218,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -1261,7 +1237,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Taurus 2		;! Object #27
-$Display Name: XSTR("Taurus 2", 3211)
+$Display Name: XSTR("Taurus 2", 3313)
 $Class: Defender-class Fighter
 $Team: Hostile
 $Location: 8803.663086, -0.000977, -4021.526367
@@ -1269,8 +1245,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -1289,7 +1264,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Taurus 3		;! Object #28
-$Display Name: XSTR("Taurus 3", 3232)
+$Display Name: XSTR("Taurus 3", 4782)
 $Class: Defender-class Fighter
 $Team: Hostile
 $Location: 8885.698242, -0.000977, -4504.963867
@@ -1297,8 +1272,7 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -1316,8 +1290,8 @@ $Determination: 10
 +Use Table Score:
 +Score: 10
 
-$Name: Scimitar		;! Object #29
-$Display Name: XSTR("Scimitar", 3343)
+$Name: Conqueror		;! Object #29
+$Display Name: XSTR("Conqueror", 5415)
 $Class: Khopesh-class Frigate
 $Team: Hostile
 $Location: 14156.505859, 4803.117188, -6011.724609
@@ -1325,9 +1299,8 @@ $Orientation:
 	0.346151, -0.000000, 0.938179,
 	0.000000, 1.000000, 0.000000,
 	-0.938179, 0.000000, 0.346151
-$AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "Venturous patrol" 50 ) )
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -1354,8 +1327,8 @@ $Determination: 10
 +Use Table Score:
 +Score: 0
 
-$Name: Conqueror		;! Object #30
-$Display Name: XSTR("Conqueror", 5258)
+$Name: Scimitar		;! Object #30
+$Display Name: XSTR("Scimitar", 3462)
 $Class: Glory-class Destroyer
 $Team: Hostile
 $Location: -16719.804688, 0.052734, -14224.604492
@@ -1363,9 +1336,8 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $AI Goals: ( goals ( ai-chase "Longview" 50 ) )
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Velocity: 33
 +Initial Hull: 100
 +Initial Shields: 100
@@ -1393,7 +1365,7 @@ $Determination: 10
 +Score: 0
 
 $Name: River-class Frigate 31		;! Object #31
-$Display Name: XSTR("River-class Frigate 31", 5259)
+$Display Name: XSTR("River-class Frigate 31", 5416)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: -7527.826660, 380.519531, -6063.979492
@@ -1401,8 +1373,7 @@ $Orientation:
 	0.906096, -0.387792, 0.169135,
 	-0.402678, -0.913128, 0.063620,
 	0.129771, -0.125753, -0.983537
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -1435,7 +1406,7 @@ $Determination: 10
 +Score: 0
 
 $Name: River-class Frigate 32		;! Object #32
-$Display Name: XSTR("River-class Frigate 32", 5260)
+$Display Name: XSTR("River-class Frigate 32", 5417)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: -6239.883789, -885.771484, -8021.346191
@@ -1443,8 +1414,7 @@ $Orientation:
 	0.906096, -0.387792, 0.169135,
 	-0.402678, -0.913128, 0.063620,
 	0.129771, -0.125753, -0.983537
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -1477,7 +1447,7 @@ $Determination: 10
 +Score: 0
 
 $Name: River-class Frigate 33		;! Object #33
-$Display Name: XSTR("River-class Frigate 33", 5261)
+$Display Name: XSTR("River-class Frigate 33", 5418)
 $Class: River-class Frigate
 $Team: Friendly
 $Location: -9538.548828, 380.515625, -2280.185303
@@ -1485,8 +1455,7 @@ $Orientation:
 	0.906096, -0.387792, 0.169135,
 	-0.402678, -0.913128, 0.063620,
 	0.129771, -0.125753, -0.983537
-$AI Behavior: None
-$Cargo 1:  XSTR("Nothing", 3199)
+$Cargo 1:  XSTR("Nothing", 3300)
 +Initial Hull: 100
 +Initial Shields: 100
 +Subsystem: Pilot
@@ -1549,8 +1518,8 @@ $Wave Threshold: 0
 $Special Ship: 0		;! Taurus 1
 $Arrival Location: Docking Bay
 +Arrival Distance: 0
-$Arrival Anchor: Scimitar
-$Arrival Cue: ( has-arrived-delay 10 "Scimitar" ) 
+$Arrival Anchor: Conqueror
+$Arrival Cue: ( has-arrived-delay 10 "Conqueror" ) 
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Ships: (		;! 3 total
@@ -1566,39 +1535,39 @@ $AI Goals: ( goals ( ai-chase-wing "Alpha" 50 ) )
 $Formula: ( when 
    ( true ) 
    ( modify-variable-xstr 
-      "@autoGenVar1[#Artemis Control]" 
+      "@i18nVariable1[#Artemis Control]" 
       "#Artemis Control" 
-      5313 
+      5471 
    )
    ( modify-variable-xstr 
-      "@autoGenVar2[#Artemis Tactical]" 
-      "#Artemis Tactical" 
-      5141 
+      "@i18nVariable2[#Artemis]" 
+      "#Artemis" 
+      5385 
    )
    ( modify-variable-xstr 
-      "@autoGenVar3[#]" 
+      "@i18nVariable3[#]" 
       "#" 
-      4033 
+      4156 
    )
    ( modify-variable-xstr 
-      "@autoGenVar4[Nav 1]" 
+      "@i18nVariable4[Nav 1]" 
       "Nav 1" 
-      5314 
+      5472 
    )
    ( modify-variable-xstr 
-      "@autoGenVar5[Nav 2]" 
+      "@i18nVariable5[Nav 2]" 
       "Nav 2" 
-      5315 
+      5473 
    )
    ( modify-variable-xstr 
-      "@autoGenVar6[Nav 3]" 
+      "@i18nVariable6[Nav 3]" 
       "Nav 3" 
-      5316 
+      5474 
    )
    ( modify-variable-xstr 
-      "@autoGenVar7[Nav 4]" 
+      "@i18nVariable7[Nav 4]" 
       "Nav 4" 
-      5317 
+      5475 
    )
 )
 +Name: Manage translation variables
@@ -1613,7 +1582,7 @@ $Formula: ( when
    ( script-eval-block 
       "Scroll:Write(" 
       "'title1'," 
-      "15,12,0.05,2,2,true,2,false)" 
+      "15,12,0.05,2,2,true,10,false)" 
    )
 )
 +Name: title
@@ -1699,22 +1668,22 @@ $Formula: ( when
    )
    ( set-nav-carry "Alpha" ) 
    ( add-nav-waypoint 
-      "@autoGenVar4[Nav 1]" 
+      "@i18nVariable4[Nav 1]" 
       "nav 1:1" 
       1 
    )
    ( add-nav-waypoint 
-      "@autoGenVar5[Nav 2]" 
+      "@i18nVariable5[Nav 2]" 
       "Nav 1:2" 
       1 
    )
    ( add-nav-waypoint 
-      "@autoGenVar6[Nav 3]" 
+      "@i18nVariable6[Nav 3]" 
       "Nav 1:3" 
       1 
    )
    ( add-nav-waypoint 
-      "@autoGenVar7[Nav 4]" 
+      "@i18nVariable7[Nav 4]" 
       "Nav 1:4" 
       1 
    )
@@ -1722,10 +1691,19 @@ $Formula: ( when
       255 
       255 
       255 
-      "@autoGenVar4[Nav 1]" 
-      "@autoGenVar5[Nav 2]" 
-      "@autoGenVar6[Nav 3]" 
-      "@autoGenVar7[Nav 4]" 
+      "@i18nVariable4[Nav 1]" 
+      "@i18nVariable5[Nav 2]" 
+      "@i18nVariable6[Nav 3]" 
+      "@i18nVariable7[Nav 4]" 
+   )
+   ( set-nav-visited-color 
+      255 
+      255 
+      255 
+      "@i18nVariable4[Nav 1]" 
+      "Nav 2" 
+      "Nav 3" 
+      "Nav 4" 
    )
 )
 +Name: setup waypoints
@@ -1734,10 +1712,10 @@ $Formula: ( when
 
 $Formula: ( when 
    ( > ( mission-time-msecs ) 100 ) 
-   ( restrict-nav "@autoGenVar4[Nav 1]" ) 
-   ( restrict-nav "@autoGenVar5[Nav 2]" ) 
-   ( restrict-nav "@autoGenVar6[Nav 3]" ) 
-   ( restrict-nav "@autoGenVar7[Nav 4]" ) 
+   ( restrict-nav "@i18nVariable4[Nav 1]" ) 
+   ( restrict-nav "@i18nVariable5[Nav 2]" ) 
+   ( restrict-nav "@i18nVariable6[Nav 3]" ) 
+   ( restrict-nav "@i18nVariable7[Nav 4]" ) 
 )
 +Name: hide waypoints
 +Repeat Count: 1
@@ -1748,7 +1726,13 @@ $Formula: ( when
       "alpha begin patrol" 
       15 
    )
-   ( set-camera-shudder 5000 800 ) 
+   ( set-camera-shudder 
+      5000 
+      200 
+      ( false ) 
+      ( true ) 
+   )
+   ( training-msg "engine wash effect" ) 
 )
 +Name: shake screen
 +Repeat Count: 1
@@ -1759,29 +1743,35 @@ $Formula: ( when
       "go to second waypoint" 
       4 
    )
-   ( unrestrict-nav "@autoGenVar5[Nav 2]" ) 
-   ( select-nav "@autoGenVar5[Nav 2]" ) 
+   ( unrestrict-nav "@i18nVariable5[Nav 2]" ) 
+   ( select-nav "@i18nVariable5[Nav 2]" ) 
 )
 +Name: second waypoint active
 +Repeat Count: 1
 +Interval: 1
 
 $Formula: ( when 
-   ( is-nav-visited "@autoGenVar5[Nav 2]" ) 
+   ( is-nav-visited "@i18nVariable5[Nav 2]" ) 
    ( do-nothing ) 
 )
 +Name: dir second waypoint
 +Repeat Count: 1
 +Interval: 1
 +Chained: 0
-+Objective:  XSTR("Go to Second Waypoint", 5262)
++Objective:  XSTR("Go to Second Waypoint", 5419)
 
 $Formula: ( when 
    ( is-event-true-delay 
       "shake screen" 
       30 
    )
-   ( set-camera-shudder 5000 800 ) 
+   ( set-camera-shudder 
+      5000 
+      200 
+      ( false ) 
+      ( true ) 
+   )
+   ( training-msg "engine wash effect" ) 
 )
 +Name: shake screen 2
 +Repeat Count: 1
@@ -1792,7 +1782,13 @@ $Formula: ( when
       "second waypoint active" 
       15 
    )
-   ( set-camera-shudder 5000 800 ) 
+   ( set-camera-shudder 
+      5000 
+      200 
+      ( false ) 
+      ( true ) 
+   )
+   ( training-msg "engine wash effect" ) 
 )
 +Name: shake screen 3
 +Repeat Count: 1
@@ -1821,25 +1817,25 @@ $Formula: ( when
       ( is-event-true-delay "go to third" 4 ) 
       ( is-event-true-delay 
          "checkpoint load" 
-         0 
+         4 
       )
    )
-   ( unrestrict-nav "@autoGenVar6[Nav 3]" ) 
-   ( select-nav "@autoGenVar6[Nav 3]" ) 
+   ( unrestrict-nav "@i18nVariable6[Nav 3]" ) 
+   ( select-nav "@i18nVariable6[Nav 3]" ) 
 )
 +Name: third waypoint active
 +Repeat Count: 1
 +Interval: 1
 
 $Formula: ( when 
-   ( is-nav-visited "@autoGenVar6[Nav 3]" ) 
+   ( is-nav-visited "@i18nVariable6[Nav 3]" ) 
    ( do-nothing ) 
 )
 +Name: dir third waypoint
 +Repeat Count: 1
 +Interval: 1
 +Chained: 0
-+Objective:  XSTR("Go to Third Waypoint", 5263)
++Objective:  XSTR("Go to Third Waypoint", 5420)
 
 $Formula: ( when 
    ( = 
@@ -1875,6 +1871,7 @@ $Formula: ( when
       "Alpha 2" 
       "Nav 1:3:1" 
    )
+   ( clear-goals "Alpha 2" ) 
    ( add-goal 
       "Alpha 2" 
       ( ai-form-on-wing "Alpha 1" ) 
@@ -1925,22 +1922,22 @@ $Formula: ( when
       "get out of debris" 
       4 
    )
-   ( unrestrict-nav "@autoGenVar7[Nav 4]" ) 
-   ( select-nav "@autoGenVar7[Nav 4]" ) 
+   ( unrestrict-nav "@i18nVariable7[Nav 4]" ) 
+   ( select-nav "@i18nVariable7[Nav 4]" ) 
 )
 +Name: final waypoint active
 +Repeat Count: 1
 +Interval: 1
 
 $Formula: ( when 
-   ( is-nav-visited "@autoGenVar7[Nav 4]" ) 
+   ( is-nav-visited "@i18nVariable7[Nav 4]" ) 
    ( do-nothing ) 
 )
 +Name: dir final waypoint
 +Repeat Count: 1
 +Interval: 1
 +Chained: 0
-+Objective:  XSTR("Go to Fourth Waypoint", 5264)
++Objective:  XSTR("Go to Fourth Waypoint", 5421)
 
 $Formula: ( when 
    ( is-destroyed-delay 3 "Alpha 1" ) 
@@ -1976,7 +1973,7 @@ $Formula: ( when
       255 
       255 
       255 
-      "font02" 
+      "10" 
       ( true ) 
    )
    ( hud-disable 1 ) 
@@ -2005,14 +2002,91 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Chained: 0
-+Objective:  XSTR("Destroy Draco", 3242)
-+Objective key:  XSTR("F9", 3235)
++Objective:  XSTR("Engage Draco", 5422)
++Objective key:  XSTR("F9", 3340)
 
 $Formula: ( when 
-   ( has-arrived-delay 10 "Longview" ) 
-   ( turret-free-all "Longview" ) 
+   ( is-destroyed-delay 0 "Longview" ) 
+   ( do-nothing ) 
 )
-+Name: unlock longview missiles
++Name: failure condition
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "player dead fadeout" 
+         0 
+      )
+   )
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      2000 
+   )
+   ( fade-out 2000 ) 
+   ( adjust-audio-volume "Voice" 0 3000 ) 
+)
++Name: fadeout bad
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "player dead fadeout" 
+         0 
+      )
+   )
+   ( play-sound-from-file 
+      "stormshadowend" 
+   )
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "10" 
+      ( true ) 
+   )
+   ( hud-disable 1 ) 
+   ( self-destruct "Alpha 1" ) 
+)
++Name: mission failed title
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-goal-true-delay 
+      "take minimal damage" 
+      0 
+   )
+   ( training-msg "bonus" ) 
+)
++Name: bonus
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 45 "Veritas" ) 
+      ( not 
+         ( is-destroyed-delay 0 "Artemis" ) 
+      )
+   )
+   ( self-destruct "Artemis" ) 
+)
++Name: ensure artemis destruction
 +Repeat Count: 1
 +Interval: 1
 
@@ -2064,8 +2138,8 @@ $Formula: ( when
       "High" 
       "alpha begin patrol" 
    )
-   ( unrestrict-nav "@autoGenVar4[Nav 1]" ) 
-   ( select-nav "@autoGenVar4[Nav 1]" ) 
+   ( unrestrict-nav "@i18nVariable4[Nav 1]" ) 
+   ( select-nav "@i18nVariable4[Nav 1]" ) 
 )
 +Name: alpha begin patrol
 +Repeat Count: 1
@@ -2073,14 +2147,14 @@ $Formula: ( when
 +Chained: 6
 
 $Formula: ( when 
-   ( is-nav-visited "@autoGenVar4[Nav 1]" ) 
+   ( is-nav-visited "@i18nVariable4[Nav 1]" ) 
    ( do-nothing ) 
 )
 +Name: dir first waypoint
 +Repeat Count: 1
 +Interval: 1
 +Chained: 0
-+Objective:  XSTR("Go to First Waypoint", 5265)
++Objective:  XSTR("Go to First Waypoint", 5423)
 
 $Formula: ( when 
    ( is-event-true-delay 
@@ -2111,40 +2185,7 @@ $Formula: ( when
 +Chained: 6
 
 $Formula: ( when 
-   ( is-event-true-delay 
-      "shake screen" 
-      0 
-   )
-   ( training-msg "engine wash effect" ) 
-)
-+Name: engine wash effect
-+Repeat Count: 5
-+Interval: 1
-
-$Formula: ( when 
-   ( is-event-true-delay 
-      "shake screen 2" 
-      0 
-   )
-   ( training-msg "engine wash effect" ) 
-)
-+Name: engine wash effect 2
-+Repeat Count: 5
-+Interval: 1
-
-$Formula: ( when 
-   ( is-event-true-delay 
-      "shake screen 3" 
-      0 
-   )
-   ( training-msg "engine wash effect" ) 
-)
-+Name: engine wash effect 3
-+Repeat Count: 5
-+Interval: 1
-
-$Formula: ( when 
-   ( is-nav-visited "@autoGenVar4[Nav 1]" ) 
+   ( is-nav-visited "@i18nVariable4[Nav 1]" ) 
    ( send-message 
       "Alpha 1" 
       "High" 
@@ -2154,6 +2195,7 @@ $Formula: ( when
 +Name: first waypoint reached
 +Repeat Count: 1
 +Interval: 1
++Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
    ( true ) 
@@ -2167,6 +2209,7 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Chained: 9
++Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
    ( true ) 
@@ -2183,7 +2226,7 @@ $Formula: ( when
 +Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
-   ( is-nav-visited "@autoGenVar5[Nav 2]" ) 
+   ( is-nav-visited "@i18nVariable5[Nav 2]" ) 
    ( send-message 
       "Alpha 1" 
       "High" 
@@ -2338,7 +2381,7 @@ $Formula: ( when
 +Name: why us
 +Repeat Count: 1
 +Interval: 1
-+Chained: 6
++Chained: 5
 +Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
@@ -2389,7 +2432,7 @@ $Formula: ( when
       3 
    )
    ( send-message 
-      "@autoGenVar1[#Artemis Control]" 
+      "@i18nVariable1[#Artemis Control]" 
       "High" 
       "battlecruiser arrived" 
    )
@@ -2460,7 +2503,7 @@ $Formula: ( when
 $Formula: ( when 
    ( is-destroyed-delay 0 "Artemis" ) 
    ( send-message 
-      "@autoGenVar2[#Artemis Tactical]" 
+      "@i18nVariable2[#Artemis]" 
       "High" 
       "artemis down" 
    )
@@ -2473,7 +2516,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "Alpha 2" 
+      "Alpha 1" 
       "High" 
       "no artemis" 
    )
@@ -2487,7 +2530,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "Alpha 1" 
+      "Alpha 2" 
       "High" 
       "we need to get out" 
    )
@@ -2506,7 +2549,7 @@ $Formula: ( when
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "Alpha 2" 
+      "Alpha 1" 
       "High" 
       "no hyperdrive" 
    )
@@ -2543,11 +2586,12 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Chained: 8
++Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
    ( true ) 
    ( send-message 
-      "Alpha 1" 
+      "Alpha 2" 
       "High" 
       "distress call" 
    )
@@ -2569,7 +2613,7 @@ $Formula: ( when
 +Name: get out of debris
 +Repeat Count: 1
 +Interval: 1
-+Chained: 8
++Chained: 6
 +Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
@@ -2577,31 +2621,17 @@ $Formula: ( when
    ( send-message 
       "Alpha 2" 
       "High" 
-      "hope this works" 
-   )
-)
-+Name: hope this works
-+Repeat Count: 1
-+Interval: 1
-+Chained: 7
-+Event Log Flags: ( "last repeat" )
-
-$Formula: ( when 
-   ( true ) 
-   ( send-message 
-      "Alpha 1" 
-      "High" 
       "yeah me too" 
    )
 )
 +Name: yeah me too
 +Repeat Count: 1
 +Interval: 1
-+Chained: 5
++Chained: 7
 +Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
-   ( is-nav-visited "@autoGenVar7[Nav 4]" ) 
+   ( is-nav-visited "@i18nVariable7[Nav 4]" ) 
    ( send-message 
       "Alpha 1" 
       "High" 
@@ -2666,11 +2696,11 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 +Chained: 0
-+Objective:  XSTR("Dock with Longview", 5266)
++Objective:  XSTR("Dock with Longview", 5424)
 +Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
-   ( is-event-true-delay "so did I" 1 ) 
+   ( true ) 
    ( protect-ship "Alpha 1" ) 
    ( ship-invulnerable "Alpha 1" ) 
    ( adjust-audio-volume 
@@ -2684,7 +2714,7 @@ $Formula: ( when
 +Name: fadeout good
 +Repeat Count: 1
 +Interval: 1
-+Chained: 0
++Chained: 1
 +Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
@@ -2707,7 +2737,7 @@ $Formula: ( when
       255 
       255 
       255 
-      "font02" 
+      "10" 
       ( true ) 
    )
    ( hud-disable 1 ) 
@@ -2751,11 +2781,11 @@ $Formula: ( when
 +Name: so did I
 +Repeat Count: 1
 +Interval: 1
-+Chained: 8
++Chained: 2
 +Event Log Flags: ( "last repeat" )
 
 $Formula: ( when 
-   ( has-arrived-delay 1 "Conqueror" ) 
+   ( has-arrived-delay 1 "Scimitar" ) 
    ( send-message 
       "Alpha 1" 
       "High" 
@@ -2763,7 +2793,7 @@ $Formula: ( when
    )
    ( add-goal 
       "Alpha 2" 
-      ( ai-ignore-new "Conqueror" 200 ) 
+      ( ai-ignore-new "Scimitar" 200 ) 
    )
 )
 +Name: watch out
@@ -2783,31 +2813,31 @@ $Formula: ( when
    )
    ( send-message-chain 
       "draco gone" 
-      "@autoGenVar3[#]" 
+      "@i18nVariable3[#]" 
       "Normal" 
       "battlechatter1" 
       0 
-      "@autoGenVar3[#]" 
+      "@i18nVariable3[#]" 
       "Normal" 
       "battlechatter2" 
       30000 
-      "@autoGenVar3[#]" 
+      "@i18nVariable3[#]" 
       "Normal" 
       "battlechatter3" 
       30000 
-      "@autoGenVar3[#]" 
+      "@i18nVariable3[#]" 
       "Normal" 
       "battlechatter4" 
       30000 
-      "@autoGenVar3[#]" 
+      "@i18nVariable3[#]" 
       "Normal" 
       "battlechatter5" 
       30000 
-      "@autoGenVar3[#]" 
+      "@i18nVariable3[#]" 
       "Normal" 
       "battlechatter6" 
       30000 
-      "@autoGenVar3[#]" 
+      "@i18nVariable3[#]" 
       "Normal" 
       "battlechatter7" 
       30000 
@@ -2818,13 +2848,22 @@ $Formula: ( when
 +Interval: 1
 +Event Log Flags: ( "last repeat" )
 
-#Goals		;! 1 total
+#Goals		;! 2 total
 
 $Type: Primary
 +Name: Patrol area
-$MessageNew:  XSTR("Patrol area", 5267)
+$MessageNew:  XSTR("Patrol area", 5425)
 $end_multi_text
 $Formula: ( is-event-true-delay "we're clear" 1 ) 
+
+$Type: Bonus
++Name: take minimal damage
+$MessageNew:  XSTR("Show them what you're made of (Hull >90%)", 5426)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay "draco gone" 0 ) 
+   ( >= ( hits-left "Alpha 1" ) 90 ) 
+)
 
 #Waypoints		;! 9 lists total
 
@@ -2879,364 +2918,363 @@ $List: (		;! 2 points in list
 
 $Name: Alpha wing clear
 $Team: -1
-$MessageNew:  XSTR("Alpha wing clear of hangar bay. Ready to begin patrol.", 5268)
+$MessageNew:  XSTR("Alpha wing clear of hangar bay. Ready to begin patrol.", 5427)
 $end_multi_text
 +Wave Name: 06-01
 
 $Name: what a mess
 $Team: -1
-$MessageNew:  XSTR("This is a disaster. So many people killed. How did this happen?", 5269)
+$MessageNew:  XSTR("This is a disaster. What the hell happened here?", 5428)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-02
 
 $Name: alpha begin patrol
 $Team: -1
-$MessageNew:  XSTR("Alpha, we're sending you the coordinates of your first waypoint. Come back safe.", 5270)
+$MessageNew:  XSTR("Alpha, we're sending you the coordinates of your first waypoint. Come back safe.", 5429)
 $end_multi_text
 +AVI Name: head-cm15a
 +Wave Name: 06-03
 
 $Name: alt-n
 $Team: -1
-$MessageNew:  XSTR("Alt-N to target waypoint.", 5271)
+$MessageNew:  XSTR("Alt-N to target waypoint.", 5430)
 $end_multi_text
 
 $Name: title1
 $Team: -1
-$MessageNew:  XSTR("$quoteFall of Angels$quote", 5272)
+$MessageNew:  XSTR("$quoteFall of Angels$quote", 5431)
 $end_multi_text
 
 $Name: gravity waves
 $Team: -1
-$MessageNew:  XSTR("Watch out, Raptor. The area's full of gravitational eddies. Could get a little bumpy.", 5273)
+$MessageNew:  XSTR("Watch out, Raptor. The area's full of gravitational eddies. Could get a little bumpy.", 5432)
 $end_multi_text
 +Wave Name: 06-04
 
 $Name: no kidding
 $Team: -1
-$MessageNew:  XSTR("Yeah, no kidding.", 5274)
+$MessageNew:  XSTR("Yeah, no kidding.", 5433)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-05
 
 $Name: engine wash effect
 $Team: -1
-$MessageNew:  XSTR(" ", 2536)
+$MessageNew:  XSTR(" ", 2679)
 $end_multi_text
-+Wave Name: engine_wash.ogg
++Wave Name: metalstress.ogg
 
 $Name: first waypoint reached
 $Team: -1
-$MessageNew:  XSTR("Artemis, first waypoint reached. Looks like the remains of Fleet HQ station. No survivors. Nothing but debris.", 5275)
+$MessageNew:  XSTR("Artemis, first waypoint reached. Looks like the remains of Fleet HQ station. No survivors. Nothing but debris.", 5434)
 $end_multi_text
 +Wave Name: 06-06
 
 $Name: go to second waypoint
 $Team: -1
-$MessageNew:  XSTR("Acknowledged, proceed to your next waypoint. Continue active scans.", 5276)
+$MessageNew:  XSTR("Acknowledged, proceed to your next waypoint. Continue active scans.", 5435)
 $end_multi_text
 +AVI Name: head-cm15b
 +Wave Name: 06-07
 
 $Name: prometheus
 $Team: -1
-$MessageNew:  XSTR("That's the Prometheus. Admiral Mateljan's flagship. No survivors. No beacon.", 5277)
+$MessageNew:  XSTR("That's the Prometheus. Admiral Mateljan's flagship. No survivors. No beacon.", 5436)
 $end_multi_text
 +Wave Name: 06-08
 
 $Name: go to third
 $Team: -1
-$MessageNew:  XSTR("Message received, Alpha. Proceed to the next waypoint.", 5278)
+$MessageNew:  XSTR("Message received, Alpha. Proceed to the next waypoint.", 5437)
 $end_multi_text
 +AVI Name: head-cm15c
 +Wave Name: 06-09
 
 $Name: something on sensors
 $Team: -1
-$MessageNew:  XSTR("Razor, picking up something on sensors.", 5279)
+$MessageNew:  XSTR("Hang on, I'm picking up something on sensors!", 5438)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-10
 
 $Name: hunters
 $Team: -1
-$MessageNew:  XSTR("Combine hunters! Split and engage!", 5280)
+$MessageNew:  XSTR("Combine hunters! Go evasive, Ross!", 5439)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-11
 
 $Name: nothing on sensors
 $Team: -1
-$MessageNew:  XSTR("That's it, I think. Nothing on sensors.", 5281)
+$MessageNew:  XSTR("That's it, I think. Nothing on sensors.", 5440)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-12
 
 $Name: look for survivors
 $Team: -1
-$MessageNew:  XSTR("$quoteLook for survivors,$quote they said. How can anyone survive this?", 5282)
+$MessageNew:  XSTR("$quoteLook for survivors,$quote they said. How can anyone survive this?", 5441)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-13
 
 $Name: what were they
 $Team: -1
-$MessageNew:  XSTR("What the hell were they? It's like they were blinking in and out of sensor contact.", 5283)
+$MessageNew:  XSTR("What the hell were they? It's like they were blinking in and out of sensor contact.", 5442)
 $end_multi_text
 +Wave Name: 06-14
 
 $Name: they were hunters
 $Team: -1
-$MessageNew:  XSTR("Combine hunters. The elite of the elite. They fly stealth birds with cloaking devices. ", 5284)
+$MessageNew:  XSTR("Hunters. The elite of the elite. They fly stealth birds with cloaking devices. ", 5443)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-15
 
 $Name: waiting for us
 $Team: -1
-$MessageNew:  XSTR("They were waiting in ambush. Which means they were expecting us.", 5285)
+$MessageNew:  XSTR("They were waiting in ambush. Which means they were expecting us.", 5444)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-16
 
 $Name: why us
 $Team: -1
-$MessageNew:  XSTR("What? Why would they be expecting us?", 5286)
+$MessageNew:  XSTR("Why would they be expecting us?", 5445)
 $end_multi_text
 +Wave Name: 06-17
 
 $Name: not us
 $Team: -1
-$MessageNew:  XSTR("Not us specifically, Razor! They were waiting for more Federation ships to arrive!", 5287)
+$MessageNew:  XSTR("Not us specifically, Razor! They were waiting for more Federation ships to arrive!", 5446)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-18
 
 $Name: now they know
 $Team: -1
-$MessageNew:  XSTR("And now they know we're here.", 5288)
+$MessageNew:  XSTR("Waiting for more - now they know we're here.", 5447)
 $end_multi_text
 +Wave Name: 06-19
 
 $Name: head back
 $Team: -1
-$MessageNew:  XSTR("Raptor, on me. We need to head back to-", 5289)
+$MessageNew:  XSTR("Quick! Raptor, we need to head back to -", 5448)
 $end_multi_text
 +Wave Name: 06-20
 
 $Name: battlecruiser arrived
 $Team: -1
-$MessageNew:  XSTR("Combine battlecruiser in combat range! Set condition one throughout the ship.", 5290)
+$MessageNew:  XSTR("Combine battlecruiser in combat range! Set condition one throughout the ship.", 5449)
 $end_multi_text
 +AVI Name: head-cm15a
 +Wave Name: 06-21
 
 $Name: don't understand
 $Team: -1
-$MessageNew:  XSTR("Razor. Something's not right about this.", 5291)
+$MessageNew:  XSTR("Razor. Something's not right about this.", 5450)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-22
 
 $Name: what do you mean
 $Team: -1
-$MessageNew:  XSTR("What do you mean?", 5292)
+$MessageNew:  XSTR("What do you mean?", 5451)
 $end_multi_text
 +Wave Name: 06-23
 
 $Name: where combine debris
 $Team: -1
-$MessageNew:  XSTR("If this was a battle that the Federation lost, where is the Combine debris? It's like they were never here.", 5293)
+$MessageNew:  XSTR("If this was a battle that the Federation lost, where is the Combine debris? It's like they were never here.", 5452)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-24
 
 $Name: surprise attack
 $Team: -1
-$MessageNew:  XSTR("Even if it was a surprise attack, some of their ships must have fought back.", 5294)
+$MessageNew:  XSTR("Even if it was a surprise attack, they must have taken some casualties.", 5453)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-25
 
 $Name: artemis down
 $Team: -1
-$MessageNew:  XSTR("All hands, abandon -", 4696)
+$MessageNew:  XSTR("All hands, abandon -", 3423)
 $end_multi_text
 +Wave Name: 06-26
 
 $Name: no artemis
 $Team: -1
-$MessageNew:  XSTR("Holy shit...the Artemis is gone. Everyone's gone!", 5295)
+$MessageNew:  XSTR("Holy shit...the Artemis is gone!", 5454)
 $end_multi_text
-+AVI Name: Head-TP5
 +Wave Name: 06-27
 
 $Name: we need to get out
 $Team: -1
-$MessageNew:  XSTR("Raptor! Focus! We need to get out of here now.", 5296)
+$MessageNew:  XSTR("Razor, focus! We need to get out of here now!", 5455)
 $end_multi_text
++AVI Name: Head-TP5
 +Wave Name: 06-28
 
 $Name: surrender
 $Team: -1
-$MessageNew:  XSTR("This is the Combine warship Veritas to Confederate pilots. Surrender your fighters. You have nowhere to go.", 5297)
+$MessageNew:  XSTR("This is the Combine warship Veritas to Confederate pilots. Surrender your fighters. You have nowhere to go.", 5456)
 $end_multi_text
 +Wave Name: 06-29
 
 $Name: no hyperdrive
 $Team: -1
-$MessageNew:  XSTR("How Razor? We've got no hyperdrives!", 5298)
+$MessageNew:  XSTR("How? These fighters haven't got hyperdrives!", 5457)
 $end_multi_text
-+AVI Name: Head-TP5
 +Wave Name: 06-30
 
 $Name: distress call
 $Team: -1
-$MessageNew:  XSTR("I'm sending out a distress signal. There's got to be other Federation ships in the system.", 5299)
+$MessageNew:  XSTR("This was a major fleet hub. There's got to be other Federation ships in the system. ", 5458)
 $end_multi_text
++AVI Name: Head-TP5
 +Wave Name: 06-31
 
 $Name: get out of debris
 $Team: -1
-$MessageNew:  XSTR("We'll need to get out of this debris field to get a clear signal out. On me, Raptor.", 5300)
+$MessageNew:  XSTR("That's... a good call. If we can get out of this debris field, I might be able to get a clear signal out. Let's go!", 5459)
 $end_multi_text
 +Wave Name: 06-32
 
-$Name: hope this works
-$Team: -1
-$MessageNew:  XSTR("I really hope this works Razor.", 5301)
-$end_multi_text
-+AVI Name: Head-TP5
-+Wave Name: 06-33
-
 $Name: yeah me too
 $Team: -1
-$MessageNew:  XSTR("Yeah, me too.", 5302)
+$MessageNew:  XSTR("It's the best chance we've got.", 5460)
 $end_multi_text
++AVI Name: Head-TP5
 +Wave Name: 06-34
 
 $Name: we're clear
 $Team: -1
-$MessageNew:  XSTR("We're clear. Sending automated distress signal now.", 5303)
+$MessageNew:  XSTR("I think we're clear enough. Sending automated distress signal now.", 5461)
 $end_multi_text
 +Wave Name: 06-35
 
 $Name: this is longview
 $Team: -1
-$MessageNew:  XSTR("This is the carrier FNS Longview. Distress signal received. What is your situation, pilots?", 5304)
+$MessageNew:  XSTR("This is carrier FNS Longview. We received a Federation distress signal. What's your situation?", 5462)
 $end_multi_text
 +Wave Name: 06-36
 
 $Name: welcome sight
 $Team: -1
-$MessageNew:  XSTR("Holy shit you're a welcome sight, Longview. Our base carrier got hit and we're stranded.", 5305)
+$MessageNew:  XSTR("You're a welcome sight, Longview. We need urgent recovery. Our base carrier got hit and we're stranded.", 5463)
 $end_multi_text
 +Wave Name: 06-37
 
 $Name: dock with fighterbay
 $Team: -1
-$MessageNew:  XSTR("Bring your fighters into our hangar immediately. The Combine have more ships on the way.", 5306)
+$MessageNew:  XSTR("IFF response confirmed. Bring your fighters in immediately. Every Combine ship in the system will have heard your distress beacon.", 5464)
 $end_multi_text
 +Wave Name: 06-38
 
 $Name: Checkpoint Save
 $Team: -1
-$MessageNew:  XSTR("Checkpoint Save Detected", 3290)
+$MessageNew:  XSTR("Checkpoint Save Detected", 3397)
 $end_multi_text
 
 $Name: Start from beginning
 $Team: -1
-$MessageNew:  XSTR("Start from beginning", 3291)
+$MessageNew:  XSTR("Start from beginning", 3398)
 $end_multi_text
 
 $Name: Start from checkpoint
 $Team: -1
-$MessageNew:  XSTR("Start from checkpoint", 3292)
+$MessageNew:  XSTR("Start from checkpoint", 3399)
 $end_multi_text
 
 $Name: checkpoint saved
 $Team: -1
-$MessageNew:  XSTR("CHECKPOINT SAVED", 5307)
+$MessageNew:  XSTR("CHECKPOINT SAVED", 5465)
 $end_multi_text
 
 $Name: didn't think we'd make it
 $Team: -1
-$MessageNew:  XSTR("Oh thank god, Razor. I thought we were dead.", 5308)
+$MessageNew:  XSTR("Good work, Stuart.", 5466)
 $end_multi_text
 +AVI Name: Head-TP5
 +Wave Name: 06-39
 
 $Name: so did I
 $Team: -1
-$MessageNew:  XSTR("Me too, Raptor. Me too.", 5309)
+$MessageNew:  XSTR("Well, I guess I did promise Punchy I'd look after you. Let's go.", 5467)
 $end_multi_text
 +Wave Name: 06-40
 
 $Name: mission complete title
 $Team: -1
-$MessageNew:  XSTR("MISSION COMPLETE", 3289)
+$MessageNew:  XSTR("MISSION COMPLETE", 3396)
 $end_multi_text
 
 $Name: fighters inbound
 $Team: -1
-$MessageNew:  XSTR("Razor, we've got fighters inbound!", 5310)
+$MessageNew:  XSTR("They've launched fighters!", 5468)
 $end_multi_text
-+AVI Name: Head-TP5
 +Wave Name: 06-41
 
 $Name: watch out
 $Team: -1
-$MessageNew:  XSTR("Watch out, Raptor!", 5311)
+$MessageNew:  XSTR("Watch out! Destroyer!", 5469)
 $end_multi_text
 +Wave Name: 06-42
 
 $Name: mission failed title
 $Team: -1
-$MessageNew:  XSTR("MISSION FAILED", 3288)
+$MessageNew:  XSTR("MISSION FAILED", 3395)
 $end_multi_text
 
 $Name: battlechatter1
 $Team: -1
-$MessageNew:  XSTR("<intercepted>", 5312)
+$MessageNew:  XSTR("<intercepted>", 5470)
 $end_multi_text
 +Wave Name: battlechatter1
 
 $Name: battlechatter2
 $Team: -1
-$MessageNew:  XSTR("<intercepted>", 5312)
+$MessageNew:  XSTR("<intercepted>", 5470)
 $end_multi_text
 +Wave Name: battlechatter2
 
 $Name: battlechatter3
 $Team: -1
-$MessageNew:  XSTR("<intercepted>", 5312)
+$MessageNew:  XSTR("<intercepted>", 5470)
 $end_multi_text
 +Wave Name: battlechatter3
 
 $Name: battlechatter4
 $Team: -1
-$MessageNew:  XSTR("<intercepted>", 5312)
+$MessageNew:  XSTR("<intercepted>", 5470)
 $end_multi_text
 +Wave Name: battlechatter4
 
 $Name: battlechatter5
 $Team: -1
-$MessageNew:  XSTR("<intercepted>", 5312)
+$MessageNew:  XSTR("<intercepted>", 5470)
 $end_multi_text
 +Wave Name: battlechatter5
 
 $Name: battlechatter6
 $Team: -1
-$MessageNew:  XSTR("<intercepted>", 5312)
+$MessageNew:  XSTR("<intercepted>", 5470)
 $end_multi_text
 +Wave Name: battlechatter6
 
 $Name: battlechatter7
 $Team: -1
-$MessageNew:  XSTR("<intercepted>", 5312)
+$MessageNew:  XSTR("<intercepted>", 5470)
 $end_multi_text
 +Wave Name: battlechatter7
+
+$Name: bonus
+$Team: -1
+$MessageNew:  XSTR(" ", 2679)
+$end_multi_text
++Wave Name: bonus
 
 #Reinforcements		;! 0 total
 
@@ -3249,37 +3287,36 @@ $Ambient light level: 4341823
 $Bitmap List:
 +Flags: ( "corrected angles" )
 $Sun: SolMars
-+Angles: 5.943673 5.423840 4.432820
++Angles: 5.951573 5.427974 4.433136
 +Scale: 1.000000
 $Sun: EarthWhite
 +Angles: 5.943673 5.423840 4.432820
 +Scale: 1.000000
 $Starbitmap: Stars_Plnt_Lava01
-+Angles: 0.000000 5.689774 5.375614
-+ScaleX: 6.000000
-+ScaleY: 6.000000
++Angles: 0.000000 2.583087 5.375614
++ScaleX: 5.000000
++ScaleY: 5.000000
 +DivX: 1
 +DivY: 1
 
 #Asteroid Fields
 
-$Density: 512
+$Density: 2000
 +Field Type: 1
 +Debris Genre: 1
 +Field Debris Type: 5
 +Field Debris Type: 3
 +Field Debris Type: 4
-$Average Speed: 8.999997
-$Minimum: -12000.000000, -2000.000000, -17000.000000
-$Maximum: 12000.000000, 2000.000000, 12000.000000
+$Average Speed: 8.999991
+$Minimum: -20000.000000, -4000.000000, -17000.000000
+$Maximum: 20000.000000, 4000.000000, 12000.000000
 
 #Music
 
 $Event Music: None
 $Briefing Music: None
 $Substitute Briefing Music: Brief2
-$Debriefing Success Music: Failure
-$Debriefing Average Music: Failure
+$Debriefing Average Music: Success
 
 #End
 

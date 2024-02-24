@@ -7,11 +7,11 @@ $On Game Init:
 CloakSys = {}
 
 --local variables for translation
-local localizedCloak = ba.XSTR("CLOAK", 3184)
-local localizedStatusOff = ba.XSTR("STATUS: OFF", 3185)
-local localizedToggle = ba.XSTR("ALT+Z to Toggle", 3186)
-local localizedStatusOn = ba.XSTR("STATUS: ON", 3187)
-local localizedEnergy = ba.XSTR("Energy Level: ", 3188)
+local localizedCloak = ba.XSTR("CLOAK", 2570)
+local localizedStatusOff = ba.XSTR("STATUS: OFF", 2571)
+local localizedToggle = ba.XSTR("ALT+Z to Toggle", 2572)
+local localizedStatusOn = ba.XSTR("STATUS: ON", 2573)
+local localizedEnergy = ba.XSTR("Energy Level: ", 2574)
 
 function CloakSys:Init()
 
@@ -129,7 +129,6 @@ function CloakSys:AlterState(state)
 			mn.runSEXP("( alter-ship-flag !stealth! (false) (false) !" .. ship.Name .. "!)")
 			mn.runSEXP("( alter-ship-flag !protect-ship! (false) (false) !" .. ship.Name .. "!)")
 			mn.runSEXP("( alter-ship-flag !beam-protect-ship! (false) (false) !" .. ship.Name .. "!)")
-			mn.runSEXP("( alter-ship-flag !hidden-from-sensors! (false) (false) !" .. ship.Name .. "!)")
 			mn.runSEXP("( turret-free-all !" .. ship.Name .. "!)")
 			
 			
@@ -161,7 +160,6 @@ function CloakSys:AlterState(state)
 				mn.runSEXP("( alter-ship-flag !stealth! (true) (false) !" .. ship.Name .. "!)")
 				mn.runSEXP("( alter-ship-flag !protect-ship! (true) (false) !" .. ship.Name .. "!)")
 				mn.runSEXP("( alter-ship-flag !beam-protect-ship! (true) (false) !" .. ship.Name .. "!)")
-				mn.runSEXP("( alter-ship-flag !hidden-from-sensors! (true) (false) !" .. ship.Name .. "!)")
 				mn.runSEXP("( turret-lock-all !" .. ship.Name .. "!)")
 				mn.runSEXP("( beam-lock-all !" .. ship.Name .. "!)")
 				
@@ -391,10 +389,10 @@ $On Mission End:
 	end
 ]
 
-$On Death:
+$On Ship Death:
 [
 	if CloakSys.Enabled then
-		CloakSys:MaybeRemove(hv.Self:getSignature())		
+		CloakSys:MaybeRemove(hv.Ship:getSignature())		
 	end
 ]
 
