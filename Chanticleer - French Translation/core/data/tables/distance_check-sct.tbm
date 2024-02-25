@@ -1,0 +1,205 @@
+; Distance Check Script - Monitors the distance from the player to a target
+; Created by m!m and rewritten by Goober5000
+;
+
+#Conditional Hooks
+$Application: FS2_Open
+$On Game Init:
+[
+    DistanceCheck = {}
+
+    DistanceCheck.ProgressColor = {}
+    DistanceCheck.ProgressColor.r = 0
+    DistanceCheck.ProgressColor.g = 255
+    DistanceCheck.ProgressColor.b = 0
+    DistanceCheck.ProgressColor.a = 120
+
+    DistanceCheck.DistanceColor = {}
+    DistanceCheck.DistanceColor.r = 0
+    DistanceCheck.DistanceColor.g = 255
+    DistanceCheck.DistanceColor.b = 0
+    DistanceCheck.DistanceColor.a = 255
+
+    DistanceCheck.DistanceOutOfRangeColor = {}
+    DistanceCheck.DistanceOutOfRangeColor.r = 255
+    DistanceCheck.DistanceOutOfRangeColor.g = 255
+    DistanceCheck.DistanceOutOfRangeColor.b = 0
+    DistanceCheck.DistanceOutOfRangeColor.a = 255
+
+    function DistanceCheck:Configure(gauge_name, progressText, widthPercent, verticalPercent)
+        local gauge = hu.getHUDGaugeHandle(gauge_name)
+        if not gauge then
+            ba.warning("DistanceCheck: HUD gauge '" .. tostring(gauge_name) .. "' not found!")
+            return
+        end
+
+        if not widthPercent or widthPercent < 0 or widthPercent > 100 then
+            widthPercent = 20
+        end
+        if not verticalPercent or verticalPercent < 0 or verticalPercent > 100 then
+            verticalPercent = 30
+        end
+
+        self.FONT = gauge:getFont()
+        self.BASE_WIDTH, self.BASE_HEIGHT = gauge:getBaseResolution()
+
+        self.ProgressText = progressText
+
+        self.width = self.BASE_WIDTH * widthPercent / 100
+        self.fontHeight = self.FONT.Height + 1
+        self.x = (self.BASE_WIDTH - self.width) * 0.5
+        self.y = self.BASE_HEIGHT * verticalPercent / 100
+    end
+    mn.LuaSEXPs["lua-DistanceCheck-configure"].Action = function(gauge_name)
+        DistanceCheck:ConfigureFromGauge(gauge_name)
+    end
+
+    function DistanceCheck:ClampChannel(x)
+        if x < 0 then return 0 end
+        if x > 255 then return 255 end
+        return x
+    end
+
+    function DistanceCheck:SetColor(color, r, g, b, a)
+        color.r = self:ClampChannel(r)
+        color.g = self:ClampChannel(g)
+        color.b = self:ClampChannel(b)
+        color.a = self:ClampChannel(a or 255)
+    end
+
+    mn.LuaSEXPs["lua-DistanceCheck-set-color1"].Action = function(r, g, b, a)
+        DistanceCheck:SetColor(DistanceCheck.ProgressColor, r, g, b, a)
+    end
+    mn.LuaSEXPs["lua-DistanceCheck-set-color2"].Action = function(r, g, b, a)
+        DistanceCheck:SetColor(DistanceCheck.DistanceColor, r, g, b, a)
+    end
+    mn.LuaSEXPs["lua-DistanceCheck-set-color3"].Action = function(r, g, b, a)
+        DistanceCheck:SetColor(DistanceCheck.DistanceOutOfRangeColor, r, g, b, a)
+    end
+
+    function DistanceCheck:Start(target, maxDistance, neededTime)
+        if not target:isValid() or (maxDistance or 600) < 0 or (neededTime or 30000) < 0 then
+            return
+        end
+
+        self.Enabled = true
+        self.Target = target
+        self.MaxDistance = maxDistance or 600
+        self.NeededTime = (neededTime or 30000) / 1000
+
+        self.StartTime = nil
+        self.CurrentDistance = nil
+        self.Progress = nil
+
+        if not self.AddedHook then
+            local dist = self
+            hv.Player:addPostMoveHook(function(o)
+                if dist.Enabled then
+                    dist:PostMove(o)
+                end
+            end)
+            self.AddedHook = true
+        end
+    end
+    mn.LuaSEXPs["lua-DistanceCheck-start"].Action = function(target, maxDistance, neededTime)
+        DistanceCheck:Start(target, maxDistance, neededTime)
+    end
+
+    function DistanceCheck:IsDone()
+        if self.Progress and self.Progress >= 1 then
+            return true
+        else
+            return false
+        end
+    end
+    mn.LuaSEXPs["lua-DistanceCheck-isDone"].Action = function()
+        return DistanceCheck:IsDone()
+    end
+
+    function DistanceCheck:PostMove(player_obj)
+        if not player_obj:isValid() or not self.Target:isValid() then
+            return
+        end
+
+        if player_obj.Target == self.Target then
+            self.CurrentDistance = hu.getTargetDistance(self.Target)
+
+            if self.CurrentDistance <= self.MaxDistance then
+                local missiontime = mn.getMissionTime()
+                if self.StartTime then
+                    self.Progress = (missiontime - self.StartTime) / self.NeededTime
+                    if self.Progress >= 1 then
+                        self.Progress = 1
+                        self.Enabled = false
+                    end
+                else
+                    self.StartTime = missiontime
+                    self.Progress = 0
+                end
+            else
+                self.StartTime = nil
+                self.Progress = nil
+            end
+
+        else
+            self.StartTime = nil
+            self.CurrentDistance = nil
+            self.Progress = nil
+        end
+    end
+
+    function DistanceCheck:DrawWidget()
+        if self.CurrentDistance then
+            gr.setScreenScale(self.BASE_WIDTH, self.BASE_HEIGHT)
+            gr.setColor(self.ProgressColor.r, self.ProgressColor.g, self.ProgressColor.b, self.ProgressColor.a)
+            gr.CurrentFont = self.FONT
+
+            local text
+
+            if self.Progress then
+                text = string.format("%s: %.1f%%", self.ProgressText, self.Progress * 100)
+                gr.drawStringResized(GR_RESIZE_FULL, text, self.x, self.y)
+
+                local y = self.y + self.fontHeight
+                gr.drawRectangle(self.x, y, self.x + self.width, y + self.fontHeight, false)
+                local x2 = self.x + self.width * self.Progress
+                gr.drawRectangle(self.x, y, x2, y + self.fontHeight, true)
+            end
+
+            gr.setColor(self.DistanceColor.r, self.DistanceColor.g, self.DistanceColor.b, self.DistanceColor.a)
+            text = tostring(self.MaxDistance)
+            gr.drawStringResized(GR_RESIZE_FULL, text, self.x, self.y + self.fontHeight * 6)
+
+            if not self.Progress then
+                gr.setColor(self.DistanceOutOfRangeColor.r, self.DistanceOutOfRangeColor.g, self.DistanceOutOfRangeColor.b, self.DistanceOutOfRangeColor.a)
+            end
+            text = string.format("%.1f", self.CurrentDistance)
+            gr.drawStringResized(GR_RESIZE_FULL, text, self.x, self.y + self.fontHeight * 5)
+
+            gr.resetScreenScale()
+        end
+    end
+]
+
+$On Mission Start:
+[
+    local dist = DistanceCheck
+    dist:Configure("Target Monitor", ba.XSTR("Acquiring location data", 8622))
+    dist.Enabled = false
+    dist.AddedHook = false
+
+    dist.StartTime = nil
+    dist.CurrentDistance = nil
+    dist.Progress = nil
+]
+
+$State: GS_STATE_GAME_PLAY
+$On HUD Draw:
+[
+    local dist = DistanceCheck
+    if dist.Enabled and hu.HUDDrawn then
+        dist:DrawWidget()
+    end
+]
+
+#End
