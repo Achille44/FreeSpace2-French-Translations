@@ -69,7 +69,11 @@ function getTargetClass(target)
   local targetship = mn.getObjectFromSignature(target:getSignature())
   if targetship:isValid() then
    if targetship:getBreedName() == "Ship" then
-    targetname = targetship.Class.Type.Name
+    targetname = targetship.Class.TypeString
+
+    if targetname == '' then
+      targetname = targetship.Class.Type.Name
+    end
    end
   else
    targetname = localizedNone
@@ -88,7 +92,7 @@ function drawTurretUI()
  local sel = csc.shipdef[csc.shipIdx].turretControl[csc.acnum]
  local weapon
  
- gr.drawString("", 5, gr.getScreenHeight() * 0.6)
+ gr.drawString("", gr.getScreenWidth() * 0.67, gr.getScreenHeight() * 0.75)
  
  for i = 1, #csc.shipdef[csc.shipIdx].turretControl, 1 do
   weapon = csc.shipdef[csc.shipIdx].turretControl[i]
@@ -294,7 +298,7 @@ function drawRangeDisplay()
   end
 
   gr.setColor(255,255,255)
-  gr.drawString(localizedRange, gr.getScreenWidth() * 0.17, gr.getScreenHeight() * 0.78)
+  gr.drawString(localizedRange, gr.getScreenWidth() * 0.16, gr.getScreenHeight() * 0.85)
   for i = 1, #csc.range.Shipname do
    if csc.range.Range[i] < 1000 then
     local c = math.floor((csc.range.Range[i] / 4)) + 5
