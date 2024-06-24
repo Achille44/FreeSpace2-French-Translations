@@ -4,7 +4,7 @@ $Version: 23.1
 $Name:  XSTR("Behold a White Horse", 7165)
 $Author: Jake Berman
 $Created: 07/31/23 at 20:17:49
-$Modified: 01/15/24 at 09:41:15
+$Modified: 06/09/24 at 13:51:37
 $Notes:
 This is a FRED2_OPEN created mission.
 $End Notes:
@@ -23,7 +23,7 @@ $end_multi_text
 +Hull Repair Ceiling: 0.000000
 +Subsystem Repair Ceiling: 100.000000
 
-+Viewer pos: -1324.568237, -1024.978027, -2760.448486
++Viewer pos: 65.715179, -3474.232422, 5323.697754
 +Viewer orient:
 	-0.286956, 0.000001, 0.957944,
 	0.956441, -0.055997, 0.286506,
@@ -43,7 +43,7 @@ $Variables:
 		1		"i18nVariable2"		"#Chanticleer"		"string"
 		2		"i18nVariable3"		"Nav"		"string"
 		3		"i18nVariable4"		"Fighter Bay"		"string"
-		4		"i18nVariable5"		"Alpha 1"		"string"
+		4		"i18nVariable5"		"Channing"		"string"
 )
 
 #Cutscenes
@@ -779,7 +779,6 @@ $Orientation:
 	0.000000, 1.000000, 0.000000,
 	0.002098, 0.000000, -0.999998
 +AI Class: BP2-General
-$AI Goals: ( goals ( ai-waypoints "Waypoint path 1" 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 92
 +Initial Shields: 100
@@ -891,7 +890,6 @@ $Orientation:
 	0.000000, 1.000000, 0.000000,
 	0.093590, 0.000000, -0.995611
 +AI Class: BP2-Colonel
-$AI Goals: ( goals ( ai-stay-near-ship "Rajput" 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 88
 +Initial Shields: 100
@@ -2232,7 +2230,7 @@ $Ships: (		;! 5 total
 )
 +Flags: ( )
 
-#Events		;! 52 total
+#Events		;! 53 total
 
 $Formula: ( when 
    ( true ) 
@@ -2257,35 +2255,12 @@ $Formula: ( when
       7295 
    )
    ( modify-variable-xstr 
-      "@i18nVariable5[Alpha 1]" 
-      "Alpha 1" 
-      7055 
+      "@i18nVariable5[Channing]" 
+      "Channing" 
+      7175 
    )
 )
 +Name: Manage translation variables
-+Repeat Count: 1
-+Interval: 1
-
-$Formula: ( when 
-   ( has-arrived-delay 0 "Alpha 1" ) 
-   ( add-goal 
-      "Chanticleer" 
-      ( ai-chase "Rajput" 89 ) 
-   )
-   ( add-goal 
-      "Aries" 
-      ( ai-guard "Rajput" 89 ) 
-   )
-   ( add-goal 
-      "Cancer" 
-      ( ai-guard "Rajput" 89 ) 
-   )
-   ( add-goal 
-      "Pisces" 
-      ( ai-guard "Rajput" 89 ) 
-   )
-)
-+Name: Set attack orders for Chanticle
 +Repeat Count: 1
 +Interval: 1
 
@@ -2360,14 +2335,12 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 
-$Formula: ( when 
-   ( has-arrived-delay 75 "@i18nVariable5[Alpha 1]" ) 
+$Formula: ( when-argument 
+   ( any-of "@i18nVariable5[Channing]" "Dwight" ) 
+   ( has-time-elapsed 75 ) 
+   ( clear-goals "<argument>" ) 
    ( add-goal 
-      "Channing" 
-      ( ai-chase "Chanticleer" 89 ) 
-   )
-   ( add-goal 
-      "Dwight" 
+      "<argument>" 
       ( ai-chase "Chanticleer" 89 ) 
    )
 )
@@ -2489,6 +2462,13 @@ $Formula: ( when
 $Formula: ( when 
    ( has-time-elapsed 16 ) 
    ( turret-free-all "Rajput" ) 
+   ( add-goal 
+      "Rajput" 
+      ( ai-waypoints-once 
+         "Waypoint path 1" 
+         89 
+      )
+   )
 )
 +Name: unlock rajput turrets at 10s
 +Repeat Count: 1
@@ -2585,14 +2565,6 @@ $Formula: ( when
    )
 )
 +Name: Chanticleer damage
-+Repeat Count: 1
-+Interval: 1
-
-$Formula: ( when 
-   ( has-arrived-delay 0 "Alpha 1" ) 
-   ( turret-free-all "Rajput" ) 
-)
-+Name: Rajput opens fire
 +Repeat Count: 1
 +Interval: 1
 
@@ -3280,7 +3252,7 @@ $Formula: ( when
       "Hephaestus" 
    )
 )
-+Name: <Unnamed>
++Name: techroom fixes
 +Repeat Count: 1
 +Interval: 1
 
@@ -3462,6 +3434,30 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: ---extra fixes---
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance-to-bbox 
+         "Waypoint path 1:1" 
+         "Rajput" 
+      )
+      1000 
+   )
+   ( do-nothing ) 
+)
++Name: fix dwight waypoints
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: Event name
++Repeat Count: 1
++Interval: 1
+
 #Goals		;! 5 total
 
 $Type: Primary
@@ -3516,7 +3512,7 @@ $Formula: ( is-destroyed-delay
    "Channing" 
 )
 
-#Waypoints		;! 2 lists total
+#Waypoints		;! 4 lists total
 
 $Name: Waypoint path 1
 $List: (		;! 2 points in list
@@ -3529,6 +3525,16 @@ $List: (		;! 3 points in list
 	( -707.493103, 0.000488, -615.269531 )
 	( 236.577179, -890.567871, 3581.613281 )
 	( 10140.007813, -1414.068848, 19331.023438 )
+)
+
+$Name: channing exit point
+$List: (		;! 1 points in list
+	( 10959.483398, 0.000000, 18373.128906 )
+)
+
+$Name: dwight exit point
+$List: (		;! 1 points in list
+	( 8729.569336, 0.000000, 21400.111328 )
 )
 
 #Messages		;! 42 total

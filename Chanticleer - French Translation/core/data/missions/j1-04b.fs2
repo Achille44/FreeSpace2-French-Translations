@@ -4,7 +4,7 @@ $Version: 23.1
 $Name:  XSTR("...Nor the Battle to the Strong", 7466)
 $Author: Jake Berman
 $Created: 08/11/23 at 23:08:45
-$Modified: 04/27/24 at 12:15:40
+$Modified: 05/27/24 at 22:28:15
 $Notes:
 This is a FRED2_OPEN created mission.
 $End Notes:
@@ -1539,7 +1539,7 @@ $Ships: (		;! 3 total
 )
 +Flags: ( )
 
-#Events		;! 34 total
+#Events		;! 36 total
 
 $Formula: ( when 
    ( true ) 
@@ -1659,6 +1659,7 @@ $Formula: ( when
       "fintopa" 
       "finlefta" 
       "finrighta" 
+      "RotatorFIa" 
    )
 )
 +Name: show replacement subsystems
@@ -2148,6 +2149,7 @@ $Formula: ( when
       "turret10-base" 
       "turret11-base" 
    )
+   ( turret-set-inaccuracy "Unknown" 20 ) 
 )
 +Name: emp weapons screw - maitreya
 +Repeat Count: -1
@@ -2174,9 +2176,83 @@ $Formula: ( when
       "turret10-base" 
       "turret11-base" 
    )
-   ( turret-set-inaccuracy "Unknown" 20 ) 
 )
 +Name: end emp weapons screw
++Repeat Count: -1
++Trigger Count: -1
++Interval: 1
+
+$Formula: ( when 
+   ( is-ship-emp-active 
+      "Charles de Gaulle" 
+   )
+   ( change-ai-class 
+      "Lieutenant" 
+      "Charles de Gaulle" 
+   )
+   ( turret-set-rate-of-fire 
+      "Charles de Gaulle" 
+      20 
+      "Turret01a" 
+      "Turret02a" 
+      "Turret03" 
+      "Turret04" 
+      "Turret05" 
+      "Turret06" 
+      "Turret07" 
+      "Turret08" 
+      "Turret09" 
+      "Turret10" 
+      "Turret11" 
+      "Turret12" 
+      "Turret13" 
+      "Turret14" 
+      "Turret15" 
+      "Turret16" 
+      "Turret17" 
+      "Turret18" 
+      "Turret19" 
+      "Turret20" 
+      "Turret21" 
+   )
+   ( turret-set-inaccuracy 
+      "Charles de Gaulle" 
+      20 
+   )
+   ( turret-set-inaccuracy "Unknown" 20 ) 
+)
++Name: EMP weapons screw - de gaulle
++Repeat Count: -1
++Trigger Count: -1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-ship-emp-active 
+         "Charles de Gaulle" 
+      )
+   )
+   ( change-ai-class 
+      "Captain" 
+      "Charles de Gaulle" 
+   )
+   ( turret-set-rate-of-fire 
+      "Unknown" 
+      100 
+      "turret01-base" 
+      "turret02-base" 
+      "turret03-base" 
+      "turret04-base" 
+      "turret05" 
+      "turret06" 
+      "turret07" 
+      "turret08-base" 
+      "turret09-base" 
+      "turret10-base" 
+      "turret11-base" 
+   )
+)
++Name: end EMP weapons screw - de g.
 +Repeat Count: -1
 +Trigger Count: -1
 +Interval: 1

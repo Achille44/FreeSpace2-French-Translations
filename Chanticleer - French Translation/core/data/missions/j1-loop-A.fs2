@@ -4,7 +4,7 @@ $Version: 23.1
 $Name:  XSTR("A Dish Best Served Cold", 8109)
 $Author: Jake Berman
 $Created: 01/02/24 at 18:08:31
-$Modified: 04/13/24 at 18:57:05
+$Modified: 05/27/24 at 22:14:28
 $Notes:
 This is a FRED2_OPEN created mission.
 $End Notes:
@@ -3123,7 +3123,10 @@ $Formula: ( when ( true ) ( do-nothing ) )
 
 $Formula: ( when 
    ( and 
-      ( <= ( hits-left "Zeta 2" ) 60 ) 
+      ( is-event-true-delay 
+         "unstealth (too close)" 
+         0 
+      )
       ( not 
          ( is-event-true-delay 
             "florence station scanned" 
