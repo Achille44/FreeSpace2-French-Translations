@@ -59,6 +59,8 @@ $Variables:
 		12		"i18nVariable6"		"#Spark"		"string"
 		13		"i18nVariable7"		"#Valhalla"		"string"
 		14		"i18nVariable8"		"#Damascus"		"string"
+		15		"i18nVariable9"		"Secondary Beam"		"string"
+		16		"i18nVariable10"		"Scan Communication"		"string"
 )
 
 #Command Briefing
@@ -9462,6 +9464,16 @@ $Formula: ( when
       "#Damascus" 
       7280 
    )
+   ( modify-variable-xstr 
+      "@i18nVariable9[Secondary Beam]" 
+      "Secondary Beam" 
+      7281 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable10[Scan Communication]" 
+      "Scan Communication" 
+      1359 
+   )
 )
 +Name: Manage translation variables
 +Repeat Count: 1
@@ -11625,11 +11637,10 @@ $Formula: ( when
 
 $Formula: ( when 
    ( true ) 
-   ( script-eval-block 
-      "MarkBox:AddSubsys(" 
-      "'Baraka'," 
-      "'Secondary Beam'" 
-      ",'turret18')" 
+   ( lua-mark-subsystem 
+      "Baraka" 
+      "@i18nVariable9[Secondary Beam]" 
+      "turret18" 
    )
 )
 +Name: baraka markbox
@@ -11900,11 +11911,10 @@ $Formula: ( when
 
 $Formula: ( when 
    ( true ) 
-   ( script-eval-block 
-      "MarkBox:AddSubsys(" 
-      "'Damascus'," 
-      "'Scan Communication'" 
-      ",'Communication')" 
+   ( lua-mark-subsystem 
+      "Damascus" 
+      "@i18nVariable10[Scan Communication]" 
+      "Communication" 
    )
 )
 +Name: scan damascus comm markbox
