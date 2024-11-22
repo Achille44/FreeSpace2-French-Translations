@@ -63,7 +63,7 @@ Lieutenant Commander Mozingo, you have four new unread messages.  Open?
 ", 7167)
 $end_multi_text
 $Ani Filename: login.eff
-+Wave Filename: j1-1-cmdbrief01.ogg
++Wave Filename: four new messages.ogg
 
 $Stage Text:
  XSTR("MESSAGE 1
@@ -1631,7 +1631,7 @@ $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 100
 +Subsystem: Pilot
 +Primary Banks: ( "Vulcan" "Redeemer" )
-+Secondary Banks: ( "Dart" "Shrike" "Hellfire" "Jackhammer" )
++Secondary Banks: ( "Dart" "Shrike" "Hellfire"  "Warhammer"  )
 $Arrival Location: Hyperspace
 $Arrival Cue: ( false ) 
 $Departure Location: Hyperspace
@@ -1658,7 +1658,7 @@ $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 100
 +Subsystem: Pilot
 +Primary Banks: ( "Vulcan" "Redeemer" )
-+Secondary Banks: ( "Dart" "Shrike" "Hellfire" "Jackhammer" )
++Secondary Banks: ( "Dart" "Shrike" "Hellfire" "Warhammer" )
 $Arrival Location: Hyperspace
 $Arrival Cue: ( false ) 
 $Departure Location: Hyperspace
@@ -3453,8 +3453,137 @@ $Formula: ( when
 +Repeat Count: 1
 +Interval: 1
 
-$Formula: ( when ( true ) ( do-nothing ) ) 
-+Name: Event name
+$Formula: ( when-argument 
+   ( any-of 
+      "Gamma 1" 
+      "Gamma 2" 
+      "Gamma 3" 
+      "Gamma 4" 
+   )
+   ( and 
+      ( is-facing 
+         "<argument>" 
+         "Rajput" 
+         4000 
+      )
+      ( secondary-fired-since 
+         "<argument>" 
+         1 
+         6000 
+      )
+      ( is-facing 
+         "<argument>" 
+         "Rajput" 
+         3000 
+      )
+   )
+   ( weapon-create 
+      "<argument>" 
+      "Trebuchet" 
+      ( get-object-x "<argument>" ) 
+      ( get-object-y "<argument>" ) 
+      ( get-object-z "<argument>" ) 
+      ( get-object-pitch "<argument>" ) 
+      ( get-object-bank "<argument>" ) 
+      ( get-object-heading "<argument>" ) 
+      "Rajput" 
+      "Engine03a" 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: pretend to bomb 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Gamma 1" 
+      "Gamma 2" 
+      "Gamma 3" 
+      "Gamma 4" 
+   )
+   ( and 
+      ( is-facing 
+         "<argument>" 
+         "Rajput" 
+         3000 
+      )
+      ( secondary-fired-since 
+         "<argument>" 
+         1 
+         6000 
+      )
+      ( is-facing 
+         "<argument>" 
+         "Rajput" 
+         4000 
+      )
+   )
+   ( weapon-create 
+      "<argument>" 
+      "Trebuchet" 
+      ( get-object-x "<argument>" ) 
+      ( get-object-y "<argument>" ) 
+      ( get-object-z "<argument>" ) 
+      ( get-object-pitch "<argument>" ) 
+      ( get-object-bank "<argument>" ) 
+      ( get-object-heading "<argument>" ) 
+      "Rajput" 
+      "Engine02a" 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: pretend to bomb 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "Gamma 1" 
+      "Gamma 2" 
+      "Gamma 3" 
+      "Gamma 4" 
+   )
+   ( and 
+      ( is-facing 
+         "<argument>" 
+         "Rajput" 
+         3000 
+      )
+      ( secondary-fired-since 
+         "<argument>" 
+         1 
+         6000 
+      )
+      ( is-facing 
+         "<argument>" 
+         "Rajput" 
+         4000 
+      )
+      ( is-event-true-delay 
+         "pretend to bomb 1" 
+         6 
+      )
+      ( is-event-true-delay 
+         "pretend to bomb 2" 
+         6 
+      )
+   )
+   ( weapon-create 
+      "<argument>" 
+      "Trebuchet" 
+      ( get-object-x "<argument>" ) 
+      ( get-object-y "<argument>" ) 
+      ( get-object-z "<argument>" ) 
+      ( get-object-pitch "<argument>" ) 
+      ( get-object-bank "<argument>" ) 
+      ( get-object-heading "<argument>" ) 
+      "Rajput" 
+      "Engine03a" 
+   )
+   ( invalidate-argument "<argument>" ) 
+)
++Name: pretend to bomb 3
 +Repeat Count: 1
 +Interval: 1
 
