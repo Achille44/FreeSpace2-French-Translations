@@ -1,17 +1,17 @@
 #Mission Info
 
-$Version: 0.10
-$Name:  XSTR("Triumphants", 10181)
+$Version: 23.1
+$Name:  XSTR("Triumphants", 10103)
 $Author: Exile Team
 $Created: 08/16/14 at 22:05:18
-$Modified: 09/22/22 at 09:26:26
+$Modified: 12/21/24 at 21:26:40
 $Notes:
 This is a FRED2_OPEN created mission.
 $End Notes:
 
 $Mission Desc:
  XSTR("Put mission description here
-", 2304)
+", 6680)
 $end_multi_text
 +Game Type Flags: 1
 +Flags: 3072
@@ -19,15 +19,16 @@ $end_multi_text
 
 +Fog Far Mult: 1.000000
 
+
 +Disallow Support: 0
 +Hull Repair Ceiling: 0.000000
 +Subsystem Repair Ceiling: 100.000000
 
-+Viewer pos: -3030.378418, 9272.462891, 4856.071289
++Viewer pos: -3201.034180, 11480.208008, 9108.012695
 +Viewer orient:
-	0.973635, -0.000000, -0.228112,
-	0.138229, 0.795489, 0.589991,
-	0.181461, -0.605968, 0.774516
+	0.999968, -0.000000, -0.008023,
+	0.006690, 0.551967, 0.833839,
+	0.004428, -0.833866, 0.551949
 
 
 $Load Screen 1024: Loading_M27.png
@@ -128,7 +129,7 @@ $end_briefing
 $Num stages: 0
 
 #Callsigns:
-$Callsign: XSTR("Spark", 6889)
+$Callsign: XSTR("Spark", 6807)
 
 #end
 
@@ -253,9 +254,9 @@ $Ship Choices: (
 #Objects		;! 137 total
 
 $Name: Beta 1		;! Object #0
-$Display Name: XSTR("Beta 1", 6783)
+$Display Name: XSTR("Beta 1", 6701)
 $Class: ORF Defender
-$Callsign: XSTR("Spark", 6889)
+$Callsign: XSTR("Spark", 6807)
 
 $Team: Friendly
 $Team Color Setting: Roaming Fleet
@@ -264,7 +265,6 @@ $Orientation:
 	-0.009203, 0.000000, 0.999957,
 	0.000000, 1.000000, 0.000000,
 	-0.999957, 0.000000, -0.009203
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 100
 +Subsystem: Pilot
@@ -281,7 +281,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Chania		;! Object #1
-$Display Name: XSTR("Chania", 9820)
+$Display Name: XSTR("Chania", 9742)
 $Class: AD Chania
 $Team: Unknown
 $Location: -11020.349609, -1936.184937, 15278.622070
@@ -289,7 +289,6 @@ $Orientation:
 	0.844342, 0.494289, 0.206796,
 	-0.455589, 0.865442, -0.208444,
 	-0.282002, 0.081784, 0.955921
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 64
@@ -373,17 +372,16 @@ $Arrival Cue: ( true )
 $Departure Location: Hyperspace
 $Departure Cue: ( false ) 
 $Determination: 10
-+Flags: ( "cargo-known" "protect-ship" "no-shields" "escort" "invulnerable" )
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" )
 +Flags2: ( "lock-all-turrets" )
 +Respawn priority: 0
-+Escort priority: 95
 +Orders Accepted List: ( )
 +Group: 0
 +Use Table Score:
 +Score: 1400
 
 $Name: Malia		;! Object #2
-$Display Name: XSTR("Malia", 9819)
+$Display Name: XSTR("Malia", 9741)
 $Class: Knossos
 $Team: Unknown
 $Location: -16.205009, 0.000000, 20886.478516
@@ -391,7 +389,6 @@ $Orientation:
 	0.994906, -0.079931, 0.061423,
 	0.078110, 0.996451, 0.031496,
 	-0.063723, -0.026539, 0.997619
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -400,18 +397,20 @@ $Cargo 1:  XSTR("Nothing", 13)
 $Arrival Location: Hyperspace
 $Arrival Cue: ( true ) 
 $Departure Location: Hyperspace
-$Departure Cue: ( is-event-true-delay "fade in 7" 0 ) 
+$Departure Cue: ( is-event-true-delay 
+   "change skybox, show node" 
+   0 
+)
 $Determination: 10
-+Flags: ( "cargo-known" "no-shields" "escort" "no-departure-warp" "don't-collide-invisible" )
++Flags: ( "cargo-known" "no-shields" "no-departure-warp" "don't-collide-invisible" )
 +Flags2: ( )
 +Respawn priority: 0
-+Escort priority: 100
 +Group: 0
 +Use Table Score:
 +Score: 0
 
 $Name: Ironclad		;! Object #3
-$Display Name: XSTR("Ironclad", 8204)
+$Display Name: XSTR("Ironclad", 8122)
 $Class: ORD Orion
 $Team: Friendly
 $Location: -364.814392, 0.000000, 11482.973633
@@ -419,7 +418,6 @@ $Orientation:
 	0.973666, 0.227978, 0.000000,
 	-0.227978, 0.973666, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "departure path 1" 55 ) ( ai-warp-out 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 68
@@ -461,10 +459,9 @@ $Arrival Cue: ( is-event-true-delay "fade in 3" 0 )
 $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "msg11" 2 ) 
 $Determination: 10
-+Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" )
 +Flags2: ( )
 +Respawn priority: 0
-+Escort priority: 79
 +Orders Accepted List: ( )
 +Group: 0
 +Use Table Score:
@@ -474,7 +471,7 @@ $Texture Replace:
 +new: nameplate-ironclad
 
 $Name: Andrasta		;! Object #4
-$Display Name: XSTR("Andrasta", 6895)
+$Display Name: XSTR("Andrasta", 6813)
 $Class: EFFg Solomon
 $Team: Friendly
 $Location: 1004.574463, -730.175659, 11207.712891
@@ -482,7 +479,6 @@ $Orientation:
 	0.847256, -0.531186, 0.000000,
 	0.531186, 0.847256, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "departure path 3" 55 ) ( ai-warp-out 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 100
@@ -528,10 +524,9 @@ $Departure Location: Hyperspace
 +Departure delay: 4
 $Departure Cue: ( is-event-true-delay "msg11" 2 ) 
 $Determination: 10
-+Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" )
 +Flags2: ( )
 +Respawn priority: 0
-+Escort priority: 79
 +Orders Accepted List: ( )
 +Group: 0
 +Score: 8
@@ -540,7 +535,7 @@ $Texture Replace:
 +new: nameplate-andrasta
 
 $Name: Harmattan		;! Object #5
-$Display Name: XSTR("Harmattan", 6898)
+$Display Name: XSTR("Harmattan", 6816)
 $Class: ORFg Vitalius
 $Team: Friendly
 $Team Color Setting: Roaming Fleet
@@ -549,7 +544,6 @@ $Orientation:
 	0.783822, 0.620986, 0.000000,
 	-0.620986, 0.783822, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "departure path 2" 55 ) ( ai-warp-out 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -594,10 +588,9 @@ $Departure Location: Hyperspace
 +Departure delay: 2
 $Departure Cue: ( is-event-true-delay "msg11" 2 ) 
 $Determination: 10
-+Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" )
 +Flags2: ( )
 +Respawn priority: 0
-+Escort priority: 79
 +Orders Accepted List: ( )
 +Group: 0
 +Use Table Score:
@@ -607,7 +600,7 @@ $Texture Replace:
 +new: nameplate-harmattan
 
 $Name: Akka		;! Object #6
-$Display Name: XSTR("Akka", 7910)
+$Display Name: XSTR("Akka", 7828)
 $Class: ORFA Agneya
 $Team: Friendly
 $Team Color Setting: Roaming Fleet
@@ -616,7 +609,6 @@ $Orientation:
 	0.952333, 0.305059, 0.000000,
 	-0.305059, 0.952333, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "departure path 4" 55 ) ( ai-warp-out 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -637,17 +629,16 @@ $Departure Location: Hyperspace
 +Departure delay: 3
 $Departure Cue: ( is-event-true-delay "msg11" 2 ) 
 $Determination: 10
-+Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" )
 +Flags2: ( )
 +Respawn priority: 0
-+Escort priority: 79
 +Orders Accepted List: ( )
 +Group: 0
 +Use Table Score:
 +Score: 1500
 
 $Name: Anjaneya		;! Object #7
-$Display Name: XSTR("Anjaneya", 9085)
+$Display Name: XSTR("Anjaneya", 9007)
 $Class: ORD Galahad
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -656,7 +647,6 @@ $Orientation:
 	0.758703, 0.651420, 0.004807,
 	-0.651288, 0.758349, 0.027031,
 	0.013962, -0.023640, 0.999624
-$AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "departure path 1" 55 ) ( ai-warp-out 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -753,10 +743,9 @@ $Arrival Cue: ( is-event-true-delay "fade in 3" 0 )
 $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "msg10" 6 ) 
 $Determination: 10
-+Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" )
 +Flags2: ( )
 +Respawn priority: 0
-+Escort priority: 79
 +Orders Accepted List: ( )
 +Group: 0
 +Use Table Score:
@@ -766,7 +755,7 @@ $Texture Replace:
 +new: nameplate-anjaneya
 
 $Name: Sahasrara		;! Object #8
-$Display Name: XSTR("Sahasrara", 6771)
+$Display Name: XSTR("Sahasrara", 6689)
 $Class: ORFg Tychicus
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -775,7 +764,6 @@ $Orientation:
 	0.877688, 0.479187, 0.006661,
 	-0.479232, 0.877583, 0.013617,
 	0.000679, -0.015144, 0.999886
-$AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "departure path 2" 55 ) ( ai-warp-out 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -830,10 +818,9 @@ $Arrival Cue: ( is-event-true-delay "fade in 3" 0 )
 $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "msg10" 11 ) 
 $Determination: 10
-+Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" )
 +Flags2: ( )
 +Respawn priority: 0
-+Escort priority: 79
 +Orders Accepted List: ( )
 +Group: 0
 +Use Table Score:
@@ -845,7 +832,7 @@ $Texture Replace:
 +new: nameplate-sahasrara-shine
 
 $Name: Ajna		;! Object #9
-$Display Name: XSTR("Ajna", 8226)
+$Display Name: XSTR("Ajna", 8144)
 $Class: ORFg Tychicus
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -854,7 +841,6 @@ $Orientation:
 	0.961085, -0.276218, 0.004291,
 	0.276244, 0.961055, -0.007849,
 	-0.001956, 0.008729, 0.999960
-$AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "departure path 3" 55 ) ( ai-warp-out 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -909,10 +895,9 @@ $Arrival Cue: ( is-event-true-delay "fade in 3" 0 )
 $Departure Location: Hyperspace
 $Departure Cue: ( is-event-true-delay "msg10" 11 ) 
 $Determination: 10
-+Flags: ( "cargo-known" "no-shields" "escort" "no-arrival-warp" )
++Flags: ( "cargo-known" "no-shields" "no-arrival-warp" )
 +Flags2: ( )
 +Respawn priority: 0
-+Escort priority: 79
 +Orders Accepted List: ( )
 +Group: 0
 +Use Table Score:
@@ -924,7 +909,7 @@ $Texture Replace:
 +new: nameplate-ajna-shine
 
 $Name: Delta 1		;! Object #10
-$Display Name: XSTR("Delta 1", 7589)
+$Display Name: XSTR("Delta 1", 7506)
 $Class: ORF Rapier
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -933,7 +918,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -951,7 +935,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Delta 2		;! Object #11
-$Display Name: XSTR("Delta 2", 7588)
+$Display Name: XSTR("Delta 2", 7507)
 $Class: ORF Rapier
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -960,7 +944,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -978,7 +961,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Delta 3		;! Object #12
-$Display Name: XSTR("Delta 3", 7739)
+$Display Name: XSTR("Delta 3", 7657)
 $Class: ORF Rapier
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -987,7 +970,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1005,7 +987,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Delta 4		;! Object #13
-$Display Name: XSTR("Delta 4", 8753)
+$Display Name: XSTR("Delta 4", 8671)
 $Class: ORF Rapier
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -1014,7 +996,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1032,7 +1013,7 @@ $Determination: 10
 +Score: 10
 
 $Name: Jota 1		;! Object #14
-$Display Name: XSTR("Jota 1", 8491)
+$Display Name: XSTR("Jota 1", 8410)
 $Class: ORF Heretic
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -1041,7 +1022,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1059,7 +1039,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Jota 2		;! Object #15
-$Display Name: XSTR("Jota 2", 8492)
+$Display Name: XSTR("Jota 2", 8411)
 $Class: ORF Heretic
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -1068,7 +1048,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1086,7 +1065,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Jota 3		;! Object #16
-$Display Name: XSTR("Jota 3", 8493)
+$Display Name: XSTR("Jota 3", 8412)
 $Class: ORF Heretic
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -1095,7 +1074,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1113,7 +1091,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Jota 4		;! Object #17
-$Display Name: XSTR("Jota 4", 9099)
+$Display Name: XSTR("Jota 4", 9022)
 $Class: ORF Heretic
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -1122,7 +1100,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1140,7 +1117,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Tyrant		;! Object #18
-$Display Name: XSTR("Tyrant", 6854)
+$Display Name: XSTR("Tyrant", 6772)
 $Class: SJ Sathanas
 $Team: Hostile
 $Location: 6390.719727, 0.000000, -2313.232910
@@ -1148,7 +1125,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1222,7 +1198,7 @@ $Determination: 10
 +Score: 10000
 
 $Name: ScreenCam#Exile 23		;! Object #19
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -477.631042, 964.680115, -3178.344971
@@ -1230,7 +1206,6 @@ $Orientation:
 	0.161199, -0.063868, -0.984853,
 	0.274878, 0.961323, -0.017351,
 	0.947870, -0.267917, 0.172520
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1249,7 +1224,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 24		;! Object #20
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 3946.676514, -948.741211, 3977.041748
@@ -1257,7 +1232,6 @@ $Orientation:
 	-0.908444, 0.005011, -0.417977,
 	-0.026644, 0.997201, 0.069864,
 	0.417157, 0.074604, -0.905767
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1276,7 +1250,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 25		;! Object #21
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -44.181622, -986.731323, 6952.786621
@@ -1284,7 +1258,6 @@ $Orientation:
 	-0.338116, -0.223686, 0.914134,
 	-0.597459, 0.801514, -0.024857,
 	-0.727131, -0.554562, -0.404648
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1303,7 +1276,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 26		;! Object #22
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 951.645874, -1745.962036, 10236.111328
@@ -1311,7 +1284,6 @@ $Orientation:
 	0.119149, -0.587464, 0.800431,
 	-0.580709, 0.612674, 0.536105,
 	-0.805345, -0.528693, -0.268146
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1330,7 +1302,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Nodemap 1		;! Object #23
-$Display Name: XSTR("Nodemap 1", 8382)
+$Display Name: XSTR("Nodemap 1", 8301)
 $Class: Nodemap
 $Team: Friendly
 $Location: -31391.148438, 0.000000, -30398.285156
@@ -1338,7 +1310,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1358,7 +1329,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Pollux		;! Object #24
-$Display Name: XSTR("Pollux", 8247)
+$Display Name: XSTR("Pollux", 8165)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1367,7 +1338,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1388,7 +1358,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Sol		;! Object #25
-$Display Name: XSTR("Sol", 8383)
+$Display Name: XSTR("Sol", 8302)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1397,7 +1367,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1417,7 +1386,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Beta Volantis		;! Object #26
-$Display Name: XSTR("Beta Volantis", 6864)
+$Display Name: XSTR("Beta Volantis", 6782)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1426,7 +1395,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1446,7 +1414,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Iota Arietis		;! Object #27
-$Display Name: XSTR("Iota Arietis", 8384)
+$Display Name: XSTR("Iota Arietis", 8303)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1455,7 +1423,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1475,7 +1442,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X3		;! Object #28
-$Display Name: XSTR("X3", 8385)
+$Display Name: XSTR("X3", 8304)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -1484,7 +1451,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1504,7 +1470,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Mi Arae		;! Object #29
-$Display Name: XSTR("Mi Arae", 8386)
+$Display Name: XSTR("Mi Arae", 8305)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1513,7 +1479,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1533,7 +1498,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X11		;! Object #30
-$Display Name: XSTR("X11", 8387)
+$Display Name: XSTR("X11", 8306)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -1542,7 +1507,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1562,7 +1526,7 @@ $Determination: 10
 +Score: 150
 
 $Name: 3 Aquarii		;! Object #31
-$Display Name: XSTR("3 Aquarii", 8388)
+$Display Name: XSTR("3 Aquarii", 8307)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1571,7 +1535,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1591,7 +1554,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Sigma Iros		;! Object #32
-$Display Name: XSTR("Sigma Iros", 8389)
+$Display Name: XSTR("Sigma Iros", 8308)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1600,7 +1563,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1620,7 +1582,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Wezen		;! Object #33
-$Display Name: XSTR("Wezen", 8390)
+$Display Name: XSTR("Wezen", 8309)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1629,7 +1591,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1649,7 +1610,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Zion		;! Object #34
-$Display Name: XSTR("Zion", 8391)
+$Display Name: XSTR("Zion", 8310)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1658,7 +1619,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1678,7 +1638,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Nu Ceali		;! Object #35
-$Display Name: XSTR("Nu Ceali", 8392)
+$Display Name: XSTR("Nu Ceali", 8311)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1687,7 +1647,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1707,7 +1666,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Alpha Arae		;! Object #36
-$Display Name: XSTR("Alpha Arae", 8393)
+$Display Name: XSTR("Alpha Arae", 8312)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1716,7 +1675,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1736,7 +1694,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Mu Aurigae		;! Object #37
-$Display Name: XSTR("Mu Aurigae", 8394)
+$Display Name: XSTR("Mu Aurigae", 8313)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1745,7 +1703,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1765,7 +1722,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X9		;! Object #38
-$Display Name: XSTR("X9", 8395)
+$Display Name: XSTR("X9", 8314)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -1774,7 +1731,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1794,7 +1750,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X10		;! Object #39
-$Display Name: XSTR("X10", 8396)
+$Display Name: XSTR("X10", 8315)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -1803,7 +1759,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1823,7 +1778,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X8		;! Object #40
-$Display Name: XSTR("X8", 8397)
+$Display Name: XSTR("X8", 8316)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -1832,7 +1787,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1852,7 +1806,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X12		;! Object #41
-$Display Name: XSTR("X12", 8398)
+$Display Name: XSTR("X12", 8317)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -1861,7 +1815,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1881,7 +1834,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Vindemiatrix		;! Object #42
-$Display Name: XSTR("Vindemiatrix", 8399)
+$Display Name: XSTR("Vindemiatrix", 8318)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1890,7 +1843,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1910,7 +1862,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X7		;! Object #43
-$Display Name: XSTR("X7", 8400)
+$Display Name: XSTR("X7", 8319)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -1919,7 +1871,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1939,7 +1890,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Terminus		;! Object #44
-$Display Name: XSTR("Terminus", 8401)
+$Display Name: XSTR("Terminus", 8320)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1948,7 +1899,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1968,7 +1918,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Xi Andromedae		;! Object #45
-$Display Name: XSTR("Xi Andromedae", 8402)
+$Display Name: XSTR("Xi Andromedae", 8321)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -1977,7 +1927,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -1997,7 +1946,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X1		;! Object #46
-$Display Name: XSTR("X1", 8403)
+$Display Name: XSTR("X1", 8322)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -2006,7 +1955,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2026,7 +1974,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X2		;! Object #47
-$Display Name: XSTR("X2", 8404)
+$Display Name: XSTR("X2", 8323)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -2035,7 +1983,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2055,7 +2002,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Messier 1-A		;! Object #48
-$Display Name: XSTR("Messier 1-A", 8405)
+$Display Name: XSTR("Messier 1-A", 8324)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Empty-Grey
@@ -2064,7 +2011,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2084,7 +2030,7 @@ $Determination: 10
 +Score: 150
 
 $Name: NGC 6093 96A		;! Object #49
-$Display Name: XSTR("NGC 6093 96A", 8406)
+$Display Name: XSTR("NGC 6093 96A", 8325)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Empty-Grey
@@ -2093,7 +2039,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2113,7 +2058,7 @@ $Determination: 10
 +Score: 150
 
 $Name: T Scorpi Nebula		;! Object #50
-$Display Name: XSTR("T Scorpi Nebula", 8407)
+$Display Name: XSTR("T Scorpi Nebula", 8326)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Empty-Grey
@@ -2122,7 +2067,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2142,7 +2086,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Naos		;! Object #51
-$Display Name: XSTR("Naos", 8408)
+$Display Name: XSTR("Naos", 8327)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -2151,7 +2095,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2171,7 +2114,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Zeta Cancri		;! Object #52
-$Display Name: XSTR("Zeta Cancri", 8409)
+$Display Name: XSTR("Zeta Cancri", 8328)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -2180,7 +2123,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2200,7 +2142,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X5		;! Object #53
-$Display Name: XSTR("X5", 8410)
+$Display Name: XSTR("X5", 8329)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -2209,7 +2151,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2229,7 +2170,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X6		;! Object #54
-$Display Name: XSTR("X6", 8411)
+$Display Name: XSTR("X6", 8330)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -2238,7 +2179,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2258,7 +2198,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Arcturus		;! Object #55
-$Display Name: XSTR("Arcturus", 8412)
+$Display Name: XSTR("Arcturus", 8331)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -2267,7 +2207,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2287,7 +2226,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Cor Caroli		;! Object #56
-$Display Name: XSTR("Cor Caroli", 8413)
+$Display Name: XSTR("Cor Caroli", 8332)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -2296,7 +2235,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2316,7 +2254,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X4		;! Object #57
-$Display Name: XSTR("X4", 8414)
+$Display Name: XSTR("X4", 8333)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -2325,7 +2263,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2345,7 +2282,7 @@ $Determination: 10
 +Score: 150
 
 $Name: C371 Carinae		;! Object #58
-$Display Name: XSTR("C371 Carinae", 8415)
+$Display Name: XSTR("C371 Carinae", 8334)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Empty-Grey
@@ -2354,7 +2291,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2374,7 +2310,7 @@ $Determination: 10
 +Score: 150
 
 $Name: X13		;! Object #59
-$Display Name: XSTR("X13", 8416)
+$Display Name: XSTR("X13", 8335)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Unknown-Blue
@@ -2383,7 +2319,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2403,7 +2338,7 @@ $Determination: 10
 +Score: 150
 
 $Name: Delta Lacertae		;! Object #60
-$Display Name: XSTR("Delta Lacertae", 8418)
+$Display Name: XSTR("Delta Lacertae", 8337)
 $Class: System Icon
 $Team: Friendly
 $Team Color Setting: Shivan-Red
@@ -2412,7 +2347,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2432,7 +2366,7 @@ $Determination: 10
 +Score: 150
 
 $Name: ScreenCam#Exile 73		;! Object #61
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -32801.773438, -368.630890, -30040.830078
@@ -2440,7 +2374,6 @@ $Orientation:
 	-0.823347, 0.030303, 0.566729,
 	0.141959, 0.977827, 0.153954,
 	-0.549498, 0.207210, -0.809393
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2459,7 +2392,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 79		;! Object #62
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 10721.599609, 1937.954346, 1172.632935
@@ -2467,7 +2400,6 @@ $Orientation:
 	-0.574407, 0.056747, 0.816600,
 	-0.801601, 0.163074, -0.575189,
 	-0.165806, -0.984981, -0.048182
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2486,7 +2418,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 80		;! Object #63
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 10123.699219, 1096.919067, 1212.487061
@@ -2494,7 +2426,6 @@ $Orientation:
 	-0.567417, 0.047796, -0.822042,
 	0.822865, 0.069923, -0.563919,
 	0.030527, -0.996407, -0.079005
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2513,7 +2444,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 81		;! Object #64
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 10216.278320, 94.579704, 1063.041138
@@ -2521,7 +2452,6 @@ $Orientation:
 	0.449041, 0.009800, -0.893457,
 	0.872725, 0.209617, 0.440921,
 	0.191605, -0.977734, 0.085574
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2540,7 +2470,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 82		;! Object #65
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31187.117188, -363.377838, -30854.445313
@@ -2548,7 +2478,6 @@ $Orientation:
 	0.691400, -0.008017, 0.722428,
 	-0.276219, 0.921038, 0.274577,
 	-0.667585, -0.389391, 0.634591
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2567,7 +2496,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 83		;! Object #66
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31252.867188, -339.678162, -30738.238281
@@ -2575,7 +2504,6 @@ $Orientation:
 	0.846350, -0.018550, 0.532304,
 	-0.160245, 0.944222, 0.287691,
 	-0.507950, -0.328786, 0.796170
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2594,7 +2522,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 84		;! Object #67
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31163.804688, -357.918945, -30516.503906
@@ -2602,7 +2530,6 @@ $Orientation:
 	-0.189650, -0.108817, 0.975803,
 	0.082725, 0.988535, 0.126314,
 	-0.978361, 0.104679, -0.178474
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2621,7 +2548,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 85		;! Object #68
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31280.054688, -220.682068, -30427.449219
@@ -2629,7 +2556,6 @@ $Orientation:
 	0.023869, -0.181347, 0.983129,
 	0.016065, 0.983352, 0.180998,
 	-0.999586, 0.011474, 0.026385
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2648,7 +2574,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 86		;! Object #69
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31350.960938, -189.203033, -30231.394531
@@ -2656,7 +2582,6 @@ $Orientation:
 	-0.600979, 0.143530, 0.786272,
 	0.042565, 0.988095, -0.147838,
 	-0.798130, -0.055380, -0.599934
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2675,7 +2600,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 87		;! Object #70
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31555.085938, -110.424065, -30157.843750
@@ -2683,7 +2608,6 @@ $Orientation:
 	-0.837186, 0.312139, 0.449097,
 	0.266028, 0.949865, -0.164273,
 	-0.477858, -0.018055, -0.878252
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2702,7 +2626,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 88		;! Object #71
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31626.054688, -71.658348, -30225.648438
@@ -2710,7 +2634,6 @@ $Orientation:
 	-0.775791, 0.510543, 0.370802,
 	0.481337, 0.858806, -0.175406,
 	-0.407999, 0.042402, -0.911997
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2729,7 +2652,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 89		;! Object #72
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31589.242188, -105.583473, -29982.957031
@@ -2737,7 +2660,6 @@ $Orientation:
 	-0.935838, -0.015038, 0.352109,
 	0.070952, 0.970593, 0.230031,
 	-0.345214, 0.240255, -0.907251
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2756,7 +2678,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 90		;! Object #73
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31817.023438, 102.900108, -30155.976563
@@ -2764,7 +2686,6 @@ $Orientation:
 	-0.946391, 0.250860, -0.203505,
 	0.219187, 0.961477, 0.165888,
 	0.237280, 0.112389, -0.964918
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2783,7 +2704,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 91		;! Object #74
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31498.679688, 185.992416, -30454.582031
@@ -2791,7 +2712,6 @@ $Orientation:
 	0.142535, 0.342652, -0.928587,
 	0.031578, 0.936114, 0.350277,
 	0.989286, -0.079249, 0.122609
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2810,7 +2730,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 92		;! Object #75
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31367.054688, 202.004837, -30300.078125
@@ -2818,7 +2738,6 @@ $Orientation:
 	-0.102152, -0.112631, -0.988372,
 	-0.014505, 0.993633, -0.111732,
 	0.994663, 0.002923, -0.103135
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2837,7 +2756,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 93		;! Object #76
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -31353.054688, 215.043686, -30308.572266
@@ -2845,7 +2764,6 @@ $Orientation:
 	-0.232240, 0.340323, -0.911178,
 	0.033020, 0.939010, 0.342302,
 	0.972098, 0.049409, -0.229313
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2864,7 +2782,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 103		;! Object #77
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -30726.242188, -275.187866, -31014.541016
@@ -2872,7 +2790,6 @@ $Orientation:
 	0.349400, 0.033433, 0.936377,
 	-0.211618, 0.976357, 0.044103,
 	-0.912764, -0.213564, 0.348214
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2891,7 +2808,7 @@ $Determination: 10
 +Score: 0
 
 $Name: U.R.A. Moron 1		;! Object #78
-$Display Name: XSTR("U.R.A. Moron 1", 6855)
+$Display Name: XSTR("U.R.A. Moron 1", 6773)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -1445.998047, 3185.616455, 12605.413086
@@ -2899,7 +2816,6 @@ $Orientation:
 	0.919957, -0.072780, -0.385203,
 	0.076196, 0.997072, -0.006412,
 	0.384542, -0.023452, 0.922810
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2918,7 +2834,7 @@ $Determination: 10
 +Score: 0
 
 $Name: U.R.A. Moron 2		;! Object #79
-$Display Name: XSTR("U.R.A. Moron 2", 6856)
+$Display Name: XSTR("U.R.A. Moron 2", 6774)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -1807.243896, 791.382874, 11038.983398
@@ -2926,7 +2842,6 @@ $Orientation:
 	0.919958, -0.072782, -0.385202,
 	0.150078, 0.973143, 0.174552,
 	0.362153, -0.218391, 0.906174
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2945,7 +2860,7 @@ $Determination: 10
 +Score: 0
 
 $Name: U.R.A. Moron 3		;! Object #80
-$Display Name: XSTR("U.R.A. Moron 3", 6857)
+$Display Name: XSTR("U.R.A. Moron 3", 6775)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -5129.366699, 2254.127930, 20906.605469
@@ -2953,7 +2868,6 @@ $Orientation:
 	-0.277754, -0.071471, -0.957990,
 	0.356043, 0.918549, -0.171758,
 	0.892236, -0.388792, -0.229684
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2972,7 +2886,7 @@ $Determination: 10
 +Score: 0
 
 $Name: U.R.A. Moron 4		;! Object #81
-$Display Name: XSTR("U.R.A. Moron 4", 6858)
+$Display Name: XSTR("U.R.A. Moron 4", 6776)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -4656.022461, 1374.780518, 17034.673828
@@ -2980,7 +2894,6 @@ $Orientation:
 	0.380570, -0.300283, -0.874641,
 	0.369223, 0.916493, -0.153997,
 	0.847845, -0.264331, 0.459661
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -2999,7 +2912,7 @@ $Determination: 10
 +Score: 0
 
 $Name: U.R.A. Moron 5		;! Object #82
-$Display Name: XSTR("U.R.A. Moron 5", 6859)
+$Display Name: XSTR("U.R.A. Moron 5", 6777)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 3047.649170, 120.113144, 22073.142578
@@ -3007,7 +2920,6 @@ $Orientation:
 	-0.721908, 0.004349, 0.691976,
 	0.013018, 0.999889, 0.007297,
 	-0.691867, 0.014276, -0.721884
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3026,7 +2938,7 @@ $Determination: 10
 +Score: 0
 
 $Name: U.R.A. Moron 6		;! Object #83
-$Display Name: XSTR("U.R.A. Moron 6", 10182)
+$Display Name: XSTR("U.R.A. Moron 6", 10104)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 3533.400635, 117.594421, 21552.976563
@@ -3034,7 +2946,6 @@ $Orientation:
 	-0.412277, -0.001281, 0.911058,
 	0.013018, 0.999889, 0.007297,
 	-0.910966, 0.014869, -0.412214
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3053,7 +2964,7 @@ $Determination: 10
 +Score: 0
 
 $Name: U.R.A. Moron 7		;! Object #84
-$Display Name: XSTR("U.R.A. Moron 7", 10183)
+$Display Name: XSTR("U.R.A. Moron 7", 10105)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 5095.020996, 435.411926, 14779.918945
@@ -3061,7 +2972,6 @@ $Orientation:
 	0.518216, -0.105216, 0.848753,
 	0.019683, 0.993608, 0.111155,
 	-0.855023, -0.040896, 0.516975
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3080,7 +2990,7 @@ $Determination: 10
 +Score: 0
 
 $Name: U.R.A. Moron 8		;! Object #85
-$Display Name: XSTR("U.R.A. Moron 8", 10184)
+$Display Name: XSTR("U.R.A. Moron 8", 10106)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -12035.613281, -2031.742798, 13321.486328
@@ -3088,7 +2998,6 @@ $Orientation:
 	0.769583, -0.024740, -0.638068,
 	-0.004550, 0.999011, -0.044224,
 	0.638531, 0.036937, 0.768709
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3107,7 +3016,7 @@ $Determination: 10
 +Score: 0
 
 $Name: U.R.A. Moron 9		;! Object #86
-$Display Name: XSTR("U.R.A. Moron 9", 10185)
+$Display Name: XSTR("U.R.A. Moron 9", 10107)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -6541.124023, -531.301697, 18887.408203
@@ -3115,7 +3024,6 @@ $Orientation:
 	0.433098, -0.024649, -0.901010,
 	-0.079788, 0.994653, -0.065563,
 	0.897808, 0.100285, 0.428816
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3134,7 +3042,7 @@ $Determination: 10
 +Score: 0
 
 $Name: U.R.A. Moron 10		;! Object #87
-$Display Name: XSTR("U.R.A. Moron 10", 10186)
+$Display Name: XSTR("U.R.A. Moron 10", 10108)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -9176.058594, 1122.740112, 13979.030273
@@ -3142,7 +3050,6 @@ $Orientation:
 	0.014908, 0.412814, 0.910693,
 	-0.864609, 0.462796, -0.195630,
 	-0.502224, -0.784477, 0.363822
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3161,7 +3068,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Anjaneya #2		;! Object #88
-$Display Name: XSTR("Anjaneya", 9085)
+$Display Name: XSTR("Anjaneya", 9007)
 $Class: ORD Galahad
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -3170,7 +3077,6 @@ $Orientation:
 	-0.074181, -0.269364, 0.960177,
 	-0.021440, 0.963038, 0.268510,
 	-0.997014, -0.000668, -0.077214
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3249,7 +3155,7 @@ $Texture Replace:
 +new: nameplate-anjaneya
 
 $Name: Ironclad #2		;! Object #89
-$Display Name: XSTR("Ironclad", 8204)
+$Display Name: XSTR("Ironclad", 8122)
 $Class: ORD Orion
 $Team: Friendly
 $Location: 89079.062500, 0.000000, 49776.406250
@@ -3257,7 +3163,6 @@ $Orientation:
 	-0.072360, -0.157228, 0.984908,
 	0.020086, 0.987067, 0.159048,
 	-0.997176, 0.031292, -0.068266
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3308,7 +3213,7 @@ $Texture Replace:
 +new: nameplate-ironclad
 
 $Name: Sahasrara #2		;! Object #90
-$Display Name: XSTR("Sahasrara", 6771)
+$Display Name: XSTR("Sahasrara", 6689)
 $Class: ORFg Tychicus
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -3317,7 +3222,6 @@ $Orientation:
 	-0.062716, -0.628701, 0.775114,
 	-0.039302, 0.777597, 0.627534,
 	-0.997257, 0.008893, -0.073477
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3372,7 +3276,7 @@ $Texture Replace:
 +new: nameplate-sahasrara-shine
 
 $Name: Ajna #2		;! Object #91
-$Display Name: XSTR("Ajna", 8226)
+$Display Name: XSTR("Ajna", 8144)
 $Class: ORFg Tychicus
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -3381,7 +3285,6 @@ $Orientation:
 	-0.058038, 0.408978, 0.910696,
 	0.038398, 0.912473, -0.407329,
 	-0.997575, 0.011328, -0.068662
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3436,7 +3339,7 @@ $Texture Replace:
 +new: nameplate-ajna-shine
 
 $Name: Harmattan #2		;! Object #92
-$Display Name: XSTR("Harmattan", 6898)
+$Display Name: XSTR("Harmattan", 6816)
 $Class: ORFg Vitalius
 $Team: Friendly
 $Team Color Setting: Roaming Fleet
@@ -3445,7 +3348,6 @@ $Orientation:
 	-0.053300, -0.369218, 0.927813,
 	0.031089, 0.928070, 0.371106,
 	-0.998095, 0.048625, -0.037988
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3498,7 +3400,7 @@ $Texture Replace:
 +new: nameplate-harmattan
 
 $Name: Andrasta #2		;! Object #93
-$Display Name: XSTR("Andrasta", 6895)
+$Display Name: XSTR("Andrasta", 6813)
 $Class: EFFg Solomon
 $Team: Friendly
 $Location: 88934.609375, 0.000000, 48101.765625
@@ -3506,7 +3408,6 @@ $Orientation:
 	-0.044272, 0.250731, 0.967044,
 	0.074783, 0.966109, -0.247065,
 	-0.996216, 0.061380, -0.061522
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 100
 +Initial Shields: 100
@@ -3561,7 +3462,7 @@ $Texture Replace:
 +new: nameplate-andrasta
 
 $Name: Akka #2		;! Object #94
-$Display Name: XSTR("Akka", 7910)
+$Display Name: XSTR("Akka", 7828)
 $Class: ORFA Agneya
 $Team: Friendly
 $Team Color Setting: Roaming Fleet
@@ -3570,7 +3471,6 @@ $Orientation:
 	-0.079851, -0.346737, 0.934557,
 	-0.007683, 0.937737, 0.347261,
 	-0.996777, 0.020549, -0.077543
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3597,7 +3497,7 @@ $Determination: 10
 +Score: 1500
 
 $Name: Demetrius		;! Object #95
-$Display Name: XSTR("Demetrius", 6769)
+$Display Name: XSTR("Demetrius", 6687)
 $Class: ORD Galahad
 $Team: Friendly
 $Team Color Setting: Escort Fleet
@@ -3606,7 +3506,6 @@ $Orientation:
 	-0.002253, -0.333487, -0.942752,
 	-0.000797, 0.942755, -0.333486,
 	0.999997, 0.000000, -0.002390
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3685,7 +3584,7 @@ $Texture Replace:
 +new: nameplate-demetrius
 
 $Name: Nakir		;! Object #96
-$Display Name: XSTR("Nakir", 10187)
+$Display Name: XSTR("Nakir", 10109)
 $Class: ORFg Vitalius
 $Team: Friendly
 $Team Color Setting: Escort Fleet
@@ -3694,7 +3593,6 @@ $Orientation:
 	0.037072, -0.416871, -0.908209,
 	0.017002, 0.908966, -0.416524,
 	0.999168, 0.000000, 0.040785
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3744,7 +3642,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Big Buddha		;! Object #97
-$Display Name: XSTR("Big Buddha", 8084)
+$Display Name: XSTR("Big Buddha", 8002)
 $Class: ORSh Qadesh
 $Team: Friendly
 $Location: 71447.289063, 2285.545654, 49294.316406
@@ -3752,7 +3650,6 @@ $Orientation:
 	-0.002390, 0.000000, -0.999997,
 	-0.000000, 1.000000, 0.000000,
 	0.999997, 0.000000, -0.002390
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3782,7 +3679,7 @@ $Determination: 10
 +Score: 700
 
 $Name: Crusader		;! Object #98
-$Display Name: XSTR("Crusader", 10188)
+$Display Name: XSTR("Crusader", 10110)
 $Class: ORFg Vitalius
 $Team: Friendly
 $Team Color Setting: Escort Fleet
@@ -3791,7 +3688,6 @@ $Orientation:
 	0.038025, -0.361615, -0.931552,
 	0.014748, 0.932327, -0.361315,
 	0.999168, 0.000000, 0.040785
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3841,7 +3737,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Israfil		;! Object #99
-$Display Name: XSTR("Israfil", 6817)
+$Display Name: XSTR("Israfil", 6735)
 $Class: ORFg Vitalius
 $Team: Friendly
 $Team Color Setting: Escort Fleet
@@ -3850,7 +3746,6 @@ $Orientation:
 	-0.028558, 0.208460, -0.977615,
 	0.006087, 0.978031, 0.208371,
 	0.999574, 0.000000, -0.029199
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3900,7 +3795,7 @@ $Determination: 10
 +Score: 8
 
 $Name: Harmonia		;! Object #100
-$Display Name: XSTR("Harmonia", 10189)
+$Display Name: XSTR("Harmonia", 10111)
 $Class: ORCa Syr Darya
 $Team: Friendly
 $Location: 72746.867188, 1378.556519, 54249.707031
@@ -3908,7 +3803,6 @@ $Orientation:
 	0.019927, 0.285952, -0.958037,
 	-0.005946, 0.958244, 0.285890,
 	0.999784, 0.000000, 0.020795
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -3952,7 +3846,7 @@ $Determination: 10
 +Score: 300
 
 $Name: Eternity		;! Object #101
-$Display Name: XSTR("Eternity", 9594)
+$Display Name: XSTR("Eternity", 9517)
 $Class: ORCa Syr Darya
 $Team: Friendly
 $Location: 71113.031250, 1093.626465, 48541.156250
@@ -3960,7 +3854,6 @@ $Orientation:
 	0.010718, 0.119712, -0.992751,
 	-0.001292, 0.992809, 0.119705,
 	0.999942, 0.000000, 0.010796
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4004,7 +3897,7 @@ $Determination: 10
 +Score: 300
 
 $Name: Bauhaus		;! Object #102
-$Display Name: XSTR("Bauhaus", 7711)
+$Display Name: XSTR("Bauhaus", 7629)
 $Class: ORFg Vitalius
 $Team: Friendly
 $Team Color Setting: Escort Fleet
@@ -4013,7 +3906,6 @@ $Orientation:
 	-0.001903, 0.605186, -0.796081,
 	0.001446, 0.796084, 0.605185,
 	0.999997, 0.000000, -0.002390
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4063,7 +3955,7 @@ $Determination: 10
 +Score: 8
 
 $Name: ScreenCam#Exile 147		;! Object #103
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 81685.726563, 226.650742, 47782.796875
@@ -4071,7 +3963,6 @@ $Orientation:
 	0.653841, 0.033310, -0.755898,
 	0.040720, 0.996034, 0.079114,
 	0.755535, -0.082508, 0.649891
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4090,7 +3981,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 148		;! Object #104
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 85482.843750, -267.504608, 46292.546875
@@ -4098,7 +3989,6 @@ $Orientation:
 	0.831746, 0.041183, -0.553627,
 	-0.099735, 0.992105, -0.076037,
 	0.546124, 0.118459, 0.829286
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4117,7 +4007,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 149		;! Object #105
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 89955.585938, -101.794594, 51664.402344
@@ -4125,7 +4015,6 @@ $Orientation:
 	-0.865431, -0.053380, 0.498177,
 	-0.023725, 0.997559, 0.065674,
 	-0.500467, 0.045017, -0.864585
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4144,7 +4033,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 150		;! Object #106
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 89731.101563, 5.250937, 50865.746094
@@ -4152,7 +4041,6 @@ $Orientation:
 	-0.052609, -0.014132, 0.998515,
 	0.002405, 0.999895, 0.014278,
 	-0.998612, 0.003153, -0.052569
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4171,7 +4059,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 151		;! Object #107
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 76869.898438, 114.350098, 51246.812500
@@ -4179,7 +4067,6 @@ $Orientation:
 	0.955265, 0.068829, 0.287632,
 	-0.070264, 0.997514, -0.005343,
 	-0.287285, -0.015106, 0.957726
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4198,7 +4085,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 152		;! Object #108
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 74154.242188, 326.035706, 50884.984375
@@ -4206,7 +4093,6 @@ $Orientation:
 	0.968904, 0.036315, 0.244757,
 	-0.011547, 0.994730, -0.101881,
 	-0.247167, 0.095887, 0.964217
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4225,7 +4111,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 153		;! Object #109
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 79976.914063, -99.703285, 49875.464844
@@ -4233,7 +4119,6 @@ $Orientation:
 	0.009216, -0.051289, -0.998641,
 	-0.114172, 0.992099, -0.052007,
 	0.993418, 0.114496, 0.003287
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4252,7 +4137,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 154		;! Object #110
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 80919.000000, -615.644409, 51135.324219
@@ -4260,7 +4145,6 @@ $Orientation:
 	-0.513241, 0.136776, -0.847276,
 	-0.139863, 0.960693, 0.239807,
 	0.846772, 0.241581, -0.473937
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4279,7 +4163,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 155		;! Object #111
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 74798.593750, 2733.049316, 50044.035156
@@ -4287,7 +4171,6 @@ $Orientation:
 	-0.403631, 0.072501, 0.912045,
 	-0.055805, 0.993048, -0.103637,
 	-0.913219, -0.092728, -0.396779
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4306,7 +4189,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 156		;! Object #112
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 75025.898438, 3408.314209, 49695.207031
@@ -4314,7 +4197,6 @@ $Orientation:
 	-0.149716, 0.092958, 0.984349,
 	-0.305780, 0.942410, -0.135506,
 	-0.940257, -0.321282, -0.112669
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4333,7 +4215,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 157		;! Object #113
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 70335.656250, 2321.403564, 49824.449219
@@ -4341,7 +4223,6 @@ $Orientation:
 	-0.371393, -0.029564, -0.928005,
 	-0.291937, 0.952519, 0.086490,
 	0.881385, 0.303041, -0.362390
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4360,7 +4241,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 158		;! Object #114
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 71718.000000, 2382.888672, 50125.148438
@@ -4368,7 +4249,6 @@ $Orientation:
 	-0.815153, -0.091232, -0.572016,
 	-0.212401, 0.965811, 0.148644,
 	0.538898, 0.242664, -0.806662
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4387,7 +4267,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 159		;! Object #115
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 72759.296875, 1308.635742, 56507.277344
@@ -4395,7 +4275,6 @@ $Orientation:
 	-0.986475, 0.021249, -0.162527,
 	0.038322, 0.993980, -0.102644,
 	0.159367, -0.107484, -0.981351
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4414,7 +4293,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 160		;! Object #116
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 77983.367188, 226.745193, 55743.460938
@@ -4422,7 +4301,6 @@ $Orientation:
 	-0.914724, 0.131306, 0.382150,
 	0.173906, 0.981589, 0.078994,
 	-0.364742, 0.138716, -0.920718
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4441,7 +4319,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 121		;! Object #117
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 72770.281250, 7259.320313, 48756.074219
@@ -4449,7 +4327,6 @@ $Orientation:
 	0.263537, -0.018855, 0.964465,
 	0.347885, 0.934387, -0.076791,
 	-0.899736, 0.355760, 0.252805
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4468,7 +4345,7 @@ $Determination: 10
 +Score: 0
 
 $Name: Ironclad #3		;! Object #118
-$Display Name: XSTR("Ironclad", 8204)
+$Display Name: XSTR("Ironclad", 8122)
 $Class: ORD Orion
 $Team: Friendly
 $Location: 74107.046875, 2762.293701, 49274.996094
@@ -4476,7 +4353,6 @@ $Orientation:
 	-0.008002, 0.010136, 0.999917,
 	0.032039, 0.999438, -0.009874,
 	-0.999454, 0.031957, -0.008322
-$AI Behavior: None
 $AI Goals: ( goals ( ai-waypoints-once "buddha construction site" 50 ) )
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
@@ -4528,7 +4404,7 @@ $Texture Replace:
 +new: nameplate-ironclad
 
 $Name: Anjaneya #3		;! Object #119
-$Display Name: XSTR("Anjaneya", 9085)
+$Display Name: XSTR("Anjaneya", 9007)
 $Class: ORD Galahad
 $Team: Friendly
 $Team Color Setting: Escort Fleet
@@ -4537,7 +4413,6 @@ $Orientation:
 	-0.074181, -0.269364, 0.960177,
 	-0.021440, 0.963038, 0.268510,
 	-0.997014, -0.000668, -0.077214
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4616,7 +4491,7 @@ $Texture Replace:
 +new: nameplate-anjaneya
 
 $Name: Sahasrara #3		;! Object #120
-$Display Name: XSTR("Sahasrara", 6771)
+$Display Name: XSTR("Sahasrara", 6689)
 $Class: ORFg Tychicus
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -4625,7 +4500,6 @@ $Orientation:
 	-0.062716, -0.628701, 0.775114,
 	-0.039302, 0.777597, 0.627534,
 	-0.997257, 0.008893, -0.073477
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4680,7 +4554,7 @@ $Texture Replace:
 +new: nameplate-sahasrara-shine
 
 $Name: Ajna #3		;! Object #121
-$Display Name: XSTR("Ajna", 8226)
+$Display Name: XSTR("Ajna", 8144)
 $Class: ORFg Tychicus
 $Team: Friendly
 $Team Color Setting: Heavy Fleet
@@ -4689,7 +4563,6 @@ $Orientation:
 	-0.058038, 0.408978, 0.910696,
 	0.038398, 0.912473, -0.407329,
 	-0.997575, 0.011328, -0.068662
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4744,7 +4617,7 @@ $Texture Replace:
 +new: nameplate-ajna-shine
 
 $Name: Harmattan #3		;! Object #122
-$Display Name: XSTR("Harmattan", 6898)
+$Display Name: XSTR("Harmattan", 6816)
 $Class: ORFg Vitalius
 $Team: Friendly
 $Team Color Setting: Roaming Fleet
@@ -4753,7 +4626,6 @@ $Orientation:
 	-0.053300, -0.369218, 0.927813,
 	0.031089, 0.928070, 0.371106,
 	-0.998095, 0.048625, -0.037988
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4806,7 +4678,7 @@ $Texture Replace:
 +new: nameplate-harmattan
 
 $Name: Andrasta #3		;! Object #123
-$Display Name: XSTR("Andrasta", 6895)
+$Display Name: XSTR("Andrasta", 6813)
 $Class: EFFg Solomon
 $Team: Friendly
 $Location: 74297.078125, 933.597961, 44166.671875
@@ -4814,7 +4686,6 @@ $Orientation:
 	-0.044272, 0.250731, 0.967044,
 	0.074783, 0.966109, -0.247065,
 	-0.996216, 0.061380, -0.061522
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Hull: 100
 +Initial Shields: 100
@@ -4869,7 +4740,7 @@ $Texture Replace:
 +new: nameplate-andrasta
 
 $Name: Akka #3		;! Object #124
-$Display Name: XSTR("Akka", 7910)
+$Display Name: XSTR("Akka", 7828)
 $Class: ORFA Agneya
 $Team: Friendly
 $Team Color Setting: Roaming Fleet
@@ -4878,7 +4749,6 @@ $Orientation:
 	-0.079851, -0.346737, 0.934557,
 	-0.007683, 0.937737, 0.347261,
 	-0.996777, 0.020549, -0.077543
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4905,7 +4775,7 @@ $Determination: 10
 +Score: 1500
 
 $Name: ScreenCam#Exile 161		;! Object #125
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 75011.039063, -526.852112, 41879.378906
@@ -4913,7 +4783,6 @@ $Orientation:
 	0.997952, -0.016737, 0.061740,
 	0.034344, 0.954453, -0.296379,
 	-0.053968, 0.297892, 0.953073
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4932,7 +4801,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 162		;! Object #126
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 89586.898438, 4074.977783, 29620.769531
@@ -4940,7 +4809,6 @@ $Orientation:
 	0.805920, -0.078622, 0.586781,
 	-0.055638, 0.976698, 0.207283,
 	-0.589405, -0.199700, 0.782766
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4959,7 +4827,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 127		;! Object #127
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -1969.755371, -655.644226, 22573.605469
@@ -4967,7 +4835,6 @@ $Orientation:
 	-0.881608, -0.032731, -0.470847,
 	-0.072887, 0.995067, 0.067301,
 	0.466321, 0.093652, -0.879644
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -4986,7 +4853,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 128		;! Object #128
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -2434.352539, 312.339783, 21223.830078
@@ -4994,7 +4861,6 @@ $Orientation:
 	-0.779108, -0.037873, -0.625744,
 	-0.049796, 0.998758, 0.001551,
 	0.624909, 0.032368, -0.780027
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -5013,7 +4879,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 129		;! Object #129
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 1200.960327, -147.993347, 9780.541992
@@ -5021,7 +4887,6 @@ $Orientation:
 	0.952865, 0.277419, 0.122827,
 	-0.277065, 0.960637, -0.020302,
 	-0.123625, -0.014686, 0.992220
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -5040,7 +4905,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 130		;! Object #130
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 2881.293457, -649.317078, 11193.110352
@@ -5048,7 +4913,6 @@ $Orientation:
 	0.747114, -0.132662, 0.651322,
 	0.226569, 0.972026, -0.061907,
 	-0.624889, 0.193821, 0.756272
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -5067,7 +4931,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 131		;! Object #131
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -7127.292480, 720.578979, 20118.751953
@@ -5075,7 +4939,6 @@ $Orientation:
 	0.970954, -0.000795, -0.239266,
 	0.001409, 0.999996, 0.002393,
 	0.239263, -0.002661, 0.970951
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -5094,7 +4957,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 132		;! Object #132
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -5045.675781, 4.427318, 20803.562500
@@ -5102,7 +4965,6 @@ $Orientation:
 	0.990756, 0.011655, 0.135156,
 	0.011674, 0.985281, -0.170541,
 	-0.135154, 0.170542, 0.976037
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -5121,7 +4983,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 133		;! Object #133
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -5918.827637, 0.000000, 20723.703125
@@ -5129,7 +4991,6 @@ $Orientation:
 	1.000000, 0.000000, 0.000000,
 	0.000000, 1.000000, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -5148,7 +5009,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 134		;! Object #134
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: -5921.984863, 0.000000, 20717.669922
@@ -5156,7 +5017,6 @@ $Orientation:
 	0.636891, 0.770954, -0.000000,
 	-0.770954, 0.636891, 0.000000,
 	0.000000, 0.000000, 1.000000
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -5175,7 +5035,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 135		;! Object #135
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 3755.445801, 3344.429688, 16218.765625
@@ -5183,7 +5043,6 @@ $Orientation:
 	0.801000, -0.220307, 0.556654,
 	-0.146865, 0.829101, 0.539465,
 	-0.580370, -0.513864, 0.631755
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -5202,7 +5061,7 @@ $Determination: 10
 +Score: 0
 
 $Name: ScreenCam#Exile 136		;! Object #136
-$Display Name: XSTR("ScreenCam", 6731)
+$Display Name: XSTR("ScreenCam", 6648)
 $Class: ScreenCam#Exile
 $Team: Friendly
 $Location: 53529.078125, 15698.983398, 65526.250000
@@ -5210,7 +5069,6 @@ $Orientation:
 	-0.848523, -0.225579, 0.478668,
 	0.051512, 0.865074, 0.498993,
 	-0.526645, 0.448064, -0.722415
-$AI Behavior: None
 $Cargo 1:  XSTR("Nothing", 13)
 +Initial Velocity: 33
 +Initial Hull: 100
@@ -5281,14 +5139,14 @@ $Ships: (		;! 4 total
 $AI Goals: ( goals ( ai-guard "Demetrius" 50 ) )
 +Flags: ( "no-arrival-warp" )
 
-#Events		;! 241 total
+#Events		;! 242 total
 
 $Formula: ( when 
    ( true ) 
    ( modify-variable-xstr 
       "@i18nVariable1[#Anjaneya]" 
       "#Anjaneya" 
-      9402 
+      9325 
    )
 )
 +Name: Manage translation variables
@@ -7673,7 +7531,7 @@ $Formula: ( when
    ( show-subtitle-text 
       "29 - Credits" 
       70 
-      29
+      29 
       ( false ) 
       ( false ) 
       6000 
@@ -8311,7 +8169,7 @@ $Formula: ( when
    ( show-subtitle-text 
       "58 - Credits" 
       70 
-      32
+      32 
       ( false ) 
       ( false ) 
       6000 
@@ -8953,7 +8811,7 @@ $Formula: ( when
    ( show-subtitle-text 
       "81 - Credits" 
       30 
-      36
+      36 
       ( false ) 
       ( false ) 
       6000 
@@ -10462,46 +10320,58 @@ $Formula: ( when
    ( true ) 
    ( tech-add-intel-xstr 
       "  Mastermind" 
-      5489 
+      5653 
       "    Entry 4" 
-      5491 
+      5655 
       "    Entry 11" 
-      5493 
+      5657 
       "    Entry 12" 
-      5495 
+      5659 
       "    Entry 14" 
-      5497 
+      5661 
       "    Entry 15" 
-      5499 
+      5663 
       "    Entry 16" 
-      5501 
+      5665 
       "    Entry 24" 
-      5503 
+      5667 
       "    Entry 26" 
-      5505 
+      5669 
       "    Entry 29" 
-      5507 
+      5671 
       "    Record 178" 
-      5509 
+      5673 
       "    Record 179" 
-      5511 
+      5675 
       "    Record 180" 
-      5513 
+      5677 
       "  Project Black Omega (1)" 
-      5515 
+      5679 
       "  Project Black Omega (2)" 
-      5517 
+      5681 
    )
 )
 +Name: tech entries
 +Repeat Count: 1
 +Interval: 1
 
+$Formula: ( when 
+   ( is-event-true-delay 
+      "change skybox, show node" 
+      0 
+   )
+   ( clear-debris "SJ Sathanas" ) 
+   ( clear-debris "AD Chania" ) 
+)
++Name: Remove debris Andromeda
++Repeat Count: 5
++Interval: 1
+
 #Goals		;! 1 total
 
 $Type: Primary
 +Name: Sit
-$MessageNew:  XSTR("Just sit comfortably and watch, you earned it", 10190)
+$MessageNew:  XSTR("Just sit comfortably and watch, you earned it", 10112)
 $end_multi_text
 $Formula: ( is-event-true-delay "end" 0 ) 
 
@@ -10510,7 +10380,7 @@ $Formula: ( is-event-true-delay "end" 0 )
 
 $Jump Node: 90809.367188, -0.000000, 50115.769531
 $Jump Node Name: Terminus node
-+Display Name: XSTR("Terminus node", 10191)
++Display Name: XSTR("Terminus node", 10113)
 $Name: departure path 1
 $List: (		;! 1 points in list
 	( -290.530762, 0.000000, 20872.869141 )
@@ -10541,367 +10411,367 @@ $List: (		;! 1 points in list
 
 $Name: 00 - Credits
 $Team: -1
-$MessageNew:  XSTR("Exile Team:", 10192)
+$MessageNew:  XSTR("Exile Team:", 10114)
 $end_multi_text
 
 $Name: 01 - Credits
 $Team: -1
-$MessageNew:  XSTR("Nyctaeus: Project leader, a jack of all trades", 10193)
+$MessageNew:  XSTR("Nyctaeus: Project leader, a jack of all trades", 10115)
 $end_multi_text
 
 $Name: 02 - Credits
 $Team: -1
-$MessageNew:  XSTR("Macielos: Project leader, FREDder, story-writer", 10194)
+$MessageNew:  XSTR("Macielos: Project leader, FREDder, story-writer", 10116)
 $end_multi_text
 
 $Name: 1 - Credits
 $Team: -1
-$MessageNew:  XSTR("Effects:", 10195)
+$MessageNew:  XSTR("Effects:", 10117)
 $end_multi_text
 
 $Name: 3 - Credits
 $Team: -1
-$MessageNew:  XSTR("Earth Defence Team for numerous effects", 10196)
+$MessageNew:  XSTR("Earth Defence Team for numerous effects", 10118)
 $end_multi_text
 
 $Name: 4 - Credits
 $Team: -1
-$MessageNew:  XSTR("Inferno Team for Shivan Flaks and thusters", 10197)
+$MessageNew:  XSTR("Inferno Team for Shivan Flaks and thusters", 10119)
 $end_multi_text
 
 $Name: 5 - Credits
 $Team: -1
-$MessageNew:  XSTR("Ancient-Shivan War Team for weapon effects", 10198)
+$MessageNew:  XSTR("Ancient-Shivan War Team for weapon effects", 10120)
 $end_multi_text
 
 $Name: 6 - Credits
 $Team: -1
-$MessageNew:  XSTR("Dimensional Eclipse Team for weapon effects", 10199)
+$MessageNew:  XSTR("Dimensional Eclipse Team for weapon effects", 10121)
 $end_multi_text
 
 $Name: 7 - Credits
 $Team: -1
-$MessageNew:  XSTR("Freespace Upgrade Project for effects from MediaVPs", 10200)
+$MessageNew:  XSTR("Freespace Upgrade Project for effects from MediaVPs", 10122)
 $end_multi_text
 
 $Name: 8 - Credits
 $Team: -1
-$MessageNew:  XSTR("Steve-O for weapon effects", 10201)
+$MessageNew:  XSTR("Steve-O for weapon effects", 10123)
 $end_multi_text
 
 $Name: 9 - Credits
 $Team: -1
-$MessageNew:  XSTR("Nuke for plasma explosion", 10202)
+$MessageNew:  XSTR("Nuke for plasma explosion", 10124)
 $end_multi_text
 
 $Name: 10 - Credits
 $Team: -1
-$MessageNew:  XSTR("Watsisname for nebulae library", 10203)
+$MessageNew:  XSTR("Watsisname for nebulae library", 10125)
 $end_multi_text
 
 $Name: 11 - Credits
 $Team: -1
-$MessageNew:  XSTR("Shivan Hunter for skyboxes", 10204)
+$MessageNew:  XSTR("Shivan Hunter for skyboxes", 10126)
 $end_multi_text
 
 $Name: 12 - Credits
 $Team: -1
-$MessageNew:  XSTR("ShadowWolf_IH for one unused skybox", 10205)
+$MessageNew:  XSTR("ShadowWolf_IH for one unused skybox", 10127)
 $end_multi_text
 
 $Name: 13 - Credits
 $Team: -1
-$MessageNew:  XSTR("Planets:", 10206)
+$MessageNew:  XSTR("Planets:", 10128)
 $end_multi_text
 
 $Name: 14 - Credits
 $Team: -1
-$MessageNew:  XSTR("Diaspora Team for lava planet", 10207)
+$MessageNew:  XSTR("Diaspora Team for lava planet", 10129)
 $end_multi_text
 
 $Name: 15 - Credits
 $Team: -1
-$MessageNew:  XSTR("ki-mo for a lot of planets", 10208)
+$MessageNew:  XSTR("ki-mo for a lot of planets", 10130)
 $end_multi_text
 
 $Name: 16 - Credits
 $Team: -1
-$MessageNew:  XSTR("Genetica for various planet textures", 10209)
+$MessageNew:  XSTR("Genetica for various planet textures", 10131)
 $end_multi_text
 
 $Name: 17 - Credits
 $Team: -1
-$MessageNew:  XSTR("Lotay for planet textures", 10210)
+$MessageNew:  XSTR("Lotay for planet textures", 10132)
 $end_multi_text
 
 $Name: 18 - Credits
 $Team: -1
-$MessageNew:  XSTR("Burning Liquid for planet textures", 10211)
+$MessageNew:  XSTR("Burning Liquid for planet textures", 10133)
 $end_multi_text
 
 $Name: 19 - Credits
 $Team: -1
-$MessageNew:  XSTR("Hameed for asteroid field", 10212)
+$MessageNew:  XSTR("Hameed for asteroid field", 10134)
 $end_multi_text
 
 $Name: 20 - Credits
 $Team: -1
-$MessageNew:  XSTR("Rich35211 for planet textures", 10213)
+$MessageNew:  XSTR("Rich35211 for planet textures", 10135)
 $end_multi_text
 
 $Name: 21 - Credits
 $Team: -1
-$MessageNew:  XSTR("Ziliran for planet textures", 10214)
+$MessageNew:  XSTR("Ziliran for planet textures", 10136)
 $end_multi_text
 
 $Name: 22 - Credits
 $Team: -1
-$MessageNew:  XSTR("The-prototype92 for planet textures", 10215)
+$MessageNew:  XSTR("The-prototype92 for planet textures", 10137)
 $end_multi_text
 
 $Name: 23 - Credits
 $Team: -1
-$MessageNew:  XSTR("FreeSpaceFreak [FSF] for planet textures", 10216)
+$MessageNew:  XSTR("FreeSpaceFreak [FSF] for planet textures", 10138)
 $end_multi_text
 
 $Name: 24 - Credits
 $Team: -1
-$MessageNew:  XSTR("HUD Graphics:", 10217)
+$MessageNew:  XSTR("HUD Graphics:", 10139)
 $end_multi_text
 
 $Name: 25 - Credits
 $Team: -1
-$MessageNew:  XSTR("FSCRP - Ghost Revenants campaign", 10218)
+$MessageNew:  XSTR("FSCRP - Ghost Revenants campaign", 10140)
 $end_multi_text
 
 $Name: 26 - Credits
 $Team: -1
-$MessageNew:  XSTR("Blue Planet Team", 10219)
+$MessageNew:  XSTR("Blue Planet Team", 10141)
 $end_multi_text
 
 $Name: 27 - Credits
 $Team: -1
-$MessageNew:  XSTR("Interface:", 10220)
+$MessageNew:  XSTR("Interface:", 10142)
 $end_multi_text
 
 $Name: 28 - Credits
 $Team: -1
-$MessageNew:  XSTR("Mjn.Mixael for ORS government logo and mainhall template", 10221)
+$MessageNew:  XSTR("Mjn.Mixael for ORS government logo and mainhall template", 10143)
 $end_multi_text
 
 $Name: 29 - Credits
 $Team: -1
-$MessageNew:  XSTR("Flaming_Sword for Contemplates", 10222)
+$MessageNew:  XSTR("Flaming_Sword for Contemplates", 10144)
 $end_multi_text
 
 $Name: 30 - Credits
 $Team: -1
-$MessageNew:  XSTR("Models and Textures:", 10223)
+$MessageNew:  XSTR("Models and Textures:", 10145)
 $end_multi_text
 
 $Name: 31 - Credits
 $Team: -1
-$MessageNew:  XSTR("FreeSpaceFreak [FSF] for Ancient textures and turret models", 10224)
+$MessageNew:  XSTR("FreeSpaceFreak [FSF] for Ancient textures and turret models", 10146)
 $end_multi_text
 
 $Name: 32 - Credits
 $Team: -1
-$MessageNew:  XSTR("Scooby_Doo for dozens of models and textures", 10225)
+$MessageNew:  XSTR("Scooby_Doo for dozens of models and textures", 10147)
 $end_multi_text
 
 $Name: 33 - Credits
 $Team: -1
-$MessageNew:  XSTR("Moonred aka MoonMoon for Daeva, Europa, Samael, Warlock and other models", 10226)
+$MessageNew:  XSTR("Moonred aka MoonMoon for Daeva, Europa, Samael, Warlock and other models", 10148)
 $end_multi_text
 
 $Name: 34 - Credits
 $Team: -1
-$MessageNew:  XSTR("Lt.Narol from 158th Team for original Evangelist model", 10227)
+$MessageNew:  XSTR("Lt.Narol from 158th Team for original Evangelist model", 10149)
 $end_multi_text
 
 $Name: 35 - Credits
 $Team: -1
-$MessageNew:  XSTR("Steve-O for Vexor, weapon models, textures", 10228)
+$MessageNew:  XSTR("Steve-O for Vexor, weapon models, textures", 10150)
 $end_multi_text
 
 $Name: 36 - Credits
 $Team: -1
-$MessageNew:  XSTR("Kobrar for Tychicus and some other stuff", 10229)
+$MessageNew:  XSTR("Kobrar for Tychicus and some other stuff", 10151)
 $end_multi_text
 
 $Name: 38 - Credits
 $Team: -1
-$MessageNew:  XSTR("SolCommand for numerous models", 10230)
+$MessageNew:  XSTR("SolCommand for numerous models", 10152)
 $end_multi_text
 
 $Name: 39 - Credits
 $Team: -1
-$MessageNew:  XSTR("Droid803 for original Impervious concept", 10231)
+$MessageNew:  XSTR("Droid803 for original Impervious concept", 10153)
 $end_multi_text
 
 $Name: 41 - Credits
 $Team: -1
-$MessageNew:  XSTR("PeterV for Galahad, Defender and other models", 10232)
+$MessageNew:  XSTR("PeterV for Galahad, Defender and other models", 10154)
 $end_multi_text
 
 $Name: 42 - Credits
 $Team: -1
-$MessageNew:  XSTR("Inferno Team for Claymore models", 10233)
+$MessageNew:  XSTR("Inferno Team for Claymore models", 10155)
 $end_multi_text
 
 $Name: 43 - Credits
 $Team: -1
-$MessageNew:  XSTR("FSPort Team for Centaur HTL", 10234)
+$MessageNew:  XSTR("FSPort Team for Centaur HTL", 10156)
 $end_multi_text
 
 $Name: 44 - Credits
 $Team: -1
-$MessageNew:  XSTR("Mjn.Mixael for Phidias, Entochus and textures for numerous Shivan models", 10235)
+$MessageNew:  XSTR("Mjn.Mixael for Phidias, Entochus and textures for numerous Shivan models", 10157)
 $end_multi_text
 
 $Name: 45 - Credits
 $Team: -1
-$MessageNew:  XSTR("FreeSpaceKing for textures", 10236)
+$MessageNew:  XSTR("FreeSpaceKing for textures", 10158)
 $end_multi_text
 
 $Name: 46 - Credits
 $Team: -1
-$MessageNew:  XSTR("Hades for Euryale", 10237)
+$MessageNew:  XSTR("Hades for Euryale", 10159)
 $end_multi_text
 
 $Name: 47 - Credits
 $Team: -1
-$MessageNew:  XSTR("Sab0o for Euryale textures", 10238)
+$MessageNew:  XSTR("Sab0o for Euryale textures", 10160)
 $end_multi_text
 
 $Name: 48 - Credits
 $Team: -1
-$MessageNew:  XSTR("Raven2001 for Hestia", 10239)
+$MessageNew:  XSTR("Raven2001 for Hestia", 10161)
 $end_multi_text
 
 $Name: 49 - Credits
 $Team: -1
-$MessageNew:  XSTR("Black Wolf for Mercury and Wyvern conversion", 10240)
+$MessageNew:  XSTR("Black Wolf for Mercury and Wyvern conversion", 10162)
 $end_multi_text
 
 $Name: 50 - Credits
 $Team: -1
-$MessageNew:  XSTR("Taristin for Syr Darya carrier", 10241)
+$MessageNew:  XSTR("Taristin for Syr Darya carrier", 10163)
 $end_multi_text
 
 $Name: 51 - Credits
 $Team: -1
-$MessageNew:  XSTR("Aldo for Wyvern", 10242)
+$MessageNew:  XSTR("Aldo for Wyvern", 10164)
 $end_multi_text
 
 $Name: 52 - Credits
 $Team: -1
-$MessageNew:  XSTR("Esarai for Armaros and some textures", 10243)
+$MessageNew:  XSTR("Esarai for Armaros and some textures", 10165)
 $end_multi_text
 
 $Name: 53 - Credits
 $Team: -1
-$MessageNew:  XSTR("Oddgrim for mineral-rich asteroid", 10244)
+$MessageNew:  XSTR("Oddgrim for mineral-rich asteroid", 10166)
 $end_multi_text
 
 $Name: 54 - Credits
 $Team: -1
-$MessageNew:  XSTR("Rampage and Inferno Team for shivan models", 10245)
+$MessageNew:  XSTR("Rampage and Inferno Team for shivan models", 10167)
 $end_multi_text
 
 $Name: 55 - Credits
 $Team: -1
-$MessageNew:  XSTR("Bobbtmann for Sathanas", 10246)
+$MessageNew:  XSTR("Bobbtmann for Sathanas", 10168)
 $end_multi_text
 
 $Name: 56 - Credits
 $Team: -1
-$MessageNew:  XSTR("Quinnton for Jupiter skybox", 10247)
+$MessageNew:  XSTR("Quinnton for Jupiter skybox", 10169)
 $end_multi_text
 
 $Name: 57 - Credits
 $Team: -1
-$MessageNew:  XSTR("Vasudan Admiral for Valhalla Station", 10248)
+$MessageNew:  XSTR("Vasudan Admiral for Valhalla Station", 10170)
 $end_multi_text
 
 $Name: 58 - Credits
 $Team: -1
-$MessageNew:  XSTR("GalEmp for Warlock conversion", 10249)
+$MessageNew:  XSTR("GalEmp for Warlock conversion", 10171)
 $end_multi_text
 
 $Name: 59 - Credits
 $Team: -1
-$MessageNew:  XSTR("Music and Sounds:", 10250)
+$MessageNew:  XSTR("Music and Sounds:", 10172)
 $end_multi_text
 
 $Name: 60 - Credits
 $Team: -1
-$MessageNew:  XSTR("Garreth $quoteGenericCorvette$quote Cooker for numerous sounds, Flux and Enlightenment soundtracks", 10251)
+$MessageNew:  XSTR("Garreth $quoteGenericCorvette$quote Cooker for numerous sounds, Flux and Enlightenment soundtracks", 10173)
 $end_multi_text
 
 $Name: 61 - Credits
 $Team: -1
-$MessageNew:  XSTR("Ancient-Shivan War Team for Malia soundtrack", 10252)
+$MessageNew:  XSTR("Ancient-Shivan War Team for Malia soundtrack", 10174)
 $end_multi_text
 
 $Name: 62 - Credits
 $Team: -1
-$MessageNew:  XSTR("Waterflame for Embraced by Fire and Callisto soundtracks", 10253)
+$MessageNew:  XSTR("Waterflame for Embraced by Fire and Callisto soundtracks", 10175)
 $end_multi_text
 
 $Name: 63 - Credits
 $Team: -1
-$MessageNew:  XSTR("FreePlay Music for Cold Kill, Infoscape, Darkside and Scavenger", 10254)
+$MessageNew:  XSTR("FreePlay Music for Cold Kill, Infoscape, Darkside and Scavenger", 10176)
 $end_multi_text
 
 $Name: 64 - Credits
 $Team: -1
-$MessageNew:  XSTR("Inferno Team for Hidden and Escape", 10255)
+$MessageNew:  XSTR("Inferno Team for Hidden and Escape", 10177)
 $end_multi_text
 
 $Name: 65 - Credits
 $Team: -1
-$MessageNew:  XSTR("Supernatural Soundtrack for one briefing music and intro theme.", 10256)
+$MessageNew:  XSTR("Supernatural Soundtrack for one briefing music and intro theme.", 10178)
 $end_multi_text
 
 $Name: 66 - Credits
 $Team: -1
-$MessageNew:  XSTR("Firefly Soundtrack for Eclipse intro theme and Raji theme", 10257)
+$MessageNew:  XSTR("Firefly Soundtrack for Eclipse intro theme and Raji theme", 10179)
 $end_multi_text
 
 $Name: 67 - Credits
 $Team: -1
-$MessageNew:  XSTR("Unknown Composer for Fall of Earth music [taken from Burning Heaven mod]", 10258)
+$MessageNew:  XSTR("Unknown Composer for Fall of Earth music [taken from Burning Heaven mod]", 10180)
 $end_multi_text
 
 $Name: 68 - Credits
 $Team: -1
-$MessageNew:  XSTR("Assassin's Creed for Damascus destruction music, nodemap theme and one unused briefing music", 10259)
+$MessageNew:  XSTR("Assassin's Creed for Damascus destruction music, nodemap theme and one unused briefing music", 10181)
 $end_multi_text
 
 $Name: 69 - Credits
 $Team: -1
-$MessageNew:  XSTR("Dan Wentz for refreshed Marauder and World Apart", 10260)
+$MessageNew:  XSTR("Dan Wentz for refreshed Marauder and World Apart", 10182)
 $end_multi_text
 
 $Name: 70 - Credits
 $Team: -1
-$MessageNew:  XSTR("Freespace Music Restoration project for a few briefing tracks", 10261)
+$MessageNew:  XSTR("Freespace Music Restoration project for a few briefing tracks", 10183)
 $end_multi_text
 
 $Name: 71 - Credits
 $Team: -1
-$MessageNew:  XSTR("Brian Tyler and Prague Philharmonic Orchestra for menu music.", 10262)
+$MessageNew:  XSTR("Brian Tyler and Prague Philharmonic Orchestra for menu music.", 10184)
 $end_multi_text
 
 $Name: 72 - Credits
 $Team: -1
-$MessageNew:  XSTR("Ancient-Shivan War Team for weapon sounds", 10263)
+$MessageNew:  XSTR("Ancient-Shivan War Team for weapon sounds", 10185)
 $end_multi_text
 
 $Name: 73 - Credits
 $Team: -1
-$MessageNew:  XSTR("Mjn.Mixael for mining beams", 10264)
+$MessageNew:  XSTR("Mjn.Mixael for mining beams", 10186)
 $end_multi_text
 
 $Name: 74 - Credits
@@ -10911,128 +10781,128 @@ $end_multi_text
 
 $Name: 75 - Credits
 $Team: -1
-$MessageNew:  XSTR("Droid803 and ShadowGorrath for Project: Outreach, original idea and cooperation.", 10265)
+$MessageNew:  XSTR("Droid803 and ShadowGorrath for Project: Outreach, original idea and cooperation.", 10187)
 $end_multi_text
 
 $Name: 76 - Credits
 $Team: -1
-$MessageNew:  XSTR("BTA, Lepanto, Droid803, Nissan, CT27, procdrone for beta-testing", 10266)
+$MessageNew:  XSTR("BTA, Lepanto, Droid803, Nissan, CT27, procdrone for beta-testing", 10188)
 $end_multi_text
 
 $Name: 77 - Credits
 $Team: -1
-$MessageNew:  XSTR("Fury and Blue Planet Team for refreshed AI", 10267)
+$MessageNew:  XSTR("Fury and Blue Planet Team for refreshed AI", 10189)
 $end_multi_text
 
 $Name: 79 - Credits
 $Team: -1
-$MessageNew:  XSTR("Hard-Light Administration for Hosting", 10268)
+$MessageNew:  XSTR("Hard-Light Administration for Hosting", 10190)
 $end_multi_text
 
 $Name: 80 - Credits
 $Team: -1
-$MessageNew:  XSTR("Swantz and Shiv_pl for SVN Support", 10269)
+$MessageNew:  XSTR("Swantz and Shiv_pl for SVN Support", 10191)
 $end_multi_text
 
 $Name: 81 - Credits
 $Team: -1
-$MessageNew:  XSTR("TheDagger for Blender lessons and help with Vitalius", 10270)
+$MessageNew:  XSTR("TheDagger for Blender lessons and help with Vitalius", 10192)
 $end_multi_text
 
 $Name: 82 - Credits
 $Team: -1
-$MessageNew:  XSTR("SolCommand - This guy is great :)", 10271)
+$MessageNew:  XSTR("SolCommand - This guy is great :)", 10193)
 $end_multi_text
 
 $Name: 83 - Credits
 $Team: -1
-$MessageNew:  XSTR("Scooby_Doo - Yeah dude, we would've never made it without You!", 10272)
+$MessageNew:  XSTR("Scooby_Doo - Yeah dude, we would've never made it without You!", 10194)
 $end_multi_text
 
 $Name: 84 - Credits
 $Team: -1
-$MessageNew:  XSTR("Note: The list above may be incomplete. If you are a DeviantART user and you have noticed your stock used here, please PM me on HLP [Nyctaeus] so I can place your nickname in credits list. ", 10273)
+$MessageNew:  XSTR("Note: The list above may be incomplete. If you are a DeviantART user and you have noticed your stock used here, please PM me on HLP [Nyctaeus] so I can place your nickname in credits list. ", 10195)
 $end_multi_text
 
 $Name: 85 - Credits
 $Team: -1
-$MessageNew:  XSTR("If You don't want your stock used in Exile, please let me know as well so that I can remove your stock from the modpack.", 10274)
+$MessageNew:  XSTR("If You don't want your stock used in Exile, please let me know as well so that I can remove your stock from the modpack.", 10196)
 $end_multi_text
 
 $Name: 1 - #Mastermind
 $Team: -1
-$MessageNew:  XSTR("You lost your homeworld. ", 10275)
+$MessageNew:  XSTR("You lost your homeworld. ", 10197)
 $end_multi_text
 +Wave Name: MastermindTalk2.ogg
 
 $Name: 2 - #Mastermind
 $Team: -1
-$MessageNew:  XSTR("Your species has become extinct. ", 10276)
+$MessageNew:  XSTR("Your species has become extinct. ", 10198)
 $end_multi_text
 +Wave Name: MastermindTalk4.ogg
 
 $Name: 3 - #Mastermind
 $Team: -1
-$MessageNew:  XSTR("And yet in yourselves you found strength to prevail. ", 10277)
+$MessageNew:  XSTR("And yet in yourselves you found strength to prevail. ", 10199)
 $end_multi_text
 +Wave Name: MastermindTalk2.ogg
 
 $Name: 4 - #Mastermind
 $Team: -1
-$MessageNew:  XSTR("It could have been a fortunate coincidence that you found us. Or perhaps everything had been planned by the ones who came before. ", 10278)
+$MessageNew:  XSTR("It could have been a fortunate coincidence that you found us. Or perhaps everything had been planned by the ones who came before. ", 10200)
 $end_multi_text
 +Wave Name: MastermindTalk3.ogg
 
 $Name: 5 - #Mastermind
 $Team: -1
-$MessageNew:  XSTR("A single discovery in a remote sector of your home system and a handful of individuals determined to unveil its potential was enough to give your species salvation. ", 10279)
+$MessageNew:  XSTR("A single discovery in a remote sector of your home system and a handful of individuals determined to unveil its potential was enough to give your species salvation. ", 10201)
 $end_multi_text
 +Wave Name: MastermindTalk3.ogg
 
 $Name: 6 - #Mastermind
 $Team: -1
-$MessageNew:  XSTR("But your odyssey is not over. You have a long way ahead and you have a quest to fulfill. A quest to finish what had been begun. A quest that is convergent to ours. ", 10280)
+$MessageNew:  XSTR("But your odyssey is not over. You have a long way ahead and you have a quest to fulfill. A quest to finish what had been begun. A quest that is convergent to ours. ", 10202)
 $end_multi_text
 +Wave Name: MastermindTalk4.ogg
 
 $Name: 7 - #Mastermind
 $Team: -1
-$MessageNew:  XSTR("Many species before you have fallen to the Shivans. You, as the first one, abandoned the scheme. You left behind what could not be saved. You adapted. And therefore you survived. ", 10281)
+$MessageNew:  XSTR("Many species before you have fallen to the Shivans. You, as the first one, abandoned the scheme. You left behind what could not be saved. You adapted. And therefore you survived. ", 10203)
 $end_multi_text
 +Wave Name: MastermindTalk3.ogg
 
 $Name: 8 - #Mastermind
 $Team: -1
-$MessageNew:  XSTR("For that reason, you are the best hope for this galaxy. For that reason, we shall stay with your Fleet. ", 10282)
+$MessageNew:  XSTR("For that reason, you are the best hope for this galaxy. For that reason, we shall stay with your Fleet. ", 10204)
 $end_multi_text
 +Wave Name: MastermindTalk2.ogg
 
 $Name: 9 - #Mastermind
 $Team: -1
-$MessageNew:  XSTR("And we shall watch over you. ", 10283)
+$MessageNew:  XSTR("And we shall watch over you. ", 10205)
 $end_multi_text
 +Wave Name: MastermindTalk2.ogg
 
 $Name: 10 - Anjaneya
 $Team: -1
-$MessageNew:  XSTR("This is the Anjaneya. We are on approach vector to Malia. Jump sequence commences n 5... 4... 3... 2... 1... now! ", 10284)
+$MessageNew:  XSTR("This is the Anjaneya. We are on approach vector to Malia. Jump sequence commences n 5... 4... 3... 2... 1... now! ", 10206)
 $end_multi_text
 +Wave Name: msg_caps.ogg
 
 $Name: 11 - Ironclad
 $Team: -1
-$MessageNew:  XSTR("Don't need to ask me twice. Anjaneya. Just behind you. ", 10285)
+$MessageNew:  XSTR("Don't need to ask me twice. Anjaneya. Just behind you. ", 10207)
 $end_multi_text
 +Wave Name: msg_caps.ogg
 
 $Name: 000 - Credits
 $Team: -1
-$MessageNew:  XSTR("CREDITS", 10286)
+$MessageNew:  XSTR("CREDITS", 10208)
 $end_multi_text
 
 $Name: 10,1 - Anjaneya
 $Team: -1
-$MessageNew:  XSTR("We are in. All systems functional. Ironclad, it's your turn now. ", 10287)
+$MessageNew:  XSTR("We are in. All systems functional. Ironclad, it's your turn now. ", 10209)
 $end_multi_text
 +Wave Name: msg_caps.ogg
 
@@ -11045,293 +10915,293 @@ INTO THE DARK WATERS
 Act Summary
 
 Fleet Population: $fleet_population
-", 10288)
+", 10210)
 $end_multi_text
 
 $Name: Achievements
 $Team: -1
-$MessageNew:  XSTR("Achievements: $achievement_count $slash $achievement_total", 10289)
+$MessageNew:  XSTR("Achievements: $achievement_count $slash $achievement_total", 10211)
 $end_multi_text
 
 $Name: unlocked
 $Team: -1
-$MessageNew:  XSTR("unlocked", 10290)
+$MessageNew:  XSTR("unlocked", 10212)
 $end_multi_text
 
 $Name: missed
 $Team: -1
-$MessageNew:  XSTR("missed", 10291)
+$MessageNew:  XSTR("missed", 10213)
 $end_multi_text
 
 $Name: A1
 $Team: -1
-$MessageNew:  XSTR("Ragnarok", 10292)
+$MessageNew:  XSTR("Ragnarok", 10214)
 $end_multi_text
 
 $Name: A1D
 $Team: -1
 $MessageNew:  XSTR("Keep all transports and Ida Lewis above 60 
-percent until departure in $quoteSwan Song$quote", 10293)
+percent until departure in $quoteSwan Song$quote", 10215)
 $end_multi_text
 
 $Name: A2
 $Team: -1
-$MessageNew:  XSTR("Filled to the brim", 10294)
+$MessageNew:  XSTR("Filled to the brim", 10216)
 $end_multi_text
 
 $Name: A2D
 $Team: -1
-$MessageNew:  XSTR("Do not lose more than 2 shuttles and let to Abraham max number allowed in $quoteEnd of the High Heavens$quote", 10295)
+$MessageNew:  XSTR("Do not lose more than 2 shuttles and let to Abraham max number allowed in $quoteEnd of the High Heavens$quote", 10217)
 $end_multi_text
 
 $Name: A3
 $Team: -1
-$MessageNew:  XSTR("The Grand Ark", 10296)
+$MessageNew:  XSTR("The Grand Ark", 10218)
 $end_multi_text
 
 $Name: A3D
 $Team: -1
-$MessageNew:  XSTR("Keep Abraham above 40 percent in $quoteEnd of the High Heavens$quote", 10297)
+$MessageNew:  XSTR("Keep Abraham above 40 percent in $quoteEnd of the High Heavens$quote", 10219)
 $end_multi_text
 
 $Name: A4
 $Team: -1
-$MessageNew:  XSTR("Too big gun", 10298)
+$MessageNew:  XSTR("Too big gun", 10220)
 $end_multi_text
 
 $Name: A4D
 $Team: -1
-$MessageNew:  XSTR("Keep Akka above 60 percent in $quoteDisruption$quote", 10299)
+$MessageNew:  XSTR("Keep Akka above 60 percent in $quoteDisruption$quote", 10221)
 $end_multi_text
 
 $Name: A5
 $Team: -1
-$MessageNew:  XSTR("Donnelly's enclave", 10300)
+$MessageNew:  XSTR("Donnelly's enclave", 10222)
 $end_multi_text
 
 $Name: A5D
 $Team: -1
-$MessageNew:  XSTR("Escort all ships from Shipmaster Donnelly's convoy to Beta Volantis in $quoteCrossing the Red Sea$quote", 10301)
+$MessageNew:  XSTR("Escort all ships from Shipmaster Donnelly's convoy to Beta Volantis in $quoteCrossing the Red Sea$quote", 10223)
 $end_multi_text
 
 $Name: A6
 $Team: -1
-$MessageNew:  XSTR("Looking in Death's face", 10302)
+$MessageNew:  XSTR("Looking in Death's face", 10224)
 $end_multi_text
 
 $Name: A6D
 $Team: -1
-$MessageNew:  XSTR("Save at least half bombers in $quoteCrossing the Red Sea$quote", 10303)
+$MessageNew:  XSTR("Save at least half bombers in $quoteCrossing the Red Sea$quote", 10225)
 $end_multi_text
 
 $Name: A7
 $Team: -1
-$MessageNew:  XSTR("Defender of the Weak", 10304)
+$MessageNew:  XSTR("Defender of the Weak", 10226)
 $end_multi_text
 
 $Name: A7D
 $Team: -1
-$MessageNew:  XSTR("All ships of the convoy must survive in $quotePastoralism$quote", 10305)
+$MessageNew:  XSTR("All ships of the convoy must survive in $quotePastoralism$quote", 10227)
 $end_multi_text
 
 $Name: A8
 $Team: -1
-$MessageNew:  XSTR("Anti-terrorist", 10306)
+$MessageNew:  XSTR("Anti-terrorist", 10228)
 $end_multi_text
 
 $Name: A8D
 $Team: -1
-$MessageNew:  XSTR("Disable all transports with hostages before they depart in $quoteDangerous Game$quote", 10307)
+$MessageNew:  XSTR("Disable all transports with hostages before they depart in $quoteDangerous Game$quote", 10229)
 $end_multi_text
 
 $Name: A9
 $Team: -1
-$MessageNew:  XSTR("Just follow the OHS!", 10308)
+$MessageNew:  XSTR("Just follow the OHS!", 10230)
 $end_multi_text
 
 $Name: A9D
 $Team: -1
-$MessageNew:  XSTR("Do not lose a single drone in $quoteDirty Job$quote", 10309)
+$MessageNew:  XSTR("Do not lose a single drone in $quoteDirty Job$quote", 10231)
 $end_multi_text
 
 $Name: A10
 $Team: -1
-$MessageNew:  XSTR("Doom delayed", 10310)
+$MessageNew:  XSTR("Doom delayed", 10232)
 $end_multi_text
 
 $Name: A10D
 $Team: -1
-$MessageNew:  XSTR("Keep Harmattan and Andrasta above 50 percent until the Tyrant arrives in $quoteDoomcoming$quote", 10311)
+$MessageNew:  XSTR("Keep Harmattan and Andrasta above 50 percent until the Tyrant arrives in $quoteDoomcoming$quote", 10233)
 $end_multi_text
 
 $Name: A11
 $Team: -1
-$MessageNew:  XSTR("Penetrated", 10312)
+$MessageNew:  XSTR("Penetrated", 10234)
 $end_multi_text
 
 $Name: A11D
 $Team: -1
-$MessageNew:  XSTR("Escort all ships to Delta Lacertae save and sound in $quoteRain of Stings$quote", 10313)
+$MessageNew:  XSTR("Escort all ships to Delta Lacertae save and sound in $quoteRain of Stings$quote", 10235)
 $end_multi_text
 
 $Name: A12
 $Team: -1
-$MessageNew:  XSTR("FAR better than Erebus", 10314)
+$MessageNew:  XSTR("FAR better than Erebus", 10236)
 $end_multi_text
 
 $Name: A12D
 $Team: -1
-$MessageNew:  XSTR("Keep Anjaneya above 50 percent in $quoteEntrenchment$quote", 10315)
+$MessageNew:  XSTR("Keep Anjaneya above 50 percent in $quoteEntrenchment$quote", 10237)
 $end_multi_text
 
 $Name: A13
 $Team: -1
-$MessageNew:  XSTR("Blitzkrieg", 10316)
+$MessageNew:  XSTR("Blitzkrieg", 10238)
 $end_multi_text
 
 $Name: A13D
 $Team: -1
-$MessageNew:  XSTR("Disable the Cyaegha before it departs in $quoteHunting the Hunter$quote", 10317)
+$MessageNew:  XSTR("Disable the Cyaegha before it departs in $quoteHunting the Hunter$quote", 10239)
 $end_multi_text
 
 $Name: A14
 $Team: -1
-$MessageNew:  XSTR("A helpful hand", 10318)
+$MessageNew:  XSTR("A helpful hand", 10240)
 $end_multi_text
 
 $Name: A14D
 $Team: -1
-$MessageNew:  XSTR("Escort the Lexington and La Manche safely to Terminus in $quoteOverwhelming$quote", 10319)
+$MessageNew:  XSTR("Escort the Lexington and La Manche safely to Terminus in $quoteOverwhelming$quote", 10241)
 $end_multi_text
 
 $Name: A15
 $Team: -1
-$MessageNew:  XSTR("Allahu Ackbar!", 10320)
+$MessageNew:  XSTR("Allahu Ackbar!", 10242)
 $end_multi_text
 
 $Name: A15D
 $Team: -1
-$MessageNew:  XSTR("Save Darda'il from Shivan attacks in $quoteDay of Reckoning$quote", 10321)
+$MessageNew:  XSTR("Save Darda'il from Shivan attacks in $quoteDay of Reckoning$quote", 10243)
 $end_multi_text
 
 $Name: A16
 $Team: -1
-$MessageNew:  XSTR("A long lost child", 10322)
+$MessageNew:  XSTR("A long lost child", 10244)
 $end_multi_text
 
 $Name: A16D
 $Team: -1
-$MessageNew:  XSTR("Keep Vermillion above 40 percent in $quoteEye of the Maelstrom$quote", 10323)
+$MessageNew:  XSTR("Keep Vermillion above 40 percent in $quoteEye of the Maelstrom$quote", 10245)
 $end_multi_text
 
 $Name: A17
 $Team: -1
-$MessageNew:  XSTR("A very swift strike", 10324)
+$MessageNew:  XSTR("A very swift strike", 10246)
 $end_multi_text
 
 $Name: A17D
 $Team: -1
-$MessageNew:  XSTR("Keep Harmattan and Andrasta above 60 percent in $quoteBonum Venandi$quote", 10325)
+$MessageNew:  XSTR("Keep Harmattan and Andrasta above 60 percent in $quoteBonum Venandi$quote", 10247)
 $end_multi_text
 
 $Name: A18
 $Team: -1
-$MessageNew:  XSTR("Blunting the claws", 10326)
+$MessageNew:  XSTR("Blunting the claws", 10248)
 $end_multi_text
 
 $Name: A18D
 $Team: -1
-$MessageNew:  XSTR("Keep all gunships alive until Tyrant's primary beam cannons are destroyed in $quoteSol Invictus$quote", 10327)
+$MessageNew:  XSTR("Keep all gunships alive until Tyrant's primary beam cannons are destroyed in $quoteSol Invictus$quote", 10249)
 $end_multi_text
 
 $Name: A19
 $Team: -1
-$MessageNew:  XSTR("Dream Team", 10328)
+$MessageNew:  XSTR("Dream Team", 10250)
 $end_multi_text
 
 $Name: A19D
 $Team: -1
-$MessageNew:  XSTR("Keep the entirety of Ironclad's battlegroup above 40 percent in $quoteSol Invictus$quote", 10329)
+$MessageNew:  XSTR("Keep the entirety of Ironclad's battlegroup above 40 percent in $quoteSol Invictus$quote", 10251)
 $end_multi_text
 
 $Name: 03 - Credits
 $Team: -1
-$MessageNew:  XSTR("Col.HoRnet: 3D and 2D assets, testing", 10330)
+$MessageNew:  XSTR("Col.HoRnet: 3D and 2D assets, testing", 10252)
 $end_multi_text
 
 $Name: 04 - Credits
 $Team: -1
-$MessageNew:  XSTR("Lukasz158: Models, cbanims", 10331)
+$MessageNew:  XSTR("Lukasz158: Models, cbanims", 10253)
 $end_multi_text
 
 $Name: 05 - Credits
 $Team: -1
-$MessageNew:  XSTR("Jessnec: Effect artist", 10332)
+$MessageNew:  XSTR("Jessnec: Effect artist", 10254)
 $end_multi_text
 
 $Name: 23a - Credits
 $Team: -1
-$MessageNew:  XSTR("BlasterNT for Cor Caroli gas giant texture ", 10333)
+$MessageNew:  XSTR("BlasterNT for Cor Caroli gas giant texture ", 10255)
 $end_multi_text
 
 $Name: 23c - Credits
 $Team: -1
-$MessageNew:  XSTR("Stardock for Uranus skybox", 10334)
+$MessageNew:  XSTR("Stardock for Uranus skybox", 10256)
 $end_multi_text
 
 $Name: 73a - Credits
 $Team: -1
-$MessageNew:  XSTR("Scripts and coding: ", 10335)
+$MessageNew:  XSTR("Scripts and coding: ", 10257)
 $end_multi_text
 
 $Name: 73b - Credits
 $Team: -1
-$MessageNew:  XSTR("Admiral MS for ship save-load script", 10336)
+$MessageNew:  XSTR("Admiral MS for ship save-load script", 10258)
 $end_multi_text
 
 $Name: 73c - Credits
 $Team: -1
-$MessageNew:  XSTR("Kobrar for nodemap shaders", 10337)
+$MessageNew:  XSTR("Kobrar for nodemap shaders", 10259)
 $end_multi_text
 
 $Name: 73d - Credits
 $Team: -1
-$MessageNew:  XSTR("Axem for UI, turret-targeting and message scripts", 10338)
+$MessageNew:  XSTR("Axem for UI, turret-targeting and message scripts", 10260)
 $end_multi_text
 
 $Name: 73e - Credits
 $Team: -1
-$MessageNew:  XSTR("Also Axem for base for Dirty Job choice menu script", 10339)
+$MessageNew:  XSTR("Also Axem for base for Dirty Job choice menu script", 10261)
 $end_multi_text
 
 $Name: 46a - Credits
 $Team: -1
-$MessageNew:  XSTR("FreespaceFreak and starwolf1991 for EFF Durandal", 10340)
+$MessageNew:  XSTR("FreespaceFreak and starwolf1991 for EFF Durandal", 10262)
 $end_multi_text
 
 $Name: 58a - Credits
 $Team: -1
-$MessageNew:  XSTR("Unknown Target for new Encantona", 10341)
+$MessageNew:  XSTR("Unknown Target for new Encantona", 10263)
 $end_multi_text
 
 $Name: 83a - Credits
 $Team: -1
-$MessageNew:  XSTR("starwolf1991, Nissan, Bossman & Generic203 for proofreading", 10342)
+$MessageNew:  XSTR("starwolf1991, Nissan, Bossman & Generic203 for proofreading", 10264)
 $end_multi_text
 
 $Name: 06 - Credits
 $Team: -1
-$MessageNew:  XSTR("starwolf1991: proofreading, weapon effects", 10343)
+$MessageNew:  XSTR("starwolf1991: proofreading, weapon effects", 10265)
 $end_multi_text
 
 $Name: 63a - Credits
 $Team: -1
-$MessageNew:  XSTR("Darius for remix of Darkside", 10344)
+$MessageNew:  XSTR("Darius for remix of Darkside", 10266)
 $end_multi_text
 
 $Name: 73f - Credits
 $Team: -1
-$MessageNew:  XSTR("Inferno Team for escort list script", 10345)
+$MessageNew:  XSTR("Inferno Team for escort list script", 10267)
 $end_multi_text
 
 #Reinforcements		;! 0 total
