@@ -1,0 +1,4748 @@
+#Mission Info
+
+$Version: 23.1
+$Name:  XSTR("Break and Enter", 5303)
+$Author: Darius
+$Created: 06/19/22 at 20:00:38
+$Modified: 07/24/25 at 19:58:54
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 3326)
+$end_multi_text
++Game Type Flags: 1
++Flags: 786624
++Fog Near Mult: 1.000000
+
++Fog Far Mult: 1.000000
+
+
++Disallow Support: 0
++Hull Repair Ceiling: 95.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: 7925.850586, 10879.804688, -3336.870850
++Viewer orient:
+	0.963163, 0.000003, 0.268917,
+	-0.196011, 0.684637, 0.702034,
+	-0.184108, -0.728884, 0.659418
+
+$Starting wing names: ( "Able" "Baker" "Charlie" )
+$Squadron wing names: ( "Able" "Baker" "Charlie" "Dog" "Easy" )
+$Team-versus-team wing names: ( "Able" "Zeta" )
+
+$Load Screen 1024: 2_LoadingBGM00.png
+
+$Skybox Model: htsb.pof
+
+$AI Profile: Solaris
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"boardcount"		"0"		"number"
+		1		"breachlosses"		"0"		"number"
+		2		"i18nVariable1"		"#Cameron"		"string"
+		3		"i18nVariable2"		"#Malikan Pilot"		"string"
+		4		"i18nVariable3"		"#Aria Tactical"		"string"
+		5		"i18nVariable4"		"#Guardador Depot 1"		"string"
+		6		"i18nVariable5"		"ASM Platform"		"string"
+		7		"i18nVariable6"		"ASM Silo"		"string"
+		8		"i18nVariable7"		"CIWS Turret"		"string"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 0
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 1
+
+$Formula: ( is-event-true-delay 
+   "mission complete title" 
+   0 
+)
+$Multi text
+    XSTR("That went about as well as expected.
+
+Bertini's great offensive went off in typical Sulsian fashion. There was little to no coordination between Hegemony and Commonwealth forces. Despite this, we did what had to be done and Guardador will once again start filling Sulsian coffers. Sometimes you've just got to take what you can get.
+
+The Sinarus Combine are of course playing this up as much as they can. War Secretary Szekerka's brought out the entire checklist for this one: condemning 'Commonwealth attacks against civilian targets' and our 'illegal occupation of Sulsian territory'. Look his speech up if you need a laugh. If you want an idea of what the Combine are up to, pay attention to what they're accusing others of doing.
+
+Listen. I know you've been away from Fleet for a while and I don't know what discipline standards Erskine Station maintained when you were there. You're a Lieutenant Commander now, which means you hold a command rank. More than ever you need to uphold Crown Navy standards of behaviour. This means maintaining discipline, upholding professional conduct and not bringing disrepute to His Majesty's Navy.
+
+I don't ask for much from my crew, and you've already impressed me with your piloting skill. Work on improving these shortcomings and I think we'll work great together.", 5304)
+$end_multi_text
+$Voice: 24-db1
+$Recommendation text:
+    XSTR("", 2696)
+$end_multi_text
+
+#Alternate Types:
+$Alt: Power Station
+
+#end
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Able 1
+$Ship Choices: (
+	"Lightning-class Interceptor"	1
+)
+
++Weaponry Pool: (
+	"Phalanx"	1
+	"Rapier"	4
+	"Starfire"	1
+)
+
+#Objects		;! 59 total
+
+$Name: Guardador Station		;! Object #0
+$Display Name: XSTR("Guardador Station", 4913)
+$Class: Civilian Station#2
+$Team: Neutral
+$Location: 9025.690430, -0.000244, 7864.783203
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Asteroid#Brown 13		;! Object #1
+$Display Name: XSTR("Asteroid", 3320)
+$Class: Asteroid#Brown
+$Team: Neutral
+$Location: 10317.795898, -1590.455566, 4099.701660
+$Orientation:
+	1.000000, -0.000000, 0.000000,
+	0.000000, 0.821158, -0.570701,
+	0.000000, 0.570701, 0.821158
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Asteroid Field 3#3D 14		;! Object #2
+$Display Name: XSTR("Asteroid Field 3", 3291)
+$Class: Asteroid Field 3#3D
+$Team: Neutral
+$Location: 6633.417480, -5.512789, 2729.930420
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10000
+
+$Name: Mining Station		;! Object #3
+$Display Name: XSTR("Mining Station", 3208)
+$Class: Mining Station
+$Team: Neutral
+$Location: 5991.486816, 9.154267, 2634.338135
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Point Defense Platform 1		;! Object #4
+$Display Name: XSTR("Point Defense Platform 1", 5305)
+$Class: Point Defense Platform
+$Team: Hostile
+$Location: 9053.245117, -0.390625, 12254.421875
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Guardador Transponder		;! Object #5
+$Display Name: XSTR("Guardador Transponder", 4917)
+$Class: Transponder
+$Team: Neutral
+$Location: -3595.695557, 1331.136353, 11042.923828
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Guardador Observatory		;! Object #6
+$Display Name: XSTR("Guardador Observatory", 4918)
+$Class: Radar Platform
+$Team: Neutral
+$Location: 5788.248047, 1779.118042, 12576.274414
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Aria		;! Object #7
+$Display Name: XSTR("Aria", 4729)
+$Class: Arrowhead-class Corvette
+$Team: Friendly
+$Location: 4458.327148, 3983.998535, -6896.559082
+$Orientation:
+	1.000000, -0.000000, 0.000000,
+	0.000000, 0.976796, -0.214170,
+	0.000000, 0.214170, 0.976796
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Able 1		;! Object #8
+$Display Name: XSTR("Able 1", 5222)
+$Class: Raptor-class Defender
+$Team: Friendly
+$Location: 4447.410156, 3985.971680, -6786.426270
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 0.976796, -0.214170,
+	0.000000, 0.214170, 0.976796
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "player-start" "missile-protect-ship" )
++Flags2: ( "no-subspace-drive" "no-ets" )
++Respawn priority: 0
++Docked With: Aria
+$Docker Point: Port Fighter Rail
+$Dockee Point: Docking Point
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Prennia		;! Object #9
+$Display Name: XSTR("Prennia", 5306)
+$Class: Hinotama-class Cruiser
+$Team: Friendly
+$Location: 3818.079590, 3871.299805, 2489.825195
+$Orientation:
+	0.750966, -0.256050, -0.608678,
+	0.384549, 0.918911, 0.087889,
+	0.536817, -0.300067, 0.788535
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Subsystem: turret02
++Sbank Ammo: ( 0 )
++Subsystem: turret03
++Sbank Ammo: ( 0 )
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: turret08
++Subsystem: turret09
++Subsystem: mturret1
++Sbank Ammo: ( 0 )
++Subsystem: mturret2
++Sbank Ammo: ( 0 )
++Subsystem: mturret3
++Sbank Ammo: ( 0 )
++Subsystem: mturret4
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "dir undock" 
+   150 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 90
++Docked With: Breach Pod 4
+$Docker Point: Maindock
+$Dockee Point: AssaultDockL3
++Docked With: Breach Pod 3
+$Docker Point: Maindock
+$Dockee Point: AssaultDockR3
++Docked With: Breach Pod 2
+$Docker Point: Maindock
+$Dockee Point: AssaultDockL1
++Docked With: Breach Pod 1
+$Docker Point: Maindock
+$Dockee Point: AssaultDockR1
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Breach Pod 1		;! Object #10
+$Display Name: XSTR("Breach Pod 1", 5307)
+$Class: Amun-class Transport
+$Team: Friendly
+$Location: 3768.723145, 3842.151367, 2544.038330
+$Orientation:
+	-0.384549, -0.918911, -0.087889,
+	-0.536817, 0.300067, -0.788535,
+	0.750966, -0.256050, -0.608678
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Primary Banks: ( "Huaqing#Turret" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "lock-all-turrets" )
++Respawn priority: 0
++Docked With: Prennia
+$Docker Point: AssaultDockR1
+$Dockee Point: Maindock
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Breach Pod 2		;! Object #11
+$Display Name: XSTR("Breach Pod 2", 5308)
+$Class: Amun-class Transport
+$Team: Friendly
+$Location: 3862.743896, 3810.093994, 2467.831787
+$Orientation:
+	0.384549, 0.918911, 0.087889,
+	-0.536817, 0.300067, -0.788535,
+	-0.750966, 0.256050, 0.608678
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Primary Banks: ( "Huaqing#Turret" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "lock-all-turrets" )
++Respawn priority: 0
++Docked With: Prennia
+$Docker Point: AssaultDockL1
+$Dockee Point: Maindock
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Breach Pod 3		;! Object #12
+$Display Name: XSTR("Breach Pod 3", 5309)
+$Class: Amun-class Transport
+$Team: Friendly
+$Location: 3741.882080, 3857.154785, 2504.611572
+$Orientation:
+	0.384549, 0.918911, 0.087889,
+	0.536817, -0.300067, 0.788535,
+	0.750966, -0.256050, -0.608678
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Primary Banks: ( "Huaqing#Turret" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "lock-all-turrets" )
++Respawn priority: 0
++Docked With: Prennia
+$Docker Point: AssaultDockR3
+$Dockee Point: Maindock
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Breach Pod 4		;! Object #13
+$Display Name: XSTR("Breach Pod 4", 5310)
+$Class: Amun-class Transport
+$Team: Friendly
+$Location: 3835.903076, 3825.097412, 2428.405273
+$Orientation:
+	-0.384549, -0.918911, -0.087889,
+	0.536817, -0.300067, 0.788535,
+	-0.750966, 0.256050, 0.608678
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
++Primary Banks: ( "Huaqing#Turret" )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "lock-all-turrets" )
++Respawn priority: 0
++Docked With: Prennia
+$Docker Point: AssaultDockL3
+$Dockee Point: Maindock
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: ASM Platform 1		;! Object #14
+$Display Name: XSTR("ASM Platform 1", 5311)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 6604.884277, -398.350098, 4562.376953
+$Orientation:
+	-0.507718, 0.000000, 0.861524,
+	0.000000, 1.000000, 0.000000,
+	-0.861524, 0.000000, -0.507718
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 2		;! Object #15
+$Display Name: XSTR("ASM Platform 2", 5312)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 6600.776855, -398.350586, 4845.652832
+$Orientation:
+	-0.507718, 0.000000, 0.861524,
+	0.000000, 1.000000, 0.000000,
+	-0.861524, 0.000000, -0.507718
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 3		;! Object #16
+$Display Name: XSTR("ASM Platform 3", 5313)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 6597.077637, -398.351074, 5102.782227
+$Orientation:
+	-0.507718, 0.000000, 0.861524,
+	0.000000, 1.000000, 0.000000,
+	-0.861524, 0.000000, -0.507718
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 4		;! Object #17
+$Display Name: XSTR("ASM Platform 4", 5314)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 6598.778320, -398.350586, 5443.012695
+$Orientation:
+	-0.507718, 0.000000, 0.861524,
+	0.000000, 1.000000, 0.000000,
+	-0.861524, 0.000000, -0.507718
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Point Defense Platform 2		;! Object #18
+$Display Name: XSTR("Point Defense Platform 2", 5315)
+$Class: Point Defense Platform
+$Team: Hostile
+$Location: 4913.536133, -484.179688, 2370.026855
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Point Defense Platform 3		;! Object #19
+$Display Name: XSTR("Point Defense Platform 3", 5316)
+$Class: Point Defense Platform
+$Team: Hostile
+$Location: 7360.959473, -679.463684, 9165.582031
+$Orientation:
+	-0.507718, 0.000000, 0.861523,
+	0.000000, 1.000000, 0.000000,
+	-0.861523, 0.000000, -0.507718
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Camperton		;! Object #20
+$Display Name: XSTR("Camperton", 5317)
+$Class: Gryphon-class Destroyer
+$Team: Friendly
+$Location: 4934.248047, 3578.471191, -5531.074219
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: mturret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Zebra 1		;! Object #21
+$Display Name: XSTR("Zebra 1", 5318)
+$Class: Armadillo-class Gunship
+$Team: Hostile
+$Location: 6988.853027, -0.000519, 6894.161133
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Zebra 2		;! Object #22
+$Display Name: XSTR("Zebra 2", 5319)
+$Class: Armadillo-class Gunship
+$Team: Hostile
+$Location: 6933.531738, -0.000458, 6847.846680
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Zebra 3		;! Object #23
+$Display Name: XSTR("Zebra 3", 5320)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: 7055.382813, -0.000488, 6832.060547
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: Striker
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Storm		;! Object #24
+$Display Name: XSTR("Storm", 5321)
+$Class: Orleans-class Cutter
+$Team: Hostile
+$Location: 9218.304688, 378.720703, 12437.302734
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "storm retreats" 
+   20 
+)
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 2
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Scythe		;! Object #25
+$Display Name: XSTR("Scythe", 5322)
+$Class: Orleans-class Cutter
+$Team: Hostile
+$Location: 7928.091797, 0.000977, 6515.800781
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "scythe retreats" 
+   20 
+)
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 2
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Yoke 1		;! Object #26
+$Display Name: XSTR("Yoke 1", 5240)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: 8989.746094, 327.302246, 12469.357422
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Yoke 2		;! Object #27
+$Display Name: XSTR("Yoke 2", 5241)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: 8915.555664, 327.302246, 12481.007813
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Yoke 3		;! Object #28
+$Display Name: XSTR("Yoke 3", 5323)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: 8997.954102, 327.302246, 12604.138672
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Baker 1		;! Object #29
+$Display Name: XSTR("Baker 1", 5324)
+$Class: Goshawk-class Attack Drone
+$Team: Friendly
+$Location: 4603.813477, 2918.316406, -5501.593262
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-subspace-drive" "no-builtin-messages" "no-ets" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" "disable ship" "disarm ship" "guard ship" "ignore ship" "form on wing" "cover me" "attack any" "disable subsys" )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Baker 2		;! Object #30
+$Display Name: XSTR("Baker 2", 5325)
+$Class: Goshawk-class Attack Drone
+$Team: Friendly
+$Location: 4510.538086, 2918.316406, -5498.643555
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-subspace-drive" "no-builtin-messages" "no-ets" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" "disable ship" "disarm ship" "guard ship" "ignore ship" "form on wing" "cover me" "attack any" "disable subsys" )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Baker 3		;! Object #31
+$Display Name: XSTR("Baker 3", 5326)
+$Class: Goshawk-class Attack Drone
+$Team: Friendly
+$Location: 4498.928223, 3155.242920, -5597.243652
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-subspace-drive" "no-builtin-messages" "no-ets" "ship-locked" "weapons-locked" )
++Respawn priority: 0
++Orders Accepted List: ( "attack ship" "disable ship" "disarm ship" "guard ship" "ignore ship" "form on wing" "cover me" "attack any" "disable subsys" )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: ASM Platform 9		;! Object #32
+$Display Name: XSTR("ASM Platform 9", 5327)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 12057.834961, -398.351563, 9929.641602
+$Orientation:
+	-0.949519, -0.000000, -0.313710,
+	0.000000, 1.000000, -0.000000,
+	0.313710, -0.000000, -0.949519
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 5
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 10		;! Object #33
+$Display Name: XSTR("ASM Platform 10", 5328)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 12058.861328, -398.352051, 9632.384766
+$Orientation:
+	-0.949519, -0.000000, -0.313710,
+	0.000000, 1.000000, -0.000000,
+	0.313710, -0.000000, -0.949519
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 5
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 11		;! Object #34
+$Display Name: XSTR("ASM Platform 11", 5329)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 12065.697266, -398.352783, 9413.904297
+$Orientation:
+	-0.949519, -0.000000, -0.313710,
+	0.000000, 1.000000, -0.000000,
+	0.313710, -0.000000, -0.949519
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 5
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 12		;! Object #35
+$Display Name: XSTR("ASM Platform 12", 5330)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 12064.562500, -398.352051, 9018.400391
+$Orientation:
+	-0.949519, -0.000000, -0.313710,
+	0.000000, 1.000000, -0.000000,
+	0.313710, -0.000000, -0.949519
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 5
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Point Defense Platform 4		;! Object #36
+$Display Name: XSTR("Point Defense Platform 4", 5331)
+$Class: Point Defense Platform
+$Team: Hostile
+$Location: 10720.193359, 528.660400, 9265.182617
+$Orientation:
+	-0.949519, 0.000000, -0.313710,
+	0.000000, 1.000000, 0.000000,
+	0.313710, 0.000000, -0.949519
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Dog 1		;! Object #37
+$Display Name: XSTR("Dog 1", 5332)
+$Class: Goshawk-class Attack Drone
+$Team: Friendly
+$Location: 4764.651367, 2918.316406, -5648.366699
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-builtin-messages" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Dog 2		;! Object #38
+$Display Name: XSTR("Dog 2", 5333)
+$Class: Goshawk-class Attack Drone
+$Team: Friendly
+$Location: 4671.375977, 2918.316406, -5645.416992
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-builtin-messages" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Dog 3		;! Object #39
+$Display Name: XSTR("Dog 3", 5334)
+$Class: Goshawk-class Attack Drone
+$Team: Friendly
+$Location: 4659.766113, 3155.242920, -5744.017090
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-builtin-messages" "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Oldwater		;! Object #40
+$Display Name: XSTR("Oldwater", 5335)
+$Class: Orleans-class Cutter
+$Team: Hostile
+$Location: 5537.786133, -0.000488, 9929.236328
+$Orientation:
+	-0.901819, 0.000000, -0.432115,
+	0.000000, 1.000000, 0.000000,
+	0.432115, 0.000000, -0.901819
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 1 "Apex" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 1
++Group: 0
++Score: 10
+
+$Name: Apex		;! Object #41
+$Display Name: XSTR("Apex", 5336)
+$Class: Icarus-class Corvette
+$Team: Hostile
+$Location: 4780.229492, 394.073212, 10100.262695
+$Orientation:
+	-0.901819, 0.000000, -0.432115,
+	0.000000, 1.000000, 0.000000,
+	0.432115, 0.000000, -0.901819
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 100
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: mturret01
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 90 "Prennia" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "escort" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Escort priority: 1
++Docked With: Xray 4
+$Docker Point: Docking Point
+$Dockee Point: Starboard Dock
++Docked With: Xray 3
+$Docker Point: Docking Point
+$Dockee Point: Port Dock
++Docked With: Xray 2
+$Docker Point: Docking Point
+$Dockee Point: Ventral Dock
++Docked With: Xray 1
+$Docker Point: Docking Point
+$Dockee Point: Dorsal Dock 1
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Xray 1		;! Object #42
+$Display Name: XSTR("Xray 1", 3991)
+$Class: Armadillo-class Gunship
+$Team: Hostile
+$Location: 4792.328613, 428.273224, 10075.011719
+$Orientation:
+	-0.901819, 0.000000, -0.432115,
+	0.000000, -1.000000, 0.000000,
+	-0.432115, 0.000000, 0.901819
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Apex
+$Docker Point: Dorsal Dock 1
+$Dockee Point: Docking Point
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Xray 2		;! Object #43
+$Display Name: XSTR("Xray 2", 3992)
+$Class: Armadillo-class Gunship
+$Team: Hostile
+$Location: 4829.058594, 350.873199, 9998.357422
+$Orientation:
+	-0.901819, 0.000000, -0.432115,
+	0.000000, 1.000000, 0.000000,
+	0.432115, 0.000000, -0.901819
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Apex
+$Docker Point: Ventral Dock
+$Dockee Point: Docking Point
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Xray 3		;! Object #44
+$Display Name: XSTR("Xray 3", 4301)
+$Class: Armadillo-class Gunship
+$Team: Hostile
+$Location: 4812.448242, 389.073212, 10123.740234
+$Orientation:
+	0.000000, 1.000000, 0.000000,
+	-0.901819, 0.000000, -0.432115,
+	-0.432115, 0.000000, 0.901819
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Apex
+$Docker Point: Port Dock
+$Dockee Point: Docking Point
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Xray 4		;! Object #45
+$Display Name: XSTR("Xray 4", 4300)
+$Class: Armadillo-class Gunship
+$Team: Hostile
+$Location: 4741.745117, 389.073212, 10089.862305
+$Orientation:
+	0.000000, -1.000000, 0.000000,
+	0.901819, 0.000000, 0.432115,
+	-0.432115, -0.000000, 0.901819
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Apex
+$Docker Point: Starboard Dock
+$Dockee Point: Docking Point
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Repair Drone 1		;! Object #46
+$Display Name: XSTR("Repair Drone 1", 5337)
+$Class: Repair Drone#Commonwealth
+$Team: Friendly
+$Location: 5001.429199, -0.002930, -3146.182129
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Goals: ( goals ( ai-waypoints-once "drone waypoint" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Aria
+$Arrival Cue: ( is-event-true-delay 
+   "player regains control" 
+   25 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 50
+
+$Name: ASM Platform 5		;! Object #47
+$Display Name: XSTR("ASM Platform 5", 5338)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 6605.454102, -398.350098, 5717.841797
+$Orientation:
+	-0.507718, 0.000000, 0.861524,
+	0.000000, 1.000000, 0.000000,
+	-0.861524, 0.000000, -0.507718
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 6		;! Object #48
+$Display Name: XSTR("ASM Platform 6", 5339)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 6595.349121, -398.349854, 6027.886230
+$Orientation:
+	-0.507718, 0.000000, 0.861524,
+	0.000000, 1.000000, 0.000000,
+	-0.861524, 0.000000, -0.507718
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 7		;! Object #49
+$Display Name: XSTR("ASM Platform 7", 5340)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 6592.525879, -398.350586, 6396.586426
+$Orientation:
+	-0.507718, 0.000000, 0.861524,
+	0.000000, 1.000000, 0.000000,
+	-0.861524, 0.000000, -0.507718
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 8		;! Object #50
+$Display Name: XSTR("ASM Platform 8", 5341)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 6605.594238, -398.350586, 6806.340820
+$Orientation:
+	-0.507718, 0.000000, 0.861524,
+	0.000000, 1.000000, 0.000000,
+	-0.861524, 0.000000, -0.507718
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
++Sbank Ammo: ( 0 )
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 4
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 13		;! Object #51
+$Display Name: XSTR("ASM Platform 13", 5342)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 12061.293945, -398.351318, 8768.822266
+$Orientation:
+	-0.949519, -0.000000, -0.313710,
+	0.000000, 1.000000, -0.000000,
+	0.313710, -0.000000, -0.949519
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 5
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 14		;! Object #52
+$Display Name: XSTR("ASM Platform 14", 5343)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 12057.865234, -398.351807, 8342.040039
+$Orientation:
+	-0.949519, -0.000000, -0.313710,
+	0.000000, 1.000000, -0.000000,
+	0.313710, -0.000000, -0.949519
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 5
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 15		;! Object #53
+$Display Name: XSTR("ASM Platform 15", 5344)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 12054.116211, -398.352295, 8019.568359
+$Orientation:
+	-0.949519, -0.000000, -0.313710,
+	0.000000, 1.000000, -0.000000,
+	0.313710, -0.000000, -0.949519
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 5
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: ASM Platform 16		;! Object #54
+$Display Name: XSTR("ASM Platform 16", 5345)
+$Class: ASM Platform
+$Team: Hostile
+$Location: 12054.492188, -398.351563, 7662.721680
+$Orientation:
+	-0.949519, -0.000000, -0.313710,
+	0.000000, 1.000000, -0.000000,
+	0.313710, -0.000000, -0.949519
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "missile-protect-ship" )
++Flags2: ( )
++Respawn priority: 0
++Hotkey: 5
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Zebra 4		;! Object #55
+$Display Name: XSTR("Zebra 4", 5346)
+$Class: Mace-class Fighter
+$Team: Hostile
+$Location: 7000.061523, -0.000427, 6785.746094
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: Striker
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Group: 0
++Use Table Score:
++Score: 10
+
+$Name: Guardador Depot 1		;! Object #56
+$Display Name: XSTR("Guardador Depot 1", 5347)
+$Class: Cargo Depot
+$Team: Neutral
+$Location: 10945.378906, 0.000000, 6874.013672
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Guardador Depot 2		;! Object #57
+$Display Name: XSTR("Guardador Depot 2", 5348)
+$Class: Cargo Depot
+$Team: Neutral
+$Location: 11011.773438, 0.000000, 8539.287109
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+$Name: Guardador Depot 3		;! Object #58
+$Display Name: XSTR("Guardador Depot 3", 5349)
+$Class: Cargo Depot
+$Team: Neutral
+$Location: 11083.367188, 0.000000, 10498.719727
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "invulnerable" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Group: 0
++Use Table Score:
++Score: 0
+
+#Wings		;! 6 total
+
+$Name: Able
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Able 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Able 1"
+)
++Hotkey: 0
++Flags: ( )
+
+$Name: Zebra
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Zebra 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Zebra 1"
+	"Zebra 2"
+	"Zebra 3"
+	"Zebra 4"
+)
+$AI Goals: ( goals ( ai-guard "Scythe" 50 ) )
++Hotkey: 7
++Flags: ( )
+
+$Name: Yoke
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Yoke 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Yoke 1"
+	"Yoke 2"
+	"Yoke 3"
+)
+$AI Goals: ( goals ( ai-guard "Storm" 50 ) )
++Hotkey: 6
++Flags: ( )
+
+$Name: Baker
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Baker 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Camperton
+$Arrival Cue: ( is-event-true-delay 
+   "launching drones" 
+   7 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Camperton
+$Departure Cue: ( is-event-true-delay 
+   "station captured" 
+   3 
+)
+$Ships: (		;! 3 total
+	"Baker 1"
+	"Baker 2"
+	"Baker 3"
+)
++Flags: ( )
+
+$Name: Dog
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Dog 1
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Camperton
+$Arrival Cue: ( is-event-true-delay 
+   "all drones lost" 
+   55 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Camperton
+$Departure Cue: ( is-event-true-delay 
+   "station captured" 
+   3 
+)
+$Ships: (		;! 3 total
+	"Dog 1"
+	"Dog 2"
+	"Dog 3"
+)
+$AI Goals: ( goals ( ai-guard "Able 1" 50 ) )
++Flags: ( )
+
+$Name: Xray
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Xray 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Xray 1"
+	"Xray 2"
+	"Xray 3"
+	"Xray 4"
+)
++Flags: ( )
+
+#Events		;! 115 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@i18nVariable1[#Cameron]" 
+      "#Cameron" 
+      4820 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable2[#Malikan Pilot]" 
+      "#Malikan Pilot" 
+      5402 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable3[#Aria Tactical]" 
+      "#Aria Tactical" 
+      4821 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable4[#Guardador Depot 1]" 
+      "#Guardador Depot 1" 
+      5403 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform" 
+      3225 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable6[ASM Silo]" 
+      "ASM Silo" 
+      5125 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable7[CIWS Turret]" 
+      "CIWS Turret" 
+      4504 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      0 
+   )
+   ( script-eval-block 
+      "Scroll:Write(" 
+      "'title1'," 
+      "15,12,0.05,2,2,true,10,false)" 
+   )
+)
++Name: title
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( key-pressed "Alt-D" ) 
+   ( jettison-cargo "Aria" 100 ) 
+   ( training-msg "detach" ) 
+)
++Name: dir undock
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Undock", 4927)
++Objective key:  XSTR("$Alt-D$", 3502)
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "dir undock" 
+      2500 
+   )
+   ( player-not-use-ai ) 
+)
++Name: player regains control
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Zebra" ) 
+   ( add-goal 
+      "Zebra" 
+      ( ai-guard "Guardador Station" 89 ) 
+   )
+)
++Name: zebra patrol
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( lua-radaricon-activate 
+      "Friendly" 
+      "Hostile" 
+      "Neutral" 
+      "Unknown" 
+      "Surrendered" 
+      "Traitor" 
+   )
+   ( add-goal 
+      "Able 1" 
+      ( ai-play-dead 89 ) 
+   )
+   ( set-support-ship 
+      "Docking Bay" 
+      "Aria" 
+      "Docking Bay" 
+      "Aria" 
+      "<species support ship class>" 
+      -1 
+   )
+   ( turret-free-all 
+      "ASM Platform 1" 
+      "ASM Platform 2" 
+      "ASM Platform 3" 
+      "ASM Platform 4" 
+      "ASM Platform 9" 
+      "ASM Platform 10" 
+      "ASM Platform 11" 
+      "ASM Platform 12" 
+      "ASM Platform 5" 
+      "ASM Platform 6" 
+      "ASM Platform 7" 
+      "ASM Platform 8" 
+      "ASM Platform 13" 
+      "ASM Platform 14" 
+      "ASM Platform 15" 
+      "ASM Platform 16" 
+   )
+   ( ship-subsys-guardian-threshold 
+      33 
+      "Able 1" 
+      "Sensors" 
+      "Communication" 
+   )
+)
++Name: mission setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 1" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 2" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 3" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 4" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 9" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 10" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 11" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 12" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 5" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 6" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 7" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 8" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 13" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 14" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 15" 
+   )
+   ( lua-mark-ship 
+      "@i18nVariable5[ASM Platform]" 
+      "ASM Platform 16" 
+   )
+)
++Name: mark asms
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( lua-mark-subsystem 
+      "ASM Platform 1" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 2" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 3" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 4" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 5" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 6" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 7" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 8" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 9" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 10" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 11" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 12" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 13" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 14" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 15" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "ASM Platform 16" 
+      "@i18nVariable6[ASM Silo]" 
+      "mturret1" 
+   )
+   ( lua-mark-subsystem 
+      "Point Defense Platform 1" 
+      "@i18nVariable7[CIWS Turret]" 
+      "turret01" 
+      "turret02" 
+   )
+   ( lua-mark-subsystem 
+      "Point Defense Platform 2" 
+      "@i18nVariable7[CIWS Turret]" 
+      "turret01" 
+      "turret02" 
+   )
+   ( lua-mark-subsystem 
+      "Point Defense Platform 3" 
+      "@i18nVariable7[CIWS Turret]" 
+      "turret01" 
+      "turret02" 
+   )
+   ( lua-mark-subsystem 
+      "Point Defense Platform 4" 
+      "@i18nVariable7[CIWS Turret]" 
+      "turret01" 
+      "turret02" 
+   )
+)
++Name: mark turrets
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Storm" 
+            "turret01" 
+            3 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Storm" 
+            "turret02" 
+            3 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Storm" 
+            "turret03" 
+            3 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Storm" 
+            "turret04" 
+            3 
+         )
+      )
+      ( < ( hits-left "Storm" ) 44 ) 
+   )
+   ( clear-goals "Storm" ) 
+   ( add-goal 
+      "Storm" 
+      ( ai-waypoints-once 
+         "patrol boats retreat" 
+         89 
+      )
+   )
+)
++Name: storm retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-subsystem-destroyed-delay 
+            "Scythe" 
+            "turret01" 
+            3 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Scythe" 
+            "turret02" 
+            3 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Scythe" 
+            "turret03" 
+            3 
+         )
+         ( is-subsystem-destroyed-delay 
+            "Scythe" 
+            "turret04" 
+            3 
+         )
+      )
+      ( < ( hits-left "Scythe" ) 44 ) 
+   )
+   ( clear-goals "Scythe" ) 
+   ( add-goal 
+      "Scythe" 
+      ( ai-waypoints-once 
+         "patrol boats retreat 2" 
+         89 
+      )
+   )
+)
++Name: scythe retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 0 "Baker" ) 
+   ( add-goal 
+      "Baker" 
+      ( ai-ignore-new "ASM Platform 1" 89 ) 
+   )
+   ( add-goal 
+      "Baker" 
+      ( ai-ignore-new "ASM Platform 2" 89 ) 
+   )
+   ( add-goal 
+      "Baker" 
+      ( ai-ignore-new "ASM Platform 3" 89 ) 
+   )
+   ( add-goal 
+      "Baker" 
+      ( ai-ignore-new "ASM Platform 4" 89 ) 
+   )
+   ( add-goal 
+      "Baker" 
+      ( ai-ignore-new "Storm" 89 ) 
+   )
+   ( add-goal 
+      "Baker" 
+      ( ai-ignore-new "Scythe" 89 ) 
+   )
+   ( add-goal 
+      "Baker" 
+      ( ai-guard "Able 1" 89 ) 
+   )
+)
++Name: Baker setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      1 
+   )
+   ( play-sound-from-file 
+      "Music_CW_Ambient3" 
+      99 
+   )
+)
++Name: music start
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance-to-bbox 
+         "<any friendly>" 
+         "<any hostile>" 
+      )
+      5000 
+   )
+   ( play-sound-from-file 
+      "Music_CW_Battle1" 
+      99 
+   )
+)
++Name: combat music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Prennia" ) 
+   ( unprotect-ship 
+      "Breach Pod 1" 
+      "Breach Pod 2" 
+      "Breach Pod 3" 
+      "Breach Pod 4" 
+   )
+)
++Name: unprotect transports
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "take out asms" 
+      3 
+   )
+   ( do-nothing ) 
+)
++Name: first asm trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 1" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 1" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 2" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 2" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 3" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 3" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 4" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 4" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 5" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 5" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 6" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 6" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 7" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 7" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 8" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 8" 
+            "mturret1" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: first group asms destroyed
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Neutralise ASM Group 1", 5350)
++Objective key:  XSTR("F9", 3375)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "take out asms" 
+      3 
+   )
+   ( do-nothing ) 
+)
++Name: second asm trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 9" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 9" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 10" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 10" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 11" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 11" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 12" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 12" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 13" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 13" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 14" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 14" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 15" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 15" 
+            "mturret1" 
+            0 
+         )
+      )
+      ( or 
+         ( is-destroyed-delay 
+            0 
+            "ASM Platform 16" 
+         )
+         ( is-subsystem-destroyed-delay 
+            "ASM Platform 16" 
+            "mturret1" 
+            0 
+         )
+      )
+   )
+   ( do-nothing ) 
+)
++Name: second group asms destroyed
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Neutralise ASM Group 2", 5351)
++Objective key:  XSTR("F10", 3378)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "engage fighters" 
+      3 
+   )
+   ( do-nothing ) 
+)
++Name: destroy yoke trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Yoke" ) 
+   ( do-nothing ) 
+)
++Name: dir destroy Yoke
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Yoke", 5352)
++Objective key:  XSTR("F11", 3380)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "engage fighters" 
+      3 
+   )
+   ( do-nothing ) 
+)
++Name: destroy zebra trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Zebra" ) 
+   ( do-nothing ) 
+)
++Name: dir destroy Zebra
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Objective:  XSTR("Destroy Zebra", 5353)
++Objective key:  XSTR("F12", 4130)
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "player regains control" 
+      25 
+   )
+   ( clear-goals "Scythe" ) 
+   ( add-goal 
+      "Scythe" 
+      ( ai-waypoints "Scythe patrol" 89 ) 
+   )
+   ( ship-rot-maneuver 
+      "Scythe" 
+      0 
+      0 
+      0 
+      100 
+      ( true ) 
+      1 
+   )
+)
++Name: scythe patrols
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "player regains control" 
+      12 
+   )
+   ( clear-goals "Storm" ) 
+   ( add-goal 
+      "Storm" 
+      ( ai-waypoints "Storm patrol" 89 ) 
+   )
+   ( ship-rot-maneuver 
+      "Storm" 
+      0 
+      0 
+      0 
+      100 
+      ( true ) 
+      1 
+   )
+)
++Name: storm patrols
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 10 "Prennia" ) 
+   ( clear-goals "Storm" ) 
+   ( add-goal 
+      "Storm" 
+      ( ai-chase "Prennia" 89 ) 
+   )
+)
++Name: storm attacks P
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "we gave coordinates" 
+      4 
+   )
+   ( add-ai-goal-track-ship 
+      "Aria" 
+      "Prennia" 
+      "aria waypoint" 
+      100 
+      700 
+      -500 
+      0 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+   ( add-ai-goal-track-ship 
+      "Camperton" 
+      "Prennia" 
+      "camperton waypoint" 
+      100 
+      -700 
+      -500 
+      0 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+)
++Name: aria and camp escort P
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( turret-free-all "Camperton" ) 
+)
++Name: unlock camp asms
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "engage fighters" 
+      0 
+   )
+   ( clear-goals "Zebra" ) 
+   ( add-goal 
+      "Zebra" 
+      ( ai-chase "Able" 89 ) 
+   )
+   ( add-goal 
+      "Zebra" 
+      ( ai-chase "Baker" 89 ) 
+   )
+)
++Name: zebra attacks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "beginning boarding" 
+         9 
+      )
+      ( is-event-true-delay 
+         "sabotaging station" 
+         9 
+      )
+   )
+   ( jettison-cargo "Prennia" 100 ) 
+   ( add-remove-escort "Prennia" 0 ) 
+   ( add-remove-escort 
+      "Breach Pod 1" 
+      100 
+   )
+   ( add-remove-escort 
+      "Breach Pod 2" 
+      100 
+   )
+   ( add-remove-escort 
+      "Breach Pod 3" 
+      100 
+   )
+   ( add-remove-escort 
+      "Breach Pod 4" 
+      100 
+   )
+)
++Name: breach pods eject
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Breach Pod 1" 
+      ( ai-dock 
+         "Guardador Station" 
+         "Maindock" 
+         "Top1" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Breach Pod 2" 
+      ( ai-dock 
+         "Guardador Station" 
+         "Maindock" 
+         "Top2" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Breach Pod 3" 
+      ( ai-dock 
+         "Guardador Station" 
+         "Maindock" 
+         "Bottom1" 
+         89 
+      )
+   )
+   ( add-goal 
+      "Breach Pod 4" 
+      ( ai-dock 
+         "Guardador Station" 
+         "Maindock" 
+         "Bottom2" 
+         89 
+      )
+   )
+   ( turret-free-all 
+      "Breach Pod 1" 
+      "Breach Pod 2" 
+      "Breach Pod 3" 
+      "Breach Pod 4" 
+   )
+)
++Name: breach pod orders
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( turret-free-all "Prennia" ) 
+)
++Name: unlock P asms
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Breach Pod 1" ) 
+   ( modify-variable 
+      @breachlosses[0] 
+      ( + @breachlosses[0] 1 ) 
+   )
+)
++Name: breach 1 lost
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Breach Pod 2" ) 
+   ( modify-variable 
+      @breachlosses[0] 
+      ( + @breachlosses[0] 1 ) 
+   )
+)
++Name: breach 2 lost
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Breach Pod 3" ) 
+   ( modify-variable 
+      @breachlosses[0] 
+      ( + @breachlosses[0] 1 ) 
+   )
+)
++Name: breach 3 lost
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Breach Pod 4" ) 
+   ( modify-variable 
+      @breachlosses[0] 
+      ( + @breachlosses[0] 1 ) 
+   )
+)
++Name: breach 4 lost
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "third breach destroyed" 
+         6 
+      )
+      ( is-destroyed-delay 3 "Prennia" ) 
+   )
+   ( do-nothing ) 
+)
++Name: failure condition
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "player dies" 0 ) 
+   )
+   ( fade-out 1800 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      1500 
+   )
+   ( adjust-audio-volume "Voice" 0 1500 ) 
+)
++Name: fadeout bad
++Repeat Count: 1
++Interval: 1
++Chained: 0
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "10" 
+      ( true ) 
+   )
+   ( play-sound-from-file 
+      "stormshadowend" 
+   )
+   ( self-destruct "Able 1" ) 
+   ( hud-disable 1 ) 
+)
++Name: mission failed title
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Able 1" ) 
+   ( do-nothing ) 
+)
++Name: player dies
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "fadeout bad" 0 ) 
+   )
+   ( fade-out 1800 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      1800 
+   )
+   ( adjust-audio-volume "Voice" 0 1800 ) 
+)
++Name: player death fadeout
++Repeat Count: 1
++Interval: 1
++Chained: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      5000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "10" 
+      ( true ) 
+   )
+   ( play-sound-from-file 
+      "stormshadowend" 
+   )
+   ( hud-disable 1 ) 
+)
++Name: player dead failed
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 10 "Apex" ) 
+   ( turret-free-all "Apex" ) 
+)
++Name: unlock apex asm
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Apex" 
+            "mturret01" 
+            0 
+         )
+      )
+      ( not 
+         ( destroyed-or-departed-delay 
+            0 
+            "Apex" 
+         )
+      )
+   )
+   ( training-msg "warning javelin" ) 
+)
++Name: warning javelin
++Repeat Count: 9999
++Interval: 40
++Chained: 0
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 7 "Apex" ) 
+   ( jettison-cargo "Apex" 100 ) 
+)
++Name: jettison apex fighters
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( clear-goals "Xray" ) 
+   ( add-goal 
+      "Xray" 
+      ( ai-chase-ship-class 
+         "Amun-class Transport" 
+         89 
+      )
+   )
+)
++Name: xray orders
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "breach pod orders" 
+      3 
+   )
+   ( add-goal 
+      "Prennia" 
+      ( ai-waypoints-once 
+         "Prennia approach" 
+         89 
+      )
+   )
+)
++Name: Prennia approach
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 2 "Oldwater" ) 
+      ( is-event-true-delay 
+         "breach pods eject" 
+         10 
+      )
+   )
+   ( clear-goals "Oldwater" ) 
+   ( add-goal 
+      "Oldwater" 
+      ( ai-chase "Breach Pod 1" 89 ) 
+   )
+   ( add-goal 
+      "Oldwater" 
+      ( ai-chase "Breach Pod 2" 89 ) 
+   )
+   ( add-goal 
+      "Oldwater" 
+      ( ai-chase "Breach Pod 3" 89 ) 
+   )
+   ( add-goal 
+      "Oldwater" 
+      ( ai-chase "Breach Pod 4" 89 ) 
+   )
+   ( clear-goals "Yoke" ) 
+   ( add-goal 
+      "Yoke" 
+      ( ai-guard "Oldwater" 89 ) 
+   )
+)
++Name: oldwater attacks pods
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 1" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 1" ) 
+)
++Name: self destruct platform 1
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 2" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 2" ) 
+)
++Name: self destruct platform 2
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 3" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 3" ) 
+)
++Name: self destruct platform 3
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 4" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 4" ) 
+)
++Name: self destruct platform 4
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 5" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 5" ) 
+)
++Name: self destruct platform 5
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 6" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 6" ) 
+)
++Name: self destruct platform 6
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 7" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 7" ) 
+)
++Name: self destruct platform 7
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 8" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 8" ) 
+)
++Name: self destruct platform 8
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 9" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 9" ) 
+)
++Name: self destruct platform 9
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 10" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 10" ) 
+)
++Name: self destruct platform 10
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 11" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 11" ) 
+)
++Name: self destruct platform 11
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 12" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 12" ) 
+)
++Name: self destruct platform 12
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 13" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 13" ) 
+)
++Name: self destruct platform 13
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 14" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 14" ) 
+)
++Name: self destruct platform 14
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 15" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 15" ) 
+)
++Name: self destruct platform 15
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-subsystem-destroyed-delay 
+      "ASM Platform 16" 
+      "mturret1" 
+      0 
+   )
+   ( self-destruct "ASM Platform 16" ) 
+)
++Name: self destruct platform 16
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Breach Pod 1" 
+      "Guardador Station" 
+      1 
+      0 
+   )
+   ( modify-variable 
+      @boardcount[0] 
+      ( + @boardcount[0] 1 ) 
+   )
+)
++Name: breach 1 boards
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Breach Pod 2" 
+      "Guardador Station" 
+      1 
+      0 
+   )
+   ( modify-variable 
+      @boardcount[0] 
+      ( + @boardcount[0] 1 ) 
+   )
+)
++Name: breach 2 boards
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Breach Pod 3" 
+      "Guardador Station" 
+      1 
+      0 
+   )
+   ( modify-variable 
+      @boardcount[0] 
+      ( + @boardcount[0] 1 ) 
+   )
+)
++Name: breach 3 boards
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Breach Pod 4" 
+      "Guardador Station" 
+      1 
+      0 
+   )
+   ( modify-variable 
+      @boardcount[0] 
+      ( + @boardcount[0] 1 ) 
+   )
+)
++Name: breach 4 boards
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "station captured" 
+      2 
+   )
+   ( play-sound-from-file 
+      "anironlite" 
+      99 
+   )
+)
++Name: victory music
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "bring yourself in" 
+      10 
+   )
+   ( fade-out 1800 ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      0 
+      1500 
+   )
+   ( adjust-audio-volume "Voice" 0 1500 ) 
+)
++Name: fadeout good
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission complete title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "10" 
+      ( true ) 
+   )
+   ( play-sound-from-file "cwvictory" ) 
+   ( hud-disable 1 ) 
+)
++Name: mission complete title
++Repeat Count: 1
++Interval: 1
++Chained: 2
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: mission end good
++Repeat Count: 1
++Interval: 1
++Chained: 14
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( destroyed-or-departed-delay 
+         2 
+         "Point Defense Platform 1" 
+         "ASM Platform 1" 
+         "ASM Platform 2" 
+         "ASM Platform 3" 
+         "ASM Platform 4" 
+         "Point Defense Platform 2" 
+         "Point Defense Platform 3" 
+         "Zebra" 
+         "Yoke" 
+         "Xray" 
+         "Storm" 
+         "Scythe" 
+         "ASM Platform 9" 
+         "ASM Platform 10" 
+         "ASM Platform 11" 
+         "ASM Platform 12" 
+         "Point Defense Platform 4" 
+         "Oldwater" 
+         "Apex" 
+         "ASM Platform 5" 
+         "ASM Platform 6" 
+         "ASM Platform 7" 
+         "ASM Platform 8" 
+         "ASM Platform 13" 
+         "ASM Platform 14" 
+         "ASM Platform 15" 
+         "ASM Platform 16" 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "victory music" 
+            0 
+         )
+      )
+   )
+   ( play-sound-from-file 
+      "Music_CW_Ambient3" 
+      99 
+   )
+)
++Name: combat over
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-goal-true-delay 
+      "clear defenses fast" 
+      0 
+   )
+   ( training-msg "bonus" ) 
+)
++Name: bonus
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Prennia" ) 
+   ( turret-free-all 
+      "ASM Platform 1" 
+      "ASM Platform 2" 
+      "ASM Platform 3" 
+      "ASM Platform 4" 
+      "ASM Platform 9" 
+      "ASM Platform 10" 
+      "ASM Platform 11" 
+      "ASM Platform 12" 
+      "ASM Platform 5" 
+      "ASM Platform 6" 
+      "ASM Platform 7" 
+      "ASM Platform 8" 
+      "ASM Platform 13" 
+      "ASM Platform 14" 
+      "ASM Platform 15" 
+      "ASM Platform 16" 
+   )
+   ( turret-unprotect-ship 
+      "missile" 
+      "Prennia" 
+   )
+   ( unprotect-ship "Prennia" ) 
+)
++Name: debug prennia arrives
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: >>>>>>>>MESSAGES<<<<<<<
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "player regains control" 
+      0 
+   )
+   ( send-message 
+      "Able 1" 
+      "Normal" 
+      "able 1 clear" 
+   )
+)
++Name: able 1 clear
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Camperton" 
+      "Normal" 
+      "drones will cover" 
+   )
+)
++Name: launching drones
++Repeat Count: 1
++Interval: 1
++Chained: 3
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "player regains control" 
+      0 
+   )
+   ( send-message 
+      "Able 1" 
+      "Normal" 
+      "where cruiser" 
+   )
+)
++Name: where cruiser
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Camperton" 
+      "Normal" 
+      "sulsians are late" 
+   )
+)
++Name: sulsians are late
++Repeat Count: 1
++Interval: 1
++Chained: 5
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable1[#Cameron]" 
+      "Normal" 
+      "no time" 
+   )
+)
++Name: no time
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "take out asms" 
+   )
+)
++Name: take out asms
++Repeat Count: 1
++Interval: 1
++Chained: 11
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "engage fighters" 
+   )
+)
++Name: engage fighters
++Repeat Count: 1
++Interval: 1
++Chained: 8
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Scythe" 
+      "Normal" 
+      "commonwealth raid" 
+   )
+)
++Name: commonwealth raid
++Repeat Count: 1
++Interval: 1
++Chained: 10
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( percent-ships-destroyed 25 "Baker" ) 
+   ( send-message 
+      "Camperton" 
+      "Normal" 
+      "one drone down" 
+   )
+)
++Name: one drone down
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( percent-ships-destroyed 50 "Baker" ) 
+   ( send-message 
+      "Camperton" 
+      "Normal" 
+      "two drones down" 
+   )
+)
++Name: two drones down
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-destroyed-delay 1 "Baker" ) 
+   ( send-message 
+      "Camperton" 
+      "Normal" 
+      "all drones lost" 
+   )
+)
++Name: all drones lost
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "scythe retreats" 
+      1 
+   )
+   ( send-message 
+      "Scythe" 
+      "Normal" 
+      "scythe damaged" 
+   )
+)
++Name: scythe damaged
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( percent-ships-destroyed 45 "Zebra" ) 
+   ( send-message 
+      "@i18nVariable2[#Malikan Pilot]" 
+      "Normal" 
+      "zebra wing torn" 
+   )
+)
++Name: zebra wing torn
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "first group asms destroyed" 
+         1 
+      )
+      ( is-event-true-delay 
+         "second group asms destroyed" 
+         1 
+      )
+   )
+   ( send-message 
+      "@i18nVariable1[#Cameron]" 
+      "Normal" 
+      "asm group down 1" 
+   )
+)
++Name: asm group down 1
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Dog" ) 
+   ( send-message 
+      "Camperton" 
+      "Normal" 
+      "dog drones launched" 
+   )
+)
++Name: dog drones launched
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      120 
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "prennia coming soon" 
+   )
+)
++Name: prennia coming soon
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "prennia coming soon" 
+         4 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "first group asms destroyed" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "take out asms quick" 
+   )
+)
++Name: take out asms quick
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "prennia coming soon" 
+         4 
+      )
+      ( is-event-true-delay 
+         "first group asms destroyed" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "take out asms quick" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "targets of opportunity" 
+   )
+)
++Name: targets of opportunity
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Prennia" ) 
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "prennia arrives" 
+   )
+)
++Name: prennia arrives
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Able 1" 
+      "Normal" 
+      "about time" 
+   )
+)
++Name: about time
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "we gave coordinates" 
+   )
+)
++Name: we gave coordinates
++Repeat Count: 1
++Interval: 1
++Chained: 4
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "this is our op" 
+   )
+)
++Name: this is our op
++Repeat Count: 1
++Interval: 1
++Chained: 9
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Able 1" 
+      "Normal" 
+      "if the sulsians listened" 
+   )
+)
++Name: if the sulsians listened
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-msecs-delay 
+         "if the sulsians listened" 
+         9150 
+      )
+      ( is-event-true-delay 
+         "first group asms destroyed" 
+         0 
+      )
+      ( is-event-true-delay 
+         "second group asms destroyed" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay "no matter 2" 0 ) 
+      )
+   )
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "no matter" 
+   )
+)
++Name: no matter
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-msecs-delay 
+         "if the sulsians listened" 
+         8200 
+      )
+      ( is-event-true-delay 
+         "first group asms destroyed" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay "no matter" 0 ) 
+      )
+   )
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "no matter 2" 
+   )
+)
++Name: no matter 2
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "first group asms destroyed" 
+         10 
+      )
+      ( is-event-true-delay 
+         "second group asms destroyed" 
+         10 
+      )
+      ( is-event-true-delay 
+         "we gave coordinates" 
+         11 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "sabotaging station" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "beginning boarding" 
+   )
+)
++Name: beginning boarding
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( = @breachlosses[0] 1 ) 
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "first breach destroyed" 
+   )
+)
++Name: first breach destroyed
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( = @breachlosses[0] 2 ) 
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "second breach destroyed" 
+   )
+)
++Name: second breach destroyed
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( = @breachlosses[0] 3 ) 
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "third breach destroyed" 
+   )
+)
++Name: third breach destroyed
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Apex" ) 
+   ( send-message 
+      "@i18nVariable3[#Aria Tactical]" 
+      "Normal" 
+      "new malikan ships" 
+   )
+)
++Name: new malikan ships
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable1[#Cameron]" 
+      "Normal" 
+      "ross help with fighters" 
+   )
+)
++Name: ross help with fighters
++Repeat Count: 1
++Interval: 1
++Chained: 7
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( = @boardcount[0] 2 ) 
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "breach pods docked" 
+   )
+)
++Name: breach pods docked
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "station captured" 
+   )
+)
++Name: station captured
++Repeat Count: 1
++Interval: 1
++Chained: 30
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "alban vessels guard" 
+   )
+)
++Name: alban vessels guard
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Camperton" 
+      "Normal" 
+      "negative prennia" 
+   )
+)
++Name: negative prennia
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable1[#Cameron]" 
+      "Normal" 
+      "bring yourself in" 
+   )
+)
++Name: bring yourself in
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "player regains control" 
+      360 
+   )
+   ( send-message 
+      "@i18nVariable4[#Guardador Depot 1]" 
+      "Normal" 
+      "placing charges" 
+   )
+)
++Name: placing charges
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Guardador Station" 
+      "Normal" 
+      "won't get resources" 
+   )
+)
++Name: won't get resources
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( is-event-true-delay 
+            "beginning boarding" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay "no matter" 0 ) 
+      )
+   )
+   ( send-message 
+      "Prennia" 
+      "Normal" 
+      "sabotaging station" 
+   )
+)
++Name: sabotaging station
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( not 
+      ( and 
+         ( is-event-true-delay 
+            "first group asms destroyed" 
+            0 
+         )
+         ( is-event-true-delay 
+            "second group asms destroyed" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@i18nVariable1[#Cameron]" 
+      "Normal" 
+      "asms will attack pods" 
+   )
+)
++Name: asms will attack pods
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "combat over" 2 ) 
+      ( not 
+         ( is-event-true-delay 
+            "station captured" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "Aria" 
+      "Normal" 
+      "hostiles clear" 
+   )
+)
++Name: hostiles clear
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 4 total
+
+$Type: Bonus
++Name: clear defenses fast
+$MessageNew:  XSTR("Clear defenses before Prennia arrives", 5354)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "first group asms destroyed" 
+      0 
+   )
+   ( is-event-true-delay 
+      "second group asms destroyed" 
+      0 
+   )
+   ( not 
+      ( has-arrived-delay 0 "Prennia" ) 
+   )
+)
+
+$Type: Primary
++Name: capture guardador
+$MessageNew:  XSTR("Capture Guardador Station", 5355)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "station captured" 
+   0 
+)
+
+$Type: Primary
++Name: protect ships
+$MessageNew:  XSTR("Prennia, Camperton and Aria must survive", 5356)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "station captured" 
+      8 
+   )
+   ( not 
+      ( is-destroyed-delay 0 "Prennia" ) 
+   )
+   ( not ( is-destroyed-delay 0 "Aria" ) ) 
+   ( not 
+      ( is-destroyed-delay 0 "Camperton" ) 
+   )
+)
+
+$Type: Secondary
++Name: destroy defenses
+$MessageNew:  XSTR("Clear station defenses", 5357)
+$end_multi_text
+$Formula: ( destroyed-or-departed-delay 
+   0 
+   "Point Defense Platform 1" 
+   "ASM Platform 1" 
+   "ASM Platform 2" 
+   "ASM Platform 3" 
+   "ASM Platform 4" 
+   "Point Defense Platform 2" 
+   "Point Defense Platform 3" 
+   "Zebra" 
+   "Yoke" 
+   "Xray" 
+   "Storm" 
+   "Scythe" 
+   "ASM Platform 9" 
+   "ASM Platform 10" 
+   "ASM Platform 11" 
+   "ASM Platform 12" 
+   "Point Defense Platform 4" 
+   "Oldwater" 
+   "Apex" 
+   "ASM Platform 5" 
+   "ASM Platform 6" 
+   "ASM Platform 7" 
+   "ASM Platform 8" 
+   "ASM Platform 13" 
+   "ASM Platform 14" 
+   "ASM Platform 15" 
+   "ASM Platform 16" 
+)
+
+#Waypoints		;! 9 lists total
+
+$Name: patrol boats retreat
+$List: (		;! 1 points in list
+	( -6053.472656, -11320.062500, 6880.869141 )
+)
+
+$Name: patrol boats retreat 2
+$List: (		;! 1 points in list
+	( 6995.200195, 10000.000000, 12847.900391 )
+)
+
+$Name: camperton waypoint
+$List: (		;! 1 points in list
+	( 4680.780273, 0.000000, -3683.757324 )
+)
+
+$Name: aria waypoint
+$List: (		;! 1 points in list
+	( 3180.389648, 0.000000, -3664.568359 )
+)
+
+$Name: Scythe patrol
+$List: (		;! 2 points in list
+	( 6402.690430, -158.108841, 4133.890625 )
+	( 6301.319336, -158.109863, 7384.225098 )
+)
+
+$Name: Storm patrol
+$List: (		;! 2 points in list
+	( 11013.342773, 1471.773804, 6450.680664 )
+	( 11350.942383, 1471.769897, 10026.683594 )
+)
+
+$Name: scythe attacks
+$List: (		;! 1 points in list
+	( 3849.605469, 0.002930, 1783.982666 )
+)
+
+$Name: Prennia approach
+$List: (		;! 1 points in list
+	( 7816.716309, 2259.820313, 7992.242188 )
+)
+
+$Name: drone waypoint
+$List: (		;! 1 points in list
+	( 5012.062012, -0.002930, 397.083496 )
+)
+
+#Messages		;! 52 total
+
+
+$Name: title1
+$Team: -1
+$MessageNew:  XSTR("$quoteBreak and Enter$quote", 5358)
+$end_multi_text
+
+$Name: Checkpoint Save
+$Team: -1
+$MessageNew:  XSTR("Checkpoint Save Detected", 3432)
+$end_multi_text
+
+$Name: Start from beginning
+$Team: -1
+$MessageNew:  XSTR("Start from beginning", 3433)
+$end_multi_text
+
+$Name: Start from checkpoint
+$Team: -1
+$MessageNew:  XSTR("Start from checkpoint", 3434)
+$end_multi_text
+
+$Name: mission failed title
+$Team: -1
+$MessageNew:  XSTR("MISSION FAILED", 3430)
+$end_multi_text
+
+$Name: mission complete title
+$Team: -1
+$MessageNew:  XSTR("MISSION COMPLETE", 3431)
+$end_multi_text
+
+$Name: detach
+$Team: -1
+$MessageNew:  XSTR(" ", 2685)
+$end_multi_text
++Wave Name: dock
+
+$Name: warning javelin
+$Team: -1
+$MessageNew:  XSTR("WARNING: HOSTILE ASM LAUNCH DETECTED", 4059)
+$end_multi_text
++Wave Name: warning2
+
+$Name: where cruiser
+$Team: -1
+$MessageNew:  XSTR("Where's the Prennia? Isn't she fundamental to our attack?", 5359)
+$end_multi_text
++Wave Name: 24-01
+
+$Name: sulsians are late
+$Team: -1
+$MessageNew:  XSTR("The Sulsians are late. Typical.", 5360)
+$end_multi_text
++Wave Name: 24-02
+
+$Name: no time
+$Team: -1
+$MessageNew:  XSTR("Guardador will have been alerted. We haven't got the luxury of waiting. Commence your attack.", 5361)
+$end_multi_text
++Wave Name: 24-03
+
+$Name: drones will cover
+$Team: -1
+$MessageNew:  XSTR("Able 1, this is Commander Henderson. Our drone flight will cover you. You can command them to engage small craft as needed.", 5362)
+$end_multi_text
++Wave Name: 24-04
+
+$Name: able 1 clear
+$Team: -1
+$MessageNew:  XSTR("Able 1 clear.", 5363)
+$end_multi_text
++Wave Name: 24-05
+
+$Name: launching drones
+$Team: -1
+$MessageNew:  XSTR("Stand by Able 1. UAV wingmen will be launching momentarily.", 5364)
+$end_multi_text
++Wave Name: 24-06
+
+$Name: take out asms
+$Team: -1
+$MessageNew:  XSTR("Able 1, mission critical targets are the ASM platforms. They're disposable launchers, so taking out the silo will be sufficient.", 5365)
+$end_multi_text
++Wave Name: 24-07
+
+$Name: engage fighters
+$Team: -1
+$MessageNew:  XSTR("All other targets are secondary. Engage them at your discretion.", 5366)
+$end_multi_text
++Wave Name: 24-08
+
+$Name: one drone down
+$Team: -1
+$MessageNew:  XSTR("Commander, telemetry lost on a UAV platform.", 5367)
+$end_multi_text
++Wave Name: 24-09
+
+$Name: two drones down
+$Team: -1
+$MessageNew:  XSTR("Another UAV lost, sir.", 5368)
+$end_multi_text
++Wave Name: 24-10
+
+$Name: all drones lost
+$Team: -1
+$MessageNew:  XSTR("Able 1, stand by. We're preparing another drone flight for launch. Try to take better care of these ones, alright?", 5369)
+$end_multi_text
++Wave Name: 24-11
+
+$Name: commonwealth raid
+$Team: -1
+$MessageNew:  XSTR("<intercepted> We're being hit by Alban raiders. Recall the patrol you malipensa or there won't be a station to come back to!", 5370)
+$end_multi_text
++Wave Name: 24-12
+
+$Name: scythe damaged
+$Team: -1
+$MessageNew:  XSTR("<intercepted> The Alban raiders are relentless! Bringing impellers to spool!", 5371)
+$end_multi_text
++Wave Name: 24-13
+
+$Name: zebra wing torn
+$Team: -1
+$MessageNew:  XSTR("<intercepted> We're getting torn up here! These Albans and their puttane drones!", 5372)
+$end_multi_text
++Wave Name: 24-14
+
+$Name: asm group down 1
+$Team: -1
+$MessageNew:  XSTR("That'll do it, LC. You've created a fire gap for our ships to hold position in. Clear out the far group of platforms to finish the job.", 5373)
+$end_multi_text
++Wave Name: 24-15
+
+$Name: dog drones launched
+$Team: -1
+$MessageNew:  XSTR("UAV flight Dog launched. ", 5374)
+$end_multi_text
++Wave Name: 24-16
+
+$Name: prennia coming soon
+$Team: -1
+$MessageNew:  XSTR("Signal from Sulsian cruiser Prennia. ETA is thirty seconds.", 5375)
+$end_multi_text
++Wave Name: 24-17
+
+$Name: take out asms quick
+$Team: -1
+$MessageNew:  XSTR("Mission objectives remain unmet. Take out those ASM platforms.", 5376)
+$end_multi_text
++Wave Name: 24-18
+
+$Name: targets of opportunity
+$Team: -1
+$MessageNew:  XSTR("Continue taking out targets of opportunity. Once the way is clear the Sulsians will commence boarding operations.", 5377)
+$end_multi_text
++Wave Name: 24-19
+
+$Name: prennia arrives
+$Team: -1
+$MessageNew:  XSTR("This is cruiser Prennia. Bringing weapons online. Alban vessels, form alongside and provide area defense.", 5378)
+$end_multi_text
++Wave Name: 24-20
+
+$Name: we gave coordinates
+$Team: -1
+$MessageNew:  XSTR("Prennia, you've arrived at a distance from our ships. What happened? We gave you perfectly good coordinates for your astrogation computer.", 5379)
+$end_multi_text
++Wave Name: 24-21
+
+$Name: asms will attack pods
+$Team: -1
+$MessageNew:  XSTR("Ross, there are active ASM platforms out there. The boarding transports will be vulnerable to their missiles.", 5380)
+$end_multi_text
++Wave Name: 24-22
+
+$Name: if the sulsians listened
+$Team: -1
+$MessageNew:  XSTR("If you'd used our nav coordinates you wouldn't be jumping in range of the station's defenses, and I wouldn't be cleaning up your mess!", 5381)
+$end_multi_text
++Wave Name: 24-23
+
+$Name: this is our op
+$Team: -1
+$MessageNew:  XSTR("This is a Sulsian operation, Alban. Your ships are following our lead! Get to your mission.", 5382)
+$end_multi_text
++Wave Name: 24-25
+
+$Name: no matter
+$Team: -1
+$MessageNew:  XSTR("It's no matter Alban. Station defenses are down. We're beginning the boarding operation now.", 5383)
+$end_multi_text
++Wave Name: 24-29
+
+$Name: no matter 2
+$Team: -1
+$MessageNew:  XSTR("It's no matter Alban. Station defenses on this side are no longer a factor. We'll deploy the marines once all ASM platforms are cleared.", 5384)
+$end_multi_text
++Wave Name: 24-30
+
+$Name: beginning boarding
+$Team: -1
+$MessageNew:  XSTR("We're detaching our boarding pods for assault. Alban ships, ensure the AO stays clear while they make their approach.", 5385)
+$end_multi_text
++Wave Name: 24-31
+
+$Name: first breach destroyed
+$Team: -1
+$MessageNew:  XSTR("We've lost a breach pod!", 5386)
+$end_multi_text
++Wave Name: 24-32
+
+$Name: second breach destroyed
+$Team: -1
+$MessageNew:  XSTR("Another breach pod lost! We can't afford to lose any more!", 5387)
+$end_multi_text
++Wave Name: 24-33
+
+$Name: new malikan ships
+$Team: -1
+$MessageNew:  XSTR("New contact! Two Malikan raiders in the area. Reading a wing of missile fighters in tow.", 5388)
+$end_multi_text
++Wave Name: 24-36
+
+$Name: ross help with fighters
+$Team: -1
+$MessageNew:  XSTR("Ross, we're going to need assistance against those fighters. Use countermeasures to draw away their missiles.", 5389)
+$end_multi_text
++Wave Name: 24-37
+
+$Name: third breach destroyed
+$Team: -1
+$MessageNew:  XSTR("Abort the mission! We've lost too many transports. We haven't got enough troops left to secure the station.", 5390)
+$end_multi_text
++Wave Name: 24-38
+
+$Name: moving to prennia
+$Team: -1
+$MessageNew:  XSTR("We read you Prennia. Helm, take us to escort positions.", 5391)
+$end_multi_text
++Wave Name: 24-39
+
+$Name: breach pods docked
+$Team: -1
+$MessageNew:  XSTR("Albans, be advised the first pods have latched onto the station. Marines are preparing to breach and enter.", 5392)
+$end_multi_text
++Wave Name: 24-40
+
+$Name: station captured
+$Team: -1
+$MessageNew:  XSTR("Marines have reported Guardador station is under Sulsian control. All Malikan resistance has crumbled.", 5393)
+$end_multi_text
++Wave Name: 24-41
+
+$Name: placing charges
+$Team: -1
+$MessageNew:  XSTR("<intercepted> This is Storage Depot 1. Placement of demolition charges is ongoing. Estimate five minutes before all operation complete.", 5394)
+$end_multi_text
++Wave Name: 24-42
+
+$Name: won't get resources
+$Team: -1
+$MessageNew:  XSTR("<intercepted> Good. Whatever happens, these Albans and their Sulsian lapdogs aren't having these resources.", 5395)
+$end_multi_text
++Wave Name: 24-43
+
+$Name: sabotaging station
+$Team: -1
+$MessageNew:  XSTR("The Malikans are sabotaging the storage depots. We need that station under our control now! Beginning breach operation.", 5396)
+$end_multi_text
++Wave Name: 24-44
+
+$Name: hostiles clear
+$Team: -1
+$MessageNew:  XSTR("Area looks clear of hostiles. Continue your CAP Able 1. We'll need to respond quickly if more hostile ships arrive.", 5397)
+$end_multi_text
++Wave Name: 24-45
+
+$Name: alban vessels guard
+$Team: -1
+$MessageNew:  XSTR("Alban vessels, provide a perimeter around Guardador until garrison forces arrive. The Malikans may send more raiders to take back the station.", 5398)
+$end_multi_text
++Wave Name: 24-46
+
+$Name: negative prennia
+$Team: -1
+$MessageNew:  XSTR("Negative Prennia. You don't have command authority over Commonwealth Navy vessels. Aria and Camperton will be returning to Ladigue Station as previously agreed.", 5399)
+$end_multi_text
++Wave Name: 24-47
+
+$Name: bring yourself in
+$Team: -1
+$MessageNew:  XSTR("LC Ross. The Sulsians can manage from here. We're returning to Ladigue station. Dock your fighter.", 5400)
+$end_multi_text
++Wave Name: 24-48
+
+$Name: about time
+$Team: -1
+$MessageNew:  XSTR("About time you showed up Prennia.", 5401)
+$end_multi_text
++Wave Name: 24-49
+
+$Name: bonus
+$Team: -1
+$MessageNew:  XSTR(" ", 2685)
+$end_multi_text
++Wave Name: bonus
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 0
+$Ambient light level: 4408389
+
+$Bitmap List:
++Flags: ( "corrected angles" )
+$Sun: SunVega
++Angles: 0.000000 0.000000 4.712389
++Scale: 1.000000
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: BriefingCW
+$Substitute Briefing Music: BriefingCW
+$Debriefing Success Music: Success3
+$Debriefing Average Music: Success3
+
+#End
+

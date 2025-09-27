@@ -1,0 +1,8905 @@
+#Mission Info
+
+$Version: 23.1
+$Name:  XSTR("Chain of Command", 5791)
+$Author: Darius
+$Created: 02/26/23 at 21:19:15
+$Modified: 07/24/25 at 00:22:31
+$Notes:
+This is a FRED2_OPEN created mission.
+$End Notes:
+
+$Mission Desc:
+ XSTR("Put mission description here
+", 3326)
+$end_multi_text
++Game Type Flags: 1
++Flags: 134481036
++NebAwacs: 14000.000000
+
++Storm: none
+
++Fog Near Mult: 2.000000
+
++Fog Far Mult: 3.000000
+
+
++Disallow Support: 1
++Hull Repair Ceiling: 0.000000
++Subsystem Repair Ceiling: 100.000000
+
++Viewer pos: -20599.535156, 7231.553711, 8459.109375
++Viewer orient:
+	-0.078193, 0.000001, -0.996938,
+	0.282435, 0.959031, -0.022151,
+	0.956095, -0.283302, -0.074990
+
+
+$Load Screen 1024: 2_LoadingBGM00
+
+$Skybox Model: NebulaRed.pof
+
+$AI Profile: Solaris
+
+#Sexp_variables
+
+$Variables:
+(
+		0		"ablecountdown"		"0"		"number"
+		1		"ablecountup"		"0"		"number"
+		2		"ablerepair"		"0"		"number"
+		3		"ablerepaircharge"		"0"		"number"
+		4		"ariahull"		"100"		"number"
+		5		"bonusgoal"		"0"		"number"
+		6		"civpanic"		"0"		"number"
+		7		"finaldeath"		"0"		"number"		"eternal"		"save-on-mission-close"
+		8		"fullpowerresponse"		"0"		"number"
+		9		"helmresponsechance"		"0"		"number"
+		10		"menuon"		"0"		"number"
+		11		"repairsound"		"0"		"number"
+		12		"stopresponse"		"0"		"number"
+		13		"thrusteralarm"		"0"		"number"
+		14		"thrustersound"		"0"		"number"
+		15		"i18nVariable1"		"Hangar"		"string"
+		16		"i18nVariable2"		"Offline"		"string"
+		17		"i18nVariable3"		"Repair Station"		"string"
+		18		"i18nVariable4"		" "		"string"
+		19		"i18nVariable5"		"TACTICAL INTERFACE"		"string"
+		20		"i18nVariable6"		"    ==OFFLINE=="		"string"
+		21		"i18nVariable7"		"$1$ - Thruster Boost"		"string"
+		22		"i18nVariable8"		"--------------"		"string"
+		23		"i18nVariable9"		"$2$ - Damage Control"		"string"
+		24		"i18nVariable10"		"$3$ - Antifighter Drones"		"string"
+		25		"i18nVariable11"		"MHD thrusters overcharged"		"string"
+		26		"i18nVariable12"		"$Alt-X$ to terminate"		"string"
+		27		"i18nVariable13"		"MHD thrusters cooling"		"string"
+		28		"i18nVariable14"		"Pumping active sealant"		"string"
+		29		"i18nVariable15"		"Hardening active sealant"		"string"
+		30		"i18nVariable16"		"Stand by capacitors"		"string"
+		31		"i18nVariable17"		"PDEW UCAV deployed"		"string"
+		32		"i18nVariable18"		"Recalling UCAV"		"string"
+		33		"i18nVariable19"		"$2$ to repair"		"string"
+		34		"i18nVariable20"		"Anchorage standing by"		"string"
+		35		"i18nVariable21"		"============"		"string"
+		36		"i18nVariable22"		"$4$ to send signal"		"string"
+		37		"i18nVariable23"		"Transport standing by"		"string"
+		38		"i18nVariable24"		"Signal sent"		"string"
+		39		"i18nVariable25"		"Transport undocking"		"string"
+		40		"i18nVariable26"		"TRANSPORT UNDOCKING"		"string"
+		41		"i18nVariable27"		"SIGNAL CANCELLED"		"string"
+		42		"i18nVariable28"		"STAND BY IMPELLER"		"string"
+		43		"i18nVariable29"		"$Alt-J$ TO JUMP"		"string"
+		44		"i18nVariable30"		"ENGAGING"		"string"
+		45		"i18nVariable31"		"#Ross"		"string"
+		46		"i18nVariable32"		"#Holmes"		"string"
+		47		"i18nVariable33"		"#Ryan"		"string"
+		48		"i18nVariable34"		"#Kelly"		"string"
+		49		"i18nVariable35"		"#Hughes"		"string"
+		50		"i18nVariable36"		"#Lau"		"string"
+		51		"i18nVariable37"		"#Erikson"		"string"
+		52		"i18nVariable38"		"#Batra"		"string"
+		53		"i18nVariable39"		"Andaman Station"		"string"
+		54		"i18nVariable40"		"Andaman Anchorage"		"string"
+		55		"i18nVariable41"		"ASM Platform"		"string"
+		56		"i18nVariable42"		"Exit Vector"		"string"
+		57		"i18nVariable43"		"Beam Drone#1"		"string"
+		58		"i18nVariable44"		"Beam Drone#2"		"string"
+		59		"i18nVariable45"		"all right"		"string"
+		60		"i18nVariable46"		"Passengers"		"string"
+		61		"i18nVariable47"		"Weapons"		"string"
+		62		"i18nVariable48"		"Home"		"string"
+		63		"i18nVariable49"		"Look at Target"		"string"
+		64		"i18nVariable50"		"Alt-D"		"string"
+		65		"i18nVariable51"		"Toggle Turret Auto"		"string"
+)
+
+#Command Briefing
+
+#Briefing
+$start_briefing
+$num_stages: 0
+$end_briefing
+
+#Debriefing_info
+
+$Num stages: 1
+
+$Formula: ( is-event-true-delay 
+   "fadeout good" 
+   0 
+)
+$Multi text
+    XSTR("Welcome back Lieutenant Commander. You completed your mission despite the most adverse of circumstances. The flame of duty burned brighter than the fires of Combine warheads. You and your crew embody the ideals that all King's Officers strive for.
+
+Due to your successful mission, the balance of power has shifted in our favour. Erikson's intelligence on Combine missile systems will be critical, and Lau has relations with the Children of Renewal that we can leverage. 
+
+I'm sorry to hear about Aria's losses. Doctor McGill reports at least one third of the crew are dead or incapacitated. Your crew's actions saved Cameron's life, but her recovery will take weeks, if not months. 
+
+I can find people to bring Aria's crew back up to complement, but replacing senior command staff will be difficult. I'd bring in an officer from another ship to replace Commander Cameron, but our numbers are still depleted from the Vicare operation and no such officer is available. That being said, we have an alternative.
+
+Admiral Cleghorn's approved your assignment as Aria's commanding officer. You'll hold the rank of acting Commander for the duration of this assignment. Congratulations.
+
+You won't be going into the cockpit again anytime soon. I don't need another pilot. I need Aria at the right place, when the decisive moment arrives.
+
+You've got a lot of work ahead of you Commander, but I'm sure you'll do the Navy proud. Long live the King.", 5792)
+$end_multi_text
+$Voice: 27-db1
+$Recommendation text:
+    XSTR("", 2696)
+$end_multi_text
+
+
+#Players		;! 1 total
+
+$Starting Shipname: Alpha 1
+$Ship Choices: (
+	"Viper-class Fighter"	5
+	"Hornet-class Striker"	5
+	"Phantom-class Stealth Fighter"	5
+	"Thunderbolt-class Interceptor"	5
+	"Hammerhead-class Bomber"	5
+	"Defender-class Fighter"	5
+	"Interdictor-class Striker"	5
+	"Hunter-class Stealth Fighter"	5
+	"Raider-class Interceptor"	5
+	"Retaliator-class Bomber"	5
+	"Falcon-class Fighter"	5
+	"Raptor-class Defender"	5
+	"Lightning-class Interceptor"	5
+	"Avenger-class Gunship"	5
+	"Harrier-class Adv Fighter"	5
+	"Rafale-class Interceptor"	5
+	"Uriel-class Striker"	5
+	"Rapier-class Fighter"	5
+	"Lancer-class Fighter"	5
+	"Mace-class Fighter"	5
+	"Armadillo-class Gunship"	5
+	"Jackal-class Gunship"	5
+	"Dawn-class Bomber"	5
+	"Cobra-class Fighter"	5
+	"Stalker-class Striker"	5
+	"Vulture-class Striker"	5
+	"Warden-class Defender"	5
+	"Comet-class Gunship"	5
+	"Tor-class Bomber"	5
+	"Arrowhead Pilot"	5
+)
+
++Weaponry Pool: (
+	"Maxim"	16
+	"Vulcan"	16
+	"Gattler"	16
+	"Huaqing"	16
+	"Limonka"	16
+	"Firestorm"	16
+	"Incinerator"	16
+	"Rapier"	16
+	"Phalanx"	16
+	"Starfire"	16
+	"Shredder"	16
+	"Plasma Accelerator#TinyPilot"	17
+	"Dart"	500
+	"Sparrow"	500
+	"Sigil"	500
+	"Stiletto"	500
+	"Coyote 1E"	500
+	"Javelin 1D"	500
+	"Jackhammer"	500
+	"Trident III JDAM"	500
+	"Cloaking Device"	500
+)
+
+#Objects		;! 46 total
+
+$Name: Alpha 1		;! Object #0
+$Display Name: XSTR("Alpha 1", 3334)
+$Class: Arrowhead Pilot
+$Team: Friendly
+$Location: 93.318466, 0.000000, 64.382050
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Sensors
+$Damage: 100
++Subsystem: Weapons
+$Damage: 100
++Subsystem: Engine
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "player-start" "invulnerable" )
++Flags2: ( "no-subspace-drive" "primaries-locked" "afterburners-locked" "no-ets" )
++Respawn priority: 0
++Score: 10
+
+$Name: Aria		;! Object #1
+$Display Name: XSTR("Aria", 4729)
+$Class: Arrowhead-class Corvette
+$Team: Friendly
+$Location: 93.318466, 0.000000, 64.382050
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
++AI Class: Capship-100
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 13
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Weapons
+$Damage: 100
++Subsystem: Sensors
+$Damage: 100
++Subsystem: Navigation
+$Damage: 100
++Subsystem: Engine
+$Damage: 100
++Subsystem: Turret01
++Subsystem: Turret02
++Subsystem: Turret03
++Subsystem: Turret04
++Subsystem: turret05
++Primary Banks: ( "Point Defense Laser#Player" )
++Subsystem: turret06
++Primary Banks: ( "Point Defense Laser#Player" )
++Subsystem: turret07
+$Damage: 100
++Subsystem: turret08
+$Damage: 100
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay "jump out" 0 ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "afterburners-locked" "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Andaman Transponder		;! Object #2
+$Display Name: XSTR("Andaman Transponder", 5793)
+$Class: Transponder
+$Team: Unknown
+$Location: 1669.890137, 128.162491, 3683.392822
+$Orientation:
+	0.049234, 0.000000, -0.998787,
+	0.000000, 1.000000, 0.000000,
+	0.998787, 0.000000, 0.049234
+$Cargo 1:  XSTR("Scanned", 3495)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "scannable" "stealth" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Andaman Station		;! Object #3
+$Display Name: XSTR("Andaman Station", 5794)
+$Class: Outpost
+$Team: Unknown
+$Location: -14646.858398, 3944.449219, 9827.654297
+$Orientation:
+	1.000000, -0.000000, 0.000009,
+	0.000000, 1.000000, 0.000000,
+	-0.000009, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: DockA
++Cargo Name: XSTR("Scanned", 3495)
++Subsystem: DockB
++Cargo Name: XSTR("Scanned", 3495)
++Subsystem: DockC
++Cargo Name: XSTR("Scanned", 3495)
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "scannable" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Docked With: Tortoise-class Transport#2
+$Docker Point: Front Dock
+$Dockee Point: Docking Point 2
++Docked With: Tortoise-class Transport#1
+$Docker Point: Front Dock
+$Dockee Point: Docking Point 1
++Docked With: Omega 1
+$Docker Point: Maindock
+$Dockee Point: Docking Point 3
++Use Table Score:
++Score: 0
+
+$Name: Omega 1		;! Object #4
+$Display Name: XSTR("Omega 1", 5795)
+$Class: Amun-class Transport
+$Team: Unknown
+$Location: -14180.890625, 4243.699219, 8981.511719
+$Orientation:
+	0.000000, 1.000000, 0.000000,
+	-0.894423, 0.000000, -0.447222,
+	-0.447222, 0.000000, 0.894423
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Passengers", 4259)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "lock-all-turrets" )
++Respawn priority: 0
++Docked With: Andaman Station
+$Docker Point: Docking Point 3
+$Dockee Point: Maindock
++Use Table Score:
++Score: 10
+
+$Name: Tortoise-class Transport#1		;! Object #5
+$Display Name: XSTR("Tortoise-class Transport", 3127)
+$Class: Tortoise-class Transport
+$Team: Unknown
+$Location: -15675.627930, 4243.699219, 9834.061523
+$Orientation:
+	0.000000, 1.000000, 0.000000,
+	-0.000009, 0.000000, 1.000000,
+	1.000000, 0.000000, 0.000009
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "lock-all-turrets" "no-ets" )
++Respawn priority: 0
++Docked With: Andaman Station
+$Docker Point: Docking Point 1
+$Dockee Point: Front Dock
++Use Table Score:
++Score: 0
+
+$Name: Tortoise-class Transport#2		;! Object #6
+$Display Name: XSTR("Tortoise-class Transport", 3127)
+$Class: Tortoise-class Transport
+$Team: Unknown
+$Location: -14122.746094, 4243.699219, 10717.472656
+$Orientation:
+	0.000000, -1.000000, 0.000000,
+	-0.894431, 0.000000, 0.447206,
+	-0.447206, 0.000000, -0.894431
+$AI Goals: ( goals ( ai-play-dead 50 ) )
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Docked With: Andaman Station
+$Docker Point: Docking Point 2
+$Dockee Point: Front Dock
++Use Table Score:
++Score: 0
+
+$Name: Solomnent		;! Object #7
+$Display Name: XSTR("Solomnent", 5796)
+$Class: Khopesh-class Frigate
+$Team: Hostile
+$Location: -12851.160156, 4369.972656, 1626.934570
+$Orientation:
+	0.842529, 0.000000, -0.538651,
+	0.000000, 1.000000, 0.000000,
+	0.538651, 0.000000, 0.842529
++AI Class: Capship-100
+$AI Goals: ( goals ( ai-chase "Aria" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "LACs attack" 
+   20 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "solomnent retreats" 
+   8 
+)
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Andaman Radar		;! Object #8
+$Display Name: XSTR("Andaman Radar", 5797)
+$Class: Radar Platform
+$Team: Unknown
+$Location: -16388.951172, 5580.344727, 4807.298340
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "don't-change-position" "don't-change-orientation" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Andaman Anchorage		;! Object #9
+$Display Name: XSTR("Andaman Anchorage", 5798)
+$Class: Military Station 2
+
+$Team: Friendly
+$Location: 1198.986084, 59.305664, 8609.913086
+$Orientation:
+	-0.000000, -0.000000, -1.000000,
+	1.000000, -0.000000, -0.000000,
+	-0.000000, -1.000000, 0.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Anchorage Hangar		;! Object #10
+$Display Name: XSTR("Anchorage Hangar", 5799)
+$Class: Military Base
+
+$Team: Friendly
+$Location: 1217.674438, 222.149673, 8178.334473
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Anchorage Drone 1		;! Object #11
+$Display Name: XSTR("Anchorage Drone 1", 5800)
+$Class: Construction Drone
+$Team: Friendly
+$Location: 114.787720, 500.218323, 10092.697266
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Goals: ( goals ( ai-dock "Aria" "Docking Point" "Docking Point" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Anchorage Hangar
++Arrival Paths: ( "$Bay01" )
+$Arrival Cue: ( is-event-true-delay 
+   "repair drone" 
+   2 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Anchorage Hangar
++Departure Paths: ( "$Bay01" )
+$Departure Cue: ( has-undocked-delay 
+   "Anchorage Drone 1" 
+   "Aria" 
+   1 
+   6 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 50
+
+$Name: Anchorage Drone 2		;! Object #12
+$Display Name: XSTR("Anchorage Drone 2", 5801)
+$Class: Construction Drone
+$Team: Friendly
+$Location: 75.069374, 662.439697, 10001.231445
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Goals: ( goals ( ai-dock "Aria" "Docking Point" "Port Fighter Rail" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Docking Bay
++Arrival Distance: 0
+$Arrival Anchor: Anchorage Hangar
++Arrival Paths: ( "$Bay04" )
++Arrival Delay: 4
+$Arrival Cue: ( has-arrived-delay 
+   0 
+   "Anchorage Drone 1" 
+)
+$Departure Location: Docking Bay
+$Departure Anchor: Anchorage Hangar
++Departure Paths: ( "$Bay04" )
+$Departure Cue: ( has-undocked-delay 
+   "Anchorage Drone 2" 
+   "Aria" 
+   1 
+   6 
+)
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 50
+
+$Name: Sentry Platform		;! Object #13
+$Display Name: XSTR("Sentry Platform", 5802)
+$Class: ASM Platform
+
+$Team: Surrendered
+$Location: -538.736816, -468.969238, -394.203125
+$Orientation:
+	1.000000, -0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	-0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: mturret1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Zebra 1		;! Object #14
+$Display Name: XSTR("Zebra 1", 5318)
+$Class: Raider-class Interceptor
+$Team: Hostile
+$Location: -13308.370117, 3721.786377, 3117.726318
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, -0.000026,
+	-0.000000, 0.000026, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Zebra 2		;! Object #15
+$Display Name: XSTR("Zebra 2", 5319)
+$Class: Raider-class Interceptor
+$Team: Hostile
+$Location: -13221.444336, 3721.789063, 3235.624023
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, -0.000026,
+	-0.000000, 0.000026, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Zebra 3		;! Object #16
+$Display Name: XSTR("Zebra 3", 5320)
+$Class: Raider-class Interceptor
+$Team: Hostile
+$Location: -13115.633789, 3721.783691, 2989.909912
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, -0.000026,
+	-0.000000, 0.000026, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-departure-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Inflame		;! Object #17
+$Display Name: XSTR("Inflame", 5803)
+$Class: Victory-class Destroyer
+$Team: Hostile
+$Location: -22465.306641, 5769.871094, 2140.228271
+$Orientation:
+	0.773119, 0.000000, -0.634261,
+	0.000000, 1.000000, 0.000000,
+	0.634261, 0.000000, 0.773119
++AI Class: SLRS-Lieutenant
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret04
++Subsystem: turret05
++Subsystem: turret06
++Subsystem: turret07
++Subsystem: mturret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Ursa" ) 
+$Departure Location: Hyperspace
++Departure delay: 1
+$Departure Cue: ( or 
+   ( < ( hits-left "Inflame" ) 18 ) 
+   ( and 
+      ( is-subsystem-destroyed-delay 
+         "Inflame" 
+         "turret04" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Inflame" 
+         "turret05" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Inflame" 
+         "turret06" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Inflame" 
+         "turret07" 
+         0 
+      )
+      ( is-subsystem-destroyed-delay 
+         "Inflame" 
+         "mturret01" 
+         0 
+      )
+   )
+)
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Tortoise-class Transport#3		;! Object #18
+$Display Name: XSTR("Tortoise-class Transport", 3127)
+$Class: Tortoise-class Transport
+$Team: Unknown
+$Location: -16985.486328, 4373.239258, 9172.133789
+$Orientation:
+	1.000000, 0.000000, -0.000000,
+	0.000000, 1.000000, 0.000037,
+	0.000000, -0.000037, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "tortoise 3 retreats" 
+   30 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Bittersweet		;! Object #19
+$Display Name: XSTR("Bittersweet", 5804)
+$Class: Ibis-class Transport
+$Team: Unknown
+$Location: -14083.925781, 4566.814453, 9725.904297
+$Orientation:
+	-0.987269, 0.000000, -0.159063,
+	0.000000, 1.000000, 0.000000,
+	0.159063, 0.000000, -0.987269
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "bittersweet retreats" 
+   30 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Ursa		;! Object #20
+$Display Name: XSTR("Ursa", 5805)
+$Class: Glory-class Destroyer
+$Team: Hostile
+$Location: -21855.011719, 6223.332031, 3493.760986
+$Orientation:
+	0.773168, -0.000013, -0.634202,
+	-0.000013, 1.000000, -0.000037,
+	0.634202, 0.000037, 0.773168
++AI Class: SLRS-Lieutenant
+$AI Goals: ( goals ( ai-waypoints-once "ursa approach" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: turret01
++Subsystem: turret02
++Subsystem: turret03
++Subsystem: turret04
++Subsystem: turret06
++Subsystem: turret07
+$Arrival Location: Hyperspace
+$Arrival Cue: ( or 
+   ( is-event-true-delay 
+      "two minutes" 
+      10 
+   )
+   ( is-event-true-delay 
+      "checkpoint load 2" 
+      7 
+   )
+)
+$Departure Location: Hyperspace
++Departure delay: 1
+$Departure Cue: ( < ( hits-left "Ursa" ) 18 ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Minnow-class Shuttle#1		;! Object #21
+$Display Name: XSTR("Minnow-class Shuttle", 3125)
+$Class: Minnow-class Shuttle
+$Team: Unknown
+$Location: -15011.897461, 4723.591797, 9856.929688
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-msecs-delay 
+   "minnow 1 retreats" 
+   ( rand-multiple 28000 32000 ) 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 10
+
+$Name: Minnow-class Shuttle#2		;! Object #22
+$Display Name: XSTR("Minnow-class Shuttle", 3125)
+$Class: Minnow-class Shuttle
+$Team: Unknown
+$Location: -14398.477539, 4723.591797, 9370.529297
+$Orientation:
+	-0.829294, 0.000000, -0.558812,
+	0.000000, 1.000000, 0.000000,
+	0.558812, 0.000000, -0.829294
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-msecs-delay 
+   "minnow 2 retreats" 
+   ( rand-multiple 28000 32000 ) 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" "stealth" "friendly-stealth-invisible" )
++Flags2: ( )
++Respawn priority: 0
++Use Table Score:
++Score: 10
+
+$Name: Friday		;! Object #23
+$Display Name: XSTR("Friday", 5806)
+$Class: Hauler-class Freighter
+$Team: Unknown
+$Location: -14066.236328, 5444.618164, 9011.707031
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-msecs-delay 
+   "friday retreats" 
+   ( rand-multiple 28000 32000 ) 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Mimosa		;! Object #24
+$Display Name: XSTR("Mimosa", 5807)
+$Class: Hauler-class Freighter
+$Team: Unknown
+$Location: -15619.626953, 5833.395996, 10344.780273
+$Orientation:
+	0.244408, 0.000000, -0.969673,
+	0.000000, 1.000000, 0.000000,
+	0.969673, 0.000000, 0.244408
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-msecs-delay 
+   "mimosa retreats" 
+   ( rand-multiple 28000 32000 ) 
+)
+$Determination: 10
++Flags: ( "cargo-known" "protect-ship" "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Xray 1		;! Object #25
+$Display Name: XSTR("Xray 1", 3991)
+$Class: Clipper-class Attack Craft
+$Team: Hostile
+$Location: -10694.289063, 4226.089355, 17826.066406
+$Orientation:
+	-0.814105, -0.000020, -0.580718,
+	0.000000, 1.000000, -0.000036,
+	0.580718, -0.000029, -0.814105
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Xray 2		;! Object #26
+$Display Name: XSTR("Xray 2", 3992)
+$Class: Clipper-class Attack Craft
+$Team: Hostile
+$Location: -10745.506836, 4226.095703, 17547.501953
+$Orientation:
+	-0.814105, -0.000020, -0.580718,
+	0.000000, 1.000000, -0.000036,
+	0.580718, -0.000029, -0.814105
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Beam Drone#1		;! Object #27
+$Display Name: XSTR("Beam Drone", 3045)
+$Class: Beam Drone
+$Team: Friendly
+$Location: 205.482941, 0.000031, 18.498856
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Goals: ( goals ( ai-guard "Aria" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 50
+
+$Name: Beam Drone#2		;! Object #28
+$Display Name: XSTR("Beam Drone", 3045)
+$Class: Beam Drone
+$Team: Friendly
+$Location: 297.443909, -0.000091, 4.202713
+$Orientation:
+	1.000000, 0.000000, 0.000000,
+	0.000000, 1.000000, 0.000000,
+	0.000000, 0.000000, 1.000000
+$AI Goals: ( goals ( ai-guard "Aria" 50 ) )
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
++Subsystem: Turret01
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "cargo-known" "no-shields" "stealth" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 50
+
+$Name: Yoke 1		;! Object #29
+$Display Name: XSTR("Yoke 1", 5240)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -21052.927734, 0.000122, 3505.237305
+$Orientation:
+	0.394393, 0.000000, -0.918942,
+	0.000000, 1.000000, 0.000000,
+	0.918942, 0.000000, 0.394393
++AI Class: Striker
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Yoke 2		;! Object #30
+$Display Name: XSTR("Yoke 2", 5241)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -20903.882813, -0.000427, 3328.015869
+$Orientation:
+	0.394393, 0.000000, -0.918942,
+	0.000000, 1.000000, 0.000000,
+	0.918942, 0.000000, 0.394393
++AI Class: Striker
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Yoke 3		;! Object #31
+$Display Name: XSTR("Yoke 3", 5323)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -21262.976563, 0.000000, 3300.668457
+$Orientation:
+	0.394393, 0.000000, -0.918942,
+	0.000000, 1.000000, 0.000000,
+	0.918942, 0.000000, 0.394393
++AI Class: Striker
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Yoke 4		;! Object #32
+$Display Name: XSTR("Yoke 4", 5646)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -21094.363281, 0.000977, 3072.572021
+$Orientation:
+	0.394393, 0.000000, -0.918942,
+	0.000000, 1.000000, 0.000000,
+	0.918942, 0.000000, 0.394393
++AI Class: Striker
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: William 1		;! Object #33
+$Display Name: XSTR("William 1", 5235)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -12373.137695, 7403.858398, 733.663513
+$Orientation:
+	0.701658, 0.000000, 0.712514,
+	-0.000000, 1.000000, 0.000000,
+	-0.712514, -0.000000, 0.701658
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: William 2		;! Object #34
+$Display Name: XSTR("William 2", 5236)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -12301.152344, 7403.858398, 733.386169
+$Orientation:
+	0.701658, 0.000000, 0.712514,
+	-0.000000, 1.000000, 0.000000,
+	-0.712514, -0.000000, 0.701658
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: William 3		;! Object #35
+$Display Name: XSTR("William 3", 5647)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -12376.679688, 7403.858398, 655.891052
+$Orientation:
+	0.701658, 0.000000, 0.712514,
+	-0.000000, 1.000000, 0.000000,
+	-0.712514, -0.000000, 0.701658
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: William 4		;! Object #36
+$Display Name: XSTR("William 4", 5648)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -12299.612305, 7403.858398, 641.243835
+$Orientation:
+	0.701658, 0.000000, 0.712514,
+	-0.000000, 1.000000, 0.000000,
+	-0.712514, -0.000000, 0.701658
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Victor 1		;! Object #37
+$Display Name: XSTR("Victor 1", 3981)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -11362.757813, 3574.970459, 15233.588867
+$Orientation:
+	-0.934076, -0.000000, 0.357075,
+	-0.000000, 1.000000, -0.000000,
+	-0.357075, -0.000000, -0.934076
++AI Class: Interceptor
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Victor 2		;! Object #38
+$Display Name: XSTR("Victor 2", 3982)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -11394.520508, 3535.040283, 15317.697266
+$Orientation:
+	-0.934076, -0.000000, 0.357075,
+	-0.000000, 1.000000, -0.000000,
+	-0.357075, -0.000000, -0.934076
++AI Class: Interceptor
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Victor 3		;! Object #39
+$Display Name: XSTR("Victor 3", 4203)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -11299.688477, 3530.750244, 15264.280273
+$Orientation:
+	-0.934076, -0.000000, 0.357075,
+	-0.000000, 1.000000, -0.000000,
+	-0.357075, -0.000000, -0.934076
++AI Class: Interceptor
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Victor 4		;! Object #40
+$Display Name: XSTR("Victor 4", 5002)
+$Class: Defender-class Fighter
+$Team: Hostile
+$Location: -11323.389648, 3482.749268, 15356.155273
+$Orientation:
+	-0.934076, -0.000000, 0.357075,
+	-0.000000, 1.000000, -0.000000,
+	-0.357075, -0.000000, -0.934076
++AI Class: Interceptor
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Uncle 1		;! Object #41
+$Display Name: XSTR("Uncle 1", 5229)
+$Class: Interdictor-class Striker
+$Team: Hostile
+$Location: -21828.939453, 6021.302734, 3223.827393
+$Orientation:
+	0.773119, 0.000000, -0.634261,
+	0.000000, 1.000000, 0.000000,
+	0.634261, 0.000000, 0.773119
++AI Class: SLRS-Captain
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Uncle 2		;! Object #42
+$Display Name: XSTR("Uncle 2", 5230)
+$Class: Interdictor-class Striker
+$Team: Hostile
+$Location: -21871.171875, 6021.302734, 3110.173096
+$Orientation:
+	0.773119, 0.000000, -0.634261,
+	0.000000, 1.000000, 0.000000,
+	0.634261, 0.000000, 0.773119
++AI Class: SLRS-Captain
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Uncle 3		;! Object #43
+$Display Name: XSTR("Uncle 3", 5233)
+$Class: Interdictor-class Striker
+$Team: Hostile
+$Location: -21942.210938, 6021.303711, 3266.963623
+$Orientation:
+	0.773119, 0.000000, -0.634261,
+	0.000000, 1.000000, 0.000000,
+	0.634261, 0.000000, 0.773119
++AI Class: SLRS-Captain
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Orders Accepted List: ( )
++Use Table Score:
++Score: 10
+
+$Name: Tare 1		;! Object #44
+$Display Name: XSTR("Tare 1", 5231)
+$Class: Clipper-class Attack Craft
+$Team: Hostile
+$Location: -21846.089844, 6584.987305, 3391.513916
+$Orientation:
+	0.773119, 0.000000, -0.634261,
+	0.000000, 1.000000, 0.000000,
+	0.634261, 0.000000, 0.773119
++AI Class: SLRS-Captain
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+$Name: Tare 2		;! Object #45
+$Display Name: XSTR("Tare 2", 5232)
+$Class: Clipper-class Attack Craft
+$Team: Hostile
+$Location: -21895.091797, 6584.987305, 3192.176514
+$Orientation:
+	0.773119, 0.000000, -0.634261,
+	0.000000, 1.000000, 0.000000,
+	0.634261, 0.000000, 0.773119
++AI Class: SLRS-Captain
+$Cargo 1:  XSTR("Nothing", 3335)
++Initial Velocity: 33
++Initial Hull: 100
++Initial Shields: 100
++Subsystem: Pilot
+$Arrival Location: Hyperspace
+$Arrival Cue: ( false ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Determination: 10
++Flags: ( "no-shields" "no-arrival-warp" )
++Flags2: ( "no-ets" )
++Respawn priority: 0
++Use Table Score:
++Score: 0
+
+#Wings		;! 8 total
+
+$Name: Alpha
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Alpha 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 1 total
+	"Alpha 1"
+)
++Hotkey: 0
++Flags: ( )
+
+$Name: Zebra
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Zebra 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( is-event-true-delay 
+   "checkpoint load 2" 
+   0 
+)
+$Ships: (		;! 3 total
+	"Zebra 1"
+	"Zebra 2"
+	"Zebra 3"
+)
+$AI Goals: ( goals ( ai-guard "Inflame" 50 ) )
++Flags: ( "no-departure-warp" )
+
+$Name: Xray
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Xray 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( true ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Xray 1"
+	"Xray 2"
+)
++Flags: ( )
+
+$Name: Yoke
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Yoke 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay 
+   "may be able to help" 
+   6 
+)
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Yoke 1"
+	"Yoke 2"
+	"Yoke 3"
+	"Yoke 4"
+)
+$AI Goals: ( goals ( ai-chase "Aria" 50 ) )
++Flags: ( "no-arrival-warp" )
+
+$Name: William
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! William 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( is-event-true-delay "heads up" 20 ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"William 1"
+	"William 2"
+	"William 3"
+	"William 4"
+)
+$AI Goals: ( goals ( ai-chase "Aria" 50 ) )
++Flags: ( "no-arrival-warp" )
+
+$Name: Victor
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Victor 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "William" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 4 total
+	"Victor 1"
+	"Victor 2"
+	"Victor 3"
+	"Victor 4"
+)
+$AI Goals: ( goals ( ai-chase "Aria" 50 ) )
++Flags: ( "no-arrival-warp" )
+
+$Name: Uncle
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Uncle 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Ursa" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 3 total
+	"Uncle 1"
+	"Uncle 2"
+	"Uncle 3"
+)
+$AI Goals: ( goals ( ai-guard "Inflame" 50 ) ( ai-guard "Ursa" 50 ) )
++Flags: ( "no-arrival-warp" )
+
+$Name: Tare
+$Waves: 1
+$Wave Threshold: 0
+$Special Ship: 0		;! Tare 1
+$Arrival Location: Hyperspace
+$Arrival Cue: ( has-arrived-delay 0 "Ursa" ) 
+$Departure Location: Hyperspace
+$Departure Cue: ( false ) 
+$Ships: (		;! 2 total
+	"Tare 1"
+	"Tare 2"
+)
+$AI Goals: ( goals ( ai-guard "Ursa" 50 ) )
++Flags: ( "no-arrival-warp" )
+
+#Events		;! 300 total
+
+$Formula: ( when 
+   ( true ) 
+   ( modify-variable-xstr 
+      "@i18nVariable1[Hangar]" 
+      "Hangar" 
+      3210 
+   )
+   ( ship-change-alt-name 
+      "@i18nVariable1[Hangar]" 
+      "Anchorage Hangar" 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable2[Offline]" 
+      "Offline" 
+      4709 
+   )
+   ( ship-change-alt-name 
+      "@i18nVariable2[Offline]" 
+      "Sentry Platform" 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable3[Repair Station]" 
+      "Repair Station" 
+      5999 
+   )
+   ( ship-change-alt-name 
+      "@i18nVariable3[Repair Station]" 
+      "Andaman Anchorage" 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable4[ ]" 
+      " " 
+      2685 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable5[TACTICAL INTERFACE]" 
+      "TACTICAL INTERFACE" 
+      6000 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable6[    ==OFFLINE==]" 
+      "    ==OFFLINE==" 
+      6001 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable7[$1$ - Thruster Boost]" 
+      "$1$ - Thruster Boost" 
+      6002 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable8[--------------]" 
+      "--------------" 
+      6003 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable9[$2$ - Damage Control]" 
+      "$2$ - Damage Control" 
+      6004 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable10[$3$ - Antifighter Drones]" 
+      "$3$ - Antifighter Drones" 
+      6005 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable11[MHD thrusters overcharged]" 
+      "MHD thrusters overcharged" 
+      6006 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable12[$Alt-X$ to terminate]" 
+      "$Alt-X$ to terminate" 
+      6007 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable13[MHD thrusters cooling]" 
+      "MHD thrusters cooling" 
+      6008 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable14[Pumping active sealant]" 
+      "Pumping active sealant" 
+      6009 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable15[Hardening active sealant]" 
+      "Hardening active sealant" 
+      6010 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable16[Stand by capacitors]" 
+      "Stand by capacitors" 
+      6011 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable17[PDEW UCAV deployed]" 
+      "PDEW UCAV deployed" 
+      6012 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable18[Recalling UCAV]" 
+      "Recalling UCAV" 
+      6013 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable19[$2$ to repair]" 
+      "$2$ to repair" 
+      6014 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable20[Anchorage standing by]" 
+      "Anchorage standing by" 
+      6015 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable21[============]" 
+      "============" 
+      6016 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable22[$4$ to send signal]" 
+      "$4$ to send signal" 
+      6017 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable23[Transport standing by]" 
+      "Transport standing by" 
+      6018 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable24[Signal sent]" 
+      "Signal sent" 
+      6019 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable25[Transport undocking]" 
+      "Transport undocking" 
+      6020 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable26[TRANSPORT UNDOCKING]" 
+      "TRANSPORT UNDOCKING" 
+      6021 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable27[SIGNAL CANCELLED]" 
+      "SIGNAL CANCELLED" 
+      6022 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable28[STAND BY IMPELLER]" 
+      "STAND BY IMPELLER" 
+      6023 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable29[$Alt-J$ TO JUMP]" 
+      "$Alt-J$ TO JUMP" 
+      6024 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable30[ENGAGING]" 
+      "ENGAGING" 
+      6025 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable31[#Ross]" 
+      "#Ross" 
+      6026 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable32[#Holmes]" 
+      "#Holmes" 
+      6027 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable33[#Ryan]" 
+      "#Ryan" 
+      6028 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable34[#Kelly]" 
+      "#Kelly" 
+      6029 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable35[#Hughes]" 
+      "#Hughes" 
+      6030 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable36[#Lau]" 
+      "#Lau" 
+      6031 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable37[#Erikson]" 
+      "#Erikson" 
+      4096 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable38[#Batra]" 
+      "#Batra" 
+      6032 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable39[Andaman Station]" 
+      "Andaman Station" 
+      5794 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable40[Andaman Anchorage]" 
+      "Andaman Anchorage" 
+      5798 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable41[ASM Platform]" 
+      "ASM Platform" 
+      3225 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable42[Exit Vector]" 
+      "Exit Vector" 
+      6033 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable43[Beam Drone#1]" 
+      "Beam Drone#1" 
+      6034 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable44[Beam Drone#2]" 
+      "Beam Drone#2" 
+      6035 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable45[all right]" 
+      "all right" 
+      6036 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable46[Passengers]" 
+      "Passengers" 
+      4259 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable47[Weapons]" 
+      "Weapons" 
+      2804 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable48[Home]" 
+      "Home" 
+      6037 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable49[Look at Target]" 
+      "Look at Target" 
+      6038 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable50[Alt-D]" 
+      "Alt-D" 
+      5692 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable51[Toggle Turret Auto]" 
+      "Toggle Turret Auto" 
+      6039 
+   )
+)
++Name: Manage translation variables
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( lua-save-file-exists "27-1" ) 
+      ( is-event-true-delay 
+         "mission setup" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "alarm ambience" 
+            0 
+         )
+      )
+   )
+   ( lua-call-prompt 
+      "LoadData" 
+      "Checkpoint Save" 
+      ( true ) 
+      "Start from beginning" 
+      ( true ) 
+      "Start from checkpoint" 
+      ( lua-save-file-exists "27-1" ) 
+      "Start from checkpoint 2" 
+      ( lua-save-file-exists "27-2" ) 
+   )
+)
++Name: load prompt
++Repeat Count: 1
++Interval: 1
++Event Log Flags: ( "last repeat" )
+
+$Formula: ( when 
+   ( = 
+      ( lua-get-prompt-response "LoadData" ) 
+      2 
+   )
+   ( lua-load-init "27-1" ) 
+   ( lua-load-ship 3 "Alpha 1" "Aria" ) 
+)
++Name: checkpoint load
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "initial fadeout" 
+      100 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "Sensors" 
+      100 
+   )
+   ( repair-subsystem 
+      "Alpha 1" 
+      "Sensors" 
+      100 
+   )
+   ( activate-glow-maps "Aria" ) 
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Aria" 
+      "<all engines>" 
+      "<all turrets>" 
+      "Weapons" 
+      "Communication" 
+      "Sensors" 
+      "Navigation" 
+   )
+   ( hud-disable-except-messages 0 ) 
+)
++Name: restore hud
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-object-facing-object 
+      "Alpha 1" 
+      "Andaman Station" 
+   )
+)
++Name: point to andaman
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "weapons online" 
+      4 
+   )
+   ( select-nav "@i18nVariable39[Andaman Station]" ) 
+)
++Name: select andaman station
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( = 
+      ( lua-get-prompt-response "LoadData" ) 
+      3 
+   )
+   ( lua-load-init "27-2" ) 
+   ( lua-load-ship 3 "Alpha 1" "Aria" ) 
+   ( ship-vanish 
+      "Sentry Platform" 
+      "Solomnent" 
+      "Xray 1" 
+      "Xray 2" 
+   )
+   ( change-iff 
+      "Friendly" 
+      "Andaman Station" 
+   )
+)
++Name: checkpoint load 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "initial fadeout" 
+      100 
+   )
+   ( hud-disable-except-messages 0 ) 
+   ( repair-subsystem 
+      "Aria" 
+      "Sensors" 
+      100 
+   )
+   ( repair-subsystem 
+      "Alpha 1" 
+      "Sensors" 
+      100 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "Navigation" 
+      100 
+   )
+   ( activate-glow-maps "Aria" ) 
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Aria" 
+      "<all engines>" 
+      "<all turrets>" 
+      "Weapons" 
+      "Communication" 
+      "Sensors" 
+      "Navigation" 
+   )
+)
++Name: restore hud 2
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-subsystem-strength 
+      "Aria" 
+      "Hull" 
+      100 
+   )
+)
++Name: repair aria
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "mission setup" 
+      200 
+   )
+   ( script-eval-block 
+      "Scroll:Write(" 
+      "'title1'," 
+      "15,12,0.05,2,2,true,10,false)" 
+   )
+)
++Name: title
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "mission setup" 
+      2 
+   )
+   ( capship-register-vehicle "Aria" ) 
+   ( unlock-primary-weapon "Alpha 1" ) 
+   ( hud-set-builtin-gauge-active 
+      ( false ) 
+      "Weapons" 
+      "Kills" 
+      "Weapon energy" 
+      "Player shield" 
+      "Mini shield" 
+      "Countermeasures" 
+      "Center reticle" 
+      "Lead sight" 
+      "Lead indicator" 
+      "Afterburner energy" 
+      "Primary weapons" 
+      "Secondary weapons" 
+      "Lag indicator" 
+      "Target shield" 
+      "Threat indicator" 
+   )
+)
++Name: register vehicle
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time-argument 
+   ( for-ship-team 
+      "Hostile" 
+      "Friendly" 
+      "Unknown" 
+      "Neutral" 
+      "Surrendered" 
+   )
+   ( targeted "<argument>" ) 
+   ( set-object-position 
+      "player target:1" 
+      ( get-object-x "<argument>" ) 
+      ( get-object-y "<argument>" ) 
+      ( get-object-z "<argument>" ) 
+   )
+)
++Name: set target
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( key-pressed "Home" ) 
+   ( set-object-facing-object 
+      "Alpha 1" 
+      "player target:1" 
+   )
+   ( key-reset-multiple "Home" ) 
+)
++Name: home to padlock
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "jump out" 
+      2300 
+   )
+   ( capship-unregister ) 
+   ( hud-disable-except-messages 1 ) 
+   ( set-fov 30 ) 
+   ( set-camera-shudder 
+      1000 
+      0 
+      ( true ) 
+      ( true ) 
+   )
+)
++Name: unregister vehicle
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( fade-out 6000 ) ) 
++Name: fadeout good
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "mission complete title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      6000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "10" 
+      ( true ) 
+   )
+)
++Name: mission complete title
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when ( true ) ( end-mission ) ) 
++Name: mission end
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( use-autopilot ( false ) ) 
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Aria" 
+      "<all engines>" 
+      "Weapons" 
+      "Communication" 
+      "Sensors" 
+      "Navigation" 
+      "fighterbay" 
+      "<all turrets>" 
+   )
+   ( ship-subsys-untargetable 
+      "Andaman Station" 
+      "DockA" 
+      "DockB" 
+      "DockC" 
+   )
+   ( add-to-collision-group-new 
+      1 
+      "Alpha 1" 
+      "Aria" 
+   )
+   ( deactivate-glow-maps "Aria" ) 
+   ( hud-disable-except-messages 1 ) 
+)
++Name: mission setup
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( false ) 
+   ( set-time-compression 100 ) 
+)
++Name: set time compression
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( set-camera-position 0 -50000 0 ) 
+)
++Name: setup initial view
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "regain player control" 
+         2 
+      )
+      ( is-event-true-delay "restore hud" 2 ) 
+      ( is-event-true-delay 
+         "restore hud 2" 
+         2 
+      )
+   )
+   ( hud-set-custom-gauge-active 
+      ( true ) 
+      "SlrsLowerRightMFD" 
+      "SlrsLowerRightMFDA" 
+      "SlrsLowerRightMFDB" 
+      "SlrsLowerRightMFDC" 
+      "SlrsLowerRightMFDD" 
+      "SlrsLowerRightMFDE" 
+      "SlrsLowerRightMFDF" 
+      "SlrsLowerRightMFDG" 
+      "SlrsLowerRightMFDH" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDF" 
+      "@i18nVariable4[ ]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDG" 
+      "@i18nVariable4[ ]" 
+   )
+   ( modify-variable @menuon[0] 0 ) 
+   ( hud-set-text 
+      "SlrsLowerRightMFD" 
+      "@i18nVariable5[TACTICAL INTERFACE]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDC" 
+      "@i18nVariable4[ ]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDA" 
+      "@i18nVariable4[ ]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDB" 
+      "@i18nVariable6[    ==OFFLINE==]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDD" 
+      "@i18nVariable4[ ]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDE" 
+      "@i18nVariable4[ ]" 
+   )
+)
++Name: enable taccomm and menuon
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when-argument 
+   ( any-of 
+      "SlrsLowerRightMFD" 
+      "SlrsLowerRightMFDA" 
+      "SlrsLowerRightMFDB" 
+      "SlrsLowerRightMFDC" 
+      "SlrsLowerRightMFDD" 
+      "SlrsLowerRightMFDE" 
+      "SlrsLowerRightMFDF" 
+      "SlrsLowerRightMFDG" 
+      "SlrsLowerRightMFDH" 
+   )
+   ( is-event-true-delay 
+      "Alt-J pressed" 
+      0 
+   )
+   ( hud-set-custom-gauge-active 
+      ( false ) 
+      "<argument>" 
+   )
+   ( modify-variable @menuon[0] 0 ) 
+)
++Name: menu off
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "mission setup" 
+      250 
+   )
+   ( adjust-audio-volume "Effects" 0 ) 
+   ( hud-disable-except-messages 1 ) 
+   ( fade-out 500 ) 
+)
++Name: initial fadeout
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "initial fadeout" 
+         500 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         1 
+      )
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         1 
+      )
+   )
+   ( mission-set-nebula 1 14000 ) 
+   ( nebula-toggle-poof 
+      "Neb_Poof_Red01" 
+      ( true ) 
+   )
+   ( nebula-toggle-poof 
+      "Neb_Poof_Red02" 
+      ( true ) 
+   )
+   ( reset-camera ( true ) ) 
+   ( set-skybox-model "NebulaRed.pof" ) 
+)
++Name: change to nebula
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "attempting restore" 
+         6 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         6 
+      )
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         6 
+      )
+   )
+   ( fade-in 3500 ) 
+   ( clear-goals "Alpha 1" ) 
+   ( player-not-use-ai ) 
+   ( adjust-audio-volume 
+      "Effects" 
+      100 
+      3500 
+   )
+   ( set-object-position 
+      "Alpha 1" 
+      ( get-object-x 
+         "aria initial position:1" 
+      )
+      ( get-object-y 
+         "aria initial position:1" 
+      )
+      ( get-object-z 
+         "aria initial position:1" 
+      )
+   )
+   ( set-object-facing-object 
+      "Alpha 1" 
+      "Andaman Transponder" 
+   )
+   ( reset-camera ( true ) ) 
+)
++Name: fadein
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "could be worse" 
+      18 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "<all engines>" 
+      100 
+   )
+   ( hud-disable-except-messages 0 ) 
+   ( repair-subsystem 
+      "Alpha 1" 
+      "<all engines>" 
+      100 
+   )
+)
++Name: restore engines
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "restore engines" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         1 
+      )
+   )
+   ( play-sound-from-file 
+      "Music_CW_Ambient3" 
+      99 
+   )
+)
++Name: initial music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "all right" 4 ) 
+   ( play-sound-from-file 
+      "Music_CW_Battle1-2" 
+      99 
+   )
+)
++Name: battle music 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "frigate incoming" 
+         1 
+      )
+      ( false ) 
+   )
+   ( play-sound-from-file 
+      "Music_CW_Battle1-2" 
+      99 
+   )
+)
++Name: battle music 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "fighter patrol 2" 
+      1 
+   )
+   ( play-sound-from-file 
+      "Music_CW_Battle2-2" 
+      99 
+   )
+)
++Name: battle music 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "destroyer here" 
+      1 
+   )
+   ( play-sound-from-file 
+      "Music_CW_Battle3-2" 
+      99 
+   )
+)
++Name: battle music 4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-destroyed-delay 0 "Zebra" "Xray" ) 
+         ( destroyed-or-departed-delay 
+            0 
+            "Solomnent" 
+         )
+      )
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         1 
+      )
+   )
+   ( play-sound-from-file 
+      "Music_CW_Ambient4" 
+      99 
+   )
+)
++Name: combat over music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      1 
+      "Yoke" 
+      "William" 
+      "Victor" 
+   )
+   ( play-sound-from-file 
+      "Music_CW_Ambient4" 
+      99 
+   )
+)
++Name: combat over music 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( destroyed-or-departed-delay 
+      2 
+      "Ursa" 
+      "Inflame" 
+      "Uncle" 
+      "Tare" 
+   )
+   ( play-sound-from-file 
+      "Music_CW_Ambient1" 
+      99 
+   )
+)
++Name: combat over music 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "lau on board" 
+      0 
+   )
+   ( play-sound-from-file "hikari3" 99 ) 
+)
++Name: victory music
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "destroyer here" 
+         0 
+      )
+      ( is-destroyed-delay 0 "Aria" ) 
+   )
+   ( modify-variable 
+      @finaldeath[0] 
+      ( + @finaldeath[0] 1 ) 
+   )
+)
++Name: final battle death countdown
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( hits-left 
+            "Tortoise-class Transport#3" 
+         )
+         99 
+      )
+      ( >= @civpanic[0] 2 ) 
+   )
+   ( clear-goals 
+      "Tortoise-class Transport#3" 
+   )
+   ( add-goal 
+      "Tortoise-class Transport#3" 
+      ( ai-waypoints-once 
+         "tortoise 3 retreat" 
+         89 
+      )
+   )
+   ( modify-variable 
+      @civpanic[0] 
+      ( + @civpanic[0] 1 ) 
+   )
+)
++Name: tortoise 3 retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( hits-left "Minnow-class Shuttle#1" ) 
+         99 
+      )
+      ( >= @civpanic[0] 2 ) 
+   )
+   ( clear-goals 
+      "Minnow-class Shuttle#1" 
+   )
+   ( add-goal 
+      "Minnow-class Shuttle#1" 
+      ( ai-waypoints-once 
+         "minnow 1 retreat" 
+         89 
+      )
+   )
+   ( modify-variable 
+      @civpanic[0] 
+      ( + @civpanic[0] 1 ) 
+   )
+)
++Name: minnow 1 retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( hits-left "Minnow-class Shuttle#2" ) 
+         99 
+      )
+      ( >= @civpanic[0] 2 ) 
+   )
+   ( clear-goals 
+      "Minnow-class Shuttle#2" 
+   )
+   ( add-goal 
+      "Minnow-class Shuttle#2" 
+      ( ai-waypoints-once 
+         "minnow 2 retreat" 
+         89 
+      )
+   )
+   ( modify-variable 
+      @civpanic[0] 
+      ( + @civpanic[0] 1 ) 
+   )
+)
++Name: minnow 2 retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < ( hits-left "Bittersweet" ) 99 ) 
+      ( >= @civpanic[0] 2 ) 
+   )
+   ( clear-goals "Bittersweet" ) 
+   ( add-goal 
+      "Bittersweet" 
+      ( ai-waypoints-once 
+         "bittersweet retreat" 
+         89 
+      )
+   )
+   ( modify-variable 
+      @civpanic[0] 
+      ( + @civpanic[0] 1 ) 
+   )
+)
++Name: bittersweet retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < ( hits-left "Mimosa" ) 99 ) 
+      ( >= @civpanic[0] 2 ) 
+   )
+   ( clear-goals "Mimosa" ) 
+   ( add-goal 
+      "Mimosa" 
+      ( ai-waypoints-once 
+         "mimosa retreat" 
+         89 
+      )
+   )
+   ( modify-variable 
+      @civpanic[0] 
+      ( + @civpanic[0] 1 ) 
+   )
+)
++Name: mimosa retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( < ( hits-left "Friday" ) 99 ) 
+      ( >= @civpanic[0] 2 ) 
+   )
+   ( clear-goals "Friday" ) 
+   ( add-goal 
+      "Friday" 
+      ( ai-waypoints-once 
+         "friday retreat" 
+         89 
+      )
+   )
+   ( modify-variable 
+      @civpanic[0] 
+      ( + @civpanic[0] 1 ) 
+   )
+)
++Name: friday retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "group of hostiles" 
+         0 
+      )
+      ( > 
+         ( distance-to-bbox 
+            "Alpha 1" 
+            "Andaman Station" 
+         )
+         3500 
+      )
+   )
+   ( modify-variable @bonusgoal[0] 1 ) 
+)
++Name: bonus goal variable
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-goal-true-delay 
+      "stayed near station" 
+      0 
+   )
+   ( training-msg "bonus" ) 
+)
++Name: bonus
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-goal-true-delay 
+      "solomnent destroyed" 
+      0 
+   )
+   ( training-msg "bonus" ) 
+)
++Name: bonus 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: >>>>HELM RESPONSES<<<<
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "can change heading" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         0 
+      )
+   )
+   ( key-reset-multiple "Spacebar" ) 
+)
++Name: helm response setup trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( key-pressed "Spacebar" ) 
+   ( modify-variable 
+      @helmresponsechance[0] 
+      ( rand-multiple 0 2 ) 
+   )
+   ( key-reset-multiple "Spacebar" ) 
+)
++Name: helm response setup
++Repeat Count: 999999
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( = @helmresponsechance[0] 2 ) 
+   ( modify-variable 
+      @helmresponsechance[0] 
+      0 
+   )
+)
++Name: reset helmresponsechance
++Repeat Count: 9999999
++Interval: 2
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "can change heading" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         0 
+      )
+   )
+   ( key-reset-multiple "\" ) 
+)
++Name: full engine setup trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( key-pressed "\" ) 
+   ( modify-variable 
+      @fullpowerresponse[0] 
+      ( rand-multiple 0 1 ) 
+   )
+   ( key-reset-multiple "\" ) 
+)
++Name: full engine setup
++Repeat Count: 9999999
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( = @fullpowerresponse[0] 1 ) 
+   ( modify-variable 
+      @fullpowerresponse[0] 
+      0 
+   )
+)
++Name: reset fullpowerresponse
++Repeat Count: 99999999
++Interval: 2
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "can change heading" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         0 
+      )
+   )
+   ( key-reset-multiple "Backspace" ) 
+)
++Name: stop engine setup trig
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( key-pressed "Backspace" ) 
+   ( modify-variable 
+      @stopresponse[0] 
+      ( rand-multiple 0 1 ) 
+   )
+   ( key-reset-multiple "Backspace" ) 
+)
++Name: stop engine setup
++Repeat Count: 99999999
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( = @stopresponse[0] 1 ) 
+   ( modify-variable @stopresponse[0] 0 ) 
+)
++Name: reset stopresponse
++Repeat Count: 99999999
++Interval: 2
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: >>>>>>                  <<<<<<
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "repair teams on move" 
+      18 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "Sensors" 
+      100 
+   )
+   ( hud-disable-except-messages 0 ) 
+   ( repair-subsystem 
+      "Alpha 1" 
+      "Sensors" 
+      100 
+   )
+)
++Name: restore sensors
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "repair teams on move" 
+      2 
+   )
+   ( repair-subsystem "Aria" "Hull" 1 ) 
+)
++Name: repair hull slowly
++Repeat Count: 20
++Interval: 5
+
+$Formula: ( when 
+   ( is-event-true-delay "ok thanks" 0 ) 
+   ( ship-unstealthy 
+      "Andaman Transponder" 
+   )
+)
++Name: andaman scannable
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "ok thanks" 0 ) 
+      ( is-cargo-known-delay 
+         0 
+         "Andaman Transponder" 
+      )
+   )
+   ( add-remove-escort 
+      "Andaman Transponder" 
+      0 
+   )
+)
++Name: dir scan transponder
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Scan Transponder", 5808)
++Objective key:  XSTR("Move to <900m, aim at target", 5809)
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "transponder scanned 2" 
+         0 
+      )
+      ( > ( hits-left "Aria" ) 75 ) 
+   )
+   ( do-nothing ) 
+)
++Name: dir repair aria
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Repair Aria", 5810)
++Objective key:  XSTR("Approach Anchorage", 5811)
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( is-event-true-delay "good target" 0 ) 
+         ( is-destroyed-delay 
+            0 
+            "Sentry Platform" 
+         )
+      )
+      ( and 
+         ( is-event-true-delay "good target" 0 ) 
+         ( < 
+            ( distance-to-nav "Andaman Station" ) 
+            14000 
+         )
+      )
+   )
+   ( ship-vanish "Sentry Platform" ) 
+)
++Name: dir destroy weapons platform
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy Weapons Platform", 5812)
++Objective key:  XSTR("or Proceed to Station", 5813)
+
+$Formula: ( when 
+   ( and 
+      ( destroyed-or-departed-delay 
+         0 
+         "Zebra" 
+      )
+      ( is-event-true-delay 
+         "fighter patrol" 
+         0 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: dir destroy Zebra
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy fighters", 4319)
+
+$Formula: ( when 
+   ( and 
+      ( destroyed-or-departed-delay 
+         0 
+         "Xray" 
+      )
+      ( is-event-true-delay "LACS attack" 0 ) 
+   )
+   ( do-nothing ) 
+)
++Name: dir destroy LACs
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy LACs", 4619)
+
+$Formula: ( when 
+   ( and 
+      ( destroyed-or-departed-delay 
+         0 
+         "Solomnent" 
+      )
+      ( is-event-true-delay 
+         "frigate incoming" 
+         0 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: destroy frigate
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Destroy frigate Solomnent", 5814)
+
+$Formula: ( when 
+   ( and 
+      ( cap-subsys-cargo-known-delay 
+         0 
+         "Andaman Station" 
+         "DockA" 
+         "DockB" 
+         "DockC" 
+      )
+      ( is-event-true-delay "scan docks" 0 ) 
+   )
+   ( do-nothing ) 
+)
++Name: dir scan docks
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Scan Andaman Docks", 5815)
++Objective key:  XSTR("Target subsystems", 5816)
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "prepare to warp" 
+         0 
+      )
+      ( key-pressed "Alt-J" ) 
+      ( is-facing "Aria" "warp vector:1" 10 ) 
+      ( <= 
+         ( distance-to-nav "Exit Vector" ) 
+         21000 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: dir warpout
++Repeat Count: 1
++Interval: 1
++Objective:  XSTR("Jump out", 5817)
++Objective key:  XSTR("Face Exit Point and $Alt-J$", 5818)
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "transponder scanned" 
+         4 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         4 
+      )
+   )
+   ( add-nav-ship 
+      "Andaman Anchorage" 
+      "Andaman Anchorage" 
+   )
+   ( add-nav-ship 
+      "Andaman Station" 
+      "Andaman Station" 
+   )
+   ( select-nav "@i18nVariable40[Andaman Anchorage]" ) 
+   ( set-nav-color 
+      255 
+      255 
+      255 
+      "@i18nVariable40[Andaman Anchorage]" 
+      "@i18nVariable39[Andaman Station]" 
+   )
+   ( set-nav-visited-color 
+      255 
+      255 
+      255 
+      "@i18nVariable40[Andaman Anchorage]" 
+      "Andaman Station" 
+   )
+)
++Name: waypoint andaman repair
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "weapons platform" 
+         4 
+      )
+      ( not 
+         ( is-event-true-delay "all right" 0 ) 
+      )
+   )
+   ( add-nav-ship 
+      "ASM Platform" 
+      "Sentry Platform" 
+   )
+   ( select-nav "@i18nVariable41[ASM Platform]" ) 
+   ( set-nav-color 
+      255 
+      255 
+      255 
+      "@i18nVariable41[ASM Platform]" 
+   )
+   ( set-nav-visited-color 
+      255 
+      255 
+      255 
+      "@i18nVariable41[ASM Platform]" 
+   )
+)
++Name: waypoint sentry platform
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "prepare to warp" 
+      0 
+   )
+   ( add-nav-waypoint 
+      "@i18nVariable42[Exit Vector]" 
+      "warp vector" 
+      0 
+   )
+   ( select-nav "@i18nVariable42[Exit Vector]" ) 
+)
++Name: waypoint warp vector
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 
+      1 
+      "Anchorage Drone 1" 
+      "Anchorage Drone 2" 
+   )
+   ( add-to-collision-group-new 
+      4 
+      "Anchorage Drone 1" 
+      "Anchorage Drone 2" 
+      "Aria" 
+   )
+)
++Name: repair drones collision
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( and 
+         ( has-docked-delay 
+            "Anchorage Drone 1" 
+            "Aria" 
+            1 
+            4 
+         )
+         ( has-docked-delay 
+            "Anchorage Drone 2" 
+            "Aria" 
+            1 
+            4 
+         )
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         1 
+      )
+   )
+   ( set-subsystem-strength 
+      "Aria" 
+      "Hull" 
+      80 
+   )
+   ( set-subsystem-strength 
+      "Aria" 
+      "Weapons" 
+      100 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "turret07" 
+      100 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "turret08" 
+      100 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "Sensors" 
+      100 
+   )
+   ( turret-free-all "Aria" ) 
+   ( repair-subsystem 
+      "Alpha 1" 
+      "Sensors" 
+      100 
+   )
+   ( repair-subsystem 
+      "Alpha 1" 
+      "Weapons" 
+      100 
+   )
+   ( repair-subsystem 
+      "Alpha 1" 
+      "Engine" 
+      100 
+   )
+   ( play-sound-from-file 
+      "repair" 
+      0 
+      0 
+      @repairsound[0] 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "Navigation" 
+      100 
+   )
+   ( hud-set-custom-gauge-active 
+      ( false ) 
+      "SlrsTaccom" 
+      "SlrsTaccomA" 
+      "SlrsTaccomB" 
+      "SlrsTaccomC" 
+      "SlrsTaccomD" 
+   )
+)
++Name: repair drones work
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Anchorage Drone 1" 
+      ( ai-undock 89 ) 
+   )
+   ( add-goal 
+      "Anchorage Drone 2" 
+      ( ai-undock 89 ) 
+   )
+   ( close-sound-from-file 
+      ( true ) 
+      @repairsound[0] 
+   )
+   ( clear-goals "Aria" ) 
+)
++Name: repair drones undock
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( player-not-use-ai ) 
+   ( hud-disable-except-messages 0 ) 
+   ( repair-subsystem 
+      "Aria" 
+      "<all engines>" 
+      100 
+   )
+   ( set-subsystem-strength 
+      "Alpha 1" 
+      "Weapons" 
+      100 
+   )
+)
++Name: regain player control
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+   )
+   ( lua-save-init "27-1" ) 
+   ( lua-save-ship "Alpha 1" "Aria" ) 
+   ( lua-save-done ) 
+)
++Name: SAVE CHECKPOINT 1
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "checkpoint load 2" 
+      1 
+   )
+   ( set-subsystem-strength 
+      "Aria" 
+      "Hull" 
+      80 
+   )
+   ( set-subsystem-strength 
+      "Aria" 
+      "Weapons" 
+      100 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "turret07" 
+      100 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "turret08" 
+      100 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "Sensors" 
+      100 
+   )
+   ( turret-free-all "Aria" ) 
+   ( repair-subsystem 
+      "Alpha 1" 
+      "Sensors" 
+      100 
+   )
+   ( repair-subsystem 
+      "Alpha 1" 
+      "Weapons" 
+      100 
+   )
+   ( repair-subsystem 
+      "Alpha 1" 
+      "Engine" 
+      100 
+   )
+   ( clear-goals "Aria" ) 
+)
++Name: restore systems checkpoint 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "thruster overcharge online" 
+         1 
+      )
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         6 
+      )
+   )
+   ( modify-variable @menuon[0] 1 ) 
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+)
++Name: able1: prep tac menu
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 1 ) 
+      ( not 
+         ( or 
+            ( key-pressed "1" ) 
+            ( key-pressed "2" ) 
+            ( key-pressed "3" ) 
+            ( key-pressed "4" ) 
+         )
+      )
+   )
+   ( when 
+      ( true ) 
+      ( hud-set-directive 
+         "SlrsLowerRightMFDA" 
+         "@i18nVariable7[$1$ - Thruster Boost]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDB" 
+         "@i18nVariable8[--------------]" 
+      )
+      ( set-camera-shudder 
+         1000 
+         0 
+         ( true ) 
+         ( true ) 
+      )
+   )
+)
++Name: able1: main tac menu
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 1 ) 
+      ( not 
+         ( or 
+            ( key-pressed "1" ) 
+            ( key-pressed "2" ) 
+            ( key-pressed "3" ) 
+            ( key-pressed "4" ) 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "able1: dc unlock trigger" 
+            0 
+         )
+      )
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDC" 
+      "@i18nVariable4[ ]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDD" 
+      "@i18nVariable4[ ]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDE" 
+      "@i18nVariable4[ ]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDF" 
+      "@i18nVariable4[ ]" 
+   )
+)
++Name: Alpha 1: main tac menu blank
++Repeat Count: 99999999
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 1 ) 
+      ( not 
+         ( or 
+            ( key-pressed "1" ) 
+            ( key-pressed "2" ) 
+            ( key-pressed "3" ) 
+            ( key-pressed "4" ) 
+         )
+      )
+      ( is-event-true-delay 
+         "able1: dc unlock trigger" 
+         0 
+      )
+   )
+   ( hud-set-directive 
+      "SlrsLowerRightMFDC" 
+      "@i18nVariable9[$2$ - Damage Control]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDD" 
+      "@i18nVariable8[--------------]" 
+   )
+)
++Name: able1: main tac menu 2
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 1 ) 
+      ( not 
+         ( or 
+            ( key-pressed "1" ) 
+            ( key-pressed "2" ) 
+            ( key-pressed "3" ) 
+            ( key-pressed "4" ) 
+         )
+      )
+      ( is-event-true-delay 
+         "able1: beamdrone unlock trigger" 
+         0 
+      )
+   )
+   ( hud-set-directive 
+      "SlrsLowerRightMFDE" 
+      "@i18nVariable10[$3$ - Antifighter Drones]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDF" 
+      "@i18nVariable8[--------------]" 
+   )
+)
++Name: able1: main tac menu 3
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( = @menuon[0] 1 ) 
+      ( key-pressed "1" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      40 
+   )
+   ( modify-variable @ablecountup[0] 30 ) 
+   ( modify-variable @menuon[0] 2 ) 
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+)
++Name: able1: thruster select
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 2 ) 
+      ( > @ablecountdown[0] 0 ) 
+   )
+   ( when 
+      ( true ) 
+      ( hud-set-text 
+         "SlrsLowerRightMFDB" 
+         "@i18nVariable11[MHD thrusters overcharged]" 
+      )
+      ( hud-set-message 
+         "SlrsLowerRightMFDC" 
+         "HUDCountup" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDA" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDD" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-directive 
+         "SlrsLowerRightMFDE" 
+         "@i18nVariable12[$Alt-X$ to terminate]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDF" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDG" 
+         "@i18nVariable4[ ]" 
+      )
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      ( - @ablecountdown[0] 1 ) 
+   )
+   ( when 
+      ( > @ablecountup[0] 0 ) 
+      ( modify-variable 
+         @ablecountup[0] 
+         ( - @ablecountup[0] 1 ) 
+      )
+   )
+)
++Name: able1: thruster active
++Repeat Count: 999999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 2 ) 
+      ( >= @ablecountdown[0] 39 ) 
+   )
+   ( play-sound-from-file 
+      "MHD" 
+      0 
+      1 
+      @thrustersound[0] 
+   )
+   ( training-msg "MHDalert" ) 
+   ( change-ship-class 
+      "Arrowhead-class Corvette#MHD" 
+      "Aria" 
+   )
+   ( change-ship-class 
+      "Arrowhead Pilot#MHD" 
+      "Alpha 1" 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Aria" 
+      "<all engines>" 
+      "<all turrets>" 
+      "Weapons" 
+      "Communication" 
+      "Sensors" 
+      "Navigation" 
+   )
+)
++Name: able1: thruster effects
++Repeat Count: 9999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 2 ) 
+      ( >= @ablecountup[0] 0 ) 
+      ( > ( current-speed "Alpha 1" ) 100 ) 
+      ( <= ( current-speed "Alpha 1" ) 130 ) 
+   )
+   ( set-camera-shudder 
+      1000 
+      25 
+      ( true ) 
+      ( true ) 
+   )
+)
++Name: able1: thruster shake 25
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 2 ) 
+      ( >= @ablecountup[0] 0 ) 
+      ( > ( current-speed "Alpha 1" ) 130 ) 
+      ( <= ( current-speed "Alpha 1" ) 160 ) 
+   )
+   ( set-camera-shudder 
+      1000 
+      50 
+      ( true ) 
+      ( true ) 
+   )
+)
++Name: able 1: thruster shake 50
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 2 ) 
+      ( >= @ablecountup[0] 0 ) 
+      ( > ( current-speed "Alpha 1" ) 160 ) 
+   )
+   ( set-camera-shudder 
+      1000 
+      75 
+      ( true ) 
+      ( true ) 
+   )
+)
++Name: able 1: thruster shake 75
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 2 ) 
+      ( > @ablecountup[0] 2 ) 
+      ( key-pressed "Alt-X" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      12 
+   )
+   ( modify-variable @ablecountup[0] 2 ) 
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+   ( play-sound-from-file 
+      "MHDend" 
+      0 
+      1 
+      @thrustersound[0] 
+   )
+)
++Name: able 1: alt-x to cancel 1
++Repeat Count: 9999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 2 ) 
+      ( = @ablecountup[0] 0 ) 
+   )
+   ( when 
+      ( true ) 
+      ( hud-set-text 
+         "SlrsLowerRightMFDB" 
+         "@i18nVariable13[MHD thrusters cooling]" 
+      )
+      ( hud-set-message 
+         "SlrsLowerRightMFDC" 
+         "HUDCountdown" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDA" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDD" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDE" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDF" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDG" 
+         "@i18nVariable4[ ]" 
+      )
+   )
+   ( set-camera-shudder 
+      1000 
+      0 
+      ( false ) 
+      ( true ) 
+   )
+   ( change-ship-class 
+      "Arrowhead-class Corvette" 
+      "Aria" 
+   )
+   ( change-ship-class 
+      "Arrowhead Pilot" 
+      "Alpha 1" 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Aria" 
+      "<all engines>" 
+      "Weapons" 
+      "Communication" 
+      "Sensors" 
+      "Navigation" 
+      "fighterbay" 
+      "<all turrets>" 
+   )
+)
++Name: able1: thruster cooldown
++Repeat Count: 999999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @ablecountdown[0] 0 ) 
+      ( = @ablecountup[0] 0 ) 
+      ( = @menuon[0] 2 ) 
+   )
+   ( modify-variable @menuon[0] 1 ) 
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+   ( set-camera-shudder 
+      1000 
+      0 
+      ( true ) 
+      ( true ) 
+   )
+   ( close-sound-from-file 
+      ( true ) 
+      @thrustersound[0] 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Aria" 
+      "<all engines>" 
+      "<all turrets>" 
+      "Weapons" 
+      "Communication" 
+      "Sensors" 
+      "Navigation" 
+   )
+)
++Name: able1: thruster reset
++Repeat Count: 999999999
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "damage control" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         1 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: able1: dc unlock trigger
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( = @menuon[0] 1 ) 
+      ( key-pressed "2" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      25 
+   )
+   ( modify-variable @ablecountup[0] 20 ) 
+   ( modify-variable @menuon[0] 3 ) 
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+   ( modify-variable @ablerepair[0] 5 ) 
+)
++Name: able1: select dc
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 3 ) 
+      ( > @ablecountdown[0] 0 ) 
+   )
+   ( when 
+      ( true ) 
+      ( hud-set-text 
+         "SlrsLowerRightMFDB" 
+         "@i18nVariable14[Pumping active sealant]" 
+      )
+      ( hud-set-message 
+         "SlrsLowerRightMFDC" 
+         "HUDCountup" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDA" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDD" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-directive 
+         "SlrsLowerRightMFDE" 
+         "@i18nVariable12[$Alt-X$ to terminate]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDF" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDG" 
+         "@i18nVariable4[ ]" 
+      )
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      ( - @ablecountdown[0] 1 ) 
+   )
+   ( when 
+      ( > @ablecountup[0] 0 ) 
+      ( modify-variable 
+         @ablecountup[0] 
+         ( - @ablecountup[0] 1 ) 
+      )
+   )
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+   ( modify-variable 
+      @ablerepaircharge[0] 
+      ( - 20 @ablecountup[0] ) 
+   )
+)
++Name: able1: dc active (counting)
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 3 ) 
+      ( >= @ablecountdown[0] 24 ) 
+   )
+   ( play-sound-from-file 
+      "repair" 
+      0 
+      0 
+      @repairsound[0] 
+   )
+)
++Name: able1: dc repair sounds
++Repeat Count: 999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 3 ) 
+      ( > @ablecountup[0] 2 ) 
+      ( key-pressed "Alt-X" ) 
+   )
+   ( modify-variable @ablecountdown[0] 7 ) 
+   ( modify-variable @ablecountup[0] 2 ) 
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+   ( modify-variable 
+      @ablerepair[0] 
+      ( / @ablerepaircharge[0] 5 ) 
+   )
+)
++Name: able1: alt-x to cancel 2
++Repeat Count: 9999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 3 ) 
+      ( = @ablecountup[0] 0 ) 
+   )
+   ( when 
+      ( true ) 
+      ( hud-set-text 
+         "SlrsLowerRightMFDA" 
+         "@i18nVariable15[Hardening active sealant]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDB" 
+         "@i18nVariable16[Stand by capacitors]" 
+      )
+      ( hud-set-message 
+         "SlrsLowerRightMFDC" 
+         "HUDCountdown" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDD" 
+         "@i18nVariable4[ ]" 
+      )
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "Hull" 
+      @ablerepair[0] 
+   )
+)
++Name: able1: dc cooldown (repairing)
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @ablecountdown[0] 0 ) 
+      ( = @ablecountup[0] 0 ) 
+      ( = @menuon[0] 3 ) 
+   )
+   ( modify-variable @menuon[0] 1 ) 
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+   ( close-sound-from-file 
+      ( true ) 
+      @repairsound[0] 
+   )
+)
++Name: able1: dc reset
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "found drones" 
+         2 
+      )
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         1 
+      )
+   )
+   ( do-nothing ) 
+)
++Name: able1: beamdrone unlock trigger
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( every-time 
+   ( and 
+      ( = @menuon[0] 1 ) 
+      ( key-pressed "3" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      70 
+   )
+   ( modify-variable @ablecountup[0] 60 ) 
+   ( modify-variable @menuon[0] 4 ) 
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+)
++Name: able1: beamdrone select
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 4 ) 
+      ( > @ablecountdown[0] 0 ) 
+   )
+   ( when 
+      ( true ) 
+      ( hud-set-text 
+         "SlrsLowerRightMFDB" 
+         "@i18nVariable17[PDEW UCAV deployed]" 
+      )
+      ( hud-set-message 
+         "SlrsLowerRightMFDC" 
+         "HUDCountup" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDA" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDD" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-directive 
+         "SlrsLowerRightMFDE" 
+         "@i18nVariable12[$Alt-X$ to terminate]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDF" 
+         "@i18nVariable4[ ]" 
+      )
+      ( hud-set-text 
+         "SlrsLowerRightMFDG" 
+         "@i18nVariable4[ ]" 
+      )
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      ( - @ablecountdown[0] 1 ) 
+   )
+   ( when 
+      ( > @ablecountup[0] 0 ) 
+      ( modify-variable 
+         @ablecountup[0] 
+         ( - @ablecountup[0] 1 ) 
+      )
+   )
+)
++Name: able1: beamdrone active
++Repeat Count: 999999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 4 ) 
+      ( >= @ablecountdown[0] 69 ) 
+   )
+   ( ship-create 
+      "@i18nVariable43[Beam Drone#1]" 
+      "Beam Drone" 
+      ( get-object-x "beamdrone waypoint:1" ) 
+      ( get-object-y "beamdrone waypoint:1" ) 
+      ( get-object-z "beamdrone waypoint:1" ) 
+      ( get-object-pitch "Aria" ) 
+      ( get-object-bank "Aria" ) 
+      ( get-object-heading "Aria" ) 
+      "Friendly" 
+      ( false ) 
+   )
+   ( alter-ship-flag 
+      "no-dynamic" 
+      ( true ) 
+      ( true ) 
+      "Beam Drone#1" 
+   )
+   ( add-goal 
+      "Beam Drone#1" 
+      ( ai-guard "Aria" 89 ) 
+   )
+   ( ship-create 
+      "@i18nVariable44[Beam Drone#2]" 
+      "Beam Drone" 
+      ( get-object-x 
+         "beamdrone waypoint 2:1" 
+      )
+      ( get-object-y 
+         "beamdrone waypoint 2:1" 
+      )
+      ( get-object-z 
+         "beamdrone waypoint 2:1" 
+      )
+      ( get-object-pitch "Aria" ) 
+      ( get-object-bank "Aria" ) 
+      ( get-object-heading "Aria" ) 
+      "Friendly" 
+      ( false ) 
+   )
+   ( add-goal 
+      "Beam Drone#2" 
+      ( ai-guard "Aria" 89 ) 
+   )
+   ( ship-effect 
+      "Decloak" 
+      1500 
+      "Beam Drone#1" 
+      "Beam Drone#2" 
+   )
+   ( add-to-collision-group-new 
+      1 
+      "Aria" 
+      "Beam Drone#1" 
+      "Beam Drone#2" 
+   )
+   ( beam-free-all 
+      "Beam Drone#1" 
+      "Beam Drone#2" 
+   )
+   ( alter-ship-flag 
+      "no-dynamic" 
+      ( true ) 
+      ( true ) 
+      "Beam Drone#2" 
+   )
+)
++Name: able1: beamdrone create
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 4 ) 
+      ( > @ablecountup[0] 2 ) 
+      ( key-pressed "Alt-X" ) 
+   )
+   ( modify-variable 
+      @ablecountdown[0] 
+      12 
+   )
+   ( modify-variable @ablecountup[0] 2 ) 
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+)
++Name: able1: alt-x to cancel 3
++Repeat Count: 9999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 4 ) 
+      ( = @ablecountup[0] 0 ) 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDB" 
+      "@i18nVariable18[Recalling UCAV]" 
+   )
+   ( hud-set-message 
+      "SlrsLowerRightMFDC" 
+      "HUDCountdown" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDA" 
+      "@i18nVariable4[ ]" 
+   )
+   ( hud-set-text 
+      "SlrsLowerRightMFDD" 
+      "@i18nVariable4[ ]" 
+   )
+)
++Name: able1: beamdrone cooldown
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @menuon[0] 4 ) 
+      ( = @ablecountdown[0] 10 ) 
+   )
+   ( ship-effect 
+      "Cloak" 
+      1500 
+      "Beam Drone#1" 
+      "Beam Drone#2" 
+   )
+   ( beam-lock-all 
+      "Beam Drone#1" 
+      "Beam Drone#2" 
+   )
+)
++Name: able1: beamdrone vanish
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( = @ablecountdown[0] 0 ) 
+      ( = @ablecountup[0] 0 ) 
+      ( = @menuon[0] 4 ) 
+   )
+   ( modify-variable @menuon[0] 1 ) 
+   ( key-reset-multiple 
+      "1" 
+      "2" 
+      "3" 
+      "4" 
+      "Alt-X" 
+   )
+   ( ship-vanish 
+      "Beam Drone#1" 
+      "Beam Drone#2" 
+   )
+)
++Name: able1: beamdrone reset
++Repeat Count: 99999999
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "all right" 8 ) 
+   ( clear-goals "Zebra" ) 
+   ( add-goal 
+      "Zebra" 
+      ( ai-chase "Aria" 89 ) 
+   )
+)
++Name: Zebra attacks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "fighter patrol" 
+      0 
+   )
+   ( clear-goals "Xray" ) 
+   ( add-goal 
+      "Xray" 
+      ( ai-chase "Aria" 89 ) 
+   )
+)
++Name: Xray attacks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Xray" 
+      ( ai-chase "Aria" 89 ) 
+   )
+)
++Name: Xray attacks repeat
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( false ) 
+   ( add-ai-goal-track-ship 
+      "Beam Drone#1" 
+      "Aria" 
+      "beamdrone waypoint" 
+      200 
+      0 
+      70 
+      300 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+)
++Name: beamdrone orders (inactive)
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-waypoint-track-ship 
+      "Alpha 1" 
+      "beamdrone waypoint" 
+      1 
+      -70 
+      50 
+      0 
+      50 
+   )
+   ( add-waypoint-track-ship 
+      "Alpha 1" 
+      "beamdrone waypoint 2" 
+      1 
+      70 
+      50 
+      0 
+      50 
+   )
+)
++Name: beamdrone waypoints position
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < ( hits-left "Solomnent" ) 60 ) 
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Solomnent" 
+            "Navigation" 
+            0 
+         )
+      )
+      ( not 
+         ( is-subsystem-destroyed-delay 
+            "Solomnent" 
+            "Engine" 
+            0 
+         )
+      )
+   )
+   ( clear-goals "Solomnent" ) 
+   ( add-goal 
+      "Solomnent" 
+      ( ai-waypoints-once 
+         "solomnent retreats" 
+         89 
+      )
+   )
+)
++Name: solomnent retreats
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "Inflame" ) 
+   ( add-ai-goal-track-ship 
+      "Inflame" 
+      "Ursa" 
+      "inflame waypoint" 
+      200 
+      300 
+      -400 
+      -500 
+      0 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      -1 
+   )
+)
++Name: inflame escorts
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance-to-bbox 
+         "Ursa" 
+         "ursa approach:2" 
+      )
+      500 
+   )
+   ( clear-goals "Inflame" ) 
+   ( add-goal 
+      "Inflame" 
+      ( ai-waypoints-once 
+         "inflame takes position" 
+         89 
+      )
+   )
+)
++Name: inflame takes position
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "anchorage dockable" 
+      2 
+   )
+   ( hud-set-custom-gauge-active 
+      ( true ) 
+      "SlrsTaccom" 
+      "SlrsTaccomA" 
+      "SlrsTaccomB" 
+      "SlrsTaccomC" 
+      "SlrsTaccomD" 
+   )
+   ( hud-set-directive 
+      "SlrsTaccomC" 
+      "@i18nVariable19[$2$ to repair]" 
+   )
+   ( hud-set-text 
+      "SlrsTaccomA" 
+      "@i18nVariable20[Anchorage standing by]" 
+   )
+   ( hud-set-text 
+      "SlrsTaccomB" 
+      "@i18nVariable21[============]" 
+   )
+)
++Name: tac hud anchorage
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "we're in transport" 
+      2 
+   )
+   ( hud-set-custom-gauge-active 
+      ( true ) 
+      "SlrsTaccom" 
+      "SlrsTaccomA" 
+      "SlrsTaccomB" 
+      "SlrsTaccomC" 
+      "SlrsTaccomD" 
+   )
+   ( hud-set-directive 
+      "SlrsTaccomC" 
+      "@i18nVariable22[$4$ to send signal]" 
+   )
+   ( hud-set-text 
+      "SlrsTaccomA" 
+      "@i18nVariable23[Transport standing by]" 
+   )
+   ( hud-set-text 
+      "SlrsTaccomB" 
+      "@i18nVariable21[============]" 
+   )
+   ( key-reset-multiple "4" ) 
+)
++Name: tac hud transport
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "4" ) 
+      ( not 
+         ( is-event-true-delay 
+            "fuck it transport" 
+            0 
+         )
+      )
+   )
+   ( training-msg "send signal" ) 
+   ( hud-set-text 
+      "SlrsTaccomC" 
+      "@i18nVariable24[Signal sent]" 
+   )
+   ( hud-set-text 
+      "SlrsTaccomA" 
+      "@i18nVariable25[Transport undocking]" 
+   )
+)
++Name: send signal
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "signal received" 
+         6 
+      )
+      ( is-event-true-delay 
+         "fuck it transport" 
+         6 
+      )
+   )
+   ( clear-goals "Omega 1" ) 
+   ( unprotect-ship "Omega 1" ) 
+   ( add-goal "Omega 1" ( ai-undock 89 ) ) 
+)
++Name: transport undocks
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( add-goal 
+      "Omega 1" 
+      ( ai-dock 
+         "Aria" 
+         "Maindock" 
+         "Port Fighter Rail" 
+         89 
+      )
+   )
+)
++Name: transport docks to aria
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "lau on board" 
+      0 
+   )
+   ( add-goal "Omega 1" ( ai-undock 89 ) ) 
+)
++Name: transport undocks from aria
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "get out of range" 
+      8 
+   )
+   ( clear-goals "Uncle" ) 
+   ( add-goal 
+      "Uncle" 
+      ( ai-chase "Aria" 89 ) 
+   )
+)
++Name: strikers attack
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "strikers attack" 
+         40 
+      )
+      ( < 
+         ( distance-to-bbox "Aria" "Tare" ) 
+         1000 
+      )
+      ( < ( hits-left "Tare 1" ) 90 ) 
+      ( < ( hits-left "Tare 2" ) 90 ) 
+   )
+   ( clear-goals "Tare" ) 
+   ( add-goal 
+      "Tare" 
+      ( ai-chase "Aria" 89 ) 
+   )
+)
++Name: LACs attack 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Omega 1" ) 
+   ( do-nothing ) 
+)
++Name: failure condition
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "player death fadeout" 
+         0 
+      )
+   )
+   ( fade-out 2000 ) 
+   ( adjust-audio-volume "Voice" 0 2000 ) 
+)
++Name: fadeout bad
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "player death fadeout" 
+         0 
+      )
+   )
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      5000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "10" 
+      ( true ) 
+   )
+   ( play-sound-from-file 
+      "stormshadowend" 
+   )
+   ( self-destruct "Alpha 1" ) 
+)
++Name: mission failed title
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-destroyed-delay 0 "Alpha 1" ) 
+   ( do-nothing ) 
+)
++Name: player dies
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "fadeout bad" 0 ) 
+   )
+   ( fade-out 2000 ) 
+   ( adjust-audio-volume "Voice" 0 2000 ) 
+)
++Name: player death fadeout
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "fadeout bad" 0 ) 
+   )
+   ( show-subtitle-text 
+      "mission failed title" 
+      0 
+      0 
+      ( true ) 
+      ( true ) 
+      5000 
+      1000 
+      100 
+      255 
+      255 
+      255 
+      "10" 
+      ( true ) 
+   )
+   ( play-sound-from-file 
+      "stormshadowend" 
+   )
+)
++Name: player death failed
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "Alt-J pressed" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "victory music" 
+            0 
+         )
+      )
+   )
+   ( play-sound-from-file 
+      "anironlite" 
+      99 
+   )
+)
++Name: jump out music
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "destroyer here" 
+      20 
+   )
+   ( modify-variable @civpanic[0] 2 ) 
+)
++Name: civilians panic final battle
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "could be worse" 
+      15 
+   )
+   ( activate-glow-maps "Aria" ) 
+)
++Name: initial activate glow map
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "initial activate glow map" 
+      100 
+   )
+   ( deactivate-glow-maps "Aria" ) 
+)
++Name: initial deactivate glow map
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "initial deactivate glow map" 
+      ( rand-multiple 75 350 ) 
+   )
+   ( activate-glow-maps "Aria" ) 
+)
++Name: activate glow maps 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "activate glow maps 2" 
+      ( rand-multiple 75 350 ) 
+   )
+   ( deactivate-glow-maps "Aria" ) 
+)
++Name: deactivate glow maps 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "deactivate glow maps 2" 
+      ( rand-multiple 75 350 ) 
+   )
+   ( activate-glow-maps "Aria" ) 
+)
++Name: activate glow maps 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "activate glow maps 3" 
+      ( rand-multiple 75 350 ) 
+   )
+   ( deactivate-glow-maps "Aria" ) 
+)
++Name: deactivate glow maps 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "could be worse" 
+      17500 
+   )
+   ( activate-glow-maps "Aria" ) 
+)
++Name: final glowmaps activate
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when ( true ) ( do-nothing ) ) 
++Name: <<<<<MESSAGES>>>>>
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-msecs-delay 
+         "initial fadeout" 
+         1500 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load 2" 
+            0 
+         )
+      )
+   )
+   ( training-msg "alarm ambience" ) 
+)
++Name: alarm ambience
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( show-subtitle-text 
+      "what happened" 
+      0 
+      -8 
+      ( true ) 
+      ( false ) 
+      3000 
+      0 
+      800 
+      255 
+      255 
+      255 
+      "Text1024" 
+      ( true ) 
+   )
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "what happened" 
+   )
+)
++Name: what happened
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "anybody" 
+   )
+   ( show-subtitle-text 
+      "anybody" 
+      0 
+      -8 
+      ( true ) 
+      ( false ) 
+      3000 
+      0 
+      800 
+      255 
+      255 
+      255 
+      "Text1024" 
+      ( true ) 
+   )
+)
++Name: anybody
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "aye sir" 
+   )
+   ( show-subtitle-text 
+      "aye sir" 
+      0 
+      -8 
+      ( true ) 
+      ( false ) 
+      3000 
+      0 
+      800 
+      255 
+      255 
+      255 
+      "Text1024" 
+      ( true ) 
+   )
+)
++Name: aye sir
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "report ensign" 
+   )
+   ( show-subtitle-text 
+      "report ensign" 
+      0 
+      -8 
+      ( true ) 
+      ( false ) 
+      5000 
+      0 
+      800 
+      255 
+      255 
+      255 
+      "Text1024" 
+      ( true ) 
+   )
+)
++Name: report ensign
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "aria was hit" 
+   )
+   ( show-subtitle-text 
+      "aria was hit" 
+      0 
+      -8 
+      ( true ) 
+      ( false ) 
+      9000 
+      0 
+      800 
+      255 
+      255 
+      255 
+      "Text1024" 
+      ( true ) 
+   )
+)
++Name: aria was hit
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( play-sound-from-file "systembootup" ) 
+)
++Name: systembootup
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "attempting restore" 
+   )
+   ( show-subtitle-text 
+      "attempting restore" 
+      0 
+      -8 
+      ( true ) 
+      ( false ) 
+      5000 
+      0 
+      800 
+      255 
+      255 
+      255 
+      "Text1024" 
+      ( true ) 
+   )
+)
++Name: attempting restore
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay "fadein" 6 ) 
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "checkpoint load 2" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "dead in space" 
+   )
+)
++Name: dead in space
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "everything damaged" 
+   )
+)
++Name: everything damaged
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "how is commander" 
+   )
+)
++Name: how is commander
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable33[#Ryan]" 
+      "Normal" 
+      "needs stabilising" 
+   )
+)
++Name: needs stabilising
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "how is first officer" 
+   )
+)
++Name: how is first officer
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable33[#Ryan]" 
+      "Normal" 
+      "ellis dead" 
+   )
+)
++Name: ellis dead
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "who in command" 
+   )
+)
++Name: who in command
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "you in command" 
+   )
+)
++Name: you in command
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "bridge is yours" 
+   )
+)
++Name: bridge is yours
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "right ok" 
+   )
+)
++Name: right ok
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "comms online" 
+   )
+)
++Name: comms online
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable35[#Hughes]" 
+      "Normal" 
+      "engineering here" 
+   )
+)
++Name: engineering here
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "ross in command" 
+   )
+)
++Name: ross in command
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable35[#Hughes]" 
+      "Normal" 
+      "could be worse" 
+   )
+)
++Name: could be worse
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "restore engines" 
+      3 
+   )
+   ( send-message 
+      "@i18nVariable33[#Ryan]" 
+      "Normal" 
+      "helm controls work" 
+   )
+)
++Name: helm controls work
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable33[#Ryan]" 
+      "Normal" 
+      "can change heading" 
+   )
+)
++Name: can change heading
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "training course change" 
+   )
+)
++Name: training course change
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( = @helmresponsechance[0] 2 ) 
+   ( send-random-message 
+      "@i18nVariable33[#Ryan]" 
+      "Low" 
+      "course confirmed" 
+      "course confirmed 2" 
+      "course confirmed 3" 
+      "course confirmed 4" 
+      "course confirmed 5" 
+   )
+)
++Name: course confirmed
++Repeat Count: 999999
++Interval: 3
+
+$Formula: ( when 
+   ( = @fullpowerresponse[0] 1 ) 
+   ( send-random-message 
+      "@i18nVariable33[#Ryan]" 
+      "Low" 
+      "full power response 1" 
+      "full power response 2" 
+      "full power response 3" 
+   )
+)
++Name: full power response
++Repeat Count: 9999999
++Interval: 3
+
+$Formula: ( when 
+   ( = @stopresponse[0] 1 ) 
+   ( send-random-message 
+      "@i18nVariable33[#Ryan]" 
+      "Low" 
+      "all stop response 1" 
+      "all stop response 2" 
+      "all stop response 3" 
+   )
+)
++Name: all stop response
++Repeat Count: 9999999
++Interval: 3
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "can change heading" 
+      8 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "power to systems" 
+   )
+)
++Name: power to systems
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "send commander" 
+   )
+)
++Name: send commander
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "repair teams on move" 
+   )
+)
++Name: repair teams on move
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "restore sensors" 
+      2 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "sensors online" 
+   )
+)
++Name: sensors online
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "where are we" 
+   )
+)
++Name: where are we
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "in proximity to andaman" 
+   )
+)
++Name: in proximity to andaman
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "comms traffic quiet" 
+   )
+)
++Name: comms traffic quiet
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "what are your orders" 
+   )
+)
++Name: what are your orders
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "i don't know" 
+   )
+)
++Name: i don't know
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable33[#Ryan]" 
+      "Normal" 
+      "don't expect you" 
+   )
+)
++Name: don't expect you
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "we can do it" 
+   )
+)
++Name: we can do it
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "we can help" 
+   )
+)
++Name: we can help
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "ok thanks" 
+   )
+)
++Name: ok thanks
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( flash-hud-gauge "Directives" ) 
+   ( add-remove-escort 
+      "Andaman Transponder" 
+      100 
+   )
+)
++Name: flash directives
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "flash directives" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         0 
+      )
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         0 
+      )
+   )
+   ( Add-Object-Role 
+      "@i18nVariable48[Home]" 
+      "@i18nVariable49[Look at Target]" 
+   )
+)
++Name: keypress hint1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "dir scan transponder" 
+      1 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "transponder scanned" 
+   )
+)
++Name: transponder scanned
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "transponder scanned 2" 
+   )
+)
++Name: transponder scanned 2
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg "Alt-N for waypoint" ) 
+)
++Name: alt-N for waypoint
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance-to-bbox 
+            "Alpha 1" 
+            "Andaman Anchorage" 
+         )
+         3000 
+      )
+      ( is-event-true-delay "ok thanks" 8 ) 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "anchorage dockable" 
+   )
+)
++Name: anchorage dockable
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg "2 to dock" ) 
+   ( key-reset "2" ) 
+)
++Name: alt-D to dock
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( key-pressed "2" ) 
+      ( < 
+         ( distance-to-bbox 
+            "Alpha 1" 
+            "Andaman Anchorage" 
+         )
+         3000 
+      )
+   )
+   ( player-use-ai ) 
+   ( clear-goals "Alpha 1" ) 
+   ( add-goal 
+      "Alpha 1" 
+      ( ai-play-dead-persistent 89 ) 
+   )
+   ( add-goal "Aria" ( ai-play-dead 89 ) ) 
+   ( hud-disable-except-messages 1 ) 
+   ( add-goal 
+      "Alpha 1" 
+      ( ai-stay-still "Alpha 1" 89 ) 
+   )
+   ( destroy-subsys-instantly 
+      "Aria" 
+      "<all engines>" 
+   )
+   ( key-reset "2" ) 
+)
++Name: repair drone
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "regain player control" 
+         1 
+      )
+      ( is-event-true-delay 
+         "checkpoint load" 
+         9 
+      )
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "weapons online" 
+   )
+   ( unselect-nav ) 
+)
++Name: weapons online
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "@i18nVariable45[all right]" 0 ) 
+   )
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "do we continue" 
+   )
+)
++Name: do we continue
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "all right" 0 ) 
+   )
+   ( training-msg "meiks believe in you" ) 
+)
++Name: meiks believe
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( is-destroyed-delay 
+            0 
+            "Sentry Platform" 
+         )
+      )
+      ( not 
+         ( is-event-true-delay "all right" 0 ) 
+      )
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "weapons platform" 
+   )
+)
++Name: weapons platform
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( and 
+      ( not 
+         ( is-destroyed-delay 
+            0 
+            "Sentry Platform" 
+         )
+      )
+      ( not 
+         ( is-event-true-delay "all right" 0 ) 
+      )
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "good target" 
+   )
+   ( change-iff 
+      "Hostile" 
+      "Sentry Platform" 
+   )
+)
++Name: good target
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "training camera switch" 
+   )
+)
++Name: training camera switch
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "training turret weapons" 
+   )
+)
++Name: training turret weapons
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      2 
+      "Sentry Platform" 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "successful test" 
+   )
+)
++Name: successful test
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "all right" 0 ) 
+   )
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "mission still stands" 
+   )
+)
++Name: mission still stands
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "all right" 0 ) 
+   )
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "there's a mission" 
+   )
+)
++Name: there's a mission
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "all right" 0 ) 
+   )
+   ( send-message 
+      "@i18nVariable33[#Ryan]" 
+      "Normal" 
+      "we're king's officers" 
+   )
+)
++Name: we're king's officers
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "all right" 0 ) 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "get the bastards" 
+   )
+)
++Name: get the bastards
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "all right" 0 ) 
+   )
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "give the order" 
+   )
+)
++Name: give the order
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( and 
+      ( or 
+         ( is-event-true-delay 
+            "give the order" 
+            5 
+         )
+         ( < 
+            ( distance-to-nav "Andaman Station" ) 
+            14000 
+         )
+         ( < 
+            ( distance-to-bbox "Alpha 1" "Zebra" ) 
+            10000 
+         )
+      )
+      ( is-event-true-delay 
+         "weapons online" 
+         0 
+      )
+   )
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "all right" 
+   )
+   ( select-nav "@i18nVariable39[Andaman Station]" ) 
+   ( del-nav "@i18nVariable40[Andaman Anchorage]" ) 
+   ( ship-subsys-guardian-threshold 
+      0 
+      "Alpha 1" 
+      "<all engines>" 
+   )
+   ( ship-subsys-guardian-threshold 
+      100 
+      "Aria" 
+      "<all engines>" 
+      "Weapons" 
+      "Communication" 
+      "Sensors" 
+      "Navigation" 
+      "fighterbay" 
+      "<all turrets>" 
+   )
+)
++Name: all right
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay "LACS attack" 6 ) 
+   ( send-message 
+      "@i18nVariable35[#Hughes]" 
+      "Normal" 
+      "thruster overcharge online" 
+   )
+)
++Name: thruster overcharge online
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( flash-hud-gauge "Center reticle" ) 
+   ( training-msg 
+      "training MHD overcharge" 
+   )
+)
++Name: training MHD overcharge
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( < 
+      ( distance-to-bbox "Aria" "Zebra" ) 
+      7000 
+   )
+   ( do-nothing ) 
+)
++Name: fighter patrol
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         0 
+      )
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "fighter patrol" 
+   )
+)
++Name: fighter patrol msg
++Repeat Count: 1
++Interval: 1
++Chained: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "training auto turrets" 
+   )
+)
++Name: training auto turrets
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( Add-Object-Role 
+      "@i18nVariable50[Alt-D]" 
+      "@i18nVariable51[Toggle Turret Auto]" 
+   )
+)
++Name: keypress hint2
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-destroyed-delay 2 "Zebra" ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "zebra destroyed" 
+   )
+)
++Name: zebra destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance-to-bbox "Aria" "Xray" ) 
+      7000 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "LACS attack" 
+   )
+)
++Name: LACS attack
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 2 "Xray" ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "xray destroyed" 
+   )
+)
++Name: Xray destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance-to-bbox "Aria" "Solomnent" ) 
+      7000 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "frigate incoming" 
+   )
+   ( add-remove-escort "Solomnent" 1 ) 
+)
++Name: frigate incoming
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "solomnent retreats" 
+      1 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "frigate retreating" 
+   )
+)
++Name: frigate retreating
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-destroyed-delay 1 "Solomnent" ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "frigate destroyed" 
+   )
+)
++Name: frigate destroyed
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-destroyed-delay 3 "Zebra" "Xray" ) 
+      ( destroyed-or-departed-delay 
+         3 
+         "Solomnent" 
+      )
+      ( >= 
+         ( distance-to-nav "Andaman Station" ) 
+         5000 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "coming up to andaman" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "area clear 1" 
+   )
+)
++Name: area clear 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "frigate incoming" 
+      6 
+   )
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "damage control" 
+   )
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+)
++Name: damage control
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( < 
+         ( distance-to-nav "Andaman Station" ) 
+         5000 
+      )
+      ( is-destroyed-delay 4 "Xray" "Zebra" ) 
+      ( destroyed-or-departed-delay 
+         4 
+         "Solomnent" 
+      )
+   )
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "coming up to andaman" 
+   )
+   ( change-iff 
+      "Friendly" 
+      "Andaman Station" 
+   )
+)
++Name: coming up to andaman
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "andaman on bypass" 
+   )
+)
++Name: andaman on bypass
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "this is aria" 
+   )
+)
++Name: this is aria
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "combine lockdown" 
+   )
+)
++Name: combine lockdown
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "hunting fugitives" 
+   )
+)
++Name: hunting fugitives
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "fugitive names" 
+   )
+)
++Name: fugitive names
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "no names" 
+   )
+)
++Name: no names
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "provide asylum" 
+   )
+)
++Name: provide asylum
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "help us out" 
+   )
+)
++Name: help us out
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "difficult to find" 
+   )
+)
++Name: difficult to find
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "combine retribution" 
+   )
+)
++Name: combine retribution
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "leave combine to us" 
+   )
+)
++Name: leave combine to us
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "might not be able to" 
+   )
+)
++Name: might not be able to
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable33[#Ryan]" 
+      "Normal" 
+      "better be quick" 
+   )
+)
++Name: better be quick
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "remote access" 
+   )
+)
++Name: remote access
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "scan docks" 
+   )
+   ( ship-subsys-targetable 
+      "Andaman Station" 
+      "DockA" 
+      "DockB" 
+      "DockC" 
+   )
+)
++Name: scan docks
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "dir scan docks" 
+      2 
+   )
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "that's done it" 
+   )
+)
++Name: that's done it
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "get in contact" 
+   )
+)
++Name: get in contact
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "easily done" 
+   )
+)
++Name: easily done
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable36[#Lau]" 
+      "Normal" 
+      "lau here" 
+   )
+)
++Name: lau here
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "hello lau" 
+   )
+)
++Name: hello lau
++Repeat Count: 1
++Interval: 1
++Chained: 3
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable36[#Lau]" 
+      "Normal" 
+      "where is cameron" 
+   )
+)
++Name: where is cameron
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "we were attacked" 
+   )
+)
++Name: we were attacked
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable36[#Lau]" 
+      "Normal" 
+      "your first command" 
+   )
+)
++Name: your first command
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "what deal erikson" 
+   )
+)
++Name: what deal erikson
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable37[#Erikson]" 
+      "Normal" 
+      "weapons researcher" 
+   )
+)
++Name: weapons researcher
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable37[#Erikson]" 
+      "Normal" 
+      "black sun" 
+   )
+)
++Name: black sun
++Repeat Count: 1
++Interval: 1
++Chained: 10
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable37[#Erikson]" 
+      "Normal" 
+      "came to sulsia" 
+   )
+)
++Name: came to sulsia
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "of course that's why" 
+   )
+)
++Name: of course that's why
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "need to get you out" 
+   )
+)
++Name: need to get you out
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable36[#Lau]" 
+      "Normal" 
+      "locked down tight" 
+   )
+)
++Name: locked down tight
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "may be able to help" 
+   )
+)
++Name: may be able to help
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance-to-center 
+            "Yoke" 
+            "Andaman Station" 
+         )
+         7000 
+      )
+      ( < 
+         ( distance-to-bbox "Yoke" "Aria" ) 
+         7000 
+      )
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "fighter patrol 2" 
+   )
+)
++Name: fighter patrol 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( has-arrived-delay 1 "Yoke" ) 
+      ( not 
+         ( is-event-true-delay 
+            "fighter patrol 2" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "heads up" 
+   )
+)
++Name: heads up
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-arrived-delay 1 "William" ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "more fighters" 
+   )
+)
++Name: more fighters
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "getting swarmed" 
+   )
+)
++Name: getting swarmed
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "found drones" 
+   )
+   ( key-reset-multiple "1" "2" "3" "4" ) 
+)
++Name: found drones
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "training combat drone" 
+   )
+)
++Name: training combat drone
++Repeat Count: 1
++Interval: 1
++Chained: 4
+
+$Formula: ( when 
+   ( is-destroyed-delay 
+      2 
+      "Yoke" 
+      "William" 
+      "Victor" 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "area clear 2" 
+   )
+)
++Name: area clear 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "get me station" 
+   )
+)
++Name: get me station
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "this is batra" 
+   )
+)
++Name: this is batra
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "this is all the combine" 
+   )
+)
++Name: this is all the combine
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "welcome to them" 
+   )
+)
++Name: welcome to them
++Repeat Count: 1
++Interval: 1
++Chained: 13
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "i'll tell you why" 
+   )
+)
++Name: i'll tell you why
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "did this in sulsia" 
+   )
+)
++Name: did this in sulsia
++Repeat Count: 1
++Interval: 1
++Chained: 9
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "the commonwealth doing" 
+   )
+)
++Name: the commonwealth doing
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "all right alban" 
+   )
+)
++Name: all right alban
++Repeat Count: 1
++Interval: 1
++Chained: 12
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "unlock doors" 
+   )
+)
++Name: unlock doors
++Repeat Count: 1
++Interval: 1
++Chained: 11
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "Andaman Station" 
+      "Normal" 
+      "two minutes" 
+   )
+)
++Name: two minutes
++Repeat Count: 1
++Interval: 1
++Chained: 14
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "checkpoint load 2" 
+         0 
+      )
+   )
+   ( lua-save-init "27-2" ) 
+   ( lua-save-ship "Alpha 1" "Aria" ) 
+   ( lua-save-done ) 
+)
++Name: CHECKPOINT SAVE 2
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( has-arrived-delay 2 "Ursa" ) 
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "group of hostiles" 
+   )
+)
++Name: group of hostiles
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "two ships" 
+   )
+)
++Name: two ships
++Repeat Count: 1
++Interval: 1
++Chained: 7
+
+$Formula: ( when 
+   ( or 
+      ( < 
+         ( distance-to-bbox "Ursa" "Alpha 1" ) 
+         7000 
+      )
+      ( targeted "Ursa" ) 
+      ( < 
+         ( distance-to-bbox 
+            "Ursa" 
+            "Andaman Station" 
+         )
+         6000 
+      )
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "destroyer here" 
+   )
+   ( modify-variable 
+      @ariahull[100] 
+      ( hits-left "Aria" ) 
+   )
+   ( add-remove-escort "Ursa" 10 ) 
+   ( add-remove-escort "Inflame" 10 ) 
+   ( turret-free-all "Inflame" ) 
+)
++Name: destroyer here
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( < 
+      ( distance-to-bbox "Ursa" "Aria" ) 
+      5500 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "in range of guns" 
+   )
+)
++Name: in range of guns
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( training-msg 
+      "training mass driver range" 
+   )
+)
++Name: training mass driver range
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( < 
+      ( hits-left "Aria" ) 
+      @ariahull[100] 
+   )
+   ( do-nothing ) 
+)
++Name: taken damage
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "strikers attacking" 
+         0 
+      )
+   )
+   ( send-message 
+      "@i18nVariable33[#Ryan]" 
+      "Normal" 
+      "bastards firing" 
+   )
+)
++Name: bastards firing
++Repeat Count: 1
++Interval: 1
++Chained: 2
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "destroyer here" 
+      30 
+   )
+   ( send-message 
+      "@i18nVariable36[#Lau]" 
+      "Normal" 
+      "lau escaping" 
+   )
+)
++Name: lau escaping
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "don't launch yet" 
+   )
+)
++Name: don't launch yet
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "get in the transport" 
+   )
+)
++Name: get in the transport
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( and 
+      ( >= @finaldeath[0] 2 ) 
+      ( not ( is-destroyed-delay 0 "Aria" ) ) 
+   )
+   ( send-random-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "suggestions from people" 
+      "suggestions from people 2" 
+      "suggestions from people 3" 
+   )
+)
++Name: suggestions from people
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "suggestions from people" 
+         5 
+      )
+      ( = @finaldeath[0] 2 ) 
+      ( not ( is-destroyed-delay 0 "Aria" ) ) 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "tip 1" 
+   )
+)
++Name: tip 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "suggestions from people" 
+         5 
+      )
+      ( = @finaldeath[0] 3 ) 
+      ( not ( is-destroyed-delay 0 "Aria" ) ) 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "tip 2" 
+   )
+)
++Name: tip 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "suggestions from people" 
+         5 
+      )
+      ( = @finaldeath[0] 4 ) 
+      ( not ( is-destroyed-delay 0 "Aria" ) ) 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "tip 3" 
+   )
+)
++Name: tip 3
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "suggestions from people" 
+         5 
+      )
+      ( >= @finaldeath[0] 5 ) 
+      ( not ( is-destroyed-delay 0 "Aria" ) ) 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "tip 4" 
+   )
+   ( lua-mark-subsystem 
+      "Inflame" 
+      "@i18nVariable47[Weapons]" 
+      "Weapons" 
+   )
+   ( lua-mark-subsystem 
+      "Ursa" 
+      "@i18nVariable47[Weapons]" 
+      "Weapons" 
+   )
+)
++Name: tip 4
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "get in the transport" 
+      40 
+   )
+   ( send-message 
+      "@i18nVariable36[#Lau]" 
+      "Normal" 
+      "we're in transport" 
+   )
+   ( ship-unstealthy "Omega 1" ) 
+   ( add-remove-escort "Omega 1" 100 ) 
+   ( change-iff "Friendly" "Omega 1" ) 
+   ( set-cargo "@i18nVariable46[Passengers]" "Omega 1" ) 
+)
++Name: we're in transport
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "get in the transport" 
+      18 
+   )
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "get out of range" 
+   )
+)
++Name: get out of range
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "strikers attack" 
+         2 
+      )
+      ( not 
+         ( is-destroyed-delay 0 "Uncle" ) 
+      )
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "strikers attacking" 
+   )
+)
++Name: strikers attacking
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "LACs attack 2" 
+         4 
+      )
+      ( not ( is-destroyed-delay 0 "Tare" ) ) 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "lacs attacking" 
+   )
+)
++Name: lacs attacking
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "we're in transport" 
+         200 
+      )
+      ( not 
+         ( is-event-true-delay "send signal" 0 ) 
+      )
+   )
+   ( send-message 
+      "@i18nVariable36[#Lau]" 
+      "Normal" 
+      "what's happening" 
+   )
+)
++Name: what's happening
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "a little busy" 
+   )
+)
++Name: a little busy
++Repeat Count: 1
++Interval: 1
++Chained: 8
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "send signal" 0 ) 
+   )
+   ( send-message 
+      "@i18nVariable36[#Lau]" 
+      "Normal" 
+      "troops are at door" 
+   )
+)
++Name: troops are at door
++Repeat Count: 1
++Interval: 1
++Chained: 90
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay "send signal" 0 ) 
+   )
+   ( send-message 
+      "Omega 1" 
+      "Normal" 
+      "fuck it transport" 
+   )
+)
++Name: fuck it transport
++Repeat Count: 1
++Interval: 1
++Chained: 20
+
+$Formula: ( when 
+   ( true ) 
+   ( hud-set-text 
+      "SlrsTaccomA" 
+      "@i18nVariable26[TRANSPORT UNDOCKING]" 
+   )
+   ( hud-set-text 
+      "SlrsTaccomC" 
+      "@i18nVariable27[SIGNAL CANCELLED]" 
+   )
+)
++Name: tac transport undocking
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( is-event-true-delay "send signal" 2 ) 
+   ( send-message 
+      "Omega 1" 
+      "Normal" 
+      "signal received" 
+   )
+)
++Name: signal received
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "transport docks to aria" 
+      1 
+   )
+   ( send-message 
+      "Omega 1" 
+      "Normal" 
+      "transport moving to dock" 
+   )
+)
++Name: transport moving to dock
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( has-docked-delay 
+      "Omega 1" 
+      "Aria" 
+      1 
+      3 
+   )
+   ( send-message 
+      "Omega 1" 
+      "Normal" 
+      "transport docked" 
+   )
+)
++Name: transport docked
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable34[#Kelly]" 
+      "Normal" 
+      "lau on board" 
+   )
+   ( add-remove-escort "Omega 1" 0 ) 
+)
++Name: lau on board
++Repeat Count: 1
++Interval: 1
++Chained: 16
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "lau on board" 
+         5 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "combat over music 3" 
+            0 
+         )
+      )
+      ( not 
+         ( is-event-true-delay 
+            "time to leave 2" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "time to leave 1" 
+   )
+)
++Name: time to leave 1
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( not 
+      ( is-event-true-delay 
+         "combat over music 3" 
+         0 
+      )
+   )
+   ( send-message 
+      "@i18nVariable38[#Batra]" 
+      "Normal" 
+      "andaman wants cleared" 
+   )
+)
++Name: andaman wants cleared
++Repeat Count: 1
++Interval: 1
++Chained: 5
+
+$Formula: ( when 
+   ( and 
+      ( is-event-true-delay 
+         "lau on board" 
+         5 
+      )
+      ( is-event-true-delay 
+         "combat over music 3" 
+         0 
+      )
+      ( not 
+         ( is-event-true-delay 
+            "time to leave 1" 
+            0 
+         )
+      )
+   )
+   ( send-message 
+      "@i18nVariable31[#Ross]" 
+      "Normal" 
+      "time to leave 2" 
+   )
+)
++Name: time to leave 2
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( true ) 
+   ( send-message 
+      "@i18nVariable38[#Batra]" 
+      "Normal" 
+      "thank you alban" 
+   )
+)
++Name: thank you alban
++Repeat Count: 1
++Interval: 1
++Chained: 6
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "combat over music 3" 
+      5 
+   )
+   ( send-message 
+      "@i18nVariable32[#Holmes]" 
+      "Normal" 
+      "final battle over" 
+   )
+)
++Name: final battle over
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( or 
+      ( is-event-true-delay 
+         "andaman wants cleared" 
+         8 
+      )
+      ( is-event-true-delay 
+         "thank you alban" 
+         9 
+      )
+   )
+   ( send-message 
+      "@i18nVariable33[#Ryan]" 
+      "Normal" 
+      "prepare to warp" 
+   )
+   ( key-reset-multiple "Alt-J" ) 
+   ( hud-set-text 
+      "SlrsTaccomA" 
+      "@i18nVariable28[STAND BY IMPELLER]" 
+   )
+   ( hud-set-directive 
+      "SlrsTaccomC" 
+      "@i18nVariable29[$Alt-J$ TO JUMP]" 
+   )
+)
++Name: prepare to warp
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( and 
+      ( is-facing "Aria" "warp vector:1" 10 ) 
+      ( key-pressed "Alt-J" ) 
+   )
+   ( player-use-ai ) 
+   ( clear-goals "Aria" "Alpha 1" ) 
+   ( add-goal 
+      "Alpha 1" 
+      ( ai-play-dead-persistent 89 ) 
+   )
+   ( add-goal "Aria" ( ai-play-dead 89 ) ) 
+   ( hud-display-gauge 10000 "warpout" ) 
+   ( training-msg "impeller startup" ) 
+   ( hud-set-text 
+      "SlrsTaccomC" 
+      "@i18nVariable30[ENGAGING]" 
+   )
+   ( protect-ship "Aria" ) 
+   ( ship-invulnerable "Aria" ) 
+   ( set-object-facing-object 
+      "Alpha 1" 
+      "warp vector:1" 
+   )
+   ( modify-variable @finaldeath[0] 0 ) 
+   ( set-camera-shudder 
+      10000 
+      50 
+      ( true ) 
+      ( true ) 
+   )
+   ( repair-subsystem 
+      "Aria" 
+      "Navigation" 
+      100 
+   )
+)
++Name: Alt-J pressed
++Repeat Count: 1
++Interval: 1
++Chained: 0
+
+$Formula: ( when 
+   ( is-event-true-msecs-delay 
+      "Alt-J pressed" 
+      6400 
+   )
+   ( alter-ship-flag 
+      "no-subspace-drive" 
+      ( false ) 
+      ( true ) 
+      "Aria" 
+   )
+   ( add-goal "Aria" ( ai-warp-out 200 ) ) 
+)
++Name: jump out
++Repeat Count: 1
++Interval: 1
+
+$Formula: ( when 
+   ( is-event-true-delay 
+      "Alt-J pressed" 
+      1 
+   )
+   ( close-sound-from-file 
+      ( true ) 
+      @thrustersound[0] 
+   )
+   ( close-sound-from-file 
+      ( true ) 
+      @repairsound[0] 
+   )
+)
++Name: charging impellers
++Repeat Count: 1
++Interval: 1
+
+#Goals		;! 3 total
+
+$Type: Bonus
++Name: stayed near station
+$MessageNew:  XSTR("Shades of Artemis (Risked mass driver fire to defend station).", 5819)
+$end_multi_text
+$Formula: ( and 
+   ( is-event-true-delay 
+      "combat over music 3" 
+      0 
+   )
+   ( = @bonusgoal[0] 0 ) 
+)
+
+$Type: Primary
++Name: Secure Lau and Erikson
+$MessageNew:  XSTR("Secure Lau and Erikson", 5820)
+$end_multi_text
+$Formula: ( is-event-true-delay 
+   "lau on board" 
+   2 
+)
+
+$Type: Bonus
++Name: solomnent destroyed
+$MessageNew:  XSTR("Solomnent frigate destroyed", 5821)
+$end_multi_text
+$Formula: ( is-destroyed-delay 0 "Solomnent" ) 
+
+#Waypoints		;! 18 lists total
+
+$Name: beamdrone waypoint
+$List: (		;! 1 points in list
+	( 455.629150, 0.000000, 289.472168 )
+)
+
+$Name: beamdrone waypoint 2
+$List: (		;! 1 points in list
+	( 707.122314, 0.000000, 310.132690 )
+)
+
+$Name: solomnent retreats
+$List: (		;! 1 points in list
+	( -8833.202148, 7722.816895, 4419.170898 )
+)
+
+$Name: inflame waypoint
+$List: (		;! 1 points in list
+	( -16827.693359, 3879.925781, 1214.548950 )
+)
+
+$Name: ursa approach
+$List: (		;! 3 points in list
+	( -19404.873047, 6223.525391, 5841.508789 )
+	( -14234.293945, 4894.997559, 8513.519531 )
+	( -13484.463867, 4895.000488, 8577.263672 )
+)
+
+$Name: inflame takes position
+$List: (		;! 1 points in list
+	( -14357.180664, 4945.299805, 11490.636719 )
+)
+
+$Name: warp vector
+$List: (		;! 1 points in list
+	( 2853.447266, 1611.172241, -2601.216797 )
+)
+
+$Name: mimosa retreat
+$List: (		;! 1 points in list
+	( -54015.699219, 5833.399902, 27872.699219 )
+)
+
+$Name: tortoise 3 retreat
+$List: (		;! 1 points in list
+	( -58977.898438, 4373.200195, 14630.900391 )
+)
+
+$Name: minnow 1 retreat
+$List: (		;! 1 points in list
+	( -56801.000000, 4723.600098, 20824.199219 )
+)
+
+$Name: bittersweet retreat
+$List: (		;! 1 points in list
+	( 21703.300781, 4566.799805, 23762.800781 )
+)
+
+$Name: friday retreat
+$List: (		;! 1 points in list
+	( 22768.300781, 5444.600098, 16150.000000 )
+)
+
+$Name: minnow 2 retreat
+$List: (		;! 1 points in list
+	( 2227.100098, 4723.600098, -23424.900391 )
+)
+
+$Name: tare 1 waypoint
+$List: (		;! 1 points in list
+	( -18950.507813, 0.001953, 4830.371094 )
+)
+
+$Name: tare 2 waypoint
+$List: (		;! 1 points in list
+	( -20984.417969, 0.001953, 5925.201172 )
+)
+
+$Name: aria initial position
+$List: (		;! 1 points in list
+	( 87.925697, 0.000000, 62.849762 )
+)
+
+$Name: initial facing
+$List: (		;! 1 points in list
+	( 11.225739, 0.000244, 4987.550293 )
+)
+
+$Name: player target
+$List: (		;! 1 points in list
+	( 39241.820313, -0.000488, 12838.333984 )
+)
+
+#Messages		;! 195 total
+
+
+$Name: title1
+$Team: -1
+$MessageNew:  XSTR("$quoteChain of Command$quote", 5822)
+$end_multi_text
++AVI Name: Head-CM4
+
+$Name: Checkpoint Save
+$Team: -1
+$MessageNew:  XSTR("Checkpoint Save Detected", 3432)
+$end_multi_text
+
+$Name: Start from beginning
+$Team: -1
+$MessageNew:  XSTR("Start from beginning", 3433)
+$end_multi_text
+
+$Name: Start from checkpoint
+$Team: -1
+$MessageNew:  XSTR("Start from checkpoint", 3434)
+$end_multi_text
+
+$Name: Start from checkpoint 2
+$Team: -1
+$MessageNew:  XSTR("Start from checkpoint 2", 5497)
+$end_multi_text
+
+$Name: Start from checkpoint 3
+$Team: -1
+$MessageNew:  XSTR("Start from checkpoint 3", 5498)
+$end_multi_text
+
+$Name: mission failed title
+$Team: -1
+$MessageNew:  XSTR("MISSION FAILED", 3430)
+$end_multi_text
+
+$Name: mission complete title
+$Team: -1
+$MessageNew:  XSTR("MISSION COMPLETE", 3431)
+$end_multi_text
+
+$Name: Alt-J
+$Team: -1
+$MessageNew:  XSTR("Alt-J to Jump", 5823)
+$end_multi_text
+
+$Name: HUDCountup
+$Team: -1
+$MessageNew:  XSTR("$ablecountup seconds remaining", 5824)
+$end_multi_text
+
+$Name: HUDCountdown
+$Team: -1
+$MessageNew:  XSTR("$ablecountdown seconds remaining", 5825)
+$end_multi_text
+
+$Name: press alt-x to change
+$Team: -1
+$MessageNew:  XSTR("Alt-X to switch", 5826)
+$end_multi_text
+
+$Name: antimatter loadout
+$Team: -1
+$MessageNew:  XSTR("Missiles: Warhammer", 5827)
+$end_multi_text
+
+$Name: detach
+$Team: -1
+$MessageNew:  XSTR(" ", 2685)
+$end_multi_text
++Wave Name: dock
+
+$Name: warning javelin
+$Team: -1
+$MessageNew:  XSTR("WARNING: HOSTILE ASM LAUNCH DETECTED", 4059)
+$end_multi_text
++Wave Name: warning2
+
+$Name: alarm ambience
+$Team: -1
+$MessageNew:  XSTR(" ", 2685)
+$end_multi_text
++Wave Name: 27-01
+
+$Name: what happened
+$Team: -1
+$MessageNew:  XSTR("Wha-? What happened? Commander Cameron!", 5828)
+$end_multi_text
++Wave Name: 27-02
+
+$Name: anybody
+$Team: -1
+$MessageNew:  XSTR("Anybody? Is anybody there?", 5829)
+$end_multi_text
++Wave Name: 27-03
+
+$Name: explosion
+$Team: -1
+$MessageNew:  XSTR(" ", 2685)
+$end_multi_text
++Wave Name: ExplosionDeep
+
+$Name: aye sir
+$Team: -1
+$MessageNew:  XSTR("Aye sir!", 5830)
+$end_multi_text
++Wave Name: 27-04
+
+$Name: report ensign
+$Team: -1
+$MessageNew:  XSTR("Report, Ensign! What happened?", 5831)
+$end_multi_text
++Wave Name: 27-05
+
+$Name: aria was hit
+$Team: -1
+$MessageNew:  XSTR("Sir...Aria was hit, sir. Just as we exited hyperspace. Heavy damage to all systems.", 5832)
+$end_multi_text
++Wave Name: 27-06
+
+$Name: attempting restore
+$Team: -1
+$MessageNew:  XSTR("Attempting to restore bridge control systems...stand by.", 5833)
+$end_multi_text
++Wave Name: 27-07
+
+$Name: dead in space
+$Team: -1
+$MessageNew:  XSTR("Lieutenant Ryan, check the bridge for injuries. Ensign Holmes, I want a status report!", 5834)
+$end_multi_text
++Wave Name: 27-08
+
+$Name: everything damaged
+$Team: -1
+$MessageNew:  XSTR("Helm controls are offline. Weapons and sensors offline. Communications offline. Astrogation offline. Life support running on emergency power.", 5835)
+$end_multi_text
++Wave Name: 27-09
+
+$Name: how is commander
+$Team: -1
+$MessageNew:  XSTR("How is Commander Cameron?", 5836)
+$end_multi_text
++Wave Name: 27-10
+
+$Name: needs stabilising
+$Team: -1
+$MessageNew:  XSTR("The commander's unconscious. Her injuries need stabilising. I'll do what I can but we need to get her to the medbay.", 5837)
+$end_multi_text
++Wave Name: 27-11
+
+$Name: how is first officer
+$Team: -1
+$MessageNew:  XSTR("And LC Ellis? ", 5838)
+$end_multi_text
++Wave Name: 27-12
+
+$Name: ellis dead
+$Team: -1
+$MessageNew:  XSTR("Dead, sir.", 5839)
+$end_multi_text
++Wave Name: 27-13
+
+$Name: comms online
+$Team: -1
+$MessageNew:  XSTR("Sir, I've managed to get internal ship communications working. Engineering is on the line.", 5840)
+$end_multi_text
++Wave Name: 27-14
+
+$Name: who in command
+$Team: -1
+$MessageNew:  XSTR("Then...who's left? Chief Engineer Hughes? ...he won't leave Engineering, not like this. Lieutenant Kelly? Lieutenant Ryan?", 5841)
+$end_multi_text
++Wave Name: 27-15
+
+$Name: you in command
+$Team: -1
+$MessageNew:  XSTR("It's me, isn't it?", 5842)
+$end_multi_text
++Wave Name: 27-16
+
+$Name: bridge is yours
+$Team: -1
+$MessageNew:  XSTR("Yes sir. You're the next senior officer. ", 5843)
+$end_multi_text
++Wave Name: 27-17
+
+$Name: right ok
+$Team: -1
+$MessageNew:  XSTR("Right...ok. Lieutenant Ryan, once you've stabilised Commander Cameron, take your position on the helm. Lieutenant Kelly, see if you can raise the rest of the ship.", 5844)
+$end_multi_text
++Wave Name: 27-18
+
+$Name: engineering here
+$Team: -1
+$MessageNew:  XSTR("Engineering to bridge. Anyone alive up there? It's a bloody mess down here but we've just managed to restore main power.", 5845)
+$end_multi_text
++Wave Name: 27-19
+
+$Name: ross in command
+$Team: -1
+$MessageNew:  XSTR("Hughes, this is Ross. Be advised the commander's unconscious and the XO is dead. I'm taking command of the bridge.", 5846)
+$end_multi_text
++Wave Name: 27-20
+
+$Name: could be worse
+$Team: -1
+$MessageNew:  XSTR("Copy Lieutenant Commander. Could be worse I suppose. In a few seconds we'll reroute power to the fusion engines. You'll know if it works. Engineering out.", 5847)
+$end_multi_text
++Wave Name: 27-21
+
+$Name: helm controls work
+$Team: -1
+$MessageNew:  XSTR("Sir! I've got green lights on helm control.", 5848)
+$end_multi_text
++Wave Name: 27-22
+
+$Name: can change heading
+$Team: -1
+$MessageNew:  XSTR("RCS seems to be working. I should be able to input course changes now.", 5849)
+$end_multi_text
++Wave Name: 27-23
+
+$Name: training course change
+$Team: -1
+$MessageNew:  XSTR("Face a direction, and press $Spacebar$ (Secondary Fire) to change course in that direction.", 5850)
+$end_multi_text
++Wave Name: tutorial
+
+$Name: course confirmed
+$Team: -1
+$MessageNew:  XSTR("Aye sir, changing course.", 5851)
+$end_multi_text
++Wave Name: 27-24
+
+$Name: course confirmed 2
+$Team: -1
+$MessageNew:  XSTR("Course change order received.", 5852)
+$end_multi_text
++Wave Name: 27-25
+
+$Name: course confirmed 3
+$Team: -1
+$MessageNew:  XSTR("Aye sir, inputting new coordinates.", 5853)
+$end_multi_text
++Wave Name: 27-26
+
+$Name: course confirmed 4
+$Team: -1
+$MessageNew:  XSTR("Copy helm order.", 5854)
+$end_multi_text
++Wave Name: 27-27
+
+$Name: course confirmed 5
+$Team: -1
+$MessageNew:  XSTR("Switching course.", 5855)
+$end_multi_text
++Wave Name: 27-28
+
+$Name: power to systems
+$Team: -1
+$MessageNew:  XSTR("Power has been restored to ship systems. Access lifts and transporters now online.", 5856)
+$end_multi_text
++Wave Name: 27-29
+
+$Name: send commander
+$Team: -1
+$MessageNew:  XSTR("Thank you Ensign. Get a team to transport Commander Cameron to the medbay as a first priority.", 5857)
+$end_multi_text
++Wave Name: 27-30
+
+$Name: repair teams on move
+$Team: -1
+$MessageNew:  XSTR("Repair teams are now moving through the ship doing what they can to fix the damage. We should see more systems coming online soon.", 5858)
+$end_multi_text
++Wave Name: 27-31
+
+$Name: sensors online
+$Team: -1
+$MessageNew:  XSTR("Sensors are now online.", 5859)
+$end_multi_text
++Wave Name: 27-32
+
+$Name: where are we
+$Team: -1
+$MessageNew:  XSTR("Start sensor sweeps. We don't know if whoever attacked us is still out there. Where are we?", 5860)
+$end_multi_text
++Wave Name: 27-33
+
+$Name: in proximity to andaman
+$Team: -1
+$MessageNew:  XSTR("We're in proximity to the Andaman nav transponder. No other ships in the immediate area.", 5861)
+$end_multi_text
++Wave Name: 27-34
+
+$Name: comms traffic quiet
+$Team: -1
+$MessageNew:  XSTR("Sir, comms traffic is quiet. Trying to contact Katherine Lau but the dust clouds are making it difficult.", 5862)
+$end_multi_text
++Wave Name: 27-35
+
+$Name: what are your orders
+$Team: -1
+$MessageNew:  XSTR("What are your orders, sir?", 5863)
+$end_multi_text
++Wave Name: 27-36
+
+$Name: i don't know
+$Team: -1
+$MessageNew:  XSTR("Orders? I don't know. I...wouldn't even know where to start. This is different to being in a cockpit.", 5864)
+$end_multi_text
++Wave Name: 27-37
+
+$Name: how to run ship
+$Team: -1
+$MessageNew:  XSTR("I wouldn't even know the first thing about running a ship.", 5865)
+$end_multi_text
++Wave Name: 27-38
+
+$Name: don't expect you
+$Team: -1
+$MessageNew:  XSTR("Sir, we don't expect you to run the ship.", 5866)
+$end_multi_text
++Wave Name: 27-39
+
+$Name: we can do it
+$Team: -1
+$MessageNew:  XSTR("Aria has a fine crew who know what they need to do. We'll do the job. We just need you to give us a direction.", 5867)
+$end_multi_text
++Wave Name: 27-40
+
+$Name: we can help
+$Team: -1
+$MessageNew:  XSTR("No one knows everything, sir. That's what we're here for. Our job is to give you the information to make the right decision.", 5868)
+$end_multi_text
++Wave Name: 27-41
+
+$Name: ok thanks
+$Team: -1
+$MessageNew:  XSTR("Well, ok. Let's get to it then. To your stations. See what our options are.", 5869)
+$end_multi_text
++Wave Name: 27-42
+
+$Name: transponder scanned
+$Team: -1
+$MessageNew:  XSTR("Downloading transponder data. We've got a map of the surrounding area. Andaman Anchorage is nearby with field repair facilities. It's unmanned.", 5870)
+$end_multi_text
++Wave Name: 27-43
+
+$Name: transponder scanned 2
+$Team: -1
+$MessageNew:  XSTR("Andaman Station is fourteen klicks from the anchorage. There's been heavy Combine-flagged traffic in the area over the past twenty four hours.", 5871)
+$end_multi_text
++Wave Name: 27-44
+
+$Name: anchorage dockable
+$Team: -1
+$MessageNew:  XSTR("Sir, the anchorage is unmanned but automated systems are active. Aria can undergo more comprehensive field repairs.", 5872)
+$end_multi_text
++Wave Name: 27-45
+
+$Name: 2 to dock
+$Team: -1
+$MessageNew:  XSTR("Press $2$ to call for repair drones.", 5873)
+$end_multi_text
++Wave Name: tutorial
+
+$Name: Alt-N for waypoint
+$Team: -1
+$MessageNew:  XSTR("$Alt-N$ to toggle between Points of Interest", 5874)
+$end_multi_text
++Wave Name: tutorial
+
+$Name: full power response 1
+$Team: -1
+$MessageNew:  XSTR("Full ahead, aye.", 5875)
+$end_multi_text
++Wave Name: 27-46
+
+$Name: full power response 2
+$Team: -1
+$MessageNew:  XSTR("...Sir.", 5876)
+$end_multi_text
++Wave Name: 27-47
+
+$Name: full power response 3
+$Team: -1
+$MessageNew:  XSTR("...Aye sir.", 5877)
+$end_multi_text
++Wave Name: 27-48
+
+$Name: all stop response 1
+$Team: -1
+$MessageNew:  XSTR("...Aye sir", 5878)
+$end_multi_text
++Wave Name: 27-49
+
+$Name: all stop response 2
+$Team: -1
+$MessageNew:  XSTR("Coming to stop.", 5879)
+$end_multi_text
++Wave Name: 27-50
+
+$Name: all stop response 3
+$Team: -1
+$MessageNew:  XSTR("Confirmed stop order.", 5880)
+$end_multi_text
++Wave Name: 27-51
+
+$Name: weapons online
+$Team: -1
+$MessageNew:  XSTR("Weapons control is now online. Hull integrity stabilised. Aria is combat ready, sir.", 5881)
+$end_multi_text
++Wave Name: 27-52
+
+$Name: status of commander
+$Team: -1
+$MessageNew:  XSTR("What's the status of Commander Cameron?", 5882)
+$end_multi_text
++Wave Name: 27-53
+
+$Name: to medbay
+$Team: -1
+$MessageNew:  XSTR("One moment. Patching you through to medbay.", 5883)
+$end_multi_text
++Wave Name: 27-54
+
+$Name: this is doctor
+$Team: -1
+$MessageNew:  XSTR("Ross, this is Dr McGill. The commander is in a coma and we're still stabilising her. If you've got something important to say tell me now, otherwise let my staff do their work.", 5884)
+$end_multi_text
++Wave Name: 27-55
+
+$Name: guess it's me
+$Team: -1
+$MessageNew:  XSTR("Well...that's it then. I guess it's all on me. No one else to help.", 5885)
+$end_multi_text
++Wave Name: 27-56
+
+$Name: do we continue
+$Team: -1
+$MessageNew:  XSTR("Sir, our orders were to bring back Lau and Erikson. Do we continue the mission or return home?", 5886)
+$end_multi_text
++Wave Name: 27-57
+
+$Name: weapons platform
+$Team: -1
+$MessageNew:  XSTR("Sir, there's an ASM platform near our hyperspace exit point. It's inactive. Ship logs show that it was the one that attacked Aria.", 5887)
+$end_multi_text
++Wave Name: 27-58
+
+$Name: good target
+$Team: -1
+$MessageNew:  XSTR("The area is clear of shipping for now. I think it's a good target if you wanted to test out weapons functionality.", 5888)
+$end_multi_text
++Wave Name: 27-59
+
+$Name: successful test
+$Team: -1
+$MessageNew:  XSTR("Remote turrets fully functional, sir. Weapons control at one hundred percent effectiveness.", 5889)
+$end_multi_text
++Wave Name: 27-60
+
+$Name: mission still stands
+$Team: -1
+$MessageNew:  XSTR("Ok. We're limping, with casualties and in a hostile environment. But we're still going. Our mission still stands. ", 5890)
+$end_multi_text
++Wave Name: 27-61
+
+$Name: we're king's officers
+$Team: -1
+$MessageNew:  XSTR("We're King's Officers, sir. There is no duty that we do not honour, no mission that we abandon. The crew of HMS Aria will follow you.", 5891)
+$end_multi_text
++Wave Name: 27-63
+
+$Name: get the bastards
+$Team: -1
+$MessageNew:  XSTR("We'll find those bastards who hit us, and give them a right hiding! Sir.", 5892)
+$end_multi_text
++Wave Name: 27-64
+
+$Name: there's a mission
+$Team: -1
+$MessageNew:  XSTR("We need to find our people and bring them back. But the ones who tried to kill us are still out there. They'll likely give us another go.", 5893)
+$end_multi_text
++Wave Name: 27-65
+
+$Name: give the order
+$Team: -1
+$MessageNew:  XSTR("Give the order, and we'll make Aria battle-ready.", 5894)
+$end_multi_text
++Wave Name: 27-66
+
+$Name: all right
+$Team: -1
+$MessageNew:  XSTR("All right. Lieutenant Kelly, set battle stations! We're going in!", 5895)
+$end_multi_text
++Wave Name: 27-67
+
+$Name: training turret weapons
+$Team: -1
+$MessageNew:  XSTR("Main plasma turrets have a range of 3000m", 5896)
+$end_multi_text
++Wave Name: tutorial
+
+$Name: thruster overcharge online
+$Team: -1
+$MessageNew:  XSTR("This is Engineering. The magnetohydrodynamic capacitors are working. You can overcharge the thrusters if you need to get somewhere in a hurry.", 5897)
+$end_multi_text
++Wave Name: 27-68
+
+$Name: training MHD overcharge
+$Team: -1
+$MessageNew:  XSTR("Press $1$ for increased speed. Main guns will be inactive.", 5898)
+$end_multi_text
++Wave Name: tutorial
+
+$Name: fighter patrol
+$Team: -1
+$MessageNew:  XSTR("Hostile fighter patrol approaching! Setting point defense turrets to free fire!", 5899)
+$end_multi_text
++Wave Name: 27-70
+
+$Name: damage control
+$Team: -1
+$MessageNew:  XSTR("Sir, damage control teams have cleared most corridors of debris, and are now able to move heavy repair machinery. We can put them to work repairing the rest of Aria's hull damage.", 5900)
+$end_multi_text
++Wave Name: 27-72
+
+$Name: zebra destroyed
+$Team: -1
+$MessageNew:  XSTR("Hostile fighters eliminated!", 5901)
+$end_multi_text
++Wave Name: 27-73
+
+$Name: coming up to andaman
+$Team: -1
+$MessageNew:  XSTR("We're coming up to Andaman. Got an urgent comms request from Station Control.", 5902)
+$end_multi_text
++Wave Name: 27-74
+
+$Name: andaman on bypass
+$Team: -1
+$MessageNew:  XSTR("Inbound Commonwealth ship, be advised there are no available docking berths. Andaman station is on bypass due to lockdown.", 5903)
+$end_multi_text
++Wave Name: 27-75
+
+$Name: transports
+$Team: -1
+$MessageNew:  XSTR("There's multiple civilian ships around the station. None with Combine IFF. No other military vessels. ", 5904)
+$end_multi_text
++Wave Name: 27-76
+
+$Name: MHDalert
+$Team: -1
+$MessageNew:  XSTR(" ", 2685)
+$end_multi_text
++Wave Name: MHDalert
+
+$Name: training camera switch
+$Team: -1
+$MessageNew:  XSTR("Press $Pad *$ to switch between turret and external views", 5905)
+$end_multi_text
++Wave Name: tutorial
+
+$Name: what's going on
+$Team: -1
+$MessageNew:  XSTR("What's going on? A lockdown? Is the Combine responsible?", 5906)
+$end_multi_text
++Wave Name: 27-77
+
+$Name: why lockdown
+$Team: -1
+$MessageNew:  XSTR("Get Andaman Control. Ask them what's going on.", 5907)
+$end_multi_text
++Wave Name: 27-78
+
+$Name: this is aria
+$Team: -1
+$MessageNew:  XSTR("Andaman Station, this is HMS Aria of the Crown Navy. Please advise your situation. What is the reason for the lockdown? ", 5908)
+$end_multi_text
++Wave Name: 27-79
+
+$Name: combine lockdown
+$Team: -1
+$MessageNew:  XSTR("Crown Navy warship Aria. The station has been locked down under orders from the Sinarus Combine Navy.", 5909)
+$end_multi_text
++Wave Name: 27-80
+
+$Name: hunting fugitives
+$Team: -1
+$MessageNew:  XSTR("The Combine fleet are enforcing the lockdown with armed troops. They say they are hunting fugitives, and that no one is to leave the station while they conduct the search.", 5910)
+$end_multi_text
++Wave Name: 27-81
+
+$Name: fugitive names
+$Team: -1
+$MessageNew:  XSTR("Fugitives? Did they give the names of who they're looking for, Andaman?", 5911)
+$end_multi_text
++Wave Name: 27-82
+
+$Name: no names
+$Team: -1
+$MessageNew:  XSTR("No names. Master Batra offered the help of station security services, but the Combine refused to give any details of the individuals in question. The lack of information in addition to the lockdown has become a cause for agitation.", 5912)
+$end_multi_text
++Wave Name: 27-83
+
+$Name: sounds like combine
+$Team: -1
+$MessageNew:  XSTR("Not being transparent? Does that sound like something the Combine would do? Let me talk to them.", 5913)
+$end_multi_text
++Wave Name: 27-84
+
+$Name: provide asylum
+$Team: -1
+$MessageNew:  XSTR("Andaman Station, this is Stuart Ross, CO of Aria. We are here to provide asylum for two individuals who may be on board. They may be the ones the Combine are looking for.", 5914)
+$end_multi_text
++Wave Name: 27-85
+
+$Name: help us out
+$Team: -1
+$MessageNew:  XSTR("If you help us find and evacuate them, it may bring about the end of the lockdown.", 5915)
+$end_multi_text
++Wave Name: 27-86
+
+$Name: combine retribution
+$Team: -1
+$MessageNew:  XSTR("Sinarussian troops are all over the station and their warships will likely come back soon. We don't want to be the target of Combine retributions if we help you.", 5916)
+$end_multi_text
++Wave Name: 27-87
+
+$Name: leave combine to us
+$Team: -1
+$MessageNew:  XSTR("Leave the Combine to us, Andaman. Ross out.", 5917)
+$end_multi_text
++Wave Name: 27-88
+
+$Name: might not be able to
+$Team: -1
+$MessageNew:  XSTR("Sir. I'm not discounting Aria's combat ability but if there's a significant Combine asset out here, we may not be able to resolve an engagement.", 5918)
+$end_multi_text
++Wave Name: 27-89
+
+$Name: i know
+$Team: -1
+$MessageNew:  XSTR("Yes Ensign. I know. But if we manage to get our people quickly, we'll be out of here before any such engagement takes place.", 5919)
+$end_multi_text
++Wave Name: 27-90
+
+$Name: LACS attack
+$Team: -1
+$MessageNew:  XSTR("Two Combine Light Attack Craft are on an intercept! Recommend evasive manoeuvring to avoid their heavy cannons!", 5920)
+$end_multi_text
++Wave Name: 27-91
+
+$Name: xray destroyed
+$Team: -1
+$MessageNew:  XSTR("Combine LACs destroyed!", 5921)
+$end_multi_text
++Wave Name: 27-92
+
+$Name: difficult to find
+$Team: -1
+$MessageNew:  XSTR("We can assist, but finding details of their arrival will be difficult. The Combine have commandeered our computer systems and locked us out of our own records.", 5922)
+$end_multi_text
++Wave Name: 27-93
+
+$Name: better be quick
+$Team: -1
+$MessageNew:  XSTR("Well, we better make it quick. The Combine marines will have definitely noticed our arrival. Wouldn't surprise me if they're already on comms to their friends.", 5923)
+$end_multi_text
++Wave Name: 27-94
+
+$Name: drone released
+$Team: -1
+$MessageNew:  XSTR(" ", 2685)
+$end_multi_text
++Wave Name: emptymsgdrone.ogg
+
+$Name: frigate incoming
+$Team: -1
+$MessageNew:  XSTR("Alert! Khopesh-class frigate on sensors, she's moving to engage us!", 5924)
+$end_multi_text
++Wave Name: 27-95
+
+$Name: frigate retreating
+$Team: -1
+$MessageNew:  XSTR("Solomnent frigate is spooling her impeller. Looks like we mauled her badly.", 5925)
+$end_multi_text
++Wave Name: 27-96
+
+$Name: frigate destroyed
+$Team: -1
+$MessageNew:  XSTR("Combine frigate destroyed, sir. Catastrophic detonation.", 5926)
+$end_multi_text
++Wave Name: 27-97
+
+$Name: remote access
+$Team: -1
+$MessageNew:  XSTR("Sir, I may be able to access the Andaman records remotely. Aria has powerful comms technology, it's how we managed to defuse the nuclear device at Covenant.", 5927)
+$end_multi_text
++Wave Name: 27-98
+
+$Name: scan docks
+$Team: -1
+$MessageNew:  XSTR("If we get close enough to the docking berths for a remote scan, I may be able to find an access point to their systems.", 5928)
+$end_multi_text
++Wave Name: 27-99
+
+$Name: that's done it
+$Team: -1
+$MessageNew:  XSTR("I've got them! Section 35-C, room 281. Rental accommodation under the pseudonym Noemi Pasquale, biometric record matches Lau. Confined to their room until the lockdown ends.", 5929)
+$end_multi_text
++Wave Name: 27-100
+
+$Name: get in contact
+$Team: -1
+$MessageNew:  XSTR("Can you get in contact with them?", 5930)
+$end_multi_text
++Wave Name: 27-101
+
+$Name: easily done
+$Team: -1
+$MessageNew:  XSTR("Aye sir. A simple case of an external comms directly to their room's terminal. One second.", 5931)
+$end_multi_text
++Wave Name: 27-102
+
+$Name: lau here
+$Team: -1
+$MessageNew:  XSTR("HMS Aria, is that you?", 5932)
+$end_multi_text
++Wave Name: 27-103
+
+$Name: hello lau
+$Team: -1
+$MessageNew:  XSTR("Lau? This is Stuart Ross. Are you and Erikson okay? And...Pasquale?", 5933)
+$end_multi_text
++Wave Name: 27-104
+
+$Name: where is cameron
+$Team: -1
+$MessageNew:  XSTR("Stuart? It's good to see you again. The name was Erikson's idea, in case we got tracked. I guess it turned out to be useful. Where is Anil Cameron?", 5934)
+$end_multi_text
++Wave Name: 27-105
+
+$Name: we were attacked
+$Team: -1
+$MessageNew:  XSTR("We were attacked on arrival to Andaman and suffered casualties. Cameron is incapacitated. I'm acting CO.", 5935)
+$end_multi_text
++Wave Name: 27-106
+
+$Name: your first command
+$Team: -1
+$MessageNew:  XSTR("Wow Ross, your first command. You know, being captain of a ship kinda suits you. I'm glad you're ok.", 5936)
+$end_multi_text
++Wave Name: 27-107
+
+$Name: need to get you out
+$Team: -1
+$MessageNew:  XSTR("Right. We need to get you and Erikson out of Andaman and onto Aria. Can both of you make it to a docking ring?", 5937)
+$end_multi_text
++Wave Name: 27-108
+
+$Name: locked down tight
+$Team: -1
+$MessageNew:  XSTR("Security's locked down the entire station, and Combine troops are crawling all over. Not without overriding the security lock or getting the lockdown lifted.", 5938)
+$end_multi_text
++Wave Name: 27-109
+
+$Name: may be able to help
+$Team: -1
+$MessageNew:  XSTR("Stand by Lau. I'll get back to you when we've got a plan.", 5939)
+$end_multi_text
++Wave Name: 27-110
+
+$Name: fighter patrol 2
+$Team: -1
+$MessageNew:  XSTR("Combine fighter wing! They must have recalled a patrol.", 5940)
+$end_multi_text
++Wave Name: 27-111
+
+$Name: heads up
+$Team: -1
+$MessageNew:  XSTR("Heads up, sir! Faint signals incoming. Combine IFF!", 5941)
+$end_multi_text
++Wave Name: 27-112
+
+$Name: more fighters
+$Team: -1
+$MessageNew:  XSTR("Reading more signals incoming! They're fast, likely more fighters!", 5942)
+$end_multi_text
++Wave Name: 27-114
+
+$Name: getting swarmed
+$Team: -1
+$MessageNew:  XSTR("They're swarming us!", 5943)
+$end_multi_text
++Wave Name: 27-115
+
+$Name: found drones
+$Team: -1
+$MessageNew:  XSTR("Sir! Message from the hangar. Maintenance has cleared out our combat drones. They've been made flight worthy. We can launch them to help out against the fighters.", 5944)
+$end_multi_text
++Wave Name: 27-116
+
+$Name: area clear 1
+$Team: -1
+$MessageNew:  XSTR("Area clear. Do we continue to Andaman Station?", 5945)
+$end_multi_text
++Wave Name: 27-117
+
+$Name: area clear 2
+$Team: -1
+$MessageNew:  XSTR("All fighters destroyed. No other hostile contacts for now.", 5946)
+$end_multi_text
++Wave Name: 27-118
+
+$Name: get me station
+$Team: -1
+$MessageNew:  XSTR("Lieutenant Kelly, get me Andaman's master. I want our people off that station now.", 5947)
+$end_multi_text
++Wave Name: 27-119
+
+$Name: this is batra
+$Team: -1
+$MessageNew:  XSTR("This is Master Batra. I hear this is your fault the Combine have locked down my station. Who are these fugitives? Why have you got us involved in your war?", 5948)
+$end_multi_text
++Wave Name: 27-120
+
+$Name: this is all the combine
+$Team: -1
+$MessageNew:  XSTR("Master Batra, listen to me very carefully. This lockdown is the fault of the Combine, and the Combine alone. They only care about getting what they want, and your station just happens to be an obstacle.", 5949)
+$end_multi_text
++Wave Name: 27-121
+
+$Name: welcome to them
+$Team: -1
+$MessageNew:  XSTR("Obstacle? We become an obstacle as soon as we help you. We have no quarrel with the Archon. Why shouldn't I just let the Combine have these fugitives? What has the Commonwealth done for us?", 5950)
+$end_multi_text
++Wave Name: 27-122
+
+$Name: i'll tell you why
+$Team: -1
+$MessageNew:  XSTR("Because this is what a galaxy under Combine rule looks like. If you care at all about your people, this is our best chance of stopping that from happening.", 5951)
+$end_multi_text
++Wave Name: 27-123
+
+$Name: did this in sulsia
+$Team: -1
+$MessageNew:  XSTR("This is how the Combine operate. They come to a system, lock it down and occupy it until they have no more use for it. I've seen them do it in Sulsia. They're doing the same thing here. They'll do it all again after this is over.", 5952)
+$end_multi_text
++Wave Name: 27-124
+
+$Name: the commonwealth doing
+$Team: -1
+$MessageNew:  XSTR("You ask what the Commonwealth's ever done for you? This! This is what we're doing. We're stopping them right here, right now! And you have a chance to help us do it.", 5953)
+$end_multi_text
++Wave Name: 27-125
+
+$Name: all right alban
+$Team: -1
+$MessageNew:  XSTR("All right, Alban. You say you're opposing the Combine? Show me. I'll have my security chief create a diversion in that section, make up an emergency to force the Combine to evacuate.", 5954)
+$end_multi_text
++Wave Name: 27-126
+
+$Name: unlock doors
+$Team: -1
+$MessageNew:  XSTR("Your friends are near a transport berthed at C Dock. The way should be clear for them once the troops evacuate. In return, I want your ship to protect my station from any Combine warships once they find out what's going on.", 5955)
+$end_multi_text
++Wave Name: 27-127
+
+$Name: two minutes
+$Team: -1
+$MessageNew:  XSTR("Tell your people to move out in about two minutes. Hopefully we all get out of the other side of this in one piece.", 5956)
+$end_multi_text
++Wave Name: 27-128
+
+$Name: group of hostiles
+$Team: -1
+$MessageNew:  XSTR("High energy signals on approach! Two frigate-sized ships, with what look like strike craft escorts.", 5957)
+$end_multi_text
++Wave Name: 27-129
+
+$Name: two ships
+$Team: -1
+$MessageNew:  XSTR("Well we got ourselves in the thick of it now. Stand by to engage new contacts.", 5958)
+$end_multi_text
++Wave Name: 27-130
+
+$Name: destroyer here
+$Team: -1
+$MessageNew:  XSTR("Got confirmation of two Combine destroyers! Escorting striker wing and two LACs! They're closing in.", 5959)
+$end_multi_text
++Wave Name: 27-131
+
+$Name: in range of guns
+$Team: -1
+$MessageNew:  XSTR("Sir! We're in range of their mass drivers!", 5960)
+$end_multi_text
++Wave Name: 27-132
+
+$Name: bastards firing
+$Team: -1
+$MessageNew:  XSTR("The bastards are firing at civilians!", 5961)
+$end_multi_text
++Wave Name: 27-133
+
+$Name: lau escaping
+$Team: -1
+$MessageNew:  XSTR("Stuart, this is Lau. We're making our way to the transport at Dock C. The dockmaster tells me we're good to launch in about one minute.", 5962)
+$end_multi_text
++Wave Name: 27-134
+
+$Name: don't launch yet
+$Team: -1
+$MessageNew:  XSTR("Don't launch yet! There are Combine warships near the docking rings. They'll fire on any transport leaving the station!", 5963)
+$end_multi_text
++Wave Name: 27-135
+
+$Name: get in the transport
+$Team: -1
+$MessageNew:  XSTR("Get in the transport but stay powered down. Await our signal to launch.", 5964)
+$end_multi_text
++Wave Name: 27-136
+
+$Name: we're in transport
+$Team: -1
+$MessageNew:  XSTR("<secure> Stuart, we're in the transport. Her pilot's standing by for your signal.", 5965)
+$end_multi_text
++Wave Name: 27-137
+
+$Name: get out of range
+$Team: -1
+$MessageNew:  XSTR("We need to stay out of range of those mass drivers or we'll get hammered!", 5966)
+$end_multi_text
++Wave Name: 27-138
+
+$Name: send signal
+$Team: -1
+$MessageNew:  XSTR(" ", 2685)
+$end_multi_text
++Wave Name: signal
+
+$Name: strikers attacking
+$Team: -1
+$MessageNew:  XSTR("Striker wing peeling off to attack Aria!", 5967)
+$end_multi_text
++Wave Name: 27-139
+
+$Name: what's happening
+$Team: -1
+$MessageNew:  XSTR("Stuart, what's happening out there? We've been advised that Combine troops are on their way to Dock C. We won't be able to hold them back for long.", 5968)
+$end_multi_text
++Wave Name: 27-140
+
+$Name: troops are at door
+$Team: -1
+$MessageNew:  XSTR("Stuart! Combine soldiers are attempting to breach the transport airlock! We need to leave now!", 5969)
+$end_multi_text
++Wave Name: 27-141
+
+$Name: fuck it transport
+$Team: -1
+$MessageNew:  XSTR("Transport 5281 initiating emergency detachment from Andaman Dock C.", 5970)
+$end_multi_text
++Wave Name: 27-142
+
+$Name: signal received
+$Team: -1
+$MessageNew:  XSTR("Transport 5281 detaching from Andaman Dock C.", 5971)
+$end_multi_text
++Wave Name: 27-143
+
+$Name: a little busy
+$Team: -1
+$MessageNew:  XSTR("We're a little busy here Lau!", 5972)
+$end_multi_text
++Wave Name: 27-144
+
+$Name: transport moving to dock
+$Team: -1
+$MessageNew:  XSTR("Transport 5281 requesting docking clearance with Aria. Please remain within velocity limits as per Safety Authority Guidelines, section 4.1a.", 5973)
+$end_multi_text
++Wave Name: 27-145
+
+$Name: transport docked
+$Team: -1
+$MessageNew:  XSTR("Transport 5281 docking sequence complete. Passengers are able to disembark.", 5974)
+$end_multi_text
++Wave Name: 27-146
+
+$Name: lau on board
+$Team: -1
+$MessageNew:  XSTR("Sir, we've got confirmation that Lau and Erikson are on board Aria.", 5975)
+$end_multi_text
++Wave Name: 27-147
+
+$Name: time to leave 1
+$Team: -1
+$MessageNew:  XSTR("Thank God. Helm! We've done what we need to do. Get us a course out of here!", 5976)
+$end_multi_text
++Wave Name: 27-148
+
+$Name: time to leave 2
+$Team: -1
+$MessageNew:  XSTR("Copy Lieutenant. Thank you. Thank you everybody. Helm, take us home.", 5977)
+$end_multi_text
++Wave Name: 27-149
+
+$Name: final battle over
+$Team: -1
+$MessageNew:  XSTR("Sir. I think that's everyone. Both destroyers neutralised. Escorting wings destroyed.", 5978)
+$end_multi_text
++Wave Name: 27-150
+
+$Name: prepare to warp
+$Team: -1
+$MessageNew:  XSTR("System exit vector calculated. Impellers ready.", 5979)
+$end_multi_text
++Wave Name: 27-151
+
+$Name: impeller startup
+$Team: -1
+$MessageNew:  XSTR(" ", 2685)
+$end_multi_text
++Wave Name: impellerwarmup10
+
+$Name: meiks believe in you
+$Team: -1
+$MessageNew:  XSTR("Just keep believing in yourself, lad. Like I always told you. Everything else'll fall into place.", 5980)
+$end_multi_text
++Wave Name: 27-152
+
+$Name: training mass driver range
+$Team: -1
+$MessageNew:  XSTR("Destroyer mass drivers max range is 6000m", 5981)
+$end_multi_text
++Wave Name: tutorial
+
+$Name: training combat drone
+$Team: -1
+$MessageNew:  XSTR("$3$ to launch anti-fighter beam drones", 5982)
+$end_multi_text
++Wave Name: tutorial
+
+$Name: suggestions from people
+$Team: -1
+$MessageNew:  XSTR("Well everyone, I'm willing to take suggestions.", 5983)
+$end_multi_text
++Wave Name: 27-153
+
+$Name: tip 1
+$Team: -1
+$MessageNew:  XSTR("Those Combine guns are powerful, but slow. If Lieutenant Ryan can keep us evasive and unpredictable, we can minimise incoming damage.", 5984)
+$end_multi_text
++Wave Name: 27-154
+
+$Name: tip 2
+$Team: -1
+$MessageNew:  XSTR("I suggest we carve up the Combine formation piecemeal, instead of engaging them all at once. Strikers and LACs first, to give us time to plan our engagement with the destroyers.", 5985)
+$end_multi_text
++Wave Name: 27-155
+
+$Name: tip 3
+$Team: -1
+$MessageNew:  XSTR("Sir, our plasma cannons don't do much against warship hulls but they burn through subsystem and turret armour like no one's business.", 5986)
+$end_multi_text
++Wave Name: 27-156
+
+$Name: tip 4
+$Team: -1
+$MessageNew:  XSTR("Might I suggest keeping distance until they send their strike wings at us. Once we've dealt with them, we make best speed to the destroyers and take out their fire control.", 5987)
+$end_multi_text
++Wave Name: 27-157
+
+$Name: suggestions from people 2
+$Team: -1
+$MessageNew:  XSTR("Well everyone, I'm willing to take suggestions.", 5983)
+$end_multi_text
++Wave Name: 27-158
+
+$Name: suggestions from people 3
+$Team: -1
+$MessageNew:  XSTR("Well everyone, I'm willing to take suggestions.", 5983)
+$end_multi_text
++Wave Name: 27-159
+
+$Name: what deal erikson
+$Team: -1
+$MessageNew:  XSTR("Lau...what's the deal with Erikson? Why are the Combine hunting her too?", 5988)
+$end_multi_text
++Wave Name: 27-160
+
+$Name: it's ok lau
+$Team: -1
+$MessageNew:  XSTR("It's ok Lau. It's time Ross knew the truth. There's no need to hide anymore.", 5989)
+$end_multi_text
++Wave Name: 27-161
+
+$Name: weapons researcher
+$Team: -1
+$MessageNew:  XSTR("Ross, I was a senior developer in one of the Sinarus advanced weapons research departments. My team helped develop the burst anti-ship missile for the arsenal ships.", 5990)
+$end_multi_text
++Wave Name: 27-162
+
+$Name: black sun
+$Team: -1
+$MessageNew:  XSTR("I heard rumours of a terrible weapon called 'Black Sun' but it wasn't until Morik that the full horror was revealed. I had to leave. I left the Combine under an alias.", 5991)
+$end_multi_text
++Wave Name: 27-163
+
+$Name: came to sulsia
+$Team: -1
+$MessageNew:  XSTR("I knew Black Sun originated in the Veil, so I came to Sulsia to try to stop it, somehow. I joined up with Lau on the Hoshikuzu. And the rest you now know.", 5992)
+$end_multi_text
++Wave Name: 27-164
+
+$Name: of course that's why
+$Team: -1
+$MessageNew:  XSTR("Of course. That's why the admiral needs Erikson. She's the key to Kakotchka's arsenal ships.", 5993)
+$end_multi_text
++Wave Name: 27-165
+
+$Name: didn't know
+$Team: -1
+$MessageNew:  XSTR("I'm sorry I couldn't tell you earlier Stuart. Erikson told me after we left Sulsia, and asked me to keep it private.", 5994)
+$end_multi_text
++Wave Name: 27-166
+
+$Name: bonus
+$Team: -1
+$MessageNew:  XSTR(" ", 2685)
+$end_multi_text
++Wave Name: bonus
+
+$Name: andaman wants cleared
+$Team: -1
+$MessageNew:  XSTR("Corvette Aria, there are Combine warships near our station and we have no weapons to defend ourselves. We need you to drive them off.", 5995)
+$end_multi_text
++Wave Name: 27-167
+
+$Name: thank you alban
+$Team: -1
+$MessageNew:  XSTR("Thank you for protecting my station, Alban. Whatever happens next, you can always count on Andaman's friendship.", 5996)
+$end_multi_text
++Wave Name: 27-168
+
+$Name: lacs attacking
+$Team: -1
+$MessageNew:  XSTR("Sir, the LACs are moving to engage us!", 5997)
+$end_multi_text
++Wave Name: 27-169
+
+$Name: training auto turrets
+$Team: -1
+$MessageNew:  XSTR("$Alt-D$ to toggle main turret auto", 5998)
+$end_multi_text
++Wave Name: tutorial
+
+#Reinforcements		;! 0 total
+
+
+#Background bitmaps		;! 0 total
+
+$Num stars: 0
+$Ambient light level: 7895185
+
++Neb2: Neb_Back_Black01
++Neb2Color: ( 0 0 0 )
++Neb2 Poofs List: ( "Neb_Poof_Red01"  "Neb_Poof_Red02" ) 
+
+$Bitmap List:
++Flags: ( "corrected angles" )
+$Sun: Stars_Sun_Red
++Angles: 0.000000 0.000000 1.570796
++Scale: 1.000000
+
+#Asteroid Fields
+
+#Music
+
+$Event Music: None
+$Briefing Music: None
+$Debriefing Success Music: Success3
+$Debriefing Average Music: Success3
+
+#End
+
