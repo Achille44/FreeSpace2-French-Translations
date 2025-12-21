@@ -50,7 +50,10 @@ $Sound Environment: Nebula
 $Variables:
 (
 		0		"i18nVariable1"		"#Command"		"string"
-		1		"i18nVariable2"		"<argument>"		"string"
+		1		"i18nVariable2"		"Sensors"		"string"
+		2		"i18nVariable3"		"Navigation"		"string"
+		3		"i18nVariable4"		"Communication"		"string"
+		4		"i18nVariable5"		"weapons"		"string"
 )
 
 #Command Briefing
@@ -1347,9 +1350,24 @@ $Formula: ( when
       8715 
    )
    ( modify-variable-xstr 
-      "@i18nVariable2[<argument>]" 
-      "<argument>" 
-      16021 
+      "@i18nVariable2[Sensors]" 
+      "Sensors" 
+      6746 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable3[Navigation]" 
+      "Navigation" 
+      6744 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable4[Communication]" 
+      "Communication" 
+      6823 
+   )
+   ( modify-variable-xstr 
+      "@i18nVariable5[weapons]" 
+      "weapons" 
+      6642 
    )
 )
 +Name: Manage translation variables
@@ -2273,19 +2291,25 @@ $Formula: ( when
          "thkKey('D')" 
       )
    )
-   ( when-argument 
-      ( every-of 
-         "sensors" 
-         "navigation" 
-         "communication" 
-         "weapons" 
-      )
-      ( true ) 
-      ( lua-mark-subsystem 
-         "Sathanas" 
-         "@i18nVariable2[<argument>]" 
-         "@i18nVariable2[<argument>]" 
-      )
+   ( lua-mark-subsystem 
+      "Sathanas" 
+      "@i18nVariable2[Sensors]" 
+      "sensors" 
+   )
+   ( lua-mark-subsystem 
+      "Sathanas" 
+      "@i18nVariable3[Navigation]" 
+      "navigation" 
+   )
+   ( lua-mark-subsystem 
+      "Sathanas" 
+      "@i18nVariable4[Communication]" 
+      "communication" 
+   )
+   ( lua-mark-subsystem 
+      "Sathanas" 
+      "@i18nVariable5[weapons]" 
+      "weapons" 
    )
 )
 +Name: Bears
